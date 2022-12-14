@@ -1,0 +1,75 @@
+---
+layout: single
+title:  "22.12.14 Today's Leetcode"
+---
+
+## 198. House Robber (Medium)
+
+Dynamic Programming 과 DFS를 이용한 풀이
+```C
+int dfs(int* nums, int* dp, int start, int len) {
+    if (start >= len)
+        return 0;
+    if (dp[start] != -1)
+        return dp[start];
+    int i;
+    int res = 0;
+    for(i = start; i < len; i++) {
+        int temp = nums[i] + dfs(nums, dp, i + 2, len);;
+        if (temp > res)
+            res = temp;
+    }
+    dp[start] = res;
+    return res;
+}
+
+int rob(int* nums, int len){
+    int dp[len + 10];
+    for (int i = 0; i < len; i++)
+        dp[i] = -1;
+    return dfs(nums, dp, 0, len);
+}
+
+```
+
+## 152. Maximum Product Subarray
+
+Subarray와 관련된 문제가 많이 나오는데, 어제 풀었던 XOR 문제처럼 production은 inversion이 production이므로 arrayy를 만들어서 구현하면 될거라고 생각했다. 
+하지만 element가 0 인경우 와 여러 문제점이 발생해서 조금 어려움이 있었다. `zero_index` 를 이용해서 0이 발견되었을때 array 를 두 개로 쪼개서 생각했고
+1, -1이 반복되어서 같은 값이 나오는 경우를 고려하여 `mul.append(temp)`에서 mul에 같은 값이 있는지 확인하는 조건을 넣었다.
+```python
+class Solution:
+
+    def maxProduct(self, nums: List[int]) -> int:
+        mul = [] # mul[i] : product i to n
+        temp, before = 1, -10**9
+        zero_break = -1
+        for i, num in enumerate(nums):
+            if num == 0:
+                zero_break = i
+                break
+            temp *= num
+            if temp not in mul:
+                before = temp
+                mul.append(temp)
+
+        print(mul)
+
+        n = len(mul)
+        res = -10**9
+        for i in range(len(nums)):
+            res = max(res, nums[i])
+
+        for i in range(n):
+            res = max(res, mul[i])
+
+        for i in range(n - 1):
+            for j in range(i + 1, n):
+                cur = mul[j] // mul[i]
+                res = max(res, cur)
+
+        if zero_break != -1:
+            res = max(res, 0)
+            res = max(res, self.maxProduct(nums[zero_break + 1:]))
+        return res
+```
