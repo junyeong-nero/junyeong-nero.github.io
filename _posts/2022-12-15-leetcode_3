@@ -1,0 +1,56 @@
+---
+layout: single
+title:  "22.12.14 Today's Leetcode"
+---
+
+## 1143. Longest Common Subsequene (Medium, Fail)
+
+Dynamic Programming을 이용하는 풀이. DP를 쓰지 않고 풀려다가, 많이 실패했다. 
+임의의 테스트케이스를 많이 만들어보는게 도움이 되었다. 해보다가 이 방식으로 구현이 안될것같다고 생각되면 다른 방식으로 생각해보는 습관을 길러야겠다.
+```python
+class Solution:
+    def longestCommonSubsequence(self, text1: str, text2: str) -> int:
+        # dp[i][j] means that length of longest common subsequence between text1[:i], text2[:j]
+        m, n = len(text1), len(text2)
+        dp = [[0 for j in range(n + 1)] for i in range(m + 1)]
+        for i in range(m):
+            for j in range(n):
+                if text1[i] == text2[j]:
+                    # if text[i] and text2[j] are equal, dp[i + 1][j + 1] = 1 + dp[i][j]
+                    dp[i + 1][j + 1] = 1 + dp[i][j]
+                else:
+                    # else
+                    dp[i + 1][j + 1] = max(dp[i][j + 1], dp[i + 1][j]) 
+        return dp[-1][-1]
+
+```
+
+```python
+# 처음 생각한 방식 
+class Solution:
+    def longestCommonSubsequence(self, text1: str, text2: str) -> int:
+        a, b = len(text1), len(text2)
+        c, d = min(a, b), max(a, b)
+        target = 0 if a > b else 1
+        texts = [text1, text2]
+        pos = [0, 0]
+        res = 0
+        while pos[target] < d and pos[target - 1] < c:
+            c1, c2 = texts[target][pos[target]], texts[target - 1][pos[target - 1]]
+            # 여기는 무슨 개짓거리?
+            if c2 not in texts[target][pos[target]:]:
+                pos[target - 1] += 1
+            elif c1 == c2:
+                res += 1
+                pos[target] += 1
+                pos[target - 1] += 1
+            else:
+                # 결국 이 부분을 해결하지 못해서 O(n)은 실패했다.
+                # move longest text's index, why?
+                pos[target] += 1
+                    
+        print(pos)
+        print(res)
+        # print(self.longestCommonSubsequence(text2, text1))
+        return res
+```
