@@ -1,0 +1,48 @@
+---
+layout: single
+title:  "22.12.31 Today's Leetcode"
+---
+
+## 290. Word Pattern
+
+'abba' == 'cat dog dog cat'. 처음보는 단어가 왔지만 원래 있는 패턴인 경우.
+원래 있는 단어가 왔을 떄, 다른 패턴이 오는 경우. 두가지 경우를 모두 체크하기 위해서 두개의 dict를 사용했다.
+한개만 사용하고 구현이 가능하긴한데, 직관적이지 않아서 일단 나는 안했다.
+
+```python
+class Solution:
+    def wordPattern(self, pattern: str, s: str) -> bool:
+        pattern2word = {}
+        word2pattern = {}
+        temp = s.split(' ')
+        if len(pattern) != len(temp):
+            return False
+        for index, word in enumerate(temp):
+            p = pattern[index]
+            if p in pattern2word and pattern2word[p] != word:
+                return False
+            if word in word2pattern and word2pattern[word] != p:
+                return False
+            pattern2word[p] = word
+            word2pattern[word] = p
+        return True
+```
+
+```python
+# 한개만 사용
+class Solution:
+    def wordPattern(self, pattern: str, s: str) -> bool:
+        pair = {}
+        s = s.split(' ')
+        if len(pattern) != len(s):
+            return False
+        for i in range(len(pattern)):
+            if pattern[i] not in pair and s[i] not in pair.values():
+                pair[pattern[i]] = s[i]
+            elif pattern[i] not in pair and s[i] in pair.values():
+                return False
+            elif pair[pattern[i]] != s[i]:
+                return False
+        return True
+```
+
