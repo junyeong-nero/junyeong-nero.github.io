@@ -40850,7 +40850,7 @@ q=[]
 for(p=i.length,o=0;o<i.length;i.length===p||(0,A.G)(i),++o){n=i[o]
 for(m=this.Rs(r,this.Ii(n)),l=m.length,k=J.as(n),j=0;j<m.length;m.length===l||(0,A.G)(m),++j)q.push(k.h(n,m[j]))}}for(p=i.length,s=0;s<i.length;i.length===p||(0,A.G)(i),++s)c.$1(i[s])}}
 A.GK.prototype={
-N(a){return new A.vV(B.G4,"Flutter Demo",A.yx(null,A.auQ(B.ab,B.FM),!0),null)}}
+N(a){return new A.vV(B.G4,"Delivery",A.yx(null,A.auQ(B.ab,B.FM),!0),null)}}
 A.w8.prototype={
 ak(){var s,r,q=$.av(),p=$.Yb,o=(p==null?$.Yb=$.akf():p).Me(0,"[DEFAULT]")
 A.wG(o,$.T5(),!0)
