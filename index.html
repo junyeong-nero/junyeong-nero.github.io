@@ -2,3 +2,35 @@
 layout: home
 author_profile: true
 ---
+
+<div id="category-list">
+{% assign sorted_categories = site.categories | sort %}
+{% for category in sorted_categories %}
+  {% assign cat_name = category[0] %}
+  {% assign cat_posts = category[1] %}
+  
+  <h3 class="archive__subtitle">
+    <i class="fas fa-folder-open"></i> 
+    <a href="{{ '/categories/' | relative_url }}#{{ cat_name | slugify }}">{{ cat_name }}</a>
+    <span style="font-size: 0.7em; opacity: 0.6;">({{ cat_posts.size }})</span>
+  </h3>
+  
+  <ul>
+    {% for post in cat_posts limit: 5 %}
+      <li>
+        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+        <small class="page__meta" style="float: right;">{{ post.date | date: "%Y-%m-%d" }}</small>
+      </li>
+    {% endfor %}
+  </ul>
+  
+  {% if cat_posts.size > 5 %}
+    <p style="text-align: right; font-size: small;">
+      <a href="{{ '/categories/' | relative_url }}#{{ cat_name | slugify }}">
+        View all {{ cat_posts.size }} posts in {{ cat_name }} <i class="fas fa-angle-right"></i>
+      </a>
+    </p>
+  {% endif %}
+  <hr />
+{% endfor %}
+</div>
