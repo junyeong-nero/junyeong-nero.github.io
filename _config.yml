@@ -17,7 +17,7 @@ minimal_mistakes_skin: "dark" # "air", "aqua", "contrast", "dark", "dirt", "neon
 # Site Settings
 locale: "ko-KR"
 rtl: # true, false (default) # turns direction of the page into right to left for RTL languages
-title: "Junyeong Song"
+title: "네로의 캣타워"
 title_separator: "-"
 subtitle: "Software Engineer Blog"
 name: "Junyeong Song"
