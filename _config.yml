@@ -16,6 +16,7 @@ minimal_mistakes_skin: "dark" # "air", "aqua", "contrast", "dark", "dirt", "neon
 
 # Site Settings
 locale: "ko-KR"
+future: true
 rtl: # true, false (default) # turns direction of the page into right to left for RTL languages
 title: "네로의 캣타워"
 title_separator: "-"
