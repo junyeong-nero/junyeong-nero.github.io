@@ -2,6 +2,7 @@ let currentQuestion = null;
 let score = 0;
 let totalAnswered = 0;
 let wrongAnswers = [];
+let confusingWords = [];
 let isReviewMode = false;
 let reviewIndex = 0;
 let answered = false;
@@ -17,6 +18,7 @@ function saveState() {
         score,
         totalAnswered,
         wrongAnswers,
+        confusingWords,
         currentStreak,
         bestStreak,
         savedAt: Date.now()
@@ -32,6 +34,7 @@ function loadState() {
             score = state.score || 0;
             totalAnswered = state.totalAnswered || 0;
             wrongAnswers = state.wrongAnswers || [];
+            confusingWords = state.confusingWords || [];
             currentStreak = state.currentStreak || 0;
             bestStreak = state.bestStreak || 0;
             lastWrongCount = wrongAnswers.length;
@@ -51,6 +54,7 @@ function init() {
     loadState();
 
     updateBadge();
+    updateConfusingBadge();
 
     // Wait for vocabulary to load
     if (toeicVocabulary.length === 0) {
@@ -118,17 +122,124 @@ function displayOptions(correctQuestion, displayLang) {
         .filter(item => item.en !== correctItemEn)
         .sort(() => Math.random() - 0.5)
         .slice(0, 4)
-        .map(item => displayLang === 'ko' ? getAllMeanings(item.ko) : item.en);
-    
-    const allOptions = [...wrongOptions, correctAnswer].sort(() => Math.random() - 0.5);
-    
-    allOptions.forEach(option => {
+        .map(item => ({
+            text: displayLang === 'ko' ? getAllMeanings(item.ko) : item.en,
+            en: item.en,
+            ko: item.ko
+        }));
+
+    const allOptions = [...wrongOptions, {
+        text: correctAnswer,
+        en: correctQuestion.en,
+        ko: correctQuestion.ko,
+        isCorrect: true
+    }].sort(() => Math.random() - 0.5);
+
+    allOptions.forEach((option, index) => {
+        const optionWrapper = document.createElement('div');
+        optionWrapper.className = 'option-wrapper';
+
         const button = document.createElement('button');
         button.className = 'option-btn';
-        button.textContent = option;
-        button.onclick = () => checkAnswer(option, correctAnswer, button, correctQuestion);
-        optionsContainer.appendChild(button);
+        button.textContent = option.text;
+
+        const isConfusing = confusingWords.some(w => w.en === option.en);
+        if (isConfusing) {
+            button.classList.add('confusing');
+        }
+
+        button.onclick = (e) => {
+            if (e.target.classList.contains('add-confusing-btn')) return;
+            checkAnswer(option.text, correctAnswer, button, option);
+        };
+
+        const addBtn = document.createElement('button');
+        addBtn.className = 'add-confusing-btn';
+        addBtn.innerHTML = isConfusing ? '−' : '+';
+        addBtn.title = isConfusing ? '헷갈리는 단어에서 제거' : '헷갈리는 단어로 추가';
+        addBtn.onclick = () => toggleConfusingWord(option.en, option.ko, option.text, addBtn);
+
+        optionWrapper.appendChild(button);
+        optionWrapper.appendChild(addBtn);
+        optionsContainer.appendChild(optionWrapper);
     });
+}
+
+function toggleConfusingWord(en, ko, displayText, button) {
+    const existingIndex = confusingWords.findIndex(w => w.en === en);
+
+    if (existingIndex >= 0) {
+        confusingWords.splice(existingIndex, 1);
+        button.innerHTML = '+';
+        button.title = '헷갈리는 단어로 추가';
+
+        const optionBtn = button.previousElementSibling;
+        if (optionBtn) {
+            optionBtn.classList.remove('confusing');
+        }
+
+        showToast('단어가 목록에서 제거되었습니다.');
+    } else {
+        confusingWords.push({ en, ko });
+        button.innerHTML = '−';
+        button.title = '헷갈리는 단어에서 제거';
+
+        const optionBtn = button.previousElementSibling;
+        if (optionBtn) {
+            optionBtn.classList.add('confusing');
+        }
+
+        showToast('단어가 헷갈리는 목록에 추가되었습니다.');
+    }
+
+    saveState();
+    updateConfusingBadge();
+}
+
+function showToast(message) {
+    const existingToast = document.querySelector('.toast');
+    if (existingToast) {
+        existingToast.remove();
+    }
+
+    const toast = document.createElement('div');
+    toast.className = 'toast';
+    toast.textContent = message;
+    document.body.appendChild(toast);
+
+    setTimeout(() => {
+        toast.classList.add('fade-out');
+        setTimeout(() => toast.remove(), 300);
+    }, 2000);
+}
+
+function updateConfusingBadge() {
+    const badges = document.querySelectorAll('.confusing-badge');
+    badges.forEach(badge => {
+        const count = confusingWords.length;
+        badge.textContent = count > 99 ? '99+' : (count > 0 ? count : '');
+        if (count > 0) {
+            badge.classList.remove('hidden');
+        } else {
+            badge.classList.add('hidden');
+        }
+    });
+}
+
+function resetStats() {
+    if (confirm('정말로 통계를 초기화하시겠습니까?')) {
+        score = 0;
+        totalAnswered = 0;
+        currentStreak = 0;
+        bestStreak = 0;
+        wrongAnswers = [];
+        confusingWords = [];
+        clearState();
+        closeStatsModal();
+        updateBadge();
+        updateConfusingBadge();
+        displayQuestion();
+    }
 }
 
 function checkAnswer(selected, correct, button, correctQuestion) {
@@ -336,6 +447,40 @@ function openWrongList() {
 function closeWrongList() {
     document.getElementById('wrong-list-screen').classList.add('hidden');
     document.getElementById('quiz-screen').classList.remove('hidden');
+}
+
+function openConfusingList() {
+    const listContainer = document.getElementById('confusing-list');
+
+    if (confusingWords.length === 0) {
+        listContainer.innerHTML = '<div class="wrong-empty">헷갈리는 단어가 없습니다.<br><small>+ 버튼을 눌러 단어를 추가하세요</small></div>';
+    } else {
+        listContainer.innerHTML = confusingWords.map((item, index) => `
+            <div class="wrong-item">
+                <div class="wrong-item-content">
+                    <span class="wrong-en">${item.en}</span>
+                    <span class="wrong-ko">${item.ko.join(', ')}</span>
+                </div>
+                <button class="remove-confusing-btn" onclick="removeConfusingWord(${index})">×</button>
+            </div>
+        `).join('');
+    }
+
+    document.getElementById('quiz-screen').classList.add('hidden');
+    document.getElementById('confusing-list-screen').classList.remove('hidden');
+}
+
+function closeConfusingList() {
+    document.getElementById('confusing-list-screen').classList.add('hidden');
+    document.getElementById('quiz-screen').classList.remove('hidden');
+}
+
+function removeConfusingWord(index) {
+    confusingWords.splice(index, 1);
+    saveState();
+    updateConfusingBadge();
+    openConfusingList();
+    showToast('단어가 목록에서 제거되었습니다.');
 }
 
 function handleKeydown(e) {
