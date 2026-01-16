@@ -36,7 +36,7 @@
                     </div>
                 </div>
                 <div class="profile-image">
-                    <img src="../assets/character.png" alt="Junyeong Song" class="avatar-img">
+                    <img src="../assets/character.png" alt="Junyeong Song" class="avatar-img" id="profileAvatar">
                 </div>
             </div>
         </section>
@@ -269,6 +269,12 @@
         function setTheme(isDark) {
             document.body.classList.toggle('dark-mode', isDark);
             localStorage.setItem('theme', isDark ? 'dark' : 'light');
+
+            // Update profile avatar based on theme
+            const profileAvatar = document.getElementById('profileAvatar');
+            if (profileAvatar) {
+                profileAvatar.src = isDark ? '../assets/character_night.png' : '../assets/character.png';
+            }
         }
 
         // Check for saved theme or system preference
