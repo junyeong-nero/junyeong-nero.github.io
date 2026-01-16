@@ -425,10 +425,13 @@ body {
 }
 
 .project-card {
+    display: block;
     padding: 20px;
     background: var(--bg-card);
     border-radius: 12px;
     text-align: center;
+    text-decoration: none;
+    color: inherit;
     transition: all 0.2s ease;
     cursor: pointer;
 }

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deepfake Defense | Junyeong Song</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="projects.css">
+</head>
+
+<body>
+    <a href="../index.html" class="back-btn">← Back to Portfolio</a>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+        <span class="sun-icon">☀️</span>
+        <span class="moon-icon">🌙</span>
+    </button>
+
+    <main class="container project-detail">
+        <div class="project-header">
+            <span class="project-icon-large">🛡️</span>
+            <div class="project-meta">
+                <h1>Deepfake Defense Model Serving Backend</h1>
+                <span class="project-date">2024.10 - 2024.11</span>
+            </div>
+        </div>
+
+        <section class="project-section">
+            <h2>📋 Overview</h2>
+            <p>Built a backend server on NAVER CLOUD PLATFORM to serve deepfake creation and defense models. The system
+                enables testing of both deepfake generation (using inswapper) and defense mechanisms (LEAT & DIPA).</p>
+        </section>
+
+        <section class="project-section">
+            <h2>🛠️ Technologies</h2>
+            <div class="tech-tags">
+                <span class="tech-tag">Flask</span>
+                <span class="tech-tag">uWSGI</span>
+                <span class="tech-tag">Nginx</span>
+                <span class="tech-tag">NAVER CLOUD PLATFORM</span>
+                <span class="tech-tag">PyTorch</span>
+            </div>
+        </section>
+
+        <section class="project-section">
+            <h2>⚡ Features</h2>
+            <ul class="feature-list">
+                <li><strong>Deepfake Creation</strong> - Using inswapper model for face swapping</li>
+                <li><strong>LEAT Defense</strong> - Adversarial attack defense mechanism</li>
+                <li><strong>DIPA Defense</strong> - Image perturbation for deepfake prevention</li>
+                <li><strong>Cloud Deployment</strong> - Scalable backend on NAVER Cloud</li>
+            </ul>
+        </section>
+
+        <section class="project-section">
+            <h2>🔗 Links</h2>
+            <div class="project-links">
+                <a href="https://github.com/haofanwang/inswapper" target="_blank" class="project-link">
+                    💻 Inswapper GitHub
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <script src="../theme.js"></script>
+</body>
+
+</html>
