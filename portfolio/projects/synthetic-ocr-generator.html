@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Synthetic OCR Image Generator | Junyeong Song</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="projects.css">
+</head>
+
+<body>
+    <a href="../index.html" class="back-btn">← Back to Portfolio</a>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+        <span class="sun-icon">☀️</span>
+        <span class="moon-icon">🌙</span>
+    </button>
+
+    <main class="container project-detail">
+        <div class="project-header">
+            <span class="project-icon-large">📝</span>
+            <div class="project-meta">
+                <h1>Synthetic OCR Image Generator</h1>
+                <span class="project-date">2024</span>
+            </div>
+        </div>
+
+        <section class="project-section">
+            <h2>📋 Overview</h2>
+            <p>A synthetic data generation tool for creating OCR (Optical Character Recognition) training datasets.
+                Generates realistic text images with various fonts, backgrounds, and augmentations for training
+                robust OCR models.</p>
+        </section>
+
+        <section class="project-section">
+            <h2>🛠️ Technologies</h2>
+            <div class="tech-tags">
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">PIL/Pillow</span>
+                <span class="tech-tag">OpenCV</span>
+                <span class="tech-tag">Synthetic Data</span>
+                <span class="tech-tag">Data Augmentation</span>
+            </div>
+        </section>
+
+        <section class="project-section">
+            <h2>⚡ Features</h2>
+            <ul class="feature-list">
+                <li><strong>Synthetic Text Generation</strong> - Creates realistic text images for OCR training</li>
+                <li><strong>Multiple Font Support</strong> - Supports various fonts and text styles</li>
+                <li><strong>Background Variation</strong> - Generates diverse background textures and colors</li>
+                <li><strong>Data Augmentation</strong> - Applies noise, blur, rotation, and other augmentations</li>
+                <li><strong>Batch Generation</strong> - Efficient batch processing for large-scale dataset creation</li>
+            </ul>
+        </section>
+    </main>
+
+    <script src="../theme.js"></script>
+</body>
+
+</html>

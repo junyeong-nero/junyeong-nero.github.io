@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tiny-chatbot-agents | Junyeong Song</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="projects.css">
+</head>
+
+<body>
+    <a href="../index.html" class="back-btn">← Back to Portfolio</a>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+        <span class="sun-icon">☀️</span>
+        <span class="moon-icon">🌙</span>
+    </button>
+
+    <main class="container project-detail">
+        <div class="project-header">
+            <span class="project-icon-large">🤖</span>
+            <div class="project-meta">
+                <h1>tiny-chatbot-agents</h1>
+                <span class="project-date">2025.01 - Present</span>
+            </div>
+        </div>
+
+        <section class="project-section">
+            <h2>📋 Overview</h2>
+            <p>A sophisticated RAG (Retrieval-Augmented Generation) chatbot system with dual-stage retrieval pipeline,
+                hybrid search capabilities, and hallucination verification. Designed to work with local LLM inference
+                servers for enterprise-grade security without external API calls.</p>
+        </section>
+
+        <section class="project-section">
+            <h2>🛠️ Technologies</h2>
+            <div class="tech-tags">
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">LangChain</span>
+                <span class="tech-tag">vLLM</span>
+                <span class="tech-tag">Ollama</span>
+                <span class="tech-tag">E5</span>
+                <span class="tech-tag">BGE-Reranker</span>
+                <span class="tech-tag">MCP</span>
+                <span class="tech-tag">Streamlit</span>
+            </div>
+        </section>
+
+        <section class="project-section">
+            <h2>⚡ Features</h2>
+            <ul class="feature-list">
+                <li><strong>Dual-Stage RAG Pipeline</strong> - Prioritizes curated QnA matches before searching complex
+                    ToS documents</li>
+                <li><strong>Hybrid Search</strong> - Combines Vector Search with Rule-based matching and Knowledge Graph
+                    triplets</li>
+                <li><strong>Advanced Ranking</strong> - Bi-Encoder (E5) for fast retrieval and Cross-Encoder
+                    (BGE-Reranker) for precise re-ranking</li>
+                <li><strong>Hallucination Verification</strong> - LLM-based verification to ensure answers are grounded
+                    in context</li>
+                <li><strong>MCP Server Support</strong> - Model Context Protocol integration for Claude Desktop
+                    compatibility</li>
+                <li><strong>Local LLM Ready</strong> - Works with vLLM, Ollama via OpenAI-compatible APIs</li>
+            </ul>
+        </section>
+
+        <section class="project-section">
+            <h2>🔗 Links</h2>
+            <div class="project-links">
+                <a href="https://github.com/junyeong-nero/tiny-chatbot-agents" target="_blank" class="project-link">
+                    💻 GitHub Repository
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <script src="../theme.js"></script>
+</body>
+
+</html>

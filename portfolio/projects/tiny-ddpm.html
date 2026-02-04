@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tiny-DDPM | Junyeong Song</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="projects.css">
+</head>
+
+<body>
+    <a href="../index.html" class="back-btn">← Back to Portfolio</a>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+        <span class="sun-icon">☀️</span>
+        <span class="moon-icon">🌙</span>
+    </button>
+
+    <main class="container project-detail">
+        <div class="project-header">
+            <span class="project-icon-large">🎨</span>
+            <div class="project-meta">
+                <h1>tiny-DDPM</h1>
+                <span class="project-date">2024.07 - 2024.09</span>
+            </div>
+        </div>
+
+        <section class="project-section">
+            <h2>📋 Overview</h2>
+            <p>A toy project that trains a diffusion model using the MNIST dataset. It implements core diffusion model 
+                techniques such as DDPM, DDIM, and Classifier-Free Guidance. Beyond a simple implementation, this project 
+                has been improved for scalability and maintainability, featuring configuration file-based management, 
+                support for various model architectures (UNet, DiT), code formatting, and unit testing.</p>
+        </section>
+
+        <section class="project-section">
+            <h2>🛠️ Technologies</h2>
+            <div class="tech-tags">
+                <span class="tech-tag">PyTorch</span>
+                <span class="tech-tag">DDPM</span>
+                <span class="tech-tag">DDIM</span>
+                <span class="tech-tag">CFG</span>
+                <span class="tech-tag">UNet</span>
+                <span class="tech-tag">DiT</span>
+                <span class="tech-tag">Python</span>
+            </div>
+        </section>
+
+        <section class="project-section">
+            <h2>⚡ Features</h2>
+            <ul class="feature-list">
+                <li><strong>Multiple Model Architectures</strong> - Supports both traditional UNet and modern Diffusion Transformer (DiT) models</li>
+                <li><strong>Config-Based Management</strong> - Manages model parameters and training settings via config.yaml</li>
+                <li><strong>Apple Silicon (MPS) Support</strong> - Automatically detects and accelerates using GPU on Apple M-series chips</li>
+                <li><strong>Comprehensive Testing</strong> - Unit tests via pytest ensure code correctness</li>
+                <li><strong>Scripted Execution</strong> - Automated training and sampling workflows</li>
+            </ul>
+        </section>
+
+        <section class="project-section">
+            <h2>🔗 Links</h2>
+            <div class="project-links">
+                <a href="https://github.com/junyeong-nero/tiny-DDPM" target="_blank" class="project-link">
+                    💻 GitHub Repository
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <script src="../theme.js"></script>
+</body>
+
+</html>

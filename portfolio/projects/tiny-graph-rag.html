@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tiny-graph-RAG | Junyeong Song</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="projects.css">
+</head>
+
+<body>
+    <a href="../index.html" class="back-btn">← Back to Portfolio</a>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+        <span class="sun-icon">☀️</span>
+        <span class="moon-icon">🌙</span>
+    </button>
+
+    <main class="container project-detail">
+        <div class="project-header">
+            <span class="project-icon-large">🔗</span>
+            <div class="project-meta">
+                <h1>tiny-graph-RAG</h1>
+                <span class="project-date">2025.01 - Present</span>
+            </div>
+        </div>
+
+        <section class="project-section">
+            <h2>📋 Overview</h2>
+            <p>A Knowledge Graph-based RAG (Retrieval-Augmented Generation) system that extracts structured information
+                from documents and builds a knowledge graph for intelligent question answering. Uses BFS graph traversal
+                and heuristic ranking for context retrieval.</p>
+        </section>
+
+        <section class="project-section">
+            <h2>🛠️ Technologies</h2>
+            <div class="tech-tags">
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">Knowledge Graph</span>
+                <span class="tech-tag">LLM</span>
+                <span class="tech-tag">BFS Traversal</span>
+                <span class="tech-tag">Streamlit</span>
+                <span class="tech-tag">Entity Extraction</span>
+            </div>
+        </section>
+
+        <section class="project-section">
+            <h2>⚡ Features</h2>
+            <ul class="feature-list">
+                <li><strong>Knowledge Graph Construction</strong> - Extracts entities and relationships from documents
+                    via LLM</li>
+                <li><strong>Graph-based Retrieval</strong> - BFS traversal to find relevant subgraphs for queries</li>
+                <li><strong>Heuristic Ranking</strong> - Ranks retrieved context by relevance scores</li>
+                <li><strong>CLI and Web Interface</strong> - Supports both command-line and Streamlit web UI</li>
+                <li><strong>Parallel Extraction</strong> - Efficient entity extraction with parallel processing</li>
+            </ul>
+        </section>
+
+        <section class="project-section">
+            <h2>🔗 Links</h2>
+            <div class="project-links">
+                <a href="https://github.com/junyeong-nero/tiny-graph-RAG" target="_blank" class="project-link">
+                    💻 GitHub Repository
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <script src="../theme.js"></script>
+</body>
+
+</html>

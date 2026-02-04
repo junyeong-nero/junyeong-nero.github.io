@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tiny-stable-diffusion | Junyeong Song</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="projects.css">
+</head>
+
+<body>
+    <a href="../index.html" class="back-btn">← Back to Portfolio</a>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+        <span class="sun-icon">☀️</span>
+        <span class="moon-icon">🌙</span>
+    </button>
+
+    <main class="container project-detail">
+        <div class="project-header">
+            <span class="project-icon-large">🖼️</span>
+            <div class="project-meta">
+                <h1>tiny-stable-diffusion</h1>
+                <span class="project-date">2024.12 - Present</span>
+            </div>
+        </div>
+
+        <section class="project-section">
+            <h2>📋 Overview</h2>
+            <p>A 200M parameter implementation of Stable Diffusion 3 (SD3) trained on consumer GPUs. It uses Rectified
+                Flow
+                and MMDiT architecture to generate 64×64 images and GIFs. A lightweight, educational implementation of
+                Stable Diffusion 3 built from scratch in PyTorch, designed to help understand how modern text-to-image
+                diffusion models work.</p>
+        </section>
+
+        <section class="project-section">
+            <h2>🛠️ Technologies</h2>
+            <div class="tech-tags">
+                <span class="tech-tag">PyTorch</span>
+                <span class="tech-tag">Stable Diffusion 3</span>
+                <span class="tech-tag">MMDiT</span>
+                <span class="tech-tag">Rectified Flow</span>
+                <span class="tech-tag">VAE</span>
+                <span class="tech-tag">CLIP</span>
+                <span class="tech-tag">T5</span>
+            </div>
+        </section>
+
+        <section class="project-section">
+            <h2>⚡ Features</h2>
+            <ul class="feature-list">
+                <li><strong>Lightweight Implementation</strong> - 200M parameter model trainable on consumer GPUs</li>
+                <li><strong>Complete Pipeline</strong> - VAE, Diffusion, and Motion module training</li>
+                <li><strong>Text-to-Image Generation</strong> - Generate images from text prompts</li>
+                <li><strong>GIF Generation</strong> - Motion module for animated GIF creation</li>
+                <li><strong>Educational Design</strong> - Clean, understandable codebase for learning</li>
+            </ul>
+        </section>
+
+        <section class="project-section">
+            <h2>🔗 Links</h2>
+            <div class="project-links">
+                <a href="https://github.com/junyeong-nero/tiny-stable-diffusion" target="_blank" class="project-link">
+                    💻 GitHub Repository
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <script src="../theme.js"></script>
+</body>
+
+</html>
