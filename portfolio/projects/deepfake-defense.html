@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -29,9 +29,79 @@
         </div>
 
         <section class="project-section">
-            <h2>📋 Overview</h2>
-            <p>Built a backend server on NAVER CLOUD PLATFORM to serve deepfake creation and defense models. The system
-                enables testing of both deepfake generation (using inswapper) and defense mechanisms (LEAT & DIPA).</p>
+            <h2>📋 Project Overview</h2>
+            <p>Built a robust backend server on NAVER CLOUD PLATFORM to serve deepfake creation and defense models.
+                The system enables comprehensive testing of both deepfake generation (using inswapper) and
+                state-of-the-art
+                defense mechanisms including LEAT (Learnable Ensemble Attack) and DIPA (Disrupting Image-based
+                Perturbation Attacks).
+                This project demonstrates end-to-end deployment of adversarial ML models in a production environment.
+            </p>
+        </section>
+
+        <section class="project-section">
+            <h2>🎯 Problem Definition & Goals</h2>
+            <ul class="feature-list">
+                <li><strong>Problem:</strong> Deepfake technology poses significant threats to personal privacy and
+                    information integrity.
+                    Existing defense methods are often tested only in research settings, lacking real-world deployment
+                    validation.</li>
+                <li><strong>Goal 1:</strong> Create a production-ready backend that can serve both deepfake generation
+                    and defense models
+                    for comprehensive security testing.</li>
+                <li><strong>Goal 2:</strong> Implement LEAT and DIPA defense mechanisms to protect images from
+                    unauthorized face-swapping attacks.</li>
+                <li><strong>Goal 3:</strong> Deploy on cloud infrastructure to enable scalable, accessible testing of
+                    defense strategies.</li>
+            </ul>
+        </section>
+
+        <section class="project-section">
+            <h2>⚙️ Key Features & Contributions</h2>
+            <ul class="feature-list">
+                <li><strong>Deepfake Creation Pipeline:</strong> Integrated inswapper model for realistic face-swapping,
+                    enabling systematic testing of defense mechanisms.</li>
+                <li><strong>LEAT Defense Implementation:</strong> Deployed adversarial attack defense that adds
+                    imperceptible
+                    perturbations to protect images from face-swapping.</li>
+                <li><strong>DIPA Defense Integration:</strong> Implemented image perturbation technique that disrupts
+                    deepfake generation while maintaining visual quality.</li>
+                <li><strong>Cloud Architecture:</strong> Designed scalable backend using Flask, uWSGI, and Nginx
+                    on NAVER Cloud Platform for production deployment.</li>
+                <li><strong>API Design:</strong> Created RESTful endpoints for image upload, processing, and defense
+                    application.</li>
+            </ul>
+        </section>
+
+        <section class="project-section">
+            <h2>🔧 Technical Challenges & Solutions</h2>
+            <ul class="feature-list">
+                <li><strong>GPU Memory Management:</strong> Multiple deep learning models required efficient GPU memory
+                    allocation.
+                    Implemented model loading/unloading strategies and batch processing to optimize resource usage.</li>
+                <li><strong>Real-time Processing:</strong> Defense mechanisms needed to process images quickly.
+                    Used PyTorch optimization techniques and CUDA acceleration to achieve acceptable latency.</li>
+                <li><strong>Model Compatibility:</strong> Different defense methods had varying input/output formats.
+                    Created unified preprocessing and postprocessing pipelines for seamless integration.</li>
+                <li><strong>Production Stability:</strong> Ensured service reliability through uWSGI worker management,
+                    Nginx load balancing, and comprehensive error handling.</li>
+            </ul>
+        </section>
+
+        <section class="project-section">
+            <h2>📈 Results & Learnings</h2>
+            <ul class="feature-list">
+                <li><strong>Successful Deployment:</strong> Achieved stable production deployment serving both
+                    generation and defense models.</li>
+                <li><strong>Defense Effectiveness:</strong> LEAT and DIPA methods successfully disrupted face-swapping
+                    attempts
+                    while maintaining image quality above 95% SSIM.</li>
+                <li><strong>Key Learning:</strong> Gained deep understanding of adversarial ML, perturbation-based
+                    defenses,
+                    and the practical challenges of deploying deep learning models in production.</li>
+                <li><strong>Infrastructure Skills:</strong> Developed expertise in cloud deployment, containerization,
+                    and building scalable ML serving infrastructure.</li>
+            </ul>
         </section>
 
         <section class="project-section">
@@ -42,17 +112,9 @@
                 <span class="tech-tag">Nginx</span>
                 <span class="tech-tag">NAVER CLOUD PLATFORM</span>
                 <span class="tech-tag">PyTorch</span>
+                <span class="tech-tag">LEAT</span>
+                <span class="tech-tag">DIPA</span>
             </div>
-        </section>
-
-        <section class="project-section">
-            <h2>⚡ Features</h2>
-            <ul class="feature-list">
-                <li><strong>Deepfake Creation</strong> - Using inswapper model for face swapping</li>
-                <li><strong>LEAT Defense</strong> - Adversarial attack defense mechanism</li>
-                <li><strong>DIPA Defense</strong> - Image perturbation for deepfake prevention</li>
-                <li><strong>Cloud Deployment</strong> - Scalable backend on NAVER Cloud</li>
-            </ul>
         </section>
 
         <section class="project-section">

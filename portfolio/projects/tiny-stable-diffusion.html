@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -29,12 +29,71 @@
         </div>
 
         <section class="project-section">
-            <h2>📋 Overview</h2>
-            <p>A 200M parameter implementation of Stable Diffusion 3 (SD3) trained on consumer GPUs. It uses Rectified
-                Flow
-                and MMDiT architecture to generate 64×64 images and GIFs. A lightweight, educational implementation of
-                Stable Diffusion 3 built from scratch in PyTorch, designed to help understand how modern text-to-image
-                diffusion models work.</p>
+            <h2>📋 Project Overview</h2>
+            <p>A lightweight, educational implementation of Stable Diffusion 3 (SD3) built from scratch in PyTorch.
+                This 200M parameter model uses Rectified Flow and MMDiT (Multi-Modal Diffusion Transformer) architecture
+                to generate 64×64 images and animated GIFs. Designed to be trainable on consumer GPUs, it serves as
+                a comprehensive learning resource for understanding modern text-to-image diffusion models.</p>
+        </section>
+
+        <section class="project-section">
+            <h2>🎯 Problem Definition & Goals</h2>
+            <ul class="feature-list">
+                <li><strong>Problem:</strong> State-of-the-art Stable Diffusion models are too large to train or study
+                    on consumer hardware. Their complexity makes it difficult to understand the underlying mechanisms.
+                </li>
+                <li><strong>Goal 1:</strong> Create a scaled-down SD3 implementation that captures essential
+                    architecture
+                    while being trainable on a single consumer GPU.</li>
+                <li><strong>Goal 2:</strong> Implement the complete pipeline including VAE, text encoders (CLIP, T5),
+                    and MMDiT from scratch.</li>
+                <li><strong>Goal 3:</strong> Extend to video/GIF generation using motion modules to demonstrate
+                    temporal consistency.</li>
+            </ul>
+        </section>
+
+        <section class="project-section">
+            <h2>⚙️ Key Features & Contributions</h2>
+            <ul class="feature-list">
+                <li><strong>MMDiT Architecture:</strong> Implemented Multi-Modal Diffusion Transformer that jointly
+                    processes image and text embeddings with bidirectional attention.</li>
+                <li><strong>Rectified Flow:</strong> Used modern flow-based formulation instead of traditional
+                    DDPM for straighter sampling trajectories and fewer steps.</li>
+                <li><strong>Complete Pipeline:</strong> Built VAE encoder/decoder, CLIP and T5 text conditioning,
+                    and the full denoising pipeline.</li>
+                <li><strong>Motion Module:</strong> Added temporal attention layers for generating animated GIFs
+                    with consistent motion.</li>
+                <li><strong>Educational Design:</strong> Clean, well-commented codebase with step-by-step explanations
+                    of each component.</li>
+            </ul>
+        </section>
+
+        <section class="project-section">
+            <h2>🔧 Technical Challenges & Solutions</h2>
+            <ul class="feature-list">
+                <li><strong>Memory Constraints:</strong> Full SD3 requires massive GPU memory.
+                    Reduced model size while preserving architectural innovations through careful ablation studies.</li>
+                <li><strong>VAE Training Stability:</strong> VAE training suffered from posterior collapse.
+                    Implemented KL annealing and perceptual loss balancing for stable training.</li>
+                <li><strong>Text-Image Alignment:</strong> Weak conditioning led to poor prompt following.
+                    Used classifier-free guidance and improved cross-attention mechanisms.</li>
+                <li><strong>Motion Consistency:</strong> Initial motion module produced flickering videos.
+                    Added temporal attention layers and trained on video datasets for smooth transitions.</li>
+            </ul>
+        </section>
+
+        <section class="project-section">
+            <h2>📈 Results & Learnings</h2>
+            <ul class="feature-list">
+                <li><strong>Successful Generation:</strong> Model generates coherent images from text prompts
+                    at 64×64 resolution with recognizable content.</li>
+                <li><strong>Training Efficiency:</strong> Entire model trainable on single RTX 3090 in reasonable time,
+                    democratizing diffusion model research.</li>
+                <li><strong>Educational Impact:</strong> Codebase serves as reference for others learning about
+                    modern diffusion architectures.</li>
+                <li><strong>Key Learning:</strong> Gained comprehensive understanding of SD3 architecture,
+                    rectified flow theory, multi-modal transformers, and video generation techniques.</li>
+            </ul>
         </section>
 
         <section class="project-section">
@@ -48,17 +107,6 @@
                 <span class="tech-tag">CLIP</span>
                 <span class="tech-tag">T5</span>
             </div>
-        </section>
-
-        <section class="project-section">
-            <h2>⚡ Features</h2>
-            <ul class="feature-list">
-                <li><strong>Lightweight Implementation</strong> - 200M parameter model trainable on consumer GPUs</li>
-                <li><strong>Complete Pipeline</strong> - VAE, Diffusion, and Motion module training</li>
-                <li><strong>Text-to-Image Generation</strong> - Generate images from text prompts</li>
-                <li><strong>GIF Generation</strong> - Motion module for animated GIF creation</li>
-                <li><strong>Educational Design</strong> - Clean, understandable codebase for learning</li>
-            </ul>
         </section>
 
         <section class="project-section">

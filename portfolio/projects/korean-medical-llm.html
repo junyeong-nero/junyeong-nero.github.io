@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projects | Junyeong Song</title>
+    <title>Korean Medical LLM | Junyeong Song</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -14,7 +14,6 @@
 
 <body>
     <a href="../index.html" class="back-btn">← Back to Portfolio</a>
-
     <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
         <span class="sun-icon">☀️</span>
         <span class="moon-icon">🌙</span>
@@ -30,9 +29,76 @@
         </div>
 
         <section class="project-section">
-            <h2>📋 Overview</h2>
-            <p>A project focused on creating a specialized Korean healthcare domain dataset to fine-tune the
-                <code>rtzr/ko-gemma-2-9b-it</code> model for medical question answering tasks.</p>
+            <h2>📋 Project Overview</h2>
+            <p>Developed a specialized Korean medical domain LLM by creating comprehensive healthcare datasets and
+                fine-tuning the <code>rtzr/ko-gemma-2-9b-it</code> model. The project focused on building a model
+                capable
+                of answering Korean medical licensing examination questions while adhering to healthcare domain ethics
+                and safety guidelines. This work contributed to the KorMedMCQA benchmark research.</p>
+        </section>
+
+        <section class="project-section">
+            <h2>🎯 Problem Definition & Goals</h2>
+            <ul class="feature-list">
+                <li><strong>Problem:</strong> Existing LLMs lack specialized knowledge in Korean medical domain,
+                    performing poorly on healthcare licensing examinations and medical question-answering tasks.</li>
+                <li><strong>Goal 1:</strong> Curate and construct high-quality Korean medical datasets from multiple
+                    authoritative sources.</li>
+                <li><strong>Goal 2:</strong> Fine-tune a Korean LLM to achieve competitive performance on KorMedMCQA
+                    benchmark.</li>
+                <li><strong>Goal 3:</strong> Ensure the model provides ethically sound and medically accurate responses.
+                </li>
+            </ul>
+        </section>
+
+        <section class="project-section">
+            <h2>⚙️ Key Features & Contributions</h2>
+            <ul class="feature-list">
+                <li><strong>Multi-Source Dataset Curation:</strong> Aggregated data from KorMedMCQA, MedExpQA
+                    (translated),
+                    UltraMed, COD (Clinical Observation Data), and Asan Medical Center disease dictionary.</li>
+                <li><strong>Data Quality Control:</strong> Implemented rigorous filtering and validation processes
+                    to ensure medical accuracy and remove potentially harmful content.</li>
+                <li><strong>Fine-tuning Pipeline:</strong> Developed efficient training pipeline using HuggingFace
+                    Transformers
+                    with LoRA and QLoRA for parameter-efficient fine-tuning.</li>
+                <li><strong>Evaluation Framework:</strong> Created comprehensive evaluation suite covering multiple
+                    medical domains
+                    including clinical knowledge, diagnostics, and treatment recommendations.</li>
+            </ul>
+        </section>
+
+        <section class="project-section">
+            <h2>🔧 Technical Challenges & Solutions</h2>
+            <ul class="feature-list">
+                <li><strong>Data Scarcity:</strong> Limited Korean medical training data available.
+                    Solved by crawling disease dictionaries, translating English medical datasets, and augmenting
+                    existing Korean sources.</li>
+                <li><strong>Domain Adaptation:</strong> General-purpose LLMs struggled with medical terminology.
+                    Applied continued pre-training on medical corpus before task-specific fine-tuning.</li>
+                <li><strong>Ethical Considerations:</strong> Medical responses require careful handling of
+                    safety-critical information.
+                    Implemented response filtering and added appropriate disclaimers for medical advice.</li>
+                <li><strong>Evaluation Consistency:</strong> Medical QA evaluation needed domain expertise.
+                    Used KorMedMCQA benchmark with standardized scoring methodology for reliable comparison.</li>
+            </ul>
+        </section>
+
+        <section class="project-section">
+            <h2>📈 Results & Learnings</h2>
+            <ul class="feature-list">
+                <li><strong>Benchmark Performance:</strong> Achieved significant improvement over baseline on KorMedMCQA
+                    benchmark,
+                    demonstrating effective domain adaptation.</li>
+                <li><strong>Published Model:</strong> Released fine-tuned model on HuggingFace for community use and
+                    further research.</li>
+                <li><strong>Research Contribution:</strong> Contributed to the KorMedMCQA paper accepted for
+                    publication,
+                    advancing Korean medical NLP research.</li>
+                <li><strong>Key Learning:</strong> Gained expertise in domain-specific LLM fine-tuning, medical NLP
+                    challenges,
+                    and the importance of responsible AI development in healthcare applications.</li>
+            </ul>
         </section>
 
         <section class="project-section">
@@ -41,19 +107,10 @@
                 <span class="tech-tag">PyTorch</span>
                 <span class="tech-tag">Transformers</span>
                 <span class="tech-tag">Hugging Face</span>
+                <span class="tech-tag">LoRA</span>
+                <span class="tech-tag">QLoRA</span>
                 <span class="tech-tag">LLM Fine-tuning</span>
             </div>
-        </section>
-
-        <section class="project-section">
-            <h2>📊 Datasets</h2>
-            <ul class="feature-list">
-                <li><strong>KorMedMCQA</strong> - Korean Medical Multiple Choice QA</li>
-                <li><strong>MedExpQA</strong> - Translated English medical dataset</li>
-                <li><strong>UltraMed</strong> - Medical knowledge dataset</li>
-                <li><strong>COD</strong> - Clinical observation data</li>
-                <li><strong>Asan Medical Center</strong> - Crawled disease dictionary</li>
-            </ul>
         </section>
 
         <section class="project-section">
@@ -62,6 +119,9 @@
                 <a href="https://huggingface.co/ChuGyouk/ko-med-gemma-2-9b-it-merge2" target="_blank"
                     class="project-link">
                     🤗 Hugging Face Model
+                </a>
+                <a href="https://arxiv.org/abs/2403.01469" target="_blank" class="project-link">
+                    📄 KorMedMCQA Paper
                 </a>
             </div>
         </section>

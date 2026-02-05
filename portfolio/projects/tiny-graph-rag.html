@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -29,10 +29,71 @@
         </div>
 
         <section class="project-section">
-            <h2>📋 Overview</h2>
-            <p>A Knowledge Graph-based RAG (Retrieval-Augmented Generation) system that extracts structured information
-                from documents and builds a knowledge graph for intelligent question answering. Uses BFS graph traversal
-                and heuristic ranking for context retrieval.</p>
+            <h2>📋 Project Overview</h2>
+            <p>A Knowledge Graph-based RAG (Retrieval-Augmented Generation) system that constructs structured
+                knowledge graphs from documents and uses graph traversal algorithms for intelligent question answering.
+                Unlike traditional vector-only RAG, this system captures entity relationships and uses BFS traversal
+                with heuristic ranking to retrieve contextually relevant subgraphs for LLM generation.</p>
+        </section>
+
+        <section class="project-section">
+            <h2>🎯 Problem Definition & Goals</h2>
+            <ul class="feature-list">
+                <li><strong>Problem:</strong> Traditional vector-based RAG loses relationship information between
+                    entities.
+                    When answering complex questions requiring multi-hop reasoning, vector search retrieves
+                    disconnected chunks that lack contextual coherence.</li>
+                <li><strong>Goal 1:</strong> Build an automated pipeline that extracts entities and relationships
+                    from documents to construct a knowledge graph.</li>
+                <li><strong>Goal 2:</strong> Implement graph-based retrieval using BFS traversal to find relevant
+                    subgraphs that preserve relationship context.</li>
+                <li><strong>Goal 3:</strong> Create heuristic ranking algorithms that score retrieved context
+                    by relevance to the query.</li>
+            </ul>
+        </section>
+
+        <section class="project-section">
+            <h2>⚙️ Key Features & Contributions</h2>
+            <ul class="feature-list">
+                <li><strong>Knowledge Graph Construction:</strong> LLM-based entity and relationship extraction
+                    with custom prompts optimized for structured output.</li>
+                <li><strong>Graph-based Retrieval:</strong> BFS traversal starting from query-relevant entities,
+                    expanding to capture multi-hop relationships.</li>
+                <li><strong>Heuristic Ranking:</strong> Custom scoring function combining entity relevance,
+                    path length, and relationship types for context prioritization.</li>
+                <li><strong>Parallel Extraction:</strong> Efficient entity extraction with parallel processing
+                    for handling large document collections.</li>
+                <li><strong>Dual Interface:</strong> Both CLI for batch processing and Streamlit web UI for
+                    interactive querying.</li>
+            </ul>
+        </section>
+
+        <section class="project-section">
+            <h2>🔧 Technical Challenges & Solutions</h2>
+            <ul class="feature-list">
+                <li><strong>Entity Resolution:</strong> Same entities referenced differently across documents.
+                    Implemented fuzzy matching and embedding-based similarity for entity deduplication.</li>
+                <li><strong>Relationship Quality:</strong> LLM-extracted relationships varied in quality.
+                    Added validation step and confidence scoring to filter low-quality triplets.</li>
+                <li><strong>Graph Scale:</strong> Large graphs caused traversal performance issues.
+                    Implemented indexed lookups and pruning strategies for efficient BFS.</li>
+                <li><strong>Context Window:</strong> Retrieved subgraphs could exceed LLM context limits.
+                    Developed summarization and compression techniques for large subgraphs.</li>
+            </ul>
+        </section>
+
+        <section class="project-section">
+            <h2>📈 Results & Learnings</h2>
+            <ul class="feature-list">
+                <li><strong>Improved Multi-hop QA:</strong> Graph-based retrieval significantly outperformed
+                    vector-only approach on questions requiring relationship reasoning.</li>
+                <li><strong>Relationship Preservation:</strong> System maintains contextual coherence by
+                    retrieving connected subgraphs rather than disconnected chunks.</li>
+                <li><strong>Visualization:</strong> Knowledge graph visualization helps users understand
+                    document structure and verify extraction quality.</li>
+                <li><strong>Key Learning:</strong> Gained expertise in knowledge graph construction,
+                    graph algorithms for information retrieval, and hybrid RAG architectures.</li>
+            </ul>
         </section>
 
         <section class="project-section">
@@ -45,18 +106,6 @@
                 <span class="tech-tag">Streamlit</span>
                 <span class="tech-tag">Entity Extraction</span>
             </div>
-        </section>
-
-        <section class="project-section">
-            <h2>⚡ Features</h2>
-            <ul class="feature-list">
-                <li><strong>Knowledge Graph Construction</strong> - Extracts entities and relationships from documents
-                    via LLM</li>
-                <li><strong>Graph-based Retrieval</strong> - BFS traversal to find relevant subgraphs for queries</li>
-                <li><strong>Heuristic Ranking</strong> - Ranks retrieved context by relevance scores</li>
-                <li><strong>CLI and Web Interface</strong> - Supports both command-line and Streamlit web UI</li>
-                <li><strong>Parallel Extraction</strong> - Efficient entity extraction with parallel processing</li>
-            </ul>
         </section>
 
         <section class="project-section">

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -29,10 +29,69 @@
         </div>
 
         <section class="project-section">
-            <h2>📋 Overview</h2>
-            <p>A synthetic data generation tool for creating OCR (Optical Character Recognition) training datasets.
-                Generates realistic text images with various fonts, backgrounds, and augmentations for training
-                robust OCR models.</p>
+            <h2>📋 Project Overview</h2>
+            <p>A comprehensive synthetic data generation tool for creating OCR (Optical Character Recognition)
+                training datasets. The system generates realistic text images with diverse fonts, backgrounds,
+                and augmentations, addressing the critical shortage of labeled Korean OCR training data.
+                The generated dataset has been published on HuggingFace for community use.</p>
+        </section>
+
+        <section class="project-section">
+            <h2>🎯 Problem Definition & Goals</h2>
+            <ul class="feature-list">
+                <li><strong>Problem:</strong> Training robust OCR models requires large labeled datasets,
+                    but creating real-world OCR data is expensive and time-consuming. Korean text recognition
+                    particularly suffers from limited training data availability.</li>
+                <li><strong>Goal 1:</strong> Build a configurable text image generator that produces diverse,
+                    realistic training samples.</li>
+                <li><strong>Goal 2:</strong> Support Korean text with proper font rendering and character coverage.</li>
+                <li><strong>Goal 3:</strong> Implement augmentations that mimic real-world image degradation
+                    (blur, noise, perspective distortion).</li>
+            </ul>
+        </section>
+
+        <section class="project-section">
+            <h2>⚙️ Key Features & Contributions</h2>
+            <ul class="feature-list">
+                <li><strong>Synthetic Text Generation:</strong> Creates text images with controllable parameters
+                    including font size, color, spacing, and alignment.</li>
+                <li><strong>Multi-Font Support:</strong> Integrates various Korean and English fonts to
+                    increase training data diversity.</li>
+                <li><strong>Background Variation:</strong> Generates diverse backgrounds including solid colors,
+                    gradients, textures, and real-world image crops.</li>
+                <li><strong>Data Augmentation:</strong> Applies realistic transformations including Gaussian blur,
+                    noise injection, perspective warping, and JPEG compression artifacts.</li>
+                <li><strong>Batch Generation:</strong> Efficient multiprocessing for large-scale dataset creation
+                    with progress tracking.</li>
+            </ul>
+        </section>
+
+        <section class="project-section">
+            <h2>🔧 Technical Challenges & Solutions</h2>
+            <ul class="feature-list">
+                <li><strong>Font Coverage:</strong> Many fonts lack complete Korean character support.
+                    Implemented font validation to ensure complete Hangul syllable coverage.</li>
+                <li><strong>Realistic Rendering:</strong> Initial synthetic images looked too clean.
+                    Added antialiasing variations and subtle rendering imperfections.</li>
+                <li><strong>Augmentation Balance:</strong> Over-augmented images became unreadable.
+                    Implemented parameterized augmentation intensities with reasonable defaults.</li>
+                <li><strong>Memory Efficiency:</strong> Generating millions of images required optimization.
+                    Used lazy generation and efficient image processing pipelines.</li>
+            </ul>
+        </section>
+
+        <section class="project-section">
+            <h2>📈 Results & Learnings</h2>
+            <ul class="feature-list">
+                <li><strong>Dataset Publication:</strong> Released Korean synthetic OCR dataset on HuggingFace
+                    with thousands of diverse training samples.</li>
+                <li><strong>OCR Improvement:</strong> Models trained with synthetic data showed improved
+                    robustness to font variations and image degradation.</li>
+                <li><strong>Community Adoption:</strong> Dataset available for download and use by OCR researchers
+                    working on Korean text recognition.</li>
+                <li><strong>Key Learning:</strong> Gained expertise in synthetic data generation, image processing,
+                    and the art of creating training data that transfers well to real-world applications.</li>
+            </ul>
         </section>
 
         <section class="project-section">
@@ -43,18 +102,8 @@
                 <span class="tech-tag">OpenCV</span>
                 <span class="tech-tag">Synthetic Data</span>
                 <span class="tech-tag">Data Augmentation</span>
+                <span class="tech-tag">Korean NLP</span>
             </div>
-        </section>
-
-        <section class="project-section">
-            <h2>⚡ Features</h2>
-            <ul class="feature-list">
-                <li><strong>Synthetic Text Generation</strong> - Creates realistic text images for OCR training</li>
-                <li><strong>Multiple Font Support</strong> - Supports various fonts and text styles</li>
-                <li><strong>Background Variation</strong> - Generates diverse background textures and colors</li>
-                <li><strong>Data Augmentation</strong> - Applies noise, blur, rotation, and other augmentations</li>
-                <li><strong>Batch Generation</strong> - Efficient batch processing for large-scale dataset creation</li>
-            </ul>
         </section>
 
         <section class="project-section">

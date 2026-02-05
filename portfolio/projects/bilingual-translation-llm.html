@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -29,9 +29,74 @@
         </div>
 
         <section class="project-section">
-            <h2>📋 Overview</h2>
-            <p>Developed a bidirectional translation model between Jeju dialect and standard Korean using various
-                fine-tuning methods including Full fine-tuning, LoRA, and QLoRA (4-bit).</p>
+            <h2>📋 Project Overview</h2>
+            <p>Developed a bidirectional translation model between Jeju dialect and standard Korean,
+                addressing the challenge of preserving endangered regional languages through AI technology.
+                The project explored various fine-tuning methodologies including Full fine-tuning, LoRA, and QLoRA
+                (4-bit)
+                to find the optimal balance between translation quality and computational efficiency.</p>
+        </section>
+
+        <section class="project-section">
+            <h2>🎯 Problem Definition & Goals</h2>
+            <ul class="feature-list">
+                <li><strong>Problem:</strong> Jeju dialect is classified as a critically endangered language by UNESCO.
+                    Younger generations have difficulty understanding traditional Jeju speech, leading to cultural
+                    heritage loss.</li>
+                <li><strong>Goal 1:</strong> Build an accurate bidirectional translation system between Jeju dialect and
+                    standard Korean.</li>
+                <li><strong>Goal 2:</strong> Compare different fine-tuning methods (Full, LoRA, QLoRA) for
+                    encoder-decoder translation models.</li>
+                <li><strong>Goal 3:</strong> Create reusable datasets and models to support Korean dialect preservation
+                    efforts.</li>
+            </ul>
+        </section>
+
+        <section class="project-section">
+            <h2>⚙️ Key Features & Contributions</h2>
+            <ul class="feature-list">
+                <li><strong>Dataset Preparation:</strong> Processed AIhub "Korean Dialect Utterances (Jeju)" dataset,
+                    creating parallel corpus suitable for seq2seq training.</li>
+                <li><strong>Multi-Model Comparison:</strong> Evaluated both KoT5 and KoBART architectures for
+                    translation quality.</li>
+                <li><strong>Parameter-Efficient Fine-tuning:</strong> Implemented LoRA and QLoRA (4-bit) to enable
+                    training on resource-constrained environments while maintaining quality.</li>
+                <li><strong>Comprehensive Evaluation:</strong> Established evaluation pipeline using BLEU and ROUGE
+                    scores
+                    for systematic comparison of different approaches.</li>
+                <li><strong>Public Release:</strong> Published processed dataset on HuggingFace for community use.</li>
+            </ul>
+        </section>
+
+        <section class="project-section">
+            <h2>🔧 Technical Challenges & Solutions</h2>
+            <ul class="feature-list">
+                <li><strong>Low-Resource Language:</strong> Limited training data for Jeju dialect.
+                    Applied data augmentation techniques and leveraged transfer learning from standard Korean models.
+                </li>
+                <li><strong>Dialect Variability:</strong> Jeju dialect has significant regional variations even within
+                    the island.
+                    Focused on the most common patterns while preserving regional diversity in the dataset.</li>
+                <li><strong>Encoder-Decoder Complexity:</strong> Seq2seq models required careful hyperparameter tuning.
+                    Used HuggingFace's Seq2SeqTrainer with systematic hyperparameter search.</li>
+                <li><strong>Quantization Trade-offs:</strong> 4-bit QLoRA showed some quality degradation.
+                    Documented trade-offs between efficiency and quality to guide practical deployment decisions.</li>
+            </ul>
+        </section>
+
+        <section class="project-section">
+            <h2>📈 Results & Learnings</h2>
+            <ul class="feature-list">
+                <li><strong>Translation Quality:</strong> Achieved competitive BLEU scores demonstrating effective
+                    dialect-to-standard translation capability.</li>
+                <li><strong>Efficiency Analysis:</strong> LoRA achieved near full fine-tuning quality with 90% fewer
+                    trainable parameters.</li>
+                <li><strong>Cultural Impact:</strong> Created tools that can help bridge generational language gaps
+                    and support Jeju dialect preservation efforts.</li>
+                <li><strong>Key Learning:</strong> Gained practical experience in low-resource NLP, parameter-efficient
+                    fine-tuning,
+                    and the unique challenges of working with endangered language preservation.</li>
+            </ul>
         </section>
 
         <section class="project-section">
@@ -44,16 +109,6 @@
                 <span class="tech-tag">QLoRA</span>
                 <span class="tech-tag">Seq2SeqTrainer</span>
             </div>
-        </section>
-
-        <section class="project-section">
-            <h2>📊 Data & Evaluation</h2>
-            <ul class="feature-list">
-                <li><strong>Dataset</strong> - AIhub "Korean Dialect Utterances (Jeju)" text labels</li>
-                <li><strong>Architecture</strong> - Encoder-Decoder based models</li>
-                <li><strong>Evaluation Metrics</strong> - BLEU and ROUGE scores</li>
-                <li><strong>Training Methods</strong> - Full fine-tuning, LoRA, QLoRA (4-bit)</li>
-            </ul>
         </section>
 
         <section class="project-section">

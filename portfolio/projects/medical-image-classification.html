@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -24,15 +24,75 @@
             <span class="project-icon-large">🩺</span>
             <div class="project-meta">
                 <h1>Medical Image Classification with MedViT-V2</h1>
-                <span class="project-date">2025.12</span>
+                <span class="project-date">2025.01</span>
             </div>
         </div>
 
         <section class="project-section">
-            <h2>📋 Overview</h2>
-            <p>Development of a flexible fine-tuning pipeline for MedViT-v2 (Medical Vision Transformer), a hybrid
-                CNN-Transformer architecture optimized for medical image analysis. The pipeline supports any HuggingFace
-                image classification dataset.</p>
+            <h2>📋 Project Overview</h2>
+            <p>Development of a flexible fine-tuning pipeline for MedViT-v2, a state-of-the-art Medical Vision
+                Transformer with hybrid CNN-Transformer architecture specifically optimized for medical image analysis.
+                The pipeline supports any HuggingFace image classification dataset, enabling rapid adaptation to
+                various medical imaging tasks including pathology, radiology, and dermatology.</p>
+        </section>
+
+        <section class="project-section">
+            <h2>🎯 Problem Definition & Goals</h2>
+            <ul class="feature-list">
+                <li><strong>Problem:</strong> Medical image classification requires domain-specific models,
+                    but existing pipelines are often task-specific and lack flexibility for different datasets.</li>
+                <li><strong>Goal 1:</strong> Create a universal fine-tuning pipeline that works with any
+                    HuggingFace medical image dataset.</li>
+                <li><strong>Goal 2:</strong> Leverage MedViT-v2's hybrid architecture that combines CNN's
+                    local feature extraction with Transformer's global attention.</li>
+                <li><strong>Goal 3:</strong> Provide easy configuration and training scripts for researchers
+                    with minimal deep learning experience.</li>
+            </ul>
+        </section>
+
+        <section class="project-section">
+            <h2>⚙️ Key Features & Contributions</h2>
+            <ul class="feature-list">
+                <li><strong>MedViT-v2 Integration:</strong> Incorporated state-of-the-art medical vision transformer
+                    with pre-trained weights from large-scale medical imaging datasets.</li>
+                <li><strong>Hybrid Architecture:</strong> CNN backbone extracts local features while Transformer
+                    layers capture global context, optimal for medical image analysis.</li>
+                <li><strong>Flexible Pipeline:</strong> Dataset-agnostic design supporting any HuggingFace
+                    image classification dataset with automatic preprocessing.</li>
+                <li><strong>Medical Optimization:</strong> Includes medical-specific augmentations and
+                    preprocessing suited for various imaging modalities.</li>
+                <li><strong>Evaluation Suite:</strong> Comprehensive evaluation with metrics relevant to
+                    medical applications including sensitivity, specificity, and AUC-ROC.</li>
+            </ul>
+        </section>
+
+        <section class="project-section">
+            <h2>🔧 Technical Challenges & Solutions</h2>
+            <ul class="feature-list">
+                <li><strong>Class Imbalance:</strong> Medical datasets often have severe class imbalance.
+                    Implemented weighted loss functions and oversampling strategies for rare classes.</li>
+                <li><strong>Data Augmentation:</strong> Standard augmentations can be harmful for medical images.
+                    Curated medical-appropriate augmentations preserving diagnostic features.</li>
+                <li><strong>Transfer Learning:</strong> Fine-tuning from general to medical domain required careful
+                    learning rate scheduling and layer freezing strategies.</li>
+                <li><strong>Multi-modality Support:</strong> Different imaging modalities (X-ray, CT, dermoscopy)
+                    require different preprocessing. Implemented modality-aware preprocessing pipelines.</li>
+            </ul>
+        </section>
+
+        <section class="project-section">
+            <h2>📈 Results & Learnings</h2>
+            <ul class="feature-list">
+                <li><strong>Versatile Pipeline:</strong> Successfully demonstrated on multiple medical imaging
+                    datasets including skin lesion, chest X-ray, and pathology images.</li>
+                <li><strong>Performance:</strong> Achieved competitive results compared to task-specific
+                    models while maintaining flexibility.</li>
+                <li><strong>Reproducibility:</strong> Comprehensive documentation and configuration files
+                    enable reproducible experiments.</li>
+                <li><strong>Key Learning:</strong> Gained expertise in medical imaging AI, hybrid vision architectures,
+                    and the unique challenges of healthcare ML including data handling and regulatory considerations.
+                </li>
+            </ul>
         </section>
 
         <section class="project-section">
@@ -44,17 +104,8 @@
                 <span class="tech-tag">Transformers</span>
                 <span class="tech-tag">CNN</span>
                 <span class="tech-tag">Hugging Face</span>
+                <span class="tech-tag">MedViT-v2</span>
             </div>
-        </section>
-
-        <section class="project-section">
-            <h2>⚡ Features</h2>
-            <ul class="feature-list">
-                <li><strong>MedViT-v2</strong> - State-of-the-art medical vision transformer</li>
-                <li><strong>Hybrid Architecture</strong> - Combines CNN and Transformer</li>
-                <li><strong>Flexible Pipeline</strong> - Supports any HuggingFace dataset</li>
-                <li><strong>Medical Optimization</strong> - Specifically tuned for medical images</li>
-            </ul>
         </section>
 
         <section class="project-section">
