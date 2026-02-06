@@ -2,7 +2,7 @@
 (function () {
     var translations = {
         ko: {
-            // Section titles
+            // Section titles (main page)
             'section.education': '학력',
             'section.research': '연구 관심 분야',
             'section.publications': '논문',
@@ -43,17 +43,26 @@
             'award.teaching': '교육',
             'award.teaching.desc': 'AI 개론 및 프로그래밍 1 조교',
 
-            // Footer
+            // Footer & Navigation
             'footer.rights': '© 2026 송준영. All rights reserved.',
-
-            // Vision
             'hero.vision': '<strong>비전:</strong> 세상에 대한 끝없는 호기심과 끊임없는 배움의 즐거움을 원동력으로, 금전적 이익보다 타인에 대한 의미 있는 기여로 정의되는 삶을 추구합니다.',
-
-            // Navigation
             'nav.back': '← 포트폴리오로 돌아가기',
+            'doc.title': '송준영 | 포트폴리오',
 
-            // Document title
-            'doc.title': '송준영 | 포트폴리오'
+            // Common project section headers
+            'proj.overview': '📋 프로젝트 개요',
+            'proj.problem': '🎯 문제 정의 및 목표',
+            'proj.features': '⚙️ 주요 기능 및 기여',
+            'proj.challenges': '🔧 기술적 도전 및 해결',
+            'proj.results': '📈 결과 및 배운 점',
+            'proj.tech': '🛠️ 기술 스택',
+            'proj.links': '🔗 링크',
+            'proj.simple.overview': '📋 개요',
+            'proj.simple.features': '⚡ 주요 기능',
+            'proj.simple.achievements': '⚡ 주요 성과',
+            'proj.simple.projects': '🚀 프로젝트',
+            'proj.simple.contributions': '⚡ 주요 기여',
+            'proj.professional': '📚 전문성 개발'
         }
     };
 
@@ -88,7 +97,22 @@
         'footer.rights': '\u00a9 2026 Junyeong Song. All rights reserved.',
         'hero.vision': '<strong>Vision:</strong> Driven by an insatiable curiosity for the world and the joy of continuous learning, I am dedicated to a life defined by meaningful contribution to others rather than financial gain.',
         'nav.back': '\u2190 Back to Portfolio',
-        'doc.title': 'Junyeong Song | Portfolio'
+        'doc.title': 'Junyeong Song | Portfolio',
+
+        // Common project section headers
+        'proj.overview': '📋 Project Overview',
+        'proj.problem': '🎯 Problem Definition & Goals',
+        'proj.features': '⚙️ Key Features & Contributions',
+        'proj.challenges': '🔧 Technical Challenges & Solutions',
+        'proj.results': '📈 Results & Learnings',
+        'proj.tech': '🛠️ Technologies',
+        'proj.links': '🔗 Links',
+        'proj.simple.overview': '📋 Overview',
+        'proj.simple.features': '⚡ Features',
+        'proj.simple.achievements': '⚡ Key Achievements',
+        'proj.simple.projects': '🚀 Projects',
+        'proj.simple.contributions': '⚡ Key Contributions',
+        'proj.professional': '📚 Professional Development'
     };
 
     function getLang() {
