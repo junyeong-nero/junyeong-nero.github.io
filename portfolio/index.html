@@ -18,6 +18,8 @@
         <span class="sun-icon">☀️</span>
         <span class="moon-icon">🌙</span>
     </button>
+    <!-- Language Toggle -->
+    <button class="lang-toggle" id="langToggle" aria-label="Toggle language">한</button>
 
     <main class="container">
         <!-- Hero Section -->
@@ -27,7 +29,7 @@
                     <span class="callout-icon">💡</span>
                     <div class="callout-content">
                         <h1>Junyeong Song</h1>
-                        <p class="vision-text">
+                        <p class="vision-text" data-i18n-html="hero.vision">
                             <strong>Vision:</strong> Driven by an insatiable curiosity for the world and the joy of
                             continuous learning,
                             I am dedicated to a life defined by meaningful contribution to others rather than financial
@@ -43,29 +45,29 @@
 
         <!-- Education Section -->
         <section class="section" id="education">
-            <h2 class="section-title">🎓 Education</h2>
+            <h2 class="section-title">🎓 <span data-i18n="section.education">Education</span></h2>
             <div class="timeline">
                 <div class="timeline-item">
                     <div class="timeline-marker"></div>
                     <div class="timeline-content">
-                        <h3>UNIST</h3>
-                        <p class="subtitle">Computer Science and Engineering</p>
+                        <h3 data-i18n="edu.unist">UNIST</h3>
+                        <p class="subtitle" data-i18n="edu.unist.major">Computer Science and Engineering</p>
                         <span class="date">2020.03 - Present</span>
                     </div>
                 </div>
                 <div class="timeline-item">
                     <div class="timeline-marker"></div>
                     <div class="timeline-content">
-                        <h3>Military Service</h3>
-                        <p class="subtitle">Under Military Service</p>
+                        <h3 data-i18n="edu.military">Military Service</h3>
+                        <p class="subtitle" data-i18n="edu.military.desc">Under Military Service</p>
                         <span class="date">2022.07 - 2024.01</span>
                     </div>
                 </div>
                 <div class="timeline-item">
                     <div class="timeline-marker"></div>
                     <div class="timeline-content">
-                        <h3>Daegu il Science High School</h3>
-                        <p class="subtitle">Physics & Computer Science</p>
+                        <h3 data-i18n="edu.highschool">Daegu il Science High School</h3>
+                        <p class="subtitle" data-i18n="edu.highschool.major">Physics & Computer Science</p>
                         <span class="date">2017.03 - 2020.02</span>
                     </div>
                 </div>
@@ -76,12 +78,12 @@
 
         <!-- Research Interests Section -->
         <section class="section" id="research">
-            <h2 class="section-title">🔬 Research Interests</h2>
+            <h2 class="section-title">🔬 <span data-i18n="section.research">Research Interests</span></h2>
             <div class="tags-container">
-                <span class="tag">Synthetic Data Generation</span>
-                <span class="tag">Computer Vision</span>
-                <span class="tag">Vision LLM</span>
-                <span class="tag">Diffusion Models</span>
+                <span class="tag" data-i18n="tag.synth">Synthetic Data Generation</span>
+                <span class="tag" data-i18n="tag.cv">Computer Vision</span>
+                <span class="tag" data-i18n="tag.vllm">Vision LLM</span>
+                <span class="tag" data-i18n="tag.diffusion">Diffusion Models</span>
             </div>
         </section>
 
@@ -89,12 +91,12 @@
 
         <!-- Publications Section -->
         <section class="section" id="publications">
-            <h2 class="section-title">📄 Publications</h2>
+            <h2 class="section-title">📄 <span data-i18n="section.publications">Publications</span></h2>
             <div class="publication-card">
                 <div class="pub-icon">📑</div>
                 <div class="pub-content">
                     <h3>KorMedMCQA</h3>
-                    <p>Multi-Choice Question Answering Benchmark for Korean Healthcare Professional Licensing
+                    <p data-i18n="pub.kormedmcqa.desc">Multi-Choice Question Answering Benchmark for Korean Healthcare Professional Licensing
                         Examinations</p>
                     <a href="https://arxiv.org/abs/2403.01469" target="_blank" rel="noopener" class="pub-link">arXiv
                         →</a>
@@ -106,7 +108,7 @@
 
         <!-- Experiences Section -->
         <section class="section" id="experiences">
-            <h2 class="section-title">💼 Experiences</h2>
+            <h2 class="section-title">💼 <span data-i18n="section.experiences">Experiences</span></h2>
             <div class="experience-grid">
                 <div class="experience-card">
                     <div class="exp-header">
@@ -114,7 +116,7 @@
                         <span class="exp-role">Intern</span>
                     </div>
                     <span class="date">2025.02 - 2025.09</span>
-                    <p>Developed a Korean Drama script analysis pipeline using a Multi-Agentic pipeline (LangChain).</p>
+                    <p data-i18n="exp.cj.desc">Developed a Korean Drama script analysis pipeline using a Multi-Agentic pipeline (LangChain).</p>
                 </div>
                 <div class="experience-card">
                     <div class="exp-header">
@@ -122,7 +124,7 @@
                         <span class="exp-role">Intern</span>
                     </div>
                     <span class="date">2024.07 - 2024.09</span>
-                    <p>Conducted research on optimization methods in the inference step of diffusion models.</p>
+                    <p data-i18n="exp.embedded.desc">Conducted research on optimization methods in the inference step of diffusion models.</p>
                 </div>
             </div>
         </section>
@@ -131,13 +133,13 @@
 
         <!-- Projects Section -->
         <section class="section" id="projects">
-            <h2 class="section-title">🛠️ Projects</h2>
+            <h2 class="section-title">🛠️ <span data-i18n="section.projects">Projects</span></h2>
 
             <!-- Tab Navigation -->
             <div class="tabs">
-                <button class="tab-btn active" data-tab="aiml">AI/ML</button>
-                <button class="tab-btn" data-tab="applications">Applications</button>
-                <button class="tab-btn" data-tab="startup-interns">Startup & Interns</button>
+                <button class="tab-btn active" data-tab="aiml" data-i18n="tab.aiml">AI/ML</button>
+                <button class="tab-btn" data-tab="applications" data-i18n="tab.applications">Applications</button>
+                <button class="tab-btn" data-tab="startup-interns" data-i18n="tab.startup">Startup & Interns</button>
             </div>
 
             <!-- Tab Content -->
@@ -233,20 +235,20 @@
 
         <!-- Awards Section -->
         <section class="section" id="awards">
-            <h2 class="section-title">🏆 Awards & Others</h2>
+            <h2 class="section-title">🏆 <span data-i18n="section.awards">Awards & Others</span></h2>
             <div class="awards-grid">
                 <div class="award-item">
                     <span class="award-icon">🥇</span>
                     <div class="award-content">
-                        <h4>Awards</h4>
-                        <p>Graduated 1st and entered UNIST with Unistar Scholarships</p>
+                        <h4 data-i18n="award.awards">Awards</h4>
+                        <p data-i18n="award.awards.desc">Graduated 1st and entered UNIST with Unistar Scholarships</p>
                     </div>
                 </div>
                 <div class="award-item">
                     <span class="award-icon">👨‍🏫</span>
                     <div class="award-content">
-                        <h4>Teaching</h4>
-                        <p>TA in AI Intro and Programming 1</p>
+                        <h4 data-i18n="award.teaching">Teaching</h4>
+                        <p data-i18n="award.teaching.desc">TA in AI Intro and Programming 1</p>
                     </div>
                 </div>
             </div>
@@ -256,7 +258,7 @@
 
         <!-- Links Section -->
         <section class="section" id="links">
-            <h2 class="section-title">🔗 Links</h2>
+            <h2 class="section-title">🔗 <span data-i18n="section.links">Links</span></h2>
             <div class="links-container">
                 <a href="https://github.com/junyeong-nero" target="_blank" rel="noopener" class="link-btn">
                     <span class="link-icon">💻</span>
@@ -276,7 +278,7 @@
     </main>
 
     <footer class="footer">
-        <p>© 2026 Junyeong Song. All rights reserved.</p>
+        <p data-i18n="footer.rights">© 2026 Junyeong Song. All rights reserved.</p>
     </footer>
 
     <script>
@@ -352,6 +354,7 @@
             observer.observe(section);
         });
     </script>
+    <script src="lang.js"></script>
 </body>
 
 </html>
