@@ -31,28 +31,26 @@
 
         <section class="project-section">
             <h2 data-i18n="proj.overview">📋 Project Overview</h2>
-            <p>Built a robust backend server on NAVER CLOUD PLATFORM to serve deepfake creation and defense models.
+            <p data-i18n="dfdefense.overview">Built a robust backend server on NAVER CLOUD PLATFORM to serve deepfake
+                creation and defense models.
                 The system enables comprehensive testing of both deepfake generation (using inswapper) and
-                state-of-the-art
-                defense mechanisms including LEAT (Learnable Ensemble Attack) and DIPA (Disrupting Image-based
-                Perturbation Attacks).
-                This project demonstrates end-to-end deployment of adversarial ML models in a production environment.
-            </p>
+                state-of-the-art defense mechanisms including LEAT and DIPA.</p>
         </section>
 
         <section class="project-section">
             <h2 data-i18n="proj.problem">🎯 Problem Definition & Goals</h2>
             <ul class="feature-list">
-                <li><strong>Problem:</strong> Deepfake technology poses significant threats to personal privacy and
-                    information integrity.
-                    Existing defense methods are often tested only in research settings, lacking real-world deployment
-                    validation.</li>
-                <li><strong>Goal 1:</strong> Create a production-ready backend that can serve both deepfake generation
-                    and defense models
-                    for comprehensive security testing.</li>
-                <li><strong>Goal 2:</strong> Implement LEAT and DIPA defense mechanisms to protect images from
+                <li data-i18n="dfdefense.problem"><strong>Problem:</strong> Deepfake technology poses significant
+                    threats to personal privacy and
+                    information integrity. Existing defense methods are often tested only in research settings.</li>
+                <li data-i18n="dfdefense.goal1"><strong>Goal 1:</strong> Create a production-ready backend that can
+                    serve both deepfake generation
+                    and defense models for comprehensive security testing.</li>
+                <li data-i18n="dfdefense.goal2"><strong>Goal 2:</strong> Implement LEAT and DIPA defense mechanisms to
+                    protect images from
                     unauthorized face-swapping attacks.</li>
-                <li><strong>Goal 3:</strong> Deploy on cloud infrastructure to enable scalable, accessible testing of
+                <li data-i18n="dfdefense.goal3"><strong>Goal 3:</strong> Deploy on cloud infrastructure to enable
+                    scalable, accessible testing of
                     defense strategies.</li>
             </ul>
         </section>
@@ -60,16 +58,20 @@
         <section class="project-section">
             <h2 data-i18n="proj.features">⚙️ Key Features & Contributions</h2>
             <ul class="feature-list">
-                <li><strong>Deepfake Creation Pipeline:</strong> Integrated inswapper model for realistic face-swapping,
+                <li data-i18n="dfdefense.feat1"><strong>Deepfake Creation Pipeline:</strong> Integrated inswapper model
+                    for realistic face-swapping,
                     enabling systematic testing of defense mechanisms.</li>
-                <li><strong>LEAT Defense Implementation:</strong> Deployed adversarial attack defense that adds
-                    imperceptible
-                    perturbations to protect images from face-swapping.</li>
-                <li><strong>DIPA Defense Integration:</strong> Implemented image perturbation technique that disrupts
+                <li data-i18n="dfdefense.feat2"><strong>LEAT Defense Implementation:</strong> Deployed adversarial
+                    attack defense that adds
+                    imperceptible perturbations to protect images from face-swapping.</li>
+                <li data-i18n="dfdefense.feat3"><strong>DIPA Defense Integration:</strong> Implemented image
+                    perturbation technique that disrupts
                     deepfake generation while maintaining visual quality.</li>
-                <li><strong>Cloud Architecture:</strong> Designed scalable backend using Flask, uWSGI, and Nginx
+                <li data-i18n="dfdefense.feat4"><strong>Cloud Architecture:</strong> Designed scalable backend using
+                    Flask, uWSGI, and Nginx
                     on NAVER Cloud Platform for production deployment.</li>
-                <li><strong>API Design:</strong> Created RESTful endpoints for image upload, processing, and defense
+                <li data-i18n="dfdefense.feat5"><strong>API Design:</strong> Created RESTful endpoints for image upload,
+                    processing, and defense
                     application.</li>
             </ul>
         </section>
@@ -77,14 +79,17 @@
         <section class="project-section">
             <h2 data-i18n="proj.challenges">🔧 Technical Challenges & Solutions</h2>
             <ul class="feature-list">
-                <li><strong>GPU Memory Management:</strong> Multiple deep learning models required efficient GPU memory
-                    allocation.
-                    Implemented model loading/unloading strategies and batch processing to optimize resource usage.</li>
-                <li><strong>Real-time Processing:</strong> Defense mechanisms needed to process images quickly.
-                    Used PyTorch optimization techniques and CUDA acceleration to achieve acceptable latency.</li>
-                <li><strong>Model Compatibility:</strong> Different defense methods had varying input/output formats.
-                    Created unified preprocessing and postprocessing pipelines for seamless integration.</li>
-                <li><strong>Production Stability:</strong> Ensured service reliability through uWSGI worker management,
+                <li data-i18n="dfdefense.chal1"><strong>GPU Memory Management:</strong> Multiple deep learning models
+                    required efficient GPU memory
+                    allocation. Implemented model loading/unloading strategies and batch processing.</li>
+                <li data-i18n="dfdefense.chal2"><strong>Real-time Processing:</strong> Defense mechanisms needed to
+                    process images quickly.
+                    Used PyTorch optimization techniques and CUDA acceleration.</li>
+                <li data-i18n="dfdefense.chal3"><strong>Model Compatibility:</strong> Different defense methods had
+                    varying input/output formats.
+                    Created unified preprocessing and postprocessing pipelines.</li>
+                <li data-i18n="dfdefense.chal4"><strong>Production Stability:</strong> Ensured service reliability
+                    through uWSGI worker management,
                     Nginx load balancing, and comprehensive error handling.</li>
             </ul>
         </section>
@@ -92,15 +97,17 @@
         <section class="project-section">
             <h2 data-i18n="proj.results">📈 Results & Learnings</h2>
             <ul class="feature-list">
-                <li><strong>Successful Deployment:</strong> Achieved stable production deployment serving both
+                <li data-i18n="dfdefense.result1"><strong>Successful Deployment:</strong> Achieved stable production
+                    deployment serving both
                     generation and defense models.</li>
-                <li><strong>Defense Effectiveness:</strong> LEAT and DIPA methods successfully disrupted face-swapping
-                    attempts
-                    while maintaining image quality above 95% SSIM.</li>
-                <li><strong>Key Learning:</strong> Gained deep understanding of adversarial ML, perturbation-based
-                    defenses,
-                    and the practical challenges of deploying deep learning models in production.</li>
-                <li><strong>Infrastructure Skills:</strong> Developed expertise in cloud deployment, containerization,
+                <li data-i18n="dfdefense.result2"><strong>Defense Effectiveness:</strong> LEAT and DIPA methods
+                    successfully disrupted face-swapping
+                    attempts while maintaining image quality above 95% SSIM.</li>
+                <li data-i18n="dfdefense.result3"><strong>Key Learning:</strong> Gained deep understanding of
+                    adversarial ML, perturbation-based
+                    defenses, and practical challenges of deploying deep learning models.</li>
+                <li data-i18n="dfdefense.result4"><strong>Infrastructure Skills:</strong> Developed expertise in cloud
+                    deployment, containerization,
                     and building scalable ML serving infrastructure.</li>
             </ul>
         </section>

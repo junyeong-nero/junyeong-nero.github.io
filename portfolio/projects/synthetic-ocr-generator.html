@@ -25,73 +25,69 @@
             <span class="project-icon-large">📝</span>
             <div class="project-meta">
                 <h1>Synthetic OCR Image Generator</h1>
-                <span class="project-date">2024</span>
+                <span class="project-date">2024.06 - 2024.08</span>
             </div>
         </div>
 
         <section class="project-section">
             <h2 data-i18n="proj.overview">📋 Project Overview</h2>
-            <p>A comprehensive synthetic data generation tool for creating OCR (Optical Character Recognition)
-                training datasets. The system generates realistic text images with diverse fonts, backgrounds,
-                and augmentations, addressing the critical shortage of labeled Korean OCR training data.
-                The generated dataset has been published on HuggingFace for community use.</p>
+            <p data-i18n="ocr.overview">A synthetic data generator that creates natural and diverse images for OCR model
+                training.</p>
         </section>
 
         <section class="project-section">
             <h2 data-i18n="proj.problem">🎯 Problem Definition & Goals</h2>
             <ul class="feature-list">
-                <li><strong>Problem:</strong> Training robust OCR models requires large labeled datasets,
-                    but creating real-world OCR data is expensive and time-consuming. Korean text recognition
-                    particularly suffers from limited training data availability.</li>
-                <li><strong>Goal 1:</strong> Build a configurable text image generator that produces diverse,
-                    realistic training samples.</li>
-                <li><strong>Goal 2:</strong> Support Korean text with proper font rendering and character coverage.</li>
-                <li><strong>Goal 3:</strong> Implement augmentations that mimic real-world image degradation
-                    (blur, noise, perspective distortion).</li>
+                <li data-i18n="ocr.problem"><strong>Problem:</strong> OCR training requires large amounts of labeled
+                    text images, but real data collection is expensive.</li>
+                <li data-i18n="ocr.goal1"><strong>Goal 1:</strong> Develop a synthetic text image generator realistic
+                    enough for OCR training.</li>
+                <li data-i18n="ocr.goal2"><strong>Goal 2:</strong> Apply diverse fonts, backgrounds, and noise to
+                    simulate real-world variability.</li>
+                <li data-i18n="ocr.goal3"><strong>Goal 3:</strong> Build an efficient pipeline for generating large
+                    quantities of synthetic images.</li>
             </ul>
         </section>
 
         <section class="project-section">
             <h2 data-i18n="proj.features">⚙️ Key Features & Contributions</h2>
             <ul class="feature-list">
-                <li><strong>Synthetic Text Generation:</strong> Creates text images with controllable parameters
-                    including font size, color, spacing, and alignment.</li>
-                <li><strong>Multi-Font Support:</strong> Integrates various Korean and English fonts to
-                    increase training data diversity.</li>
-                <li><strong>Background Variation:</strong> Generates diverse backgrounds including solid colors,
-                    gradients, textures, and real-world image crops.</li>
-                <li><strong>Data Augmentation:</strong> Applies realistic transformations including Gaussian blur,
-                    noise injection, perspective warping, and JPEG compression artifacts.</li>
-                <li><strong>Batch Generation:</strong> Efficient multiprocessing for large-scale dataset creation
-                    with progress tracking.</li>
+                <li data-i18n="ocr.feat1"><strong>Font Diversity:</strong> Supports various Korean and English fonts for
+                    diverse document styles.</li>
+                <li data-i18n="ocr.feat2"><strong>Background Diversity:</strong> Applies solid colors, textures, and
+                    gradients.</li>
+                <li data-i18n="ocr.feat3"><strong>Noise Simulation:</strong> Simulates camera noise, blur, and
+                    distortion.</li>
+                <li data-i18n="ocr.feat4"><strong>Auto Labeling:</strong> Automatically generates accurate text labels.
+                </li>
             </ul>
         </section>
 
         <section class="project-section">
             <h2 data-i18n="proj.challenges">🔧 Technical Challenges & Solutions</h2>
             <ul class="feature-list">
-                <li><strong>Font Coverage:</strong> Many fonts lack complete Korean character support.
-                    Implemented font validation to ensure complete Hangul syllable coverage.</li>
-                <li><strong>Realistic Rendering:</strong> Initial synthetic images looked too clean.
-                    Added antialiasing variations and subtle rendering imperfections.</li>
-                <li><strong>Augmentation Balance:</strong> Over-augmented images became unreadable.
-                    Implemented parameterized augmentation intensities with reasonable defaults.</li>
-                <li><strong>Memory Efficiency:</strong> Generating millions of images required optimization.
-                    Used lazy generation and efficient image processing pipelines.</li>
+                <li data-i18n="ocr.chal1"><strong>Realism:</strong> Synthetic images must be realistic enough. Combined
+                    various noise and distortion effects.</li>
+                <li data-i18n="ocr.chal2"><strong>Font Rendering:</strong> Supporting diverse Korean font styles.
+                    Explored multiple font libraries.</li>
+                <li data-i18n="ocr.chal3"><strong>Data Diversity:</strong> Generated data must cover real-world
+                    variability. Used parameter randomization.</li>
+                <li data-i18n="ocr.chal4"><strong>Generation Efficiency:</strong> Performance optimization for
+                    large-scale generation. Applied batch processing and parallelization.</li>
             </ul>
         </section>
 
         <section class="project-section">
             <h2 data-i18n="proj.results">📈 Results & Learnings</h2>
             <ul class="feature-list">
-                <li><strong>Dataset Publication:</strong> Released Korean synthetic OCR dataset on HuggingFace
-                    with thousands of diverse training samples.</li>
-                <li><strong>OCR Improvement:</strong> Models trained with synthetic data showed improved
-                    robustness to font variations and image degradation.</li>
-                <li><strong>Community Adoption:</strong> Dataset available for download and use by OCR researchers
-                    working on Korean text recognition.</li>
-                <li><strong>Key Learning:</strong> Gained expertise in synthetic data generation, image processing,
-                    and the art of creating training data that transfers well to real-world applications.</li>
+                <li data-i18n="ocr.result1"><strong>OCR Improvement:</strong> Models trained with synthetic data
+                    outperformed real-data-only models.</li>
+                <li data-i18n="ocr.result2"><strong>Data Efficiency:</strong> Generated large training data without
+                    labeling costs.</li>
+                <li data-i18n="ocr.result3"><strong>Customization:</strong> Enabled domain-specific data generation
+                    (receipts, documents, etc.).</li>
+                <li data-i18n="ocr.result4"><strong>Key Learning:</strong> Gained expertise in synthetic data generation
+                    and image processing.</li>
             </ul>
         </section>
 
@@ -99,25 +95,11 @@
             <h2 data-i18n="proj.tech">🛠️ Technologies</h2>
             <div class="tech-tags">
                 <span class="tech-tag">Python</span>
-                <span class="tech-tag">PIL/Pillow</span>
+                <span class="tech-tag">Pillow</span>
                 <span class="tech-tag">OpenCV</span>
-                <span class="tech-tag">Synthetic Data</span>
+                <span class="tech-tag">OCR</span>
                 <span class="tech-tag">Data Augmentation</span>
-                <span class="tech-tag">Korean NLP</span>
-            </div>
-        </section>
-
-        <section class="project-section">
-            <h2 data-i18n="proj.links">🔗 Links</h2>
-            <div class="project-links">
-                <a href="https://github.com/junyeong-nero/synthetic-ocr-image-generator" target="_blank"
-                    class="project-link">
-                    💻 GitHub Repository
-                </a>
-                <a href="https://huggingface.co/datasets/junyeong-nero/synthetic-ocr-images-korean" target="_blank"
-                    class="project-link">
-                    🤗 HuggingFace Dataset
-                </a>
+                <span class="tech-tag">Synthetic Data</span>
             </div>
         </section>
     </main>

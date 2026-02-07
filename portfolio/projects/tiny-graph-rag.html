@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>tiny-graph-RAG | Junyeong Song</title>
+    <title>tiny-graph-rag | Junyeong Song</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -24,76 +24,70 @@
         <div class="project-header">
             <span class="project-icon-large">🔗</span>
             <div class="project-meta">
-                <h1>tiny-graph-RAG</h1>
+                <h1>tiny-graph-rag</h1>
                 <span class="project-date">2025.01 - Present</span>
             </div>
         </div>
 
         <section class="project-section">
             <h2 data-i18n="proj.overview">📋 Project Overview</h2>
-            <p>A Knowledge Graph-based RAG (Retrieval-Augmented Generation) system that constructs structured
-                knowledge graphs from documents and uses graph traversal algorithms for intelligent question answering.
-                Unlike traditional vector-only RAG, this system captures entity relationships and uses BFS traversal
-                with heuristic ranking to retrieve contextually relevant subgraphs for LLM generation.</p>
+            <p data-i18n="graphrag.overview">A lightweight implementation of Graph RAG combining Neo4j knowledge graphs
+                with vector search for enhanced context retrieval.</p>
         </section>
 
         <section class="project-section">
             <h2 data-i18n="proj.problem">🎯 Problem Definition & Goals</h2>
             <ul class="feature-list">
-                <li><strong>Problem:</strong> Traditional vector-based RAG loses relationship information between
-                    entities.
-                    When answering complex questions requiring multi-hop reasoning, vector search retrieves
-                    disconnected chunks that lack contextual coherence.</li>
-                <li><strong>Goal 1:</strong> Build an automated pipeline that extracts entities and relationships
-                    from documents to construct a knowledge graph.</li>
-                <li><strong>Goal 2:</strong> Implement graph-based retrieval using BFS traversal to find relevant
-                    subgraphs that preserve relationship context.</li>
-                <li><strong>Goal 3:</strong> Create heuristic ranking algorithms that score retrieved context
-                    by relevance to the query.</li>
+                <li data-i18n="graphrag.problem"><strong>Problem:</strong> Traditional RAG struggles when connected
+                    information is spread across document chunks.</li>
+                <li data-i18n="graphrag.goal1"><strong>Goal 1:</strong> Build a hybrid retrieval system leveraging
+                    structured relationships and unstructured text.</li>
+                <li data-i18n="graphrag.goal2"><strong>Goal 2:</strong> Implement automatic knowledge graph construction
+                    from documents.</li>
+                <li data-i18n="graphrag.goal3"><strong>Goal 3:</strong> Improve retrieval quality for multi-hop
+                    reasoning queries.</li>
             </ul>
         </section>
 
         <section class="project-section">
             <h2 data-i18n="proj.features">⚙️ Key Features & Contributions</h2>
             <ul class="feature-list">
-                <li><strong>Knowledge Graph Construction:</strong> LLM-based entity and relationship extraction
-                    with custom prompts optimized for structured output.</li>
-                <li><strong>Graph-based Retrieval:</strong> BFS traversal starting from query-relevant entities,
-                    expanding to capture multi-hop relationships.</li>
-                <li><strong>Heuristic Ranking:</strong> Custom scoring function combining entity relevance,
-                    path length, and relationship types for context prioritization.</li>
-                <li><strong>Parallel Extraction:</strong> Efficient entity extraction with parallel processing
-                    for handling large document collections.</li>
-                <li><strong>Dual Interface:</strong> Both CLI for batch processing and Streamlit web UI for
-                    interactive querying.</li>
+                <li data-i18n="graphrag.feat1"><strong>Automatic Graph Construction:</strong> LLM-based entity and
+                    relation extraction.</li>
+                <li data-i18n="graphrag.feat2"><strong>Neo4j Integration:</strong> Efficient graph queries with Cypher
+                    support.</li>
+                <li data-i18n="graphrag.feat3"><strong>Hybrid Retrieval:</strong> Combines graph traversal with vector
+                    similarity search.</li>
+                <li data-i18n="graphrag.feat4"><strong>Multi-hop Reasoning:</strong> Supports complex queries traversing
+                    multiple relationships.</li>
             </ul>
         </section>
 
         <section class="project-section">
             <h2 data-i18n="proj.challenges">🔧 Technical Challenges & Solutions</h2>
             <ul class="feature-list">
-                <li><strong>Entity Resolution:</strong> Same entities referenced differently across documents.
-                    Implemented fuzzy matching and embedding-based similarity for entity deduplication.</li>
-                <li><strong>Relationship Quality:</strong> LLM-extracted relationships varied in quality.
-                    Added validation step and confidence scoring to filter low-quality triplets.</li>
-                <li><strong>Graph Scale:</strong> Large graphs caused traversal performance issues.
-                    Implemented indexed lookups and pruning strategies for efficient BFS.</li>
-                <li><strong>Context Window:</strong> Retrieved subgraphs could exceed LLM context limits.
-                    Developed summarization and compression techniques for large subgraphs.</li>
+                <li data-i18n="graphrag.chal1"><strong>Entity Resolution:</strong> Implemented normalization and
+                    clustering-based resolution.</li>
+                <li data-i18n="graphrag.chal2"><strong>Relation Extraction Quality:</strong> Added filtering and
+                    validation steps.</li>
+                <li data-i18n="graphrag.chal3"><strong>Query Complexity:</strong> Implemented adaptive routing based on
+                    query type.</li>
+                <li data-i18n="graphrag.chal4"><strong>Scalability:</strong> Optimized with indexing and caching
+                    strategies.</li>
             </ul>
         </section>
 
         <section class="project-section">
             <h2 data-i18n="proj.results">📈 Results & Learnings</h2>
             <ul class="feature-list">
-                <li><strong>Improved Multi-hop QA:</strong> Graph-based retrieval significantly outperformed
-                    vector-only approach on questions requiring relationship reasoning.</li>
-                <li><strong>Relationship Preservation:</strong> System maintains contextual coherence by
-                    retrieving connected subgraphs rather than disconnected chunks.</li>
-                <li><strong>Visualization:</strong> Knowledge graph visualization helps users understand
-                    document structure and verify extraction quality.</li>
-                <li><strong>Key Learning:</strong> Gained expertise in knowledge graph construction,
-                    graph algorithms for information retrieval, and hybrid RAG architectures.</li>
+                <li data-i18n="graphrag.result1"><strong>Retrieval Improvement:</strong> Graph-based retrieval
+                    significantly improved answer quality.</li>
+                <li data-i18n="graphrag.result2"><strong>Knowledge Discovery:</strong> Graph visualization enables
+                    discovering hidden connections.</li>
+                <li data-i18n="graphrag.result3"><strong>Educational Value:</strong> Implementation serves as learning
+                    reference.</li>
+                <li data-i18n="graphrag.result4"><strong>Key Learning:</strong> Gained expertise in knowledge graphs and
+                    hybrid architectures.</li>
             </ul>
         </section>
 
@@ -101,11 +95,11 @@
             <h2 data-i18n="proj.tech">🛠️ Technologies</h2>
             <div class="tech-tags">
                 <span class="tech-tag">Python</span>
+                <span class="tech-tag">Neo4j</span>
+                <span class="tech-tag">LangChain</span>
                 <span class="tech-tag">Knowledge Graph</span>
+                <span class="tech-tag">Vector Search</span>
                 <span class="tech-tag">LLM</span>
-                <span class="tech-tag">BFS Traversal</span>
-                <span class="tech-tag">Streamlit</span>
-                <span class="tech-tag">Entity Extraction</span>
             </div>
         </section>
 

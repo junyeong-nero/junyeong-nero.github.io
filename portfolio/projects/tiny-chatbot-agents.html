@@ -31,72 +31,64 @@
 
         <section class="project-section">
             <h2 data-i18n="proj.overview">📋 Project Overview</h2>
-            <p>A sophisticated enterprise-grade RAG (Retrieval-Augmented Generation) chatbot system featuring
-                dual-stage retrieval, hybrid search capabilities, and hallucination verification. Designed for
-                internal security requirements, the system works with local LLM inference servers (vLLM, Ollama)
-                without external API calls, making it suitable for sensitive business applications.</p>
+            <p data-i18n="chatbot.overview">A sophisticated enterprise-grade RAG chatbot system featuring dual-stage
+                retrieval, hybrid search, and hallucination verification.</p>
         </section>
 
         <section class="project-section">
             <h2 data-i18n="proj.problem">🎯 Problem Definition & Goals</h2>
             <ul class="feature-list">
-                <li><strong>Problem:</strong> Enterprise chatbots often suffer from hallucinations and lack the ability
-                    to use internal knowledge bases securely. Many solutions require external API calls,
-                    creating data privacy concerns.</li>
-                <li><strong>Goal 1:</strong> Build a fully local RAG system that can answer questions using
-                    company-specific QnA pairs and Terms of Service documents.</li>
-                <li><strong>Goal 2:</strong> Implement dual-stage retrieval that prioritizes curated answers
-                    before searching complex documents.</li>
-                <li><strong>Goal 3:</strong> Add hallucination verification to ensure all answers are grounded
-                    in retrieved context.</li>
+                <li data-i18n="chatbot.problem"><strong>Problem:</strong> Enterprise chatbots suffer from hallucinations
+                    and data privacy concerns.</li>
+                <li data-i18n="chatbot.goal1"><strong>Goal 1:</strong> Build a fully local RAG system for
+                    company-specific QnA.</li>
+                <li data-i18n="chatbot.goal2"><strong>Goal 2:</strong> Implement dual-stage retrieval prioritizing
+                    curated answers.</li>
+                <li data-i18n="chatbot.goal3"><strong>Goal 3:</strong> Add hallucination verification for grounded
+                    answers.</li>
             </ul>
         </section>
 
         <section class="project-section">
             <h2 data-i18n="proj.features">⚙️ Key Features & Contributions</h2>
             <ul class="feature-list">
-                <li><strong>Dual-Stage RAG Pipeline:</strong> First searches curated QnA database for direct matches,
-                    then falls back to ToS document search for complex queries.</li>
-                <li><strong>Hybrid Search:</strong> Combines vector search (E5 embeddings), rule-based matching,
-                    and knowledge graph triplets for comprehensive retrieval.</li>
-                <li><strong>Advanced Ranking:</strong> Two-stage ranking using Bi-Encoder (E5) for fast initial
-                    retrieval
-                    and Cross-Encoder (BGE-Reranker) for precise re-ranking.</li>
-                <li><strong>Hallucination Verification:</strong> LLM-based verification step that checks if generated
-                    answers are supported by retrieved context.</li>
-                <li><strong>MCP Server Support:</strong> Model Context Protocol integration for Claude Desktop
-                    compatibility.</li>
-                <li><strong>Local LLM Ready:</strong> Works seamlessly with vLLM and Ollama via OpenAI-compatible APIs.
+                <li data-i18n="chatbot.feat1"><strong>Dual-Stage RAG:</strong> First QnA database, then ToS document
+                    search.</li>
+                <li data-i18n="chatbot.feat2"><strong>Hybrid Search:</strong> Vector search, rule-based matching, and
+                    knowledge graph.</li>
+                <li data-i18n="chatbot.feat3"><strong>Advanced Ranking:</strong> Bi-Encoder for fast retrieval,
+                    Cross-Encoder for re-ranking.</li>
+                <li data-i18n="chatbot.feat4"><strong>Hallucination Verification:</strong> LLM-based verification step.
                 </li>
+                <li data-i18n="chatbot.feat5"><strong>MCP Server:</strong> Claude Desktop compatibility.</li>
+                <li data-i18n="chatbot.feat6"><strong>Local LLM Ready:</strong> Works with vLLM and Ollama.</li>
             </ul>
         </section>
 
         <section class="project-section">
             <h2 data-i18n="proj.challenges">🔧 Technical Challenges & Solutions</h2>
             <ul class="feature-list">
-                <li><strong>Retrieval Quality:</strong> Simple vector search missed semantic matches.
-                    Implemented hybrid approach combining dense, sparse, and knowledge graph retrieval.</li>
-                <li><strong>Hallucination Detection:</strong> LLMs confidently generated incorrect information.
-                    Added verification agent that cross-references answers with source documents.</li>
-                <li><strong>Unknown Answer Handling:</strong> System needed to gracefully handle queries outside its
-                    knowledge.
-                    Implemented confidence scoring and explicit "I don't know" responses when appropriate.</li>
-                <li><strong>Latency Optimization:</strong> Multiple retrieval stages added latency.
-                    Implemented caching, parallel retrieval, and early termination for high-confidence matches.</li>
+                <li data-i18n="chatbot.chal1"><strong>Retrieval Quality:</strong> Implemented hybrid approach combining
+                    multiple methods.</li>
+                <li data-i18n="chatbot.chal2"><strong>Hallucination Detection:</strong> Added verification agent
+                    cross-referencing sources.</li>
+                <li data-i18n="chatbot.chal3"><strong>Unknown Answer Handling:</strong> Implemented confidence scoring
+                    and "I don't know" responses.</li>
+                <li data-i18n="chatbot.chal4"><strong>Latency Optimization:</strong> Caching, parallel retrieval, and
+                    early termination.</li>
             </ul>
         </section>
 
         <section class="project-section">
             <h2 data-i18n="proj.results">📈 Results & Learnings</h2>
             <ul class="feature-list">
-                <li><strong>Improved Accuracy:</strong> Dual-stage retrieval significantly improved answer relevance
-                    compared to single-stage vector search.</li>
-                <li><strong>Reduced Hallucinations:</strong> Verification step catches and prevents ~85% of
-                    hallucinated responses before reaching users.</li>
-                <li><strong>Security Compliance:</strong> Fully local deployment meets enterprise security requirements
-                    with no external data transmission.</li>
-                <li><strong>Key Learning:</strong> Gained deep expertise in production RAG systems, embedding models,
-                    re-ranking strategies, and the critical importance of hallucination prevention in enterprise AI.
+                <li data-i18n="chatbot.result1"><strong>Improved Accuracy:</strong> Dual-stage retrieval significantly
+                    improved relevance.</li>
+                <li data-i18n="chatbot.result2"><strong>Reduced Hallucinations:</strong> Verification catches ~85% of
+                    hallucinated responses.</li>
+                <li data-i18n="chatbot.result3"><strong>Security Compliance:</strong> Fully local deployment meets
+                    enterprise requirements.</li>
+                <li data-i18n="chatbot.result4"><strong>Key Learning:</strong> Deep expertise in production RAG systems.
                 </li>
             </ul>
         </section>

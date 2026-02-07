@@ -22,100 +22,84 @@
 
     <main class="container project-detail">
         <div class="project-header">
-            <span class="project-icon-large">🩺</span>
+            <span class="project-icon-large">🩻</span>
             <div class="project-meta">
-                <h1>Medical Image Classification with MedViT-V2</h1>
-                <span class="project-date">2025.01</span>
+                <h1>Medical Image Classification</h1>
+                <span class="project-date">2024.03 - 2024.05</span>
             </div>
         </div>
 
         <section class="project-section">
             <h2 data-i18n="proj.overview">📋 Project Overview</h2>
-            <p>Development of a flexible fine-tuning pipeline for MedViT-v2, a state-of-the-art Medical Vision
-                Transformer with hybrid CNN-Transformer architecture specifically optimized for medical image analysis.
-                The pipeline supports any HuggingFace image classification dataset, enabling rapid adaptation to
-                various medical imaging tasks including pathology, radiology, and dermatology.</p>
+            <p data-i18n="medimg.overview">Deep learning-based medical image classification project exploring custom CNN
+                architectures and Vision Transformer (ViT).</p>
         </section>
 
         <section class="project-section">
             <h2 data-i18n="proj.problem">🎯 Problem Definition & Goals</h2>
             <ul class="feature-list">
-                <li><strong>Problem:</strong> Medical image classification requires domain-specific models,
-                    but existing pipelines are often task-specific and lack flexibility for different datasets.</li>
-                <li><strong>Goal 1:</strong> Create a universal fine-tuning pipeline that works with any
-                    HuggingFace medical image dataset.</li>
-                <li><strong>Goal 2:</strong> Leverage MedViT-v2's hybrid architecture that combines CNN's
-                    local feature extraction with Transformer's global attention.</li>
-                <li><strong>Goal 3:</strong> Provide easy configuration and training scripts for researchers
-                    with minimal deep learning experience.</li>
+                <li data-i18n="medimg.problem"><strong>Problem:</strong> Medical image classification faces challenges
+                    like limited labeled data and class imbalance.</li>
+                <li data-i18n="medimg.goal1"><strong>Goal 1:</strong> Compare CNN and ViT architectures for medical
+                    image classification.</li>
+                <li data-i18n="medimg.goal2"><strong>Goal 2:</strong> Develop effective data augmentation strategies.
+                </li>
+                <li data-i18n="medimg.goal3"><strong>Goal 3:</strong> Address class imbalance problems common in medical
+                    datasets.</li>
             </ul>
         </section>
 
         <section class="project-section">
             <h2 data-i18n="proj.features">⚙️ Key Features & Contributions</h2>
             <ul class="feature-list">
-                <li><strong>MedViT-v2 Integration:</strong> Incorporated state-of-the-art medical vision transformer
-                    with pre-trained weights from large-scale medical imaging datasets.</li>
-                <li><strong>Hybrid Architecture:</strong> CNN backbone extracts local features while Transformer
-                    layers capture global context, optimal for medical image analysis.</li>
-                <li><strong>Flexible Pipeline:</strong> Dataset-agnostic design supporting any HuggingFace
-                    image classification dataset with automatic preprocessing.</li>
-                <li><strong>Medical Optimization:</strong> Includes medical-specific augmentations and
-                    preprocessing suited for various imaging modalities.</li>
-                <li><strong>Evaluation Suite:</strong> Comprehensive evaluation with metrics relevant to
-                    medical applications including sensitivity, specificity, and AUC-ROC.</li>
+                <li data-i18n="medimg.feat1"><strong>CNN Architecture:</strong> Designed and implemented custom CNN
+                    optimized for medical images.</li>
+                <li data-i18n="medimg.feat2"><strong>ViT Exploration:</strong> Applied Vision Transformer and compared
+                    with CNN performance.</li>
+                <li data-i18n="medimg.feat3"><strong>Data Augmentation:</strong> Implemented augmentation techniques
+                    suitable for medical images.</li>
+                <li data-i18n="medimg.feat4"><strong>Imbalance Handling:</strong> Applied weighted loss functions and
+                    oversampling techniques.</li>
             </ul>
         </section>
 
         <section class="project-section">
             <h2 data-i18n="proj.challenges">🔧 Technical Challenges & Solutions</h2>
             <ul class="feature-list">
-                <li><strong>Class Imbalance:</strong> Medical datasets often have severe class imbalance.
-                    Implemented weighted loss functions and oversampling strategies for rare classes.</li>
-                <li><strong>Data Augmentation:</strong> Standard augmentations can be harmful for medical images.
-                    Curated medical-appropriate augmentations preserving diagnostic features.</li>
-                <li><strong>Transfer Learning:</strong> Fine-tuning from general to medical domain required careful
-                    learning rate scheduling and layer freezing strategies.</li>
-                <li><strong>Multi-modality Support:</strong> Different imaging modalities (X-ray, CT, dermoscopy)
-                    require different preprocessing. Implemented modality-aware preprocessing pipelines.</li>
+                <li data-i18n="medimg.chal1"><strong>Data Scarcity:</strong> Limited labeled medical images.
+                    Supplemented with augmentation and transfer learning.</li>
+                <li data-i18n="medimg.chal2"><strong>Class Imbalance:</strong> Some disease classes were rare. Solved
+                    with weighted loss and oversampling.</li>
+                <li data-i18n="medimg.chal3"><strong>Model Interpretability:</strong> Medical diagnosis needs
+                    explanation. Analyzed attention regions with GradCAM.</li>
+                <li data-i18n="medimg.chal4"><strong>Generalization:</strong> Performance drops on different domains.
+                    Applied diverse data sources and regularization.</li>
             </ul>
         </section>
 
         <section class="project-section">
             <h2 data-i18n="proj.results">📈 Results & Learnings</h2>
             <ul class="feature-list">
-                <li><strong>Versatile Pipeline:</strong> Successfully demonstrated on multiple medical imaging
-                    datasets including skin lesion, chest X-ray, and pathology images.</li>
-                <li><strong>Performance:</strong> Achieved competitive results compared to task-specific
-                    models while maintaining flexibility.</li>
-                <li><strong>Reproducibility:</strong> Comprehensive documentation and configuration files
-                    enable reproducible experiments.</li>
-                <li><strong>Key Learning:</strong> Gained expertise in medical imaging AI, hybrid vision architectures,
-                    and the unique challenges of healthcare ML including data handling and regulatory considerations.
-                </li>
+                <li data-i18n="medimg.result1"><strong>Classification Performance:</strong> Both CNN and ViT achieved
+                    high accuracy.</li>
+                <li data-i18n="medimg.result2"><strong>Data Efficiency:</strong> Augmentation techniques significantly
+                    improved performance.</li>
+                <li data-i18n="medimg.result3"><strong>Interpretable Results:</strong> GradCAM visualization confirmed
+                    correct attention regions.</li>
+                <li data-i18n="medimg.result4"><strong>Key Learning:</strong> Gained expertise in medical image analysis
+                    and model interpretability.</li>
             </ul>
         </section>
 
         <section class="project-section">
             <h2 data-i18n="proj.tech">🛠️ Technologies</h2>
             <div class="tech-tags">
-                <span class="tech-tag">Deep Learning</span>
-                <span class="tech-tag">Medical AI</span>
-                <span class="tech-tag">Computer Vision</span>
-                <span class="tech-tag">Transformers</span>
+                <span class="tech-tag">PyTorch</span>
                 <span class="tech-tag">CNN</span>
-                <span class="tech-tag">Hugging Face</span>
-                <span class="tech-tag">MedViT-v2</span>
-            </div>
-        </section>
-
-        <section class="project-section">
-            <h2 data-i18n="proj.links">🔗 Links</h2>
-            <div class="project-links">
-                <a href="https://github.com/junyeong-nero/medical-image-classification-medvit-v2" target="_blank"
-                    class="project-link">
-                    💻 GitHub Repository
-                </a>
+                <span class="tech-tag">Vision Transformer</span>
+                <span class="tech-tag">GradCAM</span>
+                <span class="tech-tag">Medical Imaging</span>
+                <span class="tech-tag">Transfer Learning</span>
             </div>
         </section>
     </main>

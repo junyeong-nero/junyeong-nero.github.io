@@ -31,7 +31,8 @@
 
         <section class="project-section">
             <h2 data-i18n="proj.overview">📋 Project Overview</h2>
-            <p>Developed a specialized Korean medical domain LLM by creating comprehensive healthcare datasets and
+            <p data-i18n="medllm.overview">Developed a specialized Korean medical domain LLM by creating comprehensive
+                healthcare datasets and
                 fine-tuning the <code>rtzr/ko-gemma-2-9b-it</code> model. The project focused on building a model
                 capable
                 of answering Korean medical licensing examination questions while adhering to healthcare domain ethics
@@ -41,13 +42,17 @@
         <section class="project-section">
             <h2 data-i18n="proj.problem">🎯 Problem Definition & Goals</h2>
             <ul class="feature-list">
-                <li><strong>Problem:</strong> Existing LLMs lack specialized knowledge in Korean medical domain,
+                <li data-i18n="medllm.problem"><strong>Problem:</strong> Existing LLMs lack specialized knowledge in
+                    Korean medical domain,
                     performing poorly on healthcare licensing examinations and medical question-answering tasks.</li>
-                <li><strong>Goal 1:</strong> Curate and construct high-quality Korean medical datasets from multiple
+                <li data-i18n="medllm.goal1"><strong>Goal 1:</strong> Curate and construct high-quality Korean medical
+                    datasets from multiple
                     authoritative sources.</li>
-                <li><strong>Goal 2:</strong> Fine-tune a Korean LLM to achieve competitive performance on KorMedMCQA
+                <li data-i18n="medllm.goal2"><strong>Goal 2:</strong> Fine-tune a Korean LLM to achieve competitive
+                    performance on KorMedMCQA
                     benchmark.</li>
-                <li><strong>Goal 3:</strong> Ensure the model provides ethically sound and medically accurate responses.
+                <li data-i18n="medllm.goal3"><strong>Goal 3:</strong> Ensure the model provides ethically sound and
+                    medically accurate responses.
                 </li>
             </ul>
         </section>
@@ -55,15 +60,19 @@
         <section class="project-section">
             <h2 data-i18n="proj.features">⚙️ Key Features & Contributions</h2>
             <ul class="feature-list">
-                <li><strong>Multi-Source Dataset Curation:</strong> Aggregated data from KorMedMCQA, MedExpQA
+                <li data-i18n="medllm.feat1"><strong>Multi-Source Dataset Curation:</strong> Aggregated data from
+                    KorMedMCQA, MedExpQA
                     (translated),
                     UltraMed, COD (Clinical Observation Data), and Asan Medical Center disease dictionary.</li>
-                <li><strong>Data Quality Control:</strong> Implemented rigorous filtering and validation processes
+                <li data-i18n="medllm.feat2"><strong>Data Quality Control:</strong> Implemented rigorous filtering and
+                    validation processes
                     to ensure medical accuracy and remove potentially harmful content.</li>
-                <li><strong>Fine-tuning Pipeline:</strong> Developed efficient training pipeline using HuggingFace
+                <li data-i18n="medllm.feat3"><strong>Fine-tuning Pipeline:</strong> Developed efficient training
+                    pipeline using HuggingFace
                     Transformers
                     with LoRA and QLoRA for parameter-efficient fine-tuning.</li>
-                <li><strong>Evaluation Framework:</strong> Created comprehensive evaluation suite covering multiple
+                <li data-i18n="medllm.feat4"><strong>Evaluation Framework:</strong> Created comprehensive evaluation
+                    suite covering multiple
                     medical domains
                     including clinical knowledge, diagnostics, and treatment recommendations.</li>
             </ul>
@@ -72,15 +81,19 @@
         <section class="project-section">
             <h2 data-i18n="proj.challenges">🔧 Technical Challenges & Solutions</h2>
             <ul class="feature-list">
-                <li><strong>Data Scarcity:</strong> Limited Korean medical training data available.
+                <li data-i18n="medllm.chal1"><strong>Data Scarcity:</strong> Limited Korean medical training data
+                    available.
                     Solved by crawling disease dictionaries, translating English medical datasets, and augmenting
                     existing Korean sources.</li>
-                <li><strong>Domain Adaptation:</strong> General-purpose LLMs struggled with medical terminology.
+                <li data-i18n="medllm.chal2"><strong>Domain Adaptation:</strong> General-purpose LLMs struggled with
+                    medical terminology.
                     Applied continued pre-training on medical corpus before task-specific fine-tuning.</li>
-                <li><strong>Ethical Considerations:</strong> Medical responses require careful handling of
+                <li data-i18n="medllm.chal3"><strong>Ethical Considerations:</strong> Medical responses require careful
+                    handling of
                     safety-critical information.
                     Implemented response filtering and added appropriate disclaimers for medical advice.</li>
-                <li><strong>Evaluation Consistency:</strong> Medical QA evaluation needed domain expertise.
+                <li data-i18n="medllm.chal4"><strong>Evaluation Consistency:</strong> Medical QA evaluation needed
+                    domain expertise.
                     Used KorMedMCQA benchmark with standardized scoring methodology for reliable comparison.</li>
             </ul>
         </section>
@@ -88,15 +101,19 @@
         <section class="project-section">
             <h2 data-i18n="proj.results">📈 Results & Learnings</h2>
             <ul class="feature-list">
-                <li><strong>Benchmark Performance:</strong> Achieved significant improvement over baseline on KorMedMCQA
+                <li data-i18n="medllm.result1"><strong>Benchmark Performance:</strong> Achieved significant improvement
+                    over baseline on KorMedMCQA
                     benchmark,
                     demonstrating effective domain adaptation.</li>
-                <li><strong>Published Model:</strong> Released fine-tuned model on HuggingFace for community use and
+                <li data-i18n="medllm.result2"><strong>Published Model:</strong> Released fine-tuned model on
+                    HuggingFace for community use and
                     further research.</li>
-                <li><strong>Research Contribution:</strong> Contributed to the KorMedMCQA paper accepted for
+                <li data-i18n="medllm.result3"><strong>Research Contribution:</strong> Contributed to the KorMedMCQA
+                    paper accepted for
                     publication,
                     advancing Korean medical NLP research.</li>
-                <li><strong>Key Learning:</strong> Gained expertise in domain-specific LLM fine-tuning, medical NLP
+                <li data-i18n="medllm.result4"><strong>Key Learning:</strong> Gained expertise in domain-specific LLM
+                    fine-tuning, medical NLP
                     challenges,
                     and the importance of responsible AI development in healthcare applications.</li>
             </ul>
