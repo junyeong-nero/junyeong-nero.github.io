@@ -14,12 +14,12 @@
 
 <body>
     <!-- Theme Toggle -->
-    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+    <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
         <span class="sun-icon">☀️</span>
         <span class="moon-icon">🌙</span>
     </button>
     <!-- Language Toggle -->
-    <button class="lang-toggle" id="langToggle" aria-label="Toggle language">한</button>
+    <button type="button" class="lang-toggle" id="langToggle" aria-label="Toggle language">한</button>
 
     <main class="container">
         <!-- Hero Section -->
@@ -30,10 +30,15 @@
                     <div class="callout-content">
                         <h1>Junyeong Song</h1>
                         <p class="vision-text" data-i18n-html="hero.vision">
-                            <strong>Vision:</strong> Driven by an insatiable curiosity for the world and the joy of
-                            continuous learning,
-                            I am dedicated to a life defined by meaningful contribution to others rather than financial
-                            gain.
+                            I'm deeply interested in AI/ML, especially in areas such as OCR, synthetic dataset
+                            creation, agentic pipelines, and image generation models.<br><br>
+                            Beyond implementing models, I care about how technology can create real, practical
+                            value. Whenever I learn something new, I naturally start asking, "What's beyond
+                            this?" or "How can this be turned into something impactful?" That curiosity
+                            consistently drives me to explore further.<br><br>
+                            What motivates me most is fun and curiosity. I genuinely enjoy the learning process
+                            itself, and that sense of excitement pushes me to think deeper and build more
+                            meaningful systems.
                         </p>
                     </div>
                 </div>
@@ -137,36 +142,14 @@
 
             <!-- Tab Navigation -->
             <div class="tabs">
-                <button class="tab-btn active" data-tab="aiml" data-i18n="tab.aiml">AI/ML</button>
-                <button class="tab-btn" data-tab="applications" data-i18n="tab.applications">Applications</button>
-                <button class="tab-btn" data-tab="startup-interns" data-i18n="tab.startup">Startup & Interns</button>
+                <button type="button" class="tab-btn active" data-tab="aiml" data-i18n="tab.aiml">AI/ML</button>
+                <button type="button" class="tab-btn" data-tab="startup-interns" data-i18n="tab.startup">Startup & Interns</button>
+                <button type="button" class="tab-btn" data-tab="applications" data-i18n="tab.applications">Applications</button>
             </div>
 
             <!-- Tab Content -->
             <div class="tab-content active" id="aiml">
                 <div class="projects-grid">
-                    <a href="projects/deepfake-defense.html" class="project-card">
-                        <div class="project-icon">🛡️</div>
-                        <h4>Deepfake Defense Model Serving Backend</h4>
-                    </a>
-                    <a href="projects/korean-medical-llm.html" class="project-card">
-                        <div class="project-icon">🏥</div>
-                        <h4>Korean Medical LLM</h4>
-                    </a>
-                    <a href="projects/bilingual-translation-llm.html" class="project-card">
-                        <div class="project-icon">🗣️</div>
-                        <h4>Bilingual Translation LLM</h4>
-                        <p class="project-desc">Jeju Dialect to Standard Korean</p>
-                    </a>
-                    <a href="projects/tiny-ddpm.html" class="project-card">
-                        <div class="project-icon">🎨</div>
-                        <h4>tiny-DDPM</h4>
-                    </a>
-                    <a href="projects/drama-analysis-pipeline.html" class="project-card">
-                        <div class="project-icon">🎬</div>
-                        <h4>Drama Analysis Pipeline</h4>
-                        <p class="project-desc">with Multi-Agents</p>
-                    </a>
                     <a href="projects/tiny-chatbot-agents.html" class="project-card">
                         <div class="project-icon">🤖</div>
                         <h4>tiny-chatbot-agents</h4>
@@ -175,18 +158,40 @@
                         <div class="project-icon">🖼️</div>
                         <h4>tiny-stable-diffusion</h4>
                     </a>
+                    <a href="projects/synthetic-ocr-generator.html" class="project-card">
+                        <div class="project-icon">📝</div>
+                        <h4>Synthetic OCR Image Generator</h4>
+                    </a>
                     <a href="projects/tiny-graph-rag.html" class="project-card">
                         <div class="project-icon">🔗</div>
                         <h4>tiny-graph-RAG</h4>
                     </a>
                     <a href="projects/medical-image-classification.html" class="project-card">
-                        <div class="project-icon">🩺</div>
+                        <div class="project-icon">🩻</div>
                         <h4>Medical Image Classification</h4>
                         <p class="project-desc">with MedViT-V2</p>
                     </a>
-                    <a href="projects/synthetic-ocr-generator.html" class="project-card">
-                        <div class="project-icon">📝</div>
-                        <h4>Synthetic OCR Image Generator</h4>
+                    <a href="projects/drama-analysis-pipeline.html" class="project-card">
+                        <div class="project-icon">🎬</div>
+                        <h4>Drama Analysis Pipeline</h4>
+                        <p class="project-desc">with Multi-Agents</p>
+                    </a>
+                    <a href="projects/deepfake-defense.html" class="project-card">
+                        <div class="project-icon">🛡️</div>
+                        <h4>Deepfake Defense Model Serving Backend</h4>
+                    </a>
+                    <a href="projects/korean-medical-llm.html" class="project-card">
+                        <div class="project-icon">🏥</div>
+                        <h4>Korean Medical LLM</h4>
+                    </a>
+                    <a href="projects/tiny-ddpm.html" class="project-card">
+                        <div class="project-icon">🎨</div>
+                        <h4>tiny-DDPM</h4>
+                    </a>
+                    <a href="projects/bilingual-translation-llm.html" class="project-card">
+                        <div class="project-icon">🗣️</div>
+                        <h4>Bilingual Translation LLM</h4>
+                        <p class="project-desc">Jeju Dialect to Standard Korean</p>
                     </a>
                 </div>
             </div>
@@ -214,14 +219,14 @@
                         <div class="project-icon">🏢</div>
                         <h4>CJ AI Center Intern</h4>
                     </a>
+                    <a href="projects/troja.html" class="project-card">
+                        <div class="project-icon">🐴</div>
+                        <h4>Troja</h4>
+                    </a>
                     <a href="projects/embedded-ai-lab-intern.html" class="project-card">
                         <div class="project-icon">🔬</div>
                         <h4>Embedded AI Lab Intern</h4>
                         <p class="project-desc">UNIST</p>
-                    </a>
-                    <a href="projects/troja.html" class="project-card">
-                        <div class="project-icon">🐴</div>
-                        <h4>Troja</h4>
                     </a>
                     <a href="projects/rubisco.html" class="project-card">
                         <div class="project-icon">💎</div>
@@ -317,8 +322,12 @@
         tabBtns.forEach(btn => {
             btn.addEventListener('click', () => {
                 // Remove active class from all buttons and contents
-                tabBtns.forEach(b => b.classList.remove('active'));
-                tabContents.forEach(c => c.classList.remove('active'));
+                tabBtns.forEach(b => {
+                    b.classList.remove('active');
+                });
+                tabContents.forEach(c => {
+                    c.classList.remove('active');
+                });
 
                 // Add active class to clicked button and corresponding content
                 btn.classList.add('active');
