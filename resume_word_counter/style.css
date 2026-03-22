@@ -90,7 +90,6 @@ body::before {
 }
 
 .hero-text {
-    max-width: 42rem;
     margin: 18px 0 0;
     font-size: 1.05rem;
     line-height: 1.7;
