@@ -371,22 +371,39 @@ a {
     color: var(--accent-hover);
 }
 
-.experience-grid,
+.experience-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+}
+
 .awards-grid {
     display: grid;
     gap: 16px;
 }
 
 .experience-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
     padding: 24px 26px;
+    text-decoration: none;
+    transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
 }
 
 .exp-header {
     display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    gap: 16px;
+    align-items: flex-start;
     margin-bottom: 6px;
+}
+
+.experience-card p {
+    margin-top: 10px;
+}
+
+.exp-role {
+    align-self: flex-end;
+    margin-top: auto;
 }
 
 .tabs {

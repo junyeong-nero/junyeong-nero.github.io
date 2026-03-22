@@ -118,22 +118,38 @@
         <section class="section" id="experiences">
             <h2 class="section-title"><span class="section-index">04</span><span data-i18n="section.experiences">Experiences</span></h2>
             <div class="experience-grid">
-                <div class="experience-card">
+                <a href="projects/cj-ai-center-intern.html" class="experience-card">
                     <div class="exp-header">
                         <h3>CJ AI Center</h3>
-                        <span class="exp-role">Intern</span>
                     </div>
                     <span class="date">2025.02 - 2025.09</span>
                     <p data-i18n="exp.cj.desc">Developed a Korean Drama script analysis pipeline using a Multi-Agentic pipeline (LangChain).</p>
-                </div>
-                <div class="experience-card">
+                    <span class="exp-role" data-i18n="exp.role.cj">AI/ML Intern</span>
+                </a>
+                <a href="projects/embedded-ai-lab-intern.html" class="experience-card">
                     <div class="exp-header">
                         <h3>Embedded AI LAB</h3>
-                        <span class="exp-role">Intern</span>
                     </div>
                     <span class="date">2024.07 - 2024.09</span>
                     <p data-i18n="exp.embedded.desc">Conducted research on optimization methods in the inference step of diffusion models.</p>
-                </div>
+                    <span class="exp-role" data-i18n="exp.role.embedded">Research Intern</span>
+                </a>
+                <a href="projects/troja.html" class="experience-card">
+                    <div class="exp-header">
+                        <h3>Troja</h3>
+                    </div>
+                    <span class="date">2024.09 - 2024.11</span>
+                    <p data-i18n="exp.troja.desc">Built a deepfake defense backend and MVP web page at an early-stage startup.</p>
+                    <span class="exp-role" data-i18n="exp.role.troja">Full-Stack Developer</span>
+                </a>
+                <a href="projects/rubisco.html" class="experience-card">
+                    <div class="exp-header">
+                        <h3>Rubisco</h3>
+                    </div>
+                    <span class="date">2020.02 - 2022.12</span>
+                    <p data-i18n="exp.rubisco.desc">Led Flutter-based product development across mobile apps and hardware prototypes.</p>
+                    <span class="exp-role" data-i18n="exp.role.rubisco">Flutter Developer</span>
+                </a>
             </div>
         </section>
 
@@ -145,13 +161,14 @@
 
             <!-- Tab Navigation -->
             <div class="tabs">
-                <button type="button" class="tab-btn active" data-tab="aiml" data-i18n="tab.aiml">AI/ML</button>
-                <button type="button" class="tab-btn" data-tab="startup-interns" data-i18n="tab.startup">Startup & Interns</button>
+                <button type="button" class="tab-btn active" data-tab="llm-systems" data-i18n="tab.llm">LLM Systems</button>
+                <button type="button" class="tab-btn" data-tab="generative-ai" data-i18n="tab.generative">Generative AI</button>
+                <button type="button" class="tab-btn" data-tab="vision-applied" data-i18n="tab.vision">Vision & Applied ML</button>
                 <button type="button" class="tab-btn" data-tab="applications" data-i18n="tab.applications">Applications</button>
             </div>
 
             <!-- Tab Content -->
-            <div class="tab-content active" id="aiml">
+            <div class="tab-content active" id="llm-systems">
                 <div class="projects-grid">
                     <a href="projects/llm-mafia.html" class="project-card">
                         <div class="project-icon">🕵️</div>
@@ -163,40 +180,30 @@
                         <h4>tiny-chatbot-agents</h4>
                         <p class="project-desc" data-i18n="card.chatbot">Dual-Stage Finance RAG Agent</p>
                     </a>
-                    <a href="projects/tiny-stable-diffusion.html" class="project-card">
-                        <div class="project-icon">🖼️</div>
-                        <h4>tiny-stable-diffusion</h4>
-                        <p class="project-desc" data-i18n="card.sd">From-Scratch SD3-Style Pipeline</p>
-                    </a>
-                    <a href="projects/synthetic-ocr-generator.html" class="project-card">
-                        <div class="project-icon">📝</div>
-                        <h4>Synthetic OCR Image Generator</h4>
-                        <p class="project-desc" data-i18n="card.ocr">Synthetic Benchmark for OCR</p>
-                    </a>
                     <a href="projects/tiny-graph-rag.html" class="project-card">
                         <div class="project-icon">🔗</div>
                         <h4>tiny-graph-RAG</h4>
                         <p class="project-desc" data-i18n="card.graphrag">Knowledge Graph Retrieval System</p>
-                    </a>
-                    <a href="projects/medical-image-classification.html" class="project-card">
-                        <div class="project-icon">🩻</div>
-                        <h4>Medical Image Classification</h4>
-                        <p class="project-desc" data-i18n="card.medimg">with MedViT-V2</p>
                     </a>
                     <a href="projects/drama-analysis-pipeline.html" class="project-card">
                         <div class="project-icon">🎬</div>
                         <h4>Drama Analysis Pipeline</h4>
                         <p class="project-desc" data-i18n="card.drama">with Multi-Agents</p>
                     </a>
-                    <a href="projects/deepfake-defense.html" class="project-card">
-                        <div class="project-icon">🛡️</div>
-                        <h4>Deepfake Defense Model Serving Backend</h4>
-                        <p class="project-desc" data-i18n="card.dfdefense">Cloud Serving for Defense Models</p>
-                    </a>
                     <a href="projects/korean-medical-llm.html" class="project-card">
                         <div class="project-icon">🏥</div>
                         <h4>Korean Medical LLM</h4>
                         <p class="project-desc" data-i18n="card.medllm">Specialized LLM for Korean Healthcare</p>
+                    </a>
+                </div>
+            </div>
+
+            <div class="tab-content" id="generative-ai">
+                <div class="projects-grid">
+                    <a href="projects/tiny-stable-diffusion.html" class="project-card">
+                        <div class="project-icon">🖼️</div>
+                        <h4>tiny-stable-diffusion</h4>
+                        <p class="project-desc" data-i18n="card.sd">From-Scratch SD3-Style Pipeline</p>
                     </a>
                     <a href="projects/tiny-ddpm.html" class="project-card">
                         <div class="project-icon">🎨</div>
@@ -207,6 +214,26 @@
                         <div class="project-icon">🗣️</div>
                         <h4>Bilingual Translation LLM</h4>
                         <p class="project-desc" data-i18n="card.bilingual">Jeju Dialect to Standard Korean</p>
+                    </a>
+                </div>
+            </div>
+
+            <div class="tab-content" id="vision-applied">
+                <div class="projects-grid">
+                    <a href="projects/synthetic-ocr-generator.html" class="project-card">
+                        <div class="project-icon">📝</div>
+                        <h4>Synthetic OCR Image Generator</h4>
+                        <p class="project-desc" data-i18n="card.ocr">Synthetic Benchmark for OCR</p>
+                    </a>
+                    <a href="projects/medical-image-classification.html" class="project-card">
+                        <div class="project-icon">🩻</div>
+                        <h4>Medical Image Classification</h4>
+                        <p class="project-desc" data-i18n="card.medimg">with MedViT-V2</p>
+                    </a>
+                    <a href="projects/deepfake-defense.html" class="project-card">
+                        <div class="project-icon">🛡️</div>
+                        <h4>Deepfake Defense Model Serving Backend</h4>
+                        <p class="project-desc" data-i18n="card.dfdefense">Cloud Serving for Defense Models</p>
                     </a>
                 </div>
             </div>
@@ -227,31 +254,6 @@
                         <div class="project-icon">✏️</div>
                         <h4>StudyWithMe</h4>
                         <p class="project-desc" data-i18n="card.studywithme">Student Management for Academies</p>
-                    </a>
-                </div>
-            </div>
-
-            <div class="tab-content" id="startup-interns">
-                <div class="projects-grid">
-                    <a href="projects/cj-ai-center-intern.html" class="project-card">
-                        <div class="project-icon">🏢</div>
-                        <h4>CJ AI Center Intern</h4>
-                        <p class="project-desc" data-i18n="card.cj">Multi-Agent Pipeline for Drama Analysis</p>
-                    </a>
-                    <a href="projects/troja.html" class="project-card">
-                        <div class="project-icon">🐴</div>
-                        <h4>Troja</h4>
-                        <p class="project-desc" data-i18n="card.troja">Deepfake Prevention Startup</p>
-                    </a>
-                    <a href="projects/embedded-ai-lab-intern.html" class="project-card">
-                        <div class="project-icon">🔬</div>
-                        <h4>Embedded AI Lab Intern</h4>
-                        <p class="project-desc" data-i18n="card.embedded">UNIST</p>
-                    </a>
-                    <a href="projects/rubisco.html" class="project-card">
-                        <div class="project-icon">💎</div>
-                        <h4>Rubisco</h4>
-                        <p class="project-desc" data-i18n="card.rubisco">Flutter Products and Hardware Prototypes</p>
                     </a>
                 </div>
             </div>
