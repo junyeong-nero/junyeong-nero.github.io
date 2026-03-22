@@ -393,8 +393,14 @@ a {
 
 .exp-header {
     display: flex;
+    justify-content: space-between;
     align-items: flex-start;
+    gap: 16px;
     margin-bottom: 6px;
+}
+
+.exp-header h3 {
+    flex: 1;
 }
 
 .experience-card p {
@@ -402,8 +408,7 @@ a {
 }
 
 .exp-role {
-    align-self: flex-end;
-    margin-top: auto;
+    margin-left: auto;
 }
 
 .tabs {
