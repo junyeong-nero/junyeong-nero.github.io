@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LLM Mafia | Junyeong Song</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="projects.css">
+</head>
+
+<body>
+    <a href="../index.html" class="back-btn" data-i18n="nav.back">← Back to Portfolio</a>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+        <span class="sun-icon">☀️</span>
+        <span class="moon-icon">🌙</span>
+    </button>
+    <button class="lang-toggle" id="langToggle" aria-label="Toggle language">한</button>
+
+    <main class="container project-detail">
+        <div class="project-header">
+            <span class="project-icon-large">🕵️</span>
+            <div class="project-meta">
+                <h1>LLM Mafia</h1>
+                <span class="project-date">2026.02 - 2026.03</span>
+            </div>
+        </div>
+
+        <section class="project-section">
+            <h2 data-i18n="proj.simple.overview">📋 Overview</h2>
+            <p data-i18n="llmmafia.overview">A multi-agent social deduction simulator where different LLMs play Mafia under distinct roles. The SpeechQueue-based debate flow lets agents request turns, interrupt, and react more like a real discussion than a simple turn-based loop.</p>
+        </section>
+
+        <section class="project-section">
+            <h2 data-i18n="proj.tech">🛠️ Technologies</h2>
+            <div class="tech-tags">
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">Streamlit</span>
+                <span class="tech-tag">OpenRouter</span>
+                <span class="tech-tag">Multi-Agent Simulation</span>
+                <span class="tech-tag">uv</span>
+            </div>
+        </section>
+
+        <section class="project-section">
+            <h2 data-i18n="proj.simple.features">⚡ Features</h2>
+            <ul class="feature-list">
+                <li data-i18n="llmmafia.feat1"><strong>Multi-Agent Simulation</strong> - Multiple models interact as mafia, police, doctor, and citizens.</li>
+                <li data-i18n="llmmafia.feat2"><strong>SpeechQueue Debate Engine</strong> - A queued speaking system creates more realistic debates and follow-up reactions.</li>
+                <li data-i18n="llmmafia.feat3"><strong>Flexible Configuration</strong> - Tune role counts, player counts, model assignments, and random seeds for reproducible experiments.</li>
+                <li data-i18n="llmmafia.feat4"><strong>Interactive Dashboard</strong> - Streamlit UI for observing game progress, logs, and metrics in real time.</li>
+            </ul>
+        </section>
+
+        <section class="project-section">
+            <h2 data-i18n="proj.links">🔗 Links</h2>
+            <div class="project-links">
+                <a href="https://github.com/junyeong-nero/llm-mafia" target="_blank" rel="noopener" class="project-link">
+                    💻 GitHub Repository
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <script src="../theme.js"></script>
+    <script src="../lang.js"></script>
+</body>
+
+</html>

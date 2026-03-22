@@ -338,7 +338,14 @@
             'gomoku.feat1': 'MCP 서버 - Claude Desktop 호환 프로토콜 구현',
             'gomoku.feat2': '게임 로직 - 오목 규칙 및 승패 판정',
             'gomoku.feat3': '시각화 - 텍스트 기반 보드 렌더링',
-            'gomoku.feat4': 'AI 대전 - LLM과 함께 게임 플레이'
+            'gomoku.feat4': 'AI 대전 - LLM과 함께 게임 플레이',
+
+            // LLM Mafia
+            'llmmafia.overview': '여러 LLM이 서로 다른 역할을 맡아 마피아 게임을 플레이하는 멀티 에이전트 시뮬레이터입니다. SpeechQueue 기반 토론 구조를 통해 단순 턴제 응답이 아니라 실제 회의처럼 발언 요청과 반박이 오가는 상호작용을 관찰할 수 있습니다.',
+            'llmmafia.feat1': '멀티 에이전트 시뮬레이션 - 여러 모델이 시민, 마피아, 경찰, 의사 역할로 상호작용합니다.',
+            'llmmafia.feat2': 'SpeechQueue 토론 엔진 - 발언 요청 큐를 통해 더 자연스러운 토론 흐름과 반응형 대화를 만듭니다.',
+            'llmmafia.feat3': '유연한 설정 - 역할 수, 플레이어 수, 모델 조합, random seed를 조정해 실험을 재현할 수 있습니다.',
+            'llmmafia.feat4': '시각화 대시보드 - Streamlit UI에서 게임 진행, 로그, 메트릭을 실시간으로 확인할 수 있습니다.'
         }
     };
 
@@ -664,7 +671,14 @@
         'gomoku.feat1': 'MCP Server - Claude Desktop compatible protocol implementation',
         'gomoku.feat2': 'Game Logic - Gomoku rules and win/lose determination',
         'gomoku.feat3': 'Visualization - Text-based board rendering',
-        'gomoku.feat4': 'AI Battle - Play games with LLM'
+        'gomoku.feat4': 'AI Battle - Play games with LLM',
+
+        // LLM Mafia
+        'llmmafia.overview': 'A multi-agent social deduction simulator where different LLMs play Mafia under distinct roles. The SpeechQueue-based debate flow lets agents request turns, interrupt, and react more like a real discussion than a simple turn-based loop.',
+        'llmmafia.feat1': 'Multi-Agent Simulation - Multiple models interact as mafia, police, doctor, and citizens.',
+        'llmmafia.feat2': 'SpeechQueue Debate Engine - A queued speaking system creates more realistic debates and follow-up reactions.',
+        'llmmafia.feat3': 'Flexible Configuration - Tune role counts, player counts, model assignments, and random seeds for reproducible experiments.',
+        'llmmafia.feat4': 'Interactive Dashboard - Streamlit UI for observing game progress, logs, and metrics in real time.'
     };
 
     function getLang() {
