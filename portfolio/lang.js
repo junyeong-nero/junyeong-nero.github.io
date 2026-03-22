@@ -45,6 +45,8 @@
 
             // Footer & Navigation
             'footer.rights': '© 2026 송준영. All rights reserved.',
+            'hero.intro': '리서치 감각으로 실용적인 AI 시스템을 만드는 컴퓨터공학 학생입니다.',
+            'hero.caption': 'UNIST · 컴퓨터공학과',
             'hero.vision': '안녕하세요, 송준영이에요.<br><br>저는 AI/ML 분야에 깊은 관심이 있어요. 특히 OCR, Synthetic Dataset 구축, Agentic Pipeline 설계, 그리고 Image Generation 모델에 큰 흥미를 느끼고 있어요.<br><br>기술을 단순히 구현하는 데에서 그치기보다는, 그 기술이 실제로 어떤 가치를 만들어낼 수 있는지 고민하는 과정을 중요하게 생각해요. 하나를 배우면 자연스럽게 "이 다음에는 무엇이 있을까?", "이걸 어떻게 현실적인 문제 해결로 연결할 수 있을까?"라는 질문을 하게 되고, 그런 궁금증이 저를 계속 탐구하게 만드는 원동력이 돼요.<br><br>저를 가장 크게 동기부여하는 요소는 재미와 호기심이에요. 배우는 과정 자체에서 즐거움을 느끼고, 그 즐거움이 더 깊이 탐구하고 확장하게 만드는 힘이라고 생각해요.',
             'nav.back': '← 포트폴리오로 돌아가기',
             'doc.title': '송준영 | 포트폴리오',
@@ -369,6 +371,8 @@
         'award.teaching': 'Teaching',
         'award.teaching.desc': 'TA in AI Intro and Programming 1',
         'footer.rights': '\u00a9 2026 Junyeong Song. All rights reserved.',
+        'hero.intro': 'Computer Science student building practical AI systems with a research mindset.',
+        'hero.caption': 'UNIST · Computer Science and Engineering',
         'hero.vision': 'Hi, I\'m Junyeong Song.<br><br>I\'m deeply interested in AI/ML, especially in areas such as OCR, synthetic dataset creation, agentic pipelines, and image generation models.<br><br>Beyond implementing models, I care about how technology can create real, practical value. Whenever I learn something new, I naturally start asking, "What\'s beyond this?" or "How can this be turned into something impactful?" That curiosity consistently drives me to explore further.<br><br>What motivates me most is fun and curiosity. I genuinely enjoy the learning process itself, and that sense of excitement pushes me to think deeper and build more meaningful systems.',
         'nav.back': '\u2190 Back to Portfolio',
         'doc.title': 'Junyeong Song | Portfolio',
