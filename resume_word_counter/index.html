@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자소서 글자수 카운터</title>
+    <meta name="description" content="자소서 첨삭을 위한 실시간 글자수 카운터와 문장 분석 도구">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="page-shell">
+        <section class="hero">
+            <div class="hero-copy">
+                <p class="eyebrow">Resume Word Counter</p>
+                <h1>자소서 글자수 세기와<br>기본 첨삭 포인트를 한 화면에서</h1>
+                <p class="hero-text">
+                    공백 포함, 공백 제외, 바이트 수를 동시에 확인하고 반복 표현과 문장 길이까지 빠르게 점검할 수 있습니다.
+                </p>
+            </div>
+        </section>
+
+        <section class="workspace">
+            <div class="editor-panel panel">
+                <div class="panel-header">
+                    <div>
+                        <p class="panel-kicker">Input</p>
+                        <h2>문항 작성</h2>
+                    </div>
+                    <div class="limit-group">
+                        <label for="maxChars">최대 글자수</label>
+                        <div class="limit-input-wrap">
+                            <input id="maxChars" type="number" min="0" step="100" value="1000" inputmode="numeric">
+                            <span>자</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="preset-group" aria-label="글자수 프리셋">
+                    <button type="button" class="preset-btn" data-limit="500">500자</button>
+                    <button type="button" class="preset-btn" data-limit="700">700자</button>
+                    <button type="button" class="preset-btn active" data-limit="1000">1000자</button>
+                    <button type="button" class="preset-btn" data-limit="1500">1500자</button>
+                    <button type="button" class="preset-btn" data-limit="2000">2000자</button>
+                </div>
+
+                <label class="editor-label" for="essayInput">본문</label>
+                <textarea
+                    id="essayInput"
+                    class="essay-input"
+                    placeholder="지원동기, 협업 경험, 문제 해결 경험 등을 입력해보세요."
+                ></textarea>
+
+                <div class="editor-actions">
+                    <button type="button" id="normalizeBtn" class="secondary-btn">공백 정리</button>
+                    <button type="button" id="clearBtn" class="ghost-btn">전체 초기화</button>
+                </div>
+            </div>
+
+            <aside class="stats-panel panel">
+                <div class="panel-header compact">
+                    <div>
+                        <p class="panel-kicker">Live Stats</p>
+                        <h2>실시간 분석</h2>
+                    </div>
+                    <span id="saveStatus" class="save-status">자동 저장 대기</span>
+                </div>
+
+                <div class="progress-card" id="progressCard">
+                    <div class="progress-meta">
+                        <span>제한 대비 사용량</span>
+                        <strong id="progressLabel">0%</strong>
+                    </div>
+                    <div class="progress-track" aria-hidden="true">
+                        <div id="progressBar" class="progress-bar"></div>
+                    </div>
+                    <p id="limitFeedback" class="limit-feedback">아직 입력된 글이 없습니다.</p>
+                </div>
+
+                <div class="stats-grid">
+                    <article class="stat-card">
+                        <span class="stat-label">공백 포함</span>
+                        <strong id="countWithSpaces" class="stat-value">0</strong>
+                    </article>
+                    <article class="stat-card">
+                        <span class="stat-label">공백 제외</span>
+                        <strong id="countWithoutSpaces" class="stat-value">0</strong>
+                    </article>
+                    <article class="stat-card">
+                        <span class="stat-label">바이트</span>
+                        <strong id="byteCount" class="stat-value">0</strong>
+                    </article>
+                    <article class="stat-card">
+                        <span class="stat-label">문장 수</span>
+                        <strong id="sentenceCount" class="stat-value">0</strong>
+                    </article>
+                    <article class="stat-card">
+                        <span class="stat-label">평균 문장 길이</span>
+                        <strong id="avgSentenceLength" class="stat-value">0</strong>
+                    </article>
+                    <article class="stat-card">
+                        <span class="stat-label">단락 수</span>
+                        <strong id="paragraphCount" class="stat-value">0</strong>
+                    </article>
+                </div>
+
+                <div class="insight-grid">
+                    <section class="insight-card">
+                        <div class="insight-header">
+                            <h3>반복 단어</h3>
+                            <span class="insight-note">상위 5개</span>
+                        </div>
+                        <div id="repeatedWords" class="token-list empty">반복 단어가 여기에 표시됩니다.</div>
+                    </section>
+
+                    <section class="insight-card">
+                        <div class="insight-header">
+                            <h3>빠른 점검</h3>
+                            <span class="insight-note">문장 기반 피드백</span>
+                        </div>
+                        <ul id="quickChecks" class="check-list">
+                            <li>입력 후 분석 결과가 여기에 표시됩니다.</li>
+                        </ul>
+                    </section>
+                </div>
+            </aside>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
