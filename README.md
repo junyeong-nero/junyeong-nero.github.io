@@ -10,11 +10,12 @@
 | `/delivery` | 배달 앱 (Flutter Web) | [바로가기](https://junyeong-nero.github.io/delivery) |
 | `/pomodoro` | 뽀모도로 타이머 (Flutter Web) | [바로가기](https://junyeong-nero.github.io/pomodoro) |
 | `/vocabs` | 토익 단어 학습 도구 | [바로가기](https://junyeong-nero.github.io/vocabs) |
+| `/resume_word_counter` | 자소서 글자수 카운터 | [바로가기](https://junyeong-nero.github.io/resume_word_counter) |
 
 ## 🛠️ 기술 스택
 
 - **Flutter Web** - delivery, pomodoro 앱
-- **HTML/CSS/JavaScript** - portfolio, vocabs
+- **HTML/CSS/JavaScript** - portfolio, vocabs, resume_word_counter
 - **Python** - 단어 크롤링 및 데이터 변환 스크립트
 
 ## 📝 라이선스
