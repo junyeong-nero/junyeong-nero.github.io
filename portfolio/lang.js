@@ -30,6 +30,8 @@
             'pub.kormedmcqa.desc': '한국 의료 전문 자격시험을 위한 다지선다형 질의응답 벤치마크',
 
             // Experiences
+            'exp.group.internships': '인턴십',
+            'exp.group.startups': '스타트업',
             'exp.role.cj': 'AI/ML 인턴',
             'exp.role.embedded': '연구 인턴',
             'exp.role.troja': '풀스택 개발자',
@@ -393,6 +395,8 @@
         'tag.diffusion': 'Diffusion Models',
         'tag.hci': 'Human-Computer Interaction',
         'pub.kormedmcqa.desc': 'Multi-Choice Question Answering Benchmark for Korean Healthcare Professional Licensing Examinations',
+        'exp.group.internships': 'Internships',
+        'exp.group.startups': 'Startups',
         'exp.role.cj': 'AI/ML Intern',
         'exp.role.embedded': 'Research Intern',
         'exp.role.troja': 'Full-Stack Developer',
