@@ -35,11 +35,9 @@
             'exp.role.cj': 'AI/ML 인턴',
             'exp.role.embedded': '연구 인턴',
             'exp.role.troja': '풀스택 개발자',
-            'exp.role.rubisco': 'Flutter 개발자',
             'exp.cj.desc': 'LangChain 기반 멀티에이전트 파이프라인으로 한국 드라마 대본 분석 시스템을 개발했습니다.',
             'exp.embedded.desc': '확산 모델의 추론 단계를 더 효율적으로 만드는 최적화 기법을 연구했습니다.',
             'exp.troja.desc': '초기 스타트업에서 딥페이크 방어 백엔드와 MVP 웹페이지 구축을 담당했습니다.',
-            'exp.rubisco.desc': '모바일 앱과 하드웨어 프로토타입 전반에서 Flutter 기반 제품 개발을 주도했습니다.',
 
             // Tab buttons
             'tab.llm': 'LLM 시스템',
@@ -57,6 +55,7 @@
             'card.drama': '멀티에이전트 기반',
             'card.dfdefense': '방어 모델용 클라우드 서빙',
             'card.medllm': '한국어 의료 특화 LLM',
+            'card.gomoku': 'MCP 기반 오목 서버 · AI vs AI',
             'card.ddpm': 'DDPM, DDIM, CFG 직접 구현',
             'card.bilingual': '제주 방언↔표준 한국어 번역',
             'card.pomodoro': '웹·모바일 집중 타이머',
@@ -192,24 +191,26 @@
             'sd.result4': '배운 점: 최신 아키텍처 구현, 데이터 전략 설계, 제한된 자원 안에서의 학습 운영 역량을 함께 키울 수 있었습니다.',
 
             // Drama Analysis Pipeline
-            'drama.overview': '드라마 대본의 줄거리, 캐릭터 매력도, 흥행 요소를 정량적으로 분석해 제작 의사결정을 돕는 멀티에이전트 파이프라인을 구축한 프로젝트입니다.',
-            'drama.problem': '문제: 1~4화 분량 대본을 사람이 직접 검토하는 기존 프로세스는 시간·비용이 크고, 검토자 편향으로 인해 평가 일관성이 낮았습니다.',
+            'drama.confidential': '🔒 사내 프로젝트 — 소스 코드 및 세부 산출물은 비공개입니다. 이 페이지의 수치와 구조는 인턴 재직 당시의 개인 기록을 바탕으로 작성되었습니다.',
+            'drama.overview': '드라마 대본의 줄거리·캐릭터 매력도·흥행 요소를 정량적으로 분석해 제작 의사결정을 지원하는 Multi-Agent 파이프라인을 구축한 프로젝트입니다. 4인 팀으로 진행했으며, alpha-beta-gamma 테스트 기간 중 실제 대본 검토 업무에 투입됐습니다.',
+            'drama.problem': '문제: 1~4화 분량 대본을 인력이 직접 검토하는 기존 프로세스는 시간·비용이 크고, 검토자 편향으로 평가 일관성이 낮았습니다. 물리적 한계로 가치 있는 작품이 누락될 위험도 있었습니다.',
             'drama.goal1': '목표 1: Multi-Agent 시스템으로 대본 분석을 자동화하고 객관적 평가 지표를 제공합니다.',
-            'drama.goal2': '목표 2: 대본 포맷 다양성(PDF/HWP/DOCX)을 안정적으로 처리하는 전처리 파이프라인을 구축합니다.',
-            'drama.goal3': '목표 3: 분석 품질(F1)과 OCR 품질(WER)을 정량 개선해 실무 의사결정 속도를 높입니다.',
-            'drama.feat1': 'Multi-Format Parser: PDF, HWP, DOCX를 정형 텍스트로 변환하는 전처리 모듈을 개발했습니다.',
-            'drama.feat2': 'VLM 도입: Qwen2.5-7B-VL을 적용해 기존 OCR의 한국어 인식 한계와 복잡한 레이아웃 문제를 개선했습니다.',
-            'drama.feat3': 'Scene Analysis Agent: 장면 단위의 강점/약점 분류 에이전트와 CoT 프롬프팅을 결합해 문맥 추론 품질을 높였습니다.',
-            'drama.feat4': 'LangChain 오케스트레이션: Parser, Analyzer, Evaluator 에이전트를 유기적으로 연결한 워크플로우를 설계했습니다.',
-            'drama.feat5': '평가 체계: 한국어 OCR 벤치마크와 분류 지표를 함께 관리해 데이터 신뢰도와 모델 성능을 동시에 검증했습니다.',
-            'drama.chal1': 'OCR 한계: 기존 OCR은 한국어 WER 20% 이상, 다단 레이아웃 정렬 오류가 빈번했습니다.',
-            'drama.chal2': '해결: 시각 구조를 이해하는 VLM 기반 파싱으로 전환해 WER를 20%에서 7%로 낮췄습니다.',
-            'drama.chal3': '문맥 추론 저하: 데이터 부족과 과도한 장르별 프롬프트 세분화로 F1이 0.2 수준에 머물렀습니다.',
-            'drama.chal4': '해결: 한국어 이해도가 높은 Reasoning Model 벤치마킹과 프롬프트 단순화로 F1을 0.5까지 개선했습니다.',
-            'drama.result1': '성과: 복잡한 레이아웃 문서에서도 안정적으로 동작하는 대본 파싱 파이프라인을 구축했습니다.',
-            'drama.result2': '성과: 핵심 지표를 WER 20%→7%, F1 0.2→0.5로 개선해 분석 신뢰도를 높였습니다.',
-            'drama.result3': '성과: 수작업 검토 시간을 크게 줄이고 데이터 기반 콘텐츠 평가 프로세스를 정착시켰습니다.',
-            'drama.result4': '인사이트: 복잡한 에이전트 시스템일수록 지나친 프롬프트 공학보다 데이터 중심 접근과 단순한 설계가 더 효과적이라는 점을 확인했습니다.',
+            'drama.goal2': '목표 2: PDF/HWP/DOCX 등 다양한 포맷을 높은 한국어 정확도로 안정적으로 파싱합니다.',
+            'drama.goal3': '목표 3: OCR 품질(WER)과 씬 분류 성능(F1)을 실무 적용 가능한 수준으로 정량 개선합니다.',
+            'drama.feat1': 'Multi-Format Document Parser: PDF·HWP·DOCX를 정형 텍스트로 변환하는 전처리 모듈을 개발하고, 한국어 OCR 벤치마크 데이터셋으로 성능을 검증했습니다.',
+            'drama.feat2': 'VLM 도입 (Qwen2.5-7B-VL): 기존 OCR의 한국어 인식 한계와 다단 레이아웃 정렬 오류를 극복하기 위해 시각 구조를 이해하는 VLM을 적용했습니다.',
+            'drama.feat3': 'Scene Analysis Agent: 씬 단위 강점/약점 분류 에이전트에 CoT 프롬프팅을 결합해 한국어 구어체의 미묘한 뉘앙스까지 추론하도록 설계했습니다.',
+            'drama.feat4': 'AWS On-Demand GPU 배포: boto3로 필요한 시점에만 GPU EC2를 생성하고, 사전 초기화된 EBS volume mount·AMI·startup script를 조합해 cold start를 최소화하면서 유휴 GPU 비용을 제거했습니다.',
+            'drama.feat5': 'LangChain 오케스트레이션: Parser·Analyzer·Evaluator 에이전트를 상태 기반 워크플로우와 조건부 병렬 실행으로 연결했습니다.',
+            'drama.chal1': 'OCR 한계 — WER 20% 이상: PaddleOCR 등 기존 OCR은 한국어 인식률이 낮고, 다단 레이아웃에서 텍스트 순서가 뒤섞이는 정렬 오류가 빈번했습니다.',
+            'drama.chal2': '해결: 문서 시각 구조를 이해하는 Qwen2.5-7B-VL로 전환해 WER를 20%에서 7%로 대폭 낮췄습니다.',
+            'drama.chal3': '씬 분류 성능 — F1 0.2: 데이터 부족과 장르별 과도한 프롬프트 세분화로 모델이 표면 패턴에 과적합돼 F1이 0.2에 머물렀습니다.',
+            'drama.chal4': '해결: 한국어 추론 능력이 높은 모델(Deepseek-R1, c4ai-command-a 등)을 벤치마킹하고 프롬프트를 단순화해 모델 자체 추론에 맡김으로써 F1을 0.5로 개선했습니다.',
+            'drama.chal5': 'AWS Cold Start & 비용: S3에서 매번 weight를 받는 구조는 cold start가 20~30분에 달했습니다. 사전 초기화된 EBS volume, AMI 스냅샷, uv 기반 환경 구성으로 기동 시간을 단축하고 리전별 GPU 가용성을 고려한 capacity-aware 리전 선택을 적용했습니다.',
+            'drama.result1': 'OCR 정확도: VLM 기반 파싱으로 WER 20% → 7% 달성, 하위 에이전트에 신뢰도 높은 입력 데이터를 확보했습니다.',
+            'drama.result2': '분류 성능: 모델 선정 및 프롬프트 단순화로 씬 단위 F1 스코어 0.2 → 0.5로 2.5배 향상됐습니다.',
+            'drama.result3': '실제 운영: alpha-beta-gamma 테스트 기간 실제 검토 업무에 투입. On-Demand GPU 구조로 주기성 워크로드에 맞는 비용 효율적 운영 구조를 확보했습니다.',
+            'drama.result4': '인사이트: 데이터 품질·단순한 프롬프트 설계·EBS mount 안정성·리전 GPU capacity 같은 인프라 세부 요소가 모델 성능만큼이나 실제 운영 가능성을 결정합니다.',
 
             // tiny-chatbot-agents
             'chatbot.overview': '금융 서비스 FAQ와 이용약관(ToS)을 바탕으로 정확한 답변을 제공하는 금융 도메인 특화 RAG 에이전트를 개발했습니다. FAQ 우선 검색과 약관 정밀 검색을 결합한 2단계 파이프라인으로 속도와 정확도를 함께 확보했습니다.',
@@ -271,23 +272,23 @@
             'medimg.result4': '배운 점: 의료 영상 분석, 데이터 불균형 대응, 모델 해석성 측면의 실전 경험을 쌓았습니다.',
 
             // Synthetic OCR Image Generator
-            'ocr.overview': '비영어·비중국어권 언어를 위한 OCR 벤치마크를 합성하고 평가하는 end-to-end 파이프라인입니다. 실데이터 수집 없이도 저자원 언어 OCR 성능을 정량적으로 검증할 수 있는 체계를 구축했습니다.',
-            'ocr.problem': '문제: 기존 OCR 벤치마크는 영어/중국어에 편중돼 있고, 저자원 언어는 실데이터를 수집·정제·라벨링하는 비용이 매우 큽니다.',
-            'ocr.goal1': '목표 1: 폰트와 템플릿만 교체해도 다양한 언어 OCR 벤치마크를 즉시 생성할 수 있는 파이프라인을 구현합니다.',
-            'ocr.goal2': '목표 2: 생성 데이터 기반 자동 평가 시스템으로 모델 성능을 객관적으로 측정합니다.',
-            'ocr.goal3': '목표 3: 적대적 시나리오까지 포함해 기존 벤치마크보다 변별력 높은 테스트 환경을 만듭니다.',
-            'ocr.feat1': '이중 렌더링 엔진: Pillow(고속)와 Headless Chromium(고정밀 웹 렌더링)을 함께 지원하고, Markdown 컴포넌트(Text/Formula/Table)를 결합해 문서 이미지를 생성했습니다.',
-            'ocr.feat2': '코퍼스 확장: Faker와 LLM을 결합해 기업명, 인명, 상품명처럼 도메인성이 있는 텍스트를 동적으로 생성했습니다.',
-            'ocr.feat3': '적대적 노이즈 주입: 시각적으로 유사한 문자 쌍을 의도적으로 섞어 OCR 모델의 변별력을 검증했습니다.',
-            'ocr.feat4': '자동화 벤치마크: OmniDocBench 방식의 영역별 지표(Text/Table/Formula)와 `config.yaml + uv` 기반 재현 가능한 실험 환경을 구축했습니다.',
-            'ocr.chal1': '연산량 폭증: 한글 1만 자 기준 전체 SSIM 계산은 O(N^2)라 약 1e8 연산이 필요해 비현실적이었습니다.',
-            'ocr.chal2': '2단계 필터링: 8x8 임베딩 dot product로 후보를 줄이고, 32x32 SSIM 정밀 비교를 수행해 연산량을 크게 줄였습니다.',
-            'ocr.chal3': '다양성 병목: 하드코딩 템플릿 중심 생성은 데이터 중복과 패턴 편향을 만들었습니다.',
-            'ocr.chal4': '해결: 규칙 기반 + LLM 하이브리드 텍스트 생성과 재귀적 수식 조합 로직으로 데이터 분포 다양성을 넓혔습니다.',
-            'ocr.result1': '성과: 합성 데이터만으로 저자원 언어 OCR 성능을 빠르게 평가할 수 있는 확장 가능한 벤치마크 시스템을 구축했습니다.',
-            'ocr.result2': '성과: 유사 문자 기반 노이즈 주입으로 edge case 중심의 고변별 평가 시나리오를 확보했습니다.',
-            'ocr.result3': '성과: 언어 설정만 바꾸면 다국어로 확장할 수 있는 유연한 구조를 완성했습니다.',
-            'ocr.result4': '배운 점: sim-to-real gap과 문서 레이아웃 다양성이 핵심 과제라는 점을 확인했고, 이후 물리 노이즈와 레이아웃 고도화 방향도 정리했습니다.',
+            'ocr.overview': '마크다운 중심 합성 OCR 데이터셋 생성 및 벤치마킹 툴킷입니다. LLM 기반 코퍼스 생성 → Headless Playwright 렌더링 → HuggingFace 퍼블리시 → 재현 가능한 OCR/VLM 모델 평가 → 리더보드까지 전 과정을 커버합니다. 한국어와 일본어를 지원합니다.',
+            'ocr.problem': '문제: 한국어·일본어 OCR 고품질 라벨 데이터는 수집 비용이 높고, 텍스트·표·수식 영역을 동시에 공정하게 비교하는 재현 가능한 벤치마크가 존재하지 않습니다.',
+            'ocr.goal1': '목표 1: LLM 생성 코퍼스와 브라우저 렌더링을 활용해 한국어·일본어 OCR 합성 파이프라인을 구축합니다.',
+            'ocr.goal2': '목표 2: 체크포인트 재개, 모델 config YAML, 구조화된 리포트를 갖춘 재현 가능한 평가 프레임워크를 만듭니다.',
+            'ocr.goal3': '목표 3: 오픈 데이터셋을 HuggingFace Hub에 퍼블리시하고 리더보드를 지속적으로 운영합니다.',
+            'ocr.feat1': 'LLM 기반 코퍼스 생성: OpenAI API로 현실감 있는 한국어·일본어 텍스트 코퍼스를 생성하고, 생성·퍼블리시 워크플로우 전반에 재사용합니다.',
+            'ocr.feat2': 'Headless Playwright 렌더러: Chromium이 마크다운 페이지를 렌더링하며 노이즈·블러·문자 유사도 기반 오타 치환을 설정값으로 조절합니다.',
+            'ocr.feat3': '평가 파이프라인: YAML 모델 config, 배치 API, 체크포인트 재개를 지원하며 JSON/Markdown/HTML 리포트와 언어별 리더보드 파일을 출력합니다.',
+            'ocr.feat4': 'HuggingFace 퍼블리싱: 샤드 단위 업로드에 샤드별 메타데이터, realism_stats.json, run_manifest.json을 포함해 완전한 재현성을 보장합니다.',
+            'ocr.chal1': '수식 렌더링: 마크다운에 LaTeX 수식이 포함되어 XeLaTeX + latex-to-image 통합 및 장시간 실행을 위한 수식 렌더 캐싱이 필요했습니다.',
+            'ocr.chal2': '오타 현실감: 문자 유사도 데이터베이스를 구축해 실제 스캔 노이즈에 가까운 오타 치환을 구현했습니다.',
+            'ocr.chal3': '대규모 재개 처리: run_manifest.json 기반 샤드 출력으로 중간에 중단된 생성 작업을 중복 없이 이어받을 수 있도록 했습니다.',
+            'ocr.chal4': '평가 일관성: 체크포인트 기반 채점으로 중복 집계를 방지하고, 프로토콜 스냅샷으로 데이터셋 버전을 고정해 결과 비교 일관성을 유지했습니다.',
+            'ocr.result1': '한국어 리더보드: 1위 LightOnOCR-2-1B가 텍스트·표·수식 통합 avg_markdown_overall_score 0.9737 달성 (100/100 성공률).',
+            'ocr.result2': '일본어 리더보드: 1위 모델 0.9777, Nanonets-OCR2-3B 0.9605, DotsOCR 0.9288로 모델 간 성능 차이를 정량 비교했습니다.',
+            'ocr.result3': '파이프라인 안정성: 생성·퍼블리시·평가 전 과정이 무중단으로 실행되어 반복적인 벤치마크 업데이트가 가능합니다.',
+            'ocr.result4': '배운 점: 합성 데이터 품질, 다국어 OCR 특성, 재현 가능한 ML 벤치마크 설계에 대한 깊은 이해를 쌓았습니다.',
 
             // Application Projects
             // Pomodoro
@@ -327,15 +328,7 @@
             'embedded.contrib4': '타임스텝 샘플링 최적화 방향도 살펴봤지만 뚜렷한 성능 향상은 없었고, 대신 첫 이미지 생성 모델 프로젝트 경험을 확보',
 
             // Troja
-            'troja.overview': 'Troja 스타트업에서 풀스택 개발자로 일하며 차량 예약·관리용 Django 기반 웹 플랫폼을 개발했습니다.',
-            'troja.contrib1': '딥페이크 모델 서빙 백엔드 구축 및 NAVER Cloud 배포',
-            'troja.contrib2': 'MVP 웹페이지 제작',
-
-            // Rubisco
-            'rubisco.overview': 'Rubisco에서 Flutter 기반 프론트엔드와 백엔드 개발을 맡아, 감정 기록 앱(나;다움), 반려견 산책 메이트 매칭 앱(파블로프), 아두이노와 삼킴 센서를 활용한 노인 식사 모니터링 기기까지 다양한 프로젝트를 개발했습니다.',
-            'rubisco.contrib1': '나;다움 - 감정 기록 앱 개발',
-            'rubisco.contrib2': '파블로프 - 반려견 산책 메이트 매칭 앱 개발',
-            'rubisco.contrib3': '해커톤 - 노인 식사 모니터링을 위한 아두이노·삼킴 센서 기반 기기 개발',
+            'troja.overview': '딥페이크 방어 기술을 개발하는 초기 스타트업 Troja에서 NAVER Cloud Platform 위에 딥페이크 생성 모델과 방어 모델을 함께 서빙하는 백엔드 서버를 구축했습니다. inswapper 기반 생성과 LEAT·DIPA 방어 기법을 하나의 프로덕션 환경에서 테스트할 수 있게 했습니다.',
 
             // Legacy Projects
             // Diffusion Model (Legacy)
@@ -352,19 +345,12 @@
             'minigraphrag.feat3': 'Neo4j 연동 - 그래프 데이터베이스 기본 활용',
             'minigraphrag.feat4': '프로토타입 UI - 간단한 쿼리 인터페이스',
 
-            // AI Interview
-            'aiinterview.overview': 'LLM을 활용한 AI 모의면접 서비스입니다. 사용자는 면접을 연습하고, 답변에 대한 피드백을 바로 받을 수 있습니다.',
-            'aiinterview.feat1': 'AI 면접관 - LLM 기반 면접 질문 생성',
-            'aiinterview.feat2': '실시간 피드백 - 답변에 대한 즉각적인 평가',
-            'aiinterview.feat3': '다양한 분야 - 기술, 행동, 직무별 면접 지원',
-            'aiinterview.feat4': '개선 제안 - 답변 개선을 위한 구체적인 피드백 제공',
-
             // Gomoku MCP
-            'gomoku.overview': 'Model Context Protocol(MCP)을 사용해 LLM과 오목을 둘 수 있는 서버입니다. Claude Desktop과 연동해 AI와 직접 대전할 수 있습니다.',
-            'gomoku.feat1': 'MCP 서버 - Claude Desktop과 호환되는 프로토콜 구현',
-            'gomoku.feat2': '게임 로직 - 오목 규칙 및 승패 판정',
-            'gomoku.feat3': '시각화 - 텍스트 기반 보드 렌더링',
-            'gomoku.feat4': 'AI 대전 - LLM과 함께 게임 플레이',
+            'gomoku.overview': 'Model Context Protocol(MCP)을 통해 LLM이 오목을 둘 수 있는 게임 서버입니다. 위협 분석 엔진과 우선순위 기반 착수 추천을 MCP 툴로 노출해, 어떤 LLM이든 보드를 추론하고 전략적 수를 둘 수 있으며, AI vs AI 모드로 두 모델의 대결을 관전할 수 있습니다.',
+            'gomoku.feat1': '위협 분석 엔진 - Open-4, Closed-4, Open-3, 갭 패턴을 감지하고 우선순위(1~10)를 매겨 LLM의 착수 결정을 지원합니다',
+            'gomoku.feat2': 'MCP 툴 스위트 - set_stone, analyze_threats, get_suggested_moves 등 게임 전체 제어를 MCP 툴로 제공합니다',
+            'gomoku.feat3': 'AI vs AI 모드 - OpenRouter를 통해 Gemini, Grok, Kimi 등 서로 다른 LLM끼리 대결을 관전할 수 있습니다',
+            'gomoku.feat4': 'CLI & 웹 GUI - 커맨드라인 인터페이스와 브라우저 기반 GUI를 모두 지원합니다',
 
             // LLM Mafia
             'llmmafia.overview': '여러 LLM이 서로 다른 역할을 맡아 마피아 게임을 플레이하는 멀티에이전트 시뮬레이터입니다. SpeechQueue 기반 토론 구조 덕분에 단순 턴제 응답이 아니라 실제 토론처럼 발언 요청과 반응이 오가는 상호작용을 관찰할 수 있습니다.',
@@ -400,11 +386,9 @@
         'exp.role.cj': 'AI/ML Intern',
         'exp.role.embedded': 'Research Intern',
         'exp.role.troja': 'Full-Stack Developer',
-        'exp.role.rubisco': 'Flutter Developer',
         'exp.cj.desc': 'Developed a Korean Drama script analysis pipeline using a Multi-Agentic pipeline (LangChain).',
         'exp.embedded.desc': 'Conducted research on optimization methods in the inference step of diffusion models.',
         'exp.troja.desc': 'Built a deepfake defense backend and MVP web page at an early-stage startup.',
-        'exp.rubisco.desc': 'Led Flutter-based product development across mobile apps and hardware prototypes.',
         'tab.llm': 'LLM Systems',
         'tab.generative': 'Generative AI',
         'tab.vision': 'Vision & Applied ML',
@@ -418,6 +402,7 @@
         'card.drama': 'with Multi-Agents',
         'card.dfdefense': 'Cloud Serving for Defense Models',
         'card.medllm': 'Specialized LLM for Korean Healthcare',
+        'card.gomoku': 'MCP-Based Gomoku Game Server with AI vs AI',
         'card.ddpm': 'DDPM, DDIM, and CFG from Scratch',
         'card.bilingual': 'Jeju Dialect to Standard Korean',
         'card.pomodoro': 'Focus Timer for Web and Mobile',
@@ -549,24 +534,26 @@
         'sd.result4': 'Learning: Strengthened architecture engineering, data strategy design, and resource-aware training operations.',
 
         // Drama Analysis Pipeline
-        'drama.overview': 'Built a multi-agent pipeline that quantitatively analyzes drama scripts for storyline quality, character appeal, and commercial potential to support production decisions.',
-        'drama.problem': 'Problem: Manual review of episodes 1-4 is expensive, slow, and subjective, creating review bottlenecks and bias.',
+        'drama.confidential': '🔒 Internal project — source code and detailed outputs are confidential. Metrics and architecture described here are based on personal notes from the internship period.',
+        'drama.overview': 'Built a multi-agent pipeline that quantitatively analyzes drama scripts for storyline quality, character appeal, and commercial potential to support production decisions. 4-person team, deployed for actual script review during the alpha-beta-gamma test period at CJ AI Center.',
+        'drama.problem': 'Problem: Manual review of 1–4 episodes per script was expensive and slow, with reviewer bias creating inconsistent evaluations and bottlenecks that risked overlooking valuable scripts.',
         'drama.goal1': 'Goal 1: Automate script analysis with objective metrics through a multi-agent system.',
-        'drama.goal2': 'Goal 2: Robustly parse diverse script formats including PDF, HWP, and DOCX.',
-        'drama.goal3': 'Goal 3: Improve both OCR quality (WER) and scene-classification quality (F1) for practical adoption.',
-        'drama.feat1': 'Multi-format Parser: Implemented preprocessing modules that convert PDF/HWP/DOCX scripts into structured text.',
-        'drama.feat2': 'VLM Upgrade: Adopted Qwen2.5-7B-VL to handle Korean OCR and complex multi-column layouts more reliably.',
-        'drama.feat3': 'Scene Analysis Agent: Built scene-level strength/weakness classification with CoT prompting for contextual reasoning.',
-        'drama.feat4': 'System Orchestration: Connected parser/analyzer/evaluator agents with LangChain workflow control.',
-        'drama.feat5': 'Evaluation Framework: Combined OCR and classification benchmarks to track data reliability and model performance.',
-        'drama.chal1': 'OCR Limitation: Traditional OCR showed high Korean WER (>20%) and ordering errors on multi-column scripts.',
-        'drama.chal2': 'OCR Fix: Switched to VLM-based parsing and reduced WER from 20% to 7%.',
-        'drama.chal3': 'Low Reasoning F1: Sparse data and over-segmented genre prompts led to F1 around 0.2.',
-        'drama.chal4': 'Reasoning Fix: Benchmarked Korean-strong reasoning models and simplified prompts, improving F1 to 0.5.',
-        'drama.result1': 'Result: Delivered a robust script parsing pipeline for highly unstructured production documents.',
-        'drama.result2': 'Result: Improved key metrics significantly (WER 20%->7%, F1 0.2->0.5).',
-        'drama.result3': 'Result: Reduced manual review load and enabled more data-driven content evaluation workflow.',
-        'drama.result4': 'Learning: Confirmed that data-centric evaluation and simpler prompting outperform over-constrained prompt design.',
+        'drama.goal2': 'Goal 2: Robustly parse diverse script formats (PDF, HWP, DOCX) with high Korean text accuracy.',
+        'drama.goal3': 'Goal 3: Improve OCR quality (WER) and scene-classification quality (F1) to a level viable for real production use.',
+        'drama.feat1': 'Multi-Format Document Parser: Preprocessing modules to convert PDF, HWP, DOCX scripts into structured text, with a Korean OCR benchmark dataset for validation.',
+        'drama.feat2': 'VLM Integration (Qwen2.5-7B-VL): Replaced traditional OCR with a Vision Language Model to handle complex multi-column layouts and Korean text, eliminating ordering errors.',
+        'drama.feat3': 'Scene Analysis Agent: Scene-level strength/weakness classifier with CoT prompting, enabling the LLM to reason about contextual nuance and subtext.',
+        'drama.feat4': 'AWS On-Demand GPU Deployment: Designed a boto3-driven on-demand EC2 provisioning flow — pre-initialized EBS volume mounts, AMI-based startup, and region-aware GPU capacity selection — eliminating idle GPU costs for this periodic-use workload.',
+        'drama.feat5': 'LangChain Orchestration: Connected Parser, Analyzer, and Evaluator agents via LangChain with state-based workflow and conditional parallel execution.',
+        'drama.chal1': 'Korean OCR — WER >20%: Traditional OCR (PaddleOCR) showed high error rates and column-ordering failures on multi-column script layouts.',
+        'drama.chal2': 'Solution: Switched to Qwen2.5-7B-VL for document-structure-aware parsing. WER dropped from 20% to 7%.',
+        'drama.chal3': 'Scene Classification — F1 0.2: Sparse training data and over-segmented genre-specific prompts caused the model to overfit to surface patterns rather than understand narrative nuance.',
+        'drama.chal4': 'Solution: Benchmarked Korean-strength reasoning models (Deepseek-R1, c4ai-command-a) and simplified prompts to let the model reason freely. F1 improved from 0.2 to 0.5.',
+        'drama.chal5': 'AWS Cold Start & Cost: Naive S3-download setup caused 20–30 min cold starts. Resolved with pre-initialized EBS volumes, AMI snapshots, and uv-based environment setup, plus capacity-aware region selection for A100 GPU availability.',
+        'drama.result1': 'OCR Accuracy: WER reduced from 20% → 7% via VLM-based parsing, securing reliable input data for downstream agents.',
+        'drama.result2': 'Classification Quality: Scene-level F1 score improved from 0.2 → 0.5 (2.5×) through model selection and prompt simplification.',
+        'drama.result3': 'Production Deployment: Pipeline used in actual script review during the alpha-beta-gamma test period. On-demand GPU structure eliminated idle costs for this periodic workload.',
+        'drama.result4': 'Key Learnings: Data quality and simple prompting outperform over-engineered constraints. Infrastructure details (EBS mount stability, AMI readiness, regional GPU capacity) matter as much as model performance for real deployments.',
 
         // tiny-chatbot-agents
         'chatbot.overview': 'Built a finance-domain RAG agent on top of FAQ and ToS data, using a dual-stage retrieval design to balance response speed and legal-text accuracy.',
@@ -628,23 +615,23 @@
         'medimg.result4': 'Key Learning: Gained expertise in medical image analysis, data imbalance handling, and model interpretability.',
 
         // Synthetic OCR Image Generator
-        'ocr.overview': 'Built an end-to-end synthetic OCR benchmark pipeline for non-English/non-Chinese languages, enabling quantitative evaluation without expensive real-data labeling.',
-        'ocr.problem': 'Problem: Existing OCR benchmarks are language-biased and validating low-resource languages with real data is costly and slow.',
-        'ocr.goal1': 'Goal 1: Generate OCR benchmark datasets instantly by swapping fonts, templates, and language settings.',
-        'ocr.goal2': 'Goal 2: Build an automated metric pipeline to evaluate recognition quality objectively.',
-        'ocr.goal3': 'Goal 3: Include adversarial edge-case scenarios for stronger model discrimination testing.',
-        'ocr.feat1': 'Dual Rendering Engines: Combined Pillow for fast generation and headless Chromium for high-fidelity web-rendered markdown documents.',
-        'ocr.feat2': 'Corpus Expansion: Used Faker + LLM generated text for broader domain coverage of names, entities, and product-like strings.',
-        'ocr.feat3': 'Adversarial Similar-Character Injection: Built visual-confusion tests with SSIM-based similar-character pairs.',
-        'ocr.feat4': 'Automated Benchmarking: Added region-specific metrics (text/table/formula) with reproducible config.yaml + uv environments.',
-        'ocr.chal1': 'Compute Explosion: Full SSIM pairwise comparisons over ~10k Korean characters caused O(N^2) scale issues.',
-        'ocr.chal2': 'Optimization: Designed 2-stage filtering (8x8 coarse embedding + 32x32 fine SSIM) to reduce runtime drastically.',
-        'ocr.chal3': 'Diversity Bottleneck: Hardcoded templates produced repetitive patterns and duplicate samples.',
-        'ocr.chal4': 'Fix: Introduced hybrid text generation and recursive formula composition for richer distributional diversity.',
-        'ocr.result1': 'Result: Delivered a scalable benchmark system for low-resource language OCR using synthetic data only.',
-        'ocr.result2': 'Result: Secured high-discriminative edge-case tests via adversarial noise injection.',
-        'ocr.result3': 'Result: Enabled multilingual expansion through configuration changes rather than pipeline rewrites.',
-        'ocr.result4': 'Learning: Identified sim-to-real and layout-diversity gaps as key next research directions.',
+        'ocr.overview': 'A markdown-first synthetic OCR dataset generator and benchmarking toolkit covering the full pipeline: LLM-backed corpus generation → headless Playwright rendering with realistic noise → HuggingFace publishing → reproducible OCR/VLM model evaluation → ranked leaderboard. Supports Korean and Japanese.',
+        'ocr.problem': 'Problem: High-quality labeled OCR data for Korean and Japanese is scarce and expensive to collect, and no reproducible benchmark exists to compare models fairly across text, table, and formula categories.',
+        'ocr.goal1': 'Goal 1: Build a realistic synthetic OCR pipeline for Korean and Japanese using LLM-generated corpus and browser-rendered markdown.',
+        'ocr.goal2': 'Goal 2: Create a reproducible evaluation framework with checkpoint resume, model config YAMLs, and structured reports.',
+        'ocr.goal3': 'Goal 3: Publish open datasets to HuggingFace Hub and maintain a living leaderboard.',
+        'ocr.feat1': 'LLM-Backed Corpus Generation: OpenAI API generates realistic Korean/Japanese text corpus, reused across generation and publish workflows.',
+        'ocr.feat2': 'Headless Playwright Renderer: Chromium renders markdown pages with configurable noise, blur, and character-similarity-based typo substitutions for realistic documents.',
+        'ocr.feat3': 'Evaluation Pipeline: YAML model configs, batch API support, checkpoint-based resume — outputs JSON/Markdown/HTML reports and leaderboard files per language.',
+        'ocr.feat4': 'HuggingFace Publishing: Sharded dataset upload with per-shard metadata, realism_stats.json, and run_manifest.json for full reproducibility.',
+        'ocr.chal1': 'Formula Rendering: Markdown pages include LaTeX formulas, requiring XeLaTeX + latex-to-image integration and bounded formula-render caching for long runs.',
+        'ocr.chal2': 'Typo Realism: Built a character similarity database to generate plausible substitution errors, making synthetic text more representative of real scan noise.',
+        'ocr.chal3': 'Scale & Resumability: Sharded output with run_manifest.json allows generation to resume mid-run without duplicating completed shards.',
+        'ocr.chal4': 'Evaluation Consistency: Checkpoint-based scoring prevents double-counting; protocol snapshots pin dataset versions so results remain comparable across runs.',
+        'ocr.result1': 'Korean OCR Leaderboard: Top model (LightOnOCR-2-1B) achieved 0.9737 avg_markdown_overall_score across text, table, and formula categories (100/100 success rate).',
+        'ocr.result2': 'Japanese OCR Leaderboard: Top model achieved 0.9777, with Nanonets-OCR2-3B scoring 0.9605 and DotsOCR 0.9288.',
+        'ocr.result3': 'Pipeline Reliability: End-to-end generation, publish, and evaluation flow runs without manual intervention, enabling repeatable benchmark updates.',
+        'ocr.result4': 'Key Learning: Gained deep expertise in synthetic data quality, multi-language OCR challenges, and building reproducible ML benchmarks.',
 
         // Application Projects
         // Pomodoro
@@ -684,15 +671,7 @@
         'embedded.contrib4': 'Investigated timestep sampling optimization studies; no significant gains were observed, but it became a valuable first image-generation model project experience',
 
         // Troja
-        'troja.overview': 'Worked as a full-stack developer at Troja startup. Developed Django-based web platform for vehicle reservation and management.',
-        'troja.contrib1': 'Deepfake model serving (backend, NAVER Cloud)',
-        'troja.contrib2': 'Built the MVP web page',
-
-        // Rubisco
-        'rubisco.overview': 'Led Flutter-based frontend and backend development across mobile and hardware projects, including an emotion journaling app (Na;Daum), a pet-walking mate matching app (Pavlov), and an Arduino meal-monitoring device with a swallowing sensor for elderly users.',
-        'rubisco.contrib1': 'Na;Daum - Developed an emotion journaling app',
-        'rubisco.contrib2': 'Pavlov - Built a pet-walking mate matching app',
-        'rubisco.contrib3': 'Hackathon - Built a device using Arduino and a swallowing sensor to monitor elderly meal intake',
+        'troja.overview': 'At Troja, an early-stage deepfake prevention startup, built a backend server on NAVER Cloud Platform to serve deepfake generation and defense models. Enabled in-house testing of both face-swapping (inswapper) and adversarial defenses (LEAT, DIPA) in a single production environment.',
 
         // Legacy Projects
         // Diffusion Model (Legacy)
@@ -709,19 +688,12 @@
         'minigraphrag.feat3': 'Neo4j Integration - Basic graph database utilization',
         'minigraphrag.feat4': 'Prototype UI - Simple query interface',
 
-        // AI Interview
-        'aiinterview.overview': 'AI interview simulation service using LLM. Users can practice interviews and receive feedback.',
-        'aiinterview.feat1': 'AI Interviewer - LLM-based interview question generation',
-        'aiinterview.feat2': 'Real-time Feedback - Immediate evaluation of answers',
-        'aiinterview.feat3': 'Multiple Domains - Technical, behavioral, and role-specific interviews',
-        'aiinterview.feat4': 'Improvement Suggestions - Specific feedback for answer improvement',
-
         // Gomoku MCP
-        'gomoku.overview': 'A server that allows playing Gomoku with LLM using Model Context Protocol (MCP). Works with Claude Desktop for AI battles.',
-        'gomoku.feat1': 'MCP Server - Claude Desktop compatible protocol implementation',
-        'gomoku.feat2': 'Game Logic - Gomoku rules and win/lose determination',
-        'gomoku.feat3': 'Visualization - Text-based board rendering',
-        'gomoku.feat4': 'AI Battle - Play games with LLM',
+        'gomoku.overview': 'A Gomoku (Five-in-a-Row) game server that lets LLMs play via the Model Context Protocol. Exposes a tactical threat analysis engine and priority-ranked move suggestions as MCP tools, so any LLM can reason about the board and make strategic moves — including an AI vs AI mode to watch two models compete head-to-head.',
+        'gomoku.feat1': 'Threat Analysis Engine - Pattern detector that scores Open-4, Closed-4, Open-3, and gap patterns with priority levels 1–10, guiding the LLM\'s move decisions',
+        'gomoku.feat2': 'MCP Tool Suite - set_stone, analyze_threats, get_suggested_moves and more — full game control exposed as MCP tools',
+        'gomoku.feat3': 'AI vs AI Mode - Watch two different LLMs (Gemini, Grok, Kimi, etc.) compete against each other via OpenRouter',
+        'gomoku.feat4': 'CLI & Web GUI - Both a command-line interface and a browser-based GUI for observing games in real time',
 
         // LLM Mafia
         'llmmafia.overview': 'A multi-agent social deduction simulator where different LLMs play Mafia under distinct roles. The SpeechQueue-based debate flow lets agents request turns, interrupt, and react more like a real discussion than a simple turn-based loop.',

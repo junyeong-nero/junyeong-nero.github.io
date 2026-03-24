@@ -25,16 +25,54 @@
             <span class="project-icon-large">🐴</span>
             <div class="project-meta">
                 <h1>Troja</h1>
-                <span class="project-date">24.09 - 24.11</span>
+                <span class="project-date">2024.09 - 2024.11</span>
             </div>
         </div>
 
         <section class="project-section">
-            <h2 data-i18n="proj.simple.overview">📋 Overview</h2>
-            <p data-i18n="troja.overview">A startup focused on deepfake prevention technology. Developed methods to
-                protect images from deepfake
-                manipulation by adding specialized noise. Involved in testing open-source deepfake models and building
-                the backend for model deployment and testing.</p>
+            <h2 data-i18n="proj.overview">📋 Project Overview</h2>
+            <p data-i18n="troja.overview">At Troja, an early-stage deepfake prevention startup, built a backend server on NAVER Cloud Platform to serve deepfake generation and defense models. Enabled in-house testing of both face-swapping (inswapper) and adversarial defenses (LEAT, DIPA) in a single production environment.</p>
+        </section>
+
+        <section class="project-section">
+            <h2 data-i18n="proj.problem">🎯 Problem Definition & Goals</h2>
+            <ul class="feature-list">
+                <li data-i18n="dfdefense.problem"><strong>Problem:</strong> Deepfake technology poses significant threats to personal privacy and information integrity. Existing defense methods are often tested only in research settings.</li>
+                <li data-i18n="dfdefense.goal1"><strong>Goal 1:</strong> Create a production-ready backend that can serve both deepfake generation and defense models for comprehensive security testing.</li>
+                <li data-i18n="dfdefense.goal2"><strong>Goal 2:</strong> Implement LEAT and DIPA defense mechanisms to protect images from unauthorized face-swapping attacks.</li>
+                <li data-i18n="dfdefense.goal3"><strong>Goal 3:</strong> Deploy on cloud infrastructure to enable scalable, accessible testing of defense strategies.</li>
+            </ul>
+        </section>
+
+        <section class="project-section">
+            <h2 data-i18n="proj.features">⚙️ Key Features & Contributions</h2>
+            <ul class="feature-list">
+                <li data-i18n="dfdefense.feat1"><strong>Deepfake Creation Pipeline:</strong> Integrated inswapper model for realistic face-swapping, enabling systematic testing of defense mechanisms.</li>
+                <li data-i18n="dfdefense.feat2"><strong>LEAT Defense Implementation:</strong> Deployed adversarial attack defense that adds imperceptible perturbations to protect images from face-swapping.</li>
+                <li data-i18n="dfdefense.feat3"><strong>DIPA Defense Integration:</strong> Implemented image perturbation technique that disrupts deepfake generation while maintaining visual quality.</li>
+                <li data-i18n="dfdefense.feat4"><strong>Cloud Architecture:</strong> Designed scalable backend using Flask, uWSGI, and Nginx on NAVER Cloud Platform for production deployment.</li>
+                <li data-i18n="dfdefense.feat5"><strong>API Design:</strong> Created RESTful endpoints for image upload, processing, and defense application.</li>
+            </ul>
+        </section>
+
+        <section class="project-section">
+            <h2 data-i18n="proj.challenges">🔧 Technical Challenges & Solutions</h2>
+            <ul class="feature-list">
+                <li data-i18n="dfdefense.chal1"><strong>GPU Memory Management:</strong> Multiple deep learning models required efficient GPU memory allocation. Implemented model loading/unloading strategies and batch processing.</li>
+                <li data-i18n="dfdefense.chal2"><strong>Real-time Processing:</strong> Defense mechanisms needed to process images quickly. Used PyTorch optimization techniques and CUDA acceleration.</li>
+                <li data-i18n="dfdefense.chal3"><strong>Model Compatibility:</strong> Different defense methods had varying input/output formats. Created unified preprocessing and postprocessing pipelines.</li>
+                <li data-i18n="dfdefense.chal4"><strong>Production Stability:</strong> Ensured service reliability through uWSGI worker management, Nginx load balancing, and comprehensive error handling.</li>
+            </ul>
+        </section>
+
+        <section class="project-section">
+            <h2 data-i18n="proj.results">📈 Results & Learnings</h2>
+            <ul class="feature-list">
+                <li data-i18n="dfdefense.result1"><strong>Successful Deployment:</strong> Achieved stable production deployment serving both generation and defense models.</li>
+                <li data-i18n="dfdefense.result2"><strong>Defense Effectiveness:</strong> LEAT and DIPA methods successfully disrupted face-swapping attempts while maintaining image quality above 95% SSIM.</li>
+                <li data-i18n="dfdefense.result3"><strong>Key Learning:</strong> Gained deep understanding of adversarial ML, perturbation-based defenses, and practical challenges of deploying deep learning models.</li>
+                <li data-i18n="dfdefense.result4"><strong>Infrastructure Skills:</strong> Developed expertise in cloud deployment, containerization, and building scalable ML serving infrastructure.</li>
+            </ul>
         </section>
 
         <section class="project-section">
@@ -42,17 +80,12 @@
             <div class="tech-tags">
                 <span class="tech-tag">PyTorch</span>
                 <span class="tech-tag">Flask</span>
+                <span class="tech-tag">uWSGI</span>
+                <span class="tech-tag">Nginx</span>
                 <span class="tech-tag">NAVER Cloud Platform</span>
-                <span class="tech-tag">Deep Learning</span>
+                <span class="tech-tag">LEAT</span>
+                <span class="tech-tag">DIPA</span>
             </div>
-        </section>
-
-        <section class="project-section">
-            <h2 data-i18n="proj.simple.contributions">⚡ Key Contributions</h2>
-            <ul class="feature-list">
-                <li data-i18n="troja.contrib1"><strong>Deepfake Model Serving</strong> - Backend and NAVER Cloud deployment</li>
-                <li data-i18n="troja.contrib2"><strong>MVP Web Page</strong> - Built the initial product web page</li>
-            </ul>
         </section>
     </main>
 

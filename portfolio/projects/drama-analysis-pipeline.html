@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 
 <head>
     <meta charset="UTF-8">
@@ -29,67 +29,52 @@
             </div>
         </div>
 
+        <p class="confidential-notice" data-i18n="drama.confidential">🔒 Internal project — source code and detailed outputs are confidential. Metrics and architecture described here are based on personal notes from the internship period.</p>
+
         <section class="project-section">
             <h2 data-i18n="proj.overview">📋 Project Overview</h2>
-            <p data-i18n="drama.overview">Developed during internship at CJ AI Center, this project creates a
-                sophisticated Multi-Agentic pipeline for analyzing Korean drama scripts using LangChain.</p>
+            <p data-i18n="drama.overview">Built a multi-agent pipeline that quantitatively analyzes drama scripts for storyline quality, character appeal, and commercial potential to support production decisions. 4-person team, deployed for actual script review during the alpha-beta-gamma test period at CJ AI Center.</p>
         </section>
 
         <section class="project-section">
             <h2 data-i18n="proj.problem">🎯 Problem Definition & Goals</h2>
             <ul class="feature-list">
-                <li data-i18n="drama.problem"><strong>Problem:</strong> Analyzing drama scripts manually is
-                    time-consuming and subjective.</li>
-                <li data-i18n="drama.goal1"><strong>Goal 1:</strong> Build an automated pipeline for extracting
-                    structured information from scripts.</li>
-                <li data-i18n="drama.goal2"><strong>Goal 2:</strong> Implement multi-agent architecture for specialized
-                    analysis.</li>
-                <li data-i18n="drama.goal3"><strong>Goal 3:</strong> Create a scalable system for batch script
-                    processing.</li>
+                <li data-i18n="drama.problem"><strong>Problem:</strong> Manual review of 1–4 episodes per script was expensive and slow, with reviewer bias creating inconsistent evaluations and bottlenecks that risked overlooking valuable scripts.</li>
+                <li data-i18n="drama.goal1"><strong>Goal 1:</strong> Automate script analysis with objective metrics through a multi-agent system.</li>
+                <li data-i18n="drama.goal2"><strong>Goal 2:</strong> Robustly parse diverse script formats (PDF, HWP, DOCX) with high Korean text accuracy.</li>
+                <li data-i18n="drama.goal3"><strong>Goal 3:</strong> Improve OCR quality (WER) and scene-classification quality (F1) to a level viable for real production use.</li>
             </ul>
         </section>
 
         <section class="project-section">
             <h2 data-i18n="proj.features">⚙️ Key Features & Contributions</h2>
             <ul class="feature-list">
-                <li data-i18n="drama.feat1"><strong>Multi-Agent Architecture:</strong> Designed specialized agents for
-                    character, plot, and emotion analysis.</li>
-                <li data-i18n="drama.feat2"><strong>LangChain Integration:</strong> Built robust agent orchestration
-                    with custom tools.</li>
-                <li data-i18n="drama.feat3"><strong>Korean NLP Processing:</strong> Implemented Korean-specific text
-                    processing.</li>
-                <li data-i18n="drama.feat4"><strong>Structured Output:</strong> Generated JSON-formatted analysis
-                    results.</li>
-                <li data-i18n="drama.feat5"><strong>Batch Processing:</strong> Designed pipeline for processing multiple
-                    scripts.</li>
+                <li data-i18n="drama.feat1"><strong>Multi-Format Document Parser:</strong> Preprocessing modules to convert PDF, HWP, DOCX scripts into structured text, with a Korean OCR benchmark dataset for validation.</li>
+                <li data-i18n="drama.feat2"><strong>VLM Integration (Qwen2.5-7B-VL):</strong> Replaced traditional OCR with a Vision Language Model to handle complex multi-column layouts and Korean text, eliminating ordering errors.</li>
+                <li data-i18n="drama.feat3"><strong>Scene Analysis Agent:</strong> Scene-level strength/weakness classifier with CoT prompting, enabling the LLM to reason about contextual nuance and subtext.</li>
+                <li data-i18n="drama.feat4"><strong>AWS On-Demand GPU Deployment:</strong> Designed a boto3-driven on-demand EC2 provisioning flow — pre-initialized EBS volume mounts, AMI-based startup, and region-aware GPU capacity selection — eliminating idle GPU costs for this periodic-use workload.</li>
+                <li data-i18n="drama.feat5"><strong>LangChain Orchestration:</strong> Connected Parser, Analyzer, and Evaluator agents via LangChain with state-based workflow and conditional parallel execution.</li>
             </ul>
         </section>
 
         <section class="project-section">
             <h2 data-i18n="proj.challenges">🔧 Technical Challenges & Solutions</h2>
             <ul class="feature-list">
-                <li data-i18n="drama.chal1"><strong>Script Format Variability:</strong> Developed robust parsers for
-                    various formats.</li>
-                <li data-i18n="drama.chal2"><strong>Agent Coordination:</strong> Implemented shared memory and message
-                    passing.</li>
-                <li data-i18n="drama.chal3"><strong>Context Length Limits:</strong> Created sliding window approach with
-                    intelligent chunking.</li>
-                <li data-i18n="drama.chal4"><strong>Consistency in Analysis:</strong> Implemented entity resolution and
-                    character tracking.</li>
+                <li data-i18n="drama.chal1"><strong>Korean OCR — WER &gt;20%:</strong> Traditional OCR (PaddleOCR) showed high error rates and column-ordering failures on multi-column script layouts.</li>
+                <li data-i18n="drama.chal2"><strong>Solution:</strong> Switched to Qwen2.5-7B-VL for document-structure-aware parsing. <strong>WER dropped from 20% to 7%.</strong></li>
+                <li data-i18n="drama.chal3"><strong>Scene Classification — F1 0.2:</strong> Sparse training data and over-segmented genre-specific prompts caused the model to overfit to surface patterns rather than understand narrative nuance.</li>
+                <li data-i18n="drama.chal4"><strong>Solution:</strong> Benchmarked Korean-strength reasoning models (Deepseek-R1, c4ai-command-a) and simplified prompts to let the model reason freely. <strong>F1 improved from 0.2 to 0.5.</strong></li>
+                <li data-i18n="drama.chal5"><strong>AWS Cold Start &amp; Cost:</strong> On-premises deployment failed; naive AWS setup with S3 downloads caused 20–30 min cold starts. Resolved with pre-initialized EBS volumes, AMI snapshots, and uv-based environment setup, cutting startup time significantly while removing idle GPU costs.</li>
             </ul>
         </section>
 
         <section class="project-section">
             <h2 data-i18n="proj.results">📈 Results & Learnings</h2>
             <ul class="feature-list">
-                <li data-i18n="drama.result1"><strong>Automation Achievement:</strong> Reduced script analysis time from
-                    hours to minutes.</li>
-                <li data-i18n="drama.result2"><strong>Analysis Quality:</strong> Produced valuable structured insights.
-                </li>
-                <li data-i18n="drama.result3"><strong>Internship Contribution:</strong> Delivered working prototype
-                    demonstrating LLM applications.</li>
-                <li data-i18n="drama.result4"><strong>Key Learning:</strong> Gained experience in production agentic AI
-                    systems.</li>
+                <li data-i18n="drama.result1"><strong>OCR Accuracy:</strong> WER reduced from <strong>20% → 7%</strong> via VLM-based parsing, securing reliable input data for downstream agents.</li>
+                <li data-i18n="drama.result2"><strong>Classification Quality:</strong> Scene-level F1 score improved from <strong>0.2 → 0.5</strong> through model selection and prompt simplification.</li>
+                <li data-i18n="drama.result3"><strong>Production Deployment:</strong> Pipeline used in actual script review during the alpha-beta-gamma test period. On-demand GPU structure eliminated idle costs for this periodic workload.</li>
+                <li data-i18n="drama.result4"><strong>Key Learnings:</strong> Data quality and simple prompting outperform over-engineered constraints. Infrastructure details (EBS mount stability, AMI readiness, regional GPU capacity) matter as much as model performance for real deployments.</li>
             </ul>
         </section>
 
@@ -97,11 +82,12 @@
             <h2 data-i18n="proj.tech">🛠️ Technologies</h2>
             <div class="tech-tags">
                 <span class="tech-tag">Python</span>
-                <span class="tech-tag">FastAPI</span>
                 <span class="tech-tag">LangChain</span>
-                <span class="tech-tag">Transformers</span>
-                <span class="tech-tag">PyTorch</span>
                 <span class="tech-tag">Qwen2.5-7B-VL</span>
+                <span class="tech-tag">FastAPI</span>
+                <span class="tech-tag">AWS EC2</span>
+                <span class="tech-tag">boto3</span>
+                <span class="tech-tag">PyTorch</span>
             </div>
         </section>
     </main>

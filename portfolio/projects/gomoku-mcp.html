@@ -14,11 +14,11 @@
 
 <body>
     <a href="../index.html" class="back-btn" data-i18n="nav.back">← Back to Portfolio</a>
-    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+    <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
         <span class="sun-icon">☀️</span>
         <span class="moon-icon">🌙</span>
     </button>
-    <button class="lang-toggle" id="langToggle" aria-label="Toggle language">한</button>
+    <button type="button" class="lang-toggle" id="langToggle" aria-label="Toggle language">한</button>
 
     <main class="container project-detail">
         <div class="project-header">
@@ -31,30 +31,27 @@
 
         <section class="project-section">
             <h2 data-i18n="proj.simple.overview">📋 Overview</h2>
-            <p data-i18n="gomoku.overview">Investigation into emerging benchmark methodologies for assessing the agentic
-                capabilities of LLMs in
-                gaming scenarios. Developed a Model Context Protocol (MCP) tool for Gomoku (Five-in-a-Row) to evaluate
-                strategic abilities in AI agents.</p>
+            <p data-i18n="gomoku.overview">A Gomoku (Five-in-a-Row) game server that lets LLMs play via the Model Context Protocol. Exposes a tactical threat analysis engine and priority-ranked move suggestions as MCP tools, so any LLM can reason about the board and make strategic moves — including an AI vs AI mode to watch two models compete head-to-head.</p>
         </section>
 
         <section class="project-section">
             <h2 data-i18n="proj.tech">🛠️ Technologies</h2>
             <div class="tech-tags">
-                <span class="tech-tag">MCP</span>
-                <span class="tech-tag">fastmcp</span>
                 <span class="tech-tag">Python</span>
-                <span class="tech-tag">LLM Benchmarking</span>
+                <span class="tech-tag">FastMCP</span>
+                <span class="tech-tag">OpenRouter</span>
+                <span class="tech-tag">MCP</span>
+                <span class="tech-tag">FastAPI</span>
             </div>
         </section>
 
         <section class="project-section">
             <h2 data-i18n="proj.simple.features">⚡ Features</h2>
             <ul class="feature-list">
-                <li data-i18n="gomoku.feat1"><strong>Model Context Protocol</strong> - Standard interface for LLM tools
-                </li>
-                <li data-i18n="gomoku.feat2"><strong>Strategic Evaluation</strong> - Assesses AI decision-making</li>
-                <li data-i18n="gomoku.feat3"><strong>Gomoku Game</strong> - Five-in-a-Row game implementation</li>
-                <li data-i18n="gomoku.feat4"><strong>Benchmark Tool</strong> - Measures agentic capabilities</li>
+                <li data-i18n="gomoku.feat1"><strong>Threat Analysis Engine</strong> - Pattern detector that scores Open-4, Closed-4, Open-3, and gap patterns with priority levels 1–10, guiding the LLM's move decisions</li>
+                <li data-i18n="gomoku.feat2"><strong>MCP Tool Suite</strong> - <code>set_stone</code>, <code>analyze_threats</code>, <code>get_suggested_moves</code> and more — full game control exposed as MCP tools</li>
+                <li data-i18n="gomoku.feat3"><strong>AI vs AI Mode</strong> - Watch two different LLMs (Gemini, Grok, Kimi, etc.) compete against each other via OpenRouter</li>
+                <li data-i18n="gomoku.feat4"><strong>CLI &amp; Web GUI</strong> - Both a command-line interface and a browser-based GUI for observing games in real time</li>
             </ul>
         </section>
 

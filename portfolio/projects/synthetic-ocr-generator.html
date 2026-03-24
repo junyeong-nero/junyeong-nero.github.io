@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 
 <head>
     <meta charset="UTF-8">
@@ -31,63 +31,46 @@
 
         <section class="project-section">
             <h2 data-i18n="proj.overview">📋 Project Overview</h2>
-            <p data-i18n="ocr.overview">A synthetic data generator that creates natural and diverse images for OCR model
-                training.</p>
+            <p data-i18n="ocr.overview">A markdown-first synthetic OCR dataset generator and benchmarking toolkit covering the full pipeline: LLM-backed corpus generation → headless Playwright rendering with realistic noise → HuggingFace publishing → reproducible OCR/VLM model evaluation → ranked leaderboard. Supports Korean and Japanese.</p>
         </section>
 
         <section class="project-section">
             <h2 data-i18n="proj.problem">🎯 Problem Definition & Goals</h2>
             <ul class="feature-list">
-                <li data-i18n="ocr.problem"><strong>Problem:</strong> OCR training requires large amounts of labeled
-                    text images, but real data collection is expensive.</li>
-                <li data-i18n="ocr.goal1"><strong>Goal 1:</strong> Develop a synthetic text image generator realistic
-                    enough for OCR training.</li>
-                <li data-i18n="ocr.goal2"><strong>Goal 2:</strong> Apply diverse fonts, backgrounds, and noise to
-                    simulate real-world variability.</li>
-                <li data-i18n="ocr.goal3"><strong>Goal 3:</strong> Build an efficient pipeline for generating large
-                    quantities of synthetic images.</li>
+                <li data-i18n="ocr.problem"><strong>Problem:</strong> High-quality labeled OCR data for Korean and Japanese is scarce and expensive to collect, and no reproducible benchmark exists to compare models fairly across text, table, and formula categories.</li>
+                <li data-i18n="ocr.goal1"><strong>Goal 1:</strong> Build a realistic synthetic OCR pipeline for Korean and Japanese using LLM-generated corpus and browser-rendered markdown.</li>
+                <li data-i18n="ocr.goal2"><strong>Goal 2:</strong> Create a reproducible evaluation framework with checkpoint resume, model config YAMLs, and structured reports.</li>
+                <li data-i18n="ocr.goal3"><strong>Goal 3:</strong> Publish open datasets to HuggingFace Hub and maintain a living leaderboard.</li>
             </ul>
         </section>
 
         <section class="project-section">
             <h2 data-i18n="proj.features">⚙️ Key Features & Contributions</h2>
             <ul class="feature-list">
-                <li data-i18n="ocr.feat1"><strong>Font Diversity:</strong> Supports various Korean and English fonts for
-                    diverse document styles.</li>
-                <li data-i18n="ocr.feat2"><strong>Background Diversity:</strong> Applies solid colors, textures, and
-                    gradients.</li>
-                <li data-i18n="ocr.feat3"><strong>Noise Simulation:</strong> Simulates camera noise, blur, and
-                    distortion.</li>
-                <li data-i18n="ocr.feat4"><strong>Auto Labeling:</strong> Automatically generates accurate text labels.
-                </li>
+                <li data-i18n="ocr.feat1"><strong>LLM-Backed Corpus Generation:</strong> OpenAI API generates realistic Korean/Japanese text corpus, reused across generation and publish workflows.</li>
+                <li data-i18n="ocr.feat2"><strong>Headless Playwright Renderer:</strong> Chromium renders markdown pages with configurable noise, blur, and character-similarity-based typo substitutions for realistic documents.</li>
+                <li data-i18n="ocr.feat3"><strong>Evaluation Pipeline:</strong> YAML model configs, batch API support, checkpoint-based resume — outputs JSON/Markdown/HTML reports and leaderboard files per language.</li>
+                <li data-i18n="ocr.feat4"><strong>HuggingFace Publishing:</strong> Sharded dataset upload with per-shard metadata, <code>realism_stats.json</code>, and <code>run_manifest.json</code> for full reproducibility.</li>
             </ul>
         </section>
 
         <section class="project-section">
             <h2 data-i18n="proj.challenges">🔧 Technical Challenges & Solutions</h2>
             <ul class="feature-list">
-                <li data-i18n="ocr.chal1"><strong>Realism:</strong> Synthetic images must be realistic enough. Combined
-                    various noise and distortion effects.</li>
-                <li data-i18n="ocr.chal2"><strong>Font Rendering:</strong> Supporting diverse Korean font styles.
-                    Explored multiple font libraries.</li>
-                <li data-i18n="ocr.chal3"><strong>Data Diversity:</strong> Generated data must cover real-world
-                    variability. Used parameter randomization.</li>
-                <li data-i18n="ocr.chal4"><strong>Generation Efficiency:</strong> Performance optimization for
-                    large-scale generation. Applied batch processing and parallelization.</li>
+                <li data-i18n="ocr.chal1"><strong>Formula Rendering:</strong> Markdown pages include LaTeX formulas, requiring XeLaTeX + <code>latex-to-image</code> integration and bounded formula-render caching for long runs.</li>
+                <li data-i18n="ocr.chal2"><strong>Typo Realism:</strong> Built a character similarity database to generate plausible substitution errors, making synthetic text more representative of real scan noise.</li>
+                <li data-i18n="ocr.chal3"><strong>Scale & Resumability:</strong> Sharded output with <code>run_manifest.json</code> allows generation to resume mid-run without duplicating completed shards.</li>
+                <li data-i18n="ocr.chal4"><strong>Evaluation Consistency:</strong> Checkpoint-based scoring prevents double-counting; protocol snapshots pin dataset versions so results remain comparable across runs.</li>
             </ul>
         </section>
 
         <section class="project-section">
             <h2 data-i18n="proj.results">📈 Results & Learnings</h2>
             <ul class="feature-list">
-                <li data-i18n="ocr.result1"><strong>OCR Improvement:</strong> Models trained with synthetic data
-                    outperformed real-data-only models.</li>
-                <li data-i18n="ocr.result2"><strong>Data Efficiency:</strong> Generated large training data without
-                    labeling costs.</li>
-                <li data-i18n="ocr.result3"><strong>Customization:</strong> Enabled domain-specific data generation
-                    (receipts, documents, etc.).</li>
-                <li data-i18n="ocr.result4"><strong>Key Learning:</strong> Gained expertise in synthetic data generation
-                    and image processing.</li>
+                <li data-i18n="ocr.result1"><strong>Korean OCR Leaderboard:</strong> Top model (LightOnOCR-2-1B) achieved <strong>0.9737</strong> avg_markdown_overall_score across text, table, and formula categories (100/100 success rate).</li>
+                <li data-i18n="ocr.result2"><strong>Japanese OCR Leaderboard:</strong> Top model achieved <strong>0.9777</strong>, with Nanonets-OCR2-3B scoring 0.9605 and DotsOCR 0.9288.</li>
+                <li data-i18n="ocr.result3"><strong>Pipeline Reliability:</strong> End-to-end generation, publish, and evaluation flow runs without manual intervention, enabling repeatable benchmark updates.</li>
+                <li data-i18n="ocr.result4"><strong>Key Learning:</strong> Gained deep expertise in synthetic data quality, multi-language OCR challenges, and building reproducible ML benchmarks.</li>
             </ul>
         </section>
 
@@ -95,11 +78,21 @@
             <h2 data-i18n="proj.tech">🛠️ Technologies</h2>
             <div class="tech-tags">
                 <span class="tech-tag">Python</span>
+                <span class="tech-tag">Playwright</span>
+                <span class="tech-tag">OpenAI API</span>
+                <span class="tech-tag">Hugging Face Hub</span>
                 <span class="tech-tag">Transformers</span>
-                <span class="tech-tag">OpenCV</span>
-                <span class="tech-tag">Pillow</span>
-                <span class="tech-tag">Headless Chromium</span>
-                <span class="tech-tag">Synthetic OCR Benchmark</span>
+                <span class="tech-tag">XeLaTeX</span>
+                <span class="tech-tag">uv</span>
+            </div>
+        </section>
+
+        <section class="project-section">
+            <h2 data-i18n="proj.links">🔗 Links</h2>
+            <div class="project-links">
+                <a href="https://github.com/junyeong-nero/synthetic-ocr-image-generator" target="_blank" rel="noopener" class="project-link">
+                    💻 GitHub Repository
+                </a>
             </div>
         </section>
     </main>
