@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tiny-agent-harness | Junyeong Song</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="projects.css">
+</head>
+
+<body>
+    <a href="../index.html" class="back-btn" data-i18n="nav.back">← Back to Portfolio</a>
+    <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+        <span class="sun-icon">☀️</span>
+        <span class="moon-icon">🌙</span>
+    </button>
+    <button type="button" class="lang-toggle" id="langToggle" aria-label="Toggle language">한</button>
+
+    <main class="container project-detail">
+        <div class="project-header">
+            <span class="project-icon-large">🧭</span>
+            <div class="project-meta">
+                <h1>tiny-agent-harness</h1>
+                <span class="project-date">2026.03</span>
+            </div>
+        </div>
+
+        <section class="project-section">
+            <h2 data-i18n="proj.overview">📋 Project Overview</h2>
+            <p data-i18n="harness.overview">A toy project that reconstructs the supervisor-led multi-agent harness pattern seen in tools like OpenAI Codex CLI and Anthropic Claude Code.</p>
+        </section>
+
+        <section class="project-section">
+            <h2 data-i18n="proj.problem">🎯 Problem Definition & Goals</h2>
+            <ul class="feature-list">
+                <li data-i18n="harness.problem"><strong>Problem:</strong> Agentic coding tools often hide their orchestration details behind opaque frameworks.</li>
+                <li data-i18n="harness.goal1"><strong>Goal 1:</strong> Recreate a compact supervisor-driven harness architecture.</li>
+                <li data-i18n="harness.goal2"><strong>Goal 2:</strong> Keep schemas, permissions, and event flow explicit.</li>
+                <li data-i18n="harness.goal3"><strong>Goal 3:</strong> Support both CLI usage and programmatic embedding.</li>
+            </ul>
+        </section>
+
+        <section class="project-section">
+            <h2 data-i18n="proj.features">⚙️ Key Features & Contributions</h2>
+            <ul class="feature-list">
+                <li data-i18n="harness.feat1"><strong>Supervisor-Led Loop:</strong> The supervisor dynamically chooses which subagent to call next.</li>
+                <li data-i18n="harness.feat2"><strong>Explicit Role Boundaries:</strong> Planner, worker, and reviewer operate with separate responsibilities and tool scopes.</li>
+                <li data-i18n="harness.feat3"><strong>YAML Configuration:</strong> Provider, model routing, tools, and retry limits are configurable.</li>
+                <li data-i18n="harness.feat4"><strong>Channel/Event Architecture:</strong> Runtime events are emitted through listener and output channels.</li>
+                <li data-i18n="harness.feat5"><strong>Installable Package:</strong> A `tiny-agent` CLI entrypoint is exposed for local-workspace runs.</li>
+            </ul>
+        </section>
+
+        <section class="project-section">
+            <h2 data-i18n="proj.results">📈 Results & Learnings</h2>
+            <ul class="feature-list">
+                <li data-i18n="harness.result1"><strong>Inspectable Architecture:</strong> Condensed modern coding-agent patterns into a small readable harness.</li>
+                <li data-i18n="harness.result2"><strong>Flexible Usage:</strong> Supports both interactive terminal runs and embedded library-style use.</li>
+                <li data-i18n="harness.result3"><strong>Regression Coverage:</strong> Core agent and CLI behavior are covered by pytest tests.</li>
+                <li data-i18n="harness.result4"><strong>Key Learning:</strong> Reliability depends as much on orchestration design as on model quality.</li>
+            </ul>
+        </section>
+
+        <section class="project-section">
+            <h2 data-i18n="proj.tech">🛠️ Technologies</h2>
+            <div class="tech-tags">
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">Pydantic</span>
+                <span class="tech-tag">OpenAI API</span>
+                <span class="tech-tag">OpenRouter</span>
+                <span class="tech-tag">PyYAML</span>
+                <span class="tech-tag">pytest</span>
+            </div>
+        </section>
+
+        <section class="project-section">
+            <h2 data-i18n="proj.links">🔗 Links</h2>
+            <div class="project-links">
+                <a href="https://github.com/junyeong-nero/tiny-agent-harness" target="_blank" rel="noopener" class="project-link">
+                    💻 GitHub Repository
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <script src="../theme.js"></script>
+    <script src="../lang.js"></script>
+</body>
+
+</html>

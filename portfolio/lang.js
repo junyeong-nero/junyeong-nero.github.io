@@ -47,6 +47,7 @@
 
             // Project card subtitles
             'card.llmmafia': '멀티에이전트 소셜 디덕션 시뮬레이터',
+            'card.harness': 'Codex·Claude Code 스타일 에이전트 하니스',
             'card.chatbot': '이중 단계 금융 RAG 에이전트',
             'card.sd': '처음부터 구현한 SD3 스타일 파이프라인',
             'card.ocr': 'OCR용 합성 벤치마크',
@@ -352,6 +353,22 @@
             'gomoku.feat3': 'AI vs AI 모드 - OpenRouter를 통해 Gemini, Grok, Kimi 등 서로 다른 LLM끼리 대결을 관전할 수 있습니다',
             'gomoku.feat4': 'CLI & 웹 GUI - 커맨드라인 인터페이스와 브라우저 기반 GUI를 모두 지원합니다',
 
+            // tiny-agent-harness
+            'harness.overview': 'OpenAI Codex CLI와 Anthropic Claude Code에서 보이는 supervisor 중심 멀티에이전트 하니스 구조를 작은 크기로 재구성한 토이 프로젝트입니다. 계획, 실행, 리뷰, 툴 호출, 이벤트 채널을 모두 명시적으로 드러내어 읽고 실험하기 쉬운 형태로 만들었습니다.',
+            'harness.problem': '문제: 에이전트형 코딩 도구는 내부 오케스트레이션이 프레임워크 뒤에 숨어 있는 경우가 많아, 실제로 어떤 루프와 경계가 동작하는지 이해하고 수정하기 어렵습니다.',
+            'harness.goal1': '목표 1: supervisor가 planner, worker, reviewer를 상황에 따라 반복 호출하는 하니스 구조를 작은 코드베이스로 재현합니다.',
+            'harness.goal2': '목표 2: 역할별 출력 스키마, 툴 권한, 이벤트 흐름을 분리해 각 레이어를 눈으로 추적 가능하게 만듭니다.',
+            'harness.goal3': '목표 3: CLI 실행과 라이브러리 임베딩 둘 다 가능한 형태로 구성해 실험과 확장을 쉽게 만듭니다.',
+            'harness.feat1': 'Supervisor-led 루프: 고정된 planner→worker→reviewer 체인이 아니라, supervisor가 다음 서브에이전트를 동적으로 선택하고 같은 역할을 여러 번 재호출할 수 있습니다.',
+            'harness.feat2': '명시적 역할 분리: planner는 읽기 중심 분석, worker는 수정/실행, reviewer는 검증에 집중하도록 입력·출력 스키마와 권한을 분리했습니다.',
+            'harness.feat3': 'YAML 기반 설정: provider, 역할별 모델, 툴 목록, retry 제한을 설정 파일로 바꿀 수 있어 구조 실험이 쉽습니다.',
+            'harness.feat4': '채널/이벤트 아키텍처: `run_started`, `tool_call_finished`, `run_result` 같은 이벤트를 listener/output 채널로 흘려 CLI 출력과 외부 관찰 로직을 분리했습니다.',
+            'harness.feat5': '배포 가능한 패키지: `tiny-agent` CLI 엔트리포인트를 제공하고, GitHub에서 바로 설치해 로컬 워크스페이스 대상 에이전트 실행이 가능합니다.',
+            'harness.result1': '성과: 실제 코딩 에이전트 제품군의 핵심 구조를 작은 코드베이스로 축약해, 아키텍처를 읽고 실험하기 좋은 학습용 하니스를 만들었습니다.',
+            'harness.result2': '성과: 대화형 CLI와 프로그램적 사용 방식을 모두 지원해 데모와 임베딩 실험을 같은 코드로 처리할 수 있습니다.',
+            'harness.result3': '성과: supervisor, planner, worker, reviewer, CLI에 대한 pytest 테스트를 갖춰 핵심 루프의 회귀를 점검할 수 있습니다.',
+            'harness.result4': '배운 점: 에이전트 신뢰성은 모델 자체보다도 구조화된 출력, 권한 경계, 이벤트 가시성 같은 오케스트레이션 설계에 크게 좌우된다는 점을 확인했습니다.',
+
             // LLM Mafia
             'llmmafia.overview': '여러 LLM이 서로 다른 역할을 맡아 마피아 게임을 플레이하는 멀티에이전트 시뮬레이터입니다. SpeechQueue 기반 토론 구조 덕분에 단순 턴제 응답이 아니라 실제 토론처럼 발언 요청과 반응이 오가는 상호작용을 관찰할 수 있습니다.',
             'llmmafia.feat1': '멀티 에이전트 시뮬레이션 - 여러 모델이 시민, 마피아, 경찰, 의사 역할로 상호작용합니다.',
@@ -394,6 +411,7 @@
         'tab.vision': 'Vision & Applied ML',
         'tab.applications': 'Applications',
         'card.llmmafia': 'Multi-Agent Social Deduction Simulator',
+        'card.harness': 'Codex/Claude-Style Agent Harness',
         'card.chatbot': 'Dual-Stage Finance RAG Agent',
         'card.sd': 'From-Scratch SD3-Style Pipeline',
         'card.ocr': 'Synthetic Benchmark for OCR',
@@ -694,6 +712,22 @@
         'gomoku.feat2': 'MCP Tool Suite - set_stone, analyze_threats, get_suggested_moves and more — full game control exposed as MCP tools',
         'gomoku.feat3': 'AI vs AI Mode - Watch two different LLMs (Gemini, Grok, Kimi, etc.) compete against each other via OpenRouter',
         'gomoku.feat4': 'CLI & Web GUI - Both a command-line interface and a browser-based GUI for observing games in real time',
+
+        // tiny-agent-harness
+        'harness.overview': 'A toy project that reconstructs the supervisor-led multi-agent harness pattern seen in tools like OpenAI Codex CLI and Anthropic Claude Code. It keeps planning, execution, review, tool calls, and event channels explicit so the whole architecture stays readable and easy to experiment with.',
+        'harness.problem': 'Problem: Many agentic coding tools hide orchestration details behind frameworks, which makes it hard to inspect or modify the actual control loop and tool boundaries.',
+        'harness.goal1': 'Goal 1: Recreate a supervisor that can repeatedly delegate to planner, worker, and reviewer agents in a compact codebase.',
+        'harness.goal2': 'Goal 2: Keep role-specific schemas, tool permissions, and event flow explicit so each layer is easy to trace.',
+        'harness.goal3': 'Goal 3: Support both interactive CLI usage and programmatic embedding for fast experiments and extensions.',
+        'harness.feat1': 'Supervisor-Led Loop: Instead of a fixed planner-to-worker-to-reviewer chain, the supervisor dynamically chooses the next subagent and can revisit the same role multiple times.',
+        'harness.feat2': 'Explicit Role Boundaries: Planner focuses on read-only analysis, worker handles edits and commands, and reviewer validates outputs with separate schemas and tool scopes.',
+        'harness.feat3': 'YAML Configuration: Provider, per-role models, allowed tools, and retry limits are configurable without touching the code.',
+        'harness.feat4': 'Channel/Event Architecture: Events such as `run_started`, `tool_call_finished`, and `run_result` flow through listener and output channels, separating execution from presentation.',
+        'harness.feat5': 'Installable Package: Ships a `tiny-agent` CLI entrypoint and can be installed directly from GitHub for immediate local-workspace experiments.',
+        'harness.result1': 'Result: Condensed the core architecture of modern coding-agent products into a small, inspectable harness suited for learning and experimentation.',
+        'harness.result2': 'Result: The same codebase supports both interactive terminal runs and embedded library-style usage.',
+        'harness.result3': 'Result: Pytest coverage spans supervisor, planner, worker, reviewer, and CLI behavior to catch regressions in the core loop.',
+        'harness.result4': 'Learning: Agent reliability depends heavily on orchestration design choices like structured outputs, permission boundaries, and event visibility, not just on model quality.',
 
         // LLM Mafia
         'llmmafia.overview': 'A multi-agent social deduction simulator where different LLMs play Mafia under distinct roles. The SpeechQueue-based debate flow lets agents request turns, interrupt, and react more like a real discussion than a simple turn-based loop.',
