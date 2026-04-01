@@ -65,15 +65,15 @@
 
             // Awards
             'award.awards': '수상',
-            'award.awards.desc': '고교 수석 졸업 후 Unistar 장학생으로 UNIST에 입학했습니다.',
+            'award.awards.desc': 'UNIST에 수석 입학하여 Unistar 장학생으로 선발되었습니다.',
             'award.teaching': '교육',
             'award.teaching.desc': 'AI 개론과 프로그래밍 1 과목에서 조교로 활동했습니다.',
 
             // Footer & Navigation
             'footer.rights': '© 2026 송준영. All rights reserved.',
-            'hero.intro': '연구 감각을 바탕으로 실용적인 AI 시스템을 만드는 컴퓨터공학도입니다.',
+            'hero.intro': 'AI 시스템을 직접 뜯어보고 다시 만들면서 연구와 프로덕트 사이를 잇고 있어요.',
             'hero.caption': 'UNIST · 컴퓨터공학과',
-            'hero.vision': '안녕하세요, 송준영입니다.<br><br>저는 AI/ML 분야, 그중에서도 OCR, 합성 데이터셋 구축, 에이전트형 파이프라인, 이미지 생성 모델에 특히 큰 관심을 갖고 있습니다.<br><br>모델을 구현하는 데서 멈추기보다, 기술이 실제 문제를 어떻게 풀고 어떤 가치를 만들 수 있는지까지 함께 고민하는 편입니다. 새로운 개념을 접하면 자연스럽게 "그다음은 무엇일까?", "이걸 어떻게 더 임팩트 있는 시스템으로 확장할 수 있을까?"라는 질문으로 이어지고, 그 질문들이 저를 계속 앞으로 밀어줍니다.<br><br>저를 가장 크게 움직이는 것은 결국 재미와 호기심입니다. 배우는 과정 자체를 즐기고, 그 즐거움이 더 깊이 파고들고 더 나은 시스템을 만들게 하는 원동력이 된다고 믿습니다.',
+            'hero.vision': '안녕하세요, 제 이름은 송준영입니다.<br><br>저는 AI 도구를 그냥 쓰는 데서 멈추지 않고, 직접 다시 만들어봐요. 처음부터 최소한의 버전으로 구현해보는 이유는, 어디서 부서지는지 직접 봐야 고칠 수 있다고 믿기 때문이에요.<br><br>요즘은 에이전트 시스템에 가장 빠져 있어요. LLM이 어떻게 추론하고, 계획하고, 협력하는지 — 그리고 논문에서 통하는 것과 실제 환경에서 버티는 것 사이의 간극이 궁금해요.<br><br>작게 만든 프로토타입이 논문이 못 가르쳐준 걸 알려줄 때가 제일 재밌어요. 작게 만들고, 빠르게 배우고, 그다음 진짜로 만드는 것 — 그게 제 방식이에요.',
             'nav.back': '← 포트폴리오로 돌아가기',
             'doc.title': '송준영 | 포트폴리오',
 
@@ -213,7 +213,7 @@
             'drama.result3': '실제 운영: alpha-beta-gamma 테스트 기간 실제 검토 업무에 투입. On-Demand GPU 구조로 주기성 워크로드에 맞는 비용 효율적 운영 구조를 확보했습니다.',
             'drama.result4': '인사이트: 데이터 품질·단순한 프롬프트 설계·EBS mount 안정성·리전 GPU capacity 같은 인프라 세부 요소가 모델 성능만큼이나 실제 운영 가능성을 결정합니다.',
 
-            // tiny-chatbot-agents
+            // tiny-chatbot-agent
             'chatbot.overview': '금융 서비스 FAQ와 이용약관(ToS)을 바탕으로 정확한 답변을 제공하는 금융 도메인 특화 RAG 에이전트를 개발했습니다. FAQ 우선 검색과 약관 정밀 검색을 결합한 2단계 파이프라인으로 속도와 정확도를 함께 확보했습니다.',
             'chatbot.problem': '문제: 사용자 용어와 약관 용어 간 의미 간극, 유사 조항 혼동, 환각 응답으로 인해 금융 도메인 챗봇의 신뢰성과 검색 정확도가 낮았습니다.',
             'chatbot.goal1': '목표 1: FAQ 우선 검색 후 약관 심화 검색으로 이어지는 이중 단계 검색 구조를 구축합니다.',
@@ -427,13 +427,13 @@
         'card.delivery': 'Shared Access Tool for Couriers',
         'card.studywithme': 'Student Management for Academies',
         'award.awards': 'Awards',
-        'award.awards.desc': 'Graduated 1st and entered UNIST with Unistar Scholarships',
+        'award.awards.desc': 'Entered UNIST as the top student and was selected as a Unistar Scholar.',
         'award.teaching': 'Teaching',
         'award.teaching.desc': 'TA in AI Intro and Programming 1',
         'footer.rights': '\u00a9 2026 Junyeong Song. All rights reserved.',
-        'hero.intro': 'Computer Science student building practical AI systems with a research mindset.',
+        'hero.intro': 'Computer Science student bridging AI research and production — one rebuild at a time.',
         'hero.caption': 'UNIST · Computer Science and Engineering',
-        'hero.vision': 'Hi, I\'m Junyeong Song.<br><br>I\'m deeply interested in AI/ML, especially in areas such as OCR, synthetic dataset creation, agentic pipelines, and image generation models.<br><br>Beyond implementing models, I care about how technology can create real, practical value. Whenever I learn something new, I naturally start asking, "What\'s beyond this?" or "How can this be turned into something impactful?" That curiosity consistently drives me to explore further.<br><br>What motivates me most is fun and curiosity. I genuinely enjoy the learning process itself, and that sense of excitement pushes me to think deeper and build more meaningful systems.',
+        'hero.vision': 'Hi, I\'m Junyeong Song.<br><br>I don\'t just use AI tools — I rebuild them. Diffusion models, agent harnesses, RAG pipelines, OCR benchmarks: I build minimal versions from scratch because that\'s the fastest way to know exactly where they break and how to fix them.<br><br>I\'m especially drawn to agentic systems — how LLMs reason, plan, and coordinate — and the gap between what works in a paper and what holds up in practice.<br><br>What drives me is the moment a stripped-down prototype teaches me something a paper didn\'t. Build small, learn fast, then make it real.',
         'nav.back': '\u2190 Back to Portfolio',
         'doc.title': 'Junyeong Song | Portfolio',
 
@@ -573,7 +573,7 @@
         'drama.result3': 'Production Deployment: Pipeline used in actual script review during the alpha-beta-gamma test period. On-demand GPU structure eliminated idle costs for this periodic workload.',
         'drama.result4': 'Key Learnings: Data quality and simple prompting outperform over-engineered constraints. Infrastructure details (EBS mount stability, AMI readiness, regional GPU capacity) matter as much as model performance for real deployments.',
 
-        // tiny-chatbot-agents
+        // tiny-chatbot-agent
         'chatbot.overview': 'Built a finance-domain RAG agent on top of FAQ and ToS data, using a dual-stage retrieval design to balance response speed and legal-text accuracy.',
         'chatbot.problem': 'Problem: Semantic gaps between user wording and policy terminology, clause ambiguity, and hallucinated answers reduced trust in financial QA bots.',
         'chatbot.goal1': 'Goal 1: Implement a dual-stage flow that searches FAQ first and escalates to full ToS retrieval when needed.',
