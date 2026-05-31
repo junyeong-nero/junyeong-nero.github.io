@@ -7,22 +7,17 @@
     <title>Medical Image Classification | Junyeong Song</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="projects.css">
 </head>
 
 <body>
     <a href="../index.html" class="back-btn" data-i18n="nav.back">← Back to Portfolio</a>
-    <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
-        <span class="sun-icon">☀️</span>
-        <span class="moon-icon">🌙</span>
-    </button>
     <button type="button" class="lang-toggle" id="langToggle" aria-label="Toggle language">한</button>
 
     <main class="container project-detail">
         <div class="project-header">
-            <span class="project-icon-large">🩻</span>
+            <span class="project-icon-large"><i data-lucide="scan"></i></span>
             <div class="project-meta">
                 <h1>Medical Image Classification</h1>
                 <span class="project-date">2024.12 - 2025.01</span>
@@ -30,13 +25,13 @@
         </div>
 
         <section class="project-section">
-            <h2 data-i18n="proj.overview">📋 Project Overview</h2>
+            <h2 data-i18n="proj.overview"> Project Overview</h2>
             <p data-i18n="medimg.overview">Deep learning-based medical image classification project exploring custom CNN
                 architectures and Vision Transformer (ViT).</p>
         </section>
 
         <section class="project-section">
-            <h2 data-i18n="proj.problem">🎯 Problem Definition & Goals</h2>
+            <h2 data-i18n="proj.problem"> Problem Definition & Goals</h2>
             <ul class="feature-list">
                 <li data-i18n="medimg.problem"><strong>Problem:</strong> Medical image classification faces challenges
                     like limited labeled data and class imbalance.</li>
@@ -50,7 +45,7 @@
         </section>
 
         <section class="project-section">
-            <h2 data-i18n="proj.features">⚙️ Key Features & Contributions</h2>
+            <h2 data-i18n="proj.features"> Key Features & Contributions</h2>
             <ul class="feature-list">
                 <li data-i18n="medimg.feat1"><strong>CNN Architecture:</strong> Designed and implemented custom CNN
                     optimized for medical images.</li>
@@ -64,7 +59,7 @@
         </section>
 
         <section class="project-section">
-            <h2 data-i18n="proj.challenges">🔧 Technical Challenges & Solutions</h2>
+            <h2 data-i18n="proj.challenges"> Technical Challenges & Solutions</h2>
             <ul class="feature-list">
                 <li data-i18n="medimg.chal1"><strong>Data Scarcity:</strong> Limited labeled medical images.
                     Supplemented with augmentation and transfer learning.</li>
@@ -78,7 +73,7 @@
         </section>
 
         <section class="project-section">
-            <h2 data-i18n="proj.results">📈 Results & Learnings</h2>
+            <h2 data-i18n="proj.results"> Results & Learnings</h2>
             <ul class="feature-list">
                 <li data-i18n="medimg.result1"><strong>Classification Performance:</strong> Both CNN and ViT achieved
                     high accuracy.</li>
@@ -92,7 +87,7 @@
         </section>
 
         <section class="project-section">
-            <h2 data-i18n="proj.tech">🛠️ Technologies</h2>
+            <h2 data-i18n="proj.tech"> Technologies</h2>
             <div class="tech-tags">
                 <span class="tech-tag">PyTorch</span>
                 <span class="tech-tag">CNN</span>
@@ -104,7 +99,8 @@
         </section>
     </main>
 
-    <script src="../theme.js"></script>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+    <script>if (window.lucide) lucide.createIcons();</script>
     <script src="../lang.js"></script>
 </body>
 

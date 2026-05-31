@@ -7,22 +7,17 @@
     <title>Korean Medical LLM | Junyeong Song</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="projects.css">
 </head>
 
 <body>
     <a href="../index.html" class="back-btn" data-i18n="nav.back">← Back to Portfolio</a>
-    <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
-        <span class="sun-icon">☀️</span>
-        <span class="moon-icon">🌙</span>
-    </button>
     <button type="button" class="lang-toggle" id="langToggle" aria-label="Toggle language">한</button>
 
     <main class="container project-detail">
         <div class="project-header">
-            <span class="project-icon-large">🏥</span>
+            <span class="project-icon-large"><i data-lucide="stethoscope"></i></span>
             <div class="project-meta">
                 <h1>Korean Medical LLM</h1>
                 <span class="project-date">2024.09 - 2024.10</span>
@@ -30,7 +25,7 @@
         </div>
 
         <section class="project-section">
-            <h2 data-i18n="proj.overview">📋 Project Overview</h2>
+            <h2 data-i18n="proj.overview"> Project Overview</h2>
             <p data-i18n="medllm.overview">Developed a specialized Korean medical domain LLM by creating comprehensive
                 healthcare datasets and
                 fine-tuning the <code>rtzr/ko-gemma-2-9b-it</code> model. The project focused on building a model
@@ -40,7 +35,7 @@
         </section>
 
         <section class="project-section">
-            <h2 data-i18n="proj.problem">🎯 Problem Definition & Goals</h2>
+            <h2 data-i18n="proj.problem"> Problem Definition & Goals</h2>
             <ul class="feature-list">
                 <li data-i18n="medllm.problem"><strong>Problem:</strong> Existing LLMs lack specialized knowledge in
                     Korean medical domain,
@@ -58,7 +53,7 @@
         </section>
 
         <section class="project-section">
-            <h2 data-i18n="proj.features">⚙️ Key Features & Contributions</h2>
+            <h2 data-i18n="proj.features"> Key Features & Contributions</h2>
             <ul class="feature-list">
                 <li data-i18n="medllm.feat1"><strong>Multi-Source Dataset Curation:</strong> Aggregated data from
                     KorMedMCQA, MedExpQA
@@ -79,7 +74,7 @@
         </section>
 
         <section class="project-section">
-            <h2 data-i18n="proj.challenges">🔧 Technical Challenges & Solutions</h2>
+            <h2 data-i18n="proj.challenges"> Technical Challenges & Solutions</h2>
             <ul class="feature-list">
                 <li data-i18n="medllm.chal1"><strong>Data Scarcity:</strong> Limited Korean medical training data
                     available.
@@ -99,7 +94,7 @@
         </section>
 
         <section class="project-section">
-            <h2 data-i18n="proj.results">📈 Results & Learnings</h2>
+            <h2 data-i18n="proj.results"> Results & Learnings</h2>
             <ul class="feature-list">
                 <li data-i18n="medllm.result1"><strong>Benchmark Performance:</strong> Achieved significant improvement
                     over baseline on KorMedMCQA
@@ -120,7 +115,7 @@
         </section>
 
         <section class="project-section">
-            <h2 data-i18n="proj.tech">🛠️ Technologies</h2>
+            <h2 data-i18n="proj.tech"> Technologies</h2>
             <div class="tech-tags">
                 <span class="tech-tag">Python</span>
                 <span class="tech-tag">Transformers</span>
@@ -133,20 +128,21 @@
         </section>
 
         <section class="project-section">
-            <h2 data-i18n="proj.links">🔗 Links</h2>
+            <h2 data-i18n="proj.links"> Links</h2>
             <div class="project-links">
                 <a href="https://huggingface.co/ChuGyouk/ko-med-gemma-2-9b-it-merge2" target="_blank"
                     class="project-link">
-                    🤗 Hugging Face Model
+                     Hugging Face Model
                 </a>
                 <a href="https://arxiv.org/abs/2403.01469" target="_blank" class="project-link">
-                    📄 KorMedMCQA Paper
+                     KorMedMCQA Paper
                 </a>
             </div>
         </section>
     </main>
 
-    <script src="../theme.js"></script>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+    <script>if (window.lucide) lucide.createIcons();</script>
     <script src="../lang.js"></script>
 </body>
 

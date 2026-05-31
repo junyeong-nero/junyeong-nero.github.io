@@ -7,22 +7,17 @@
     <title>tiny-DDPM | Junyeong Song</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="projects.css">
 </head>
 
 <body>
     <a href="../index.html" class="back-btn" data-i18n="nav.back">← Back to Portfolio</a>
-    <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
-        <span class="sun-icon">☀️</span>
-        <span class="moon-icon">🌙</span>
-    </button>
     <button type="button" class="lang-toggle" id="langToggle" aria-label="Toggle language">한</button>
 
     <main class="container project-detail">
         <div class="project-header">
-            <span class="project-icon-large">🎨</span>
+            <span class="project-icon-large"><i data-lucide="palette"></i></span>
             <div class="project-meta">
                 <h1>tiny-DDPM</h1>
                 <span class="project-date">2024.07 - 2024.08</span>
@@ -30,14 +25,14 @@
         </div>
 
         <section class="project-section">
-            <h2 data-i18n="proj.overview">📋 Project Overview</h2>
+            <h2 data-i18n="proj.overview"> Project Overview</h2>
             <p data-i18n="ddpm.overview">A from-scratch implementation of Denoising Diffusion Probabilistic Models
                 (DDPM) designed for
                 deep understanding of diffusion model mathematics and architecture.</p>
         </section>
 
         <section class="project-section">
-            <h2 data-i18n="proj.problem">🎯 Problem Definition & Goals</h2>
+            <h2 data-i18n="proj.problem"> Problem Definition & Goals</h2>
             <ul class="feature-list">
                 <li data-i18n="ddpm.problem"><strong>Problem:</strong> Many diffusion model implementations are either
                     too complex or too simplified.</li>
@@ -51,7 +46,7 @@
         </section>
 
         <section class="project-section">
-            <h2 data-i18n="proj.features">⚙️ Key Features & Contributions</h2>
+            <h2 data-i18n="proj.features"> Key Features & Contributions</h2>
             <ul class="feature-list">
                 <li data-i18n="ddpm.feat1"><strong>Multiple Model Architectures:</strong> Implemented both UNet and
                     Diffusion Transformer (DiT).</li>
@@ -66,7 +61,7 @@
         </section>
 
         <section class="project-section">
-            <h2 data-i18n="proj.challenges">🔧 Technical Challenges & Solutions</h2>
+            <h2 data-i18n="proj.challenges"> Technical Challenges & Solutions</h2>
             <ul class="feature-list">
                 <li data-i18n="ddpm.chal1"><strong>Variance Scheduling:</strong> Understanding beta schedules and
                     generation quality.</li>
@@ -80,7 +75,7 @@
         </section>
 
         <section class="project-section">
-            <h2 data-i18n="proj.results">📈 Results & Learnings</h2>
+            <h2 data-i18n="proj.results"> Results & Learnings</h2>
             <ul class="feature-list">
                 <li data-i18n="ddpm.result1"><strong>Successful Generation:</strong> Trained models generate diverse,
                     high-quality MNIST digits.</li>
@@ -94,7 +89,7 @@
         </section>
 
         <section class="project-section">
-            <h2 data-i18n="proj.tech">🛠️ Technologies</h2>
+            <h2 data-i18n="proj.tech"> Technologies</h2>
             <div class="tech-tags">
                 <span class="tech-tag">Python</span>
                 <span class="tech-tag">PyTorch</span>
@@ -107,16 +102,17 @@
         </section>
 
         <section class="project-section">
-            <h2 data-i18n="proj.links">🔗 Links</h2>
+            <h2 data-i18n="proj.links"> Links</h2>
             <div class="project-links">
                 <a href="https://github.com/junyeong-nero/tiny-DDPM" target="_blank" class="project-link">
-                    💻 GitHub Repository
+                     GitHub Repository
                 </a>
             </div>
         </section>
     </main>
 
-    <script src="../theme.js"></script>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+    <script>if (window.lucide) lucide.createIcons();</script>
     <script src="../lang.js"></script>
 </body>
 

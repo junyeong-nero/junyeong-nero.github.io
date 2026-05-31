@@ -7,22 +7,17 @@
     <title>Pomodoro | Junyeong Song</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="projects.css">
 </head>
 
 <body>
     <a href="../index.html" class="back-btn" data-i18n="nav.back">← Back to Portfolio</a>
-    <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
-        <span class="sun-icon">☀️</span>
-        <span class="moon-icon">🌙</span>
-    </button>
     <button type="button" class="lang-toggle" id="langToggle" aria-label="Toggle language">한</button>
 
     <main class="container project-detail">
         <div class="project-header">
-            <span class="project-icon-large">🍅</span>
+            <span class="project-icon-large"><i data-lucide="timer"></i></span>
             <div class="project-meta">
                 <h1>Pomodoro</h1>
                 <span class="project-date">Personal Project</span>
@@ -30,14 +25,14 @@
         </div>
 
         <section class="project-section">
-            <h2 data-i18n="proj.simple.overview">📋 Overview</h2>
+            <h2 data-i18n="proj.simple.overview"> Overview</h2>
             <p data-i18n="pomodoro.overview">A time management service based on the Pomodoro technique (25 minutes
                 focus, 5 minutes rest). Helps users
                 maintain productivity through structured work and break cycles.</p>
         </section>
 
         <section class="project-section">
-            <h2 data-i18n="proj.tech">🛠️ Technologies</h2>
+            <h2 data-i18n="proj.tech"> Technologies</h2>
             <div class="tech-tags">
                 <span class="tech-tag">Flutter</span>
                 <span class="tech-tag">Dart</span>
@@ -46,7 +41,7 @@
         </section>
 
         <section class="project-section">
-            <h2 data-i18n="proj.simple.features">⚡ Features</h2>
+            <h2 data-i18n="proj.simple.features"> Features</h2>
             <ul class="feature-list">
                 <li data-i18n="pomodoro.feat1"><strong>Pomodoro Timer</strong> - 25 minutes focus sessions</li>
                 <li data-i18n="pomodoro.feat2"><strong>Break Timer</strong> - 5 minutes rest periods</li>
@@ -56,16 +51,17 @@
         </section>
 
         <section class="project-section">
-            <h2 data-i18n="proj.links">🔗 Links</h2>
+            <h2 data-i18n="proj.links"> Links</h2>
             <div class="project-links">
                 <a href="https://junyeong-nero.github.io/pomodoro/" target="_blank" class="project-link">
-                    🌐 Live Demo
+                     Live Demo
                 </a>
             </div>
         </section>
     </main>
 
-    <script src="../theme.js"></script>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+    <script>if (window.lucide) lucide.createIcons();</script>
     <script src="../lang.js"></script>
 </body>
 

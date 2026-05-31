@@ -7,37 +7,32 @@
     <title>Drama Analysis Pipeline | Junyeong Song</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="projects.css">
 </head>
 
 <body>
     <a href="../index.html" class="back-btn" data-i18n="nav.back">← Back to Portfolio</a>
-    <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
-        <span class="sun-icon">☀️</span>
-        <span class="moon-icon">🌙</span>
-    </button>
     <button type="button" class="lang-toggle" id="langToggle" aria-label="Toggle language">한</button>
 
     <main class="container project-detail">
         <div class="project-header">
-            <span class="project-icon-large">🎬</span>
+            <span class="project-icon-large"><i data-lucide="clapperboard"></i></span>
             <div class="project-meta">
                 <h1>Drama Analysis Pipeline with Multi-Agents</h1>
                 <span class="project-date">2025.02 - 2025.10</span>
             </div>
         </div>
 
-        <p class="confidential-notice" data-i18n="drama.confidential">🔒 Internal project — source code and detailed outputs are confidential. Metrics and architecture described here are based on personal notes from the internship period.</p>
+        <p class="confidential-notice" data-i18n="drama.confidential"> Internal project — source code and detailed outputs are confidential. Metrics and architecture described here are based on personal notes from the internship period.</p>
 
         <section class="project-section">
-            <h2 data-i18n="proj.overview">📋 Project Overview</h2>
+            <h2 data-i18n="proj.overview"> Project Overview</h2>
             <p data-i18n="drama.overview">Built a multi-agent pipeline that quantitatively analyzes drama scripts for storyline quality, character appeal, and commercial potential to support production decisions. 4-person team, deployed for actual script review during the alpha-beta-gamma test period at CJ AI Center.</p>
         </section>
 
         <section class="project-section">
-            <h2 data-i18n="proj.problem">🎯 Problem Definition & Goals</h2>
+            <h2 data-i18n="proj.problem"> Problem Definition & Goals</h2>
             <ul class="feature-list">
                 <li data-i18n="drama.problem"><strong>Problem:</strong> Manual review of 1–4 episodes per script was expensive and slow, with reviewer bias creating inconsistent evaluations and bottlenecks that risked overlooking valuable scripts.</li>
                 <li data-i18n="drama.goal1"><strong>Goal 1:</strong> Automate script analysis with objective metrics through a multi-agent system.</li>
@@ -47,7 +42,7 @@
         </section>
 
         <section class="project-section">
-            <h2 data-i18n="proj.features">⚙️ Key Features & Contributions</h2>
+            <h2 data-i18n="proj.features"> Key Features & Contributions</h2>
             <ul class="feature-list">
                 <li data-i18n="drama.feat1"><strong>Multi-Format Document Parser:</strong> Preprocessing modules to convert PDF, HWP, DOCX scripts into structured text, with a Korean OCR benchmark dataset for validation.</li>
                 <li data-i18n="drama.feat2"><strong>VLM Integration (Qwen2.5-7B-VL):</strong> Replaced traditional OCR with a Vision Language Model to handle complex multi-column layouts and Korean text, eliminating ordering errors.</li>
@@ -58,7 +53,7 @@
         </section>
 
         <section class="project-section">
-            <h2 data-i18n="proj.challenges">🔧 Technical Challenges & Solutions</h2>
+            <h2 data-i18n="proj.challenges"> Technical Challenges & Solutions</h2>
             <ul class="feature-list">
                 <li data-i18n="drama.chal1"><strong>Korean OCR — WER &gt;20%:</strong> Traditional OCR (PaddleOCR) showed high error rates and column-ordering failures on multi-column script layouts.</li>
                 <li data-i18n="drama.chal2"><strong>Solution:</strong> Switched to Qwen2.5-7B-VL for document-structure-aware parsing. <strong>WER dropped from 20% to 7%.</strong></li>
@@ -69,7 +64,7 @@
         </section>
 
         <section class="project-section">
-            <h2 data-i18n="proj.results">📈 Results & Learnings</h2>
+            <h2 data-i18n="proj.results"> Results & Learnings</h2>
             <ul class="feature-list">
                 <li data-i18n="drama.result1"><strong>OCR Accuracy:</strong> WER reduced from <strong>20% → 7%</strong> via VLM-based parsing, securing reliable input data for downstream agents.</li>
                 <li data-i18n="drama.result2"><strong>Classification Quality:</strong> Scene-level F1 score improved from <strong>0.2 → 0.5</strong> through model selection and prompt simplification.</li>
@@ -79,7 +74,7 @@
         </section>
 
         <section class="project-section">
-            <h2 data-i18n="proj.tech">🛠️ Technologies</h2>
+            <h2 data-i18n="proj.tech"> Technologies</h2>
             <div class="tech-tags">
                 <span class="tech-tag">Python</span>
                 <span class="tech-tag">LangChain</span>
@@ -92,7 +87,8 @@
         </section>
     </main>
 
-    <script src="../theme.js"></script>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+    <script>if (window.lucide) lucide.createIcons();</script>
     <script src="../lang.js"></script>
 </body>
 
