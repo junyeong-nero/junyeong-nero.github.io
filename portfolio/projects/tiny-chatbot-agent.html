@@ -7,22 +7,17 @@
     <title>tiny-chatbot-agent | Junyeong Song</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="projects.css">
 </head>
 
 <body>
     <a href="../index.html" class="back-btn" data-i18n="nav.back">← Back to Portfolio</a>
-    <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
-        <span class="sun-icon">☀️</span>
-        <span class="moon-icon">🌙</span>
-    </button>
     <button type="button" class="lang-toggle" id="langToggle" aria-label="Toggle language">한</button>
 
     <main class="container project-detail">
         <div class="project-header">
-            <span class="project-icon-large">🤖</span>
+            <span class="project-icon-large"><i data-lucide="bot"></i></span>
             <div class="project-meta">
                 <h1>tiny-chatbot-agent</h1>
                 <span class="project-date">2026.01 - 2026.02</span>
@@ -30,13 +25,13 @@
         </div>
 
         <section class="project-section">
-            <h2 data-i18n="proj.overview">📋 Project Overview</h2>
+            <h2 data-i18n="proj.overview"> Project Overview</h2>
             <p data-i18n="chatbot.overview">A sophisticated enterprise-grade RAG chatbot system featuring dual-stage
                 retrieval, hybrid search, and hallucination verification.</p>
         </section>
 
         <section class="project-section">
-            <h2 data-i18n="proj.problem">🎯 Problem Definition & Goals</h2>
+            <h2 data-i18n="proj.problem"> Problem Definition & Goals</h2>
             <ul class="feature-list">
                 <li data-i18n="chatbot.problem"><strong>Problem:</strong> Enterprise chatbots suffer from hallucinations
                     and data privacy concerns.</li>
@@ -50,7 +45,7 @@
         </section>
 
         <section class="project-section">
-            <h2 data-i18n="proj.features">⚙️ Key Features & Contributions</h2>
+            <h2 data-i18n="proj.features"> Key Features & Contributions</h2>
             <ul class="feature-list">
                 <li data-i18n="chatbot.feat1"><strong>Dual-Stage RAG:</strong> First QnA database, then ToS document
                     search.</li>
@@ -66,7 +61,7 @@
         </section>
 
         <section class="project-section">
-            <h2 data-i18n="proj.challenges">🔧 Technical Challenges & Solutions</h2>
+            <h2 data-i18n="proj.challenges"> Technical Challenges & Solutions</h2>
             <ul class="feature-list">
                 <li data-i18n="chatbot.chal1"><strong>Retrieval Quality:</strong> Implemented hybrid approach combining
                     multiple methods.</li>
@@ -80,7 +75,7 @@
         </section>
 
         <section class="project-section">
-            <h2 data-i18n="proj.results">📈 Results & Learnings</h2>
+            <h2 data-i18n="proj.results"> Results & Learnings</h2>
             <ul class="feature-list">
                 <li data-i18n="chatbot.result1"><strong>Improved Accuracy:</strong> Dual-stage retrieval significantly
                     improved relevance.</li>
@@ -94,7 +89,7 @@
         </section>
 
         <section class="project-section">
-            <h2 data-i18n="proj.tech">🛠️ Technologies</h2>
+            <h2 data-i18n="proj.tech"> Technologies</h2>
             <div class="tech-tags">
                 <span class="tech-tag">Python</span>
                 <span class="tech-tag">Streamlit</span>
@@ -107,16 +102,17 @@
         </section>
 
         <section class="project-section">
-            <h2 data-i18n="proj.links">🔗 Links</h2>
+            <h2 data-i18n="proj.links"> Links</h2>
             <div class="project-links">
                 <a href="https://github.com/junyeong-nero/tiny-chatbot-agent" target="_blank" class="project-link">
-                    💻 GitHub Repository
+                     GitHub Repository
                 </a>
             </div>
         </section>
     </main>
 
-    <script src="../theme.js"></script>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+    <script>if (window.lucide) lucide.createIcons();</script>
     <script src="../lang.js"></script>
 </body>
 

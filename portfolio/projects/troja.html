@@ -7,22 +7,17 @@
     <title>Troja | Junyeong Song</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="projects.css">
 </head>
 
 <body>
     <a href="../index.html" class="back-btn" data-i18n="nav.back">← Back to Portfolio</a>
-    <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
-        <span class="sun-icon">☀️</span>
-        <span class="moon-icon">🌙</span>
-    </button>
     <button type="button" class="lang-toggle" id="langToggle" aria-label="Toggle language">한</button>
 
     <main class="container project-detail">
         <div class="project-header">
-            <span class="project-icon-large">🐴</span>
+            <span class="project-icon-large"><i data-lucide="shield"></i></span>
             <div class="project-meta">
                 <h1>Troja</h1>
                 <span class="project-date">2024.09 - 2024.11</span>
@@ -30,12 +25,12 @@
         </div>
 
         <section class="project-section">
-            <h2 data-i18n="proj.overview">📋 Project Overview</h2>
+            <h2 data-i18n="proj.overview"> Project Overview</h2>
             <p data-i18n="troja.overview">At Troja, an early-stage deepfake prevention startup, built a backend server on NAVER Cloud Platform to serve deepfake generation and defense models. Enabled in-house testing of both face-swapping (inswapper) and adversarial defenses (LEAT, DIPA) in a single production environment.</p>
         </section>
 
         <section class="project-section">
-            <h2 data-i18n="proj.problem">🎯 Problem Definition & Goals</h2>
+            <h2 data-i18n="proj.problem"> Problem Definition & Goals</h2>
             <ul class="feature-list">
                 <li data-i18n="dfdefense.problem"><strong>Problem:</strong> Deepfake technology poses significant threats to personal privacy and information integrity. Existing defense methods are often tested only in research settings.</li>
                 <li data-i18n="dfdefense.goal1"><strong>Goal 1:</strong> Create a production-ready backend that can serve both deepfake generation and defense models for comprehensive security testing.</li>
@@ -45,7 +40,7 @@
         </section>
 
         <section class="project-section">
-            <h2 data-i18n="proj.features">⚙️ Key Features & Contributions</h2>
+            <h2 data-i18n="proj.features"> Key Features & Contributions</h2>
             <ul class="feature-list">
                 <li data-i18n="dfdefense.feat1"><strong>Deepfake Creation Pipeline:</strong> Integrated inswapper model for realistic face-swapping, enabling systematic testing of defense mechanisms.</li>
                 <li data-i18n="dfdefense.feat2"><strong>LEAT Defense Implementation:</strong> Deployed adversarial attack defense that adds imperceptible perturbations to protect images from face-swapping.</li>
@@ -56,7 +51,7 @@
         </section>
 
         <section class="project-section">
-            <h2 data-i18n="proj.challenges">🔧 Technical Challenges & Solutions</h2>
+            <h2 data-i18n="proj.challenges"> Technical Challenges & Solutions</h2>
             <ul class="feature-list">
                 <li data-i18n="dfdefense.chal1"><strong>GPU Memory Management:</strong> Multiple deep learning models required efficient GPU memory allocation. Implemented model loading/unloading strategies and batch processing.</li>
                 <li data-i18n="dfdefense.chal2"><strong>Real-time Processing:</strong> Defense mechanisms needed to process images quickly. Used PyTorch optimization techniques and CUDA acceleration.</li>
@@ -66,7 +61,7 @@
         </section>
 
         <section class="project-section">
-            <h2 data-i18n="proj.results">📈 Results & Learnings</h2>
+            <h2 data-i18n="proj.results"> Results & Learnings</h2>
             <ul class="feature-list">
                 <li data-i18n="dfdefense.result1"><strong>Successful Deployment:</strong> Achieved stable production deployment serving both generation and defense models.</li>
                 <li data-i18n="dfdefense.result2"><strong>Defense Effectiveness:</strong> LEAT and DIPA methods successfully disrupted face-swapping attempts while maintaining image quality above 95% SSIM.</li>
@@ -76,7 +71,7 @@
         </section>
 
         <section class="project-section">
-            <h2 data-i18n="proj.tech">🛠️ Technologies</h2>
+            <h2 data-i18n="proj.tech"> Technologies</h2>
             <div class="tech-tags">
                 <span class="tech-tag">PyTorch</span>
                 <span class="tech-tag">Flask</span>
@@ -89,7 +84,8 @@
         </section>
     </main>
 
-    <script src="../theme.js"></script>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+    <script>if (window.lucide) lucide.createIcons();</script>
     <script src="../lang.js"></script>
 </body>
 

@@ -7,22 +7,17 @@
     <title>Delivery | Junyeong Song</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="projects.css">
 </head>
 
 <body>
     <a href="../index.html" class="back-btn" data-i18n="nav.back">← Back to Portfolio</a>
-    <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
-        <span class="sun-icon">☀️</span>
-        <span class="moon-icon">🌙</span>
-    </button>
     <button type="button" class="lang-toggle" id="langToggle" aria-label="Toggle language">한</button>
 
     <main class="container project-detail">
         <div class="project-header">
-            <span class="project-icon-large">🚚</span>
+            <span class="project-icon-large"><i data-lucide="truck"></i></span>
             <div class="project-meta">
                 <h1>Delivery</h1>
                 <span class="project-date">2022.02 - 2022.03</span>
@@ -30,7 +25,7 @@
         </div>
 
         <section class="project-section">
-            <h2 data-i18n="proj.simple.overview">📋 Overview</h2>
+            <h2 data-i18n="proj.simple.overview"> Overview</h2>
             <p data-i18n="delivery.overview">A service for delivery drivers to store and share apartment entrance
                 passwords, aiming to reduce delays
                 caused by missing access information. Originally built as Android Native (Java), now migrated to Flutter
@@ -38,7 +33,7 @@
         </section>
 
         <section class="project-section">
-            <h2 data-i18n="proj.tech">🛠️ Technologies</h2>
+            <h2 data-i18n="proj.tech"> Technologies</h2>
             <div class="tech-tags">
                 <span class="tech-tag">Android Native</span>
                 <span class="tech-tag">Java</span>
@@ -48,7 +43,7 @@
         </section>
 
         <section class="project-section">
-            <h2 data-i18n="proj.simple.features">⚡ Features</h2>
+            <h2 data-i18n="proj.simple.features"> Features</h2>
             <ul class="feature-list">
                 <li data-i18n="delivery.feat1"><strong>Password Storage</strong> - Securely store apartment entrance
                     codes</li>
@@ -60,19 +55,20 @@
         </section>
 
         <section class="project-section">
-            <h2 data-i18n="proj.links">🔗 Links</h2>
+            <h2 data-i18n="proj.links"> Links</h2>
             <div class="project-links">
                 <a href="https://github.com/junyeong-nero/Delivery" target="_blank" class="project-link">
-                    💻 GitHub Repository
+                     GitHub Repository
                 </a>
                 <a href="https://junyeong-nero.github.io/delivery/" target="_blank" class="project-link">
-                    🌐 Live Demo
+                     Live Demo
                 </a>
             </div>
         </section>
     </main>
 
-    <script src="../theme.js"></script>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+    <script>if (window.lucide) lucide.createIcons();</script>
     <script src="../lang.js"></script>
 </body>
 
