@@ -1,0 +1,100 @@
+const test = require('node:test');
+const assert = require('node:assert/strict');
+
+const {
+  coerceReviewData,
+  filterReviews,
+  getAllTags,
+  sortReviews,
+} = require('./script.js');
+
+const fixture = {
+  version: 1,
+  updatedAt: '2026-06-04',
+  reviews: [
+    {
+      id: '2403.01469',
+      slug: 'kormedmcqa',
+      title: 'KorMedMCQA: Korean Medical Benchmark',
+      authors: ['Junyeong Song', 'Jane Researcher'],
+      publishedAt: '2024-03-03',
+      reviewedAt: '2026-06-04',
+      summary: 'A Korean healthcare licensing exam benchmark for LLM evaluation.',
+      tags: ['benchmark', 'medical-llm', 'korean'],
+      arxivUrl: 'https://arxiv.org/abs/2403.01469',
+      pdfUrl: 'https://arxiv.org/pdf/2403.01469.pdf',
+      reviewPath: 'reviews/kormedmcqa.md',
+      assets: {
+        figures: [
+          {
+            path: 'assets/kormedmcqa/figures/figure-01.png',
+            caption: 'Figure 1. Dataset construction pipeline.',
+            page: 3,
+          },
+        ],
+        tables: [],
+      },
+    },
+    {
+      id: '2501.00001',
+      slug: 'agent-planning-survey',
+      title: 'Agent Planning Survey',
+      authors: ['Another Author'],
+      publishedAt: '2025-01-10',
+      reviewedAt: '2026-05-20',
+      summary: 'A survey of planning patterns for LLM agents.',
+      tags: ['agents', 'planning'],
+      arxivUrl: 'https://arxiv.org/abs/2501.00001',
+      pdfUrl: 'https://arxiv.org/pdf/2501.00001.pdf',
+      reviewPath: 'reviews/agent-planning-survey.md',
+      assets: { figures: [], tables: [] },
+    },
+  ],
+};
+
+test('coerceReviewData normalizes wrapped review payloads', () => {
+  const reviews = coerceReviewData(fixture);
+
+  assert.equal(reviews.length, 2);
+  assert.deepEqual(reviews[0].tags, ['benchmark', 'medical-llm', 'korean']);
+  assert.deepEqual(reviews[1].assets, { figures: [], tables: [] });
+});
+
+test('getAllTags returns unique sorted tags', () => {
+  const reviews = coerceReviewData(fixture);
+
+  assert.deepEqual(getAllTags(reviews), [
+    'agents',
+    'benchmark',
+    'korean',
+    'medical-llm',
+    'planning',
+  ]);
+});
+
+test('filterReviews matches query across title authors summary tags and arxiv id', () => {
+  const reviews = coerceReviewData(fixture);
+
+  assert.equal(filterReviews(reviews, { query: 'healthcare' }).length, 1);
+  assert.equal(filterReviews(reviews, { query: 'Junyeong' })[0].slug, 'kormedmcqa');
+  assert.equal(filterReviews(reviews, { query: '2501.00001' })[0].slug, 'agent-planning-survey');
+  assert.equal(filterReviews(reviews, { query: 'agents' })[0].slug, 'agent-planning-survey');
+});
+
+test('filterReviews requires every selected tag to be present', () => {
+  const reviews = coerceReviewData(fixture);
+
+  assert.equal(filterReviews(reviews, { tags: ['benchmark'] }).length, 1);
+  assert.equal(filterReviews(reviews, { tags: ['benchmark', 'korean'] }).length, 1);
+  assert.equal(filterReviews(reviews, { tags: ['benchmark', 'agents'] }).length, 0);
+});
+
+test('sortReviews supports newest and title ordering without mutating input', () => {
+  const reviews = coerceReviewData(fixture);
+  const newest = sortReviews(reviews, 'newest');
+  const title = sortReviews(reviews, 'title');
+
+  assert.deepEqual(newest.map((review) => review.slug), ['kormedmcqa', 'agent-planning-survey']);
+  assert.deepEqual(title.map((review) => review.slug), ['agent-planning-survey', 'kormedmcqa']);
+  assert.deepEqual(reviews.map((review) => review.slug), ['kormedmcqa', 'agent-planning-survey']);
+});
