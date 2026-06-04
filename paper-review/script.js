@@ -272,6 +272,16 @@
         elements.error.hidden = false;
         elements.error.textContent = error.message;
       }
+
+      if (elements.list) {
+        elements.list.innerHTML = `
+          <div class="empty-state">
+            <h2>Unable to load reviews</h2>
+            <p>Check the static JSON index and try again.</p>
+          </div>
+        `;
+      }
+
       throw error;
     }
   }

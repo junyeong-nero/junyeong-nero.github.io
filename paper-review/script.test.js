@@ -218,3 +218,45 @@ test('initPaperReviewApp fetches uncached reviews and updates rendered results o
     }
   }
 });
+
+test('initPaperReviewApp replaces loading state when reviews fail to load', async () => {
+  const originalFetch = globalThis.fetch;
+  const elements = {
+    '[data-review-search]': createFakeElement(),
+    '[data-review-sort]': createFakeElement(),
+    '[data-review-tags]': createFakeElement(),
+    '[data-review-count]': createFakeElement(),
+    '[data-review-list]': createFakeElement(),
+    '[data-review-error]': createFakeElement(),
+  };
+  const document = createFakeDocument(elements);
+  elements['[data-review-list]'].innerHTML = `
+    <div class="empty-state">
+      <h2>Loading reviews</h2>
+      <p>The archive index is loading from static JSON.</p>
+    </div>
+  `;
+
+  globalThis.fetch = async () => ({
+    ok: false,
+    status: 503,
+  });
+
+  try {
+    await assert.rejects(
+      initPaperReviewApp({ document }),
+      /Failed to load reviews: 503/,
+    );
+
+    assert.equal(elements['[data-review-error]'].hidden, false);
+    assert.equal(elements['[data-review-error]'].textContent, 'Failed to load reviews: 503');
+    assert.ok(!elements['[data-review-list]'].innerHTML.includes('Loading reviews'));
+    assert.ok(elements['[data-review-list]'].innerHTML.includes('Unable to load reviews'));
+  } finally {
+    if (originalFetch === undefined) {
+      delete globalThis.fetch;
+    } else {
+      globalThis.fetch = originalFetch;
+    }
+  }
+});
