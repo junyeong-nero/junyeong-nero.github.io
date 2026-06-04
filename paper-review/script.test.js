@@ -5,6 +5,8 @@ const {
   coerceReviewData,
   filterReviews,
   getAllTags,
+  initPaperReviewApp,
+  renderReviewList,
   sortReviews,
 } = require('./script.js');
 
@@ -52,6 +54,36 @@ const fixture = {
   ],
 };
 
+function createFakeElement() {
+  return {
+    hidden: true,
+    innerHTML: '',
+    listeners: {},
+    textContent: '',
+    value: '',
+    addEventListener(type, listener) {
+      this.listeners[type] = listener;
+    },
+  };
+}
+
+function createFakeDocument(elements) {
+  return {
+    querySelector(selector) {
+      return elements[selector] || null;
+    },
+  };
+}
+
+function restoreTimezone(originalTimezone) {
+  if (originalTimezone === undefined) {
+    delete process.env.TZ;
+    return;
+  }
+
+  process.env.TZ = originalTimezone;
+}
+
 test('coerceReviewData normalizes wrapped review payloads', () => {
   const reviews = coerceReviewData(fixture);
 
@@ -97,4 +129,92 @@ test('sortReviews supports newest and title ordering without mutating input', ()
   assert.deepEqual(newest.map((review) => review.slug), ['kormedmcqa', 'agent-planning-survey']);
   assert.deepEqual(title.map((review) => review.slug), ['agent-planning-survey', 'kormedmcqa']);
   assert.deepEqual(reviews.map((review) => review.slug), ['kormedmcqa', 'agent-planning-survey']);
+});
+
+test('renderReviewList escapes review HTML and keeps date-only display stable', () => {
+  const originalTimezone = process.env.TZ;
+  process.env.TZ = 'America/Los_Angeles';
+
+  try {
+    const elements = {
+      count: createFakeElement(),
+      list: createFakeElement(),
+      tags: createFakeElement(),
+    };
+    const reviews = coerceReviewData({
+      reviews: [
+        {
+          id: '2606.00001',
+          title: '<img src=x onerror=alert(1)>',
+          authors: ['Jane <Admin>'],
+          publishedAt: '2026-06-04',
+          reviewedAt: '2026-06-04',
+          summary: 'Use <b>escaped</b> & "quoted" values.',
+          tags: ['xss<script>'],
+          assets: { figures: [], tables: [] },
+        },
+      ],
+    });
+
+    renderReviewList(reviews, { query: '', tags: [], sort: 'newest' }, elements);
+
+    assert.ok(elements.list.innerHTML.includes('Jun 04, 2026'));
+    assert.ok(!elements.list.innerHTML.includes('Jun 03, 2026'));
+    assert.ok(elements.list.innerHTML.includes('&lt;img src=x onerror=alert(1)&gt;'));
+    assert.ok(elements.list.innerHTML.includes('Jane &lt;Admin&gt;'));
+    assert.ok(elements.list.innerHTML.includes('Use &lt;b&gt;escaped&lt;/b&gt; &amp; &quot;quoted&quot; values.'));
+    assert.ok(elements.list.innerHTML.includes('xss&lt;script&gt;'));
+    assert.ok(!elements.list.innerHTML.includes('<img src=x onerror=alert(1)>'));
+  } finally {
+    restoreTimezone(originalTimezone);
+  }
+});
+
+test('initPaperReviewApp fetches uncached reviews and updates rendered results on search', async () => {
+  const originalFetch = globalThis.fetch;
+  const calls = [];
+  const elements = {
+    '[data-review-search]': createFakeElement(),
+    '[data-review-sort]': createFakeElement(),
+    '[data-review-tags]': createFakeElement(),
+    '[data-review-count]': createFakeElement(),
+    '[data-review-list]': createFakeElement(),
+    '[data-review-error]': createFakeElement(),
+  };
+  const document = createFakeDocument(elements);
+
+  globalThis.fetch = async (url, options) => {
+    calls.push([url, options]);
+
+    return {
+      ok: true,
+      async json() {
+        return fixture;
+      },
+    };
+  };
+
+  try {
+    const reviews = await initPaperReviewApp({ document, dataUrl: 'custom-reviews.json' });
+
+    assert.equal(reviews.length, 2);
+    assert.deepEqual(calls, [['custom-reviews.json', { cache: 'no-cache' }]]);
+    assert.equal(elements['[data-review-count]'].textContent, '2 reviews');
+    assert.ok(elements['[data-review-list]'].innerHTML.includes('KorMedMCQA: Korean Medical Benchmark'));
+    assert.ok(elements['[data-review-list]'].innerHTML.includes('Agent Planning Survey'));
+    assert.equal(typeof elements['[data-review-search]'].listeners.input, 'function');
+
+    elements['[data-review-search]'].value = 'planning';
+    elements['[data-review-search]'].listeners.input({ target: elements['[data-review-search]'] });
+
+    assert.equal(elements['[data-review-count]'].textContent, '1 review');
+    assert.ok(!elements['[data-review-list]'].innerHTML.includes('KorMedMCQA: Korean Medical Benchmark'));
+    assert.ok(elements['[data-review-list]'].innerHTML.includes('Agent Planning Survey'));
+  } finally {
+    if (originalFetch === undefined) {
+      delete globalThis.fetch;
+    } else {
+      globalThis.fetch = originalFetch;
+    }
+  }
 });
