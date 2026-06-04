@@ -1,0 +1,4 @@
+interface:
+  display_name: "Paper Review Ingest"
+  short_description: "Ingest arXiv papers into the local paper-review archive."
+  default_prompt: "Ingest this arXiv paper into /paper-review with review Markdown, search metadata, and figure/table captures."
