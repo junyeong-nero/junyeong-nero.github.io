@@ -5,7 +5,10 @@ const {
   coerceReviewData,
   filterReviews,
   getAllTags,
+  getReviewUrl,
+  initReviewDetailApp,
   initPaperReviewApp,
+  markdownToHtml,
   renderReviewList,
   sortReviews,
 } = require('./script.js');
@@ -131,6 +134,41 @@ test('sortReviews supports newest and title ordering without mutating input', ()
   assert.deepEqual(reviews.map((review) => review.slug), ['kormedmcqa', 'agent-planning-survey']);
 });
 
+test('renderReviewList links reviews to the HTML detail page by slug', () => {
+  const elements = {
+    count: createFakeElement(),
+    list: createFakeElement(),
+    tags: createFakeElement(),
+  };
+  const reviews = coerceReviewData(fixture);
+
+  renderReviewList(reviews, { query: '', tags: [], sort: 'newest' }, elements);
+
+  assert.equal(getReviewUrl(reviews[0]), 'review.html?slug=kormedmcqa');
+  assert.ok(elements.list.innerHTML.includes('href="review.html?slug=kormedmcqa"'));
+  assert.ok(!elements.list.innerHTML.includes('href="reviews/kormedmcqa.md"'));
+});
+
+test('markdownToHtml escapes text and resolves review-relative figure paths', () => {
+  const html = markdownToHtml(`
+## Method
+
+Read [the paper](https://arxiv.org/abs/2504.18575).
+
+- safe item
+- <script>alert(1)</script>
+
+![Figure <1>](../assets/wasp/figures/figure-01.png)
+`, { reviewPath: 'reviews/wasp.md' });
+
+  assert.ok(html.includes('<h2>Method</h2>'));
+  assert.ok(html.includes('<a href="https://arxiv.org/abs/2504.18575"'));
+  assert.ok(html.includes('<li>&lt;script&gt;alert(1)&lt;/script&gt;</li>'));
+  assert.ok(html.includes('src="assets/wasp/figures/figure-01.png"'));
+  assert.ok(html.includes('alt="Figure &lt;1&gt;"'));
+  assert.ok(!html.includes('<script>alert(1)</script>'));
+});
+
 test('renderReviewList escapes review HTML and keeps date-only display stable', () => {
   const originalTimezone = process.env.TZ;
   process.env.TZ = 'America/Los_Angeles';
@@ -252,6 +290,63 @@ test('initPaperReviewApp replaces loading state when reviews fail to load', asyn
     assert.equal(elements['[data-review-error]'].textContent, 'Failed to load reviews: 503');
     assert.ok(!elements['[data-review-list]'].innerHTML.includes('Loading reviews'));
     assert.ok(elements['[data-review-list]'].innerHTML.includes('Unable to load reviews'));
+  } finally {
+    if (originalFetch === undefined) {
+      delete globalThis.fetch;
+    } else {
+      globalThis.fetch = originalFetch;
+    }
+  }
+});
+
+test('initReviewDetailApp renders selected markdown review with resolved figures', async () => {
+  const originalFetch = globalThis.fetch;
+  const calls = [];
+  const elements = {
+    '[data-review-detail]': createFakeElement(),
+    '[data-review-error]': createFakeElement(),
+  };
+  const document = createFakeDocument(elements);
+
+  globalThis.fetch = async (url, options) => {
+    calls.push([url, options]);
+
+    if (url === 'custom-reviews.json') {
+      return {
+        ok: true,
+        async json() {
+          return fixture;
+        },
+      };
+    }
+
+    if (url === 'reviews/kormedmcqa.md') {
+      return {
+        ok: true,
+        async text() {
+          return '## Review Body\n\n![Figure 1](../assets/kormedmcqa/figures/figure-01.png)';
+        },
+      };
+    }
+
+    return { ok: false, status: 404 };
+  };
+
+  try {
+    const review = await initReviewDetailApp({
+      document,
+      dataUrl: 'custom-reviews.json',
+      slug: 'kormedmcqa',
+    });
+
+    assert.equal(review.slug, 'kormedmcqa');
+    assert.deepEqual(calls, [
+      ['custom-reviews.json', { cache: 'no-cache' }],
+      ['reviews/kormedmcqa.md', { cache: 'no-cache' }],
+    ]);
+    assert.ok(elements['[data-review-detail]'].innerHTML.includes('KorMedMCQA: Korean Medical Benchmark'));
+    assert.ok(elements['[data-review-detail]'].innerHTML.includes('<h2>Review Body</h2>'));
+    assert.ok(elements['[data-review-detail]'].innerHTML.includes('src="assets/kormedmcqa/figures/figure-01.png"'));
   } finally {
     if (originalFetch === undefined) {
       delete globalThis.fetch;

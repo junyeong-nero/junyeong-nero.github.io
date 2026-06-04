@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Paper Review Detail | Junyeong Song</title>
+  <meta name="description" content="Paper review detail with rendered notes and captured figures.">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <header class="site-header">
+    <a href="./" class="back-link">Paper Review</a>
+  </header>
+
+  <main class="page-shell detail-shell">
+    <p class="kicker">Research Notes</p>
+    <p class="load-error" data-review-error role="alert" hidden></p>
+    <section data-review-detail aria-label="Paper review detail">
+      <div class="empty-state">
+        <h2>Loading review</h2>
+        <p>The review is loading from static Markdown.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>(c) 2026 Junyeong Song. Paper notes are generated locally and served statically.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

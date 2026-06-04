@@ -123,6 +123,149 @@
     return [...review.assets.figures, ...review.assets.tables].slice(0, 3);
   }
 
+  function getReviewUrl(review) {
+    return `review.html?slug=${encodeURIComponent(review.slug)}`;
+  }
+
+  function safeUrl(value) {
+    const url = String(value || '').trim();
+    if (/^javascript:/i.test(url)) return '#';
+    return url;
+  }
+
+  function resolveMarkdownPath(path, reviewPath = '') {
+    const value = String(path || '').trim();
+    if (!value || /^(?:[a-z][a-z0-9+.-]*:|\/|#)/i.test(value)) {
+      return value;
+    }
+    if (value.startsWith('assets/')) {
+      return value;
+    }
+
+    try {
+      const resolved = new URL(value, `https://paper-review.local/${reviewPath || ''}`);
+      return resolved.pathname.replace(/^\/+/, '');
+    } catch {
+      return value;
+    }
+  }
+
+  function renderInlineMarkdown(value, context = {}) {
+    return escapeHtml(value).replace(/\[([^\]]+)\]\(([^)]+)\)/g, (_match, label, href) => {
+      const resolvedHref = safeUrl(resolveMarkdownPath(href, context.reviewPath));
+      const isExternal = /^https?:\/\//i.test(resolvedHref);
+      return `<a href="${escapeHtml(resolvedHref)}"${isExternal ? ' target="_blank" rel="noopener"' : ''}>${label}</a>`;
+    });
+  }
+
+  function renderMarkdownImage(line, context = {}) {
+    const match = line.match(/^!\[([^\]]*)\]\(([^)]+)\)$/);
+    if (!match) return '';
+
+    const alt = match[1] || 'Paper figure';
+    const src = resolveMarkdownPath(match[2], context.reviewPath);
+    return `
+      <figure class="review-figure">
+        <img src="${escapeHtml(src)}" alt="${escapeHtml(alt)}" loading="lazy">
+        ${alt ? `<figcaption>${escapeHtml(alt)}</figcaption>` : ''}
+      </figure>
+    `;
+  }
+
+  function markdownToHtml(markdown, context = {}) {
+    const lines = String(markdown || '').replace(/\r\n/g, '\n').split('\n');
+    const html = [];
+    let paragraph = [];
+    let listType = '';
+    let listItems = [];
+    let mathLines = null;
+
+    function flushParagraph() {
+      if (!paragraph.length) return;
+      html.push(`<p>${renderInlineMarkdown(paragraph.join(' '), context)}</p>`);
+      paragraph = [];
+    }
+
+    function flushList() {
+      if (!listType) return;
+      html.push(`<${listType}>${listItems.map((item) => `<li>${renderInlineMarkdown(item, context)}</li>`).join('')}</${listType}>`);
+      listType = '';
+      listItems = [];
+    }
+
+    for (const rawLine of lines) {
+      const line = rawLine.trimEnd();
+      const trimmed = line.trim();
+
+      if (mathLines) {
+        if (trimmed === '\\]') {
+          html.push(`<div class="math-block">${escapeHtml(mathLines.join('\n'))}</div>`);
+          mathLines = null;
+        } else {
+          mathLines.push(line);
+        }
+        continue;
+      }
+
+      if (!trimmed) {
+        flushParagraph();
+        flushList();
+        continue;
+      }
+
+      if (trimmed === '\\[') {
+        flushParagraph();
+        flushList();
+        mathLines = [];
+        continue;
+      }
+
+      const image = renderMarkdownImage(trimmed, context);
+      if (image) {
+        flushParagraph();
+        flushList();
+        html.push(image);
+        continue;
+      }
+
+      const heading = trimmed.match(/^(#{1,3})\s+(.+)$/);
+      if (heading) {
+        flushParagraph();
+        flushList();
+        html.push(`<h${heading[1].length}>${renderInlineMarkdown(heading[2], context)}</h${heading[1].length}>`);
+        continue;
+      }
+
+      const unordered = trimmed.match(/^-\s+(.+)$/);
+      if (unordered) {
+        flushParagraph();
+        if (listType && listType !== 'ul') flushList();
+        listType = 'ul';
+        listItems.push(unordered[1]);
+        continue;
+      }
+
+      const ordered = trimmed.match(/^\d+\.\s+(.+)$/);
+      if (ordered) {
+        flushParagraph();
+        if (listType && listType !== 'ol') flushList();
+        listType = 'ol';
+        listItems.push(ordered[1]);
+        continue;
+      }
+
+      paragraph.push(trimmed);
+    }
+
+    flushParagraph();
+    flushList();
+    if (mathLines) {
+      html.push(`<div class="math-block">${escapeHtml(mathLines.join('\n'))}</div>`);
+    }
+
+    return html.join('\n');
+  }
+
   function renderTagButton(tag, activeTags) {
     const isActive = activeTags.includes(tag);
 
@@ -168,7 +311,7 @@
         <div class="review-actions">
           ${review.arxivUrl ? `<a href="${escapeHtml(review.arxivUrl)}" target="_blank" rel="noopener">arXiv</a>` : ''}
           ${review.pdfUrl ? `<a href="${escapeHtml(review.pdfUrl)}" target="_blank" rel="noopener">PDF</a>` : ''}
-          ${review.reviewPath ? `<a href="${escapeHtml(review.reviewPath)}">Review</a>` : ''}
+          ${review.reviewPath ? `<a href="${escapeHtml(getReviewUrl(review))}">Review</a>` : ''}
         </div>
       </article>
     `;
@@ -250,6 +393,51 @@
     return coerceReviewData(await response.json());
   }
 
+  async function loadReviewMarkdown(path) {
+    const response = await fetch(path, { cache: 'no-cache' });
+    if (!response.ok) {
+      throw new Error(`Failed to load review: ${response.status}`);
+    }
+
+    return response.text();
+  }
+
+  function getSlugFromLocation(locationRef) {
+    const search = locationRef && typeof locationRef.search === 'string' ? locationRef.search : '';
+    return new URLSearchParams(search).get('slug') || '';
+  }
+
+  function findReviewBySlug(reviews, slug) {
+    return reviews.find((review) => review.slug === slug || review.id === slug);
+  }
+
+  function renderReviewDetail(review, markdown) {
+    const published = formatDate(review.publishedAt);
+    const reviewed = formatDate(review.reviewedAt);
+
+    return `
+      <article class="review-detail">
+        <p class="review-meta">
+          <span>${escapeHtml(review.id)}</span>
+          ${published ? `<span>${escapeHtml(published)}</span>` : ''}
+          ${reviewed ? `<span>Reviewed ${escapeHtml(reviewed)}</span>` : ''}
+        </p>
+        <h1>${escapeHtml(review.title)}</h1>
+        <p class="review-authors">${escapeHtml(formatAuthors(review.authors))}</p>
+        <div class="review-tags detail-tags">
+          ${review.tags.map((tag) => `<span>${escapeHtml(tag)}</span>`).join('')}
+        </div>
+        <div class="review-actions detail-actions">
+          ${review.arxivUrl ? `<a href="${escapeHtml(review.arxivUrl)}" target="_blank" rel="noopener">arXiv</a>` : ''}
+          ${review.pdfUrl ? `<a href="${escapeHtml(review.pdfUrl)}" target="_blank" rel="noopener">PDF</a>` : ''}
+        </div>
+        <div class="markdown-body">
+          ${markdownToHtml(markdown, { reviewPath: review.reviewPath })}
+        </div>
+      </article>
+    `;
+  }
+
   async function initPaperReviewApp(options = {}) {
     const documentRef = options.document || document;
     const elements = {
@@ -286,11 +474,60 @@
     }
   }
 
+  async function initReviewDetailApp(options = {}) {
+    const documentRef = options.document || document;
+    const locationRef = options.location || (typeof window !== 'undefined' ? window.location : undefined);
+    const elements = {
+      detail: documentRef.querySelector('[data-review-detail]'),
+      error: documentRef.querySelector('[data-review-error]'),
+    };
+
+    try {
+      const slug = options.slug || getSlugFromLocation(locationRef);
+      if (!slug) {
+        throw new Error('Missing review slug');
+      }
+
+      const reviews = await loadReviews(options.dataUrl || 'data/reviews.json');
+      const review = findReviewBySlug(reviews, slug);
+      if (!review) {
+        throw new Error(`Review not found: ${slug}`);
+      }
+
+      const markdown = await loadReviewMarkdown(review.reviewPath);
+      if (elements.detail) {
+        elements.detail.innerHTML = renderReviewDetail(review, markdown);
+      }
+      if (typeof documentRef.title === 'string') {
+        documentRef.title = `${review.title} | Paper Review`;
+      }
+
+      return review;
+    } catch (error) {
+      if (elements.error) {
+        elements.error.hidden = false;
+        elements.error.textContent = error.message;
+      }
+      if (elements.detail) {
+        elements.detail.innerHTML = `
+          <div class="empty-state">
+            <h2>Unable to load review</h2>
+            <p>Return to the archive and choose another paper.</p>
+          </div>
+        `;
+      }
+      throw error;
+    }
+  }
+
   return {
     coerceReviewData,
     filterReviews,
     getAllTags,
+    getReviewUrl,
+    initReviewDetailApp,
     initPaperReviewApp,
+    markdownToHtml,
     renderReviewList,
     sortReviews,
   };
@@ -298,6 +535,11 @@
 
 if (typeof window !== 'undefined' && typeof document !== 'undefined') {
   window.addEventListener('DOMContentLoaded', () => {
-    window.PaperReviewApp.initPaperReviewApp().catch(() => {});
+    const app = window.PaperReviewApp;
+    if (document.querySelector('[data-review-detail]')) {
+      app.initReviewDetailApp().catch(() => {});
+    } else {
+      app.initPaperReviewApp().catch(() => {});
+    }
   });
 }
