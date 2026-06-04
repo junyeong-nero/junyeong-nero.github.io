@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Paper Review | Junyeong Song</title>
+  <meta name="description" content="Junyeong Song's paper review archive with arXiv notes, tags, and figure/table captures.">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <header class="site-header">
+    <a href="/portfolio/" class="back-link">Portfolio</a>
+  </header>
+
+  <main class="page-shell">
+    <section class="intro" aria-labelledby="page-title">
+      <p class="kicker">Research Notes</p>
+      <div class="intro-grid">
+        <div>
+          <h1 id="page-title">Paper Review</h1>
+          <p class="intro-copy">arXiv papers I read, rebuild, and keep searchable for later experiments.</p>
+        </div>
+        <div class="ingest-note">
+          <span class="note-label">Ingest</span>
+          <p>Codex skill output is indexed here as static JSON, Markdown, and captured paper media.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="controls" aria-label="Paper review filters">
+      <label class="search-field">
+        <span>Search</span>
+        <input type="search" data-review-search placeholder="Title, author, tag, arXiv ID">
+      </label>
+
+      <label class="sort-field">
+        <span>Sort</span>
+        <select data-review-sort>
+          <option value="newest">Newest review</option>
+          <option value="title">Title A-Z</option>
+        </select>
+      </label>
+    </section>
+
+    <section class="tag-section" aria-label="Tags">
+      <div class="section-bar">
+        <h2>Tags</h2>
+        <p data-review-count>0 reviews</p>
+      </div>
+      <div class="tag-list" data-review-tags></div>
+    </section>
+
+    <p class="load-error" data-review-error hidden></p>
+
+    <section class="review-list" data-review-list aria-label="Paper reviews">
+      <div class="empty-state">
+        <h2>Loading reviews</h2>
+        <p>The archive index is loading from static JSON.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>(c) 2026 Junyeong Song. Paper notes are generated locally and served statically.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
