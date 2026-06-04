@@ -1,5 +1,66 @@
 {
   "version": 1,
   "updatedAt": "2026-06-04",
-  "reviews": []
+  "reviews": [
+    {
+      "id": "2504.18575",
+      "slug": "wasp-web-agent-security",
+      "title": "WASP: Benchmarking Web Agent Security Against Prompt Injection Attacks",
+      "authors": [
+        "Ivan Evtimov",
+        "Arman Zharmagambetov",
+        "Aaron Grattafiori",
+        "Chuan Guo",
+        "Kamalika Chaudhuri"
+      ],
+      "publishedAt": "2025-04-22",
+      "reviewedAt": "2026-06-04",
+      "summary": "A realistic benchmark for prompt injection attacks against web agents, showing high hijack rates but much lower full attacker goal completion.",
+      "tags": [
+        "agent-security",
+        "benchmark",
+        "prompt-injection",
+        "web-agents"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2504.18575",
+      "pdfUrl": "https://arxiv.org/pdf/2504.18575.pdf",
+      "reviewPath": "reviews/wasp-web-agent-security.md",
+      "assets": {
+        "figures": [
+          {
+            "path": "assets/wasp-web-agent-security/figures/figure-01.png",
+            "caption": "Figure 1. WASP summary result and example injected webpage.",
+            "page": 2
+          },
+          {
+            "path": "assets/wasp-web-agent-security/figures/figure-02.png",
+            "caption": "Figure 2. End-to-end attack example on a Reddit task.",
+            "page": 6
+          },
+          {
+            "path": "assets/wasp-web-agent-security/figures/figure-03.png",
+            "caption": "Figure 3. Attack flow across first action, intermediate steps, and final state.",
+            "page": 8
+          }
+        ],
+        "tables": [
+          {
+            "path": "assets/wasp-web-agent-security/tables/table-01.png",
+            "caption": "Table 1. Comparison with related security benchmarks.",
+            "page": 4
+          },
+          {
+            "path": "assets/wasp-web-agent-security/tables/table-02.png",
+            "caption": "Table 2. Main benchmark results.",
+            "page": 7
+          },
+          {
+            "path": "assets/wasp-web-agent-security/tables/table-03.png",
+            "caption": "Tables 3 and 4. Injection ablations.",
+            "page": 9
+          }
+        ]
+      }
+    }
+  ]
 }
