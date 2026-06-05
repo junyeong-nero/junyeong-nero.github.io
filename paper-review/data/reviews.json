@@ -70,6 +70,64 @@
       }
     },
     {
+      "id": "2508.16987",
+      "slug": "websight-vision-first-web-agents",
+      "title": "WebSight: A Vision-First Architecture for Robust Web Agents",
+      "authors": [
+        "Tanvir Bhathal",
+        "Asanshay Gupta"
+      ],
+      "publishedAt": "2025-08-23",
+      "reviewedAt": "2026-06-05",
+      "summary": "A vision-first browser agent that combines a WebSight-7B UI action model with planning, reasoning, verification, and episodic memory.",
+      "tags": [
+        "benchmark",
+        "computer-use",
+        "ui-automation",
+        "vision-language-model",
+        "web-agents"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2508.16987",
+      "pdfUrl": "https://arxiv.org/pdf/2508.16987.pdf",
+      "reviewPath": "reviews/websight-vision-first-web-agents.md",
+      "assets": {
+        "figures": [
+          {
+            "path": "assets/websight-vision-first-web-agents/figures/figure-01.png",
+            "caption": "Figure 1. WebSight architecture.",
+            "page": 1
+          },
+          {
+            "path": "assets/websight-vision-first-web-agents/figures/figure-02.png",
+            "caption": "Figure 2. Synthetic augmentation pipeline for UI vision-language model training.",
+            "page": 2
+          },
+          {
+            "path": "assets/websight-vision-first-web-agents/figures/figure-03.png",
+            "caption": "Figure 3. UI-TARS LoRA fine-tuning process for WebSight-7B.",
+            "page": 3
+          }
+        ],
+        "tables": [
+          {
+            "path": "assets/websight-vision-first-web-agents/tables/table-02.png",
+            "caption": "Table 1. Showdown/Clicks top-1 accuracy and latency comparison.",
+            "page": 5
+          },
+          {
+            "path": "assets/websight-vision-first-web-agents/tables/table-01.png",
+            "caption": "Table 2. WebVoyager success-rate comparison.",
+            "page": 5
+          },
+          {
+            "path": "assets/websight-vision-first-web-agents/tables/table-03.png",
+            "caption": "Table 3. WebSight component-level failure analysis.",
+            "page": 6
+          }
+        ]
+      }
+    },
+    {
       "id": "2504.18575",
       "slug": "wasp-web-agent-security",
       "title": "WASP: Benchmarking Web Agent Security Against Prompt Injection Attacks",
