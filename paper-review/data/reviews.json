@@ -170,6 +170,60 @@
       }
     },
     {
+      "id": "2510.03285",
+      "slug": "warex-web-agent-reliability",
+      "title": "WAREX: Web Agent Reliability Evaluation on Existing Benchmarks",
+      "authors": [
+        "Su Kara",
+        "Fazle Faisal",
+        "Suman Nath"
+      ],
+      "publishedAt": "2025-09-28",
+      "reviewedAt": "2026-06-05",
+      "summary": "A proxy-based framework that injects realistic web failures into existing web-agent benchmarks to measure reliability under non-ideal conditions.",
+      "tags": [
+        "agent-evaluation",
+        "benchmark",
+        "fault-injection",
+        "reliability",
+        "web-agents"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2510.03285",
+      "pdfUrl": "https://arxiv.org/pdf/2510.03285.pdf",
+      "reviewPath": "reviews/warex-web-agent-reliability.md",
+      "assets": {
+        "figures": [
+          {
+            "path": "assets/warex-web-agent-reliability/figures/figure-01.png",
+            "caption": "Figure 1. WAREX proxy architecture.",
+            "page": 3
+          },
+          {
+            "path": "assets/warex-web-agent-reliability/figures/figure-02.png",
+            "caption": "Figure 4. Main reliability and efficiency experiment.",
+            "page": 7
+          },
+          {
+            "path": "assets/warex-web-agent-reliability/figures/figure-03.png",
+            "caption": "Figures 2 and 3. Baseline page and injected failure examples.",
+            "page": 4
+          }
+        ],
+        "tables": [
+          {
+            "path": "assets/warex-web-agent-reliability/tables/table-01.png",
+            "caption": "Table 1. Malicious popup outcomes on REAL.",
+            "page": 9
+          },
+          {
+            "path": "assets/warex-web-agent-reliability/tables/table-02.png",
+            "caption": "Table 2. Reliability and efficiency metrics across benchmarks.",
+            "page": 12
+          }
+        ]
+      }
+    },
+    {
       "id": "2504.18575",
       "slug": "wasp-web-agent-security",
       "title": "WASP: Benchmarking Web Agent Security Against Prompt Injection Attacks",
