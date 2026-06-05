@@ -128,6 +128,48 @@
       }
     },
     {
+      "id": "2406.01623",
+      "slug": "websuite-web-agent-failures",
+      "title": "WebSuite: Systematically Evaluating Why Web Agents Fail",
+      "authors": [
+        "Eric Li",
+        "Jim Waldo"
+      ],
+      "publishedAt": "2024-06-01",
+      "reviewedAt": "2026-06-05",
+      "summary": "A diagnostic web-agent benchmark that attributes task failures to specific web action and interaction categories.",
+      "tags": [
+        "agent-evaluation",
+        "benchmark",
+        "diagnostic-evaluation",
+        "web-agents"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2406.01623",
+      "pdfUrl": "https://arxiv.org/pdf/2406.01623.pdf",
+      "reviewPath": "reviews/websuite-web-agent-failures.md",
+      "assets": {
+        "figures": [
+          {
+            "path": "assets/websuite-web-agent-failures/figures/figure-02.png",
+            "caption": "Figures 1 and 2. Individual WebSuite tests and shopping playground screenshots.",
+            "page": 5
+          }
+        ],
+        "tables": [
+          {
+            "path": "assets/websuite-web-agent-failures/tables/table-02.png",
+            "caption": "Table 1. Taxonomy of web actions.",
+            "page": 3
+          },
+          {
+            "path": "assets/websuite-web-agent-failures/tables/table-03.png",
+            "caption": "Tables 2-4. Individual task, E2E task, and interaction-level results.",
+            "page": 7
+          }
+        ]
+      }
+    },
+    {
       "id": "2504.18575",
       "slug": "wasp-web-agent-security",
       "title": "WASP: Benchmarking Web Agent Security Against Prompt Injection Attacks",
