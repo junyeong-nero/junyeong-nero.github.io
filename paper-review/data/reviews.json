@@ -1,7 +1,74 @@
 {
   "version": 1,
-  "updatedAt": "2026-06-04",
+  "updatedAt": "2026-06-05",
   "reviews": [
+    {
+      "id": "2606.02060",
+      "slug": "drift-telbench-error-localization",
+      "title": "Where Do Deep-Research Agents Go Wrong? Span-Level Error Localization in Agent Trajectories",
+      "authors": [
+        "Jiaming Wang",
+        "Ziteng Feng",
+        "Jiangtao Wu",
+        "Ruihao Li",
+        "Qianqian Xie",
+        "Yuxiang Ren",
+        "He Zhu",
+        "Xueming Han",
+        "Fanyu Meng",
+        "Junlan Feng",
+        "Jiaheng Liu"
+      ],
+      "publishedAt": "2026-06-01",
+      "reviewedAt": "2026-06-05",
+      "summary": "A benchmark and claim-centric auditing framework for localizing harmful error spans in long deep-research agent trajectories.",
+      "tags": [
+        "agent-evaluation",
+        "benchmark",
+        "deep-research",
+        "error-localization",
+        "trajectory-auditing"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2606.02060",
+      "pdfUrl": "https://arxiv.org/pdf/2606.02060.pdf",
+      "reviewPath": "reviews/drift-telbench-error-localization.md",
+      "assets": {
+        "figures": [
+          {
+            "path": "assets/drift-telbench-error-localization/figures/figure-01.png",
+            "caption": "Figure 1. Data curation pipeline for TELBench.",
+            "page": 3
+          },
+          {
+            "path": "assets/drift-telbench-error-localization/figures/figure-02.png",
+            "caption": "Figure 2. Mechanism analysis of annotated TELBench trajectories.",
+            "page": 4
+          },
+          {
+            "path": "assets/drift-telbench-error-localization/figures/figure-03.png",
+            "caption": "Figure 3. DRIFT claim-centric auditing workflow.",
+            "page": 6
+          }
+        ],
+        "tables": [
+          {
+            "path": "assets/drift-telbench-error-localization/tables/table-01.png",
+            "caption": "Table 1. Comparison with process-level reasoning and agent trace localization benchmarks.",
+            "page": 2
+          },
+          {
+            "path": "assets/drift-telbench-error-localization/tables/table-02.png",
+            "caption": "Table 2. Easy/hard split results for DRIFT and baselines.",
+            "page": 7
+          },
+          {
+            "path": "assets/drift-telbench-error-localization/tables/table-03.png",
+            "caption": "Table 3. Operation stage taxonomy for trajectory span annotation.",
+            "page": 15
+          }
+        ]
+      }
+    },
     {
       "id": "2504.18575",
       "slug": "wasp-web-agent-security",
