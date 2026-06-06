@@ -1,7 +1,69 @@
 {
   "version": 1,
-  "updatedAt": "2026-06-05",
+  "updatedAt": "2026-06-06",
   "reviews": [
+    {
+      "id": "2606.05553",
+      "slug": "arcane-role-playing-character-arcs",
+      "title": "ArcANE: Do Role-Playing Language Agents Stay in Character at the Right Time?",
+      "authors": [
+        "Woojung Song",
+        "Nalim Kim",
+        "Sangjun Song",
+        "Chaewon Heo",
+        "Jongwon Lim",
+        "Yohan Jo"
+      ],
+      "publishedAt": "2026-06-04",
+      "reviewedAt": "2026-06-06",
+      "summary": "A benchmark and training setup for evaluating whether role-playing language agents adapt behavior to character arcs across narrative phases.",
+      "tags": [
+        "agent-evaluation",
+        "benchmark",
+        "character-arcs",
+        "role-playing-agents",
+        "temporal-grounding"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2606.05553",
+      "pdfUrl": "https://arxiv.org/pdf/2606.05553.pdf",
+      "reviewPath": "reviews/arcane-role-playing-character-arcs.md",
+      "assets": {
+        "figures": [
+          {
+            "path": "assets/arcane-role-playing-character-arcs/figures/figure-01.png",
+            "caption": "Figure 1. Out-of-World ArcANE probe example for Harry Potter.",
+            "page": 1
+          },
+          {
+            "path": "assets/arcane-role-playing-character-arcs/figures/figure-02.png",
+            "caption": "Figure 2. ArcANE pipeline for Character Arc construction and probe generation.",
+            "page": 4
+          },
+          {
+            "path": "assets/arcane-role-playing-character-arcs/figures/figure-03.png",
+            "caption": "Figure 4. Arc source-of-effect ablation across DeepSeek, Qwen3, and ArcANE-32B-DPO.",
+            "page": 8
+          }
+        ],
+        "tables": [
+          {
+            "path": "assets/arcane-role-playing-character-arcs/tables/table-01.png",
+            "caption": "Table 1. Comparison with role-playing language agent evaluation benchmarks.",
+            "page": 3
+          },
+          {
+            "path": "assets/arcane-role-playing-character-arcs/tables/table-02.png",
+            "caption": "Table 2. Main validated-slice results across models, context modes, probe categories, and metrics.",
+            "page": 6
+          },
+          {
+            "path": "assets/arcane-role-playing-character-arcs/tables/table-03.png",
+            "caption": "Table 3. Dataset statistics for train, validated test, and low-popularity test splits.",
+            "page": 14
+          }
+        ]
+      }
+    },
     {
       "id": "2606.02060",
       "slug": "drift-telbench-error-localization",
