@@ -1,7 +1,60 @@
 {
   "version": 1,
-  "updatedAt": "2026-06-09",
+  "updatedAt": "2026-06-10",
   "reviews": [
+    {
+      "id": "2507.00769",
+      "slug": "litbench-creative-writing-evaluation",
+      "title": "LitBench: A Benchmark and Dataset for Reliable Evaluation of Creative Writing",
+      "authors": [
+        "Daniel Fein",
+        "Sebastian Russo",
+        "Violet Xiang",
+        "Kabir Jolly",
+        "Rafael Rafailov",
+        "Nick Haber"
+      ],
+      "publishedAt": "2025-07-01",
+      "reviewedAt": "2026-06-10",
+      "summary": "A curated r/WritingPrompts benchmark and training corpus showing that trained reward models can evaluate creative writing more reliably than zero-shot LLM judges.",
+      "tags": [
+        "benchmark",
+        "creative-writing",
+        "evaluation",
+        "llm-judges",
+        "preference-modeling",
+        "reward-models"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2507.00769",
+      "pdfUrl": "https://arxiv.org/pdf/2507.00769.pdf",
+      "reviewPath": "reviews/litbench-creative-writing-evaluation.md",
+      "assets": {
+        "figures": [
+          {
+            "path": "assets/litbench-creative-writing-evaluation/figures/figure-01.png",
+            "caption": "Figure 1. Preprocessing methodology for dataset creation.",
+            "page": 3
+          },
+          {
+            "path": "assets/litbench-creative-writing-evaluation/figures/figure-02.png",
+            "caption": "Figure 3. Distributions of word count, date, and upvotes for the LitBench test and train sets.",
+            "page": 5
+          },
+          {
+            "path": "assets/litbench-creative-writing-evaluation/figures/figure-03.png",
+            "caption": "Figure 4. Trained verifiers outperform zero-shot LLM judges on LitBench.",
+            "page": 7
+          }
+        ],
+        "tables": [
+          {
+            "path": "assets/litbench-creative-writing-evaluation/tables/table-01.png",
+            "caption": "Table 1. LLM-as-a-judge evaluation results by model on LitBench.",
+            "page": 10
+          }
+        ]
+      }
+    },
     {
       "id": "2503.09572",
       "slug": "plan-and-act-long-horizon-agents",
