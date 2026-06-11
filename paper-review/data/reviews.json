@@ -1,7 +1,70 @@
 {
   "version": 1,
-  "updatedAt": "2026-06-06",
+  "updatedAt": "2026-06-07",
   "reviews": [
+    {
+      "id": "2410.17236",
+      "slug": "puma-personalized-web-agents",
+      "title": "Large Language Models Empowered Personalized Web Agents",
+      "authors": [
+        "Hongru Cai",
+        "Yongqi Li",
+        "Wenjie Wang",
+        "Fengbin Zhu",
+        "Xiaoyu Shen",
+        "Wenjie Li",
+        "Tat-Seng Chua"
+      ],
+      "publishedAt": "2024-10-22",
+      "reviewedAt": "2026-06-07",
+      "summary": "A benchmark and memory-alignment framework for personalized web agents that use profiles and behavior histories to choose web functions and parameters.",
+      "tags": [
+        "agent-evaluation",
+        "benchmark",
+        "memory-augmented-agents",
+        "personalization",
+        "web-agents"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2410.17236",
+      "pdfUrl": "https://arxiv.org/pdf/2410.17236.pdf",
+      "reviewPath": "reviews/puma-personalized-web-agents.md",
+      "assets": {
+        "figures": [
+          {
+            "path": "assets/puma-personalized-web-agents/figures/figure-01.png",
+            "caption": "Figure 1. Comparison between traditional and personalized web agents.",
+            "page": 2
+          },
+          {
+            "path": "assets/puma-personalized-web-agents/figures/figure-03.png",
+            "caption": "Figure 2. PersonalWAB construction pipeline with a recommendation example.",
+            "page": 4
+          },
+          {
+            "path": "assets/puma-personalized-web-agents/figures/figure-02.png",
+            "caption": "Figure 6. PUMA framework with function identification, task-specific memory retrieval, and parameter optimization.",
+            "page": 6
+          }
+        ],
+        "tables": [
+          {
+            "path": "assets/puma-personalized-web-agents/tables/table-01.png",
+            "caption": "Table 1. Comparison between PersonalWAB and existing web-agent benchmarks.",
+            "page": 2
+          },
+          {
+            "path": "assets/puma-personalized-web-agents/tables/table-03.png",
+            "caption": "Table 2. PersonalWAB benchmark statistics.",
+            "page": 5
+          },
+          {
+            "path": "assets/puma-personalized-web-agents/tables/table-02.png",
+            "caption": "Tables 3 and 4. Single-turn and multi-turn results, plus efficiency comparison.",
+            "page": 8
+          }
+        ]
+      }
+    },
     {
       "id": "2606.05553",
       "slug": "arcane-role-playing-character-arcs",
