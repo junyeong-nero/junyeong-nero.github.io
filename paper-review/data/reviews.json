@@ -56,6 +56,73 @@
       }
     },
     {
+      "id": "2504.08942",
+      "slug": "agentrewardbench-web-agent-evaluation",
+      "title": "AgentRewardBench: Evaluating Automatic Evaluations of Web Agent Trajectories",
+      "authors": [
+        "Xing Han Lù",
+        "Amirhossein Kazemnejad",
+        "Nicholas Meade",
+        "Arkil Patel",
+        "Dongchan Shin",
+        "Alejandra Zambrano",
+        "Karolina Stańczak",
+        "Peter Shaw",
+        "Christopher J. Pal",
+        "Siva Reddy"
+      ],
+      "publishedAt": "2025-04-11",
+      "reviewedAt": "2026-06-10",
+      "summary": "A benchmark of expert-labeled web-agent trajectories showing that current LLM judges have limited precision while rule-based evaluators often undercount valid successes.",
+      "tags": [
+        "agent-evaluation",
+        "benchmark",
+        "llm-judges",
+        "reward-models",
+        "web-agents",
+        "webarena"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2504.08942",
+      "pdfUrl": "https://arxiv.org/pdf/2504.08942.pdf",
+      "reviewPath": "reviews/agentrewardbench-web-agent-evaluation.md",
+      "assets": {
+        "figures": [
+          {
+            "path": "assets/agentrewardbench-web-agent-evaluation/figures/figure-01.png",
+            "caption": "Figure 1. AgentRewardBench example: an LLM judge evaluates a VisualWebArena trajectory against expert annotations.",
+            "page": 2
+          },
+          {
+            "path": "assets/agentrewardbench-web-agent-evaluation/figures/figure-02.png",
+            "caption": "Figure 2. AgentRewardBench creation process: collect trajectories, expert annotations, and judge evaluations.",
+            "page": 4
+          },
+          {
+            "path": "assets/agentrewardbench-web-agent-evaluation/figures/figure-03.png",
+            "caption": "Figure 3. Example judge error where an agent adds cereal to the cart but does not complete the requested purchase.",
+            "page": 9
+          }
+        ],
+        "tables": [
+          {
+            "path": "assets/agentrewardbench-web-agent-evaluation/tables/table-01.png",
+            "caption": "Table 1. Judge precision, recall, and F1 for predicting trajectory success.",
+            "page": 6
+          },
+          {
+            "path": "assets/agentrewardbench-web-agent-evaluation/tables/table-02.png",
+            "caption": "Table 2. Input-representation ablation for the GPT-4o mini simplified judge.",
+            "page": 7
+          },
+          {
+            "path": "assets/agentrewardbench-web-agent-evaluation/tables/table-03.png",
+            "caption": "Table 3. Expert, LLM-judge, and rule-based success-rate estimates across web-agent benchmarks.",
+            "page": 8
+          }
+        ]
+      }
+    },
+    {
       "id": "2503.09572",
       "slug": "plan-and-act-long-horizon-agents",
       "title": "Plan-and-Act: Improving Planning of Agents for Long-Horizon Tasks",
