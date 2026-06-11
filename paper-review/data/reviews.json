@@ -192,6 +192,73 @@
       }
     },
     {
+      "id": "2412.10999",
+      "slug": "cocoa-co-planning-co-execution",
+      "title": "Cocoa: Co-Planning and Co-Execution with AI Agents",
+      "authors": [
+        "K. J. Kevin Feng",
+        "Kevin Pu",
+        "Matt Latzke",
+        "Tal August",
+        "Pao Siangliulue",
+        "Jonathan Bragg",
+        "Daniel S. Weld",
+        "Amy X. Zhang",
+        "Joseph Chee Chang"
+      ],
+      "publishedAt": "2024-12-14",
+      "reviewedAt": "2026-06-11",
+      "summary": "An HCI system for document-based human-agent collaboration that exposes editable shared plans, assignable user/agent steps, stepwise execution, and replanning, improving steerability over chat without reducing ease of use.",
+      "tags": [
+        "agent-interfaces",
+        "co-agency",
+        "hci",
+        "human-agent-collaboration",
+        "interactive-systems",
+        "planning",
+        "research-tools"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2412.10999",
+      "pdfUrl": "https://arxiv.org/pdf/2412.10999.pdf",
+      "reviewPath": "reviews/cocoa-co-planning-co-execution.md",
+      "assets": {
+        "figures": [
+          {
+            "path": "assets/cocoa-co-planning-co-execution/figures/figure-01.png",
+            "caption": "Figure 1. Cocoa integrates interactive co-planning and co-execution into a document environment.",
+            "page": 1
+          },
+          {
+            "path": "assets/cocoa-co-planning-co-execution/figures/figure-02.png",
+            "caption": "Figure 2. Cocoa user interface with assignable plan steps and editable agent outputs.",
+            "page": 2
+          },
+          {
+            "path": "assets/cocoa-co-planning-co-execution/figures/figure-03.png",
+            "caption": "Figure 9. Lab-study ratings for steerability, ease of use, and general utility.",
+            "page": 12
+          }
+        ],
+        "tables": [
+          {
+            "path": "assets/cocoa-co-planning-co-execution/tables/table-01.png",
+            "caption": "Table 1. Mapping between Cocoa features and computational-notebook features.",
+            "page": 9
+          },
+          {
+            "path": "assets/cocoa-co-planning-co-execution/tables/table-02.png",
+            "caption": "Table 2. Cocoa usage metrics from the lab study.",
+            "page": 11
+          },
+          {
+            "path": "assets/cocoa-co-planning-co-execution/tables/table-03.png",
+            "caption": "Table 3. Formative-study participant demographics.",
+            "page": 19
+          }
+        ]
+      }
+    },
+    {
       "id": "2507.00769",
       "slug": "litbench-creative-writing-evaluation",
       "title": "LitBench: A Benchmark and Dataset for Reliable Evaluation of Creative Writing",
