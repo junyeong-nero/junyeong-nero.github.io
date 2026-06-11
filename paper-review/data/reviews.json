@@ -72,6 +72,63 @@
       }
     },
     {
+      "id": "2312.06281",
+      "slug": "eq-bench-emotional-intelligence",
+      "title": "EQ-Bench: An Emotional Intelligence Benchmark for Large Language Models",
+      "authors": [
+        "Samuel J. Paech"
+      ],
+      "publishedAt": "2023-12-11",
+      "reviewedAt": "2026-06-11",
+      "summary": "A 60-question benchmark for evaluating LLM emotional understanding through dialogue-based emotion-intensity ratings, reporting broad model separation, repeatability, and strong correlations with MMLU and Chatbot Arena.",
+      "tags": [
+        "benchmark",
+        "emotional-intelligence",
+        "evaluation",
+        "llm-evaluation",
+        "psychometrics"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2312.06281",
+      "pdfUrl": "https://arxiv.org/pdf/2312.06281.pdf",
+      "reviewPath": "reviews/eq-bench-emotional-intelligence.md",
+      "assets": {
+        "figures": [
+          {
+            "path": "assets/eq-bench-emotional-intelligence/figures/figure-01.png",
+            "caption": "Figure 1. Chart of EQ-Bench scores for a subset of tested models.",
+            "page": 2
+          },
+          {
+            "path": "assets/eq-bench-emotional-intelligence/figures/figure-02.png",
+            "caption": "Figure 2. Example partial prompt for a question in the EQ-Bench test set.",
+            "page": 5
+          },
+          {
+            "path": "assets/eq-bench-emotional-intelligence/figures/figure-03.png",
+            "caption": "Figure 3. EQ-Bench scores comparing first-pass scores with revised scores.",
+            "page": 9
+          }
+        ],
+        "tables": [
+          {
+            "path": "assets/eq-bench-emotional-intelligence/tables/table-01.png",
+            "caption": "Table 1. EQ-Bench score comparison across tested models.",
+            "page": 8
+          },
+          {
+            "path": "assets/eq-bench-emotional-intelligence/tables/table-02.png",
+            "caption": "Table 2. Calculated statistics for normalized SECEU and EQ-Bench score distributions.",
+            "page": 10
+          },
+          {
+            "path": "assets/eq-bench-emotional-intelligence/tables/table-03.png",
+            "caption": "Table 3. Score correlation matrix: EQ-Bench vs. Arena ELO, MT-Bench, MMLU, and AlpacaEval.",
+            "page": 17
+          }
+        ]
+      }
+    },
+    {
       "id": "2507.00769",
       "slug": "litbench-creative-writing-evaluation",
       "title": "LitBench: A Benchmark and Dataset for Reliable Evaluation of Creative Writing",
