@@ -129,6 +129,69 @@
       }
     },
     {
+      "id": "2311.12983",
+      "slug": "gaia-general-ai-assistants",
+      "title": "GAIA: a benchmark for General AI Assistants",
+      "authors": [
+        "Grégoire Mialon",
+        "Clémentine Fourrier",
+        "Craig Swift",
+        "Thomas Wolf",
+        "Yann LeCun",
+        "Thomas Scialom"
+      ],
+      "publishedAt": "2023-11-21",
+      "reviewedAt": "2026-06-11",
+      "summary": "A 466-question benchmark for general AI assistants that tests real-world tool use, web browsing, multimodal/file handling, and exact-answer robustness, revealing a large gap between humans and tool-augmented GPT-4.",
+      "tags": [
+        "agent-benchmark",
+        "benchmark",
+        "evaluation",
+        "general-ai-assistants",
+        "tool-use",
+        "web-browsing"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2311.12983",
+      "pdfUrl": "https://arxiv.org/pdf/2311.12983.pdf",
+      "reviewPath": "reviews/gaia-general-ai-assistants.md",
+      "assets": {
+        "figures": [
+          {
+            "path": "assets/gaia-general-ai-assistants/figures/figure-01.png",
+            "caption": "Figure 1. Sample GAIA questions across three difficulty levels.",
+            "page": 2
+          },
+          {
+            "path": "assets/gaia-general-ai-assistants/figures/figure-02.png",
+            "caption": "Figure 2. Example GAIA prompt and GPT-4 Advanced Data Analysis tool use over an attached spreadsheet.",
+            "page": 5
+          },
+          {
+            "path": "assets/gaia-general-ai-assistants/figures/figure-03.png",
+            "caption": "Figure 3. Capability counts and question distribution by steps, tools, and level.",
+            "page": 6
+          }
+        ],
+        "tables": [
+          {
+            "path": "assets/gaia-general-ai-assistants/tables/table-01.png",
+            "caption": "Table 1. Example annotated GAIA question from the creation phase.",
+            "page": 20
+          },
+          {
+            "path": "assets/gaia-general-ai-assistants/tables/table-02.png",
+            "caption": "Table 3. Validation statistics and human baseline by level.",
+            "page": 21
+          },
+          {
+            "path": "assets/gaia-general-ai-assistants/tables/table-03.png",
+            "caption": "Table 4. GAIA scores and average answer times for LLMs, search, and humans.",
+            "page": 21
+          }
+        ]
+      }
+    },
+    {
       "id": "2507.00769",
       "slug": "litbench-creative-writing-evaluation",
       "title": "LitBench: A Benchmark and Dataset for Reliable Evaluation of Creative Writing",
