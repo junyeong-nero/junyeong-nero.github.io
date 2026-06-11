@@ -1,7 +1,71 @@
 {
   "version": 1,
-  "updatedAt": "2026-06-07",
+  "updatedAt": "2026-06-08",
   "reviews": [
+    {
+      "id": "2410.13825",
+      "slug": "agentoccam-web-agent-baseline",
+      "title": "AgentOccam: A Simple Yet Strong Baseline for LLM-Based Web Agents",
+      "authors": [
+        "Ke Yang",
+        "Yao Liu",
+        "Sapana Chaudhary",
+        "Rasool Fakoor",
+        "Pratik Chaudhari",
+        "George Karypis",
+        "Huzefa Rangwala"
+      ],
+      "publishedAt": "2024-10-17",
+      "reviewedAt": "2026-06-08",
+      "summary": "A minimalist web-agent baseline showing that LLM performance can improve sharply by aligning browser observation and action spaces instead of adding complex agent scaffolding.",
+      "tags": [
+        "action-space",
+        "agent-evaluation",
+        "baseline",
+        "observation-space",
+        "web-agents",
+        "webarena"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2410.13825",
+      "pdfUrl": "https://arxiv.org/pdf/2410.13825.pdf",
+      "reviewPath": "reviews/agentoccam-web-agent-baseline.md",
+      "assets": {
+        "figures": [
+          {
+            "path": "assets/agentoccam-web-agent-baseline/figures/figure-01.png",
+            "caption": "Figure 1. AgentOccam overview: aligning action and observation spaces instead of adding compound LLM policies.",
+            "page": 2
+          },
+          {
+            "path": "assets/agentoccam-web-agent-baseline/figures/figure-02.png",
+            "caption": "Figure 2. Action-space alignment: remove non-essential actions, disable scrolling, and add branch/prune planning.",
+            "page": 5
+          },
+          {
+            "path": "assets/agentoccam-web-agent-baseline/figures/figure-03.png",
+            "caption": "Figure 4. Observation-space alignment: compact page elements, pivotal-node replay, and plan-scoped history.",
+            "page": 6
+          }
+        ],
+        "tables": [
+          {
+            "path": "assets/agentoccam-web-agent-baseline/tables/table-01.png",
+            "caption": "Table 1. Component comparison across LLM-based web agents.",
+            "page": 3
+          },
+          {
+            "path": "assets/agentoccam-web-agent-baseline/tables/table-02.png",
+            "caption": "Table 2. WebArena success rates for AgentOccam and baseline agents.",
+            "page": 8
+          },
+          {
+            "path": "assets/agentoccam-web-agent-baseline/tables/table-03.png",
+            "caption": "Tables 3 and 4. Action-frequency and observation-token ablations for AgentOccam components.",
+            "page": 9
+          }
+        ]
+      }
+    },
     {
       "id": "2410.17236",
       "slug": "puma-personalized-web-agents",
