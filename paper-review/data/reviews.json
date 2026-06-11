@@ -123,6 +123,68 @@
       }
     },
     {
+      "id": "2601.21872",
+      "slug": "webarbiter-web-agent-reward-model",
+      "title": "WebArbiter: A Principle-Guided Reasoning Process Reward Model for Web Agents",
+      "authors": [
+        "Yao Zhang",
+        "Shijie Tang",
+        "Zeyu Li",
+        "Zhen Han",
+        "Volker Tresp"
+      ],
+      "publishedAt": "2026-01-29",
+      "reviewedAt": "2026-06-10",
+      "summary": "A reasoning-first process reward model and WebPRMBench benchmark for ranking web-agent actions with principle-guided justifications and stronger reward-guided trajectory search.",
+      "tags": [
+        "agent-evaluation",
+        "inference-time-search",
+        "process-reward-models",
+        "reward-models",
+        "web-agents",
+        "webarena"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2601.21872",
+      "pdfUrl": "https://arxiv.org/pdf/2601.21872.pdf",
+      "reviewPath": "reviews/webarbiter-web-agent-reward-model.md",
+      "assets": {
+        "figures": [
+          {
+            "path": "assets/webarbiter-web-agent-reward-model/figures/figure-01.png",
+            "caption": "Figure 1. WebPRMBench performance comparison across model scale and environments.",
+            "page": 1
+          },
+          {
+            "path": "assets/webarbiter-web-agent-reward-model/figures/figure-02.png",
+            "caption": "Figure 2. WebArbiter training and inference overview.",
+            "page": 4
+          },
+          {
+            "path": "assets/webarbiter-web-agent-reward-model/figures/figure-03.png",
+            "caption": "Figure 3. Action-type distribution in WebPRMBench.",
+            "page": 20
+          }
+        ],
+        "tables": [
+          {
+            "path": "assets/webarbiter-web-agent-reward-model/tables/table-01.png",
+            "caption": "Table 5. WebArena-Lite trajectory-search success rates with WebArbiter and baseline WebPRMs.",
+            "page": 10
+          },
+          {
+            "path": "assets/webarbiter-web-agent-reward-model/tables/table-02.png",
+            "caption": "Table 2. WebPRMBench Pairwise and Best-of-N accuracy results.",
+            "page": 7
+          },
+          {
+            "path": "assets/webarbiter-web-agent-reward-model/tables/table-03.png",
+            "caption": "Table 3. WebPRMBench ablation results for training recipes.",
+            "page": 8
+          }
+        ]
+      }
+    },
+    {
       "id": "2503.09572",
       "slug": "plan-and-act-long-horizon-agents",
       "title": "Plan-and-Act: Improving Planning of Agents for Long-Horizon Tasks",
