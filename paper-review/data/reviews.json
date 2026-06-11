@@ -1,7 +1,76 @@
 {
   "version": 1,
-  "updatedAt": "2026-06-10",
+  "updatedAt": "2026-06-11",
   "reviews": [
+    {
+      "id": "2503.05244",
+      "slug": "writingbench-generative-writing",
+      "title": "WritingBench: A Comprehensive Benchmark for Generative Writing",
+      "authors": [
+        "Yuning Wu",
+        "Jiahao Mei",
+        "Ming Yan",
+        "Chenliang Li",
+        "Shaopeng Lai",
+        "Yuran Ren",
+        "Zijia Wang",
+        "Ji Zhang",
+        "Mengyue Wu",
+        "Qin Jin",
+        "Fei Huang"
+      ],
+      "publishedAt": "2025-03-07",
+      "reviewedAt": "2026-06-11",
+      "summary": "A 1,000-query benchmark and query-dependent critic framework for evaluating LLMs on realistic generative writing across domains, languages, source materials, and style, format, and length constraints.",
+      "tags": [
+        "benchmark",
+        "critic-models",
+        "data-curation",
+        "evaluation",
+        "generative-writing",
+        "llm-judges",
+        "writing"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2503.05244",
+      "pdfUrl": "https://arxiv.org/pdf/2503.05244.pdf",
+      "reviewPath": "reviews/writingbench-generative-writing.md",
+      "assets": {
+        "figures": [
+          {
+            "path": "assets/writingbench-generative-writing/figures/figure-01.png",
+            "caption": "Figure 1. Query example with color-coded requirements and linked writing support materials.",
+            "page": 1
+          },
+          {
+            "path": "assets/writingbench-generative-writing/figures/figure-02.png",
+            "caption": "Figure 2. WritingBench query construction pipeline with requirement diversification and material references.",
+            "page": 2
+          },
+          {
+            "path": "assets/writingbench-generative-writing/figures/figure-03.png",
+            "caption": "Figure 3. WritingBench domain taxonomy across 6 primary domains and 100 subdomains.",
+            "page": 4
+          }
+        ],
+        "tables": [
+          {
+            "path": "assets/writingbench-generative-writing/tables/table-01.png",
+            "caption": "Table 1. Comparison of WritingBench with existing writing benchmarks.",
+            "page": 3
+          },
+          {
+            "path": "assets/writingbench-generative-writing/tables/table-02.png",
+            "caption": "Table 2. WritingBench data statistics by domain, requirement, and input length.",
+            "page": 4
+          },
+          {
+            "path": "assets/writingbench-generative-writing/tables/table-03.png",
+            "caption": "Table 3. WritingBench model performance across domains and writing requirements.",
+            "page": 6
+          }
+        ]
+      }
+    },
     {
       "id": "2507.00769",
       "slug": "litbench-creative-writing-evaluation",
