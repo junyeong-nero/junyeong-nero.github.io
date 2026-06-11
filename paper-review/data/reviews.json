@@ -1,7 +1,73 @@
 {
   "version": 1,
-  "updatedAt": "2026-06-08",
+  "updatedAt": "2026-06-09",
   "reviews": [
+    {
+      "id": "2503.09572",
+      "slug": "plan-and-act-long-horizon-agents",
+      "title": "Plan-and-Act: Improving Planning of Agents for Long-Horizon Tasks",
+      "authors": [
+        "Lutfi Eren Erdogan",
+        "Nicholas Lee",
+        "Sehoon Kim",
+        "Suhong Moon",
+        "Hiroki Furuta",
+        "Gopala Anumanchipalli",
+        "Kurt Keutzer",
+        "Amir Gholami"
+      ],
+      "publishedAt": "2025-03-12",
+      "reviewedAt": "2026-06-09",
+      "summary": "A planner/executor web-agent framework that trains explicit planning with grounded synthetic data, dynamic replanning, and CoT traces for stronger long-horizon web navigation.",
+      "tags": [
+        "agent-evaluation",
+        "long-horizon-agents",
+        "planning",
+        "synthetic-data",
+        "web-agents",
+        "webarena",
+        "webvoyager"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2503.09572",
+      "pdfUrl": "https://arxiv.org/pdf/2503.09572.pdf",
+      "reviewPath": "reviews/plan-and-act-long-horizon-agents.md",
+      "assets": {
+        "figures": [
+          {
+            "path": "assets/plan-and-act-long-horizon-agents/figures/figure-01.png",
+            "caption": "Figure 1. Plan-and-Act planner/executor architecture.",
+            "page": 1
+          },
+          {
+            "path": "assets/plan-and-act-long-horizon-agents/figures/figure-02.png",
+            "caption": "Figure 2. Dynamic planner/executor loop for a GitHub web-navigation task.",
+            "page": 2
+          },
+          {
+            "path": "assets/plan-and-act-long-horizon-agents/figures/figure-03.png",
+            "caption": "Figure 3. Synthetic data generation pipeline for trajectories, grounded plans, and plan expansion.",
+            "page": 5
+          }
+        ],
+        "tables": [
+          {
+            "path": "assets/plan-and-act-long-horizon-agents/tables/table-01.png",
+            "caption": "Table 1. WebArena-Lite ablation across planner and executor designs.",
+            "page": 8
+          },
+          {
+            "path": "assets/plan-and-act-long-horizon-agents/tables/table-02.png",
+            "caption": "Tables 2 and 3. Chain-of-thought comparison and full WebArena method comparison.",
+            "page": 9
+          },
+          {
+            "path": "assets/plan-and-act-long-horizon-agents/tables/table-03.png",
+            "caption": "Table 4. WebVoyager benchmark comparison.",
+            "page": 10
+          }
+        ]
+      }
+    },
     {
       "id": "2410.13825",
       "slug": "agentoccam-web-agent-baseline",
