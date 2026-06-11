@@ -185,6 +185,69 @@
       }
     },
     {
+      "id": "2407.15711",
+      "slug": "assistantbench-realistic-web-agents",
+      "title": "AssistantBench: Can Web Agents Solve Realistic and Time-Consuming Tasks?",
+      "authors": [
+        "Ori Yoran",
+        "Samuel Joseph Amouyal",
+        "Chaitanya Malaviya",
+        "Ben Bogin",
+        "Ofir Press",
+        "Jonathan Berant"
+      ],
+      "publishedAt": "2024-07-22",
+      "reviewedAt": "2026-06-10",
+      "summary": "A realistic open-web benchmark of 214 time-consuming tasks showing that current web agents, retrieval systems, and closed-book models remain far from reliable.",
+      "tags": [
+        "agent-evaluation",
+        "assistant-benchmarks",
+        "benchmark",
+        "open-web",
+        "web-agents",
+        "web-navigation"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2407.15711",
+      "pdfUrl": "https://arxiv.org/pdf/2407.15711.pdf",
+      "reviewPath": "reviews/assistantbench-realistic-web-agents.md",
+      "assets": {
+        "figures": [
+          {
+            "path": "assets/assistantbench-realistic-web-agents/figures/figure-01.png",
+            "caption": "Figure 1. Example AssistantBench task and why closed-book or retrieval-only systems struggle.",
+            "page": 1
+          },
+          {
+            "path": "assets/assistantbench-realistic-web-agents/figures/figure-02.png",
+            "caption": "Figure 2. Gold trajectory for an AssistantBench task involving map and website navigation.",
+            "page": 2
+          },
+          {
+            "path": "assets/assistantbench-realistic-web-agents/figures/figure-03.png",
+            "caption": "Figure 3. AssistantBench data collection pipeline.",
+            "page": 3
+          }
+        ],
+        "tables": [
+          {
+            "path": "assets/assistantbench-realistic-web-agents/tables/table-01.png",
+            "caption": "Table 1. AssistantBench test-set results with GPT-4-Turbo.",
+            "page": 6
+          },
+          {
+            "path": "assets/assistantbench-realistic-web-agents/tables/table-02.png",
+            "caption": "Table 2. FANOUT QA results with GPT-4-Turbo.",
+            "page": 7
+          },
+          {
+            "path": "assets/assistantbench-realistic-web-agents/tables/table-03.png",
+            "caption": "Table 4. SPA and SeeAct error analysis, plus ChatGPT failure examples.",
+            "page": 8
+          }
+        ]
+      }
+    },
+    {
       "id": "2503.09572",
       "slug": "plan-and-act-long-horizon-agents",
       "title": "Plan-and-Act: Improving Planning of Agents for Long-Horizon Tasks",
