@@ -127,6 +127,49 @@
       }
     },
     {
+      "id": "pirolli-card-2005-sensemaking",
+      "slug": "sensemaking-process-analyst-technology",
+      "title": "The Sensemaking Process and Leverage Points for Analyst Technology",
+      "authors": [
+        "Peter Pirolli",
+        "Stuart Card"
+      ],
+      "publishedAt": "2005-04-28",
+      "reviewedAt": "2026-06-16",
+      "summary": "A cognitive task analysis account of intelligence analysis as a two-loop sensemaking process, identifying tool leverage points for evidence foraging, schema construction, hypothesis management, and bias control.",
+      "tags": [
+        "cognitive-task-analysis",
+        "information-foraging",
+        "intelligence-analysis",
+        "sensemaking",
+        "visual-analytics"
+      ],
+      "sourceUrl": "https://andymatuschak.org/files/papers/Pirolli,%20Card%20-%202005%20-%20The%20sensemaking%20process%20and%20leverage%20points%20for%20analyst%20technology%20as.pdf",
+      "pdfUrl": "https://andymatuschak.org/files/papers/Pirolli,%20Card%20-%202005%20-%20The%20sensemaking%20process%20and%20leverage%20points%20for%20analyst%20technology%20as.pdf",
+      "reviewPath": "reviews/sensemaking-process-analyst-technology.md",
+      "assets": {
+        "figures": [
+          {
+            "path": "assets/sensemaking-process-analyst-technology/figures/figure-01.png",
+            "caption": "Figure 1. Learning Loop Complex theory of sensemaking.",
+            "page": 2
+          },
+          {
+            "path": "assets/sensemaking-process-analyst-technology/figures/figure-02.png",
+            "caption": "Figure 2. Notional model of the sensemaking loop for intelligence analysis.",
+            "page": 3
+          },
+          {
+            "path": "assets/sensemaking-process-analyst-technology/figures/figure-03.png",
+            "caption": "Figures 4 and 5. Analyst-drawn hypothesis sketch and exploration-enrichment-exploitation tradeoff.",
+            "page": 4
+          }
+        ],
+        "tables": []
+      },
+      "arxivUrl": ""
+    },
+    {
       "id": "2503.05244",
       "slug": "writingbench-generative-writing",
       "title": "WritingBench: A Comprehensive Benchmark for Generative Writing",
