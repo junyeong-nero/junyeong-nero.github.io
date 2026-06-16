@@ -39,14 +39,18 @@ def read_index(path: Path, today: str) -> dict[str, Any]:
 
 
 def normalize_entry(entry: dict[str, Any]) -> dict[str, Any]:
-    required = ["id", "slug", "title", "summary", "arxivUrl", "pdfUrl", "reviewPath"]
+    required = ["id", "slug", "title", "summary", "pdfUrl", "reviewPath"]
     missing = [key for key in required if not entry.get(key)]
+    if not entry.get("arxivUrl") and not entry.get("sourceUrl"):
+        missing.append("arxivUrl or sourceUrl")
     if missing:
         raise ValueError(f"Missing required review fields: {', '.join(missing)}")
 
     normalized = dict(entry)
     normalized["id"] = canonical_id(str(normalized["id"]))
     normalized["authors"] = [str(author) for author in normalized.get("authors", []) if author]
+    normalized["arxivUrl"] = str(normalized.get("arxivUrl", ""))
+    normalized["sourceUrl"] = str(normalized.get("sourceUrl", ""))
     normalized["tags"] = sorted({str(tag).strip().lower() for tag in normalized.get("tags", []) if str(tag).strip()})
 
     assets = normalized.get("assets") if isinstance(normalized.get("assets"), dict) else {}
