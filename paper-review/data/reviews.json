@@ -170,6 +170,61 @@
       "arxivUrl": ""
     },
     {
+      "id": "2606.06036",
+      "slug": "mragent-graph-memory",
+      "title": "Memory is Reconstructed, Not Retrieved: Graph Memory for LLM Agents",
+      "authors": [
+        "Shuo Ji",
+        "Yibo Li",
+        "Bryan Hooi"
+      ],
+      "publishedAt": "2026-06-04",
+      "reviewedAt": "2026-06-16",
+      "summary": "A graph-memory framework for LLM agents that replaces static top-k retrieval with active Cue-Tag-Content memory reconstruction over long interaction histories.",
+      "tags": [
+        "agent-memory",
+        "graph-memory",
+        "llm-agents",
+        "memory-retrieval",
+        "rag"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2606.06036",
+      "pdfUrl": "https://arxiv.org/pdf/2606.06036.pdf",
+      "reviewPath": "reviews/mragent-graph-memory.md",
+      "assets": {
+        "figures": [
+          {
+            "path": "assets/mragent-graph-memory/figures/figure-01.png",
+            "caption": "Figure 1. Passive retrieval versus active reconstruction in MRAgent.",
+            "page": 1
+          },
+          {
+            "path": "assets/mragent-graph-memory/figures/figure-02.png",
+            "caption": "Figure 2. Example where active reconstruction infers an intermediate temporal cue and recovers the needed evidence.",
+            "page": 2
+          },
+          {
+            "path": "assets/mragent-graph-memory/figures/figure-03.png",
+            "caption": "Figure 4. MRAgent associative memory system and active memory reconstruction loop.",
+            "page": 4
+          }
+        ],
+        "tables": [
+          {
+            "path": "assets/mragent-graph-memory/tables/table-01.png",
+            "caption": "Tables 1-3. LoCoMo results, LongMemEval results, and token/runtime comparison.",
+            "page": 7
+          },
+          {
+            "path": "assets/mragent-graph-memory/tables/table-03.png",
+            "caption": "Table 4. Memory toolkit operations for controlled traversal.",
+            "page": 13
+          }
+        ]
+      },
+      "sourceUrl": ""
+    },
+    {
       "id": "2503.05244",
       "slug": "writingbench-generative-writing",
       "title": "WritingBench: A Comprehensive Benchmark for Generative Writing",
