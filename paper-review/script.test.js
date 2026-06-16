@@ -149,6 +149,38 @@ test('renderReviewList links reviews to the HTML detail page by slug', () => {
   assert.ok(!elements.list.innerHTML.includes('href="reviews/kormedmcqa.md"'));
 });
 
+test('renderReviewList uses a generic source label for non-arxiv papers', () => {
+  const elements = {
+    count: createFakeElement(),
+    list: createFakeElement(),
+    tags: createFakeElement(),
+  };
+  const reviews = coerceReviewData({
+    reviews: [
+      {
+        id: 'pirolli-card-2005',
+        slug: 'sensemaking-process-analyst-technology',
+        title: 'The Sensemaking Process and Leverage Points for Analyst Technology',
+        authors: ['Peter Pirolli', 'Stuart Card'],
+        publishedAt: '2005-04-28',
+        reviewedAt: '2026-06-16',
+        summary: 'A cognitive task analysis paper.',
+        tags: ['sensemaking'],
+        sourceUrl: 'https://andymatuschak.org/files/papers/example.pdf',
+        pdfUrl: 'https://andymatuschak.org/files/papers/example.pdf',
+        reviewPath: 'reviews/sensemaking-process-analyst-technology.md',
+        assets: { figures: [], tables: [] },
+      },
+    ],
+  });
+
+  renderReviewList(reviews, { query: '', tags: [], sort: 'newest' }, elements);
+
+  assert.equal(reviews[0].sourceUrl, 'https://andymatuschak.org/files/papers/example.pdf');
+  assert.ok(elements.list.innerHTML.includes('>Source</a>'));
+  assert.ok(!elements.list.innerHTML.includes('>arXiv</a>'));
+});
+
 test('markdownToHtml escapes text and resolves review-relative figure paths', () => {
   const html = markdownToHtml(`
 ## Method

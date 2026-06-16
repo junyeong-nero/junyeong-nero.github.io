@@ -43,6 +43,7 @@
       summary: String(review.summary || ''),
       tags: normalizeArray(review.tags).map(String),
       arxivUrl: String(review.arxivUrl || ''),
+      sourceUrl: String(review.sourceUrl || ''),
       pdfUrl: String(review.pdfUrl || ''),
       reviewPath: String(review.reviewPath || ''),
       assets: normalizeAssets(review.assets),
@@ -288,6 +289,14 @@
     `;
   }
 
+  function renderSourceAction(review) {
+    const sourceUrl = review.arxivUrl || review.sourceUrl;
+    if (!sourceUrl) return '';
+
+    const label = review.arxivUrl ? 'arXiv' : 'Source';
+    return `<a href="${escapeHtml(sourceUrl)}" target="_blank" rel="noopener">${label}</a>`;
+  }
+
   function renderReviewCard(review) {
     const published = formatDate(review.publishedAt);
     const reviewed = formatDate(review.reviewedAt);
@@ -309,7 +318,7 @@
         </div>
         ${renderMediaPreview(review)}
         <div class="review-actions">
-          ${review.arxivUrl ? `<a href="${escapeHtml(review.arxivUrl)}" target="_blank" rel="noopener">arXiv</a>` : ''}
+          ${renderSourceAction(review)}
           ${review.pdfUrl ? `<a href="${escapeHtml(review.pdfUrl)}" target="_blank" rel="noopener">PDF</a>` : ''}
           ${review.reviewPath ? `<a href="${escapeHtml(getReviewUrl(review))}">Review</a>` : ''}
         </div>
@@ -428,7 +437,7 @@
           ${review.tags.map((tag) => `<span>${escapeHtml(tag)}</span>`).join('')}
         </div>
         <div class="review-actions detail-actions">
-          ${review.arxivUrl ? `<a href="${escapeHtml(review.arxivUrl)}" target="_blank" rel="noopener">arXiv</a>` : ''}
+          ${renderSourceAction(review)}
           ${review.pdfUrl ? `<a href="${escapeHtml(review.pdfUrl)}" target="_blank" rel="noopener">PDF</a>` : ''}
         </div>
         <div class="markdown-body">
