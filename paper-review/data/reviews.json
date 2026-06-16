@@ -1,7 +1,131 @@
 {
   "version": 1,
-  "updatedAt": "2026-06-11",
+  "updatedAt": "2026-06-16",
   "reviews": [
+    {
+      "id": "2606.13392",
+      "slug": "minimax-sparse-attention",
+      "title": "MiniMax Sparse Attention",
+      "authors": [
+        "Xunhao Lai",
+        "Weiqi Xu",
+        "Yufeng Yang",
+        "Qiaorui Chen",
+        "Yang Xu",
+        "Lunbin Zeng",
+        "Xiaolong Li",
+        "Haohai Sun",
+        "Haichao Zhu",
+        "Vito Zhang",
+        "Jinkai Hu",
+        "Jiayao Li",
+        "Rui Gao",
+        "Zekun Li",
+        "Songquan Zhu",
+        "Jingkai Zhou",
+        "Pengyu Zhao"
+      ],
+      "publishedAt": "2026-06-11",
+      "reviewedAt": "2026-06-16",
+      "summary": "A GQA-native block-sparse attention design that uses a lightweight learned Index Branch and co-designed GPU kernels to preserve long-context model quality while cutting million-token attention cost.",
+      "tags": [
+        "attention",
+        "efficient-inference",
+        "kernel",
+        "long-context",
+        "sparse-attention",
+        "transformer"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2606.13392",
+      "pdfUrl": "https://arxiv.org/pdf/2606.13392.pdf",
+      "reviewPath": "reviews/minimax-sparse-attention.md",
+      "assets": {
+        "figures": [
+          {
+            "path": "assets/minimax-sparse-attention/figures/figure-01.png",
+            "caption": "Figure 1. Overview of MSA with an Index Branch selecting key-value blocks and a Main Branch attending over selected blocks.",
+            "page": 1
+          },
+          {
+            "path": "assets/minimax-sparse-attention/figures/figure-02.png",
+            "caption": "Figures 2 and 3. Training dynamics for MSA pretraining and sparse continued pretraining.",
+            "page": 10
+          },
+          {
+            "path": "assets/minimax-sparse-attention/figures/figure-03.png",
+            "caption": "Figure 4. Efficiency comparison between dense GQA and MSA across context lengths.",
+            "page": 12
+          }
+        ],
+        "tables": [
+          {
+            "path": "assets/minimax-sparse-attention/tables/table-01.png",
+            "caption": "Table 2. Representative evaluation results comparing Full Attention, MSA-PT, and MSA-CPT.",
+            "page": 11
+          }
+        ]
+      }
+    },
+    {
+      "id": "2603.07267",
+      "slug": "steal-reasoning-without-traces",
+      "title": "How to Steal Reasoning Without Reasoning Traces",
+      "authors": [
+        "Tingwei Zhang",
+        "John X. Morris",
+        "Vitaly Shmatikov"
+      ],
+      "publishedAt": "2026-03-07",
+      "reviewedAt": "2026-06-16",
+      "summary": "A trace-inversion attack showing that hidden chain-of-thought traces can be approximated from answers and summaries well enough to fine-tune student models and transfer reasoning capability.",
+      "tags": [
+        "capability-stealing",
+        "chain-of-thought",
+        "distillation",
+        "model-security",
+        "reasoning",
+        "trace-inversion"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2603.07267",
+      "pdfUrl": "https://arxiv.org/pdf/2603.07267.pdf",
+      "reviewPath": "reviews/steal-reasoning-without-traces.md",
+      "assets": {
+        "figures": [
+          {
+            "path": "assets/steal-reasoning-without-traces/figures/figure-01.png",
+            "caption": "Figure 1. Example of Trace Inversion against GPT-5.4 mini from query, summary, and final answer to synthesized trace.",
+            "page": 2
+          },
+          {
+            "path": "assets/steal-reasoning-without-traces/figures/figure-02.png",
+            "caption": "Figure 2. Trace Inversion pipeline: train on surrogate traces, invert victim outputs, then fine-tune a student on synthetic traces.",
+            "page": 4
+          },
+          {
+            "path": "assets/steal-reasoning-without-traces/figures/figure-03.png",
+            "caption": "Figure 3. Student accuracy as a function of victim-query budget.",
+            "page": 8
+          }
+        ],
+        "tables": [
+          {
+            "path": "assets/steal-reasoning-without-traces/tables/table-01.png",
+            "caption": "Table 1. Feature distribution of surrogate summaries versus GPT-5.4 mini summaries.",
+            "page": 5
+          },
+          {
+            "path": "assets/steal-reasoning-without-traces/tables/table-02.png",
+            "caption": "Table 2. Trace inversion fidelity against the open-weight R1 victim.",
+            "page": 6
+          },
+          {
+            "path": "assets/steal-reasoning-without-traces/tables/table-03.png",
+            "caption": "Table 3. Downstream accuracy after fine-tuning when attacking R1.",
+            "page": 7
+          }
+        ]
+      }
+    },
     {
       "id": "2503.05244",
       "slug": "writingbench-generative-writing",
