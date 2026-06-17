@@ -1,7 +1,72 @@
 {
   "version": 1,
-  "updatedAt": "2026-06-16",
+  "updatedAt": "2026-06-17",
   "reviews": [
+    {
+      "id": "2605.29218",
+      "slug": "gta-long-horizon-web-agents",
+      "title": "GTA: Generating Long-Horizon Tasks for Web Agents at Scale",
+      "authors": [
+        "Tenghao Huang",
+        "Kung-Hsiang Huang",
+        "Prafulla Kumar Choubey",
+        "Yilun Zhou",
+        "Muhao Chen",
+        "Jonathan May",
+        "Chien-Sheng Wu"
+      ],
+      "publishedAt": "2026-05-28",
+      "reviewedAt": "2026-06-17",
+      "summary": "A graph-grounded benchmark-generation framework that crawls live websites and uses retrieval-seeded generation plus verification to create scalable multi-hop web-agent tasks with executable trajectories.",
+      "tags": [
+        "benchmark",
+        "evaluation",
+        "multi-hop",
+        "multilingual",
+        "task-generation",
+        "web-agents"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2605.29218",
+      "pdfUrl": "https://arxiv.org/pdf/2605.29218.pdf",
+      "reviewPath": "reviews/gta-long-horizon-web-agents.md",
+      "assets": {
+        "figures": [
+          {
+            "path": "assets/gta-long-horizon-web-agents/figures/figure-01.png",
+            "caption": "Table 2 and Figure 1. Example GTA tasks compared with WebDS, AgentTrek, and NNetNav, plus page-coverage analysis.",
+            "page": 5
+          },
+          {
+            "path": "assets/gta-long-horizon-web-agents/figures/figure-02.png",
+            "caption": "Figure 2. Browser Use and AgentOccam performance on GTA-Intra, GTA-Inter, WebVoyager, and Mind2Web.",
+            "page": 8
+          },
+          {
+            "path": "assets/gta-long-horizon-web-agents/figures/figure-03.png",
+            "caption": "Figures 8 and 9. Per-website and cross-lingual performance for Browser Use and AgentOccam.",
+            "page": 15
+          }
+        ],
+        "tables": [
+          {
+            "path": "assets/gta-long-horizon-web-agents/tables/table-01.png",
+            "caption": "Table 1. Benchmark-property comparison showing GTA combines multi-hop generation, scalability, executable ground truth, dynamic expansion, and multilingual coverage.",
+            "page": 3
+          },
+          {
+            "path": "assets/gta-long-horizon-web-agents/tables/table-02.png",
+            "caption": "Table 2. Representative generated web tasks and answers across GTA and prior datasets.",
+            "page": 5
+          },
+          {
+            "path": "assets/gta-long-horizon-web-agents/tables/table-03.png",
+            "caption": "Table 3. Human evaluation scores for complexity, utility, realism, and overall quality.",
+            "page": 6
+          }
+        ]
+      },
+      "sourceUrl": ""
+    },
     {
       "id": "2606.13392",
       "slug": "minimax-sparse-attention",
