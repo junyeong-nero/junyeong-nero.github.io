@@ -1,7 +1,69 @@
 {
   "version": 1,
-  "updatedAt": "2026-06-17",
+  "updatedAt": "2026-06-23",
   "reviews": [
+    {
+      "id": "2508.21456",
+      "slug": "morae-proactive-ui-agent-pauses",
+      "title": "Morae: Proactively Pausing UI Agents for User Choices",
+      "authors": [
+        "Yi-Hao Peng",
+        "Dingzeyu Li",
+        "Jeffrey P. Bigham",
+        "Amy Pavel"
+      ],
+      "publishedAt": "2025-08-29",
+      "reviewedAt": "2026-06-23",
+      "summary": "A mixed-initiative UI agent that detects ambiguous decision points, pauses automation, and presents accessible choice controls so blind and low-vision users can preserve agency during web automation.",
+      "tags": [
+        "accessibility",
+        "human-agent-interaction",
+        "mixed-initiative",
+        "ui-agents",
+        "user-agency",
+        "web-agents"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2508.21456",
+      "pdfUrl": "https://arxiv.org/pdf/2508.21456.pdf",
+      "reviewPath": "reviews/morae-proactive-ui-agent-pauses.md",
+      "assets": {
+        "figures": [
+          {
+            "path": "assets/morae-proactive-ui-agent-pauses/figures/figure-01.png",
+            "caption": "Figure 1. Morae pauses automation at key decision points so BLV users can choose among alternatives before the agent continues.",
+            "page": 1
+          },
+          {
+            "path": "assets/morae-proactive-ui-agent-pauses/figures/figure-02.png",
+            "caption": "Figure 2. TaxyAI baseline interface with task input, automation controls, and action history.",
+            "page": 4
+          },
+          {
+            "path": "assets/morae-proactive-ui-agent-pauses/figures/figure-03.png",
+            "caption": "Figure 3. Morae interface with dynamically generated preference controls for accessible user choice.",
+            "page": 7
+          }
+        ],
+        "tables": [
+          {
+            "path": "assets/morae-proactive-ui-agent-pauses/tables/table-01.png",
+            "caption": "Table 1. Technical evaluation comparing task success and pausing performance across prompting, verification variants, OpenAI Operator, and Morae.",
+            "page": 8
+          },
+          {
+            "path": "assets/morae-proactive-ui-agent-pauses/tables/table-02.png",
+            "caption": "Table 2. Participant demographics for the field study and follow-up interviews.",
+            "page": 18
+          },
+          {
+            "path": "assets/morae-proactive-ui-agent-pauses/tables/table-03.png",
+            "caption": "Table 3. Participant demographics for the user evaluation study.",
+            "page": 18
+          }
+        ]
+      },
+      "sourceUrl": ""
+    },
     {
       "id": "2605.29218",
       "slug": "gta-long-horizon-web-agents",
