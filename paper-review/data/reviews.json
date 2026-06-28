@@ -1,7 +1,336 @@
 {
   "version": 1,
-  "updatedAt": "2026-06-23",
+  "updatedAt": "2026-06-28",
   "reviews": [
+    {
+      "id": "2512.23676",
+      "slug": "web-world-models",
+      "title": "Web World Models",
+      "authors": [
+        "Jichen Feng",
+        "Yifan Zhang",
+        "Chenggong Zhang",
+        "Yifu Lu",
+        "Shilong Liu",
+        "Mengdi Wang"
+      ],
+      "publishedAt": "2025-12-29",
+      "reviewedAt": "2026-06-28",
+      "summary": "Web World Models use ordinary web code for deterministic world state and rules while LLMs generate typed narrative and contextual content, yielding persistent open-ended environments with stronger controllability than fully generative worlds.",
+      "tags": [
+        "agent-environments",
+        "generative-ai",
+        "llm-agents",
+        "neuro-symbolic",
+        "procedural-generation",
+        "web-agents",
+        "world-models"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2512.23676",
+      "pdfUrl": "https://arxiv.org/pdf/2512.23676.pdf",
+      "reviewPath": "reviews/web-world-models.md",
+      "assets": {
+        "figures": [
+          {
+            "path": "assets/web-world-models/figures/figure-01.png",
+            "caption": "Figure 1. Web World Models are positioned between fixed database-backed web frameworks and fully generative world models.",
+            "page": 1
+          },
+          {
+            "path": "assets/web-world-models/figures/figure-02.png",
+            "caption": "Figure 3. WWM architecture separates deterministic code-defined physics from stochastic LLM-generated imagination.",
+            "page": 4
+          },
+          {
+            "path": "assets/web-world-models/figures/figure-03.png",
+            "caption": "Figure 5. Infinite Travel Atlas interaction flow from coordinate selection to generated itinerary presentation.",
+            "page": 6
+          }
+        ],
+        "tables": []
+      },
+      "sourceUrl": "https://github.com/Princeton-AI2-Lab/Web-World-Models"
+    },
+    {
+      "id": "2606.23676",
+      "slug": "adamw-heavy-tailed-noise",
+      "title": "Open Problem: Is AdamW Effective Under Heavy-Tailed Noise?",
+      "authors": [
+        "Dingzhi Yu",
+        "Hongyi Tao",
+        "Yuanyu Wan",
+        "Luo Luo",
+        "Lijun Zhang"
+      ],
+      "publishedAt": "2026-06-22",
+      "reviewedAt": "2026-06-28",
+      "summary": "A theory note posing the open problem of whether AdamW can match sign-based optimizers under finite-moment heavy-tailed gradient noise, with a positive weighted benchmark and denominator-memory barrier mechanisms.",
+      "tags": [
+        "adamw",
+        "convergence-theory",
+        "heavy-tailed-noise",
+        "llm-training",
+        "open-problem",
+        "optimization",
+        "stochastic-optimization"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2606.23676",
+      "pdfUrl": "https://arxiv.org/pdf/2606.23676.pdf",
+      "reviewPath": "reviews/adamw-heavy-tailed-noise.md",
+      "assets": {
+        "figures": [],
+        "tables": []
+      },
+      "sourceUrl": ""
+    },
+    {
+      "id": "2606.14997",
+      "slug": "ai-engram-memory-traces",
+      "title": "AI Engram: In Search of Memory Traces in Artificial Intelligence",
+      "authors": [
+        "Jea Kwon",
+        "Dong-Kyum Kim",
+        "Jiwon Kim",
+        "Yonghyun Kim",
+        "Woong Kook",
+        "Meeyoung Cha"
+      ],
+      "publishedAt": "2026-06-12",
+      "reviewedAt": "2026-06-28",
+      "summary": "AI Engram identifies concept-specific memory traces through a closed-form covariance projection, enabling one-shot composition or erasure of learned knowledge across vision models and Llama-3.2-1B unlearning.",
+      "tags": [
+        "ai-memory",
+        "interpretability",
+        "machine-unlearning",
+        "model-editing",
+        "neural-networks",
+        "parameter-decomposition",
+        "representation-learning"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2606.14997",
+      "pdfUrl": "https://arxiv.org/pdf/2606.14997.pdf",
+      "reviewPath": "reviews/ai-engram-memory-traces.md",
+      "assets": {
+        "figures": [
+          {
+            "path": "assets/ai-engram-memory-traces/figures/figure-01.png",
+            "caption": "Figure 1. Neuroscience criteria for an AI engram: specificity, reactivation, sufficiency, and necessity.",
+            "page": 1
+          },
+          {
+            "path": "assets/ai-engram-memory-traces/figures/figure-02.png",
+            "caption": "Figure 2. Mechanics of the Engram method: layer covariances are accumulated in one forward pass and used to compute engram weights.",
+            "page": 4
+          },
+          {
+            "path": "assets/ai-engram-memory-traces/figures/figure-03.png",
+            "caption": "Figure 3. Engrammatic decomposition enables zero-shot synthesis of combinatorial memory states from extracted concept engrams.",
+            "page": 5
+          }
+        ],
+        "tables": [
+          {
+            "path": "assets/ai-engram-memory-traces/tables/table-01.png",
+            "caption": "Table 1. Translating engram criteria into optimization constraints over observed and intervened states.",
+            "page": 3
+          },
+          {
+            "path": "assets/ai-engram-memory-traces/tables/table-02.png",
+            "caption": "Table 2. CIFAR-10 and CIFAR-100 class-wise unlearning comparison with Tug-of-War, DA, and NMI metrics.",
+            "page": 6
+          },
+          {
+            "path": "assets/ai-engram-memory-traces/tables/table-03.png",
+            "caption": "Table 3. Llama-3.2-1B TOFU forget10 evaluation comparing Engram with gradient-based and preference-based unlearning baselines.",
+            "page": 8
+          }
+        ]
+      },
+      "sourceUrl": "https://github.com/jeakwon/ai-engram/"
+    },
+    {
+      "id": "2512.12730",
+      "slug": "nl2repo-bench",
+      "title": "NL2Repo-Bench: Towards Long-Horizon Repository Generation Evaluation of Coding Agents",
+      "authors": [
+        "Jingzhe Ding",
+        "Shengda Long",
+        "Changxin Pu",
+        "Huan Zhou",
+        "Hongwan Gao",
+        "Xiang Gao",
+        "Chao He",
+        "Yue Hou",
+        "Fei Hu",
+        "Zhaojian Li",
+        "Weiran Shi",
+        "Zaiyuan Wang",
+        "Daoguang Zan",
+        "Chenchen Zhang",
+        "Xiaoxu Zhang",
+        "Qizhi Chen",
+        "Xianfu Cheng",
+        "Bo Deng",
+        "Qingshui Gu",
+        "Kai Hua",
+        "Juntao Lin",
+        "Pai Liu",
+        "Mingchen Li",
+        "Xuanguang Pan",
+        "Zifan Peng",
+        "Yujia Qin",
+        "Yong Shan",
+        "Zhewen Tan",
+        "Weihao Xie",
+        "Zihan Wang",
+        "Yishuo Yuan",
+        "Jiayu Zhang",
+        "Enduo Zhao",
+        "Yunfei Zhao",
+        "He Zhu",
+        "Liya Zhu",
+        "Chenyang Zou",
+        "Ming Ding",
+        "Jianpeng Jiao",
+        "Jiaheng Liu",
+        "Minghao Liu",
+        "Qian Liu",
+        "Chongyang Tao",
+        "Jian Yang",
+        "Tong Yang",
+        "Zhaoxiang Zhang",
+        "Xinjie Chen",
+        "Wenhao Huang",
+        "Ge Zhang"
+      ],
+      "publishedAt": "2025-12-14",
+      "reviewedAt": "2026-06-26",
+      "summary": "NL2Repo-Bench evaluates long-horizon coding agents by asking them to generate complete Python repositories from natural-language specifications and validating outputs with upstream pytest suites.",
+      "tags": [
+        "agent-benchmark",
+        "coding-agents",
+        "long-horizon",
+        "repository-generation",
+        "software-engineering",
+        "test-based-evaluation"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2512.12730",
+      "pdfUrl": "https://arxiv.org/pdf/2512.12730.pdf",
+      "reviewPath": "reviews/nl2repo-bench.md",
+      "assets": {
+        "figures": [
+          {
+            "path": "assets/nl2repo-bench/figures/figure-01.png",
+            "caption": "Figure 1. Example NL2Repo task document showing project overview, environment configuration, project structure, API guide, and implementation nodes.",
+            "page": 2
+          },
+          {
+            "path": "assets/nl2repo-bench/figures/figure-02.png",
+            "caption": "Figure 2. NL2Repo-Bench construction pipeline, including repository selection, reverse-engineered document writing, environment building, and verification/refinement.",
+            "page": 5
+          },
+          {
+            "path": "assets/nl2repo-bench/figures/figure-03.png",
+            "caption": "Figure 5 and Table 7. Early termination and non-finish rates across models, plus tool usage statistics.",
+            "page": 13
+          }
+        ],
+        "tables": [
+          {
+            "path": "assets/nl2repo-bench/tables/table-01.png",
+            "caption": "Tables 1 and 2. Task categories, counts, and difficulty statistics for the 104-task benchmark.",
+            "page": 7
+          },
+          {
+            "path": "assets/nl2repo-bench/tables/table-02.png",
+            "caption": "Tables 3 and 4. Main pass-rate results by model, difficulty level, and repository category.",
+            "page": 9
+          },
+          {
+            "path": "assets/nl2repo-bench/tables/table-03.png",
+            "caption": "Tables 5 and 6. Correlation between tool usage and performance, plus interaction-turn statistics.",
+            "page": 12
+          }
+        ]
+      },
+      "sourceUrl": "https://github.com/multimodal-art-projection/NL2RepoBench"
+    },
+    {
+      "id": "2606.23050",
+      "slug": "unlimited-ocr",
+      "title": "Unlimited OCR Works",
+      "authors": [
+        "Youyang Yin",
+        "Huanhuan Liu",
+        "YY",
+        "Qunyi Xie",
+        "Chaorun Liu",
+        "Shiqi Yang",
+        "Shaohua Wang",
+        "Zhanlong Liu",
+        "Hao Zou",
+        "Jinyue Chen",
+        "Shu Wei",
+        "Jingjing Wu",
+        "Mingxin Huang",
+        "Zhen Wu",
+        "Guibin Wang",
+        "Tengyu Du",
+        "Lei Jia"
+      ],
+      "publishedAt": "2026-06-22",
+      "reviewedAt": "2026-06-25",
+      "summary": "Reference Sliding Window Attention keeps OCR reference tokens globally visible while bounding generated-token attention and KV-cache growth, enabling one-pass parsing of dozens of pages.",
+      "tags": [
+        "attention",
+        "document-ai",
+        "long-context",
+        "multimodal",
+        "ocr",
+        "sliding-window-attention",
+        "vision-language-models"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2606.23050",
+      "pdfUrl": "https://arxiv.org/pdf/2606.23050.pdf",
+      "reviewPath": "reviews/unlimited-ocr.md",
+      "assets": {
+        "figures": [
+          {
+            "path": "assets/unlimited-ocr/figures/figure-01.png",
+            "caption": "Figure 1. R-SWA keeps all reference tokens visible while restricting generated-token attention to a fixed recent window.",
+            "page": 1
+          },
+          {
+            "path": "assets/unlimited-ocr/figures/figure-02.png",
+            "caption": "Figure 2. Unlimited OCR combines DeepEncoder with an R-SWA MoE decoder and a fixed-capacity output KV queue.",
+            "page": 5
+          },
+          {
+            "path": "assets/unlimited-ocr/figures/figure-03.png",
+            "caption": "Figure 3. FlashAttention v3 per-call latency grows for dense attention but remains stable for R-SWA.",
+            "page": 7
+          }
+        ],
+        "tables": [
+          {
+            "path": "assets/unlimited-ocr/tables/table-01.png",
+            "caption": "Table 1. OmniDocBench v1.5 and v1.6 results across text, formula, table, and reading-order metrics.",
+            "page": 9
+          },
+          {
+            "path": "assets/unlimited-ocr/tables/table-02.png",
+            "caption": "Table 2. Text and reading-order edit distance by document category.",
+            "page": 10
+          },
+          {
+            "path": "assets/unlimited-ocr/tables/table-03.png",
+            "caption": "Tables 3 and 4. Long-horizon OCR quality by page count and throughput by output length.",
+            "page": 11
+          }
+        ]
+      },
+      "sourceUrl": "https://github.com/baidu/Unlimited-OCR"
+    },
     {
       "id": "2508.21456",
       "slug": "morae-proactive-ui-agent-pauses",
