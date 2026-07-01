@@ -1,0 +1,11 @@
+{
+  "posts": [
+    {
+      "slug": "welcome",
+      "title": "Welcome to Research Blog",
+      "date": "2026-07-01",
+      "summary": "Starting a research blog to document experiments, paper reimplementations, and engineering insights."
+    }
+  ],
+  "updatedAt": "2026-07-01"
+}
