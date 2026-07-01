@@ -1,7 +1,125 @@
 {
   "version": 1,
-  "updatedAt": "2026-06-28",
+  "updatedAt": "2026-06-30",
   "reviews": [
+    {
+      "id": "2510.03204",
+      "slug": "focusagent-web-agent-context-pruning",
+      "title": "FocusAgent: Simple Yet Effective Ways of Trimming the Large Context of Web Agents",
+      "authors": [
+        "Imene Kerboua",
+        "Sahar Omidi Shayegan",
+        "Megh Thakkar",
+        "Xing Han Lù",
+        "Léo Boisvert",
+        "Massimo Caccia",
+        "Jérémy Espinas",
+        "Alexandre Aussem",
+        "Véronique Eglin",
+        "Alexandre Lacoste"
+      ],
+      "publishedAt": "2025-10-03",
+      "reviewedAt": "2026-06-30",
+      "summary": "FocusAgent uses a lightweight LLM retriever to prune accessibility-tree observations for web agents, preserving task success while cutting context by roughly half and reducing prompt-injection attack success.",
+      "tags": [
+        "accessibility-tree",
+        "context-pruning",
+        "llm-agents",
+        "observation-retrieval",
+        "prompt-injection",
+        "web-agent-security",
+        "web-agents"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2510.03204",
+      "pdfUrl": "https://arxiv.org/pdf/2510.03204.pdf",
+      "reviewPath": "reviews/focusagent-web-agent-context-pruning.md",
+      "assets": {
+        "figures": [
+          {
+            "path": "assets/focusagent-web-agent-context-pruning/figures/figure-01.png",
+            "caption": "Figure 1. FocusAgent two-stage pipeline for retrieval and action prediction, including prompt-injection filtering.",
+            "page": 2
+          },
+          {
+            "path": "assets/focusagent-web-agent-context-pruning/figures/figure-02.png",
+            "caption": "Figure 2. LLM retriever selects relevant AxTree line ranges and reconstructs a pruned observation.",
+            "page": 4
+          },
+          {
+            "path": "assets/focusagent-web-agent-context-pruning/figures/figure-03.png",
+            "caption": "Figure 3 and Table 1. WorkArena L1 success rate versus average pruning for retrieval baselines and FocusAgent.",
+            "page": 5
+          }
+        ],
+        "tables": [
+          {
+            "path": "assets/focusagent-web-agent-context-pruning/tables/table-02.png",
+            "caption": "Table 2 and Figure 4. FocusAgent success rates and pruning on WorkArena L1 and WebArena.",
+            "page": 6
+          },
+          {
+            "path": "assets/focusagent-web-agent-context-pruning/tables/table-03.png",
+            "caption": "Table 3. DefenseFocusAgent attack success rate and task success rate on WebArena Reddit.",
+            "page": 8
+          }
+        ]
+      },
+      "sourceUrl": "https://github.com/ServiceNow/AgentLab"
+    },
+    {
+      "id": "2511.21398",
+      "slug": "prune4web-dom-tree-pruning",
+      "title": "Prune4Web: DOM Tree Pruning Programming for Web Agent",
+      "authors": [
+        "Jiayuan Zhang",
+        "Kaiquan Chen",
+        "Zhihao Lu",
+        "Enshen Zhou",
+        "Qian Yu",
+        "Jing Zhang"
+      ],
+      "publishedAt": "2025-11-26",
+      "reviewedAt": "2026-06-29",
+      "summary": "Prune4Web turns DOM reduction for web agents into generated Python scoring programs, reducing candidate elements by 25-50x and raising low-level grounding accuracy from 46.80% to 88.28%.",
+      "tags": [
+        "dom-pruning",
+        "element-grounding",
+        "llm-agents",
+        "program-synthesis",
+        "web-agents",
+        "web-automation"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2511.21398",
+      "pdfUrl": "https://arxiv.org/pdf/2511.21398.pdf",
+      "reviewPath": "reviews/prune4web-dom-tree-pruning.md",
+      "assets": {
+        "figures": [
+          {
+            "path": "assets/prune4web-dom-tree-pruning/figures/figure-01.png",
+            "caption": "Figure 1. Existing multimodal web-agent DOM processing compared with Prune4Web programmatic pruning.",
+            "page": 1
+          },
+          {
+            "path": "assets/prune4web-dom-tree-pruning/figures/figure-02.png",
+            "caption": "Figure 2. Prune4Web pipeline with planner, programmatic element filter, and action grounder.",
+            "page": 4
+          },
+          {
+            "path": "assets/prune4web-dom-tree-pruning/figures/figure-03.png",
+            "caption": "Figure 3. Recall@N and benchmark/ablation results for programmatic filtering.",
+            "page": 6
+          }
+        ],
+        "tables": [
+          {
+            "path": "assets/prune4web-dom-tree-pruning/tables/table-01.png",
+            "caption": "Tables 1-5. Multimodal-Mind2Web performance, grounding accuracy, DOM filtering ablations, architecture ablation, and training-strategy ablation.",
+            "page": 6
+          }
+        ]
+      },
+      "sourceUrl": ""
+    },
     {
       "id": "2512.23676",
       "slug": "web-world-models",
