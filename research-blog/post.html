@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Post | Research Blog</title>
+  <meta name="description" content="Research blog post">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <header class="site-header">
+    <nav class="header-nav">
+      <a href="/portfolio/" class="back-link">Portfolio</a>
+      <a href="/paper-review/" class="back-link">Paper Review</a>
+      <a href="./" class="back-link">Research Blog</a>
+    </nav>
+  </header>
+
+  <main class="detail-shell" data-post-detail>
+    <div class="empty-state">
+      <h2>Loading post</h2>
+      <p>Reading post content.</p>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>(c) 2026 Junyeong Song.</p>
+  </footer>
+
+  <script>
+    (function () {
+      var slug = new URLSearchParams(location.search).get('slug') || '';
+      if (!slug) {
+        document.querySelector('[data-post-detail]').innerHTML = '<p class="load-error">No post specified.</p>';
+        return;
+      }
+
+      var shell = document.querySelector('[data-post-detail]');
+
+      function escapeHtml(value) {
+        return String(value || '')
+          .replaceAll('&', '&amp;')
+          .replaceAll('<', '&lt;')
+          .replaceAll('>', '&gt;')
+          .replaceAll('"', '&quot;')
+          .replaceAll("'", '&#039;');
+      }
+
+      function markdownToHtml(md) {
+        var lines = md.replace(/\r\n/g, '\n').split('\n');
+        var html = [];
+        var paragraph = [];
+        var listType = '';
+        var listItems = [];
+
+        function flushParagraph() {
+          if (!paragraph.length) return;
+          html.push('<p>' + paragraph.join(' ') + '</p>');
+          paragraph = [];
+        }
+
+        function flushList() {
+          if (!listType) return;
+          html.push('<' + listType + '>' + listItems.map(function (item) {
+            return '<li>' + item + '</li>';
+          }).join('') + '</' + listType + '>');
+          listType = '';
+          listItems = [];
+        }
+
+        for (var i = 0; i < lines.length; i++) {
+          var line = lines[i].trimEnd();
+          var trimmed = line.trim();
+
+          if (!trimmed) {
+            flushParagraph();
+            flushList();
+            continue;
+          }
+
+          var heading = trimmed.match(/^(#{1,3})\s+(.+)$/);
+          if (heading) {
+            flushParagraph();
+            flushList();
+            html.push('<h' + heading[1].length + '>' + heading[2] + '</h' + heading[1].length + '>');
+            continue;
+          }
+
+          var ul = trimmed.match(/^-\s+(.+)$/);
+          if (ul) {
+            flushParagraph();
+            if (listType && listType !== 'ul') flushList();
+            listType = 'ul';
+            listItems.push(ul[1]);
+            continue;
+          }
+
+          var ol = trimmed.match(/^\d+\.\s+(.+)$/);
+          if (ol) {
+            flushParagraph();
+            if (listType && listType !== 'ol') flushList();
+            listType = 'ol';
+            listItems.push(ol[1]);
+            continue;
+          }
+
+          paragraph.push(trimmed);
+        }
+
+        flushParagraph();
+        flushList();
+        return html.join('\n');
+      }
+
+      // Load metadata
+      fetch('data/posts.json')
+        .then(function (res) { return res.json(); })
+        .then(function (data) {
+          var posts = Array.isArray(data.posts) ? data.posts : [];
+          var post = posts.find(function (p) { return p.slug === slug; });
+
+          if (!post) {
+            shell.innerHTML = '<p class="load-error">Post not found.</p>';
+            return;
+          }
+
+          // Load markdown content
+          fetch('posts/' + slug + '.md')
+            .then(function (res) {
+              if (!res.ok) throw new Error('Not found');
+              return res.text();
+            })
+            .then(function (md) {
+              var date = post.date;
+              try { date = new Intl.DateTimeFormat('en', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' }).format(new Date(post.date)); } catch (e) {}
+
+              document.title = post.title + ' | Research Blog';
+
+              shell.innerHTML =
+                '<article>' +
+                  '<header class="post-header">' +
+                    '<h1>' + escapeHtml(post.title) + '</h1>' +
+                    '<p class="post-meta">' + date + '</p>' +
+                  '</header>' +
+                  '<div class="post-body">' + markdownToHtml(md) + '</div>' +
+                '</article>';
+            })
+            .catch(function () {
+              shell.innerHTML = '<p class="load-error">Failed to load post content.</p>';
+            });
+        })
+        .catch(function () {
+          shell.innerHTML = '<p class="load-error">Failed to load post data.</p>';
+        });
+    })();
+  </script>
+</body>
+
+</html>

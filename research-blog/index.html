@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Research Blog | Junyeong Song</title>
+  <meta name="description" content="Junyeong Song's research blog — experiments, paper reimplementations, and engineering insights.">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <header class="site-header">
+    <nav class="header-nav">
+      <a href="/portfolio/" class="back-link">Portfolio</a>
+      <a href="/paper-review/" class="back-link">Paper Review</a>
+    </nav>
+  </header>
+
+  <main class="page-shell">
+    <section class="intro">
+      <p class="kicker">Research Blog</p>
+      <h1>Notes &amp; Experiments</h1>
+      <p class="intro-copy">Paper reimplementations, engineering logs, and things I learned rebuilding AI systems from scratch.</p>
+    </section>
+
+    <section class="post-list" data-post-list>
+      <div class="empty-state">
+        <h2>Loading posts</h2>
+        <p>Reading from posts data.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>(c) 2026 Junyeong Song.</p>
+  </footer>
+
+  <script>
+    (function () {
+      const list = document.querySelector('[data-post-list]');
+
+      fetch('data/posts.json')
+        .then(function (res) { return res.json(); })
+        .then(function (data) {
+          var posts = Array.isArray(data.posts) ? data.posts : [];
+          posts.sort(function (a, b) { return new Date(b.date) - new Date(a.date); });
+
+          if (!posts.length) {
+            list.innerHTML = '<div class="empty-state"><h2>No posts yet</h2><p>Check back soon.</p></div>';
+            return;
+          }
+
+          list.innerHTML = posts.map(function (post) {
+            var date = post.date;
+            try { date = new Intl.DateTimeFormat('en', { year: 'numeric', month: 'short', day: '2-digit', timeZone: 'UTC' }).format(new Date(post.date)); } catch (e) {}
+            return '<article class="post-item">' +
+              '<time class="post-date" datetime="' + post.date + '">' + date + '</time>' +
+              '<div class="post-content">' +
+                '<h2><a href="post.html?slug=' + encodeURIComponent(post.slug) + '">' + post.title + '</a></h2>' +
+                (post.summary ? '<p class="post-summary">' + post.summary + '</p>' : '') +
+              '</div>' +
+            '</article>';
+          }).join('');
+        })
+        .catch(function () {
+          list.innerHTML = '<p class="load-error">Failed to load posts.</p>';
+        });
+    })();
+  </script>
+</body>
+
+</html>

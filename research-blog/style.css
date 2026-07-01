@@ -1,0 +1,317 @@
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css');
+
+:root {
+  --fg-primary: oklch(0.234 0.030 254);
+  --fg-secondary: oklch(0.452 0.028 253);
+  --fg-tertiary: oklch(0.155 0.060 261 / 0.58);
+  --fg-disabled: oklch(0.752 0.016 251);
+  --fg-brand: oklch(0.624 0.176 254);
+  --fg-inverse: oklch(1 0 0);
+  --bg-primary: oklch(1 0 0);
+  --bg-secondary: oklch(0.957 0.005 247);
+  --bg-tertiary: oklch(0.913 0.008 247);
+  --bg-brand: oklch(0.624 0.176 254);
+  --bg-brand-weak: oklch(0.965 0.020 250);
+  --bg-canvas: oklch(0.985 0.003 247);
+  --line-default: oklch(0.913 0.008 247);
+  --line-strong: oklch(0.840 0.012 248);
+  --shadow-1: 0 1px 2px oklch(0.155 0.060 261 / 0.04), 0 1px 1px oklch(0.155 0.060 261 / 0.04);
+  --shadow-2: 0 4px 12px oklch(0.155 0.060 261 / 0.06), 0 1px 2px oklch(0.155 0.060 261 / 0.04);
+  --radius-s: 8px;
+  --radius-m: 12px;
+  --radius-xl: 16px;
+  --radius-2xl: 20px;
+  --radius-full: 999px;
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --dur-base: 200ms;
+  --font-sans: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  background: var(--bg-canvas);
+  color: var(--fg-primary);
+  font-family: var(--font-sans);
+  line-height: 1.5;
+  letter-spacing: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; }
+button, input, select { font: inherit; }
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: flex-end;
+  padding: 16px 24px;
+  background: oklch(0.985 0.003 247 / 0.86);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--line-default);
+}
+
+.header-nav {
+  display: flex;
+  gap: 8px;
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  height: 36px;
+  padding: 0 14px;
+  border: 1px solid var(--line-default);
+  border-radius: var(--radius-full);
+  background: var(--bg-primary);
+  color: var(--fg-secondary);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.back-link:hover {
+  color: var(--fg-primary);
+  background: var(--bg-secondary);
+}
+
+.page-shell {
+  width: min(820px, calc(100% - 48px));
+  margin: 0 auto;
+  padding: 56px 0 72px;
+}
+
+.intro {
+  margin-bottom: 40px;
+}
+
+.kicker {
+  display: inline-flex;
+  align-items: center;
+  height: 28px;
+  margin: 0 0 20px;
+  padding: 0 12px;
+  border-radius: var(--radius-full);
+  background: var(--bg-brand-weak);
+  color: var(--fg-brand);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.intro h1 {
+  margin: 0;
+  font-size: 3rem;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+.intro-copy {
+  margin: 12px 0 0;
+  color: var(--fg-secondary);
+  font-size: 17px;
+  line-height: 1.55;
+}
+
+.post-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.post-item {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 24px;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--line-default);
+  transition: opacity var(--dur-base) var(--ease);
+}
+
+.post-item:first-child {
+  padding-top: 0;
+}
+
+.post-date {
+  color: var(--fg-tertiary);
+  font-size: 14px;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  padding-top: 2px;
+}
+
+.post-content h2 {
+  margin: 0 0 6px;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+}
+
+.post-content h2 a {
+  color: var(--fg-primary);
+  transition: color var(--dur-base) var(--ease);
+}
+
+.post-content h2 a:hover {
+  color: var(--fg-brand);
+}
+
+.post-summary {
+  margin: 0;
+  color: var(--fg-secondary);
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 64px 0;
+  color: var(--fg-tertiary);
+}
+
+.empty-state h2 {
+  margin: 0 0 8px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.empty-state p {
+  margin: 0;
+  font-size: 15px;
+}
+
+/* Post detail */
+.detail-shell {
+  width: min(760px, calc(100% - 48px));
+  margin: 0 auto;
+  padding: 48px 0 72px;
+}
+
+.post-header {
+  margin-bottom: 40px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--line-default);
+}
+
+.post-header h1 {
+  margin: 0 0 12px;
+  font-size: 2.4rem;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.post-meta {
+  color: var(--fg-tertiary);
+  font-size: 14px;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+
+.post-body {
+  font-size: 16px;
+  line-height: 1.75;
+  color: var(--fg-primary);
+}
+
+.post-body h2 {
+  margin: 32px 0 12px;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+
+.post-body h3 {
+  margin: 28px 0 8px;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.post-body p {
+  margin: 0 0 16px;
+}
+
+.post-body ul,
+.post-body ol {
+  margin: 0 0 16px;
+  padding-left: 24px;
+}
+
+.post-body li {
+  margin-bottom: 4px;
+}
+
+.post-body a {
+  color: var(--fg-brand);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.post-body a:hover {
+  text-decoration: none;
+}
+
+.post-body code {
+  padding: 2px 6px;
+  border-radius: var(--radius-s);
+  background: var(--bg-secondary);
+  font-size: 0.875em;
+}
+
+.post-body pre {
+  padding: 16px;
+  border-radius: var(--radius-m);
+  background: var(--bg-secondary);
+  overflow-x: auto;
+  margin: 0 0 16px;
+}
+
+.post-body pre code {
+  padding: 0;
+  background: none;
+}
+
+.post-body blockquote {
+  margin: 0 0 16px;
+  padding: 12px 16px;
+  border-left: 3px solid var(--fg-brand);
+  background: var(--bg-brand-weak);
+  border-radius: 0 var(--radius-s) var(--radius-s) 0;
+}
+
+.post-body blockquote p {
+  margin: 0;
+  color: var(--fg-secondary);
+}
+
+.load-error {
+  text-align: center;
+  padding: 48px 0;
+  color: var(--fg-tertiary);
+  font-size: 15px;
+}
+
+.footer {
+  margin-top: 48px;
+  padding: 24px 0;
+  border-top: 1px solid var(--line-default);
+  color: var(--fg-tertiary);
+  font-size: 13px;
+  text-align: center;
+}
+
+@media (max-width: 640px) {
+  .post-item {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+
+  .intro h1 { font-size: 2rem; }
+  .post-header h1 { font-size: 1.6rem; }
+}
