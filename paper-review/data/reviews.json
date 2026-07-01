@@ -297,6 +297,67 @@
       "sourceUrl": ""
     },
     {
+      "id": "2605.29397",
+      "slug": "revisiting-observation-reduction-lightweight-framework",
+      "title": "Revisiting Observation Reduction for Web Agents: Comprehensive Evaluation with a Lightweight Framework",
+      "authors": [
+        "Masafumi Enomoto",
+        "Ryoma Obara",
+        "Haochen Zhang",
+        "Masafumi Oyamada"
+      ],
+      "publishedAt": "2026-05-28",
+      "reviewedAt": "2026-07-01",
+      "summary": "Minimal Failure Set (MFS) 기반의 경량 평가 프레임워크를 제안하여 observation reduction 방법을 end-to-end 평가 없이도 효과적으로 비교할 수 있게 한다. Coverage는 end-to-end 성공률과 강한 상관관계(Pearson r > 0.9)를 보이며 100배 이상의 평가 속도 향상을 달성한다. 11가지 방법을 종합 비교하고, MFS 데이터로 최적화된 pruning program(GEPA)이 2.2×–3.1× latency 감소를 이루면서도 84–89%의 성공률을 유지함을 보인다.",
+      "tags": [
+        "evaluation-framework",
+        "html-observation",
+        "observation-reduction",
+        "pruning",
+        "web-agent"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2605.29397",
+      "pdfUrl": "https://arxiv.org/pdf/2605.29397.pdf",
+      "reviewPath": "reviews/revisiting-observation-reduction-lightweight-framework.md",
+      "assets": {
+        "figures": [
+          {
+            "path": "assets/revisiting-observation-reduction-lightweight-framework/figures/figure-01.png",
+            "caption": "Figure 1. Key results of our framework on WorkArena L1 (33 tasks). (a) Coverage versus end-to-end success rate. (b) Evaluation time comparison: end-to-end vs coverage. (c) End-to-end success rate vs per-step latency with Qwen3.5-122B-A10B.",
+            "page": 2
+          },
+          {
+            "path": "assets/revisiting-observation-reduction-lightweight-framework/figures/figure-02.png",
+            "caption": "Figure 2. Correlation between coverage and end-to-end success rate across HTML reduction methods on WorkArena and WebLinx.",
+            "page": 5
+          },
+          {
+            "path": "assets/revisiting-observation-reduction-lightweight-framework/figures/figure-03.png",
+            "caption": "Figure 3. Coverage versus reduction ratio on WorkArena L1 and WebLinx. Left: retrieval-based vs LLM inference-based methods. Right: MFS-based optimization effect.",
+            "page": 6
+          }
+        ],
+        "tables": [
+          {
+            "path": "assets/revisiting-observation-reduction-lightweight-framework/tables/table-01.png",
+            "caption": "Table 1. Evaluation time comparison between end-to-end and coverage evaluation.",
+            "page": 4
+          },
+          {
+            "path": "assets/revisiting-observation-reduction-lightweight-framework/tables/table-02.png",
+            "caption": "Table 2. Average wall-clock time (seconds) to reduce a single HTML observation.",
+            "page": 6
+          },
+          {
+            "path": "assets/revisiting-observation-reduction-lightweight-framework/tables/table-03.png",
+            "caption": "Table 3. Coverage drop (%) when ablating a single HTML element type.",
+            "page": 7
+          }
+        ]
+      },
+      "sourceUrl": ""
+    },
+    {
       "id": "2510.03204",
       "slug": "focusagent-web-agent-context-pruning",
       "title": "FocusAgent: Simple Yet Effective Ways of Trimming the Large Context of Web Agents",

@@ -6,4 +6,5 @@
 - [x] https://arxiv.org/abs/2602.10388 — FAC Synthesis (data diversity)
 - [x] https://arxiv.org/abs/2604.24964v1 — Odysseys (web agent benchmark)
 - [x] https://arxiv.org/abs/2604.01535v1 — Read More, Think More (observation reduction for web agents)
+- [x] https://arxiv.org/abs/2605.29397 — Revisiting Observation Reduction (lightweight evaluation framework)
 
