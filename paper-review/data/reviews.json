@@ -236,6 +236,67 @@
       "sourceUrl": "https://github.com/Zhongzhi660/FAC-Synthesis"
     },
     {
+      "id": "2604.01535",
+      "slug": "read-more-think-more-observation-reduction",
+      "title": "Read More, Think More: Revisiting Observation Reduction for Web Agents",
+      "authors": [
+        "Masafumi Enomoto",
+        "Ryoma Obara",
+        "Haochen Zhang",
+        "Masafumi Oyamada"
+      ],
+      "publishedAt": "2026-04-02",
+      "reviewedAt": "2026-07-01",
+      "summary": "웹 에이전트에서 HTML 관측 축소(observation reduction)가 항상 정답이 아님을 보여준다. 고성능 모델은 HTML의 풍부한 레이아웃 정보를 활용해 더 높은 성공률을 달성하고(최대 +17.5%p), thinking token 예산이 많을수록 HTML의 이점이 커지는 반면, 저성능 모델은 긴 입력으로 인한 환각으로 성능이 저하된다.",
+      "tags": [
+        "accessibility-tree",
+        "html-observation",
+        "llm",
+        "thinking-tokens",
+        "web-agent"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2604.01535",
+      "pdfUrl": "https://arxiv.org/pdf/2604.01535.pdf",
+      "reviewPath": "reviews/read-more-think-more-observation-reduction.md",
+      "assets": {
+        "figures": [
+          {
+            "path": "assets/read-more-think-more-observation-reduction/figures/figure-01.png",
+            "caption": "Figure 1. Relationship between observation representation and task success rate (WorkArena L1). The x-axis shows the average number of input tokens per step; the y-axis shows the task success rate.",
+            "page": 2
+          },
+          {
+            "path": "assets/read-more-think-more-observation-reduction/figures/figure-02.png",
+            "caption": "Figure 2. Grounding error counts and their breakdown for a11y and HTML across models (WorkArena L1).",
+            "page": 6
+          },
+          {
+            "path": "assets/read-more-think-more-observation-reduction/figures/figure-03.png",
+            "caption": "Figure 3. Relationship between action repetition rate and task success rate (WorkArena L1). The x-axis shows the rate of actions identical to the previous step; the y-axis shows the task success rate.",
+            "page": 8
+          }
+        ],
+        "tables": [
+          {
+            "path": "assets/read-more-think-more-observation-reduction/tables/table-01.png",
+            "caption": "Table 1. Task success rate (%) by observation representation and model, evaluated on WorkArena L1.",
+            "page": 4
+          },
+          {
+            "path": "assets/read-more-think-more-observation-reduction/tables/table-02.png",
+            "caption": "Table 2. Task success rate (%) by observation format (WorkArena L1). Comparing XML format vs indent format for both a11y and HTML representations.",
+            "page": 4
+          },
+          {
+            "path": "assets/read-more-think-more-observation-reduction/tables/table-03.png",
+            "caption": "Table 3. Impact of switching from a11y to HTML on task success rate by category (WorkArena L1).",
+            "page": 5
+          }
+        ]
+      },
+      "sourceUrl": ""
+    },
+    {
       "id": "2510.03204",
       "slug": "focusagent-web-agent-context-pruning",
       "title": "FocusAgent: Simple Yet Effective Ways of Trimming the Large Context of Web Agents",
