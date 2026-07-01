@@ -1,7 +1,240 @@
 {
   "version": 1,
-  "updatedAt": "2026-06-30",
+  "updatedAt": "2026-07-01",
   "reviews": [
+    {
+      "id": "2604.24964",
+      "slug": "odysseys-web-agent-benchmark",
+      "title": "Odysseys: Benchmarking Web Agents on Realistic Long Horizon Tasks",
+      "authors": [
+        "Lawrence Keunho Jang",
+        "Jing Yu Koh",
+        "Daniel Fried",
+        "Ruslan Salakhutdinov"
+      ],
+      "publishedAt": "2026-04-27",
+      "reviewedAt": "2026-07-01",
+      "summary": "A 200-task long-horizon web agent benchmark derived from real browsing sessions, with rubric-based evaluation achieving higher human agreement than trajectory-level LLM judges; frontier models score only 44.5% perfect success, revealing major room for improvement in long-horizon web navigation.",
+      "tags": [
+        "benchmark",
+        "computer-use",
+        "evaluation",
+        "long-horizon",
+        "multi-site",
+        "rubrics",
+        "web-agent"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2604.24964",
+      "pdfUrl": "https://arxiv.org/pdf/2604.24964.pdf",
+      "reviewPath": "reviews/odysseys-web-agent-benchmark.md",
+      "sourceUrl": "https://odysseys-website.pages.dev",
+      "assets": {
+        "figures": [
+          {
+            "path": "assets/odysseys-web-agent-benchmark/figures/figure-01.png",
+            "caption": "Figure 1. Odysseys is a long-horizon web agent benchmark with 200 tasks based on real user browsing data.",
+            "page": 2
+          },
+          {
+            "path": "assets/odysseys-web-agent-benchmark/figures/figure-02.png",
+            "caption": "Figure 2. After researching 10 surgeon profiles, GPT-5.4 encoded the entire data table as a base64 string.",
+            "page": 7
+          },
+          {
+            "path": "assets/odysseys-web-agent-benchmark/figures/figure-03.png",
+            "caption": "Figure 3. A scatter plot of perfect success rate against number of steps taken.",
+            "page": 8
+          }
+        ],
+        "tables": [
+          {
+            "path": "assets/odysseys-web-agent-benchmark/tables/table-03.png",
+            "caption": "Table 2. Model performance on Odysseys.",
+            "page": 6
+          }
+        ]
+      }
+    },
+    {
+      "id": "2605.15864",
+      "slug": "visualswap-vlm-illusion",
+      "title": "Are VLMs Seeing or Just Saying? Uncovering the Illusion of Visual Re-examination",
+      "authors": [
+        "Chufan Shi",
+        "Cheng Yang",
+        "Yaokang Wu",
+        "Linghao Jin",
+        "Bo Shui",
+        "Taylor Berg-Kirkpatrick",
+        "Xuezhe Ma"
+      ],
+      "publishedAt": "2026-05-15",
+      "reviewedAt": "2026-07-01",
+      "summary": "VisualSwap probes whether VLMs genuinely re-examine visual content during self-reflection by swapping images mid-reasoning; models overwhelmingly fail to detect changes (up to 60% accuracy drop), thinking models are 3x more vulnerable, and self-reflection fails to mobilize visual attention while explicit user instructions restore grounding.",
+      "tags": [
+        "benchmark",
+        "evaluation",
+        "hallucination",
+        "vision-language-model",
+        "vlm"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2605.15864",
+      "pdfUrl": "https://arxiv.org/pdf/2605.15864.pdf",
+      "reviewPath": "reviews/visualswap-vlm-illusion.md",
+      "assets": {
+        "figures": [
+          {
+            "path": "assets/visualswap-vlm-illusion/figures/figure-01.png",
+            "caption": "Figure 1. Illustrative example of visual re-examination. Left: Given image Ia and query Q, the VLM generates reasoning chain Ra including a self-reflective trigger. Top-right: Under standard inference with Ia, the model validates its logic to reach the correct answer A1. Bottom-right: In the VisualSwap condition, Ia is replaced by a visually similar but semantically distinct image Ib post-reflection. Despite explicitly 'saying' it will re-examine the figure, the model fails to detect the visual discrepancy and yields an incorrect answer A2 grounded in the stale context of Ia.",
+            "page": 2
+          },
+          {
+            "path": "assets/visualswap-vlm-illusion/figures/figure-02.png",
+            "caption": "Figure 2. Visual attention score Svis across decoding steps for Qwen3-VL-8B (layers 18-21). Probe shows lower attention than baseline throughout generation. Multi-turn elevates attention substantially after the user instruction.",
+            "page": 6
+          },
+          {
+            "path": "assets/visualswap-vlm-illusion/figures/figure-03.png",
+            "caption": "Figure 3. Visual attention score Svis across decoding steps for Qwen3-VL-235B-A22B (layers 54-57). The same pattern holds at scale: probe suppresses visual attention while multi-turn restores it.",
+            "page": 7
+          }
+        ],
+        "tables": [
+          {
+            "path": "assets/visualswap-vlm-illusion/tables/table-01.png",
+            "caption": "Table 1. Image similarity metrics for pairs (Ia, Ib) in VS-BENCH. Higher CLIP/SSIM and lower LPIPS indicate greater similarity.",
+            "page": 4
+          },
+          {
+            "path": "assets/visualswap-vlm-illusion/tables/table-02.png",
+            "caption": "Table 2. Main results on VS-BENCH. Base and Probe accuracies alongside the performance drop (Delta) across 15 VLMs.",
+            "page": 6
+          },
+          {
+            "path": "assets/visualswap-vlm-illusion/tables/table-03.png",
+            "caption": "Table 3. Average baseline accuracy on Ia vs. Ib under standard inference and Table 4. Average accuracy under Probe vs. Multi-turn. Explicit user instruction substantially recovers performance.",
+            "page": 7
+          }
+        ]
+      },
+      "sourceUrl": "https://visualswap.github.io/"
+    },
+    {
+      "id": "2510.04871",
+      "slug": "tiny-recursive-model",
+      "title": "Less is More: Recursive Reasoning with Tiny Networks",
+      "authors": [
+        "Alexia Jolicoeur-Martineau"
+      ],
+      "publishedAt": "2025-10-06",
+      "reviewedAt": "2026-07-01",
+      "summary": "Tiny Recursive Model (TRM) replaces the complex hierarchical recursive reasoning model with a single 2-layer tiny network (7M params) that recursively refines its answer, achieving 45% on ARC-AGI-1 and 8% on ARC-AGI-2 — surpassing most LLMs including Deepseek R1, o3-mini, and Gemini 2.5 Pro with less than 0.01% of their parameters.",
+      "tags": [
+        "arc-agi",
+        "puzzle",
+        "reasoning",
+        "recursive-model",
+        "tiny-model"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2510.04871",
+      "pdfUrl": "https://arxiv.org/pdf/2510.04871.pdf",
+      "reviewPath": "reviews/tiny-recursive-model.md",
+      "assets": {
+        "figures": [
+          {
+            "path": "assets/tiny-recursive-model/figures/figure-01.png",
+            "caption": "Figure 1. Tiny Recursion Model (TRM) recursively improves its answer with a tiny network.",
+            "page": 1
+          },
+          {
+            "path": "assets/tiny-recursive-model/figures/figure-02.png",
+            "caption": "Figure 2. Pseudocode of Hierarchical Reasoning Models (HRMs).",
+            "page": 3
+          },
+          {
+            "path": "assets/tiny-recursive-model/figures/figure-03.png",
+            "caption": "Figure 3. Pseudocode of Tiny Recursion Models (TRMs).",
+            "page": 5
+          }
+        ],
+        "tables": [
+          {
+            "path": "assets/tiny-recursive-model/tables/table-01.png",
+            "caption": "Table 1. Ablation of TRM on Sudoku-Extreme comparing accuracy, depth, forward passes, and parameters.",
+            "page": 5
+          },
+          {
+            "path": "assets/tiny-recursive-model/tables/table-02.png",
+            "caption": "Table 2. Feature count ablation comparing TRM variants with different numbers of latent features.",
+            "page": 6
+          },
+          {
+            "path": "assets/tiny-recursive-model/tables/table-03.png",
+            "caption": "Table 3. HRM vs TRM test accuracy at matched effective depth.",
+            "page": 6
+          }
+        ]
+      },
+      "sourceUrl": ""
+    },
+    {
+      "id": "2602.10388",
+      "slug": "fac-synthesis-diverse-data",
+      "title": "Less is Enough: Synthesizing Diverse Data in LLM Feature Space with Sparse Autoencoders",
+      "authors": [
+        "Zhongzhi Li",
+        "Xuansheng Wu",
+        "Yijiang Li",
+        "Lijie Hu",
+        "Ninghao Liu"
+      ],
+      "publishedAt": "2026-02-11",
+      "reviewedAt": "2026-07-01",
+      "summary": "A coverage-guided data synthesis framework (FAC Synthesis) that uses SAE-based feature activation coverage to identify missing task-relevant features in LLM post-training data and generate targeted synthetic samples, achieving SOTA on four tasks with 150x fewer samples than MAGPIE.",
+      "tags": [
+        "data-diversity",
+        "data-synthesis",
+        "feature-space",
+        "llm",
+        "post-training",
+        "sparse-autoencoder"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2602.10388",
+      "pdfUrl": "https://arxiv.org/pdf/2602.10388.pdf",
+      "reviewPath": "reviews/fac-synthesis-diverse-data.md",
+      "assets": {
+        "figures": [
+          {
+            "path": "assets/fac-synthesis-diverse-data/figures/figure-01.png",
+            "caption": "Figure 1. Efficiency frontier of instruction following datasets",
+            "page": 5
+          },
+          {
+            "path": "assets/fac-synthesis-diverse-data/figures/figure-02.png",
+            "caption": "Figure 2. FAC Synthesis: a coverage-guided synthetic framework",
+            "page": 7
+          },
+          {
+            "path": "assets/fac-synthesis-diverse-data/figures/figure-03.png",
+            "caption": "Figure 3. The results of the relationship between FAC and AUPRC",
+            "page": 17
+          }
+        ],
+        "tables": [
+          {
+            "path": "assets/fac-synthesis-diverse-data/tables/table-02.png",
+            "caption": "Table 1. Performance comparison on Toxicity Detection, Reward Modeling, Behavior Steering, and Instruction Following tasks",
+            "page": 10
+          },
+          {
+            "path": "assets/fac-synthesis-diverse-data/tables/table-03.png",
+            "caption": "Table 2. Qualitative analysis of LLM-identified relevant and irrelevant features",
+            "page": 23
+          }
+        ]
+      },
+      "sourceUrl": "https://github.com/Zhongzhi660/FAC-Synthesis"
+    },
     {
       "id": "2510.03204",
       "slug": "focusagent-web-agent-context-pruning",
