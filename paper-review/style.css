@@ -74,6 +74,11 @@ select {
   border-bottom: 1px solid var(--line-default);
 }
 
+.header-nav {
+  display: flex;
+  gap: 8px;
+}
+
 .back-link {
   display: inline-flex;
   align-items: center;
