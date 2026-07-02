@@ -92,15 +92,6 @@
     return copy.sort((a, b) => dateValue(b) - dateValue(a));
   }
 
-  function escapeHtml(value) {
-    return String(value || '')
-      .replaceAll('&', '&amp;')
-      .replaceAll('<', '&lt;')
-      .replaceAll('>', '&gt;')
-      .replaceAll('"', '&quot;')
-      .replaceAll("'", '&#039;');
-  }
-
   function formatAuthors(authors) {
     if (!authors.length) return 'Unknown authors';
     if (authors.length <= 3) return authors.join(', ');
@@ -151,12 +142,28 @@
     }
   }
 
+  function escapeHtml(value) {
+    return String(value || '')
+      .replaceAll('&', '&amp;')
+      .replaceAll('<', '&lt;')
+      .replaceAll('>', '&gt;')
+      .replaceAll('"', '&quot;')
+      .replaceAll("'", '&#039;');
+  }
+
   function renderInlineMarkdown(value, context = {}) {
-    return escapeHtml(value).replace(/\[([^\]]+)\]\(([^)]+)\)/g, (_match, label, href) => {
-      const resolvedHref = safeUrl(resolveMarkdownPath(href, context.reviewPath));
-      const isExternal = /^https?:\/\//i.test(resolvedHref);
-      return `<a href="${escapeHtml(resolvedHref)}"${isExternal ? ' target="_blank" rel="noopener"' : ''}>${label}</a>`;
-    });
+    return escapeHtml(value)
+      .replace(/`([^`]+)`/g, '<code>$1</code>')
+      .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+      .replace(/__([^_]+)__/g, '<strong>$1</strong>')
+      .replace(/\*([^*]+)\*/g, '<em>$1</em>')
+      .replace(/_([^_]+)_/g, '<em>$1</em>')
+      .replace(/\$([^$]+)\$/g, '<span class="math-inline">$1</span>')
+      .replace(/\[([^\]]+)\]\(([^)]+)\)/g, (_match, label, href) => {
+        const resolvedHref = safeUrl(resolveMarkdownPath(href, context.reviewPath));
+        const isExternal = /^https?:\/\//i.test(resolvedHref);
+        return `<a href="${escapeHtml(resolvedHref)}"${isExternal ? ' target="_blank" rel="noopener"' : ''}>${label}</a>`;
+      });
   }
 
   function renderMarkdownImage(line, context = {}) {
@@ -199,7 +206,7 @@
       const trimmed = line.trim();
 
       if (mathLines) {
-        if (trimmed === '\\]') {
+        if (trimmed === '\\]' || trimmed === '$$') {
           html.push(`<div class="math-block">${escapeHtml(mathLines.join('\n'))}</div>`);
           mathLines = null;
         } else {
@@ -214,7 +221,7 @@
         continue;
       }
 
-      if (trimmed === '\\[') {
+      if (trimmed === '\\[' || trimmed === '$$') {
         flushParagraph();
         flushList();
         mathLines = [];

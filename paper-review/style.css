@@ -480,6 +480,30 @@ h1 {
   white-space: pre;
 }
 
+.markdown-body code {
+  padding: 2px 6px;
+  border: 1px solid var(--line-default);
+  border-radius: var(--radius-s);
+  background: var(--bg-secondary);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  font-size: 0.875em;
+}
+
+.markdown-body pre code {
+  display: block;
+  padding: 12px 16px;
+  overflow-x: auto;
+  line-height: 1.5;
+}
+
+.math-inline {
+  padding: 1px 4px;
+  border-radius: var(--radius-s);
+  background: var(--bg-secondary);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  font-size: 0.875em;
+}
+
 .review-figure {
   margin: 32px 0;
   overflow: hidden;
