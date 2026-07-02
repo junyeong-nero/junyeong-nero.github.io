@@ -1,7 +1,137 @@
 {
   "version": 1,
-  "updatedAt": "2026-07-01",
+  "updatedAt": "2026-07-02",
   "reviews": [
+    {
+      "id": "2508.05004",
+      "slug": "r-zero",
+      "title": "R-Zero: Self-Evolving Reasoning LLM from Zero Data",
+      "authors": [
+        "Chengsong Huang",
+        "Wenhao Yu",
+        "Xiaoyang Wang",
+        "Hongming Zhang",
+        "Zongxia Li",
+        "Ruosen Li",
+        "Jiaxin Huang",
+        "Haitao Mi",
+        "Dong Yu"
+      ],
+      "publishedAt": "2025-08-07",
+      "reviewedAt": "2026-07-02",
+      "summary": "R-Zero is a fully autonomous framework where Challenger and Solver LLMs co-evolve via GRPO to generate their own training curriculum from scratch, achieving significant reasoning gains without any human-curated tasks, labels, or seed data.",
+      "tags": [
+        "llm",
+        "reinforcement-learning",
+        "self-evolution",
+        "zero-data"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2508.05004",
+      "pdfUrl": "https://arxiv.org/pdf/2508.05004.pdf",
+      "reviewPath": "reviews/r-zero.md",
+      "assets": {
+        "figures": [
+          {
+            "path": "assets/r-zero/figures/figure-01.png",
+            "caption": "Figure 1. R-Zero co-evolutionary loop between Challenger and Solver."
+          },
+          {
+            "path": "assets/r-zero/figures/figure-02.png",
+            "caption": "Figure 2. R-Zero framework overview."
+          },
+          {
+            "path": "assets/r-zero/figures/figure-03.png",
+            "caption": "Figure 4. R-Zero synergy with supervised fine-tuning."
+          }
+        ],
+        "tables": [
+          {
+            "path": "assets/r-zero/tables/table-01.png",
+            "caption": "Table 1. Math reasoning benchmarks.",
+            "page": 5
+          },
+          {
+            "path": "assets/r-zero/tables/table-02.png",
+            "caption": "Table 1 (continued).",
+            "page": 5
+          },
+          {
+            "path": "assets/r-zero/tables/table-03.png",
+            "caption": "Table 2. General-domain reasoning benchmarks.",
+            "page": 6
+          }
+        ]
+      },
+      "sourceUrl": ""
+    },
+    {
+      "id": "2605.09959",
+      "slug": "g-zero",
+      "title": "G-Zero: Self-Play for Open-Ended Generation from Zero Data",
+      "authors": [
+        "Chengsong Huang",
+        "Haolin Liu",
+        "Tong Zheng",
+        "Runpeng Dai",
+        "Langlin Huang",
+        "Jinyuan Li",
+        "Zongxia Li",
+        "Zhepei Wei",
+        "Yu Meng",
+        "Jiaxin Huang"
+      ],
+      "publishedAt": "2026-05-11",
+      "reviewedAt": "2026-07-02",
+      "summary": "G-Zero introduces Hint-δ, a verifier-free intrinsic reward for self-evolution in open-ended domains, where a Proposer (GRPO) generates challenging query-hint pairs and a Generator (DPO) internalizes the hint-guided improvements without external judges.",
+      "tags": [
+        "llm",
+        "open-ended-generation",
+        "reinforcement-learning",
+        "self-evolution",
+        "zero-data"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2605.09959",
+      "pdfUrl": "https://arxiv.org/pdf/2605.09959.pdf",
+      "reviewPath": "reviews/g-zero.md",
+      "assets": {
+        "figures": [
+          {
+            "path": "assets/g-zero/figures/figure-01.png",
+            "caption": "Figure 1. Comparison of self-supervision signals."
+          },
+          {
+            "path": "assets/g-zero/figures/figure-02.png",
+            "caption": "Figure 2. G-Zero co-evolutionary loop."
+          },
+          {
+            "path": "assets/g-zero/figures/figure-03.png",
+            "caption": "Figure 3. Capability scaling dynamics."
+          },
+          {
+            "path": "assets/g-zero/figures/figure-04.png",
+            "caption": "Figure 4. Hint-δ distribution shift across rounds."
+          }
+        ],
+        "tables": [
+          {
+            "path": "assets/g-zero/tables/table-01.png",
+            "caption": "Table 1. Main results.",
+            "page": 7
+          },
+          {
+            "path": "assets/g-zero/tables/table-02.png",
+            "caption": "Tables 2 & 3. DPO pool composition and δ-filter design space.",
+            "page": 8
+          },
+          {
+            "path": "assets/g-zero/tables/table-03.png",
+            "caption": "Table 4. Hyperparameters.",
+            "page": 16
+          }
+        ]
+      },
+      "sourceUrl": ""
+    },
     {
       "id": "2604.24964",
       "slug": "odysseys-web-agent-benchmark",
