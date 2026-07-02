@@ -48,10 +48,11 @@ This skill is stored repo-locally at:
 - Keep figure/table image paths relative to the review file, for example `../assets/<slug>/figures/figure-01.png`.
 
 4. Capture figures and tables.
-- Use `.codex/skills/paper-review-ingest/scripts/capture_pdf_regions.py` with the PDF and extracted text.
+- Use `.codex/skills/paper-review-ingest/scripts/capture_arxiv_figures.py`.
 - Default limit: 3 figures and 3 tables.
-- The script renders candidate pages from captions like `Figure 1`, `Fig. 1`, and `Table 1`.
-- If exact region cropping is uncertain, keep the candidate page screenshot and record the page number.
+- The script downloads the arXiv e-print source tarball, extracts figures from `\includegraphics` in `.tex` files, and compiles `\begin{table}` environments with `pdflatex`.
+- Captions are extracted from `\caption{}` in the TeX source.
+- `pdflatex` must be available and `pdftoppm` is used to convert compiled table PDFs to PNG.
 - Capture failure must not block the review or JSON index update.
 
 5. Update the JSON index.
@@ -98,7 +99,7 @@ pdftotext -layout /private/tmp/arxiv_2403.01469.pdf /private/tmp/arxiv_2403.0146
 Capture candidate figures and tables:
 
 ```bash
-python3 .codex/skills/paper-review-ingest/scripts/capture_pdf_regions.py --pdf /private/tmp/arxiv_2403.01469.pdf --text /private/tmp/arxiv_2403.01469.txt --out-dir /Users/junyeong-nero/workspace/junyeong-nero.github.io/paper-review/assets/kormedmcqa --slug kormedmcqa --manifest-out /private/tmp/kormedmcqa_assets.json
+python3 .codex/skills/paper-review-ingest/scripts/capture_arxiv_figures.py --arxiv-id 2403.01469 --out-dir /Users/junyeong-nero/workspace/junyeong-nero.github.io/paper-review/assets/kormedmcqa --slug kormedmcqa --manifest-out /private/tmp/kormedmcqa_assets.json
 ```
 
 Update index:

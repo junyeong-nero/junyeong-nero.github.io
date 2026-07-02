@@ -3,7 +3,6 @@ from __future__ import annotations
 
 import argparse
 import json
-import os
 import re
 import shutil
 import subprocess
@@ -18,16 +17,30 @@ FIGURE_ENV_PATTERN = re.compile(
     re.DOTALL | re.IGNORECASE,
 )
 
+TABLE_ENV_PATTERN = re.compile(
+    r"\\begin\{table\*?\}.*?\\end\{table\*?\}",
+    re.DOTALL | re.IGNORECASE,
+)
+
 INCLUDEGRAPHICS_PATTERN = re.compile(
     r"\\includegraphics(?:\s*\[.*?\])?\s*\{(?P<path>[^}]+)\}"
 )
 
 CAPTION_PATTERN_TEX = re.compile(r"\\caption\s*")
 
-CAPTION_PATTERN = re.compile(
-    r"\b(?P<label>fig(?:ure)?|table)\.?\s*(?P<number>\d+)\s*[:.]\s*(?P<caption>[^\n]+)",
-    re.IGNORECASE,
-)
+PDFTEX_PREAMBLE = r"""
+\documentclass[varwidth=1200pt]{standalone}
+\usepackage{booktabs,array,tabularx,longtable,threeparttable}
+\usepackage{colortbl,multirow,makecell}
+\usepackage{graphicx}
+\usepackage{amsmath,amssymb}
+\usepackage{xcolor}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[normalem]{ulem}
+\usepackage{pifont}
+\begin{document}
+"""
 
 
 def extract_balanced_braces(text: str, start: int) -> tuple[str, int]:
@@ -57,8 +70,7 @@ def download_arxiv_source(arxiv_id: str, dest_dir: Path) -> Path | None:
     try:
         subprocess.run(
             ["curl", "-sL", url, "-o", str(tarball)],
-            check=True,
-            timeout=60,
+            check=True, timeout=60,
         )
     except (subprocess.CalledProcessError, OSError):
         return None
@@ -89,10 +101,8 @@ def resolve_figure_path(
     lookup = includegraphics_path.strip()
     if not lookup:
         return None
-
     search_dirs = [tex_file_dir, src_dir]
     extensions = [".pdf", ".eps", ".png", ".jpg", ".jpeg", ".PNG", ".JPG", ".PDF", ".EPS"]
-
     for base in search_dirs:
         for ext in extensions:
             candidate = base / f"{lookup}{ext}"
@@ -101,11 +111,10 @@ def resolve_figure_path(
         candidate = base / lookup
         if candidate.exists() and candidate.is_file():
             return candidate
-
     return None
 
 
-def convert_to_png(src_path: Path, dst_path: Path) -> bool:
+def convert_to_png(src_path: Path, dst_path: Path, dpi: int = 200) -> bool:
     dst_path.parent.mkdir(parents=True, exist_ok=True)
     suffix = src_path.suffix.lower()
 
@@ -127,7 +136,7 @@ def convert_to_png(src_path: Path, dst_path: Path) -> bool:
         if shutil.which("pdftoppm"):
             prefix = dst_path.with_suffix("")
             subprocess.run(
-                ["pdftoppm", "-png", "-singlefile", "-r", "200", str(src_path), str(prefix)],
+                ["pdftoppm", "-png", "-singlefile", "-r", str(dpi), str(src_path), str(prefix)],
                 check=True, capture_output=True,
             )
             rendered = prefix.with_suffix(".png")
@@ -154,7 +163,6 @@ def extract_figures_from_tex(
 ) -> dict[str, Any]:
     manifest: dict[str, Any] = {"figures": [], "warnings": []}
     tex_files = find_tex_files(src_dir)
-
     if not tex_files:
         manifest["warnings"].append("No .tex files found in extracted source.")
         return manifest
@@ -196,7 +204,6 @@ def extract_figures_from_tex(
             for i, fig_path_str in enumerate(inc_paths):
                 if count >= limit_figures:
                     break
-
                 if not fig_path_str or fig_path_str in seen_figures:
                     continue
                 seen_figures.add(fig_path_str)
@@ -220,12 +227,10 @@ def extract_figures_from_tex(
                     continue
 
                 cap = caption_texts[i] if i < len(caption_texts) else ""
-                manifest["figures"].append(
-                    {
-                        "path": f"assets/{slug}/figures/{stem}",
-                        "caption": cap,
-                    }
-                )
+                manifest["figures"].append({
+                    "path": f"assets/{slug}/figures/{stem}",
+                    "caption": cap,
+                })
 
     if not manifest["figures"]:
         manifest["warnings"].append("No figures could be extracted from TeX source.")
@@ -233,90 +238,128 @@ def extract_figures_from_tex(
     return manifest
 
 
-def capture_tables_from_pdf(
-    pdf_path: Path,
-    text_path: Path,
+def extract_tables_from_tex(
+    src_dir: Path,
     out_dir: Path,
     slug: str,
     limit_tables: int = 3,
 ) -> dict[str, Any]:
-    table_manifest: dict[str, Any] = {"tables": [], "warnings": []}
+    manifest: dict[str, Any] = {"tables": [], "warnings": []}
+    tex_files = find_tex_files(src_dir)
+    if not tex_files:
+        manifest["warnings"].append("No .tex files found in extracted source.")
+        return manifest
 
-    try:
-        text = text_path.read_text(encoding="utf-8", errors="replace")
-    except OSError as e:
-        table_manifest["warnings"].append(f"Cannot read text file: {e}")
-        return table_manifest
+    if not shutil.which("pdflatex"):
+        manifest["warnings"].append("pdflatex not available; cannot compile tables from TeX.")
+        return manifest
 
-    if not shutil.which("pdftoppm"):
-        table_manifest["warnings"].append("pdftoppm not available for table capture.")
-        return table_manifest
-
-    pages = text.split("\f") if text else []
-    candidates = []
-    for page_idx, page_text in enumerate(pages or [text], start=1):
-        for m in CAPTION_PATTERN.finditer(page_text):
-            label = m.group("label").lower()
-            if label.startswith("tab"):
-                candidates.append(
-                    {
-                        "page": page_idx,
-                        "caption": f"Table {m.group('number')}. {m.group('caption').strip()}",
-                    }
-                )
+    pdftoppm = shutil.which("pdftoppm")
+    if not pdftoppm:
+        manifest["warnings"].append("pdftoppm not available; cannot convert table PDF to PNG.")
+        return manifest
 
     count = 0
-    for c in candidates:
+
+    for tex_file in tex_files:
         if count >= limit_tables:
             break
-        count += 1
-        stem = f"table-{count:02d}.png"
-        dst = out_dir / "tables" / stem
-        dst.parent.mkdir(parents=True, exist_ok=True)
-
         try:
-            prefix = dst.with_suffix("")
-            subprocess.run(
-                [
-                    "pdftoppm", "-png", "-singlefile",
-                    "-f", str(c["page"]), "-l", str(c["page"]),
-                    "-r", "180",
-                    str(pdf_path), str(prefix),
-                ],
-                check=True, capture_output=True,
-            )
-            rendered = prefix.with_suffix(".png")
-            if rendered != dst and rendered.exists():
-                rendered.replace(dst)
-            if dst.exists():
-                table_manifest["tables"].append(
-                    {
-                        "path": f"assets/{slug}/tables/{stem}",
-                        "caption": c["caption"],
-                        "page": c["page"],
-                    }
-                )
-        except (subprocess.CalledProcessError, OSError) as e:
-            table_manifest["warnings"].append(
-                f"Failed to render table page {c['page']}: {e}"
-            )
+            raw = tex_file.read_text(encoding="utf-8", errors="replace")
+        except OSError:
+            continue
 
-    return table_manifest
+        cleaned = strip_tex_comments(raw)
+
+        for env_match in TABLE_ENV_PATTERN.finditer(cleaned):
+            if count >= limit_tables:
+                break
+
+            env_text = env_match.group(0)
+
+            cap_match = CAPTION_PATTERN_TEX.search(env_text)
+            caption_raw = ""
+            if cap_match:
+                caption_raw, _ = extract_balanced_braces(env_text, cap_match.end())
+                caption_raw = caption_raw.strip()
+
+            count += 1
+            stem = f"table-{count:02d}"
+            dst = out_dir / "tables" / f"{stem}.png"
+            dst.parent.mkdir(parents=True, exist_ok=True)
+
+            tex_content = f"""{PDFTEX_PREAMBLE}
+{env_text}
+\\end{{document}}
+"""
+
+            tex_path = src_dir / f"_{stem}.tex"
+
+            try:
+                tex_path.write_text(tex_content, encoding="utf-8")
+
+                result = subprocess.run(
+                    ["pdflatex", "-interaction=nonstopmode",
+                     f"-output-directory={src_dir}", str(tex_path)],
+                    cwd=str(src_dir),
+                    capture_output=True, text=True,
+                    timeout=30,
+                )
+
+                pdf_path = src_dir / f"{stem}.pdf"
+                if pdf_path.exists():
+                    prefix = dst.with_suffix("")
+                    subprocess.run(
+                        [pdftoppm, "-png", "-singlefile", "-r", "200",
+                         str(pdf_path), str(prefix)],
+                        check=True, capture_output=True, timeout=30,
+                    )
+                    rendered = prefix.with_suffix(".png")
+                    if rendered != dst and rendered.exists():
+                        rendered.replace(dst)
+
+                if dst.exists():
+                    manifest["tables"].append({
+                        "path": f"assets/{slug}/tables/{dst.name}",
+                        "caption": caption_raw,
+                    })
+                else:
+                    manifest["warnings"].append(
+                        f"Failed to render table from {tex_file.name} (check LaTeX errors)."
+                    )
+
+                for f in src_dir.glob(f"{stem}.*"):
+                    if f.suffix in (".aux", ".log", ".pdf", ".tex"):
+                        try:
+                            f.unlink()
+                        except OSError:
+                            pass
+
+            except (subprocess.TimeoutExpired, OSError) as e:
+                manifest["warnings"].append(
+                    f"LaTeX compilation failed for table in {tex_file.name}: {e}"
+                )
+
+    if not manifest["tables"]:
+        manifest["warnings"].append("No tables could be extracted from TeX source.")
+
+    return manifest
 
 
 def main() -> int:
     parser = argparse.ArgumentParser(
-        description="Extract figures from arXiv TeX source and tables from PDF."
+        description="Extract figures and tables from arXiv TeX source."
     )
     parser.add_argument("--arxiv-id", required=True, help="arXiv paper ID (canonical, versionless)")
-    parser.add_argument("--pdf", type=Path, help="Path to downloaded PDF (for table capture)")
-    parser.add_argument("--text", type=Path, help="Path to pdftotext output (for table capture)")
-    parser.add_argument("--out-dir", required=True, type=Path, help="Output directory under paper-review/assets")
+    parser.add_argument("--out-dir", required=True, type=Path,
+                        help="Output directory under paper-review/assets")
     parser.add_argument("--slug", required=True, help="Paper slug used in relative asset paths")
     parser.add_argument("--limit-figures", type=int, default=3)
     parser.add_argument("--limit-tables", type=int, default=3)
-    parser.add_argument("--keep-source", action="store_true", help="Keep extracted TeX source (for debugging)")
-    parser.add_argument("--manifest-out", type=Path, help="Optional JSON manifest output path")
+    parser.add_argument("--keep-source", action="store_true",
+                        help="Keep extracted TeX source (for debugging)")
+    parser.add_argument("--manifest-out", type=Path,
+                        help="Optional JSON manifest output path")
     args = parser.parse_args()
 
     out_dir = args.out_dir
@@ -340,16 +383,14 @@ def main() -> int:
                 )
                 manifest["figures"] = fig_result["figures"]
                 manifest["warnings"].extend(fig_result["warnings"])
+
+                tbl_result = extract_tables_from_tex(
+                    src_dir, out_dir, args.slug, args.limit_tables,
+                )
+                manifest["tables"] = tbl_result["tables"]
+                manifest["warnings"].extend(tbl_result["warnings"])
             else:
                 manifest["warnings"].append("Failed to extract TeX source tarball.")
-
-        if args.pdf and args.text:
-            tbl_result = capture_tables_from_pdf(
-                args.pdf, args.text, out_dir, args.slug, args.limit_tables,
-            )
-            manifest["tables"] = tbl_result["tables"]
-            manifest["warnings"].extend(tbl_result["warnings"])
-
     finally:
         if not args.keep_source:
             shutil.rmtree(temp_root, ignore_errors=True)

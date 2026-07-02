@@ -24,8 +24,7 @@ paper-review/assets/<slug>/tables/table-01.png
 
 Scripts are at `.codex/skills/paper-review-ingest/scripts/`:
 - `arxiv_id.py` — Parse arXiv URL/ID
-- `capture_pdf_regions.py` — Capture figure/table pages as PNG (legacy, PDF-based)
-- `capture_arxiv_figures.py` — Extract figures from arXiv TeX source (preferred) and fall back to PDF for tables
+- `capture_arxiv_figures.py` — Extract figures from arXiv TeX source (`\includegraphics`) and render tables from TeX via `pdflatex` + `pdftoppm`
 - `update_reviews_index.py` — Upsert entry into reviews.json
 
 ## Workflow
@@ -36,7 +35,7 @@ Scripts are at `.codex/skills/paper-review-ingest/scripts/`:
 
 3. **Generate the Markdown review** — Save to `paper-review/reviews/<slug>.md`. Section order: TL;DR, Background, Problem, Method, Experiments, Critical Analysis, Implementation Notes, Captured Figures and Tables. Include LaTeX equations where useful. Keep figure/table image paths relative to the review file, e.g. `../assets/<slug>/figures/figure-01.png`.
 
-4. **Capture figures and tables** — Use `python3 .codex/skills/paper-review-ingest/scripts/capture_arxiv_figures.py --arxiv-id <canonical-id> --pdf <pdf> --text <text> --out-dir paper-review/assets/<slug> --slug <slug>`. This downloads the arXiv TeX source (tar.gz from `https://arxiv.org/e-print/<id>`), extracts figure files (PDF/PNG/EPS) directly from the source, converts them to PNG, and parses `\caption` from the `.tex` files for accurate captions. For tables, it falls back to capturing PDF pages via `pdftoppm`. Default limit: 3 figures and 3 tables. Capture failure must not block the review or JSON index update.
+4. **Capture figures and tables** — Use `python3 .codex/skills/paper-review-ingest/scripts/capture_arxiv_figures.py --arxiv-id <canonical-id> --out-dir paper-review/assets/<slug> --slug <slug>`. This downloads the arXiv TeX source (tar.gz from `https://arxiv.org/e-print/<id>`), extracts figure files (PDF/PNG/EPS) from `\includegraphics` in `.tex` files, converts them to PNG, and parses `\caption` from the `.tex` files for accurate captions. For tables, it finds `\begin{table}` environments, compiles them with `pdflatex` and converts to PNG via `pdftoppm`. Default limit: 3 figures and 3 tables. Capture failure must not block the review or JSON index update.
 
 5. **Update the JSON index** — Create a JSON entry matching the shape below, write it to a temp file, then run `python3 .codex/skills/paper-review-ingest/scripts/update_reviews_index.py --index paper-review/data/reviews.json --entry <tmp-entry.json>`. Paths are relative to `paper-review/`, not the repo root. Tags are lowercase and sorted.
 
