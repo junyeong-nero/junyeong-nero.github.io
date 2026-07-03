@@ -2,3 +2,4 @@
 .serena/
 .omc/
 .omx/
+__pycache__/
