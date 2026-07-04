@@ -1,7 +1,187 @@
 {
   "version": 1,
-  "updatedAt": "2026-07-02",
+  "updatedAt": "2026-07-04",
   "reviews": [
+    {
+      "id": "2606.29920",
+      "slug": "ruverbench",
+      "title": "Can LLM-as-a-Judge Reliably Verify Rubrics in Agentic Scenarios?",
+      "authors": [
+        "Yangda Peng",
+        "Yunjia Qi",
+        "Hao Peng",
+        "Haotian Xia",
+        "Guanzhong He",
+        "Xintong Shi",
+        "Richeng Xuan",
+        "Songyuanyi Lu",
+        "Yixian Liu",
+        "Zhichao Hu",
+        "Yuhong Liu",
+        "Lei Hou",
+        "Bin Xu",
+        "Juanzi Li"
+      ],
+      "publishedAt": "2026-06-29",
+      "reviewedAt": "2026-07-04",
+      "summary": "RuVerBench is the first benchmark for assessing LLM-as-a-Judge reliability in rubric verification for agentic scenarios, covering Deep Research and Agentic Coding with 2,458 human-annotated instances; even frontier models exhibit substantial noise, with weaker models more sensitive to prompt variations, batching trading accuracy for efficiency, and majority voting yielding diminishing returns.",
+      "tags": [
+        "agentic",
+        "benchmark",
+        "llm-as-a-judge",
+        "meta-evaluation",
+        "rubric-verification"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2606.29920",
+      "pdfUrl": "https://arxiv.org/pdf/2606.29920.pdf",
+      "reviewPath": "reviews/ruverbench.md",
+      "assets": {
+        "figures": [
+          {
+            "path": "assets/ruverbench/figures/figure-01.png",
+            "caption": "Figure 1. LLM-as-a-Judge rubric verification in agentic scenarios.",
+            "page": 1
+          },
+          {
+            "path": "assets/ruverbench/figures/figure-02.png",
+            "caption": "Figure 2. RuVerBench construction from existing agentic evaluation datasets.",
+            "page": 2
+          },
+          {
+            "path": "assets/ruverbench/figures/figure-03.png",
+            "caption": "Figure 3. Dataset provenance and benchmark construction pipeline.",
+            "page": 3
+          }
+        ],
+        "tables": [
+          {
+            "path": "assets/ruverbench/tables/table-01.png",
+            "caption": "Table 1. RuVerBench taxonomy used for category-level analysis.",
+            "page": 4
+          },
+          {
+            "path": "assets/ruverbench/tables/table-02.png",
+            "caption": "Table 2. Main RuVerBench leaderboard.",
+            "page": 5
+          },
+          {
+            "path": "assets/ruverbench/tables/table-03.png",
+            "caption": "Table 3. Prompt sensitivity results.",
+            "page": 7
+          }
+        ]
+      },
+      "sourceUrl": ""
+    },
+    {
+      "id": "2606.30534",
+      "slug": "orca-world-model",
+      "title": "Orca: The World is in Your Mind",
+      "authors": [
+        "Yihao Wang",
+        "Yuheng Ji",
+        "Mingyu Cao",
+        "Yanqing Shen",
+        "Runze Xiao",
+        "Huaihai Lyu",
+        "Senwei Xie",
+        "Euan Liu",
+        "Klara Tian",
+        "Tianfeng Long",
+        "Yichi Zhang",
+        "Zhengliang Cai",
+        "Ruike Chen",
+        "Jifan Zhao",
+        "Ruochuan Shi",
+        "Zihan Tang",
+        "Jing Lyu",
+        "Wenxing Tan",
+        "Ningbo Zhang",
+        "Yangtao Hu",
+        "Yuming Gao",
+        "Xiansheng Chen",
+        "Junkai Zhao",
+        "Congsheng Xu",
+        "Boan Zhu",
+        "Ziqi Wang",
+        "Yupu Feng",
+        "Qiongqiong Zhang",
+        "Yingli Zhao",
+        "Yulong Ao",
+        "Shaoxuan Xie",
+        "You Liu",
+        "Guocai Yao",
+        "Leiduo Zhang",
+        "Xiaodan Liu",
+        "Yunyan Zhang",
+        "Yance Jiao",
+        "Xinyan Yang",
+        "Jiaxing Wei",
+        "Xu Liu",
+        "Tengfei Pan",
+        "Shaokai Nie",
+        "Chunlei Men",
+        "Sen Cui",
+        "Xiaojie Jin",
+        "Hongyang Li",
+        "Jianlan Luo",
+        "Yao Mu",
+        "Yunchao Wei",
+        "Jun Yan",
+        "Hang Zhao",
+        "Xiaolong Zheng",
+        "Jiaming Li",
+        "Yonghua Lin",
+        "Tiejun Huang",
+        "Zhongyuan Wang",
+        "Pengwei Wang"
+      ],
+      "publishedAt": "2026-06-29",
+      "reviewedAt": "2026-07-04",
+      "summary": "Orca is a general world foundation model that learns a unified world latent space from vision and language via Next-State-Prediction, using unconscious learning (dense video state transitions) and conscious learning (event-conditioned and VQA supervision); the frozen backbone supports downstream text, image, and action readouts, outperforming similar-sized specialized baselines.",
+      "tags": [
+        "embodied-ai",
+        "multimodal",
+        "next-state-prediction",
+        "self-supervised-learning",
+        "world-model"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2606.30534",
+      "pdfUrl": "https://arxiv.org/pdf/2606.30534.pdf",
+      "reviewPath": "reviews/orca-world-model.md",
+      "assets": {
+        "figures": [
+          {
+            "path": "assets/orca-world-model/figures/figure-01.png",
+            "caption": "Figure 1. Orca's overall Encoder-Decoder framework.",
+            "page": 1
+          },
+          {
+            "path": "assets/orca-world-model/figures/figure-02.png",
+            "caption": "Figure 2. Encoder overview with unconscious and conscious learning paradigms.",
+            "page": 3
+          }
+        ],
+        "tables": [
+          {
+            "path": "assets/orca-world-model/tables/table-01.png",
+            "caption": "Table 1. Text generation comparison across 4 benchmarks.",
+            "page": 9
+          },
+          {
+            "path": "assets/orca-world-model/tables/table-02.png",
+            "caption": "Table 2. Cross-benchmark capability comparison.",
+            "page": 10
+          },
+          {
+            "path": "assets/orca-world-model/tables/table-03.png",
+            "caption": "Table 3. Image prediction comparison on PRICE-V0.1 benchmark.",
+            "page": 10
+          }
+        ]
+      },
+      "sourceUrl": ""
+    },
     {
       "id": "2508.05004",
       "slug": "r-zero",
