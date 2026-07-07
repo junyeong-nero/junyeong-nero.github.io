@@ -2662,6 +2662,71 @@
           }
         ]
       }
+    },
+    {
+      "id": "2505.24832",
+      "slug": "llm-memorization-capacity",
+      "title": "How much do language models memorize?",
+      "authors": [
+        "John X. Morris",
+        "Chawin Sitawarin",
+        "Chuan Guo",
+        "Narine Kokhlikyan",
+        "G. Edward Suh",
+        "Alexander M. Rush",
+        "Kamalika Chaudhuri",
+        "Saeed Mahloujifar"
+      ],
+      "publishedAt": "2025-05-30",
+      "reviewedAt": "2026-07-07",
+      "summary": "A formal information-theoretic decomposition of memorization into unintended memorization and generalization, measuring GPT-style model capacity at approximately 3.6 bits per parameter; training hundreds of transformers shows models memorize until capacity fills, at which point grokking begins and double descent occurs exactly when data size exceeds model capacity.",
+      "tags": [
+        "capacity",
+        "grokking",
+        "kolmogorov-complexity",
+        "llm",
+        "membership-inference",
+        "memorization"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2505.24832",
+      "pdfUrl": "https://arxiv.org/pdf/2505.24832.pdf",
+      "reviewPath": "reviews/llm-memorization-capacity.md",
+      "assets": {
+        "figures": [
+          {
+            "path": "assets/llm-memorization-capacity/figures/figure-01.png",
+            "caption": "Figure 1. Unintended memorization of uniform random data. Memorization plateaus at the empirical capacity limit of GPT-family models, approximately 3.6 bits-per-parameter.",
+            "page": 1
+          },
+          {
+            "path": "assets/llm-memorization-capacity/figures/figure-02.png",
+            "caption": "Figure 2. Unintended memorization of text across model and dataset sizes, calculated with respect to a large oracle model.",
+            "page": 2
+          },
+          {
+            "path": "assets/llm-memorization-capacity/figures/figure-03.png",
+            "caption": "Figure 6. Capacity in bits-per-parameter for GPT models trained on synthetic data. Estimated \u03b1 = 3.64 bits-per-parameter in half precision.",
+            "page": 5
+          }
+        ],
+        "tables": [
+          {
+            "path": "assets/llm-memorization-capacity/tables/table-01.png",
+            "caption": "Table 1. Model capacity estimates across widths, depths, and precision (fp32 vs bf16).",
+            "page": 4
+          },
+          {
+            "path": "assets/llm-memorization-capacity/tables/table-02.png",
+            "caption": "Table 2. Model memorization across sequence length and vocabulary size.",
+            "page": 8
+          },
+          {
+            "path": "assets/llm-memorization-capacity/tables/table-03.png",
+            "caption": "Table 3. Scaling law coefficients for membership inference across model sizes.",
+            "page": 10
+          }
+        ]
+      }
     }
   ]
 }
