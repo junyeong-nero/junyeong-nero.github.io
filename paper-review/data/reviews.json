@@ -1,7 +1,113 @@
 {
   "version": 1,
-  "updatedAt": "2026-07-04",
+  "updatedAt": "2026-07-07",
   "reviews": [
+    {
+      "id": "2607.04425",
+      "slug": "ui-mopd",
+      "title": "UI-MOPD: Multi-Platform On-Policy Distillation for Continual GUI Agent Learning",
+      "authors": [
+        "Niu Lian",
+        "Alan Chen",
+        "Zhehao Yu",
+        "Chengzhen Duan",
+        "Fazhan Liu",
+        "Hui Liu",
+        "Pei Fu",
+        "Jian Luan",
+        "Yaowei Wang",
+        "Shu-Tao Xia",
+        "Jinpeng Wang"
+      ],
+      "publishedAt": "2026-07-05",
+      "reviewedAt": "2026-07-07",
+      "summary": "UI-MOPD trains a single 8B GUI agent for cross-platform (desktop + mobile) interaction using platform-conditioned on-policy KL distillation from 32B expert teachers, achieving 38.2% on OSWorld and 12.0% on MobileWorld \u2014 outperforming mixed SFT and model merging baselines while preserving general GUI grounding.",
+      "tags": [
+        "continual-learning",
+        "gui-agent",
+        "knowledge-distillation",
+        "multi-platform",
+        "on-policy-distillation"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2607.04425",
+      "pdfUrl": "https://arxiv.org/pdf/2607.04425.pdf",
+      "reviewPath": "reviews/ui-mopd.md",
+      "assets": {
+        "figures": [
+          {
+            "path": "assets/ui-mopd/figures/figure-01.png",
+            "caption": "Figure 1. Motivation of UI-MOPD: naive mixing of desktop and mobile signals produces an averaged policy; UI-MOPD uses platform-conditioned routing and multi-teacher on-policy distillation.",
+            "page": 1
+          },
+          {
+            "path": "assets/ui-mopd/figures/figure-02.png",
+            "caption": "Figure 2. Overview of UI-MOPD training pipeline with platform-specific teachers and platform-conditioned distillation.",
+            "page": 4
+          },
+          {
+            "path": "assets/ui-mopd/figures/figure-03.png",
+            "caption": "Figure 6. Mobile task execution example of UI-MOPD.",
+            "page": 10
+          }
+        ],
+        "tables": []
+      }
+    },
+    {
+      "id": "2606.28733",
+      "slug": "agentic-abstention",
+      "title": "Agentic Abstention: Do Agents Know When to Stop Instead of Act?",
+      "authors": [
+        "Han Luo",
+        "Bingbing Wen",
+        "Lucy Lu Wang"
+      ],
+      "publishedAt": "2026-06-27",
+      "reviewedAt": "2026-07-05",
+      "summary": "Defines Agentic Abstention as the sequential decision problem of when tool-using LLM agents should stop acting under uncertainty. Across web shopping, terminal, and QA scenarios (28K+ tasks, 13 models, 2 scaffolds), agents struggle primarily with timely abstention \u2014 stopping at the earliest warranted step rather than after unnecessary interaction. CONVOLVE, a context-engineering method distilling trajectories into reusable stopping rules, raises Llama-3.3-70B timely recall from 26.7% to 57.4% on WebShop without parameter updates.",
+      "tags": [
+        "abstention",
+        "context-engineering",
+        "evaluation",
+        "llm-agent",
+        "question-answering",
+        "terminal-agent",
+        "web-agent"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2606.28733",
+      "pdfUrl": "https://arxiv.org/pdf/2606.28733.pdf",
+      "reviewPath": "reviews/agentic-abstention.md",
+      "assets": {
+        "figures": [
+          {
+            "path": "assets/agentic-abstention/figures/figure-01.png",
+            "caption": "Figure 1. Environment-based Abstention example in web shopping, showing timely success, delayed success, and failure to abstain trajectories.",
+            "page": 2
+          },
+          {
+            "path": "assets/agentic-abstention/figures/figure-02.png",
+            "caption": "Figure 2. Abstention Recall @K across web, terminal, and QA scenarios \u2014 early abstention remains low across settings.",
+            "page": 5
+          },
+          {
+            "path": "assets/agentic-abstention/figures/figure-03.png",
+            "caption": "Figure 3. AbsRec@K by abstention category in Web, Terminal, and QA scenarios \u2014 Missing Target and Underspecified Intent are hardest.",
+            "page": 6
+          },
+          {
+            "path": "assets/agentic-abstention/figures/figure-04.png",
+            "caption": "Figure 4. Reasoning improves AbsRec@1 but decreases overall AbsRec@10 on both Web and Terminal scenarios.",
+            "page": 7
+          },
+          {
+            "path": "assets/agentic-abstention/figures/figure-05.png",
+            "caption": "Figure 5. TerminalBench adaptation showing example rewritten instructions for False Premise and Underspecified Intent.",
+            "page": 4
+          }
+        ],
+        "tables": []
+      }
+    },
     {
       "id": "2606.29920",
       "slug": "ruverbench",
@@ -262,7 +368,7 @@
       ],
       "publishedAt": "2026-05-11",
       "reviewedAt": "2026-07-02",
-      "summary": "G-Zero introduces Hint-δ, a verifier-free intrinsic reward for self-evolution in open-ended domains, where a Proposer (GRPO) generates challenging query-hint pairs and a Generator (DPO) internalizes the hint-guided improvements without external judges.",
+      "summary": "G-Zero introduces Hint-\u03b4, a verifier-free intrinsic reward for self-evolution in open-ended domains, where a Proposer (GRPO) generates challenging query-hint pairs and a Generator (DPO) internalizes the hint-guided improvements without external judges.",
       "tags": [
         "llm",
         "open-ended-generation",
@@ -289,7 +395,7 @@
           },
           {
             "path": "assets/g-zero/figures/figure-04.png",
-            "caption": "Figure 4. Hint-δ distribution shift across rounds."
+            "caption": "Figure 4. Hint-\u03b4 distribution shift across rounds."
           }
         ],
         "tables": [
@@ -300,7 +406,7 @@
           },
           {
             "path": "assets/g-zero/tables/table-02.png",
-            "caption": "Tables 2 & 3. DPO pool composition and δ-filter design space.",
+            "caption": "Tables 2 & 3. DPO pool composition and \u03b4-filter design space.",
             "page": 8
           },
           {
@@ -438,7 +544,7 @@
       ],
       "publishedAt": "2025-10-06",
       "reviewedAt": "2026-07-01",
-      "summary": "Tiny Recursive Model (TRM) replaces the complex hierarchical recursive reasoning model with a single 2-layer tiny network (7M params) that recursively refines its answer, achieving 45% on ARC-AGI-1 and 8% on ARC-AGI-2 — surpassing most LLMs including Deepseek R1, o3-mini, and Gemini 2.5 Pro with less than 0.01% of their parameters.",
+      "summary": "Tiny Recursive Model (TRM) replaces the complex hierarchical recursive reasoning model with a single 2-layer tiny network (7M params) that recursively refines its answer, achieving 45% on ARC-AGI-1 and 8% on ARC-AGI-2 \u2014 surpassing most LLMs including Deepseek R1, o3-mini, and Gemini 2.5 Pro with less than 0.01% of their parameters.",
       "tags": [
         "arc-agi",
         "puzzle",
@@ -557,7 +663,7 @@
       ],
       "publishedAt": "2026-04-02",
       "reviewedAt": "2026-07-01",
-      "summary": "웹 에이전트에서 HTML 관측 축소(observation reduction)가 항상 정답이 아님을 보여준다. 고성능 모델은 HTML의 풍부한 레이아웃 정보를 활용해 더 높은 성공률을 달성하고(최대 +17.5%p), thinking token 예산이 많을수록 HTML의 이점이 커지는 반면, 저성능 모델은 긴 입력으로 인한 환각으로 성능이 저하된다.",
+      "summary": "\uc6f9 \uc5d0\uc774\uc804\ud2b8\uc5d0\uc11c HTML \uad00\uce21 \ucd95\uc18c(observation reduction)\uac00 \ud56d\uc0c1 \uc815\ub2f5\uc774 \uc544\ub2d8\uc744 \ubcf4\uc5ec\uc900\ub2e4. \uace0\uc131\ub2a5 \ubaa8\ub378\uc740 HTML\uc758 \ud48d\ubd80\ud55c \ub808\uc774\uc544\uc6c3 \uc815\ubcf4\ub97c \ud65c\uc6a9\ud574 \ub354 \ub192\uc740 \uc131\uacf5\ub960\uc744 \ub2ec\uc131\ud558\uace0(\ucd5c\ub300 +17.5%p), thinking token \uc608\uc0b0\uc774 \ub9ce\uc744\uc218\ub85d HTML\uc758 \uc774\uc810\uc774 \ucee4\uc9c0\ub294 \ubc18\uba74, \uc800\uc131\ub2a5 \ubaa8\ub378\uc740 \uae34 \uc785\ub825\uc73c\ub85c \uc778\ud55c \ud658\uac01\uc73c\ub85c \uc131\ub2a5\uc774 \uc800\ud558\ub41c\ub2e4.",
       "tags": [
         "accessibility-tree",
         "html-observation",
@@ -618,7 +724,7 @@
       ],
       "publishedAt": "2026-05-28",
       "reviewedAt": "2026-07-01",
-      "summary": "Minimal Failure Set (MFS) 기반의 경량 평가 프레임워크를 제안하여 observation reduction 방법을 end-to-end 평가 없이도 효과적으로 비교할 수 있게 한다. Coverage는 end-to-end 성공률과 강한 상관관계(Pearson r > 0.9)를 보이며 100배 이상의 평가 속도 향상을 달성한다. 11가지 방법을 종합 비교하고, MFS 데이터로 최적화된 pruning program(GEPA)이 2.2×–3.1× latency 감소를 이루면서도 84–89%의 성공률을 유지함을 보인다.",
+      "summary": "Minimal Failure Set (MFS) \uae30\ubc18\uc758 \uacbd\ub7c9 \ud3c9\uac00 \ud504\ub808\uc784\uc6cc\ud06c\ub97c \uc81c\uc548\ud558\uc5ec observation reduction \ubc29\ubc95\uc744 end-to-end \ud3c9\uac00 \uc5c6\uc774\ub3c4 \ud6a8\uacfc\uc801\uc73c\ub85c \ube44\uad50\ud560 \uc218 \uc788\uac8c \ud55c\ub2e4. Coverage\ub294 end-to-end \uc131\uacf5\ub960\uacfc \uac15\ud55c \uc0c1\uad00\uad00\uacc4(Pearson r > 0.9)\ub97c \ubcf4\uc774\uba70 100\ubc30 \uc774\uc0c1\uc758 \ud3c9\uac00 \uc18d\ub3c4 \ud5a5\uc0c1\uc744 \ub2ec\uc131\ud55c\ub2e4. 11\uac00\uc9c0 \ubc29\ubc95\uc744 \uc885\ud569 \ube44\uad50\ud558\uace0, MFS \ub370\uc774\ud130\ub85c \ucd5c\uc801\ud654\ub41c pruning program(GEPA)\uc774 2.2\u00d7\u20133.1\u00d7 latency \uac10\uc18c\ub97c \uc774\ub8e8\uba74\uc11c\ub3c4 84\u201389%\uc758 \uc131\uacf5\ub960\uc744 \uc720\uc9c0\ud568\uc744 \ubcf4\uc778\ub2e4.",
       "tags": [
         "evaluation-framework",
         "html-observation",
@@ -675,12 +781,12 @@
         "Imene Kerboua",
         "Sahar Omidi Shayegan",
         "Megh Thakkar",
-        "Xing Han Lù",
-        "Léo Boisvert",
+        "Xing Han L\u00f9",
+        "L\u00e9o Boisvert",
         "Massimo Caccia",
-        "Jérémy Espinas",
+        "J\u00e9r\u00e9my Espinas",
         "Alexandre Aussem",
-        "Véronique Eglin",
+        "V\u00e9ronique Eglin",
         "Alexandre Lacoste"
       ],
       "publishedAt": "2025-10-03",
@@ -1651,8 +1757,8 @@
       "slug": "gaia-general-ai-assistants",
       "title": "GAIA: a benchmark for General AI Assistants",
       "authors": [
-        "Grégoire Mialon",
-        "Clémentine Fourrier",
+        "Gr\u00e9goire Mialon",
+        "Cl\u00e9mentine Fourrier",
         "Craig Swift",
         "Thomas Wolf",
         "Yann LeCun",
@@ -1834,13 +1940,13 @@
       "slug": "agentrewardbench-web-agent-evaluation",
       "title": "AgentRewardBench: Evaluating Automatic Evaluations of Web Agent Trajectories",
       "authors": [
-        "Xing Han Lù",
+        "Xing Han L\u00f9",
         "Amirhossein Kazemnejad",
         "Nicholas Meade",
         "Arkil Patel",
         "Dongchan Shin",
         "Alejandra Zambrano",
-        "Karolina Stańczak",
+        "Karolina Sta\u0144czak",
         "Peter Shaw",
         "Christopher J. Pal",
         "Siva Reddy"
