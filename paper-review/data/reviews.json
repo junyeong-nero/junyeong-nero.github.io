@@ -2757,6 +2757,69 @@
         "figures": [],
         "tables": []
       }
+    },
+    {
+      "id": "2307.03172",
+      "slug": "lost-in-the-middle",
+      "title": "Lost in the Middle: How Language Models Use Long Contexts",
+      "authors": [
+        "Nelson F. Liu",
+        "Kevin Lin",
+        "John Hewitt",
+        "Ashwin Paranjape",
+        "Michele Bevilacqua",
+        "Fabio Petroni",
+        "Percy Liang"
+      ],
+      "publishedAt": "2023-07-06",
+      "reviewedAt": "2026-07-10",
+      "summary": "Language models exhibit a U-shaped performance curve when relevant information appears at different positions in long contexts — best at the beginning or end, worst in the middle. This holds across multi-document QA and key-value retrieval, even for long-context models.",
+      "tags": [
+        "attention",
+        "evaluation",
+        "long-context",
+        "rag",
+        "retrieval-augmented-generation"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2307.03172",
+      "pdfUrl": "https://arxiv.org/pdf/2307.03172.pdf",
+      "reviewPath": "reviews/lost-in-the-middle.md",
+      "assets": {
+        "figures": [
+          {
+            "path": "assets/lost-in-the-middle/figures/figure-01-1.png",
+            "caption": "Figure 1. U-shaped performance curve — changing the position of relevant information results in highest performance at the start and end, with significant degradation in the middle.",
+            "page": 2
+          },
+          {
+            "path": "assets/lost-in-the-middle/figures/figure-02-1.png",
+            "caption": "Figure 2. Multi-document QA performance across models and positions.",
+            "page": 5
+          },
+          {
+            "path": "assets/lost-in-the-middle/figures/figure-03-1.png",
+            "caption": "Figure 3. Key-value retrieval performance across context lengths and positions.",
+            "page": 7
+          }
+        ],
+        "tables": [
+          {
+            "path": "assets/lost-in-the-middle/tables/table-01-08.png",
+            "caption": "Table 1. Multi-document QA performance with 10, 20, and 30 total documents.",
+            "page": 8
+          },
+          {
+            "path": "assets/lost-in-the-middle/tables/table-02-09.png",
+            "caption": "Table 2. Model performance statistics continued.",
+            "page": 9
+          },
+          {
+            "path": "assets/lost-in-the-middle/tables/table-03-10.png",
+            "caption": "Table 3. Key-value retrieval performance results.",
+            "page": 10
+          }
+        ]
+      }
     }
   ]
 }
