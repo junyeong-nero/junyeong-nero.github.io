@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-07-07",
+  "updatedAt": "2026-07-10",
   "reviews": [
     {
       "id": "2607.04425",
@@ -2726,6 +2726,36 @@
             "page": 10
           }
         ]
+      }
+    },
+    {
+      "id": "2512.05858",
+      "slug": "expert-personas-factual-accuracy",
+      "title": "Prompting Science Report 4: Playing Pretend: Expert Personas Don't Improve Factual Accuracy",
+      "authors": [
+        "Savir Basil",
+        "Ina Shapiro",
+        "Dan Shapiro",
+        "Ethan Mollick",
+        "Lilach Mollick",
+        "Lennart Meincke"
+      ],
+      "publishedAt": "2025-12-05",
+      "reviewedAt": "2026-07-10",
+      "summary": "Expert personas do not improve factual accuracy on difficult multiple-choice questions (GPQA Diamond, MMLU-Pro) across six models. Low-knowledge personas (toddler, layperson) often degrade performance. The exception is Gemini 2.0 Flash on MMLU-Pro, showing modest gains from expert personas.",
+      "tags": [
+        "evaluation",
+        "llm",
+        "persona-prompting",
+        "prompt-engineering",
+        "prompting-science"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2512.05858",
+      "pdfUrl": "https://arxiv.org/pdf/2512.05858.pdf",
+      "reviewPath": "reviews/expert-personas-factual-accuracy.md",
+      "assets": {
+        "figures": [],
+        "tables": []
       }
     }
   ]
