@@ -2820,6 +2820,72 @@
           }
         ]
       }
+    },
+    {
+      "id": "2607.04412",
+      "slug": "llm-as-a-tutor",
+      "title": "LLM-as-a-Tutor: Policy-Aware Prompt Adaptation for Non-Verifiable RL",
+      "authors": [
+        "Yujin Kim",
+        "Namgyu Ho",
+        "Sangmin Hwang",
+        "Joonkee Kim",
+        "Yongjin Yang",
+        "Sangmin Bae",
+        "Seungone Kim",
+        "Jaehun Jung",
+        "Se-Young Yun",
+        "Hwanjun Song"
+      ],
+      "publishedAt": "2026-07-05",
+      "reviewedAt": "2026-07-10",
+      "summary": "LLM-as-a-Tutor extends the LLM's role from judge to tutor in non-verifiable RL, appending atomic constraints to non-discriminative prompts to restore reward signal variance. The append-only design monotonically raises difficulty with the policy's capability, outperforming rubric-only and policy-unaware baselines.",
+      "tags": [
+        "instruction-following",
+        "llm-judge",
+        "prompt-adaptation",
+        "reinforcement-learning",
+        "rlhf"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2607.04412",
+      "pdfUrl": "https://arxiv.org/pdf/2607.04412.pdf",
+      "reviewPath": "reviews/llm-as-a-tutor.md",
+      "assets": {
+        "figures": [
+          {
+            "path": "assets/llm-as-a-tutor/figures/figure-01.png",
+            "caption": "Figure 1. LLM-as-a-Tutor concept: the tutor examines policy rollouts and appends atomic constraints to non-discriminative prompts.",
+            "page": 1
+          },
+          {
+            "path": "assets/llm-as-a-tutor/figures/figure-02a-1.png",
+            "caption": "Figure 2a. Constraint-added rate across policy scales.",
+            "page": 9
+          },
+          {
+            "path": "assets/llm-as-a-tutor/figures/figure-02b-1.png",
+            "caption": "Figure 2b. Base-rubric reward according to the number of appended constraints.",
+            "page": 9
+          }
+        ],
+        "tables": [
+          {
+            "path": "assets/llm-as-a-tutor/tables/table-01-06.png",
+            "caption": "Table 1. Main results on instruction-following benchmarks.",
+            "page": 6
+          },
+          {
+            "path": "assets/llm-as-a-tutor/tables/table-02-07.png",
+            "caption": "Table 2. Ablation on policy-adaptiveness and prompt modification strategies.",
+            "page": 7
+          },
+          {
+            "path": "assets/llm-as-a-tutor/tables/table-03-08.png",
+            "caption": "Table 3. Additional ablation and scaling results.",
+            "page": 8
+          }
+        ]
+      }
     }
   ]
 }
