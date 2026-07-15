@@ -1,7 +1,66 @@
 {
   "version": 1,
-  "updatedAt": "2026-07-10",
+  "updatedAt": "2026-07-15",
   "reviews": [
+    {
+      "id": "2607.08716",
+      "slug": "remember-when-it-matters",
+      "title": "Remember When It Matters: Proactive Memory Agent for Long-Horizon Agents",
+      "authors": [
+        "Yifan Wu",
+        "Lizhu Zhang",
+        "Yuhang Zhou",
+        "Mingyi Wang",
+        "Bo Peng",
+        "Serena Li",
+        "Xiangjun Fan",
+        "Zhuokai Zhao"
+      ],
+      "publishedAt": "2026-07-09",
+      "reviewedAt": "2026-07-15",
+      "summary": "A separate memory agent maintains a structured memory bank and selectively injects grounded reminders into an action agent's context, framing memory as an active intervention policy. Gains of +8.3 pp on Terminal-Bench and +6.8 pp on τ²-Bench, with open-weight SFT+GRPO training showing partial transfer.",
+      "tags": [
+        "agent-memory",
+        "context-management",
+        "long-horizon-agents",
+        "proactive-intervention",
+        "reinforcement-learning"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2607.08716",
+      "pdfUrl": "https://arxiv.org/pdf/2607.08716.pdf",
+      "reviewPath": "reviews/remember-when-it-matters.md",
+      "assets": {
+        "figures": [
+          {
+            "path": "assets/remember-when-it-matters/figures/figure-01.png",
+            "caption": "Figure 1. System integration. The memory agent (right) runs as a separate process beside the action agent (left), observing a sliding window of recent steps and the current memory store.",
+            "page": 3
+          },
+          {
+            "path": "assets/remember-when-it-matters/figures/figure-02.png",
+            "caption": "Figure 2. Memory agent internals. Phase 1 manages the structured memory bank through tool calls. Phase 2 reads the updated bank and emits either a context reminder or no intervention.",
+            "page": 3
+          }
+        ],
+        "tables": [
+          {
+            "path": "assets/remember-when-it-matters/tables/table-01.png",
+            "caption": "Table 1. Main results on Terminal-Bench and τ²-Bench. All scores are pass@1 percentages.",
+            "page": 7
+          },
+          {
+            "path": "assets/remember-when-it-matters/tables/table-02.png",
+            "caption": "Table 2. Ablations on τ²-Bench with Sonnet 4.5 as the action agent, Opus 4.6 as the memory agent.",
+            "page": 8
+          },
+          {
+            "path": "assets/remember-when-it-matters/tables/table-03.png",
+            "caption": "Table 4. Training and transfer of the open-weight memory agent. SETA validation and Terminal-Bench transfer results.",
+            "page": 10
+          }
+        ]
+      }
+    },
     {
       "id": "2607.04425",
       "slug": "ui-mopd",
