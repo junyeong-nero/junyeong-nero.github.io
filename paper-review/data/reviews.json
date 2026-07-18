@@ -1,7 +1,117 @@
 {
   "version": 1,
-  "updatedAt": "2026-07-15",
+  "updatedAt": "2026-07-18",
   "reviews": [
+    {
+      "id": "2311.09469",
+      "slug": "clarify-when-necessary",
+      "title": "Clarify When Necessary: Resolving Ambiguity Through Interaction with LMs",
+      "authors": [
+        "Michael J.Q. Zhang",
+        "Eunsol Choi"
+      ],
+      "publishedAt": "2023-11-16",
+      "reviewedAt": "2026-07-18",
+      "summary": "A task-agnostic framework for resolving ambiguity through clarifying questions, decomposed into when to clarify, what to ask, and how to respond. INTENT-SIM estimates entropy over simulated user intents to identify ambiguous inputs, doubling random-selection gains at 10% interaction budget across QA, MT, and NLI.",
+      "tags": [
+        "ambiguity-resolution",
+        "clarifying-questions",
+        "interactive-nlp",
+        "machine-translation",
+        "nli",
+        "question-answering",
+        "uncertainty-estimation"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2311.09469",
+      "pdfUrl": "https://arxiv.org/pdf/2311.09469.pdf",
+      "reviewPath": "reviews/clarify-when-necessary.md",
+      "assets": {
+        "figures": [
+          {
+            "path": "assets/clarify-when-necessary/figures/figure-01.png",
+            "caption": "Figure 1. Three-stage framework for resolving ambiguity with clarification questions.",
+            "page": 2
+          }
+        ],
+        "tables": [
+          {
+            "path": "assets/clarify-when-necessary/tables/table-01.png",
+            "caption": "Table 2. Performance on responsiveness to clarification. Follow = clarifying QA pair, Disambig = disambiguated input, Direct = baseline.",
+            "page": 4
+          },
+          {
+            "path": "assets/clarify-when-necessary/tables/table-02.png",
+            "caption": "Table 4. Results for determining when to clarify. AUROC and performance under fixed interaction budgets.",
+            "page": 7
+          },
+          {
+            "path": "assets/clarify-when-necessary/tables/table-03.png",
+            "caption": "Table 1. Example instances for each task for different ambiguity types.",
+            "page": 4
+          }
+        ]
+      }
+    },
+    {
+      "id": "2605.31433",
+      "slug": "scope-self-play-co-evolving-policies",
+      "title": "SCOPE: Self-Play via Co-Evolving Policies for Open-Ended Tasks",
+      "authors": [
+        "Wai-Chung Kwan",
+        "Aryo Pradipta Gema",
+        "Joshua Ong Jun Leang",
+        "Pasquale Minervini"
+      ],
+      "publishedAt": "2026-05-29",
+      "reviewedAt": "2026-07-16",
+      "summary": "SCOPE extends data-free self-play to open-ended tasks by co-evolving a Challenger and Solver with a frozen Judge that writes rubrics from source documents. Gains of +5.4 to +10.4 points on open-ended benchmarks, matching GRPOdata trained on ~9K curated prompts, with transfer to short-form QA.",
+      "tags": [
+        "data-free",
+        "open-ended-generation",
+        "reinforcement-learning",
+        "rubric-rewards",
+        "self-play"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2605.31433",
+      "pdfUrl": "https://arxiv.org/pdf/2605.31433.pdf",
+      "reviewPath": "reviews/scope-self-play-co-evolving-policies.md",
+      "assets": {
+        "figures": [
+          {
+            "path": "assets/scope-self-play-co-evolving-policies/figures/figure-01.png",
+            "caption": "Figure 1. Overview of SCOPE. The Challenger generates document-grounded tasks, the Solver answers via multi-turn retrieval, and the fixed Judge writes rubrics and grades responses.",
+            "page": 3
+          },
+          {
+            "path": "assets/scope-self-play-co-evolving-policies/figures/figure-02.png",
+            "caption": "Figure 2. Reward design ablation on Qwen3-8B. Quality gates and length penalty each prevent a distinct reward-hacking failure.",
+            "page": 7
+          },
+          {
+            "path": "assets/scope-self-play-co-evolving-policies/figures/figure-03.png",
+            "caption": "Figure 3. The Challenger must co-evolve. Co-evolution keeps tasks near the 0.5 difficulty sweet spot.",
+            "page": 8
+          }
+        ],
+        "tables": [
+          {
+            "path": "assets/scope-self-play-co-evolving-policies/tables/table-01.png",
+            "caption": "Table 2. Open-ended benchmark results. SCOPE gains +5.4 to +10.4 points across iterations.",
+            "page": 6
+          },
+          {
+            "path": "assets/scope-self-play-co-evolving-policies/tables/table-02.png",
+            "caption": "Table 3. Short-form QA results. SCOPE surpasses GRPOdata across models.",
+            "page": 6
+          },
+          {
+            "path": "assets/scope-self-play-co-evolving-policies/tables/table-03.png",
+            "caption": "Table 4. Controlled replay experiment. Gains arise from both retrieval and synthesis.",
+            "page": 8
+          }
+        ]
+      }
+    },
     {
       "id": "2607.08716",
       "slug": "remember-when-it-matters",
