@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-07-18",
+  "updatedAt": "2026-07-19",
   "reviews": [
     {
       "id": "2311.09469",
@@ -3123,6 +3123,59 @@
             "page": 8
           }
         ]
+      }
+    },
+    {
+      "id": "2607.13639",
+      "slug": "ovisocr2-technical-report",
+      "title": "OvisOCR2 Technical Report",
+      "authors": [
+        "Shiyin Lu",
+        "Yinglun Li",
+        "Yu Xia",
+        "Yuhui Chen",
+        "An-Yang Ji",
+        "Jun-Peng Jiang",
+        "Qing-Guo Chen",
+        "Jianshan Zhao",
+        "En Lin",
+        "Haijun Li",
+        "Cheng Qin",
+        "Zhao Xu",
+        "Weihua Luo"
+      ],
+      "publishedAt": "2026-07-15",
+      "reviewedAt": "2026-07-19",
+      "summary": "OvisOCR2 is a 0.8B end-to-end document parsing model achieving SOTA on OmniDocBench v1.6 (96.58) and PureDocBench (75.06 Avg3), surpassing all pipeline methods through a two-branch training recipe of SFT, RL with multi-component rewards, on-policy distillation, and model fusion.",
+      "tags": [
+        "document-parsing",
+        "end-to-end-ocr",
+        "multimodal-vlm",
+        "on-policy-distillation",
+        "reinforcement-learning"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2607.13639",
+      "pdfUrl": "https://arxiv.org/pdf/2607.13639.pdf",
+      "reviewPath": "reviews/ovisocr2-technical-report.md",
+      "assets": {
+        "figures": [
+          {
+            "path": "assets/ovisocr2-technical-report/figures/figure-01.png",
+            "caption": "Figure 1. Performance of OvisOCR2 on OmniDocBench v1.6 — the highest overall score among all methods.",
+            "page": 1
+          },
+          {
+            "path": "assets/ovisocr2-technical-report/figures/figure-02.png",
+            "caption": "Figure 4. Training stability comparison between 4B RL and 0.8B RL — direct 0.8B RL shows higher KL drift and lower table quality.",
+            "page": 11
+          },
+          {
+            "path": "assets/ovisocr2-technical-report/figures/figure-03.png",
+            "caption": "Figure 3. Two-branch training architecture — 4B branch produces RL-aligned teacher, 0.8B branch proceeds through SFT, OPD, and model fusion.",
+            "page": 8
+          }
+        ],
+        "tables": []
       }
     }
   ]
