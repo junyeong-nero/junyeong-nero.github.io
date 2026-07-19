@@ -3055,6 +3055,75 @@
           }
         ]
       }
+    },
+    {
+      "id": "2607.12395",
+      "slug": "ring-zero-scaling-zero-rl-trillion-params",
+      "title": "Ring-Zero: Scaling Zero RL to a Trillion Parameters for Emergent Reasoning",
+      "authors": [
+        "Xinyu Tang",
+        "Qianggang Cao",
+        "Yurou Liu",
+        "Yuliang Zhan",
+        "Xiaochong Lan",
+        "Yifan Li",
+        "Yuchen Yan",
+        "Han Peng",
+        "Zican Dong",
+        "Zhenduo Zhang",
+        "Tianshu Wang",
+        "Xinyu Kong",
+        "Zujie Wen",
+        "Wayne Xin Zhao",
+        "Zhiqiang Zhang",
+        "Jun Zhou"
+      ],
+      "publishedAt": "2026-07-14",
+      "reviewedAt": "2026-07-19",
+      "summary": "Scales zero RL to a 1T-parameter MoE model, demonstrating that at sufficient scale the model spontaneously develops advanced cognitive behaviors (anthropomorphism, structured formatting, self-verification, parallel reasoning) without hand-engineered heuristics, validating the bitter lesson for LLM reasoning.",
+      "tags": [
+        "chain-of-thought",
+        "emergent-behaviors",
+        "mathematical-reasoning",
+        "mixture-of-experts",
+        "reinforcement-learning",
+        "scaling",
+        "zero-rl"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2607.12395",
+      "pdfUrl": "https://arxiv.org/pdf/2607.12395.pdf",
+      "reviewPath": "reviews/ring-zero-scaling-zero-rl-trillion-params.md",
+      "assets": {
+        "figures": [
+          {
+            "path": "assets/ring-zero-scaling-zero-rl-trillion-params/figures/figure-01.png",
+            "caption": "Figure 1. Overview of Ring-2.5-1T-Zero: multi-stage training pipeline, infrastructure optimizations, and emergent behaviors.",
+            "page": 4
+          },
+          {
+            "path": "assets/ring-zero-scaling-zero-rl-trillion-params/figures/figure-02.png",
+            "caption": "Figure 2. Training curves of Ling-2.5-1T-Base during first stage RL showing reward and sequence length growth.",
+            "page": 10
+          },
+          {
+            "path": "assets/ring-zero-scaling-zero-rl-trillion-params/figures/figure-03.png",
+            "caption": "Figure 3. Evaluation of CoT quality across comprehensibility, reproducibility, and efficiency dimensions.",
+            "page": 12
+          }
+        ],
+        "tables": [
+          {
+            "path": "assets/ring-zero-scaling-zero-rl-trillion-params/tables/table-01.png",
+            "caption": "Table 1. Main results on mathematical reasoning benchmarks (pass@1 accuracy %).",
+            "page": 10
+          },
+          {
+            "path": "assets/ring-zero-scaling-zero-rl-trillion-params/tables/table-02.png",
+            "caption": "Table 2. Stage-specific hyperparameter configurations.",
+            "page": 8
+          }
+        ]
+      }
     }
   ]
 }
