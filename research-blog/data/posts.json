@@ -2,9 +2,9 @@
   "posts": [
     {
       "slug": "progressive-disclosure-token-efficiency",
-      "title": "The token trick that only helps a weaker model",
+      "title": "How adaptive disclosure rescues a weak browser agent — and taxes a strong one",
       "date": "2026-07-23",
-      "summary": "Progressive observation disclosure is supposed to cut browser-agent token cost. Run the same four policies on a weak model and a strong one, and the conclusion flips."
+      "summary": "Progressive disclosure is sold as a token saver. On a weak model, adaptively sizing what the agent sees cuts tokens to a third and solves more hard tasks; on a strong model the same policy is the most expensive arm. When it helps, and when it doesn't."
     },
     {
       "slug": "welcome",

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" width="720" height="360" role="img" font-family="'Space Mono', ui-monospace, Menlo, Monaco, monospace">
+  <title>Hard-task success by observation policy, per model</title>
+  <rect x="0" y="0" width="720" height="360" fill="#f8f7f3"/>
+
+  <!-- y grid + ticks (hard tasks solved out of 10) -->
+  <g stroke="#e7e4dc" stroke-width="1">
+    <line x1="56" y1="36" x2="700" y2="36"/>
+    <line x1="56" y1="88.8" x2="700" y2="88.8"/>
+    <line x1="56" y1="141.6" x2="700" y2="141.6"/>
+    <line x1="56" y1="194.4" x2="700" y2="194.4"/>
+    <line x1="56" y1="247.2" x2="700" y2="247.2"/>
+  </g>
+  <g fill="#93939f" font-size="11" text-anchor="end">
+    <text x="48" y="40">10</text>
+    <text x="48" y="92.8">8</text>
+    <text x="48" y="145.6">6</text>
+    <text x="48" y="198.4">4</text>
+    <text x="48" y="251.2">2</text>
+    <text x="48" y="303.6">0</text>
+  </g>
+  <line x1="56" y1="300" x2="700" y2="300" stroke="#d4d1c9" stroke-width="1"/>
+
+  <!-- weak model group -->
+  <rect x="115" y="168" width="42" height="132" rx="4" fill="#857f74"/>
+  <rect x="169" y="115.2" width="42" height="184.8" rx="4" fill="#857f74"/>
+  <rect x="223" y="115.2" width="42" height="184.8" rx="4" fill="#857f74"/>
+  <rect x="277" y="88.8" width="42" height="211.2" rx="4" fill="#ff7759"/>
+  <g font-size="12.5" font-weight="700" text-anchor="middle">
+    <text x="136" y="160" fill="#2c2925">5</text>
+    <text x="190" y="107" fill="#2c2925">7</text>
+    <text x="244" y="107" fill="#2c2925">7</text>
+    <text x="298" y="80.8" fill="#d9531f">8</text>
+  </g>
+
+  <!-- strong model group -->
+  <rect x="437" y="36" width="42" height="264" rx="4" fill="#857f74"/>
+  <rect x="491" y="36" width="42" height="264" rx="4" fill="#857f74"/>
+  <rect x="545" y="36" width="42" height="264" rx="4" fill="#857f74"/>
+  <rect x="599" y="62.4" width="42" height="237.6" rx="4" fill="#ff7759"/>
+  <g font-size="12.5" font-weight="700" text-anchor="middle">
+    <text x="458" y="28" fill="#2c2925">10</text>
+    <text x="512" y="28" fill="#2c2925">10</text>
+    <text x="566" y="28" fill="#2c2925">10</text>
+    <text x="620" y="54.4" fill="#d9531f">9</text>
+  </g>
+
+  <!-- per-bar policy labels -->
+  <g fill="#52525b" font-size="10.5" text-anchor="middle">
+    <text x="136" y="317">full</text>
+    <text x="190" y="317">top-k</text>
+    <text x="244" y="317">static</text>
+    <text x="298" y="317">adaptive</text>
+    <text x="458" y="317">full</text>
+    <text x="512" y="317">top-k</text>
+    <text x="566" y="317">static</text>
+    <text x="620" y="317">adaptive</text>
+  </g>
+
+  <!-- model group labels -->
+  <g font-size="12.5" font-weight="700" text-anchor="middle" fill="#52525b">
+    <text x="217" y="342">Nemotron-3 &#183; weak</text>
+    <text x="539" y="342">GPT-5.4-mini &#183; strong</text>
+  </g>
+</svg>

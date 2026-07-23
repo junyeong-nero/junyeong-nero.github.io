@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 380" width="720" height="380" role="img" font-family="'Space Mono', ui-monospace, Menlo, Monaco, monospace">
+  <title>Token cost versus hard-task success, every policy and model</title>
+  <rect x="0" y="0" width="720" height="380" fill="#f8f7f3"/>
+
+  <!-- cheaper-than-full region (left of the 1.0 line) -->
+  <rect x="70" y="40" width="381.5" height="270" fill="#ff7759" opacity="0.06"/>
+
+  <!-- y grid + ticks (hard tasks solved / 10) -->
+  <g stroke="#e7e4dc" stroke-width="1">
+    <line x1="70" y1="40" x2="690" y2="40"/>
+    <line x1="70" y1="85" x2="690" y2="85"/>
+    <line x1="70" y1="130" x2="690" y2="130"/>
+    <line x1="70" y1="175" x2="690" y2="175"/>
+    <line x1="70" y1="220" x2="690" y2="220"/>
+    <line x1="70" y1="265" x2="690" y2="265"/>
+  </g>
+  <g fill="#93939f" font-size="11" text-anchor="end">
+    <text x="60" y="44">10</text>
+    <text x="60" y="89">9</text>
+    <text x="60" y="134">8</text>
+    <text x="60" y="179">7</text>
+    <text x="60" y="224">6</text>
+    <text x="60" y="269">5</text>
+    <text x="60" y="314">4</text>
+  </g>
+  <line x1="70" y1="310" x2="690" y2="310" stroke="#d4d1c9" stroke-width="1"/>
+
+  <!-- x ticks (token ratio vs full) -->
+  <g fill="#93939f" font-size="11" text-anchor="middle">
+    <text x="165.4" y="328">0.4&#215;</text>
+    <text x="260.8" y="328">0.6&#215;</text>
+    <text x="356.2" y="328">0.8&#215;</text>
+    <text x="451.5" y="328">1.0&#215;</text>
+    <text x="547" y="328">1.2&#215;</text>
+    <text x="642.3" y="328">1.4&#215;</text>
+  </g>
+
+  <!-- full-cost reference -->
+  <line x1="451.5" y1="40" x2="451.5" y2="310" stroke="#93939f" stroke-width="1" stroke-dasharray="4 4"/>
+
+  <!-- axis directional hints + titles -->
+  <g font-size="10.5" fill="#93939f">
+    <text x="120" y="346">&#8592; cheaper</text>
+    <text x="640" y="346" text-anchor="end">costlier &#8594;</text>
+    <text x="380" y="368" text-anchor="middle">total tokens spent vs full observation</text>
+  </g>
+  <text transform="rotate(-90 22 175)" x="22" y="175" text-anchor="middle" font-size="10.5" fill="#93939f">hard tasks solved / 10</text>
+
+  <!-- strong model points (hollow) -->
+  <g fill="#f8f7f3" stroke-width="2">
+    <circle cx="427.7" cy="40" r="6" stroke="#857f74"/>
+    <circle cx="451.5" cy="40" r="6" stroke="#857f74"/>
+    <circle cx="480.1" cy="40" r="6" stroke="#857f74"/>
+    <circle cx="494.5" cy="85" r="6" stroke="#ff7759"/>
+  </g>
+
+  <!-- weak model points (solid) -->
+  <circle cx="451.5" cy="265" r="6" fill="#857f74"/>
+  <circle cx="561.2" cy="175" r="6" fill="#857f74"/>
+  <circle cx="632.8" cy="175" r="6" fill="#857f74"/>
+  <circle cx="127.2" cy="130" r="11" fill="none" stroke="#ff7759" stroke-width="1.5"/>
+  <circle cx="127.2" cy="130" r="6" fill="#ff7759"/>
+
+  <!-- annotations -->
+  <g font-size="11">
+    <text x="146" y="126" font-weight="700" fill="#d9531f">adaptive PD, weak model</text>
+    <text x="146" y="141" fill="#52525b">a third of the tokens, 8/10 hard</text>
+  </g>
+  <g font-size="10.5" fill="#75758a" text-anchor="middle">
+    <text x="451.5" y="285">full &#183; weak (5/10)</text>
+    <text x="561.2" y="166">top-k</text>
+    <text x="632.8" y="166">static</text>
+  </g>
+  <text x="512" y="112" font-size="10.5" fill="#75758a">adaptive &#183; strong</text>
+  <text x="470" y="26" font-size="10.5" fill="#75758a" text-anchor="middle">GPT-5.4-mini cluster &#183; 9&#8211;10/10, cost only slides &#8594;</text>
+
+  <!-- legend -->
+  <g font-size="10.5" fill="#52525b">
+    <circle cx="96" cy="60" r="5.5" fill="#857f74"/>
+    <text x="108" y="64">weak model (filled)</text>
+    <circle cx="96" cy="80" r="5.5" fill="#f8f7f3" stroke="#857f74" stroke-width="2"/>
+    <text x="108" y="84">strong model (hollow)</text>
+    <rect x="90.5" y="94.5" width="11" height="11" rx="2.5" fill="#ff7759"/>
+    <text x="108" y="104">adaptive PD</text>
+  </g>
+</svg>
