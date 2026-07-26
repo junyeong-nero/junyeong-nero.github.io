@@ -20,7 +20,7 @@ I re-scored every run on whether the agent actually produced the answer the task
 
 ![Reported success versus strict success, by policy and model](assets/posts/chart-reported-vs-strict.svg "Pale bars are the old measure: did the run finish. Solid bars are the real one: did the agent answer. The gap is largest exactly where the old numbers looked best.")
 
-The inflation is everywhere, and it is not a constant offset — which is what makes it dangerous. GPT-5.4-mini's `full` arm drops from 19/20 to 9/20; the weak model's `adaptive` arm drops from 14/20 to 4–8. Every arm on the strong model reported 19/20, so success looked like it carried no information and I read the whole comparison off tokens alone. It wasn't that success didn't discriminate. It was that my ruler was pinned at the ceiling.
+The inflation is everywhere, and it is not a constant offset — which is what makes it dangerous. GPT-5.4-mini's `full` arm drops from 19/20 to 8/20; the weak model's `adaptive` arm drops from 14/20 to 4–8. Every arm on the strong model reported 19/20, so success looked like it carried no information and I read the whole comparison off tokens alone. It wasn't that success didn't discriminate. It was that my ruler was pinned at the ceiling.
 
 ## Four ways to show the page
 
@@ -59,9 +59,11 @@ That's why I now lead with cost-per-success rather than cost-per-task. Average t
 
 When a model can already ground against the full page, a small initial working set is not a gift — it is a missing-information problem it solves by asking for more. And it asks. Under static PD, GPT-5.4-mini revealed 5.9 times per task; under adaptive PD, 6.6 — against 0.8 for full. Model calls climbed from about 22 to about 30. That behavior is solidly measured.
 
-What I previously concluded from it was not. I wrote that adaptive PD was therefore "the most expensive arm" and that progressive disclosure "taxes a strong model." Its 1.09× token ratio has a 95% confidence interval of [−69k, +89k] tokens per task, p=0.65. It was never distinguishable from zero. Meanwhile, on strict labels, adaptive PD is the **best** arm on the strong model — 13/20 against full observation's 9/20, winning 5 tasks and losing 1 (paired McNemar p=0.22: the right direction, not yet significant at N=20).
+What I previously concluded from it was not. I wrote that adaptive PD was therefore "the most expensive arm" and that progressive disclosure "taxes a strong model." Its 1.09× token ratio has a 95% confidence interval of [−69k, +89k] tokens per task, p=0.65 — never distinguishable from zero.
 
-So the honest strong-model statement is that I don't know yet, in either direction. Both effects need more tasks and a cleaner run — the adaptive arm was rerun on a different day than the other three, which mixes a date effect into that +4.
+Nor does anything replace it. Relabelled, no arm separates from full observation on this model: adaptive PD is 8/20 against full's 8/20 on the rule-based label, and 5/20 against 7/20 under an LLM judge. The honest strong-model statement is that I don't know, in either direction, and the adaptive arm was rerun on a different day than the other three, which mixes a date effect into everything above.
+
+I'll admit I had a better-sounding paragraph here for about a day. A first pass at strict scoring put adaptive PD at 13/20 against full's 9/20 and I wrote it up as the arm quietly winning all along. Then the judge disagreed, and the reason was a single Korean verb missing from my pattern list: answers reading "검색을 진행할 수 없습니다" — *cannot proceed with the search* — sailed through as passes. It over-credited adaptive by five tasks and full by one, because the adaptive agent gave up in Korean more often. The entire advantage was that gap. Two rulers in a row, each producing a confident headline the next one destroyed.
 
 ## One tax you do pay on both models
 
@@ -84,10 +86,12 @@ Strong model — GPT-5.4-mini:
 
 | Policy | Reported | Strict | Avg tokens | vs full | Tokens/success | Calls | Reveals |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| full | 19/20 | 9/20 | 174,485 | 1.00× | 387,743 | 22.15 | 0.80 |
-| top-k | 19/20 | 10/20 | 165,207 | 0.95× | 330,414 | 25.50 | 1.05 |
-| static PD | 19/20 | 12/20 | 184,010 | 1.06× | 306,684 | 29.70 | 5.90 |
-| adaptive PD | 19/20 | **13/20** | 190,942 | 1.09× | **293,757** | 30.50 | 6.60 |
+| full | 19/20 | 8/20 | 174,485 | 1.00× | 436,211 | 22.15 | 0.80 |
+| top-k | 19/20 | 8/20 | 165,207 | 0.95× | 413,018 | 25.50 | 1.05 |
+| static PD | 19/20 | 10/20 | 184,010 | 1.06× | 368,021 | 29.70 | 5.90 |
+| adaptive PD | 19/20 | 8/20 | 190,942 | 1.09× | 477,356 | 30.50 | 6.60 |
+
+An LLM judge, run on the two decisive arms, is harsher still: full 7/20, adaptive PD 5/20.
 
 Weak-model adaptive PD in one sentence: **the same number of tasks completed, for a third of the tokens** — bootstrap p=0.001 on the token difference, McNemar p=1.00 on the success difference. Token savings at maintained performance, which is a smaller claim than "it rescues a weak agent" and a much better supported one.
 

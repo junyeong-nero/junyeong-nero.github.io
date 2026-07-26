@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" width="720" height="400" role="img" font-family="'Space Mono', ui-monospace, Menlo, Monaco, monospace">
   <title>Reported success versus strict success, by policy and model</title>
-  <desc>For every policy on both models, the reported success count is far higher than the strict count. On the weak model no policy separates from full observation once scored strictly. On the strong model adaptive disclosure leads.</desc>
+  <desc>For every policy on both models, the reported success count is far higher than the strict count. On the weak model no policy separates from full observation once scored strictly. On the strong model no policy separates from full observation.</desc>
   <rect x="0" y="0" width="720" height="400" fill="#f8f7f3"/>
 
   <!-- legend: measure is encoded by fill, not hue -->
@@ -80,13 +80,13 @@
 
   <!-- ============ strong model ============ -->
   <rect x="409.5" y="53" width="26" height="247" rx="4" fill="#e9e5dc" stroke="#c9c4b8" stroke-width="1"/>
-  <rect x="439.5" y="183" width="26" height="117" rx="4" fill="#857f74"/>
+  <rect x="439.5" y="196" width="26" height="104" rx="4" fill="#857f74"/>
   <rect x="484.5" y="53" width="26" height="247" rx="4" fill="#e9e5dc" stroke="#c9c4b8" stroke-width="1"/>
-  <rect x="514.5" y="170" width="26" height="130" rx="4" fill="#857f74"/>
+  <rect x="514.5" y="196" width="26" height="104" rx="4" fill="#857f74"/>
   <rect x="559.5" y="53" width="26" height="247" rx="4" fill="#e9e5dc" stroke="#c9c4b8" stroke-width="1"/>
-  <rect x="589.5" y="144" width="26" height="156" rx="4" fill="#857f74"/>
+  <rect x="589.5" y="170" width="26" height="130" rx="4" fill="#857f74"/>
   <rect x="634.5" y="53" width="26" height="247" rx="4" fill="#e9e5dc" stroke="#c9c4b8" stroke-width="1"/>
-  <rect x="664.5" y="131" width="26" height="169" rx="4" fill="#ff7759"/>
+  <rect x="664.5" y="196" width="26" height="104" rx="4" fill="#ff7759"/>
 
   <g font-size="11" fill="#5d584f" text-anchor="middle">
     <text x="422.5" y="47">19</text>
@@ -95,10 +95,10 @@
     <text x="647.5" y="47">19</text>
   </g>
   <g font-size="11" font-weight="700" fill="#2c2925" text-anchor="middle">
-    <text x="452.5" y="177">9</text>
-    <text x="527.5" y="164">10</text>
-    <text x="602.5" y="138">12</text>
-    <text x="677.5" y="125">13</text>
+    <text x="452.5" y="190">8</text>
+    <text x="527.5" y="190">8</text>
+    <text x="602.5" y="164">10</text>
+    <text x="677.5" y="190">8</text>
   </g>
   <g font-size="10.5" fill="#5d584f" text-anchor="middle">
     <text x="437.5" y="318">full</text>
