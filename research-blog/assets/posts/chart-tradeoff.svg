@@ -1,87 +1,77 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 380" width="720" height="380" role="img" font-family="'Space Mono', ui-monospace, Menlo, Monaco, monospace">
-  <title>Token cost versus hard-task success, every policy and model</title>
-  <rect x="0" y="0" width="720" height="380" fill="#f8f7f3"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" width="720" height="400" role="img" font-family="'Space Mono', ui-monospace, Menlo, Monaco, monospace">
+  <title>Token cost versus strict task success, every policy and model</title>
+  <desc>Adaptive disclosure on the weak model sits far to the left at a third of full observation's tokens, at the same strict success as full. On the strong model the policies differ little in cost and adaptive is highest on success.</desc>
+  <rect x="0" y="0" width="720" height="400" fill="#f8f7f3"/>
 
-  <!-- cheaper-than-full region (left of the 1.0 line) -->
-  <rect x="70" y="40" width="381.5" height="270" fill="#ff7759" opacity="0.06"/>
+  <!-- legend: model is encoded by mark shape, not hue -->
+  <g font-size="11" fill="#5d584f">
+    <rect x="70" y="15" width="8" height="12" rx="3" fill="#857f74"/>
+    <text x="86" y="25">weak model (strict range)</text>
+    <circle cx="270" cy="21" r="6" fill="#857f74"/>
+    <text x="282" y="25">strong model</text>
+    <circle cx="386" cy="21" r="6" fill="#ff7759"/>
+    <text x="398" y="25">adaptive PD</text>
+  </g>
 
-  <!-- y grid + ticks (hard tasks solved / 10) -->
+  <!-- grid -->
   <g stroke="#e7e4dc" stroke-width="1">
-    <line x1="70" y1="40" x2="690" y2="40"/>
-    <line x1="70" y1="85" x2="690" y2="85"/>
-    <line x1="70" y1="130" x2="690" y2="130"/>
-    <line x1="70" y1="175" x2="690" y2="175"/>
-    <line x1="70" y1="220" x2="690" y2="220"/>
-    <line x1="70" y1="265" x2="690" y2="265"/>
+    <line x1="70" y1="50" x2="700" y2="50"/>
+    <line x1="70" y1="121.4" x2="700" y2="121.4"/>
+    <line x1="70" y1="210.7" x2="700" y2="210.7"/>
+    <line x1="196" y1="50" x2="196" y2="300"/>
+    <line x1="322" y1="50" x2="322" y2="300"/>
+    <line x1="448" y1="50" x2="448" y2="300"/>
+    <line x1="574" y1="50" x2="574" y2="300"/>
   </g>
+  <!-- full-observation reference -->
+  <line x1="490" y1="50" x2="490" y2="300" stroke="#c9c4b8" stroke-width="1" stroke-dasharray="4 4"/>
+  <text x="496" y="294" font-size="10.5" fill="#93939f">full = 1.00&#215;</text>
+
   <g fill="#93939f" font-size="11" text-anchor="end">
-    <text x="60" y="44">10</text>
-    <text x="60" y="89">9</text>
-    <text x="60" y="134">8</text>
-    <text x="60" y="179">7</text>
-    <text x="60" y="224">6</text>
-    <text x="60" y="269">5</text>
-    <text x="60" y="314">4</text>
+    <text x="62" y="54">14</text>
+    <text x="62" y="125.4">10</text>
+    <text x="62" y="214.7">5</text>
+    <text x="62" y="304">0</text>
   </g>
-  <line x1="70" y1="310" x2="690" y2="310" stroke="#d4d1c9" stroke-width="1"/>
-
-  <!-- x ticks (token ratio vs full) -->
+  <line x1="70" y1="300" x2="700" y2="300" stroke="#d4d1c9" stroke-width="1"/>
   <g fill="#93939f" font-size="11" text-anchor="middle">
-    <text x="165.4" y="328">0.4&#215;</text>
-    <text x="260.8" y="328">0.6&#215;</text>
-    <text x="356.2" y="328">0.8&#215;</text>
-    <text x="451.5" y="328">1.0&#215;</text>
-    <text x="547" y="328">1.2&#215;</text>
-    <text x="642.3" y="328">1.4&#215;</text>
+    <text x="196" y="318">0.3&#215;</text>
+    <text x="322" y="318">0.6&#215;</text>
+    <text x="448" y="318">0.9&#215;</text>
+    <text x="574" y="318">1.2&#215;</text>
+    <text x="700" y="318">1.5&#215;</text>
   </g>
+  <text x="385" y="342" font-size="11" fill="#5d584f" text-anchor="middle">avg tokens per task, relative to full observation &#8594;</text>
+  <text x="20" y="175" font-size="11" fill="#5d584f" text-anchor="middle" transform="rotate(-90 20 175)">&#8592; strict tasks solved of 20</text>
 
-  <!-- full-cost reference -->
-  <line x1="451.5" y1="40" x2="451.5" y2="310" stroke="#93939f" stroke-width="1" stroke-dasharray="4 4"/>
+  <!-- ===== weak model: vertical bars spanning pass to pass+review ===== -->
+  <rect x="486" y="228.6" width="8" height="17.8" rx="4" fill="#857f74"/>
+  <rect x="582.6" y="175" width="8" height="35.7" rx="4" fill="#857f74"/>
+  <rect x="645.6" y="157.1" width="8" height="35.8" rx="4" fill="#857f74"/>
+  <rect x="200.4" y="157.1" width="8" height="71.5" rx="4" fill="#ff7759"/>
 
-  <!-- axis directional hints + titles -->
-  <g font-size="10.5" fill="#93939f">
-    <text x="120" y="346">&#8592; cheaper</text>
-    <text x="640" y="346" text-anchor="end">costlier &#8594;</text>
-    <text x="380" y="368" text-anchor="middle">total tokens spent vs full observation</text>
+  <g font-size="10.5" fill="#5d584f" text-anchor="middle">
+    <text x="490" y="262">full</text>
+    <text x="586.6" y="227">top-k</text>
+    <text x="649.6" y="209">static PD</text>
   </g>
-  <text transform="rotate(-90 22 175)" x="22" y="175" text-anchor="middle" font-size="10.5" fill="#93939f">hard tasks solved / 10</text>
+  <text x="204.4" y="148" font-size="11.5" font-weight="700" fill="#2c2925" text-anchor="middle">adaptive PD</text>
+  <text x="204.4" y="245" font-size="10.5" fill="#5d584f" text-anchor="middle">0.32&#215;</text>
 
-  <!-- strong model points (hollow) -->
-  <g fill="#f8f7f3" stroke-width="2">
-    <circle cx="427.7" cy="40" r="6" stroke="#857f74"/>
-    <circle cx="451.5" cy="40" r="6" stroke="#857f74"/>
-    <circle cx="480.1" cy="40" r="6" stroke="#857f74"/>
-    <circle cx="494.5" cy="85" r="6" stroke="#ff7759"/>
-  </g>
+  <!-- ===== strong model: circles ===== -->
+  <circle cx="490" cy="139.3" r="6" fill="#857f74" stroke="#f8f7f3" stroke-width="2"/>
+  <circle cx="469" cy="121.4" r="6" fill="#857f74" stroke="#f8f7f3" stroke-width="2"/>
+  <circle cx="513.1" cy="85.7" r="6" fill="#857f74" stroke="#f8f7f3" stroke-width="2"/>
+  <circle cx="529.5" cy="67.9" r="6" fill="#ff7759" stroke="#f8f7f3" stroke-width="2"/>
 
-  <!-- weak model points (solid) -->
-  <circle cx="451.5" cy="265" r="6" fill="#857f74"/>
-  <circle cx="561.2" cy="175" r="6" fill="#857f74"/>
-  <circle cx="632.8" cy="175" r="6" fill="#857f74"/>
-  <circle cx="127.2" cy="130" r="11" fill="none" stroke="#ff7759" stroke-width="1.5"/>
-  <circle cx="127.2" cy="130" r="6" fill="#ff7759"/>
+  <g font-size="10.5" fill="#5d584f">
+    <text x="478" y="143" text-anchor="end">full</text>
+    <text x="469" y="109" text-anchor="middle">top-k</text>
+    <text x="525" y="90">static PD</text>
+  </g>
+  <text x="541" y="72" font-size="11.5" font-weight="700" fill="#2c2925">adaptive PD</text>
 
-  <!-- annotations -->
-  <g font-size="11">
-    <text x="146" y="126" font-weight="700" fill="#d9531f">adaptive PD, weak model</text>
-    <text x="146" y="141" fill="#52525b">a third of the tokens, 8/10 hard</text>
-  </g>
-  <g font-size="10.5" fill="#75758a" text-anchor="middle">
-    <text x="451.5" y="285">full &#183; weak (5/10)</text>
-    <text x="561.2" y="166">top-k</text>
-    <text x="632.8" y="166">static</text>
-  </g>
-  <text x="512" y="112" font-size="10.5" fill="#75758a">adaptive &#183; strong</text>
-  <text x="470" y="26" font-size="10.5" fill="#75758a" text-anchor="middle">GPT-5.4-mini cluster &#183; 9&#8211;10/10, cost only slides &#8594;</text>
-
-  <!-- legend -->
-  <g font-size="10.5" fill="#52525b">
-    <circle cx="96" cy="60" r="5.5" fill="#857f74"/>
-    <text x="108" y="64">weak model (filled)</text>
-    <circle cx="96" cy="80" r="5.5" fill="#f8f7f3" stroke="#857f74" stroke-width="2"/>
-    <text x="108" y="84">strong model (hollow)</text>
-    <rect x="90.5" y="94.5" width="11" height="11" rx="2.5" fill="#ff7759"/>
-    <text x="108" y="104">adaptive PD</text>
-  </g>
+  <text x="70" y="368" font-size="10.5" fill="#93939f">Strict success only. Token counts are not comparable across models.</text>
+  <text x="70" y="384" font-size="10.5" fill="#93939f">Weak-model bars overlap: no arm separates from full on success. The horizontal gap is the finding.</text>
 </svg>

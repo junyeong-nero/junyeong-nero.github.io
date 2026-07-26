@@ -2,9 +2,9 @@
   "posts": [
     {
       "slug": "progressive-disclosure-token-efficiency",
-      "title": "How adaptive disclosure rescues a weak browser agent — and taxes a strong one",
+      "title": "Adaptive disclosure cut my agent's tokens to a third — and my success metric was measuring the wrong thing",
       "date": "2026-07-23",
-      "summary": "Progressive disclosure is sold as a token saver. On a weak model, adaptively sizing what the agent sees cuts tokens to a third and solves more hard tasks; on a strong model the same policy is the most expensive arm. When it helps, and when it doesn't."
+      "summary": "Adaptively sizing what a browser agent sees cut token cost to 0.32x on a weak model with no measurable loss in tasks completed. Getting to that claim meant throwing out a louder one: my success flag recorded whether the run finished, not whether the task was done."
     },
     {
       "slug": "welcome",
