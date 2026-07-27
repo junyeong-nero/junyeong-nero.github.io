@@ -1,12 +1,23 @@
-Most browser agents pour a big observation into the model every step — the accessibility tree, a screenshot, the tool list, the running history. It buys observability, and it is expensive. **Progressive observation disclosure** is the obvious fix: keep the full page state in the controller, outside the model. Hand the model a small, grounded working set first, and disclose more candidates only when that set falls short.
+I spent a few weeks testing a method for making browser agents cheaper, and the method turned out to do nothing. Getting to that answer meant fixing how I measured success three times, and each fix reversed a conclusion I had already written down. The thing that finally saved tokens was not the method. It was a line in my own harness that sent the model a copy of the page it had just been shown.
 
-I ran it against a real agent loop on hard tasks. The result: on a weak model, adaptively sizing the working set cut token cost to **roughly a third of full observation** — 172,000 fewer tokens per task, 95% CI [−324k, −51k] — **with no measurable change in how many tasks got done**. Cost per task actually completed improved 4.2×.
+This is the writeup of that, including the two versions of this post that were wrong.
 
-That is a narrower claim than the one this post used to make. An earlier version of it said adaptive disclosure also *rescued* the weak model's accuracy, solving 8 hard tasks against full observation's 5. That claim was an artifact of how I was measuring success, and the correction is the more useful half of the story. I've kept it in, below.
+## The idea
 
-## The bug was in the ruler
+Most browser agents pour a big observation into the model every step — the accessibility tree, a screenshot, the tool list, the running history. **Progressive observation disclosure** is the obvious fix. Keep the full page state in the controller, outside the model. Hand the model a small, grounded working set first, and disclose more candidates only when that set falls short.
 
-My harness recorded a task as successful whenever the agent's plan terminated without a hard error. Not whether the agent answered the question — whether the run *finished*. One line:
+Four arms, same tasks, same browser, differing only in how much of the page the model gets and when:
+
+- **full** — the entire observation, every step. The baseline.
+- **top-k** — a fixed cap of the k most relevant candidates. Prune once, no reveals.
+- **static PD** — a small initial working set; the model calls `reveal_candidates` when it needs more.
+- **adaptive PD** — the same, but the budget moves with run signals: an undisclosed-ref error grows it, a streak of clean grounded actions shrinks it.
+
+Tasks are Korean online-Mind2Web samples on live sites. Model is GPT-5.4-mini throughout, with an earlier pass on a weaker free model.
+
+## Version one: the ruler was not measuring success
+
+My harness recorded a task as successful whenever the agent's plan terminated without a hard error. Not whether it answered the question — whether the run *finished*:
 
 ```python
 # build_task_complete_event
@@ -14,91 +25,100 @@ My harness recorded a task as successful whenever the agent's plan terminated wi
 "task_success": True,      # no condition. finishing is succeeding.
 ```
 
-So an agent that navigated to a page, hit a bot-block, and reported "access is temporarily restricted" was a success. So was one whose final answer read, in full, `**TASK_FAILED** I was unable to navigate to the 상가·업무 tab`. It announced its own failure and still scored.
+So an agent that hit a bot-block and reported "access is temporarily restricted" scored a success. So did one whose entire final answer was `**TASK_FAILED** I was unable to navigate to the 상가·업무 tab`. It announced its own failure and still counted.
 
-I re-scored every run on whether the agent actually produced the answer the task asked for. Three labels: **fail** (non-terminal status, or the agent declared failure), **review** (no declared failure but not an answer either — "Opened the homepage." — a rule can't tell a terse correct answer from a terse non-answer, so a human looks), and **pass**.
+Every arm scored 19/20 under this. Success looked like it carried no information, so I read the whole comparison off token counts and wrote that progressive disclosure "rescues a weak agent and taxes a strong one."
 
-![Reported success versus strict success, by policy and model](assets/posts/chart-reported-vs-strict.svg "Pale bars are the old measure: did the run finish. Solid bars are the real one: did the agent answer. The gap is largest exactly where the old numbers looked best.")
+## Version two: my rule had a hole in it
 
-The inflation is everywhere, and it is not a constant offset — which is what makes it dangerous. GPT-5.4-mini's `full` arm drops from 19/20 to 8/20; the weak model's `adaptive` arm drops from 14/20 to 4–8. Every arm on the strong model reported 19/20, so success looked like it carried no information and I read the whole comparison off tokens alone. It wasn't that success didn't discriminate. It was that my ruler was pinned at the ceiling.
+I wrote a rule that reads the agent's final answer and fails it when the agent declares failure. Better. It moved GPT-5.4-mini's full-observation arm from 19/20 to 11/20, and it moved adaptive disclosure to 13/20 — which made adaptive the *best* arm, and I wrote that up too.
 
-## Four ways to show the page
+That was a missing Korean verb. My pattern list caught 확인할 수 없 ("cannot confirm") and 찾을 수 없 ("cannot find") but not 진행할 수 없 ("cannot proceed"). Answers reading *"검색을 진행할 수 없습니다"* — I cannot proceed with the search — sailed through as successes.
 
-Every arm sees the same tasks and the same browser. They differ only in how much of the page the model gets, and when.
+It was not a uniform error. It over-credited adaptive disclosure by five tasks and full observation by one, because the adaptive agent gave up in Korean more often. **The entire advantage I had just published was that gap.**
 
-- **full** — the entire observation, every step. The baseline.
-- **top-k** — a fixed cap of the k most relevant candidates. Prune once, no reveals.
-- **static PD** — a small initial working set; the model calls `reveal_candidates` when it needs more, at a fixed budget.
-- **adaptive PD** — the same, but the disclosure budget moves up and down from run signals: an undisclosed-ref error grows it, a streak of clean grounded actions shrinks it.
+## Version three: let something else grade it
 
-The task set is 20 items from a Korean online-Mind2Web sample — 10 medium and 10 hard, two per domain across ten domains (shopping, maps, real estate, jobs, government, and more). I ran the matrix twice: once on a free, weak model (`Nemotron-3-super`), once on `GPT-5.4-mini`. Same tasks, same arms, same disclosure ratios.
+I ported [WebJudge](https://github.com/OSU-NLP-Group/Online-Mind2Web), the LLM evaluator from the Online-Mind2Web benchmark, which its authors validated against human labels. It reads the task, the action history and screenshots from the trajectory, and decides whether the task was actually done.
 
-## Showing less is not the win. Showing the right amount is.
+![The same 20 runs, scored by three successive measures of success](assets/posts/chart-three-rulers.svg "Nothing about the agent changed between these rows — only what I counted as success. The first two versions of this post took their headlines from the top row.")
 
-This part survived the correction intact, because it was never about success — it's token data, and tokens are measured, not judged.
+Three rulers, one set of runs, 15 → 11 → 7. The rules and the judge agree on 30 of 40 trajectories, and every disagreement runs the same direction: the rule passes what the judge fails, never the reverse. A rule can only catch an agent that *announces* its failure. It cannot catch a confident wrong answer, so even 11 is an upper bound.
 
-The tempting story is "small observation, fewer tokens." It is wrong, and the data says so bluntly. Two of the three compaction policies spent **more** total tokens than full observation on the weak model — top-k pruning at 1.23×, fixed progressive disclosure at 1.38×. A compact-but-fixed observation makes a weak model flounder: it cannot find what it needs, so it burns turns, and input piles up across those turns until the per-step saving is more than erased. Fixed disclosure also kept the agent reaching for elements it had never been shown, spiking invalid actions.
+## The verdict on the method
 
-Only the *adaptive* policy — the one that grows the disclosure budget when the model struggles and shrinks it when the model is cruising — actually cut cost, to 0.32×.
+With a trustworthy label and 20 paired tasks:
 
-![Token cost relative to full observation, by model](assets/posts/chart-token-cost.svg "Bars below the dashed line spend fewer tokens than full observation. On the weak model only adaptive PD clears it, at 0.32×. On the strong model the arms sit within noise of each other — that cluster is not the clean 'PD costs more' story I first read into it.")
+| | reported | strict | WebJudge | tokens/task | tokens per success (strict / judge) |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| full | 15/20 | **11/20** | **7/20** | 164,756 | **299,556** / **470,730** |
+| adaptive PD | 14/20 | 10/20 | 4/20 | 170,278 | 340,556 / 851,390 |
 
-Progressive disclosure is not a pruning trick; it is a control loop. Size the window to the model's need, step by step, or you get the worst of both worlds: a starved model that thrashes, and a token bill higher than if you had shown it the whole page.
+```
+strict     adaptive 2 wins 3 losses   McNemar p = 1.000
+WebJudge   adaptive 1 win  4 losses   McNemar p = 0.375
+tokens     +5,522/task   95% CI [−43,034, +56,650]   p = 0.815
+```
 
-## Is it cheap because it gave up faster?
+Nothing separates. Not success, not tokens, under either label.
 
-This is the objection that matters, and it's the first thing I checked once the success numbers moved. An arm that abandons tasks early looks wonderfully token-efficient. Average tokens per task rewards quitting.
+What *is* measurable is the cost of getting nowhere: 4.9 reveal round-trips per task against 0.80, 22% more model calls, a higher invalid-action rate. Cost per delivered success is 14% worse on the rule and 81% worse under the judge.
 
-It doesn't hold here. Adaptive PD's strict success on the weak model is at or above full observation's — it is not buying its savings with abandonment. And when you charge each arm for its failures by dividing total spend by tasks actually completed, the gap widens rather than closing: **400k tokens per success against full observation's 1.68M**.
+That is a weaker claim than "progressive disclosure is harmful," and a more decisive one for anyone deciding whether to build it: **the complexity buys nothing measurable.**
 
-That's why I now lead with cost-per-success rather than cost-per-task. Average tokens alone is a metric you can win by failing.
+## Where the tokens were actually going
 
-![Token cost versus strict task success, every policy and model](assets/posts/chart-tradeoff.svg "Vertical position is what got done; horizontal position is what it cost. On the weak model the arms overlap vertically — nobody separates on success — and adaptive sits far to the left. The horizontal gap is the finding.")
+Before running that comparison I did something I should have done at the start — read the prompts my own harness was sending. They were on disk the whole time.
 
-## On the strong model, the reveal loop is real but the tax isn't proven
+![What the baseline actually sent the model, per call](assets/posts/chart-context-waste.svg "Every shaded payload carries a full page snapshot. Half of the context was a page the model had already been given.")
 
-When a model can already ground against the full page, a small initial working set is not a gift — it is a missing-information problem it solves by asking for more. And it asks. Under static PD, GPT-5.4-mini revealed 5.9 times per task; under adaptive PD, 6.6 — against 0.8 for full. Model calls climbed from about 22 to about 30. That behavior is solidly measured.
+Every action result carried a complete page snapshot. Not just `observe_page` — `click`, `type`, `navigate`, all of them. A single click response looked like this:
 
-What I previously concluded from it was not. I wrote that adaptive PD was therefore "the most expensive arm" and that progressive disclosure "taxes a strong model." Its 1.09× token ratio has a 95% confidence interval of [−69k, +89k] tokens per task, p=0.65 — never distinguishable from zero.
+```
+url                    30 chars
+active_tab_index        1
+tab_count               1
+aria_snapshot      25,232      ← the entire page, again
+```
 
-Nor does anything replace it. Relabelled, no arm separates from full observation on this model: adaptive PD is 8/20 against full's 8/20 on the rule-based label, and 5/20 against 7/20 under an LLM judge. The honest strong-model statement is that I don't know, in either direction, and the adaptive arm was rerun on a different day than the other three, which mixes a date effect into everything above.
+The action's actual result is 32 characters. Payloads carrying a page snapshot were **84% of context**, and half of that was a page the model had already been sent on the previous turn.
 
-I'll admit I had a better-sounding paragraph here for about a day. A first pass at strict scoring put adaptive PD at 13/20 against full's 9/20 and I wrote it up as the arm quietly winning all along. Then the judge disagreed, and the reason was a single Korean verb missing from my pattern list: answers reading "검색을 진행할 수 없습니다" — *cannot proceed with the search* — sailed through as passes. It over-credited adaptive by five tasks and full by one, because the adaptive agent gave up in Korean more often. The entire advantage was that gap. Two rulers in a row, each producing a confident headline the next one destroyed.
+So progressive disclosure was shaving a slice off each of many copies rather than removing the duplication. Sending page state only from observation tools cut context per call by 50% — more than twice what PD achieved, with no round-trips at all.
 
-## One tax you do pay on both models
+It also explains the whole project. PD's apparent advantage existed only against a wasteful baseline. Once the waste is gone, so is the advantage.
 
-Hiding a needed element is never free. Under static and adaptive PD the invalid-action rate is roughly double full's on *both* models — the agent reaches for a ref that hasn't been disclosed yet. On the weak model, fixed static PD spiked to 5.7× full's invalid rate. Disclosure trades some grounding reliability for compaction, and you pay that regardless of model strength.
+## The second thing I found by reading prompts
 
-## The numbers
+Consecutive model calls shared an identical prefix of exactly **one turn**. Only the system prompt and the task ever hit the prompt cache — 37% of input — while the rest, including a page snapshot that often had not changed at all, was repaid in full every call.
 
-Both runs share the same 20 tasks, so columns are comparable within a model. Token counts are **not** comparable across models — the weak model emits far more reasoning per step. "Reported" is the old finished-without-error measure, kept so the correction is auditable.
+Two causes, both mine. The recent-turn window slid by one every call, so every turn shifted position. And the compaction summary — which sits ahead of every recent turn — stamped a running step count and the active subgoal into itself, so it changed on every request and invalidated everything behind it.
 
-Weak model — Nemotron-3-super (free):
+Advancing the boundary in chunks and freezing the summary between advances took the shared prefix from 1.0 turns to 10.0, and the cache hit rate from 37% to 51–57%. That reproduced at both N=2 and N=20.
 
-| Policy | Reported | Strict | Avg tokens | vs full | Tokens/success | Calls | Invalid |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| full | 12/20 | 3–4/20 | 252,117 | 1.00× | 1,680,778 | 24.35 | 0.026 |
-| top-k | 15/20 | 5–7/20 | 310,168 | 1.23× | 1,240,674 | 19.25 | 0.033 |
-| static PD | 14/20 | 6–8/20 | 346,932 | 1.38× | 1,156,441 | 20.30 | 0.148 |
-| adaptive PD | 14/20 | 4–8/20 | 80,011 | **0.32×** | **400,056** | 13.45 | 0.074 |
+**It is the only result in this project whose magnitude I trust**, and the reason is worth stating: cache hit rate is a per-call mechanical property. It does not depend on how the agent happened to wander. Every behaviour-dependent number here needed twenty tasks to say anything; this one was solid at two.
 
-Strong model — GPT-5.4-mini:
+## How much of this is just my bug
 
-| Policy | Reported | Strict | Avg tokens | vs full | Tokens/success | Calls | Reveals |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| full | 19/20 | 8/20 | 174,485 | 1.00× | 436,211 | 22.15 | 0.80 |
-| top-k | 19/20 | 8/20 | 165,207 | 0.95× | 413,018 | 25.50 | 1.05 |
-| static PD | 19/20 | 10/20 | 184,010 | 1.06× | 368,021 | 29.70 | 5.90 |
-| adaptive PD | 19/20 | 8/20 | 190,942 | 1.09× | 477,356 | 30.50 | 6.60 |
+Fair question, so I checked two widely used harnesses.
 
-An LLM judge, run on the two decisive arms, is harsher still: full 7/20, adaptive PD 5/20.
+**[playwright-mcp](https://github.com/microsoft/playwright-mcp)** has the same shape — a click returns a page snapshot, confirmed in its own tests. But the cost is known and already mitigated: there is a `--snapshot-mode full|none` flag, and the README steers users toward a CLI over MCP because MCP means "loading … verbose accessibility trees into the model context."
 
-Weak-model adaptive PD in one sentence: **the same number of tasks completed, for a third of the tokens** — bootstrap p=0.001 on the token difference, McNemar p=1.00 on the success difference. Token savings at maintained performance, which is a smaller claim than "it rescues a weak agent" and a much better supported one.
+**[browser-use](https://github.com/browser-use/browser-use)** avoids it structurally. There is no accumulating transcript of tool responses; it rebuilds a single state message each step, so the page appears exactly once. Its prompt builder even carries this comment:
 
-## What this doesn't settle
+> Per-step varying metadata (step counter, date) lives at the tail of the message so that everything above can in principle be treated as a cacheable prefix.
 
-N=20, two models, disclosure ratios borrowed from an offline replay tuned against a different model. Every comparison is paired — same tasks in every arm — which is what makes N=20 informative at all, but the strong-model differences still sit at p=0.22 and p=0.65. The next run is four arms at N=50 in a single session, on one model, with the site-blocked tasks removed.
+They were thinking about the same problem. They do still slide a history window with a changing "N previous steps omitted" marker in the middle of the message, which is the same cache-invalidation shape — so that half is at least partly live elsewhere.
 
-Strict scoring has its own ceiling, worth stating plainly: there are no gold answers for these tasks, so an answer that is confident and wrong still scores as a pass. The strict numbers above are an upper bound on real success. The true rates are lower — I just don't yet know by how much.
+So: the duplication is a known problem with a known fix, and I rediscovered it the expensive way. What I have that I could not find published is the *quantification* — 84% of context, half of it redundant, 37% → 55% cache — and the methodology for getting it.
 
-The read for anyone building on this. If your agent runs on a small or cheap model, an *adaptive* disclosure loop is worth trying: it cut cost to a third here without costing completions, while a fixed compact observation quietly cost more than showing everything. The savings live in the adaptation, not the trimming. And before you believe any agent benchmark — including this one — go read what your success flag actually tests. Mine tested whether the program finished.
+## What I would tell someone starting this
+
+**Read the prompts your harness sends before you optimise anything.** Mine were sitting in a log directory the entire time. Half of my context was duplication, and I spent weeks building a method to shave the other half.
+
+**Find out what your success flag actually tests.** Mine tested whether the program finished. Three consecutive measurements each produced a confident headline that the next one destroyed, and only the third involved anything outside my own code.
+
+**Know which of your metrics need a big N.** Run-to-run variance on a single task in this setup is 2.0–2.6× on step count — larger than every effect I was trying to measure. Total tokens, steps and success rate are hostage to that. Cache hit rate, context composition and uncached input per call are not, and they answered the questions that mattered in one short run instead of twenty.
+
+**Average tokens per task is a metric you can win by failing.** An arm that gives up early looks wonderfully efficient. Cost per delivered success does not have that hole.
+
+The method I set out to test does not work. The harness it was compensating for does now, and it is roughly half as expensive per call, which was never the result I was looking for and is the only one I would stand behind.

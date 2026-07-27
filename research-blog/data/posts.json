@@ -2,9 +2,9 @@
   "posts": [
     {
       "slug": "progressive-disclosure-token-efficiency",
-      "title": "Adaptive disclosure cut my agent's tokens to a third — and my success metric was measuring the wrong thing",
+      "title": "I measured success wrong three times, and the method I was testing did nothing",
       "date": "2026-07-23",
-      "summary": "Adaptively sizing what a browser agent sees cut token cost to 0.32x on a weak model with no measurable loss in tasks completed. Getting to that claim meant throwing out a louder one: my success flag recorded whether the run finished, not whether the task was done."
+      "summary": "Progressive disclosure was supposed to make a browser agent cheaper. Each time I fixed how I measured success, a conclusion reversed — and the method ended up earning nothing. What actually halved the context was a line in my own harness that re-sent the model a page it had already been shown."
     },
     {
       "slug": "welcome",

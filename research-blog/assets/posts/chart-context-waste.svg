@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" width="720" height="420" role="img" font-family="'Space Mono', ui-monospace, Menlo, Monaco, monospace">
+  <title>What the baseline actually sent the model, per call</title>
+  <desc>Of 12,027 characters of context per model call, payloads carrying a page snapshot were 84 percent, and 6,001 characters were a page the model had already been shown. Sending page state only from observation tools halves the context.</desc>
+  <rect x="0" y="0" width="720" height="420" fill="#f8f7f3"/>
+
+  <text x="70" y="32" font-size="12" font-weight="700" fill="#2c2925">Context per model call, full-observation baseline</text>
+
+  <g stroke="#e7e4dc" stroke-width="1">
+    <line x1="256" y1="48" x2="256" y2="330"/>
+    <line x1="443" y1="48" x2="443" y2="330"/>
+    <line x1="630" y1="48" x2="630" y2="330"/>
+  </g>
+
+  <!-- row 1 -->
+  <text x="70" y="70" font-size="11" fill="#5d584f">by which tool produced it</text>
+  <rect x="70" y="80" width="185" height="30" rx="4" fill="#857f74"/>
+  <rect x="259" y="80" width="136" height="30" rx="4" fill="#857f74" opacity="0.72"/>
+  <rect x="399" y="80" width="80" height="30" rx="4" fill="#857f74" opacity="0.54"/>
+  <rect x="483" y="80" width="71" height="30" rx="4" fill="#857f74" opacity="0.4"/>
+  <rect x="558" y="80" width="72" height="30" rx="4" fill="#c9c4b8"/>
+  <g font-size="10" fill="#2c2925" text-anchor="middle">
+    <text x="162" y="99">observe_page</text>
+    <text x="327" y="99">click</text>
+    <text x="439" y="99">type</text>
+    <text x="518" y="99">nav</text>
+    <text x="594" y="99">text</text>
+  </g>
+  <text x="70" y="128" font-size="10.5" fill="#5d584f">every shaded bar ships a full page snapshot — 84% of context</text>
+
+  <!-- row 2 -->
+  <text x="70" y="166" font-size="11" fill="#5d584f">how much of it was new</text>
+  <rect x="70" y="176" width="280" height="30" rx="4" fill="#ff7759"/>
+  <rect x="353" y="176" width="277" height="30" rx="4" fill="#857f74"/>
+  <text x="210" y="195" font-size="11" font-weight="700" fill="#ffffff" text-anchor="middle">6,001 already shown</text>
+  <text x="491" y="195" font-size="11" fill="#ffffff" text-anchor="middle">6,026 new</text>
+  <text x="70" y="224" font-size="10.5" fill="#5d584f">a click returns a 32-character result beside a 25,232-character copy of the page</text>
+
+  <!-- row 3 -->
+  <text x="70" y="262" font-size="11" fill="#5d584f">after sending page state only from observation tools</text>
+  <rect x="70" y="272" width="281" height="30" rx="4" fill="#857f74"/>
+  <text x="210" y="291" font-size="11" font-weight="700" fill="#ffffff" text-anchor="middle">6,026</text>
+  <text x="361" y="291" font-size="11" fill="#2c2925" font-weight="700">half the context, no extra round-trips</text>
+
+  <line x1="70" y1="330" x2="630" y2="330" stroke="#d4d1c9" stroke-width="1"/>
+  <g font-size="11" fill="#93939f" text-anchor="middle">
+    <text x="70" y="348">0</text>
+    <text x="256" y="348">4k</text>
+    <text x="443" y="348">8k</text>
+    <text x="630" y="348">12k</text>
+  </g>
+  <text x="350" y="370" font-size="11" fill="#5d584f" text-anchor="middle">characters of model-facing context</text>
+
+  <text x="70" y="398" font-size="10.5" fill="#93939f">Averaged over 86 model calls, gpt-5.4-mini.</text>
+  <text x="70" y="412" font-size="10.5" fill="#93939f">Progressive disclosure — the method this post set out to test — removed 21%.</text>
+</svg>

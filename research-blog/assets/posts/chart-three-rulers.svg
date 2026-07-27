@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" width="720" height="400" role="img" font-family="'Space Mono', ui-monospace, Menlo, Monaco, monospace">
+  <title>The same 20 runs, scored by three successive measures of success</title>
+  <desc>Scoring whether the run finished gives 15 of 20. Scoring whether the agent declared failure gives 11. Scoring with an LLM judge gives 7. The same trajectories, three rulers.</desc>
+  <rect x="0" y="0" width="720" height="400" fill="#f8f7f3"/>
+
+  <g font-size="11" fill="#5d584f">
+    <rect x="70" y="14" width="14" height="12" rx="3" fill="#857f74"/>
+    <text x="90" y="24">full observation</text>
+    <rect x="238" y="14" width="14" height="12" rx="3" fill="#ff7759"/>
+    <text x="258" y="24">adaptive disclosure</text>
+  </g>
+
+  <g stroke="#e7e4dc" stroke-width="1">
+    <line x1="150" y1="60" x2="700" y2="60"/>
+    <line x1="150" y1="120" x2="700" y2="120"/>
+    <line x1="150" y1="180" x2="700" y2="180"/>
+    <line x1="150" y1="240" x2="700" y2="240"/>
+  </g>
+  <g fill="#93939f" font-size="11" text-anchor="middle">
+    <text x="150" y="316">0</text>
+    <text x="288" y="316">5</text>
+    <text x="425" y="316">10</text>
+    <text x="563" y="316">15</text>
+    <text x="700" y="316">20</text>
+  </g>
+  <line x1="150" y1="300" x2="700" y2="300" stroke="#d4d1c9" stroke-width="1"/>
+  <text x="425" y="340" font-size="11" fill="#5d584f" text-anchor="middle">tasks counted as successful, of 20</text>
+
+  <!-- row 1: reported -->
+  <text x="140" y="78" font-size="11.5" fill="#2c2925" text-anchor="end" font-weight="700">did it finish?</text>
+  <text x="140" y="93" font-size="10" fill="#93939f" text-anchor="end">agent_task_success</text>
+  <rect x="150" y="62" width="413" height="18" rx="4" fill="#857f74"/>
+  <rect x="150" y="84" width="385" height="18" rx="4" fill="#ff7759"/>
+  <text x="573" y="76" font-size="11" fill="#5d584f">15</text>
+  <text x="545" y="98" font-size="11" fill="#5d584f">14</text>
+
+  <!-- row 2: strict -->
+  <text x="140" y="138" font-size="11.5" fill="#2c2925" text-anchor="end" font-weight="700">did it give up?</text>
+  <text x="140" y="153" font-size="10" fill="#93939f" text-anchor="end">final-answer rule</text>
+  <rect x="150" y="122" width="303" height="18" rx="4" fill="#857f74"/>
+  <rect x="150" y="144" width="275" height="18" rx="4" fill="#ff7759"/>
+  <text x="463" y="136" font-size="11" fill="#5d584f">11</text>
+  <text x="435" y="158" font-size="11" fill="#5d584f">10</text>
+
+  <!-- row 3: webjudge -->
+  <text x="140" y="198" font-size="11.5" fill="#2c2925" text-anchor="end" font-weight="700">did it do the task?</text>
+  <text x="140" y="213" font-size="10" fill="#93939f" text-anchor="end">LLM judge</text>
+  <rect x="150" y="182" width="193" height="18" rx="4" fill="#857f74"/>
+  <rect x="150" y="204" width="110" height="18" rx="4" fill="#ff7759"/>
+  <text x="353" y="196" font-size="11" fill="#5d584f">7</text>
+  <text x="270" y="218" font-size="11" fill="#5d584f">4</text>
+
+  <!-- annotation -->
+  <line x1="563" y1="66" x2="563" y2="290" stroke="#c9c4b8" stroke-width="1" stroke-dasharray="4 4"/>
+  <line x1="343" y1="186" x2="343" y2="290" stroke="#c9c4b8" stroke-width="1" stroke-dasharray="4 4"/>
+  <path d="M 563 276 L 343 276" stroke="#2c2925" stroke-width="1.5" marker-end="url(#a)"/>
+  <defs>
+    <marker id="a" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
+      <path d="M0,0 L7,3.5 L0,7 z" fill="#2c2925"/>
+    </marker>
+  </defs>
+  <text x="453" y="270" font-size="11" fill="#2c2925" text-anchor="middle" font-weight="700">the same runs, 8 fewer successes</text>
+
+  <text x="70" y="370" font-size="10.5" fill="#93939f">Nothing about the agent changed between these rows. Only what I counted as success.</text>
+  <text x="70" y="386" font-size="10.5" fill="#93939f">gpt-5.4-mini, 20 paired tasks. Both earlier versions of this post took their headlines from the top row.</text>
+</svg>
