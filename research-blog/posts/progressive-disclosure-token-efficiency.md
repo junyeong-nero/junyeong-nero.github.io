@@ -1,6 +1,8 @@
-I spent a few weeks testing a method for making browser agents cheaper, and the method turned out to do nothing. Getting to that answer meant fixing how I measured success three times, and each fix reversed a conclusion I had already written down. The thing that finally saved tokens was not the method. It was a line in my own harness that sent the model a copy of the page it had just been shown.
+I spent a few weeks testing a method for making browser agents cheaper, and the method turned out to do nothing. Getting to that answer meant fixing how I measured success three times, and each fix reversed a conclusion I had already written down.
 
-This is the writeup of that, including the two versions of this post that were wrong.
+What did save tokens was a line in my own harness that sent the model a copy of the page it had just been shown — and then, once I stopped looking at how much context there was and started looking at what was *in* it, a version of the original method that works for a reason the original never could.
+
+This is the writeup of all of that, including the two versions of this post that were wrong.
 
 ## The idea
 
@@ -95,7 +97,7 @@ Two causes, both mine. The recent-turn window slid by one every call, so every t
 
 Advancing the boundary in chunks and freezing the summary between advances took the shared prefix from 1.0 turns to 10.0, and the cache hit rate from 37% to 51–57%. That reproduced at both N=2 and N=20.
 
-**It is the only result in this project whose magnitude I trust**, and the reason is worth stating: cache hit rate is a per-call mechanical property. It does not depend on how the agent happened to wander. Every behaviour-dependent number here needed twenty tasks to say anything; this one was solid at two.
+**This is a magnitude I trust**, and the reason is worth stating: cache hit rate is a per-call mechanical property. It does not depend on how the agent happened to wander. Every behaviour-dependent number here needed twenty tasks to say anything; this one was solid at two.
 
 ## How much of this is just my bug
 
@@ -111,6 +113,47 @@ They were thinking about the same problem. They do still slide a history window 
 
 So: the duplication is a known problem with a known fix, and I rediscovered it the expensive way. What I have that I could not find published is the *quantification* — 84% of context, half of it redundant, 37% → 55% cache — and the methodology for getting it.
 
+## The part I got wrong about being wrong
+
+I wrote the paragraph above, called the project finished, and then did the one thing I had learned to do: opened the prompts again, this time to look *inside* a page snapshot rather than at how many of them there were.
+
+A snapshot is not mostly elements. Across 69 distinct ones, 1.48M characters:
+
+| | share |
+| --- | ---: |
+| `- /url: ...` child lines | **28.9%** |
+| `read-only` node lines | 43.8% |
+| actionable nodes and everything else | 27.3% |
+
+Playwright emits a `/url:` line under every link. My agent clicks by ref — `click_by_ref(e2)` — and never reads a URL. Nearly a third of the page description was an attribute the model had no use for.
+
+Dropping it is progressive disclosure. It is just disclosure of an *attribute* rather than an element, and that turns out to be the entire difference:
+
+![Paired token effect of two ways of showing the model less](assets/posts/chart-two-interventions.svg "Both interventions show the model less. One makes it ask for the missing piece back; the other removes something it never consults.")
+
+```
+hide whole elements     +5,522 tokens/task   95% CI [−43,034, +56,650]   p = 0.815
+drop the URL attribute  −36,090 tokens/task  95% CI [−65,130,  −9,150]   p = 0.006
+```
+
+Same 20 paired tasks, same model, same analysis. Steps went to 0.910×, strict success 11 → 12 — not better, but not worse, which is the claim that matters. Reveal round-trips: zero, because there is nothing to reveal.
+
+**This is the only token result in the whole project whose interval excludes zero.** And the mechanism is the same one that killed the original method, read the other way round. Withholding an element makes the model ask for it back, and the round-trip costs more than the compaction saves. Withholding something it never consults costs nothing at all.
+
+So "make the observation smaller" was never the strategy. **"Remove what the model does not read"** is.
+
+## Two things I did not try, and why
+
+The 43.8% block is `read-only` nodes — bigger than the URLs, and the obvious next target. It is also the one that would have destroyed the agent, and I could tell without running anything.
+
+Take the tasks that passed, take their answers, and find where that content lives in the page. Of twelve, **six have their answer only in read-only nodes and zero have it only in actionable ones.** Per answer token, of those locatable at all, 51% are reachable only that way. Deleting read-only text would delete half of every correct answer.
+
+That is exactly the trap the original method fell into, and the contrast is clean: URLs were safe because the agent never reads them; read-only text is unsafe because it *is* the answer. Same size of prize, opposite verdict, and the difference is not something you can eyeball — you have to go look at where the answers come from.
+
+The other one I did try, briefly. My prefix fix still breaks the cache once per boundary, one call in four. A simulation said widening the boundary would lift the cached share from 70% to 82% and cut cost 9%. Measured on five real tasks it moved the cache from 56% to 55%, while context grew 21% and tokens grew 38%. The simulation had assumed regular trajectory structure — an observation every third step, even sizes — and real runs have none of that.
+
+Third static estimate in this project overturned by a measurement, after the counterfactual and the N=2 ratios. Fifteen minutes of real runs stopped a 38% regression from shipping.
+
 ## What I would tell someone starting this
 
 **Read the prompts your harness sends before you optimise anything.** Mine were sitting in a log directory the entire time. Half of my context was duplication, and I spent weeks building a method to shave the other half.
@@ -121,4 +164,6 @@ So: the duplication is a known problem with a known fix, and I rediscovered it t
 
 **Average tokens per task is a metric you can win by failing.** An arm that gives up early looks wonderfully efficient. Cost per delivered success does not have that hole.
 
-The method I set out to test does not work. The harness it was compensating for does now, and it is roughly half as expensive per call, which was never the result I was looking for and is the only one I would stand behind.
+**And when something does work, check whether it worked for the reason you think.** Adaptive disclosure and URL deferral are the same idea — show the model less — applied one level apart. One is worthless and one is the best result here. Nothing about "progressive disclosure" as a concept predicts which; only looking at what was in the context does.
+
+The method I set out to test does not work, and I published that twice before I could measure it well enough to be sure. What does work is smaller and duller: stop sending the page twice, keep the prefix stable enough to cache, and drop an attribute the model was never reading. Together they roughly halve the cost per call. That was never the result I was looking for, and it is the only one I would stand behind.

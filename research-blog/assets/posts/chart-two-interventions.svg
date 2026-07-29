@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 320" width="720" height="320" role="img" font-family="'Space Mono', ui-monospace, Menlo, Monaco, monospace">
+  <title>Paired token effect of two ways of showing the model less</title>
+  <desc>Hiding elements changes tokens by +5,522 per task with a confidence interval spanning zero. Dropping the per-link URL attribute changes them by −36,090 with an interval entirely below zero.</desc>
+  <rect x="0" y="0" width="720" height="320" fill="#f8f7f3"/>
+
+  <text x="70" y="30" font-size="12" font-weight="700" fill="#2c2925">Change in tokens per task, paired over the same 20 tasks</text>
+
+  <!-- zero line -->
+  <line x1="404" y1="52" x2="404" y2="232" stroke="#2c2925" stroke-width="1.5"/>
+  <text x="404" y="46" font-size="10.5" fill="#2c2925" text-anchor="middle">no change</text>
+
+  <g stroke="#e7e4dc" stroke-width="1">
+    <line x1="118" y1="52" x2="118" y2="232"/>
+    <line x1="213" y1="52" x2="213" y2="232"/>
+    <line x1="309" y1="52" x2="309" y2="232"/>
+    <line x1="499" y1="52" x2="499" y2="232"/>
+    <line x1="595" y1="52" x2="595" y2="232"/>
+  </g>
+
+  <!-- row 1: progressive disclosure -->
+  <text x="70" y="86" font-size="11.5" font-weight="700" fill="#2c2925">hide whole elements</text>
+  <text x="70" y="101" font-size="10.5" fill="#5d584f">adaptive progressive disclosure — 4.9 reveal round-trips per task</text>
+  <line x1="199" y1="120" x2="674" y2="120" stroke="#857f74" stroke-width="2"/>
+  <line x1="199" y1="113" x2="199" y2="127" stroke="#857f74" stroke-width="2"/>
+  <line x1="674" y1="113" x2="674" y2="127" stroke="#857f74" stroke-width="2"/>
+  <circle cx="430" cy="120" r="7" fill="#857f74" stroke="#f8f7f3" stroke-width="2"/>
+  <text x="674" y="106" font-size="10.5" fill="#5d584f" text-anchor="end">p=0.815</text>
+
+  <!-- row 2: url deferral -->
+  <text x="70" y="164" font-size="11.5" font-weight="700" fill="#2c2925">drop an attribute they never read</text>
+  <text x="70" y="179" font-size="10.5" fill="#5d584f">per-link /url: lines — no round-trips at all</text>
+  <line x1="93" y1="198" x2="360" y2="198" stroke="#ff7759" stroke-width="2"/>
+  <line x1="93" y1="191" x2="93" y2="205" stroke="#ff7759" stroke-width="2"/>
+  <line x1="360" y1="191" x2="360" y2="205" stroke="#ff7759" stroke-width="2"/>
+  <circle cx="232" cy="198" r="7" fill="#ff7759" stroke="#f8f7f3" stroke-width="2"/>
+  <text x="372" y="202" font-size="10.5" font-weight="700" fill="#2c2925">p=0.006</text>
+
+  <line x1="70" y1="232" x2="690" y2="232" stroke="#d4d1c9" stroke-width="1"/>
+  <g font-size="11" fill="#93939f" text-anchor="middle">
+    <text x="118" y="250">−60k</text>
+    <text x="213" y="250">−40k</text>
+    <text x="309" y="250">−20k</text>
+    <text x="404" y="250">0</text>
+    <text x="499" y="250">+20k</text>
+    <text x="595" y="250">+40k</text>
+  </g>
+  <text x="180" y="272" font-size="11" fill="#5d584f" text-anchor="middle">&#8592; cheaper</text>
+  <text x="404" y="272" font-size="11" fill="#5d584f" text-anchor="middle">tokens per task</text>
+  <text x="620" y="272" font-size="11" fill="#5d584f" text-anchor="middle">more expensive &#8594;</text>
+
+  <text x="70" y="298" font-size="10.5" fill="#93939f">Dot is the paired mean, bar is the 95% bootstrap interval. gpt-5.4-mini, same tasks, same analysis.</text>
+  <text x="70" y="312" font-size="10.5" fill="#93939f">Withholding an element makes the model ask for it back. Withholding a URL it never consults does not.</text>
+</svg>

@@ -2,9 +2,9 @@
   "posts": [
     {
       "slug": "progressive-disclosure-token-efficiency",
-      "title": "I measured success wrong three times, and the method I was testing did nothing",
+      "title": "Show the model less: three wrong measurements and the one version that worked",
       "date": "2026-07-23",
-      "summary": "Progressive disclosure was supposed to make a browser agent cheaper. Each time I fixed how I measured success, a conclusion reversed — and the method ended up earning nothing. What actually halved the context was a line in my own harness that re-sent the model a page it had already been shown."
+      "summary": "Progressive disclosure was supposed to make a browser agent cheaper. Each time I fixed how I measured success a conclusion reversed, and the method itself ended up earning nothing. Then the same idea applied one level down — dropping a link attribute the agent never reads — cut tokens 22% with the only confidence interval in the project that excludes zero."
     },
     {
       "slug": "welcome",
