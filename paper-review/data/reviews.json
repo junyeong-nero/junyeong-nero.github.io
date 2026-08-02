@@ -3,6 +3,81 @@
   "updatedAt": "2026-07-31",
   "reviews": [
     {
+      "id": "2511.12997",
+      "slug": "webcoach-cross-session-memory",
+      "title": "WebCoach: Self-Evolving Web Agents with Cross-Session Memory Guidance",
+      "authors": [
+        "Genglin Liu",
+        "Shijie Geng",
+        "Sha Li",
+        "Hejie Cui",
+        "Sarah Zhang",
+        "Xin Liu",
+        "Tianyi Liu"
+      ],
+      "publishedAt": "2025-11-17",
+      "reviewedAt": "2026-07-31",
+      "summary": "A model-agnostic memory layer that wraps an existing web agent without retraining it: a WebCondenser normalizes trajectory logs into summaries plus embeddings, a FAISS/HNSW External Memory Store holds completed episodes, and an 8B Coach retrieves the top-5 similar episodes and selectively injects a sentence of advice as a system message. On WebVoyager's 643 live tasks, Skywork-38B rises from 47.3% to 61.4% and Qwen-VL-32B from 49.5% to 57.1% at flat step counts, though wall-clock roughly doubles and the 7B backbone regresses. Self-generated memory beats memory seeded from a stronger agent. ICLR 2026.",
+      "tags": [
+        "agent-memory",
+        "continual-learning",
+        "retrieval-augmented-generation",
+        "self-evolution",
+        "vision-language-model",
+        "web-agents"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2511.12997",
+      "pdfUrl": "https://arxiv.org/pdf/2511.12997.pdf",
+      "reviewPath": "reviews/webcoach-cross-session-memory.md",
+      "assets": {
+        "figures": [
+          {
+            "path": "assets/webcoach-cross-session-memory/figures/figure-01.png",
+            "caption": "Figure 1. Overview of WebCoach. The Condenser converts raw navigation histories into standardized summaries stored in the External Memory Store, from which the Coach retrieves relevant prior experiences and issues task-specific guidance to the web agent.",
+            "page": 2
+          },
+          {
+            "path": "assets/webcoach-cross-session-memory/figures/figure-02.png",
+            "caption": "Figure 2. EMS retrieval latency versus k with 600 stored trajectories, 200 repeats per point. Latency averages 9.0-9.5 ms across k = 1 to 10, so k is chosen on context budget rather than speed.",
+            "page": 4
+          },
+          {
+            "path": "assets/webcoach-cross-session-memory/figures/figure-03.png",
+            "caption": "Figure 3. Asynchronous evaluation pipeline. WebVoyager's 15 subdomains are distributed across 5 parallel queues; a freed worker immediately pulls the next task instead of waiting for the batch, cutting total evaluation time by over 80%.",
+            "page": 5
+          },
+          {
+            "path": "assets/webcoach-cross-session-memory/figures/figure-04.png",
+            "caption": "Figure 4. Success rate, average time, and average steps across the three backbones and four configurations. Success improves for the 32B and 38B models at roughly flat step counts, but average time rises substantially.",
+            "page": 7
+          }
+        ],
+        "tables": [
+          {
+            "path": "assets/webcoach-cross-session-memory/tables/table-01.png",
+            "caption": "Table 1. Success rate, average time, and average steps across all WebVoyager configurations, organized by memory type and coach model.",
+            "page": 7
+          },
+          {
+            "path": "assets/webcoach-cross-session-memory/tables/table-02.png",
+            "caption": "Table 2. Baseline per-subtask results without WebCoach across base models, with GPT-4o as the ceiling reference. SR = success rate, S/T = successful vs. total tasks.",
+            "page": 17
+          },
+          {
+            "path": "assets/webcoach-cross-session-memory/tables/table-03.png",
+            "caption": "Table 3. Per-subtask results with WebCoach using GPT-4o-seeded frozen EMS and GPT-4o as coach.",
+            "page": 18
+          },
+          {
+            "path": "assets/webcoach-cross-session-memory/tables/table-04.png",
+            "caption": "Table 4. Per-subtask results with WebCoach using GPT-4o-seeded frozen EMS and Qwen3-8B as coach.",
+            "page": 18
+          }
+        ]
+      },
+      "sourceUrl": ""
+    },
+    {
       "id": "2606.20785",
       "slug": "fara-1-5-computer-use-agents",
       "title": "Fara-1.5: Scalable Learning Environments for Computer Use Agents",
