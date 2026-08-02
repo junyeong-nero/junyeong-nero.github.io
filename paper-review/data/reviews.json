@@ -1,7 +1,120 @@
 {
   "version": 1,
-  "updatedAt": "2026-07-28",
+  "updatedAt": "2026-07-31",
   "reviews": [
+    {
+      "id": "2606.20785",
+      "slug": "fara-1-5-computer-use-agents",
+      "title": "Fara-1.5: Scalable Learning Environments for Computer Use Agents",
+      "authors": [
+        "Ahmed Awadallah",
+        "Sahil Gupta",
+        "Yash Lara",
+        "Yadong Lu",
+        "Hussein Mozannar",
+        "Akshay Nambi",
+        "Zach Nussbaum",
+        "Yash Pandya",
+        "Aravind Rajeswaran",
+        "Corby Rosset",
+        "Alexey Taymanov",
+        "Luiz do Valle",
+        "Vibhav Vineet",
+        "Spencer Whitehead",
+        "Andrew Zhao"
+      ],
+      "publishedAt": "2026-06-18",
+      "reviewedAt": "2026-07-31",
+      "summary": "Rebuilds the FaraGen data pipeline for computer use agents around three changes: sandboxed full-stack replica websites (FaraEnvs) that unlock authentication-gated and irreversible-action tasks, a single-policy GPT-5.4 solver replacing a multi-agent orchestrator (67% to 83% on Online-Mind2Web), and a three-way verifier stack filtering on correctness, efficiency, and critical-point adherence. The resulting SFT-only Fara1.5 family (Qwen3.5 4B/9B/27B, MIT weights) reaches 63.4% Online-Mind2Web at 9B and 72.3% at 27B, beating much larger proprietary systems.",
+      "tags": [
+        "computer-use",
+        "knowledge-distillation",
+        "llm-judges",
+        "synthetic-data",
+        "vision-language-model",
+        "web-agents"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2606.20785",
+      "pdfUrl": "https://arxiv.org/pdf/2606.20785.pdf",
+      "reviewPath": "reviews/fara-1-5-computer-use-agents.md",
+      "assets": {
+        "figures": [
+          {
+            "path": "assets/fara-1-5-computer-use-agents/figures/figure-01.png",
+            "caption": "Figure 1. Task success rate on Online-Mind2Web and WebVoyager for similarly sized CUA models. Fara1.5-9B reaches 63.4% and 86.6% respectively, a new state of the art for the 8-9B class on both.",
+            "page": 1
+          },
+          {
+            "path": "assets/fara-1-5-computer-use-agents/figures/figure-02.png",
+            "caption": "Figure 2. The FaraGen1.5 pipeline: environments (live web plus six sandboxed FaraEnvs), a GPT-5.4 solver cooperating with a user simulator, and three independent verifiers a trajectory must all pass before entering SFT.",
+            "page": 3
+          },
+          {
+            "path": "assets/fara-1-5-computer-use-agents/figures/figure-03.png",
+            "caption": "Figure 3. Sample FaraEnvs for the Calendar and ML Management environments, populated with realistic generated data.",
+            "page": 4
+          },
+          {
+            "path": "assets/fara-1-5-computer-use-agents/figures/figure-04.png",
+            "caption": "Figure 4. (Left) Trajectory steps collected per month, reaching 1.57M cumulative by May 2026. (Right) Final training mix: 60.0% web trajectories, 12.8% synthetic environments, 12.5% form filling and user interactions, 8.8% grounding, 4.9% VQA, 0.8% GUI drag, 0.1% instruction following and safety.",
+            "page": 8
+          },
+          {
+            "path": "assets/fara-1-5-computer-use-agents/figures/figure-05.png",
+            "caption": "Figure 5. One step of the observe-think-act loop. The model sees up to three recent screenshots plus conversation history (no DOM, no accessibility tree), reasons internally, and emits one atomic action.",
+            "page": 9
+          },
+          {
+            "path": "assets/fara-1-5-computer-use-agents/figures/figure-06.png",
+            "caption": "Figure 6. SFT input and loss mask. The model conditions on full conversation history but consumes screenshots only from the three most recent steps; loss applies to the thought and action tokens of those steps.",
+            "page": 11
+          },
+          {
+            "path": "assets/fara-1-5-computer-use-agents/figures/figure-07.png",
+            "caption": "Figure 7. (Left) Success rate versus model size, improving monotonically from 4B to 27B (+8.5 on WebVoyager, +15.0 on Online-Mind2Web). (Right) Fara1.5-27B against larger proprietary CUAs on Online-Mind2Web.",
+            "page": 14
+          },
+          {
+            "path": "assets/fara-1-5-computer-use-agents/figures/figure-08.png",
+            "caption": "Figure 8. (a) Mean steps per task by model size with 95% confidence intervals. (b) Success rate as a function of trajectory length, declining consistently as trajectories get longer.",
+            "page": 14
+          }
+        ],
+        "tables": [
+          {
+            "path": "assets/fara-1-5-computer-use-agents/tables/table-01.png",
+            "caption": "Table 1. The eight critical-point types, one per combination of permission granted, task fully specified, and PII provided, with the expected agent behavior for each.",
+            "page": 6
+          },
+          {
+            "path": "assets/fara-1-5-computer-use-agents/tables/table-02.png",
+            "caption": "Table 2. The Fara1.5 action space: pointer and keyboard actions, browser navigation, and three meta-actions (memorize fact, ask user, terminate).",
+            "page": 10
+          },
+          {
+            "path": "assets/fara-1-5-computer-use-agents/tables/table-03.png",
+            "caption": "Table 3. Task success rate (%) on WebVoyager, Online-Mind2Web, and WebTailBench v1.5. The GPT-5.4 solver row is an upper-bound reference for the SFT distillation.",
+            "page": 13
+          },
+          {
+            "path": "assets/fara-1-5-computer-use-agents/tables/table-04.png",
+            "caption": "Table 4. Held-out task success on the six FaraEnvs. Fara-7B, trained only on open-internet data, averages 18.8; Fara1.5-9B reaches 71.8 against the solver's 79.4.",
+            "page": 14
+          },
+          {
+            "path": "assets/fara-1-5-computer-use-agents/tables/table-05.png",
+            "caption": "Table 5. Synthetic-to-real transfer on four WebVoyager domains. Training on trajectories from sandboxed replicas lifts combined live-site success from 73.4 to 83.4.",
+            "page": 15
+          },
+          {
+            "path": "assets/fara-1-5-computer-use-agents/tables/table-06.png",
+            "caption": "Table 6. Grounding accuracy on ScreenSpot-v2, ScreenSpot-Pro (without zoom in parentheses), and OSWorld-G Refined.",
+            "page": 15
+          }
+        ]
+      },
+      "sourceUrl": ""
+    },
     {
       "id": "2606.03979",
       "slug": "language-models-need-sleep",
