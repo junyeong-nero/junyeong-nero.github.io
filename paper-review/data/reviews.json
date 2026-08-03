@@ -1,7 +1,85 @@
 {
   "version": 1,
-  "updatedAt": "2026-07-31",
+  "updatedAt": "2026-08-03",
   "reviews": [
+    {
+      "id": "2504.01495",
+      "slug": "autonomous-web-agents-good-testers",
+      "title": "Are Autonomous Web Agents Good Testers?",
+      "authors": [
+        "Antoine Chevrot",
+        "Alexandre Vernotte",
+        "Jean-Rémy Falleri",
+        "Xavier Blanc",
+        "Bruno Legeard"
+      ],
+      "publishedAt": "2025-04-02",
+      "reviewedAt": "2026-08-03",
+      "summary": "Two open-source Autonomous Test Agents built by adapting web agents to execute natural-language E2E test cases, plus the benchmark needed to score them: three frozen WebArena/VisualWebArena applications, 62 passing tests written by four ISTQB-certified professional testers, and 51 failing variants with the expected failure step annotated. PinATA (orchestrator + actor + assertor) reaches 0.71 accuracy, 0.88 sensitivity and 0.61 true accuracy on GPT-4o, about 50% better than the single-prompt SeeAct-ATA baseline, and backbone choice barely matters. Specificity never exceeds 0.57, so a healthy 62-test suite draws roughly 27 false failure alarms per run — which the abstract misreports as \"94% specificity\" when 0.94 is Sonnet's sensitivity. ISSTA 2025.",
+      "tags": [
+        "agent-evaluation",
+        "benchmark",
+        "llm-as-a-judge",
+        "software-engineering",
+        "ui-automation",
+        "web-agents",
+        "webarena"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2504.01495",
+      "pdfUrl": "https://arxiv.org/pdf/2504.01495.pdf",
+      "reviewPath": "reviews/autonomous-web-agents-good-testers.md",
+      "assets": {
+        "figures": [
+          {
+            "path": "assets/autonomous-web-agents-good-testers/figures/figure-01.png",
+            "caption": "Figure 1. A passing E2E test case (TC-4-P) for the Classifieds application in the two-column action/expected-result format used by the professional testers.",
+            "page": 3
+          },
+          {
+            "path": "assets/autonomous-web-agents-good-testers/figures/figure-02.png",
+            "caption": "Figure 2. The generic Autonomous Web Agent loop the ATAs are built on: apply action, observe, ask the LLM for the next action, iterate until the end.",
+            "page": 5
+          },
+          {
+            "path": "assets/autonomous-web-agents-good-testers/figures/figure-03.png",
+            "caption": "Figure 3. The failing variant (TC-4-F) derived from Figure 1, changes in bold red. Step 7 clicks a Cancel button the application does not implement.",
+            "page": 11
+          },
+          {
+            "path": "assets/autonomous-web-agents-good-testers/figures/figure-04.png",
+            "caption": "Figure 4. All 113 test cases across 3 backbones under PinATA. Light blue means the verdict aligned with the human tester at the same step; purple means it diverged.",
+            "page": 15
+          },
+          {
+            "path": "assets/autonomous-web-agents-good-testers/figures/figure-05.png",
+            "caption": "Figure 5. The Classifieds autocomplete that defeats the agent in test P3: \"Rochester\" must be typed incrementally to surface the correct suggestion.",
+            "page": 16
+          }
+        ],
+        "tables": [
+          {
+            "path": "assets/autonomous-web-agents-good-testers/tables/table-01.png",
+            "caption": "Table 1. Distribution of the 113 test cases across the three applications. The domain labels are swapped relative to the Section 4.2 descriptions.",
+            "page": 11
+          },
+          {
+            "path": "assets/autonomous-web-agents-good-testers/tables/table-02.png",
+            "caption": "Table 2. SeeAct-ATA vs PinATA on GPT-4o. PinATA wins on true accuracy, SMER and sensitivity, but not on specificity.",
+            "page": 14
+          },
+          {
+            "path": "assets/autonomous-web-agents-good-testers/tables/table-03.png",
+            "caption": "Table 3. The three proprietary backbones evaluated; parameter counts are the authors' estimates.",
+            "page": 14
+          },
+          {
+            "path": "assets/autonomous-web-agents-good-testers/tables/table-04.png",
+            "caption": "Table 4. PinATA across GPT-4o, Sonnet and Gemini. True accuracy is flat; Sonnet trades specificity for sensitivity.",
+            "page": 15
+          }
+        ]
+      }
+    },
     {
       "id": "2511.12997",
       "slug": "webcoach-cross-session-memory",
