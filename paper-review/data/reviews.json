@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-03",
+  "updatedAt": "2026-08-04",
   "reviews": [
     {
       "id": "2504.01495",
@@ -3573,6 +3573,80 @@
             "path": "assets/wasp-web-agent-security/tables/table-03.png",
             "caption": "Tables 3 and 4. Injection ablations.",
             "page": 9
+          }
+        ]
+      }
+    },
+    {
+      "id": "2607.01233",
+      "slug": "human-llm-research-idea-gap",
+      "title": "Measuring the Gap Between Human and LLM Research Ideas",
+      "authors": [
+        "Ziyu Chen",
+        "Yilun Zhao",
+        "Arman Cohan"
+      ],
+      "publishedAt": "2026-07-01",
+      "reviewedAt": "2026-08-04",
+      "summary": "A distributional rather than per-idea evaluation of LLM ideation: 11,683 published papers are reduced to motivation/method pairs, their inspiring prior works reverse-engineered, and nine LLMs asked to ideate from the same context. LLM ideas cluster on bridge-like opportunities (47-64% vs 12.1% human) and synthesis methods (22.5-38.7% vs 5.1%), with thinking mode, richer context, and larger models all making the gap worse.",
+      "tags": [
+        "distributional-evaluation",
+        "llm-as-a-judge",
+        "research-ideation",
+        "scientific-discovery",
+        "taxonomy"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2607.01233",
+      "pdfUrl": "https://arxiv.org/pdf/2607.01233.pdf",
+      "reviewPath": "reviews/human-llm-research-idea-gap.md",
+      "assets": {
+        "figures": [
+          {
+            "path": "assets/human-llm-research-idea-gap/figures/figure-01.png",
+            "caption": "Figure 1. Pipeline overview: a shared prior-work context feeds human and LLM ideation, each idea split into motivation and method, annotated, then compared as distributions.",
+            "page": 1
+          },
+          {
+            "path": "assets/human-llm-research-idea-gap/figures/figure-02.png",
+            "caption": "Figure 2. The two-axis research-taste taxonomy: seven opportunity patterns and seven method paradigms, derived from DARPA, NIH, NSF and AHRQ proposal guidance.",
+            "page": 3
+          },
+          {
+            "path": "assets/human-llm-research-idea-gap/figures/figure-03.png",
+            "caption": "Figure 3. Full label distributions. The Bridge band accounts for essentially the entire opportunity-axis TVD for all nine models.",
+            "page": 7
+          },
+          {
+            "path": "assets/human-llm-research-idea-gap/figures/figure-04.png",
+            "caption": "Figure 4. Mechanism analyses: operation concentration (integrate/unify vs replace/decouple), same-paper embedding geometry, and concept enrichment by log-odds.",
+            "page": 8
+          }
+        ],
+        "tables": [
+          {
+            "path": "assets/human-llm-research-idea-gap/tables/table-01.png",
+            "caption": "Table 1. Distributional distance between human and LLM ideas: TVD, JSD and normalized entropy on both taxonomy axes.",
+            "page": 5
+          },
+          {
+            "path": "assets/human-llm-research-idea-gap/tables/table-02.png",
+            "caption": "Table 3. Diagnostic scores from the automatic annotator. Claude-Sonnet-4.6 matches or beats the human baseline on all four columns.",
+            "page": 6
+          },
+          {
+            "path": "assets/human-llm-research-idea-gap/tables/table-03.png",
+            "caption": "Table 2. Full-paper context ablation on a 1,000-paper subset: richer context moves both models farther from the human distribution.",
+            "page": 6
+          },
+          {
+            "path": "assets/human-llm-research-idea-gap/tables/table-04.png",
+            "caption": "Table 4. Reasoning ablation. Thinking mode worsens every distributional metric while improving every diagnostic score.",
+            "page": 8
+          },
+          {
+            "path": "assets/human-llm-research-idea-gap/tables/table-05.png",
+            "caption": "Table 9. Domain-specific Bridge and Synthesis percentages for the ML and Nature Communications corpora.",
+            "page": 18
           }
         ]
       }
