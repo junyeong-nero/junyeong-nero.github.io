@@ -1,7 +1,53 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-28",
+  "updatedAt": "2026-09-01",
   "reviews": [
+    {
+      "id": "2608.26582",
+      "slug": "j-zero-challenger-solver-judge",
+      "title": "J-Zero: Unified Challenger--Solver--Judge Co-Evolution from Zero Data",
+      "authors": [
+        "Gyouk Chu",
+        "Myeongho Jeon",
+        "Eunho Yang"
+      ],
+      "publishedAt": "2026-08-27",
+      "reviewedAt": "2026-09-01",
+      "summary": "J-Zero co-evolves a task Challenger, answer Solver, and adaptive Judge from no external task or preference data, using role asymmetry and subtask amplification to sustain gains through ten iterations across verifiable and open-ended benchmarks.",
+      "tags": [
+        "challenger-solver",
+        "grpo",
+        "judge-model",
+        "reward-model",
+        "self-evolution",
+        "self-play",
+        "zero-data"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2608.26582",
+      "pdfUrl": "https://arxiv.org/pdf/2608.26582.pdf",
+      "reviewPath": "reviews/j-zero-challenger-solver-judge.md",
+      "assets": {
+        "figures": [
+          {
+            "path": "assets/j-zero-challenger-solver-judge/figures/figure-01.png",
+            "caption": "Figure 1. J-Zero jointly updates the Challenger, Solver, and Judge through iterative self-play.",
+            "page": 3
+          },
+          {
+            "path": "assets/j-zero-challenger-solver-judge/figures/figure-02.png",
+            "caption": "Figure 3. Average score per iteration on verifiable and unverifiable benchmarks.",
+            "page": 9
+          },
+          {
+            "path": "assets/j-zero-challenger-solver-judge/figures/figure-03.png",
+            "caption": "Figure 4. Judge performance on RM-Bench per iteration.",
+            "page": 15
+          }
+        ],
+        "tables": []
+      },
+      "sourceUrl": ""
+    },
     {
       "id": "2501.12948",
       "slug": "deepseek-r1-reinforcement-learning",
