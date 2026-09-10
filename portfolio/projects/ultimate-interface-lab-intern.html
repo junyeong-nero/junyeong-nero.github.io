@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ultimate Interface Lab Intern | Junyeong Song</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="projects.css">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+</head>
+
+<body>
+    <a href="../index.html" class="back-btn">← Back to Portfolio</a>
+
+    <main class="container project-detail">
+        <div class="project-header">
+            <span class="project-icon-large"><i data-lucide="search"></i></span>
+            <div class="project-meta">
+                <h1>Ultimate Interface Lab Intern [UNIST]</h1>
+                <span class="project-date">2026.03 - 2026.07</span>
+            </div>
+        </div>
+
+        <section class="project-section">
+            <h2> Overview</h2>
+            <p>Worked as a research intern at the Ultimate Interface Lab, UNIST, advised by Prof. Seongkook Heo. Carried out my graduation research on BrowserLens, an interactive workspace for diagnosing web-agent trajectories, submitted to the UIST 2026 Posters track as joint work with Mingyu Kim and Seongkook Heo.</p>
+        </section>
+
+        <section class="project-section">
+            <h2> Technologies</h2>
+            <div class="tech-tags">
+                <span class="tech-tag">Human-Computer Interaction</span>
+                <span class="tech-tag">Web Agents</span>
+                <span class="tech-tag">Interactive Visualization</span>
+                <span class="tech-tag">Graph Representation</span>
+                <span class="tech-tag">DOM &amp; ARIA Snapshots</span>
+                <span class="tech-tag">Trajectory Logging</span>
+            </div>
+        </section>
+
+        <section class="project-section">
+            <h2> Key Achievements</h2>
+            <ul class="feature-list">
+                <li>Designed a layered state-action graph that reorganizes a recorded run around browser-state identity across three layers: normalized URL, viewport, and state-anchored action</li>
+                <li>Built a review workspace where selecting a node retrieves the screenshots, DOM and ARIA snapshots, tool logs, and model context recorded at that state, so the graph indexes the original evidence instead of replacing it</li>
+                <li>Implemented four visual cues — repeated node, loop edge, no-op action, and hidden-cue badge — supporting a cue → tentative failure point → evidence review flow, with no-op detection requiring unchanged normalized DOM and ARIA plus at most a 1% screenshot difference</li>
+                <li>Demonstrated the workspace on a recorded Y Combinator directory run that ended with <code>exceeded max steps</code> after 98 tool calls, where the URL layer surfaced a 35-visit company page and a circuit between company pages</li>
+                <li>Wrote the poster paper <em>BrowserLens: Interactive Diagnosis of Web-Agent Trajectories with a Layered State–Action Graph</em> and scoped the follow-up study comparing a linear step viewer, a viewer with linked evidence, and the full workspace</li>
+            </ul>
+        </section>
+
+        <section class="project-section">
+            <h2> Links</h2>
+            <div class="project-links">
+                <a href="https://doi.org/10.1145/3830397.3841876" target="_blank" rel="noopener" class="project-link">
+                    Paper
+                </a>
+                <a href="/research-blog/post.html?slug=browserlens-uist-2026" class="project-link">
+                    Research Write-up
+                </a>
+                <a href="https://ultimateinterface.com" target="_blank" rel="noopener" class="project-link">
+                    Ultimate Interface Lab
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+    <script>if (window.lucide) lucide.createIcons();</script>
+</body>
+
+</html>
