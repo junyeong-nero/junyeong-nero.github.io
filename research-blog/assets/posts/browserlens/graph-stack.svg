@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="1000" viewBox="0 0 900 1000" role="img" aria-labelledby="title desc">
+<title id="title">BrowserLens: three graph layers, one recorded run</title>
+<desc id="desc">An illustrative shopping run. The URL graph connects search to item A and then item B, with a return from item A to search. Expanding search shows top and lower viewports connected by scrolling. Expanding the top viewport shows opening a filter followed by selecting a size. Solid arrows denote recorded transitions, while dashed vertical connectors denote drill-down. Original screenshots and logs remain separate evidence.</desc>
+<defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8Z" fill="#52525b"/></marker></defs>
+<rect width="900" height="1000" rx="18" fill="#f8f7f3"/>
+<g font-family="Arial, Helvetica, sans-serif" fill="#212121">
+<text x="40" y="53" font-size="16" letter-spacing="2" fill="#686875">BROWSERLENS / REPRESENTATION</text>
+<text x="40" y="99" font-size="32" font-weight="700">Three scales of the same run</text>
+<text x="40" y="132" font-size="19" fill="#52525b">Illustrative example · solid arrows show recorded transitions</text>
+<rect x="30" y="162" width="840" height="210" rx="14" fill="#fff" stroke="#d4d1c9"/>
+<text x="55" y="198" font-size="21" font-weight="700">01 / URL graph</text>
+<text x="55" y="228" font-size="19" fill="#52525b">Which pages did it revisit?</text>
+<g fill="none" stroke="#52525b" stroke-width="2.5" marker-end="url(#arrow)"><path d="M253 281 Q354 242 450 281"/><path d="M451 310 Q354 354 257 310"/><path d="M611 292 L684 292"/></g>
+<rect x="70" y="258" width="182" height="71" rx="12" fill="#fff1ec" stroke="#b9472b" stroke-width="3"/>
+<rect x="455" y="263" width="155" height="61" rx="12" fill="#f1efe9" stroke="#93939f"/>
+<rect x="690" y="263" width="150" height="61" rx="12" fill="#f1efe9" stroke="#93939f"/>
+<g font-size="22" text-anchor="middle"><text x="161" y="302">Search</text><text x="532" y="301">Item A</text><text x="765" y="301">Item B</text></g>
+<path d="M161 332 L161 411" stroke="#b9472b" stroke-width="2.5" stroke-dasharray="6 5"/>
+<text x="180" y="397" font-size="18" fill="#99391f">Expand Search</text>
+<rect x="30" y="420" width="840" height="185" rx="14" fill="#fff" stroke="#d4d1c9"/>
+<text x="55" y="456" font-size="21" font-weight="700">02 / Viewport graph · inside Search</text>
+<text x="55" y="486" font-size="19" fill="#52525b">Which visible regions did it move between?</text>
+<g fill="none" stroke="#52525b" stroke-width="2.5" marker-end="url(#arrow)"><path d="M318 536 L568 536"/><path d="M570 566 L322 566"/></g>
+<text x="444" y="524" font-size="17" text-anchor="middle" fill="#52525b">scroll</text>
+<rect x="70" y="514" width="246" height="67" rx="12" fill="#eef4ff" stroke="#3267b1" stroke-width="3"/>
+<rect x="574" y="514" width="246" height="67" rx="12" fill="#f1efe9" stroke="#93939f"/>
+<g font-size="22" text-anchor="middle"><text x="193" y="555">Top / filter controls</text><text x="697" y="555">Lower / results</text></g>
+<path d="M193 584 L193 645" stroke="#3267b1" stroke-width="2.5" stroke-dasharray="6 5"/>
+<text x="212" y="632" font-size="18" fill="#26518c">Expand top viewport</text>
+<rect x="30" y="655" width="840" height="179" rx="14" fill="#fff" stroke="#d4d1c9"/>
+<text x="55" y="691" font-size="21" font-weight="700">03 / Action graph · inside the top viewport</text>
+<text x="55" y="721" font-size="19" fill="#52525b">What did it do in this browser context?</text>
+<path d="M316 778 L570 778" fill="none" stroke="#52525b" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="70" y="747" width="246" height="62" rx="12" fill="#f3efff" stroke="#776298"/>
+<rect x="574" y="747" width="246" height="62" rx="12" fill="#f3efff" stroke="#776298"/>
+<g font-size="22" text-anchor="middle"><text x="193" y="786">Open filter</text><text x="697" y="786">Select size</text></g>
+<rect x="30" y="860" width="840" height="112" rx="14" fill="#212121"/>
+<text x="55" y="897" font-size="21" font-weight="700" fill="#fff">Select a node → inspect the original evidence</text>
+<text x="55" y="929" font-size="19" fill="#eee">Screenshots · DOM / ARIA · tool log · model context · replay</text>
+<text x="55" y="955" font-size="17" fill="#ccc">The graph is an index. Identity does not guarantee semantic equivalence.</text>
+</g>
+</svg>

@@ -1,6 +1,12 @@
 {
   "posts": [
     {
+      "slug": "browserlens-uist-2026",
+      "title": "BrowserLens: finding where a browser agent stopped making progress",
+      "date": "2026-09-11",
+      "summary": "Accepted as a UIST 2026 poster. Why complete logs can still hide navigation loops and ineffective actions, how BrowserLens reorganizes a run around browser state, and what the prototype has yet to establish."
+    },
+    {
       "slug": "progressive-disclosure-token-efficiency",
       "title": "Show the model less: three wrong measurements and the one version that worked",
       "date": "2026-07-23",
@@ -13,5 +19,5 @@
       "summary": "Starting a research blog to document experiments, paper reimplementations, and engineering insights."
     }
   ],
-  "updatedAt": "2026-07-23"
+  "updatedAt": "2026-09-11"
 }
