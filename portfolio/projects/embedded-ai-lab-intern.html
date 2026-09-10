@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -12,8 +12,7 @@
 </head>
 
 <body>
-    <a href="../index.html" class="back-btn" data-i18n="nav.back">← Back to Portfolio</a>
-    <button type="button" class="lang-toggle" id="langToggle" aria-label="Toggle language">한</button>
+    <a href="../index.html" class="back-btn">← Back to Portfolio</a>
 
     <main class="container project-detail">
         <div class="project-header">
@@ -25,13 +24,12 @@
         </div>
 
         <section class="project-section">
-            <h2 data-i18n="proj.simple.overview"> Overview</h2>
-            <p data-i18n="embedded.overview">Research intern at UNIST Embedded AI Lab, where I reviewed DDPM papers,
-                built a toy diffusion project on MNIST, and explored sampling optimization directions.</p>
+            <h2> Overview</h2>
+            <p>Worked as a research intern at UNIST Embedded AI Lab, reviewing DDPM papers, training a toy diffusion model on MNIST, and exploring sampling optimization directions.</p>
         </section>
 
         <section class="project-section">
-            <h2 data-i18n="proj.tech"> Technologies</h2>
+            <h2> Technologies</h2>
             <div class="tech-tags">
                 <span class="tech-tag">Python</span>
                 <span class="tech-tag">PyTorch</span>
@@ -43,24 +41,18 @@
         </section>
 
         <section class="project-section">
-            <h2 data-i18n="proj.simple.achievements"> Key Projects & Activities</h2>
+            <h2> Key Achievements</h2>
             <ul class="feature-list">
-                <li data-i18n="embedded.contrib1"><strong>DDPM Paper Review</strong> - Reviewed the Diffusion Model
-                    (DDPM) paper and organized key implementation ideas</li>
-                <li data-i18n="embedded.contrib2"><strong>MNIST Toy Training</strong> - Trained a diffusion model on
-                    the MNIST dataset as a hands-on toy project</li>
-                <li data-i18n="embedded.contrib3"><strong>DDIM + CFG Extension</strong> - Applied DDIM sampling and
-                    classifier-free guidance to generate target digit images from user input</li>
-                <li data-i18n="embedded.contrib4"><strong>Timestep Optimization Study</strong> - Explored timestep
-                    sampling optimization research; no significant gains, but strong first image-generation project
-                    experience</li>
+                <li>Reviewed the DDPM (Denoising Diffusion Probabilistic Models) paper and organized key ideas from an implementation perspective</li>
+                <li>Ran a hands-on toy project training a diffusion model on the MNIST dataset</li>
+                <li>Extended the project with DDIM sampling and classifier-free guidance (CFG) to generate digit images conditioned on input numbers</li>
+                <li>Investigated timestep sampling optimization studies; no significant gains were observed, but it became a valuable first image-generation model project experience</li>
             </ul>
         </section>
     </main>
 
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
     <script>if (window.lucide) lucide.createIcons();</script>
-    <script src="../lang.js"></script>
 </body>
 
 </html>

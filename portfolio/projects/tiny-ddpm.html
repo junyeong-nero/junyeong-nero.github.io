@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -12,8 +12,7 @@
 </head>
 
 <body>
-    <a href="../index.html" class="back-btn" data-i18n="nav.back">← Back to Portfolio</a>
-    <button type="button" class="lang-toggle" id="langToggle" aria-label="Toggle language">한</button>
+    <a href="../index.html" class="back-btn">← Back to Portfolio</a>
 
     <main class="container project-detail">
         <div class="project-header">
@@ -25,71 +24,54 @@
         </div>
 
         <section class="project-section">
-            <h2 data-i18n="proj.overview"> Project Overview</h2>
-            <p data-i18n="ddpm.overview">A from-scratch implementation of Denoising Diffusion Probabilistic Models
-                (DDPM) designed for
-                deep understanding of diffusion model mathematics and architecture.</p>
+            <h2> Project Overview</h2>
+            <p>Implemented DDPM from scratch to validate diffusion fundamentals at code level and optimize MNIST generation quality with quantitative metrics.</p>
         </section>
 
         <section class="project-section">
-            <h2 data-i18n="proj.problem"> Problem Definition & Goals</h2>
+            <h2> Problem Definition & Goals</h2>
             <ul class="feature-list">
-                <li data-i18n="ddpm.problem"><strong>Problem:</strong> Many diffusion model implementations are either
-                    too complex or too simplified.</li>
-                <li data-i18n="ddpm.goal1"><strong>Goal 1:</strong> Implement DDPM from scratch following the original
-                    paper.</li>
-                <li data-i18n="ddpm.goal2"><strong>Goal 2:</strong> Extend to advanced techniques including DDIM and
-                    Classifier-Free Guidance.</li>
-                <li data-i18n="ddpm.goal3"><strong>Goal 3:</strong> Create maintainable, testable code for diffusion
-                    model research.</li>
+                <li><strong>Problem:</strong> Understanding diffusion models deeply requires direct implementation of paper equations instead of relying on black-box libraries.</li>
+                <li><strong>Goal 1:</strong> Translate Ho et al. (2020) equations into working code with faithful forward/reverse diffusion behavior.</li>
+                <li><strong>Goal 2:</strong> Add DDIM and classifier-free guidance to improve both sampling speed and fidelity.</li>
+                <li><strong>Goal 3:</strong> Build a reproducible quantitative evaluation loop with FID and IS.</li>
             </ul>
         </section>
 
         <section class="project-section">
-            <h2 data-i18n="proj.features"> Key Features & Contributions</h2>
+            <h2> Key Features & Contributions</h2>
             <ul class="feature-list">
-                <li data-i18n="ddpm.feat1"><strong>Multiple Model Architectures:</strong> Implemented both UNet and
-                    Diffusion Transformer (DiT).</li>
-                <li data-i18n="ddpm.feat2"><strong>Config-Based Management:</strong> All hyperparameters managed via
-                    YAML config files.</li>
-                <li data-i18n="ddpm.feat3"><strong>Advanced Sampling:</strong> DDIM for 10-50x faster sampling plus CFG.
+                <li><strong>Noise Scheduling:</strong> Implemented linear/cosine schedulers and full forward-reverse diffusion routines.</li>
+                <li><strong>Custom U-Net:</strong> Designed residual down/up blocks with attention-based conditioning for stable training.</li>
+                <li><strong>Advanced Sampling:</strong> Added DDIM and CFG for faster and controllable conditional generation.
                 </li>
-                <li data-i18n="ddpm.feat4"><strong>Apple Silicon Support:</strong> Automatic MPS detection for GPU
-                    acceleration.</li>
-                <li data-i18n="ddpm.feat5"><strong>Comprehensive Testing:</strong> Unit tests via pytest.</li>
+                <li><strong>Metric-driven Validation:</strong> Evaluated model behavior with FID/IS across guidance scales.</li>
+                <li><strong>Best Score:</strong> Achieved FID 0.2514 at CFG scale w=0.1.</li>
             </ul>
         </section>
 
         <section class="project-section">
-            <h2 data-i18n="proj.challenges"> Technical Challenges & Solutions</h2>
+            <h2> Technical Challenges & Solutions</h2>
             <ul class="feature-list">
-                <li data-i18n="ddpm.chal1"><strong>Variance Scheduling:</strong> Understanding beta schedules and
-                    generation quality.</li>
-                <li data-i18n="ddpm.chal2"><strong>Timestep Embedding:</strong> Proper sinusoidal embedding
-                    implementation.</li>
-                <li data-i18n="ddpm.chal3"><strong>Memory Efficiency:</strong> Long diffusion chains caused memory
-                    issues.</li>
-                <li data-i18n="ddpm.chal4"><strong>DiT Integration:</strong> Adapting transformer architecture for image
-                    generation.</li>
+                <li><strong>Signal Interference:</strong> Simple addition of time and class embeddings caused mode collapse for some digits.</li>
+                <li><strong>Root Cause:</strong> Heterogeneous conditioning signals interfered when injected through the same feature path.</li>
+                <li><strong>Fix:</strong> Separated conditioning routes and inserted cross-attention at the U-Net bottleneck.</li>
+                <li><strong>Outcome:</strong> Restored stable class-conditional generation for digits 0-9.</li>
             </ul>
         </section>
 
         <section class="project-section">
-            <h2 data-i18n="proj.results"> Results & Learnings</h2>
+            <h2> Results & Learnings</h2>
             <ul class="feature-list">
-                <li data-i18n="ddpm.result1"><strong>Successful Generation:</strong> Trained models generate diverse,
-                    high-quality MNIST digits.</li>
-                <li data-i18n="ddpm.result2"><strong>Sampling Speed:</strong> DDIM achieves comparable quality with 10x
-                    fewer steps.</li>
-                <li data-i18n="ddpm.result3"><strong>Educational Value:</strong> Comprehensive learning resource with
-                    detailed comments.</li>
-                <li data-i18n="ddpm.result4"><strong>Key Learning:</strong> Deep understanding of score-based generative
-                    models.</li>
+                <li><strong>Result:</strong> Completed an end-to-end DDPM/DDIM/CFG generation pipeline.</li>
+                <li><strong>Result:</strong> Verified quality gains with FID 0.2514 and guidance-scale ablations.</li>
+                <li><strong>Growth:</strong> Improved architecture-engineering skill beyond baseline reimplementation.</li>
+                <li><strong>Learning:</strong> Established disciplined experiment tracking and configuration management practices.</li>
             </ul>
         </section>
 
         <section class="project-section">
-            <h2 data-i18n="proj.tech"> Technologies</h2>
+            <h2> Technologies</h2>
             <div class="tech-tags">
                 <span class="tech-tag">Python</span>
                 <span class="tech-tag">PyTorch</span>
@@ -102,7 +84,7 @@
         </section>
 
         <section class="project-section">
-            <h2 data-i18n="proj.links"> Links</h2>
+            <h2> Links</h2>
             <div class="project-links">
                 <a href="https://github.com/junyeong-nero/tiny-DDPM" target="_blank" class="project-link">
                      GitHub Repository
@@ -113,7 +95,6 @@
 
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
     <script>if (window.lucide) lucide.createIcons();</script>
-    <script src="../lang.js"></script>
 </body>
 
 </html>

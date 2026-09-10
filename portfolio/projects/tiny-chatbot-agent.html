@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -12,8 +12,7 @@
 </head>
 
 <body>
-    <a href="../index.html" class="back-btn" data-i18n="nav.back">← Back to Portfolio</a>
-    <button type="button" class="lang-toggle" id="langToggle" aria-label="Toggle language">한</button>
+    <a href="../index.html" class="back-btn">← Back to Portfolio</a>
 
     <main class="container project-detail">
         <div class="project-header">
@@ -25,71 +24,56 @@
         </div>
 
         <section class="project-section">
-            <h2 data-i18n="proj.overview"> Project Overview</h2>
-            <p data-i18n="chatbot.overview">A sophisticated enterprise-grade RAG chatbot system featuring dual-stage
-                retrieval, hybrid search, and hallucination verification.</p>
+            <h2> Project Overview</h2>
+            <p>Built a finance-domain RAG agent on top of FAQ and ToS data, using a dual-stage retrieval design to balance response speed and legal-text accuracy.</p>
         </section>
 
         <section class="project-section">
-            <h2 data-i18n="proj.problem"> Problem Definition & Goals</h2>
+            <h2> Problem Definition & Goals</h2>
             <ul class="feature-list">
-                <li data-i18n="chatbot.problem"><strong>Problem:</strong> Enterprise chatbots suffer from hallucinations
-                    and data privacy concerns.</li>
-                <li data-i18n="chatbot.goal1"><strong>Goal 1:</strong> Build a fully local RAG system for
-                    company-specific QnA.</li>
-                <li data-i18n="chatbot.goal2"><strong>Goal 2:</strong> Implement dual-stage retrieval prioritizing
-                    curated answers.</li>
-                <li data-i18n="chatbot.goal3"><strong>Goal 3:</strong> Add hallucination verification for grounded
-                    answers.</li>
+                <li><strong>Problem:</strong> Semantic gaps between user wording and policy terminology, clause ambiguity, and hallucinated answers reduced trust in financial QA bots.</li>
+                <li><strong>Goal 1:</strong> Implement a dual-stage flow that searches FAQ first and escalates to full ToS retrieval when needed.</li>
+                <li><strong>Goal 2:</strong> Improve clause-level retrieval precision with hybrid search and cross-encoder reranking.</li>
+                <li><strong>Goal 3:</strong> Add hallucination verification and automated quality evaluation.</li>
             </ul>
         </section>
 
         <section class="project-section">
-            <h2 data-i18n="proj.features"> Key Features & Contributions</h2>
+            <h2> Key Features & Contributions</h2>
             <ul class="feature-list">
-                <li data-i18n="chatbot.feat1"><strong>Dual-Stage RAG:</strong> First QnA database, then ToS document
-                    search.</li>
-                <li data-i18n="chatbot.feat2"><strong>Hybrid Search:</strong> Vector search, rule-based matching, and
-                    knowledge graph.</li>
-                <li data-i18n="chatbot.feat3"><strong>Advanced Ranking:</strong> Bi-Encoder for fast retrieval,
-                    Cross-Encoder for re-ranking.</li>
-                <li data-i18n="chatbot.feat4"><strong>Hallucination Verification:</strong> LLM-based verification step.
+                <li><strong>Dual-Stage RAG:</strong> Stage 1 fast FAQ matching, Stage 2 deep policy retrieval for complex cases.</li>
+                <li><strong>Hybrid Search + Reranking:</strong> Weighted dense/sparse/metadata search with cross-encoder re-scoring.</li>
+                <li><strong>Hallucination Verifier:</strong> Added self-check logic to ensure generated answers are grounded in retrieved evidence.</li>
+                <li><strong>LLM Judge Pipeline:</strong> Automated scoring for accuracy, faithfulness, and completeness, including adversarial test cases.
                 </li>
-                <li data-i18n="chatbot.feat5"><strong>MCP Server:</strong> Claude Desktop compatibility.</li>
-                <li data-i18n="chatbot.feat6"><strong>Local LLM Ready:</strong> Works with vLLM and Ollama.</li>
+                <li><strong>MCP Extensibility:</strong> Added Model Context Protocol integration for tool-calling agent workflows.</li>
+                <li><strong>Local Inference Ready:</strong> Deployed with vLLM/Ollama for security-friendly operation without external data transfer.</li>
             </ul>
         </section>
 
         <section class="project-section">
-            <h2 data-i18n="proj.challenges"> Technical Challenges & Solutions</h2>
+            <h2> Technical Challenges & Solutions</h2>
             <ul class="feature-list">
-                <li data-i18n="chatbot.chal1"><strong>Retrieval Quality:</strong> Implemented hybrid approach combining
-                    multiple methods.</li>
-                <li data-i18n="chatbot.chal2"><strong>Hallucination Detection:</strong> Added verification agent
-                    cross-referencing sources.</li>
-                <li data-i18n="chatbot.chal3"><strong>Unknown Answer Handling:</strong> Implemented confidence scoring
-                    and "I don't know" responses.</li>
-                <li data-i18n="chatbot.chal4"><strong>Latency Optimization:</strong> Caching, parallel retrieval, and
-                    early termination.</li>
+                <li><strong>Term Mismatch:</strong> User terms and legal terms often differed, causing retrieval misses.</li>
+                <li><strong>Context Confusion:</strong> Similar clauses such as normal cancellation vs forced cancellation were misranked.</li>
+                <li><strong>Fix:</strong> Introduced weighted hybrid retrieval and cross-encoder reranking to improve semantic precision.</li>
+                <li><strong>Outcome:</strong> Improved Top-5 recall by about 20% over pure vector search and raised final answer quality.</li>
             </ul>
         </section>
 
         <section class="project-section">
-            <h2 data-i18n="proj.results"> Results & Learnings</h2>
+            <h2> Results & Learnings</h2>
             <ul class="feature-list">
-                <li data-i18n="chatbot.result1"><strong>Improved Accuracy:</strong> Dual-stage retrieval significantly
-                    improved relevance.</li>
-                <li data-i18n="chatbot.result2"><strong>Reduced Hallucinations:</strong> Verification catches ~85% of
-                    hallucinated responses.</li>
-                <li data-i18n="chatbot.result3"><strong>Security Compliance:</strong> Fully local deployment meets
-                    enterprise requirements.</li>
-                <li data-i18n="chatbot.result4"><strong>Key Learning:</strong> Deep expertise in production RAG systems.
+                <li><strong>Result:</strong> Completed a full retrieve-verify-evaluate engineering loop beyond basic retrieve-generate design.</li>
+                <li><strong>Result:</strong> Achieved around +20% Top-5 recall improvement with stronger response reliability.</li>
+                <li><strong>Result:</strong> Secured long-term extensibility via MCP-based agent orchestration.</li>
+                <li><strong>Learning:</strong> Established a data-centric workflow driven by evaluation sets and automated metrics.
                 </li>
             </ul>
         </section>
 
         <section class="project-section">
-            <h2 data-i18n="proj.tech"> Technologies</h2>
+            <h2> Technologies</h2>
             <div class="tech-tags">
                 <span class="tech-tag">Python</span>
                 <span class="tech-tag">Streamlit</span>
@@ -102,7 +86,7 @@
         </section>
 
         <section class="project-section">
-            <h2 data-i18n="proj.links"> Links</h2>
+            <h2> Links</h2>
             <div class="project-links">
                 <a href="https://github.com/junyeong-nero/tiny-chatbot-agent" target="_blank" class="project-link">
                      GitHub Repository
@@ -113,7 +97,6 @@
 
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
     <script>if (window.lucide) lucide.createIcons();</script>
-    <script src="../lang.js"></script>
 </body>
 
 </html>
