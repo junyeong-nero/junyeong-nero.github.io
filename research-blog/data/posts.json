@@ -9,9 +9,9 @@
     },
     {
       "slug": "progressive-disclosure-token-efficiency",
-      "title": "Show the model less: three wrong measurements and the one version that worked",
+      "title": "Reducing browser-agent token use: progressive disclosure and context design",
       "date": "2026-07-23",
-      "summary": "Progressive disclosure was supposed to make a browser agent cheaper. Each time I fixed how I measured success a conclusion reversed, and the method itself ended up earning nothing. Then the same idea applied one level down — dropping a link attribute the agent never reads — cut tokens 22% with the only confidence interval in the project that excludes zero."
+      "summary": "An empirical study of observation reduction in a browser agent. Across 20 paired tasks, adaptive element disclosure showed no measurable benefit, while pruning per-link URL attributes reduced token use by approximately 22%. Context audits and revised success evaluation explain how the interpretation changed."
     },
     {
       "slug": "welcome",

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" width="720" height="400" role="img" font-family="'Space Mono', ui-monospace, Menlo, Monaco, monospace">
   <title>The same 20 runs, scored by three successive measures of success</title>
-  <desc>Scoring whether the run finished gives 15 of 20. Scoring whether the agent declared failure gives 11. Scoring with an LLM judge gives 7. The same trajectories, three rulers.</desc>
+  <desc>Scoring whether the run finished gives 15 of 20. Scoring whether the agent declared failure gives 11. Scoring with an LLM judge gives 7. Identical trajectories evaluated with three success measures.</desc>
   <rect x="0" y="0" width="720" height="400" fill="#f8f7f3"/>
 
   <g font-size="11" fill="#5d584f">
@@ -62,6 +62,6 @@
   </defs>
   <text x="453" y="270" font-size="11" fill="#2c2925" text-anchor="middle" font-weight="700">the same runs, 8 fewer successes</text>
 
-  <text x="70" y="370" font-size="10.5" fill="#93939f">Nothing about the agent changed between these rows. Only what I counted as success.</text>
-  <text x="70" y="386" font-size="10.5" fill="#93939f">gpt-5.4-mini, 20 paired tasks. Both earlier versions of this post took their headlines from the top row.</text>
+  <text x="70" y="370" font-size="10.5" fill="#93939f">Each row evaluates the same trajectories using a different success measure.</text>
+  <text x="70" y="386" font-size="10.5" fill="#93939f">gpt-5.4-mini, 20 paired tasks. Reported completion, final-answer rule, and WebJudge.</text>
 </svg>
