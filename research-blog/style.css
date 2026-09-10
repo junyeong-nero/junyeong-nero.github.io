@@ -68,7 +68,7 @@ button, input, select { font: inherit; }
   top: 0;
   z-index: 10;
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   padding: 16px 24px;
   background: rgba(248, 247, 243, 0.86);
   backdrop-filter: blur(16px);
@@ -77,7 +77,43 @@ button, input, select { font: inherit; }
 
 .header-nav {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 8px;
+}
+
+.nav-item {
+  display: inline-flex;
+  align-items: center;
+  height: 36px;
+  padding: 0 16px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition: background var(--dur-base) var(--ease), color var(--dur-base) var(--ease),
+              border-color var(--dur-base) var(--ease);
+}
+
+.nav-item.active {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--fg-inverse);
+  pointer-events: none;
+}
+
+a.nav-item {
+  background: var(--bg-primary);
+  color: var(--fg-secondary);
+  border-color: var(--line-strong);
+}
+
+a.nav-item:hover {
+  border-color: var(--ink);
+  color: var(--fg-primary);
 }
 
 .back-link {
@@ -443,4 +479,18 @@ button, input, select { font: inherit; }
 
   .intro h1 { font-size: 2.2rem; }
   .post-header h1 { font-size: 1.9rem; }
+}
+
+/* Keep the section nav on one row on phones */
+@media (max-width: 520px) {
+  .site-header { padding: 12px 12px; }
+
+  .header-nav { gap: 6px; }
+
+  .nav-item {
+    height: 32px;
+    padding: 0 11px;
+    font-size: 11px;
+    letter-spacing: 0.03em;
+  }
 }
