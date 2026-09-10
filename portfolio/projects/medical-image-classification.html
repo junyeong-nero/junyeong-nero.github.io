@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -12,8 +12,7 @@
 </head>
 
 <body>
-    <a href="../index.html" class="back-btn" data-i18n="nav.back">← Back to Portfolio</a>
-    <button type="button" class="lang-toggle" id="langToggle" aria-label="Toggle language">한</button>
+    <a href="../index.html" class="back-btn">← Back to Portfolio</a>
 
     <main class="container project-detail">
         <div class="project-header">
@@ -25,69 +24,58 @@
         </div>
 
         <section class="project-section">
-            <h2 data-i18n="proj.overview"> Project Overview</h2>
-            <p data-i18n="medimg.overview">Deep learning-based medical image classification project exploring custom CNN
+            <h2> Project Overview</h2>
+            <p>Deep learning-based medical image classification project exploring custom CNN
                 architectures and Vision Transformer (ViT).</p>
         </section>
 
         <section class="project-section">
-            <h2 data-i18n="proj.problem"> Problem Definition & Goals</h2>
+            <h2> Problem Definition & Goals</h2>
             <ul class="feature-list">
-                <li data-i18n="medimg.problem"><strong>Problem:</strong> Medical image classification faces challenges
-                    like limited labeled data and class imbalance.</li>
-                <li data-i18n="medimg.goal1"><strong>Goal 1:</strong> Compare CNN and ViT architectures for medical
+                <li><strong>Problem:</strong> Medical image classification faces unique challenges like limited labeled data and class imbalance.</li>
+                <li><strong>Goal 1:</strong> Compare CNN and ViT architectures for medical
                     image classification.</li>
-                <li data-i18n="medimg.goal2"><strong>Goal 2:</strong> Develop effective data augmentation strategies.
+                <li><strong>Goal 2:</strong> Develop effective data augmentation strategies for limited labeled medical data.
                 </li>
-                <li data-i18n="medimg.goal3"><strong>Goal 3:</strong> Address class imbalance problems common in medical
+                <li><strong>Goal 3:</strong> Address class imbalance problems common in medical
                     datasets.</li>
             </ul>
         </section>
 
         <section class="project-section">
-            <h2 data-i18n="proj.features"> Key Features & Contributions</h2>
+            <h2> Key Features & Contributions</h2>
             <ul class="feature-list">
-                <li data-i18n="medimg.feat1"><strong>CNN Architecture:</strong> Designed and implemented custom CNN
-                    optimized for medical images.</li>
-                <li data-i18n="medimg.feat2"><strong>ViT Exploration:</strong> Applied Vision Transformer and compared
-                    with CNN performance.</li>
-                <li data-i18n="medimg.feat3"><strong>Data Augmentation:</strong> Implemented augmentation techniques
+                <li><strong>CNN Architecture:</strong> Designed and implemented custom Convolutional Neural Network optimized for medical images.</li>
+                <li><strong>ViT Exploration:</strong> Applied Vision Transformer architecture and compared performance with CNN.</li>
+                <li><strong>Data Augmentation:</strong> Implemented augmentation techniques
                     suitable for medical images.</li>
-                <li data-i18n="medimg.feat4"><strong>Imbalance Handling:</strong> Applied weighted loss functions and
+                <li><strong>Imbalance Handling:</strong> Applied weighted loss functions and
                     oversampling techniques.</li>
             </ul>
         </section>
 
         <section class="project-section">
-            <h2 data-i18n="proj.challenges"> Technical Challenges & Solutions</h2>
+            <h2> Technical Challenges & Solutions</h2>
             <ul class="feature-list">
-                <li data-i18n="medimg.chal1"><strong>Data Scarcity:</strong> Limited labeled medical images.
-                    Supplemented with augmentation and transfer learning.</li>
-                <li data-i18n="medimg.chal2"><strong>Class Imbalance:</strong> Some disease classes were rare. Solved
-                    with weighted loss and oversampling.</li>
-                <li data-i18n="medimg.chal3"><strong>Model Interpretability:</strong> Medical diagnosis needs
-                    explanation. Analyzed attention regions with GradCAM.</li>
-                <li data-i18n="medimg.chal4"><strong>Generalization:</strong> Performance drops on different domains.
-                    Applied diverse data sources and regularization.</li>
+                <li><strong>Data Scarcity:</strong> Limited labeled medical images. Supplemented with data augmentation and transfer learning.</li>
+                <li><strong>Class Imbalance:</strong> Some disease classes were rare. Solved with weighted loss and oversampling techniques.</li>
+                <li><strong>Model Interpretability:</strong> Medical diagnosis needs explanation. Analyzed attention regions with GradCAM visualization.</li>
+                <li><strong>Generalization:</strong> Performance drops on different domains. Applied diverse data sources and regularization techniques.</li>
             </ul>
         </section>
 
         <section class="project-section">
-            <h2 data-i18n="proj.results"> Results & Learnings</h2>
+            <h2> Results & Learnings</h2>
             <ul class="feature-list">
-                <li data-i18n="medimg.result1"><strong>Classification Performance:</strong> Both CNN and ViT achieved
-                    high accuracy.</li>
-                <li data-i18n="medimg.result2"><strong>Data Efficiency:</strong> Augmentation techniques significantly
-                    improved performance.</li>
-                <li data-i18n="medimg.result3"><strong>Interpretable Results:</strong> GradCAM visualization confirmed
-                    correct attention regions.</li>
-                <li data-i18n="medimg.result4"><strong>Key Learning:</strong> Gained expertise in medical image analysis
-                    and model interpretability.</li>
+                <li><strong>Classification Performance:</strong> Both CNN and ViT achieved high accuracy, ViT performing better in some cases.</li>
+                <li><strong>Data Efficiency:</strong> Augmentation techniques significantly improved model performance on limited data.</li>
+                <li><strong>Interpretable Results:</strong> GradCAM visualization confirmed model focuses on correct regions.</li>
+                <li><strong>Key Learning:</strong> Gained expertise in medical image analysis, data imbalance handling, and model interpretability.</li>
             </ul>
         </section>
 
         <section class="project-section">
-            <h2 data-i18n="proj.tech"> Technologies</h2>
+            <h2> Technologies</h2>
             <div class="tech-tags">
                 <span class="tech-tag">PyTorch</span>
                 <span class="tech-tag">CNN</span>
@@ -101,7 +89,6 @@
 
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
     <script>if (window.lucide) lucide.createIcons();</script>
-    <script src="../lang.js"></script>
 </body>
 
 </html>

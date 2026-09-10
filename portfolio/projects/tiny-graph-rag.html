@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -12,8 +12,7 @@
 </head>
 
 <body>
-    <a href="../index.html" class="back-btn" data-i18n="nav.back">← Back to Portfolio</a>
-    <button type="button" class="lang-toggle" id="langToggle" aria-label="Toggle language">한</button>
+    <a href="../index.html" class="back-btn">← Back to Portfolio</a>
 
     <main class="container project-detail">
         <div class="project-header">
@@ -25,69 +24,52 @@
         </div>
 
         <section class="project-section">
-            <h2 data-i18n="proj.overview"> Project Overview</h2>
-            <p data-i18n="graphrag.overview">A lightweight implementation of Graph RAG combining Neo4j knowledge graphs
-                with vector search for enhanced context retrieval.</p>
+            <h2> Project Overview</h2>
+            <p>Built a graph-based RAG pipeline that extracts entities and relations from unstructured documents and retrieves context through relationship-aware subgraph search.</p>
         </section>
 
         <section class="project-section">
-            <h2 data-i18n="proj.problem"> Problem Definition & Goals</h2>
+            <h2> Problem Definition & Goals</h2>
             <ul class="feature-list">
-                <li data-i18n="graphrag.problem"><strong>Problem:</strong> Traditional RAG struggles when connected
-                    information is spread across document chunks.</li>
-                <li data-i18n="graphrag.goal1"><strong>Goal 1:</strong> Build a hybrid retrieval system leveraging
-                    structured relationships and unstructured text.</li>
-                <li data-i18n="graphrag.goal2"><strong>Goal 2:</strong> Implement automatic knowledge graph construction
-                    from documents.</li>
-                <li data-i18n="graphrag.goal3"><strong>Goal 3:</strong> Improve retrieval quality for multi-hop
-                    reasoning queries.</li>
+                <li><strong>Problem:</strong> Pure vector retrieval misses relationship structure between people, events, and concepts, especially for multi-hop reasoning.</li>
+                <li><strong>Goal 1:</strong> Implement Graph RAG core logic natively without relying on external graph framework abstractions.</li>
+                <li><strong>Goal 2:</strong> Auto-build knowledge graphs and rank query-relevant subgraphs efficiently.</li>
+                <li><strong>Goal 3:</strong> Improve contextual retrieval quality for relation-heavy questions.</li>
             </ul>
         </section>
 
         <section class="project-section">
-            <h2 data-i18n="proj.features"> Key Features & Contributions</h2>
+            <h2> Key Features & Contributions</h2>
             <ul class="feature-list">
-                <li data-i18n="graphrag.feat1"><strong>Automatic Graph Construction:</strong> LLM-based entity and
-                    relation extraction.</li>
-                <li data-i18n="graphrag.feat2"><strong>Neo4j Integration:</strong> Efficient graph queries with Cypher
-                    support.</li>
-                <li data-i18n="graphrag.feat3"><strong>Hybrid Retrieval:</strong> Combines graph traversal with vector
-                    similarity search.</li>
-                <li data-i18n="graphrag.feat4"><strong>Multi-hop Reasoning:</strong> Supports complex queries traversing
-                    multiple relationships.</li>
+                <li><strong>Extraction Engine:</strong> Implemented LLM-based node/edge extraction into structured JSON.</li>
+                <li><strong>Custom Graph Model:</strong> Designed in-memory graph classes with JSON persistence support.</li>
+                <li><strong>Retrieval &amp; Ranking:</strong> Added BFS expansion from seed entities with centrality/relevance scoring.</li>
+                <li><strong>Interactive Visualization:</strong> Integrated Streamlit and PyVis dashboards for graph inspection and response tracing.</li>
             </ul>
         </section>
 
         <section class="project-section">
-            <h2 data-i18n="proj.challenges"> Technical Challenges & Solutions</h2>
+            <h2> Technical Challenges & Solutions</h2>
             <ul class="feature-list">
-                <li data-i18n="graphrag.chal1"><strong>Entity Resolution:</strong> Implemented normalization and
-                    clustering-based resolution.</li>
-                <li data-i18n="graphrag.chal2"><strong>Relation Extraction Quality:</strong> Added filtering and
-                    validation steps.</li>
-                <li data-i18n="graphrag.chal3"><strong>Query Complexity:</strong> Implemented adaptive routing based on
-                    query type.</li>
-                <li data-i18n="graphrag.chal4"><strong>Scalability:</strong> Optimized with indexing and caching
-                    strategies.</li>
+                <li><strong>API Bottleneck:</strong> Sequential chunk processing scaled poorly on long documents.</li>
+                <li><strong>Throughput Fix:</strong> Added asyncio-based asynchronous batching for faster extraction.</li>
+                <li><strong>Entity Duplication:</strong> Alias variants generated fragmented nodes and weak graph connectivity.</li>
+                <li><strong>ER Fix:</strong> Combined rule-based + semantic merging with threshold and relation-conflict guards, reducing duplicate nodes from 50 to 15.</li>
             </ul>
         </section>
 
         <section class="project-section">
-            <h2 data-i18n="proj.results"> Results & Learnings</h2>
+            <h2> Results & Learnings</h2>
             <ul class="feature-list">
-                <li data-i18n="graphrag.result1"><strong>Retrieval Improvement:</strong> Graph-based retrieval
-                    significantly improved answer quality.</li>
-                <li data-i18n="graphrag.result2"><strong>Knowledge Discovery:</strong> Graph visualization enables
-                    discovering hidden connections.</li>
-                <li data-i18n="graphrag.result3"><strong>Educational Value:</strong> Implementation serves as learning
-                    reference.</li>
-                <li data-i18n="graphrag.result4"><strong>Key Learning:</strong> Gained expertise in knowledge graphs and
-                    hybrid architectures.</li>
+                <li><strong>Result:</strong> Delivered an end-to-end native Graph RAG implementation from preprocessing to generation.</li>
+                <li><strong>Result:</strong> Improved graph quality and retrieval accuracy by cutting duplicate entities by about 70%.</li>
+                <li><strong>Result:</strong> Enabled discovery of hidden cross-document relations that simple text retrieval missed.</li>
+                <li><strong>Learning:</strong> Confirmed preprocessing quality, especially entity resolution, is a primary determinant of Graph RAG performance.</li>
             </ul>
         </section>
 
         <section class="project-section">
-            <h2 data-i18n="proj.tech"> Technologies</h2>
+            <h2> Technologies</h2>
             <div class="tech-tags">
                 <span class="tech-tag">Python</span>
                 <span class="tech-tag">OpenAI API</span>
@@ -99,7 +81,7 @@
         </section>
 
         <section class="project-section">
-            <h2 data-i18n="proj.links"> Links</h2>
+            <h2> Links</h2>
             <div class="project-links">
                 <a href="https://github.com/junyeong-nero/tiny-graph-RAG" target="_blank" class="project-link">
                      GitHub Repository
@@ -110,7 +92,6 @@
 
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
     <script>if (window.lucide) lucide.createIcons();</script>
-    <script src="../lang.js"></script>
 </body>
 
 </html>

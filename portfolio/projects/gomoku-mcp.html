@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -12,8 +12,7 @@
 </head>
 
 <body>
-    <a href="../index.html" class="back-btn" data-i18n="nav.back">← Back to Portfolio</a>
-    <button type="button" class="lang-toggle" id="langToggle" aria-label="Toggle language">한</button>
+    <a href="../index.html" class="back-btn">← Back to Portfolio</a>
 
     <main class="container project-detail">
         <div class="project-header">
@@ -25,12 +24,12 @@
         </div>
 
         <section class="project-section">
-            <h2 data-i18n="proj.simple.overview"> Overview</h2>
-            <p data-i18n="gomoku.overview">A Gomoku (Five-in-a-Row) game server that lets LLMs play via the Model Context Protocol. Exposes a tactical threat analysis engine and priority-ranked move suggestions as MCP tools, so any LLM can reason about the board and make strategic moves — including an AI vs AI mode to watch two models compete head-to-head.</p>
+            <h2> Overview</h2>
+            <p>A Gomoku (Five-in-a-Row) game server that lets LLMs play via the Model Context Protocol. Exposes a tactical threat analysis engine and priority-ranked move suggestions as MCP tools, so any LLM can reason about the board and make strategic moves — including an AI vs AI mode to watch two models compete head-to-head.</p>
         </section>
 
         <section class="project-section">
-            <h2 data-i18n="proj.tech"> Technologies</h2>
+            <h2> Technologies</h2>
             <div class="tech-tags">
                 <span class="tech-tag">Python</span>
                 <span class="tech-tag">FastMCP</span>
@@ -41,17 +40,17 @@
         </section>
 
         <section class="project-section">
-            <h2 data-i18n="proj.simple.features"> Features</h2>
+            <h2> Features</h2>
             <ul class="feature-list">
-                <li data-i18n="gomoku.feat1"><strong>Threat Analysis Engine</strong> - Pattern detector that scores Open-4, Closed-4, Open-3, and gap patterns with priority levels 1–10, guiding the LLM's move decisions</li>
-                <li data-i18n="gomoku.feat2"><strong>MCP Tool Suite</strong> - <code>set_stone</code>, <code>analyze_threats</code>, <code>get_suggested_moves</code> and more — full game control exposed as MCP tools</li>
-                <li data-i18n="gomoku.feat3"><strong>AI vs AI Mode</strong> - Watch two different LLMs (Gemini, Grok, Kimi, etc.) compete against each other via OpenRouter</li>
-                <li data-i18n="gomoku.feat4"><strong>CLI &amp; Web GUI</strong> - Both a command-line interface and a browser-based GUI for observing games in real time</li>
+                <li><strong>Threat Analysis Engine</strong> - Pattern detector that scores Open-4, Closed-4, Open-3, and gap patterns with priority levels 1–10, guiding the LLM's move decisions</li>
+                <li><strong>MCP Tool Suite</strong> - <code>set_stone</code>, <code>analyze_threats</code>, <code>get_suggested_moves</code> and more — full game control exposed as MCP tools</li>
+                <li><strong>AI vs AI Mode</strong> - Watch two different LLMs (Gemini, Grok, Kimi, etc.) compete against each other via OpenRouter</li>
+                <li><strong>CLI &amp; Web GUI</strong> - Both a command-line interface and a browser-based GUI for observing games in real time</li>
             </ul>
         </section>
 
         <section class="project-section">
-            <h2 data-i18n="proj.links"> Links</h2>
+            <h2> Links</h2>
             <div class="project-links">
                 <a href="https://github.com/junyeong-nero/gomoku-mcp-server" target="_blank" class="project-link">
                      GitHub Repository
@@ -62,7 +61,6 @@
 
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
     <script>if (window.lucide) lucide.createIcons();</script>
-    <script src="../lang.js"></script>
 </body>
 
 </html>

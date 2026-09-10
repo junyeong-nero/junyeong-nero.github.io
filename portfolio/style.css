@@ -109,34 +109,6 @@ svg.lucide {
     flex-shrink: 0;
 }
 
-/* ── Language toggle (outline pill) ─────────────────────────────── */
-.lang-toggle {
-    position: fixed;
-    top: 20px;
-    right: 24px;
-    z-index: 1000;
-    height: 36px;
-    padding: 0 16px;
-    border: 1px solid var(--line-strong);
-    border-radius: var(--radius-pill);
-    background: var(--bg-primary);
-    color: var(--fg-secondary);
-    cursor: pointer;
-    font-family: var(--font-mono);
-    font-size: 12px;
-    font-weight: 400;
-    letter-spacing: 0.04em;
-    transition: border-color var(--dur-base) var(--ease), color var(--dur-base) var(--ease);
-}
-
-.lang-toggle:hover {
-    border-color: var(--ink);
-    color: var(--fg-primary);
-}
-
-/* Dark-mode control is removed; hide any leftover toggle markup */
-.theme-toggle { display: none !important; }
-
 /* ── Container ──────────────────────────────────────────────────── */
 .container {
     max-width: 920px;
@@ -553,6 +525,15 @@ a.page-nav-item:hover {
     transform: translate(2px, -2px);
 }
 
+.experience-card--static:hover {
+    border-color: var(--line-default);
+    transform: none;
+}
+
+.experience-card--static::after { content: none; }
+
+.experience-card--static .exp-header h3 { padding-right: 0; }
+
 .exp-header h3 {
     font-family: var(--font-serif);
     font-size: 20px;
@@ -824,7 +805,6 @@ a.page-nav-item:hover {
 
 @media (max-width: 768px) {
     .container { padding: 80px 16px 48px; }
-    .lang-toggle { top: 14px; right: 16px; }
     .hero { margin-bottom: 48px; }
     .section { margin-bottom: 48px; }
 

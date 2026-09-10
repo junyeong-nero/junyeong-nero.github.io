@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -12,8 +12,7 @@
 </head>
 
 <body>
-    <a href="../index.html" class="back-btn" data-i18n="nav.back">← Back to Portfolio</a>
-    <button type="button" class="lang-toggle" id="langToggle" aria-label="Toggle language">한</button>
+    <a href="../index.html" class="back-btn">← Back to Portfolio</a>
 
     <main class="container project-detail">
         <div class="project-header">
@@ -25,43 +24,43 @@
         </div>
 
         <section class="project-section">
-            <h2 data-i18n="proj.overview"> Project Overview</h2>
-            <p data-i18n="harness.overview">A toy project that reconstructs the supervisor-led multi-agent harness pattern seen in tools like OpenAI Codex CLI and Anthropic Claude Code.</p>
+            <h2> Project Overview</h2>
+            <p>A toy project that reconstructs the supervisor-led multi-agent harness pattern seen in tools like OpenAI Codex CLI and Anthropic Claude Code. It keeps planning, execution, review, tool calls, and event channels explicit so the whole architecture stays readable and easy to experiment with.</p>
         </section>
 
         <section class="project-section">
-            <h2 data-i18n="proj.problem"> Problem Definition & Goals</h2>
+            <h2> Problem Definition & Goals</h2>
             <ul class="feature-list">
-                <li data-i18n="harness.problem"><strong>Problem:</strong> Agentic coding tools often hide their orchestration details behind opaque frameworks.</li>
-                <li data-i18n="harness.goal1"><strong>Goal 1:</strong> Recreate a compact supervisor-driven harness architecture.</li>
-                <li data-i18n="harness.goal2"><strong>Goal 2:</strong> Keep schemas, permissions, and event flow explicit.</li>
-                <li data-i18n="harness.goal3"><strong>Goal 3:</strong> Support both CLI usage and programmatic embedding.</li>
+                <li><strong>Problem:</strong> Many agentic coding tools hide orchestration details behind frameworks, which makes it hard to inspect or modify the actual control loop and tool boundaries.</li>
+                <li><strong>Goal 1:</strong> Recreate a supervisor that can repeatedly delegate to planner, worker, and reviewer agents in a compact codebase.</li>
+                <li><strong>Goal 2:</strong> Keep role-specific schemas, tool permissions, and event flow explicit so each layer is easy to trace.</li>
+                <li><strong>Goal 3:</strong> Support both interactive CLI usage and programmatic embedding for fast experiments and extensions.</li>
             </ul>
         </section>
 
         <section class="project-section">
-            <h2 data-i18n="proj.features"> Key Features & Contributions</h2>
+            <h2> Key Features & Contributions</h2>
             <ul class="feature-list">
-                <li data-i18n="harness.feat1"><strong>Supervisor-Led Loop:</strong> The supervisor dynamically chooses which subagent to call next.</li>
-                <li data-i18n="harness.feat2"><strong>Explicit Role Boundaries:</strong> Planner, worker, and reviewer operate with separate responsibilities and tool scopes.</li>
-                <li data-i18n="harness.feat3"><strong>YAML Configuration:</strong> Provider, model routing, tools, and retry limits are configurable.</li>
-                <li data-i18n="harness.feat4"><strong>Channel/Event Architecture:</strong> Runtime events are emitted through listener and output channels.</li>
-                <li data-i18n="harness.feat5"><strong>Installable Package:</strong> A `tiny-agent` CLI entrypoint is exposed for local-workspace runs.</li>
+                <li><strong>Supervisor-Led Loop:</strong> Instead of a fixed planner-to-worker-to-reviewer chain, the supervisor dynamically chooses the next subagent and can revisit the same role multiple times.</li>
+                <li><strong>Explicit Role Boundaries:</strong> Planner focuses on read-only analysis, worker handles edits and commands, and reviewer validates outputs with separate schemas and tool scopes.</li>
+                <li><strong>YAML Configuration:</strong> Provider, per-role models, allowed tools, and retry limits are configurable without touching the code.</li>
+                <li><strong>Channel/Event Architecture:</strong> Events such as `run_started`, `tool_call_finished`, and `run_result` flow through listener and output channels, separating execution from presentation.</li>
+                <li><strong>Installable Package:</strong> Ships a `tiny-agent` CLI entrypoint and can be installed directly from GitHub for immediate local-workspace experiments.</li>
             </ul>
         </section>
 
         <section class="project-section">
-            <h2 data-i18n="proj.results"> Results & Learnings</h2>
+            <h2> Results & Learnings</h2>
             <ul class="feature-list">
-                <li data-i18n="harness.result1"><strong>Inspectable Architecture:</strong> Condensed modern coding-agent patterns into a small readable harness.</li>
-                <li data-i18n="harness.result2"><strong>Flexible Usage:</strong> Supports both interactive terminal runs and embedded library-style use.</li>
-                <li data-i18n="harness.result3"><strong>Regression Coverage:</strong> Core agent and CLI behavior are covered by pytest tests.</li>
-                <li data-i18n="harness.result4"><strong>Key Learning:</strong> Reliability depends as much on orchestration design as on model quality.</li>
+                <li><strong>Result:</strong> Condensed the core architecture of modern coding-agent products into a small, inspectable harness suited for learning and experimentation.</li>
+                <li><strong>Result:</strong> The same codebase supports both interactive terminal runs and embedded library-style usage.</li>
+                <li><strong>Result:</strong> Pytest coverage spans supervisor, planner, worker, reviewer, and CLI behavior to catch regressions in the core loop.</li>
+                <li><strong>Learning:</strong> Agent reliability depends heavily on orchestration design choices like structured outputs, permission boundaries, and event visibility, not just on model quality.</li>
             </ul>
         </section>
 
         <section class="project-section">
-            <h2 data-i18n="proj.tech"> Technologies</h2>
+            <h2> Technologies</h2>
             <div class="tech-tags">
                 <span class="tech-tag">Python</span>
                 <span class="tech-tag">Pydantic</span>
@@ -73,7 +72,7 @@
         </section>
 
         <section class="project-section">
-            <h2 data-i18n="proj.links"> Links</h2>
+            <h2> Links</h2>
             <div class="project-links">
                 <a href="https://github.com/junyeong-nero/tiny-agent-harness" target="_blank" rel="noopener" class="project-link">
                      GitHub Repository
@@ -84,7 +83,6 @@
 
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
     <script>if (window.lucide) lucide.createIcons();</script>
-    <script src="../lang.js"></script>
 </body>
 
 </html>

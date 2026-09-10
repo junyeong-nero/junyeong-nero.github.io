@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -12,8 +12,7 @@
 </head>
 
 <body>
-    <a href="../index.html" class="back-btn" data-i18n="nav.back">← Back to Portfolio</a>
-    <button type="button" class="lang-toggle" id="langToggle" aria-label="Toggle language">한</button>
+    <a href="../index.html" class="back-btn">← Back to Portfolio</a>
 
     <main class="container project-detail">
         <div class="project-header">
@@ -25,70 +24,56 @@
         </div>
 
         <section class="project-section">
-            <h2 data-i18n="proj.overview"> Project Overview</h2>
-            <p data-i18n="sd.overview">A lightweight, educational implementation of Stable Diffusion 3 (SD3) built from
-                scratch in PyTorch.</p>
+            <h2> Project Overview</h2>
+            <p>Implemented a from-scratch Stable Diffusion 3 style pipeline with transformer-based MMDiT to generate 64x64 text-conditioned images.</p>
         </section>
 
         <section class="project-section">
-            <h2 data-i18n="proj.problem"> Problem Definition & Goals</h2>
+            <h2> Problem Definition & Goals</h2>
             <ul class="feature-list">
-                <li data-i18n="sd.problem"><strong>Problem:</strong> State-of-the-art Stable Diffusion models are too
-                    large to train on consumer hardware.</li>
-                <li data-i18n="sd.goal1"><strong>Goal 1:</strong> Create a scaled-down SD3 implementation trainable on a
-                    single consumer GPU.</li>
-                <li data-i18n="sd.goal2"><strong>Goal 2:</strong> Implement the complete pipeline including VAE, text
-                    encoders, and MMDiT from scratch.</li>
-                <li data-i18n="sd.goal3"><strong>Goal 3:</strong> Extend to video/GIF generation using motion modules.
+                <li><strong>Problem:</strong> Needed to move beyond MNIST-scale diffusion and implement latent diffusion plus text conditioning in a practical training setup.</li>
+                <li><strong>Goal 1:</strong> Recreate SD3 core architecture with MMDiT and VAE components.</li>
+                <li><strong>Goal 2:</strong> Build end-to-end text-to-image training and inference at 64x64 resolution.</li>
+                <li><strong>Goal 3:</strong> Evaluate model quality with objective metrics instead of visual-only inspection.
                 </li>
             </ul>
         </section>
 
         <section class="project-section">
-            <h2 data-i18n="proj.features"> Key Features & Contributions</h2>
+            <h2> Key Features & Contributions</h2>
             <ul class="feature-list">
-                <li data-i18n="sd.feat1"><strong>MMDiT Architecture:</strong> Implemented Multi-Modal Diffusion
-                    Transformer.</li>
-                <li data-i18n="sd.feat2"><strong>Rectified Flow:</strong> Used modern flow-based formulation for
-                    straighter sampling.</li>
-                <li data-i18n="sd.feat3"><strong>Complete Pipeline:</strong> Built VAE, CLIP/T5 text conditioning, and
-                    full denoising pipeline.</li>
-                <li data-i18n="sd.feat4"><strong>Motion Module:</strong> Added temporal attention layers for animated
-                    GIFs.</li>
-                <li data-i18n="sd.feat5"><strong>Educational Design:</strong> Clean, well-commented codebase.</li>
+                <li><strong>MMDiT Core:</strong> Implemented transformer backbone with joint attention for image-text interaction.</li>
+                <li><strong>Conditioning Path:</strong> Added CLIP-L and adaLN-zero based time/text conditioning.</li>
+                <li><strong>Rectified Flow + VAE:</strong> Integrated rectified flow training and beta-VAE latent compression (VAE MSE 0.0002).</li>
+                <li><strong>Scalable Training Stack:</strong> Used LAION/CC3M strategy, Hugging Face streaming, and W&amp;B + RunPod monitoring.</li>
+                <li><strong>Evaluation Suite:</strong> Added FID, CLIP-FID, IS, CLIPScore, PSNR, and MSE for multidimensional validation.</li>
             </ul>
         </section>
 
         <section class="project-section">
-            <h2 data-i18n="proj.challenges"> Technical Challenges & Solutions</h2>
+            <h2> Technical Challenges & Solutions</h2>
             <ul class="feature-list">
-                <li data-i18n="sd.chal1"><strong>Memory Constraints:</strong> Reduced model size while preserving
-                    innovations.</li>
-                <li data-i18n="sd.chal2"><strong>VAE Training Stability:</strong> Implemented KL annealing and
-                    perceptual loss.</li>
-                <li data-i18n="sd.chal3"><strong>Text-Image Alignment:</strong> Used CFG and improved cross-attention.
+                <li><strong>Prompt Overfitting:</strong> Small 30k-scale data caused repetitive pattern generation independent of prompts.</li>
+                <li><strong>Generalization Fix:</strong> Expanded to CC3M-scale data and tuned VAE-to-diffusion data ratio.</li>
+                <li><strong>Slow Convergence:</strong> Diffusion loss decreased slowly and training became unstable in long runs.
                 </li>
-                <li data-i18n="sd.chal4"><strong>Motion Consistency:</strong> Added temporal attention for smooth
-                    transitions.</li>
+                <li><strong>Stability Fix:</strong> Applied logit-normal sampling, min-SNR weighting, and checkpoint-resume workflow.</li>
             </ul>
         </section>
 
         <section class="project-section">
-            <h2 data-i18n="proj.results"> Results & Learnings</h2>
+            <h2> Results & Learnings</h2>
             <ul class="feature-list">
-                <li data-i18n="sd.result1"><strong>Successful Generation:</strong> Model generates coherent images from
-                    text prompts.</li>
-                <li data-i18n="sd.result2"><strong>Training Efficiency:</strong> Entire model trainable on single RTX
-                    3090.</li>
-                <li data-i18n="sd.result3"><strong>Educational Impact:</strong> Codebase serves as learning reference.
+                <li><strong>Result:</strong> Delivered a working SD3-style text-conditioned generation model with MMDiT and rectified flow.</li>
+                <li><strong>Result:</strong> Established a fully quantitative benchmarking pipeline for generation quality and alignment.</li>
+                <li><strong>Result:</strong> Completed an end-to-end 64x64 text-to-image training/inference stack.
                 </li>
-                <li data-i18n="sd.result4"><strong>Key Learning:</strong> Gained comprehensive understanding of SD3
-                    architecture.</li>
+                <li><strong>Learning:</strong> Strengthened architecture engineering, data strategy design, and resource-aware training operations.</li>
             </ul>
         </section>
 
         <section class="project-section">
-            <h2 data-i18n="proj.tech"> Technologies</h2>
+            <h2> Technologies</h2>
             <div class="tech-tags">
                 <span class="tech-tag">Python</span>
                 <span class="tech-tag">PyTorch</span>
@@ -101,7 +86,7 @@
         </section>
 
         <section class="project-section">
-            <h2 data-i18n="proj.links"> Links</h2>
+            <h2> Links</h2>
             <div class="project-links">
                 <a href="https://github.com/junyeong-nero/tiny-stable-diffusion" target="_blank" class="project-link">
                      GitHub Repository
@@ -112,7 +97,6 @@
 
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
     <script>if (window.lucide) lucide.createIcons();</script>
-    <script src="../lang.js"></script>
 </body>
 
 </html>
