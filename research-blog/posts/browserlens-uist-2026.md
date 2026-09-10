@@ -1,4 +1,4 @@
-**BrowserLens has been accepted as a poster at UIST 2026.** This is the story behind our paper, *BrowserLens: Interactive Diagnosis of Web-Agent Trajectories with a Layered State–Action Graph*, joint work with Mingyu Kim and Seongkook Heo at UNIST.
+**BrowserLens has been submitted to the UIST 2026 Posters track.** This is the story behind our paper, *BrowserLens: Interactive Diagnosis of Web-Agent Trajectories with a Layered State–Action Graph*, joint work with Mingyu Kim and Seongkook Heo at UNIST.
 
 Imagine asking a browser agent to find French startups from two Y Combinator batches that are currently hiring. It opens the directory, applies filters, visits company pages, and keeps working. Eventually, it stops because it has used up its step budget.
 

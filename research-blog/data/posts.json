@@ -4,7 +4,8 @@
       "slug": "browserlens-uist-2026",
       "title": "BrowserLens: finding where a browser agent stopped making progress",
       "date": "2026-09-11",
-      "summary": "Accepted as a UIST 2026 poster. Why complete logs can still hide navigation loops and ineffective actions, how BrowserLens reorganizes a run around browser state, and what the prototype has yet to establish."
+      "summary": "Submitted to the UIST 2026 Posters track. Why complete logs can still hide navigation loops and ineffective actions, how BrowserLens reorganizes a run around browser state, and what the prototype has yet to establish.",
+      "paperUrl": null
     },
     {
       "slug": "progressive-disclosure-token-efficiency",
