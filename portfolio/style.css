@@ -401,6 +401,20 @@ a.nav-item:hover {
     line-height: 1.4;
 }
 
+.timeline-content .subtitle .gpa {
+    color: var(--fg-tertiary);
+    font-family: var(--font-mono);
+    font-size: 13px;
+    letter-spacing: 0.02em;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+}
+
+.timeline-content .subtitle .gpa::before {
+    content: "·";
+    margin: 0 6px 0 2px;
+}
+
 .timeline-content .date {
     grid-column: 2;
     grid-row: 1 / span 2;
