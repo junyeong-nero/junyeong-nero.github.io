@@ -1,53 +1,53 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="760" height="462" viewBox="0 0 760 462" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif">
-<rect width="760" height="462" fill="#ffffff"/>
-<text x="64" y="30" font-size="16" font-weight="600" fill="#1b2330">TTG estimation error — lower is better</text>
-<text x="64" y="50" font-size="12" fill="#6b7684">MAE · 113,047 shared timestamps, 503 impact runs · Logarithmic vertical axis</text>
-<text x="64" y="69" font-size="12" fill="#6b7684">Both constant-speed estimates use -R/Ṙ: range rate from measurement differences or Kalman state.</text>
-<rect x="64" y="86" width="11" height="11" rx="2" fill="#9aa4b2"/>
-<text x="81" y="95.5" font-size="12.5" fill="#3c4655">Constant speed · Measurement differences</text>
-<rect x="383.0" y="86" width="11" height="11" rx="2" fill="#4c7ef3"/>
-<text x="400.0" y="95.5" font-size="12.5" fill="#3c4655">Constant speed · Kalman state</text>
-<rect x="627.2" y="86" width="11" height="11" rx="2" fill="#e8590c"/>
-<text x="644.2" y="95.5" font-size="12.5" fill="#3c4655">GRU</text>
-<line x1="64" y1="398.0" x2="740" y2="398.0" stroke="#e5e8ec" stroke-width="1"/>
-<text x="54" y="402.0" font-size="11.5" fill="#8b95a3" text-anchor="end">0.1s</text>
-<line x1="64" y1="322.3" x2="740" y2="322.3" stroke="#e5e8ec" stroke-width="1"/>
-<text x="54" y="326.3" font-size="11.5" fill="#8b95a3" text-anchor="end">1s</text>
-<line x1="64" y1="246.6" x2="740" y2="246.6" stroke="#e5e8ec" stroke-width="1"/>
-<text x="54" y="250.6" font-size="11.5" fill="#8b95a3" text-anchor="end">10s</text>
-<line x1="64" y1="170.9" x2="740" y2="170.9" stroke="#e5e8ec" stroke-width="1"/>
-<text x="54" y="174.9" font-size="11.5" fill="#8b95a3" text-anchor="end">100s</text>
-<line x1="64" y1="398" x2="740" y2="398" stroke="#c8ced6" stroke-width="1"/>
-<rect x="92.7" y="303.5" width="34.2" height="94.5" fill="#9aa4b2" rx="2"/>
-<text x="109.8" y="297.5" font-size="11" fill="#3c4655" text-anchor="middle">1.77</text>
-<rect x="129.9" y="350.4" width="34.2" height="47.6" fill="#4c7ef3" rx="2"/>
-<text x="147.0" y="344.4" font-size="11" fill="#3c4655" text-anchor="middle">0.43</text>
-<rect x="167.1" y="369.3" width="34.2" height="28.7" fill="#e8590c" rx="2"/>
-<text x="184.2" y="363.3" font-size="11" fill="#3c4655" text-anchor="middle">0.24</text>
-<text x="148.5" y="420" font-size="12.5" fill="#3c4655" text-anchor="middle">TTG 0~5s</text>
-<text x="148.5" y="439" font-size="11.5" fill="#e8590c" text-anchor="middle">44% less than Kalman</text>
-<rect x="261.7" y="267.1" width="34.2" height="130.9" fill="#9aa4b2" rx="2"/>
-<text x="278.8" y="261.1" font-size="11" fill="#3c4655" text-anchor="middle">5.36</text>
-<rect x="298.9" y="310.4" width="34.2" height="87.6" fill="#4c7ef3" rx="2"/>
-<text x="316.0" y="304.4" font-size="11" fill="#3c4655" text-anchor="middle">1.43</text>
-<rect x="336.1" y="344.5" width="34.2" height="53.5" fill="#e8590c" rx="2"/>
-<text x="353.2" y="338.5" font-size="11" fill="#3c4655" text-anchor="middle">0.51</text>
-<text x="317.5" y="420" font-size="12.5" fill="#3c4655" text-anchor="middle">TTG 5~15s</text>
-<text x="317.5" y="439" font-size="11.5" fill="#e8590c" text-anchor="middle">64% less than Kalman</text>
-<rect x="430.7" y="179.9" width="34.2" height="218.1" fill="#9aa4b2" rx="2"/>
-<text x="447.8" y="173.9" font-size="11" fill="#3c4655" text-anchor="middle">76.0</text>
-<rect x="467.9" y="262.8" width="34.2" height="135.2" fill="#4c7ef3" rx="2"/>
-<text x="485.0" y="256.8" font-size="11" fill="#3c4655" text-anchor="middle">6.12</text>
-<rect x="505.1" y="314.0" width="34.2" height="84.0" fill="#e8590c" rx="2"/>
-<text x="522.2" y="308.0" font-size="11" fill="#3c4655" text-anchor="middle">1.29</text>
-<text x="486.5" y="420" font-size="12.5" fill="#3c4655" text-anchor="middle">TTG 15~40s</text>
-<text x="486.5" y="439" font-size="11.5" fill="#e8590c" text-anchor="middle">79% less than Kalman</text>
-<rect x="599.7" y="144.8" width="34.2" height="253.2" fill="#9aa4b2" rx="2"/>
-<text x="616.8" y="138.8" font-size="11" fill="#3c4655" text-anchor="middle">221.4</text>
-<rect x="636.9" y="162.7" width="34.2" height="235.3" fill="#4c7ef3" rx="2"/>
-<text x="654.0" y="156.7" font-size="11" fill="#3c4655" text-anchor="middle">128.5</text>
-<rect x="674.1" y="249.8" width="34.2" height="148.2" fill="#e8590c" rx="2"/>
-<text x="691.2" y="243.8" font-size="11" fill="#3c4655" text-anchor="middle">9.07</text>
-<text x="655.5" y="420" font-size="12.5" fill="#3c4655" text-anchor="middle">TTG 40s+</text>
-<text x="655.5" y="439" font-size="11.5" fill="#e8590c" text-anchor="middle">93% less than Kalman</text>
+<rect width="760" height="462" fill="#f8f7f3"/>
+<text x="64" y="30" font-size="16" font-weight="600" fill="#212121">TTG estimation error — lower is better</text>
+<text x="64" y="50" font-size="12" fill="#75758a">MAE · 113,047 shared timestamps, 503 impact runs · Logarithmic vertical axis</text>
+<text x="64" y="69" font-size="12" fill="#75758a">Both constant-speed estimates use -R/Ṙ: range rate from measurement differences or Kalman state.</text>
+<rect x="64" y="86" width="11" height="11" rx="2" fill="#93939f"/>
+<text x="81" y="95.5" font-size="12.5" fill="#52525b">Constant speed · Measurement differences</text>
+<rect x="383.0" y="86" width="11" height="11" rx="2" fill="#52525b"/>
+<text x="400.0" y="95.5" font-size="12.5" fill="#52525b">Constant speed · Kalman state</text>
+<rect x="627.2" y="86" width="11" height="11" rx="2" fill="#ff7759"/>
+<text x="644.2" y="95.5" font-size="12.5" fill="#52525b">GRU</text>
+<line x1="64" y1="398.0" x2="740" y2="398.0" stroke="#e3e0d8" stroke-width="1"/>
+<text x="54" y="402.0" font-size="11.5" fill="#75758a" text-anchor="end">0.1s</text>
+<line x1="64" y1="322.3" x2="740" y2="322.3" stroke="#e3e0d8" stroke-width="1"/>
+<text x="54" y="326.3" font-size="11.5" fill="#75758a" text-anchor="end">1s</text>
+<line x1="64" y1="246.6" x2="740" y2="246.6" stroke="#e3e0d8" stroke-width="1"/>
+<text x="54" y="250.6" font-size="11.5" fill="#75758a" text-anchor="end">10s</text>
+<line x1="64" y1="170.9" x2="740" y2="170.9" stroke="#e3e0d8" stroke-width="1"/>
+<text x="54" y="174.9" font-size="11.5" fill="#75758a" text-anchor="end">100s</text>
+<line x1="64" y1="398" x2="740" y2="398" stroke="#d4d1c9" stroke-width="1"/>
+<rect x="92.7" y="303.5" width="34.2" height="94.5" fill="#93939f" rx="2"/>
+<text x="109.8" y="297.5" font-size="11" fill="#52525b" text-anchor="middle">1.77</text>
+<rect x="129.9" y="350.4" width="34.2" height="47.6" fill="#52525b" rx="2"/>
+<text x="147.0" y="344.4" font-size="11" fill="#52525b" text-anchor="middle">0.43</text>
+<rect x="167.1" y="369.3" width="34.2" height="28.7" fill="#ff7759" rx="2"/>
+<text x="184.2" y="363.3" font-size="11" fill="#52525b" text-anchor="middle">0.24</text>
+<text x="148.5" y="420" font-size="12.5" fill="#52525b" text-anchor="middle">TTG 0~5s</text>
+<text x="148.5" y="439" font-size="11.5" fill="#52525b" text-anchor="middle">44% less than Kalman</text>
+<rect x="261.7" y="267.1" width="34.2" height="130.9" fill="#93939f" rx="2"/>
+<text x="278.8" y="261.1" font-size="11" fill="#52525b" text-anchor="middle">5.36</text>
+<rect x="298.9" y="310.4" width="34.2" height="87.6" fill="#52525b" rx="2"/>
+<text x="316.0" y="304.4" font-size="11" fill="#52525b" text-anchor="middle">1.43</text>
+<rect x="336.1" y="344.5" width="34.2" height="53.5" fill="#ff7759" rx="2"/>
+<text x="353.2" y="338.5" font-size="11" fill="#52525b" text-anchor="middle">0.51</text>
+<text x="317.5" y="420" font-size="12.5" fill="#52525b" text-anchor="middle">TTG 5~15s</text>
+<text x="317.5" y="439" font-size="11.5" fill="#52525b" text-anchor="middle">64% less than Kalman</text>
+<rect x="430.7" y="179.9" width="34.2" height="218.1" fill="#93939f" rx="2"/>
+<text x="447.8" y="173.9" font-size="11" fill="#52525b" text-anchor="middle">76.0</text>
+<rect x="467.9" y="262.8" width="34.2" height="135.2" fill="#52525b" rx="2"/>
+<text x="485.0" y="256.8" font-size="11" fill="#52525b" text-anchor="middle">6.12</text>
+<rect x="505.1" y="314.0" width="34.2" height="84.0" fill="#ff7759" rx="2"/>
+<text x="522.2" y="308.0" font-size="11" fill="#52525b" text-anchor="middle">1.29</text>
+<text x="486.5" y="420" font-size="12.5" fill="#52525b" text-anchor="middle">TTG 15~40s</text>
+<text x="486.5" y="439" font-size="11.5" fill="#52525b" text-anchor="middle">79% less than Kalman</text>
+<rect x="599.7" y="144.8" width="34.2" height="253.2" fill="#93939f" rx="2"/>
+<text x="616.8" y="138.8" font-size="11" fill="#52525b" text-anchor="middle">221.4</text>
+<rect x="636.9" y="162.7" width="34.2" height="235.3" fill="#52525b" rx="2"/>
+<text x="654.0" y="156.7" font-size="11" fill="#52525b" text-anchor="middle">128.5</text>
+<rect x="674.1" y="249.8" width="34.2" height="148.2" fill="#ff7759" rx="2"/>
+<text x="691.2" y="243.8" font-size="11" fill="#52525b" text-anchor="middle">9.07</text>
+<text x="655.5" y="420" font-size="12.5" fill="#52525b" text-anchor="middle">TTG 40s+</text>
+<text x="655.5" y="439" font-size="11.5" fill="#52525b" text-anchor="middle">93% less than Kalman</text>
 </svg>

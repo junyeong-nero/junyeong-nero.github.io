@@ -946,9 +946,126 @@
     "max": 224.07543826487006,
     "run_macro_mae": 7.6996785485373005
   },
+  "performance": {
+    "protocol": {
+      "version": 1,
+      "runtime": "Python CPU; batch size 1; one process per method; thread limits 1",
+      "timing": "perf_counter_ns around each update, including initialization and undefined outputs; warm longest run once; reset state at each run; exclude I/O, reset, scoring and model loading; timer overhead not subtracted",
+      "scope": {
+        "measurement": "Raw range difference -> uncapped TTG",
+        "kalman": "Raw observation -> Singer KF (including NIS) -> uncapped TTG",
+        "gru": "Raw observation -> same KF -> features -> float64 normalization -> float32 GRU + head + inverse transform"
+      },
+      "memory": "Fresh-worker ru_maxrss through inference and validation, including Python, libraries, model, input/timing/reference buffers and allocator caches. Not incremental model RAM. Numeric payload excludes Python overhead and temporary workspaces. Not C++ deployment measurements.",
+      "selection": "All observations of the same accepted impact runs as accuracy evaluation; includes warmup and nonclosing steps, with no accuracy mask applied to timing",
+      "filter_config": {
+        "dt": 0.5,
+        "tau": 20.0,
+        "sigma_maneuver": 10.0,
+        "sigma_measurement": 25.0,
+        "initial_velocity_sigma": 300.0,
+        "initial_acceleration_sigma": 50.0
+      },
+      "input_sha256": "0f3a3039e23e1e42a15886314a87552298aeac54fc8e5848aac96e1145d6d3df"
+    },
+    "environment": {
+      "platform": "macOS-26.5.1-arm64-arm-64bit-Mach-O",
+      "machine": "arm64",
+      "cpu": "Apple M2",
+      "python": "3.13.5",
+      "numpy": "2.5.2",
+      "logical_cpus": 8,
+      "thread_environment": {
+        "OMP_NUM_THREADS": "1",
+        "OPENBLAS_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "VECLIB_MAXIMUM_THREADS": "1"
+      }
+    },
+    "methods": {
+      "measurement": {
+        "observations_per_repeat": 147547,
+        "runs": 503,
+        "repeats": 3,
+        "timed_updates": 442641,
+        "latency_us": {
+          "mean": 0.9267870554241474,
+          "median": 0.917,
+          "p95": 1.0,
+          "p99": 1.25,
+          "max": 245.375
+        },
+        "repeat_mean_us": [
+          0.9370711840972709,
+          0.9245397805445045,
+          0.9187502016306669
+        ],
+        "timer_pair_median_us": 0.041,
+        "peak_rss_bytes": 55181312,
+        "runtime_import_peak_rss_bytes": 36667392,
+        "harness_array_bytes": 10627416,
+        "state_numeric_bytes": 16,
+        "constant_numeric_bytes": 0,
+        "parameter_bytes": 0,
+        "validation": "All full-sequence predictions match aligned reference (rtol=1e-5, atol=1e-4 s, equal_nan)."
+      },
+      "kalman": {
+        "observations_per_repeat": 147547,
+        "runs": 503,
+        "repeats": 3,
+        "timed_updates": 442641,
+        "latency_us": {
+          "mean": 37.71904043231422,
+          "median": 35.542,
+          "p95": 43.833,
+          "p99": 75.792,
+          "max": 30795.667
+        },
+        "repeat_mean_us": [
+          40.688077704053626,
+          36.25917360569853,
+          36.20986998719052
+        ],
+        "timer_pair_median_us": 0.041,
+        "peak_rss_bytes": 46071808,
+        "runtime_import_peak_rss_bytes": 36700160,
+        "harness_array_bytes": 10627416,
+        "state_numeric_bytes": 752,
+        "constant_numeric_bytes": 1584,
+        "parameter_bytes": 0,
+        "validation": "All full-sequence predictions match aligned reference (rtol=1e-5, atol=1e-4 s, equal_nan)."
+      },
+      "gru": {
+        "observations_per_repeat": 147547,
+        "runs": 503,
+        "repeats": 3,
+        "timed_updates": 442641,
+        "latency_us": {
+          "mean": 93.22988717041576,
+          "median": 89.709,
+          "p95": 107.167,
+          "p99": 139.208,
+          "max": 30792.25
+        },
+        "repeat_mean_us": [
+          92.8029758788725,
+          95.91964400496113,
+          90.96704162741362
+        ],
+        "timer_pair_median_us": 0.042,
+        "peak_rss_bytes": 211402752,
+        "runtime_import_peak_rss_bytes": 203341824,
+        "harness_array_bytes": 10037228,
+        "state_numeric_bytes": 880,
+        "constant_numeric_bytes": 1712,
+        "parameter_bytes": 16260,
+        "validation": "All full-sequence predictions match aligned reference (rtol=1e-5, atol=1e-4 s, equal_nan)."
+      }
+    }
+  },
   "provenance": {
-    "evaluated_at": "2026-09-13T01:40:01.331191+00:00",
-    "git_head": "91e5b269a66514f75af0f4417128c9eb3eabf4f8",
+    "evaluated_at": "2026-09-13T02:12:51.541123+00:00",
+    "git_head": "504f1e01373aa9703618b18836beb6c5e00f2341",
     "working_tree_dirty": true,
     "inputs_sha256": {
       "out/test/runs.parquet": "30e6fd990b07e398a4636fb8daf6ed68a25861c10a2e2321ba44c45af81114f1",
@@ -959,13 +1076,18 @@
       "out/tuning.json": "54dfe7fca1377a00dc0e2b0d2ae2b588ed13d592f14c2b308a39bc325842dacd"
     },
     "source_sha256": {
-      "scripts/evaluate_ttg.py": "147564f8e568aaf2112f8415e21c33f51efff9cecf409f3906d6499dc78aba7f",
+      "scripts/evaluate_ttg.py": "83306a28e67742db613287e9c10d92f78c861abd3c3c8cb186be9d3a024dadb2",
       "src/simulator/ml/sequences.py": "616ac1ab14e037918b93cd645dcf6041188451f87c7db60fb24b13bad958987c",
+      "src/simulator/ml/benchmark.py": "c2cb4cc08111a6374ddbb29887e2fcae68ebfc8893f65df2924c33abcb38c601",
       "src/simulator/ml/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "src/simulator/ml/features.py": "f214f72a3672379bfa5fe62bfe7f68ebb71a2553f8315f9fde8225b1075ebe1d",
       "src/simulator/ml/model.py": "7e9503f33dcf1a7f5a8d93c14d1c3b9087f0cf7c04021253ce8063048592b72c",
       "src/simulator/ml/comparison.py": "81dcda54447909d702a428d41d9e58b0f75e3859cf7725578c2d7f41f55ce8fd",
-      "src/simulator/ml/train.py": "58dc2c4151e42fd2dd8b1fe65504cfa6af88f713092fd68dcf089917187fc10c"
+      "src/simulator/ml/train.py": "58dc2c4151e42fd2dd8b1fe65504cfa6af88f713092fd68dcf089917187fc10c",
+      "src/simulator/tracking/kalman.py": "f47a337aa2901db4ac37ebab2c5924ce4821e3bb43bbd911bb02b5d6b45c42ae",
+      "src/simulator/tracking/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "src/simulator/tracking/pipeline.py": "e6bf04fa8e7f6d118415b6206e29abc697aea590f4c3e5c9723e790338c74e5b",
+      "src/simulator/tracking/singer.py": "b490f5149be76065ebfa386fb9b171d703b82f47e868add0d2e4b10bb5fcb617"
     },
     "torch": "2.13.0",
     "numpy": "2.5.2",

@@ -2,9 +2,9 @@
   "posts": [
     {
       "slug": "radar-ttg-synthetic-gru",
-      "title": "From radar observations to time-to-go: synthetic data, a small GRU, and a common evaluation",
+      "title": "From radar observations to time-to-go: accuracy, inference time, and memory",
       "date": "2026-09-13",
-      "summary": "A physics-based simulator, Singer Kalman tracking, and a standard-library C++ estimator. Reevaluating saved predictions on 113,047 shared timestamps clarifies the GRU’s gains, the impact of capped baselines, and the cases where a simpler estimate remains better."
+      "summary": "A physics-based simulator, Singer Kalman filter and small GRU, compared on 113,047 shared timestamps. Full-history Python CPU benchmarks add per-observation latency and process memory, while distinguishing runtime overhead from model size and C++ deployment."
     },
     {
       "slug": "browserlens-uist-2026",

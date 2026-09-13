@@ -2,7 +2,7 @@ How much time remains before an approaching target reaches a ship? If its distan
 
 I built a simulator to investigate this estimation problem from data generation through deployment. It produces trajectories with known impact times, adds observation noise, tracks the observations with a Kalman filter, and trains a small recurrent model to estimate **Time-To-Go (TTG)**. The same inference pipeline runs in C++17 using only the standard library.
 
-The central question is whether observation history improves TTG estimates beyond a constant-speed calculation using a filtered state. Answering that question also requires deciding **which timestamps each estimator is being judged on**. This note reports a September 13, 2026 reevaluation of the saved model on a common set of observations, including the cases excluded by that comparison and the conditions where the simpler estimator remains better.
+The central question is whether observation history improves TTG estimates beyond a constant-speed calculation using a filtered state. Answering that question also requires deciding **which timestamps each estimator is being judged on**. This note reports a September 13, 2026 reevaluation of the saved model on a common set of observations, including the cases excluded by that comparison and the conditions where the simpler estimator remains better. It now also measures the cost of processing one observation at a time: Python CPU inference latency and peak process memory for all three estimators.
 
 ![Replay of a simulated approach, showing the true trajectory, noisy radar observations, the filtered track, and TTG curves.](assets/posts/ttg/demo.gif "Figure 1. The existing simulator replay makes the estimation chain inspectable. It illustrates a trajectory; the aggregate results below come from a separate test dataset, not from the demo recording.")
 
@@ -167,6 +167,42 @@ The saved model uses hidden size 32. A historical comparison trained sizes 32 an
 
 Those trials used the original GRU evaluation mask and were **not rerun under the common mask in this note**. They document the engineering rationale for retaining the cheaper model, but should not be merged numerically with the new tables. Three seeds also provide limited evidence about variability. The broader tuning artifact predates the addition of sequenced-maneuver profiles, which further limits claims of an optimal configuration for the current dataset.
 
+## Measuring the cost of an observation update
+
+Accuracy does not reveal the cost of keeping an estimator in a tracking loop. I extended the evaluator to measure each method in a fresh Python process on **Apple M2, macOS 26.5.1, Python 3.13.5, NumPy 2.5.2 and PyTorch 2.13.0**. The benchmark uses CPU inference, a batch size of one, and numerical-library thread limits of one. It retains the existing observations, filter settings, normalization and GRU weights.
+
+Each method consumes **147,547 raw observations from the same 503 impact runs, repeated three times**: 442,641 timed updates per method. The accuracy comparison still uses 113,047 common timestamps, but the timing workload includes the entire histories: the initial observation without a prediction, filter initialization, warmup and intervals where a constant-speed estimate is undefined. Skipping those updates would undercount tracking work and change GRU history.
+
+A timer surrounds each observation update through its TTG result. Linear estimation computes the difference between successive measured ranges. Kalman performs the existing Singer filter update, including its innovation diagnostic, then computes constant-speed TTG. **GRU timing includes the same filter, feature extraction, float64 normalization, the float32 recurrent step, linear head and inverse target transform.** It is the complete Python prediction path, not just the neural network cell.
+
+Before timing, each method processes the longest run once to warm library code and allocators. The filter and recurrent state reset at every subsequent run boundary. File I/O, loading the model, run resets and accuracy checks sit outside the timer. Every full-sequence prediction from every repeat must match the original evaluation within relative tolerance 1e-5 and absolute tolerance 1e-4 seconds, with undefined outputs matching as well. All three methods passed this check.
+
+![Two linear-scale panels showing mean and p95 observation-update latency and fresh-process peak RSS for linear estimation, Kalman filtering and the complete GRU pipeline.](assets/posts/ttg/inference-performance.svg "Figure 3. Python CPU measurements on Apple M2: 147,547 observations per method, replayed three times. In the upper panel, bars show mean latency and end marks show p95. The lower panel reports process peak RSS, including the runtime and measurement buffers; it is not the memory occupied by model weights or per-track state. These measurements do not benchmark C++ deployment.")
+
+| Estimator | Mean/update (µs) | Median/update (µs) | p95/update (µs) | Peak process RSS (MiB) |
+| --- | ---: | ---: | ---: | ---: |
+| Linear estimation (range differences) | 0.93 | 0.92 | 1.00 | 52.62 |
+| Kalman filter + constant-speed TTG | 37.72 | 35.54 | 43.83 | 43.94 |
+| GRU, including Kalman and features | 93.23 | 89.71 | 107.17 | 201.61 |
+
+On this machine, the full GRU path averages about **0.093 milliseconds per observation**, compared with 0.038 milliseconds for Kalman and 0.00093 milliseconds for range differences. Its lower TTG error comes with a larger Python runtime cost. These are serial measurements on one host. They do not establish a maximum track count, a hard real-time deadline, or throughput under concurrent ingestion.
+
+The report retains each repetition's mean and the p99 and maximum latency, rather than only the pooled average. For example, the Kalman repetition means were 40.69, 36.26 and 36.21 µs, and the GRU repetition means were 92.80, 95.92 and 90.97 µs. The largest individual update was about 31 milliseconds for both pipelines. That tail remains in the results; the measurements alone do not identify its cause. The median cost of two timer reads was 0.041–0.042 µs and was not subtracted, which matters particularly for the fast linear baseline.
+
+### Process memory and model memory answer different questions
+
+Peak RSS is measured with `ru_maxrss` in a separate worker for each method, through inference and prediction validation. It includes the Python interpreter, loaded numerical libraries, weights, allocator caches, input/reference arrays and timing buffers. The benchmark arrays alone occupy roughly 10 MiB. **A process peak is not an incremental per-model memory requirement.** The smaller observed Kalman RSS does not mean it retains less estimator state than the linear baseline.
+
+To make that distinction inspectable, the benchmark also records numeric payload sizes:
+
+| Estimator | Per-track state (bytes) | Filter/normalization constants (bytes) | Learned weights (bytes) |
+| --- | ---: | ---: | ---: |
+| Linear estimation | 16 | 0 | 0 |
+| Kalman filter | 752 | 1,584 | 0 |
+| GRU, including Kalman | 880 | 1,712 | 16,260 |
+
+These payloads exclude Python object overhead and temporary workspaces. The GRU's 16,260 bytes of weights are the same 4,065 float32 parameters described above; adding recurrent state increases the state payload by 128 bytes over Kalman. The 201.61 MiB process peak therefore should not be described as a 201.61 MiB neural network. Measuring the standard-library C++ implementation on its target hardware remains a separate experiment.
+
 ## Carrying the estimator into C++
 
 The deployment constraint shaped the model: C++17 and the standard library only. Export writes weights, biases, normalization constants, and fixed-interval Kalman matrices into a generated header. The handwritten implementation runs the filter, feature extraction, normalization, GRU cell, linear head, and inverse target transform.
@@ -175,11 +211,13 @@ There are several places where a plausible implementation can still differ from 
 
 I checked the committed C++ artifacts against the Python references again while preparing this note. **All 129,843 numerical comparisons passed.** The checks cover filtered states, normalized features, intermediate GRU hidden states, outputs, and the full inference chain. Maximum full-chain relative error was 6.992e-05 against a tolerance of 1e-4. Checking intermediate states across complete recurrent sequences helps locate accumulated differences that a single final prediction could hide.
 
-This establishes agreement with the reference implementation under the tested sequences. It does not measure operational accuracy or processing latency. The filter matrices are also baked for a fixed observation interval: passing a different `delta_t` to the estimator changes an input feature, but does not rebuild its transition and process-noise matrices.
+This establishes agreement with the reference implementation under the tested sequences. These parity checks do not measure operational accuracy or C++ processing latency; the timing experiment above measures the Python reference pipeline. The filter matrices are also baked for a fixed observation interval: passing a different `delta_t` to the estimator changes an input feature, but does not rebuild its transition and process-noise matrices.
 
 ## What this experiment establishes, and what remains open
 
 The common-timestamp reevaluation supports a specific result: on this synthetic test population, the saved GRU has lower sample-weighted MAE in each TTG band than the two constant-speed baselines, including a 400-second capped sensitivity check. It also exposes qualifications that affect how that result should be used: shared-domain coverage is 78.2%, one clean profile favors Kalman, and the terminal median favors Kalman even when its tail is worse.
+
+The new resource experiment adds a measured implementation tradeoff: on this host, the full Python GRU path averages 93.23 µs per raw observation, versus 37.72 µs for Kalman. Separate process peaks and numeric payload counts keep runtime overhead distinct from estimator state. Timing and memory results depend on the runtime, host and workload; they are not deployment guarantees.
 
 The test set uses a different generation seed but the same simulator and profile families as training. That tests new draws from the configured synthetic distribution. It does not establish generalization to unfamiliar guidance behavior, real sensor recordings, moving ships, missed detections, clutter, or irregular observation intervals. The model also has no calibrated uncertainty output, and the evaluation excludes the early tracking warmup.
 
@@ -194,15 +232,17 @@ The reevaluation uses the existing test observations and saved model. From the s
 ```bash
 uv run scripts/evaluate_ttg.py --dataset out/test --model out/model
 uv run scripts/plot_scores.py
-uv run pytest
+uv run python -m pytest
 make -C cpp test
 ```
 
-The first command writes `out/model/aligned_scores.json` and a per-timestamp audit at `out/aligned/predictions.parquet`. The JSON contains the scoring protocol, shared-sample counts, all profile and band summaries, input and source hashes, model configuration, and runtime versions. The audit retains predictions and masks so the selected rows can be inspected. The test observations are generated artifacts; a fresh clone must follow the README's dataset and tracking instructions before reevaluating. The committed C++ parity references can be checked without regenerating data or retraining.
+The evaluator now runs three streaming benchmark passes per method by default. Use `--benchmark-repeats 5` for additional repetitions, or `--skip-benchmark --output out/aligned/accuracy-only.json` for an accuracy-only artifact that preserves the benchmark report. Nondefault tracking requires matching `--dt`, `--tau`, `--sigma-maneuver` and `--sigma-measurement` values; incompatible observation intervals or predictions fail validation.
+
+The first command writes `out/model/aligned_scores.json` and a per-timestamp audit at `out/aligned/predictions.parquet`. The JSON contains the scoring protocol, shared-sample counts, all profile and band summaries, input and source hashes, model configuration, runtime versions, and a `performance` section containing the timing/memory protocol, host details, per-repeat means, latency distributions and numeric payload sizes. The full Python suite passed 178 tests, and C++ parity again passed all 129,843 comparisons. The audit retains predictions and masks so the selected rows can be inspected. The test observations are generated artifacts; a fresh clone must follow the README's dataset and tracking instructions before reevaluating. The committed C++ parity references can be checked without regenerating data or retraining.
 
 - [Download the aligned evaluation record](assets/posts/ttg/aligned-scores.json).
 - [Simulator source and reproduction instructions](https://github.com/junyeong-nero/simulator).
 - [Saved model and original training scores](https://github.com/junyeong-nero/simulator/tree/91e5b269a66514f75af0f4417128c9eb3eabf4f8/out/model).
 - [Historical three-seed hidden-size comparison](https://github.com/junyeong-nero/simulator/blob/91e5b269a66514f75af0f4417128c9eb3eabf4f8/out/hidden_compare.json).
 
-The tables and Figure 2 use the new aligned evaluation record. The original training scores and historical hidden-size results retain their original masks and provenance.
+The tables and Figures 2–3 use the same downloadable aligned evaluation record. Both SVGs are generated from that record; their colors are read from this blog’s CSS tokens, using its warm canvas, neutral baseline colors and coral GRU accent. The original training scores and historical hidden-size results retain their original masks and provenance.
