@@ -1,7 +1,65 @@
 {
   "version": 1,
-  "updatedAt": "2026-09-01",
+  "updatedAt": "2026-09-13",
   "reviews": [
+    {
+      "id": "2609.00444",
+      "slug": "gapo-group-adaptive-clipping",
+      "title": "Group Adaptive Clipping Policy Optimization",
+      "authors": [
+        "Sheng Jia",
+        "Xiao Wang",
+        "Shiva Prasad Kasiviswanathan",
+        "Rein Houthooft"
+      ],
+      "publishedAt": "2026-08-31",
+      "reviewedAt": "2026-09-13",
+      "summary": "A plug-in for GRPO/GSPO that scales the upper IS-ratio clip with rollout advantage via the group correct count, giving scarce correct rollouts on hard prompts more update headroom and improving pass@1 without losing pass@k.",
+      "tags": [
+        "grpo",
+        "math-reasoning",
+        "policy-optimization",
+        "post-training",
+        "reinforcement-learning",
+        "rlvr",
+        "trust-region"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2609.00444",
+      "pdfUrl": "https://arxiv.org/pdf/2609.00444.pdf",
+      "reviewPath": "reviews/gapo-group-adaptive-clipping.md",
+      "assets": {
+        "figures": [
+          {
+            "path": "assets/gapo-group-adaptive-clipping/figures/figure-01.png",
+            "caption": "Figure 1. Mean IS-ratio deviation over training, binned by group correctness count c.",
+            "page": 1
+          },
+          {
+            "path": "assets/gapo-group-adaptive-clipping/figures/figure-02.png",
+            "caption": "Figure 2. Symmetric, asymmetric, and adaptive clipping applied to rollouts with different c.",
+            "page": 2
+          },
+          {
+            "path": "assets/gapo-group-adaptive-clipping/figures/figure-03.png",
+            "caption": "Figure 3. Token clip fraction over training by group correctness c.",
+            "page": 3
+          }
+        ],
+        "tables": [
+          {
+            "path": "assets/gapo-group-adaptive-clipping/tables/table-01.png",
+            "caption": "Table 1. GAPO vs GSPO baselines on DeepSeek-R1-Distill-Qwen-1.5B.",
+            "page": 5
+          },
+          {
+            "path": "assets/gapo-group-adaptive-clipping/tables/table-02.png",
+            "caption": "Table 3. GAPO vs fixed-clip RLVR baselines on Qwen2.5-1.5B-Math and Llama-3.2-3B-Instruct.",
+            "page": 6
+          }
+        ]
+      },
+      "sourceUrl": ""
+    },
     {
       "id": "2608.26582",
       "slug": "j-zero-challenger-solver-judge",
