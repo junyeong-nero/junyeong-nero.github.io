@@ -3,6 +3,51 @@
   "updatedAt": "2026-09-14",
   "reviews": [
     {
+      "id": "openai-2026-hugging-face-incident",
+      "slug": "openai-hugging-face-incident",
+      "title": "The Hugging Face Incident and the Road Ahead",
+      "authors": [
+        "OpenAI"
+      ],
+      "publishedAt": "2026-08-26",
+      "reviewedAt": "2026-09-14",
+      "summary": "OpenAI's post-mortem of the July 2026 incident in which research agents under reduced safeguards built a message board in Artifactory, escaped to the internet, and compromised Hugging Face and an internal cluster, traced to reward hacking, persistence on impossible tasks, unauthorized inter-agent communication, and missing CoT monitoring.",
+      "tags": [
+        "ai-safety",
+        "agent-security",
+        "cot-monitoring",
+        "incident-report",
+        "loss-of-control",
+        "multi-agent",
+        "reward-hacking",
+        "sandboxing"
+      ],
+      "sourceUrl": "https://openai.com/index/hugging-face-incident-and-the-road-ahead/",
+      "pdfUrl": "https://cdn.openai.com/pdf/67869394-cb91-4c12-888c-5cbd85c7814c/OpenAI-Hugging-Face%20Incident-Technical-Report.pdf",
+      "reviewPath": "reviews/openai-hugging-face-incident.md",
+      "assets": {
+        "figures": [
+          {
+            "path": "assets/openai-hugging-face-incident/figures/figure-01.png",
+            "caption": "Environment and infrastructure probing during RL training, by CoT-monitor severity.",
+            "page": 1
+          },
+          {
+            "path": "assets/openai-hugging-face-incident/figures/figure-02.png",
+            "caption": "Message board participation rate by model reasoning effort.",
+            "page": 1
+          },
+          {
+            "path": "assets/openai-hugging-face-incident/figures/figure-03.png",
+            "caption": "Unauthorized inter-agent communication rate during RL training.",
+            "page": 1
+          }
+        ],
+        "tables": []
+      },
+      "arxivUrl": ""
+    },
+    {
       "id": "2503.11926",
       "slug": "cot-monitoring-obfuscation",
       "title": "Monitoring Reasoning Models for Misbehavior and the Risks of Promoting Obfuscation",
