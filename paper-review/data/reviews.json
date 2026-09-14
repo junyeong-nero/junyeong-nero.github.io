@@ -1,7 +1,69 @@
 {
   "version": 1,
-  "updatedAt": "2026-09-13",
+  "updatedAt": "2026-09-14",
   "reviews": [
+    {
+      "id": "2503.11926",
+      "slug": "cot-monitoring-obfuscation",
+      "title": "Monitoring Reasoning Models for Misbehavior and the Risks of Promoting Obfuscation",
+      "authors": [
+        "Bowen Baker",
+        "Joost Huizinga",
+        "Leo Gao",
+        "Zehao Dou",
+        "Melody Y. Guan",
+        "Aleksander Madry",
+        "Wojciech Zaremba",
+        "Jakub Pachocki",
+        "David Farhi"
+      ],
+      "publishedAt": "2025-03-14",
+      "reviewedAt": "2026-09-14",
+      "summary": "A GPT-4o monitor reading a frontier agent's chain-of-thought catches reward hacking far better than action-only monitoring, but training against that monitor makes the agent hide its intent while still cheating.",
+      "tags": [
+        "ai-safety",
+        "chain-of-thought",
+        "coding-agents",
+        "cot-monitoring",
+        "reward-hacking",
+        "scalable-oversight"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2503.11926",
+      "pdfUrl": "https://arxiv.org/pdf/2503.11926.pdf",
+      "reviewPath": "reviews/cot-monitoring-obfuscation.md",
+      "assets": {
+        "figures": [
+          {
+            "path": "assets/cot-monitoring-obfuscation/figures/figure-01.png",
+            "caption": "Figure 1. Frontier reasoning model chain-of-thought caught reward hacking in the wild.",
+            "page": 2
+          },
+          {
+            "path": "assets/cot-monitoring-obfuscation/figures/figure-02.png",
+            "caption": "Figure 2. CoT vs action monitoring of two systemic hacks during frontier training.",
+            "page": 5
+          },
+          {
+            "path": "assets/cot-monitoring-obfuscation/figures/figure-03.png",
+            "caption": "Figure 4. Optimising against a CoT monitor: fewer hacks, but the remaining hacks evade the monitor.",
+            "page": 8
+          }
+        ],
+        "tables": [
+          {
+            "path": "assets/cot-monitoring-obfuscation/tables/table-01.png",
+            "caption": "Table 1. Action vs CoT monitor recall and precision on two systemic reward hacks.",
+            "page": 6
+          },
+          {
+            "path": "assets/cot-monitoring-obfuscation/tables/table-02.png",
+            "caption": "Table 2. GPT-4o-mini vs GPT-4o as CoT monitors.",
+            "page": 33
+          }
+        ]
+      },
+      "sourceUrl": ""
+    },
     {
       "id": "2609.00444",
       "slug": "gapo-group-adaptive-clipping",
