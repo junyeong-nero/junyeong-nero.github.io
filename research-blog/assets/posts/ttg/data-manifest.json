@@ -1,0 +1,59 @@
+{
+  "task": "observation-zone-entry-v1",
+  "generated_date": "2026-09-16",
+  "pilot": {
+    "count": 63,
+    "seed": 123
+  },
+  "train": {
+    "count": 630,
+    "seed": 0
+  },
+  "test": {
+    "count": 210,
+    "seed": 777
+  },
+  "profiles": 21,
+  "workers": 4,
+  "sensor_hz": 2,
+  "sensor_sigma_m": 25,
+  "physics_dt_s": 0.05,
+  "parquet_sha256": {
+    "out/airspace/train/meta.parquet": "cbf0300a57afb0448acbcc95d3d396c8907d4d4d2ea457fccdc992a10cb93fb7",
+    "out/airspace/train/runs.parquet": "c12b14e23391c71cfd8570d878aad1cc96f884905de8c962de09363ee2604fd8",
+    "out/airspace/train/tracks.parquet": "b619458c30643b3bc6611393a86b76ba670d1dc157dd40115bb239e9ac450800",
+    "out/airspace/test/meta.parquet": "59e5d19d10c05b6e0be882120b2aee7a79bd0cb776585bef4b9259e8793e09e3",
+    "out/airspace/test/runs.parquet": "1394e38df7dcdf8f7b91dce9f0c0797dfc86e3231ced97605a7e2835dfed3641",
+    "out/airspace/test/tracks.parquet": "4957c3dd3f98e328d92628cde67f5ed3808913fff03a10bf1b972c274c8ec5b5"
+  },
+  "generator_source_sha256": {
+    "src/simulator/core/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/simulator/core/forces.py": "f9c63581d5b32c812b88d554db6083250cc168bb48761e8dd8bb844459ba3cec",
+    "src/simulator/core/frames.py": "4c03e784be365da1172150a65f4a0a357cc4a9a3568591d092478648f349f701",
+    "src/simulator/core/integrator.py": "d3bad30ddd1e98cf907fb0490ef8706a1f3bb701505656e682051f65c05433b3",
+    "src/simulator/core/simulation.py": "c805553343d32fafe16e932b9eb5ebaf4af5e58425fc2b7a1c9f7758f1e7b5d6",
+    "src/simulator/core/state.py": "9bbaf6eadc7912f5d9b5c3edd757ecf849b570f6a127c9cc4997bea0d97adfc7",
+    "src/simulator/core/vecmath.py": "23099dce58c2e9a5b02ea5246ad3c68ef11466129d40b27dab07e0676b63deff",
+    "src/simulator/objects/__init__.py": "cfdf72e12e7a04be9be3509b52287281698be87c20d33d7fff8ab6e79cfc0b1a",
+    "src/simulator/objects/base.py": "f1c2fa4371b712ecd88c5ccce85f1c12f2f819ec93b8a6ff1d39da56a3dbe9f3",
+    "src/simulator/objects/environment.py": "f57fd7fd6a576029df5fc5dbc8f06510ceb2fa41aea6b8d66a66ccfca8dc1014",
+    "src/simulator/objects/flight.py": "1894b67935730c071c191de18c5e89ee86c19040b30e65556f48d7d51ac04070",
+    "src/simulator/objects/passive.py": "d414ede181fb6a8fb486d59d2fabee29de0d9a3edd6cf7571fc90634bedb64ce",
+    "src/simulator/objects/physical.py": "4786f16a490d12d6b33f4ab354f353f23dde4b7f558de870d236ef1acd78ab7f",
+    "src/simulator/scenario/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/simulator/scenario/batch.py": "2fd73dad91eb08161e2e2728c0ee14b768a01df91e4537ee125c3dd163a6f7c8",
+    "src/simulator/scenario/profiles.py": "5fb5436c25c9fb1d394c95a3d8d3d20796f17a097ec762812669e025cd1d87b2",
+    "src/simulator/sensors/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/simulator/sensors/base.py": "bc764c68b5a58c74345c185136fcd7493cf978568d214ac3b64e190adf1f5d26",
+    "src/simulator/sensors/cartesian.py": "6a9217c932fab05537b5cbdfbf3c2c5d555af170172580d18612aebe36969e90",
+    "src/simulator/labeling/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/simulator/labeling/ttg.py": "c4e602f58bb45ba6e1c47e249ba56ee87366e7b963d717d5ce40f75c2cfb808a",
+    "src/simulator/dataset/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/simulator/dataset/schema.py": "80866c2cb9e7318824a1ce5ba421efa7fa9e9dae6f1001f2febfe5e6b4a98cc7",
+    "src/simulator/dataset/writer.py": "15f3c80b5a0f24e668fedb13aa82887ebaca7e49cce7e07438344d71436eb9c8",
+    "src/simulator/tracking/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/simulator/tracking/kalman.py": "f47a337aa2901db4ac37ebab2c5924ce4821e3bb43bbd911bb02b5d6b45c42ae",
+    "src/simulator/tracking/pipeline.py": "71f8d8232b098fbb129704c00c800a0968894e438acf2749223f7a0b4bfd6151",
+    "src/simulator/tracking/singer.py": "b490f5149be76065ebfa386fb9b171d703b82f47e868add0d2e4b10bb5fcb617"
+  }
+}
