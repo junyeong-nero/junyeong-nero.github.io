@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="920" viewBox="0 0 880 920" role="img" aria-label="Four model comparison and validation tuning results">
+<rect width="100%" height="100%" fill="#faf8f4"/>
+<g font-family="Arial, sans-serif" fill="#26333d">
+<text x="30" y="38" font-size="25" font-weight="700">Time to observation-zone entry</text>
+<text x="30" y="65" font-size="14" >Independent test runs · mean ± sample SD across three training seeds</text>
+<text x="35" y="105" font-size="18" font-weight="600">Equal weight per run</text>
+<text x="35" y="150" font-size="14" >GRU</text>
+<rect x="105" y="133" width="91.42" height="23" fill="#cf583b"/>
+<path d="M 193.0258986736477 145 H 199.8182678150987 M 193.0258986736477 139 V 151 M 199.8182678150987 139 V 151" stroke="#26333d" fill="none"/>
+<text x="335" y="150" font-size="13" >4.24 ± 0.16</text>
+<text x="35" y="205" font-size="14" >LSTM</text>
+<rect x="105" y="188" width="105.22" height="23" fill="#527aa1"/>
+<path d="M 203.88631628924063 200 H 216.54477610207084 M 203.88631628924063 194 V 206 M 216.54477610207084 194 V 206" stroke="#26333d" fill="none"/>
+<text x="335" y="205" font-size="13" >4.88 ± 0.29</text>
+<text x="35" y="260" font-size="14" >TCN</text>
+<rect x="105" y="243" width="106.82" height="23" fill="#65855b"/>
+<path d="M 209.66385637729903 255 H 213.97645102283207 M 209.66385637729903 249 V 261 M 213.97645102283207 249 V 261" stroke="#26333d" fill="none"/>
+<text x="335" y="260" font-size="13" >4.95 ± 0.10</text>
+<text x="35" y="315" font-size="14" >MLP</text>
+<rect x="105" y="298" width="179.65" height="23" fill="#92719d"/>
+<path d="M 281.6957172114301 310 H 287.6086956521739 M 281.6957172114301 304 V 316 M 287.6086956521739 304 V 316" stroke="#26333d" fill="none"/>
+<text x="335" y="315" font-size="13" >8.33 ± 0.14</text>
+<text x="35" y="360" font-size="12" >Absolute error (seconds); lower is better</text>
+<text x="460" y="105" font-size="18" font-weight="600">Equal weight per timestamp</text>
+<text x="460" y="150" font-size="14" >GRU</text>
+<rect x="530" y="133" width="89.82" height="23" fill="#cf583b"/>
+<path d="M 616.2239418458378 145 H 623.4079861376601 M 616.2239418458378 139 V 151 M 623.4079861376601 139 V 151" stroke="#26333d" fill="none"/>
+<text x="760" y="150" font-size="13" >5.51 ± 0.22</text>
+<text x="460" y="205" font-size="14" >LSTM</text>
+<rect x="530" y="188" width="104.35" height="23" fill="#527aa1"/>
+<path d="M 627.7431997275264 200 H 640.9591481581247 M 627.7431997275264 194 V 206 M 640.9591481581247 194 V 206" stroke="#26333d" fill="none"/>
+<text x="760" y="205" font-size="13" >6.40 ± 0.41</text>
+<text x="460" y="260" font-size="14" >TCN</text>
+<rect x="530" y="243" width="105.33" height="23" fill="#65855b"/>
+<path d="M 633.4417968479122 255 H 637.2264426693607 M 633.4417968479122 249 V 261 M 637.2264426693607 249 V 261" stroke="#26333d" fill="none"/>
+<text x="760" y="260" font-size="13" >6.46 ± 0.12</text>
+<text x="460" y="315" font-size="14" >MLP</text>
+<rect x="530" y="298" width="178.93" height="23" fill="#92719d"/>
+<path d="M 705.2519743889374 310 H 712.608695652174 M 705.2519743889374 304 V 316 M 712.608695652174 304 V 316" stroke="#26333d" fill="none"/>
+<text x="760" y="315" font-size="13" >10.97 ± 0.23</text>
+<text x="460" y="360" font-size="12" >Absolute error (seconds); lower is better</text>
+<text x="30" y="415" font-size="20" font-weight="600">Validation-only tuning: six trials per family</text>
+<text x="30" y="440" font-size="13" >Run-macro MAE in seconds. Final refits use the lowest-scoring setting.</text>
+<text x="30" y="478" font-size="14" font-weight="600">Configuration</text>
+<text x="400" y="478" font-size="14" font-weight="600">GRU</text>
+<text x="510" y="478" font-size="14" font-weight="600">LSTM</text>
+<text x="620" y="478" font-size="14" font-weight="600">TCN</text>
+<text x="730" y="478" font-size="14" font-weight="600">MLP</text>
+<rect x="22" y="490" width="826" height="35" fill="#eeeae4"/>
+<text x="30" y="514" font-size="14" >Reference h32</text>
+<text x="400" y="514" font-size="14" font-weight="400">4.68</text>
+<text x="510" y="514" font-size="14" font-weight="400">4.88</text>
+<text x="620" y="514" font-size="14" font-weight="400">5.32</text>
+<text x="730" y="514" font-size="14" font-weight="400">8.65</text>
+<text x="30" y="552" font-size="14" >Width h16</text>
+<text x="400" y="552" font-size="14" font-weight="400">5.05</text>
+<text x="510" y="552" font-size="14" font-weight="400">5.44</text>
+<text x="620" y="552" font-size="14" font-weight="400">5.69</text>
+<text x="730" y="552" font-size="14" font-weight="400">9.12</text>
+<rect x="22" y="566" width="826" height="35" fill="#eeeae4"/>
+<text x="30" y="590" font-size="14" >Width h64</text>
+<text x="400" y="590" font-size="14" font-weight="700">4.56</text>
+<text x="510" y="590" font-size="14" font-weight="700">4.68</text>
+<text x="620" y="590" font-size="14" font-weight="400">5.53</text>
+<text x="730" y="590" font-size="14" font-weight="700">8.37</text>
+<text x="30" y="628" font-size="14" >Learning rate .001</text>
+<text x="400" y="628" font-size="14" font-weight="400">5.38</text>
+<text x="510" y="628" font-size="14" font-weight="400">5.55</text>
+<text x="620" y="628" font-size="14" font-weight="400">5.45</text>
+<text x="730" y="628" font-size="14" font-weight="400">36.86</text>
+<rect x="22" y="642" width="826" height="35" fill="#eeeae4"/>
+<text x="30" y="666" font-size="14" >Raw target</text>
+<text x="400" y="666" font-size="14" font-weight="400">15.01</text>
+<text x="510" y="666" font-size="14" font-weight="400">16.06</text>
+<text x="620" y="666" font-size="14" font-weight="400">6.25</text>
+<text x="730" y="666" font-size="14" font-weight="400">9.98</text>
+<text x="30" y="704" font-size="14" >Weight decay .0001</text>
+<text x="400" y="704" font-size="14" font-weight="400">4.68</text>
+<text x="510" y="704" font-size="14" font-weight="400">4.95</text>
+<text x="620" y="704" font-size="14" font-weight="700">5.30</text>
+<text x="730" y="704" font-size="14" font-weight="400">8.68</text>
+<text x="30" y="775" font-size="14" >25,598 eligible timestamps in 167 entering test runs.</text>
+<text x="30" y="801" font-size="14" >Baseline-common subset: 15,237; excluded from that subset: 10,361.</text>
+<text x="30" y="837" font-size="13" >21 synthetic profiles · 630 training-source runs · 210 independent test runs</text>
+<text x="30" y="863" font-size="12" >24 tuning trials (≤60 epochs), 12 final refits (≤120 epochs); early stopping on validation.</text>
+<text x="30" y="890" font-size="12" >No entry classifier, field validation, or C++ implementation of the alternatives is claimed.</text>
+</g>
+</svg>

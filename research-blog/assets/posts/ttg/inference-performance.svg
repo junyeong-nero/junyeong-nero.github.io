@@ -4,7 +4,7 @@
 <rect width="760" height="700" fill="#f8f7f3"/>
 <text x="28" y="36" font-size="22" fill="#212121" text-anchor="start" font-weight="600">The cost of one observation update</text>
 <text x="28" y="61" font-size="13" fill="#52525b" text-anchor="start" font-weight="400">Apple M2 · Python CPU · batch size 1 · thread limits 1</text>
-<text x="28" y="82" font-size="13" fill="#75758a" text-anchor="start" font-weight="400">503 impact runs · 147,547 observations × 3 repeats per estimator</text>
+<text x="28" y="82" font-size="13" fill="#75758a" text-anchor="start" font-weight="400">167 entry runs · 26,600 observations × 3 repeats per estimator</text>
 <text x="28" y="125" font-size="17" fill="#212121" text-anchor="start" font-weight="600">A   Inference latency</text>
 <text x="720" y="125" font-size="11" fill="#75758a" text-anchor="end" font-weight="400">MEAN / P95 (µs)</text>
 <line x1="200.0" y1="145" x2="200.0" y2="298" stroke="#e3e0d8"/>
@@ -18,42 +18,42 @@
 <line x1="560.0" y1="145" x2="560.0" y2="298" stroke="#e3e0d8"/>
 <text x="560.0" y="319" font-size="11" fill="#75758a" text-anchor="middle" font-weight="400">200</text>
 <text x="28" y="178" font-size="13" fill="#52525b" text-anchor="start" font-weight="400">Linear estimation</text>
-<rect x="200" y="161" width="1.67" height="24" rx="2" fill="#93939f"/>
-<line x1="201.66821669976346" y1="173" x2="201.8" y2="173" stroke="#212121"/>
-<line x1="201.8" y1="164" x2="201.8" y2="182" stroke="#212121"/>
-<text x="720" y="178" font-size="13" fill="#212121" text-anchor="end" font-weight="500">0.93 / 1.00</text>
+<rect x="200" y="161" width="1.73" height="24" rx="2" fill="#93939f"/>
+<line x1="201.73399639097744" y1="173" x2="201.8756" y2="173" stroke="#212121"/>
+<line x1="201.8756" y1="164" x2="201.8756" y2="182" stroke="#212121"/>
+<text x="720" y="178" font-size="13" fill="#212121" text-anchor="end" font-weight="500">0.96 / 1.04</text>
 <text x="28" y="228" font-size="13" fill="#52525b" text-anchor="start" font-weight="400">Kalman filter</text>
-<rect x="200" y="211" width="67.89" height="24" rx="2" fill="#52525b"/>
-<line x1="267.8942727781656" y1="223" x2="278.8994" y2="223" stroke="#212121"/>
-<line x1="278.8994" y1="214" x2="278.8994" y2="232" stroke="#212121"/>
-<text x="720" y="228" font-size="13" fill="#212121" text-anchor="end" font-weight="500">37.72 / 43.83</text>
+<rect x="200" y="211" width="63.39" height="24" rx="2" fill="#52525b"/>
+<line x1="263.3945084135338" y1="223" x2="267.275" y2="223" stroke="#212121"/>
+<line x1="267.275" y1="214" x2="267.275" y2="232" stroke="#212121"/>
+<text x="720" y="228" font-size="13" fill="#212121" text-anchor="end" font-weight="500">35.22 / 37.38</text>
 <text x="28" y="278" font-size="13" fill="#52525b" text-anchor="start" font-weight="400">GRU + Kalman</text>
-<rect x="200" y="261" width="167.81" height="24" rx="2" fill="#ff7759"/>
-<line x1="367.8137969067484" y1="273" x2="392.90060000000005" y2="273" stroke="#212121"/>
-<line x1="392.90060000000005" y1="264" x2="392.90060000000005" y2="282" stroke="#212121"/>
-<text x="720" y="278" font-size="13" fill="#212121" text-anchor="end" font-weight="500">93.23 / 107.17</text>
+<rect x="200" y="261" width="166.65" height="24" rx="2" fill="#ff7759"/>
+<line x1="366.6525414736842" y1="273" x2="381.8738" y2="273" stroke="#212121"/>
+<line x1="381.8738" y1="264" x2="381.8738" y2="282" stroke="#212121"/>
+<text x="720" y="278" font-size="13" fill="#212121" text-anchor="end" font-weight="500">92.58 / 101.04</text>
 <text x="28" y="353" font-size="12" fill="#75758a" text-anchor="start" font-weight="400">Bars: mean time. End marks: p95. Linear axis in microseconds.</text>
 <text x="28" y="393" font-size="17" fill="#212121" text-anchor="start" font-weight="600">B   Process peak memory</text>
 <text x="720" y="393" font-size="11" fill="#75758a" text-anchor="end" font-weight="400">PEAK RSS (MiB)</text>
 <line x1="200.0" y1="413" x2="200.0" y2="566" stroke="#e3e0d8"/>
 <text x="200.0" y="587" font-size="11" fill="#75758a" text-anchor="middle" font-weight="400">0</text>
 <line x1="290.0" y1="413" x2="290.0" y2="566" stroke="#e3e0d8"/>
-<text x="290.0" y="587" font-size="11" fill="#75758a" text-anchor="middle" font-weight="400">100</text>
+<text x="290.0" y="587" font-size="11" fill="#75758a" text-anchor="middle" font-weight="400">50</text>
 <line x1="380.0" y1="413" x2="380.0" y2="566" stroke="#e3e0d8"/>
-<text x="380.0" y="587" font-size="11" fill="#75758a" text-anchor="middle" font-weight="400">200</text>
+<text x="380.0" y="587" font-size="11" fill="#75758a" text-anchor="middle" font-weight="400">100</text>
 <line x1="470.0" y1="413" x2="470.0" y2="566" stroke="#e3e0d8"/>
-<text x="470.0" y="587" font-size="11" fill="#75758a" text-anchor="middle" font-weight="400">300</text>
+<text x="470.0" y="587" font-size="11" fill="#75758a" text-anchor="middle" font-weight="400">150</text>
 <line x1="560.0" y1="413" x2="560.0" y2="566" stroke="#e3e0d8"/>
-<text x="560.0" y="587" font-size="11" fill="#75758a" text-anchor="middle" font-weight="400">400</text>
+<text x="560.0" y="587" font-size="11" fill="#75758a" text-anchor="middle" font-weight="400">200</text>
 <text x="28" y="446" font-size="13" fill="#52525b" text-anchor="start" font-weight="400">Linear estimation</text>
-<rect x="200" y="429" width="47.36" height="24" rx="2" fill="#93939f"/>
-<text x="720" y="446" font-size="13" fill="#212121" text-anchor="end" font-weight="500">52.62</text>
+<rect x="200" y="429" width="72.73" height="24" rx="2" fill="#93939f"/>
+<text x="720" y="446" font-size="13" fill="#212121" text-anchor="end" font-weight="500">40.41</text>
 <text x="28" y="496" font-size="13" fill="#52525b" text-anchor="start" font-weight="400">Kalman filter</text>
-<rect x="200" y="479" width="39.54" height="24" rx="2" fill="#52525b"/>
-<text x="720" y="496" font-size="13" fill="#212121" text-anchor="end" font-weight="500">43.94</text>
+<rect x="200" y="479" width="73.77" height="24" rx="2" fill="#52525b"/>
+<text x="720" y="496" font-size="13" fill="#212121" text-anchor="end" font-weight="500">40.98</text>
 <text x="28" y="546" font-size="13" fill="#52525b" text-anchor="start" font-weight="400">GRU + Kalman</text>
-<rect x="200" y="529" width="181.45" height="24" rx="2" fill="#ff7759"/>
-<text x="720" y="546" font-size="13" fill="#212121" text-anchor="end" font-weight="500">201.61</text>
+<rect x="200" y="529" width="357.83" height="24" rx="2" fill="#ff7759"/>
+<text x="720" y="546" font-size="13" fill="#212121" text-anchor="end" font-weight="500">198.80</text>
 <text x="28" y="621" font-size="12" fill="#75758a" text-anchor="start" font-weight="400">Fresh-worker RSS includes Python, libraries, model and benchmark buffers.</text>
 <line x1="28" y1="645" x2="732" y2="645" stroke="#e3e0d8"/>
 <text x="28" y="666" font-size="12" fill="#52525b" text-anchor="start" font-weight="400">GRU includes filtering, features and normalization. No file I/O inside the timer.</text>

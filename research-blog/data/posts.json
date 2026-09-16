@@ -2,9 +2,9 @@
   "posts": [
     {
       "slug": "radar-ttg-synthetic-gru",
-      "title": "From radar observations to time-to-go: accuracy, inference time, and memory",
-      "date": "2026-09-13",
-      "summary": "A physics-based simulator, Singer Kalman filter and small GRU, compared on 113,047 shared timestamps. Full-history Python CPU benchmarks add per-observation latency and process memory, while distinguishing runtime overhead from model size and C++ deployment."
+      "title": "Airborne trajectories and time to zone entry: GRU, LSTM, TCN and MLP",
+      "date": "2026-09-16",
+      "summary": "21 synthetic motion profiles, 840 generated runs, 24 validation-only tuning trials and 12 final fits. Compare four model families, baseline coverage, non-entry tracking errors and streaming cost, with a regenerated C++ GRU reference."
     },
     {
       "slug": "browserlens-uist-2026",
@@ -26,5 +26,5 @@
       "summary": "Starting a research blog to document experiments, paper reimplementations, and engineering insights."
     }
   ],
-  "updatedAt": "2026-09-13"
+  "updatedAt": "2026-09-16"
 }
