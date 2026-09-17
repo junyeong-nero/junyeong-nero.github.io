@@ -8,7 +8,7 @@ The experiment collection finished on September 17, 2026. The static sweeps and 
 
 [View full-size figure](assets/posts/drone-swarm/constraint-effects.svg)
 
-[Source repository](https://github.com/junyeong-nero/drone-swarm-simulator) · [Full results](https://github.com/junyeong-nero/drone-swarm-simulator/blob/bd3a2e7/docs/RESULTS.md) · [Figure data and provenance](assets/posts/drone-swarm/provenance.json)
+[Source repository](https://github.com/junyeong-nero/constrained-swarm-observation) · [Full results](https://github.com/junyeong-nero/constrained-swarm-observation/blob/bd3a2e7/docs/RESULTS.md) · [Figure data and provenance](assets/posts/drone-swarm/provenance.json)
 
 ## Measure observation geometry before claiming tracking accuracy
 
@@ -153,7 +153,7 @@ All six figures were redrawn from archived numerical records, using this blog's 
 - [Figure source and reproduction notes](assets/posts/drone-swarm/README.md)
 - [Figure renderer](assets/posts/drone-swarm/render_figures.py)
 - [Source-file hashes and provenance](assets/posts/drone-swarm/provenance.json)
-- [Original full results and frozen protocols](https://github.com/junyeong-nero/drone-swarm-simulator/blob/bd3a2e7/docs/RESULTS.md)
+- [Original full results and frozen protocols](https://github.com/junyeong-nero/constrained-swarm-observation/blob/bd3a2e7/docs/RESULTS.md)
 - [Dynamic condition summary](assets/posts/drone-swarm/data/constraint_dynamic.summary_by_condition.json)
 - [Post-hoc re-certification](assets/posts/drone-swarm/data/constraint_interaction.undecided_recertification.json)
 
