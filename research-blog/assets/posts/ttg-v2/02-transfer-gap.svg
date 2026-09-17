@@ -2,7 +2,7 @@
 <title id="title">Synthetic gains do not transfer uniformly</title><desc id="desc">Mixed profiles vs. Baseline · change in macro MAE (%) · lower is better</desc>
 <style>text{font-family:Arial,"Apple SD Gothic Neo",sans-serif;font-variant-numeric:tabular-nums} .title{font-family:Georgia,"Times New Roman",serif}</style>
 <rect x="0.00" y="0.00" width="760.00" height="825.00" rx="0" fill="#f8f7f3"/>
-<text x="36.00" y="30.00" font-size="12" fill="#52525b" text-anchor="start" class="">TTG LAB  /  REAL-FLIGHT STUDY  /  V2</text>
+<text x="36.00" y="30.00" font-size="12" fill="#52525b" text-anchor="start" class="">UAV LAB  /  REAL-FLIGHT STUDY  /  V2</text>
 <text x="36.00" y="68.00" font-size="29" fill="#212121" text-anchor="start" class="title">Synthetic gains do not transfer uniformly</text>
 <text x="36.00" y="96.00" font-size="14" fill="#52525b" text-anchor="start" class="">Mixed profiles vs. Baseline · change in macro MAE (%) · lower is better</text>
 <line x1="36.00" y1="117.00" x2="724.00" y2="117.00" stroke="#e3e0d8" stroke-width="1" stroke-dasharray=""/>

@@ -1,16 +1,16 @@
 {
   "posts": [
     {
+      "slug": "uav-synthetic-ttg-real-flight",
+      "title": "UAV-specific synthetic data and time to zone entry: what transferred to real flights and what did not",
+      "date": "2026-09-18",
+      "summary": "Four synthetic training arms with one matched budget, 72 tuning trials and 36 frozen models scored on MASC-3, ALFA and AMOVFLY. The mixed-profile GRU cut synthetic validation error by 24.1% and raised MASC-3 error by 53.0%. Where the gains held, where they reversed, and what the design cannot separate."
+    },
+    {
       "slug": "drone-swarm-constraint-study",
       "title": "What limits a drone swarm's view? Seven constraints, from placement to flight",
       "date": "2026-09-18",
       "summary": "Seven constraint axes on twelve corridor and corner maps: grid-certified placement, interactions, a static estimator check and 108 flight episodes. Why sensing, standoff and swarm size mattered most—and why safety failures and observation loss stay in the results."
-    },
-    {
-      "slug": "radar-ttg-synthetic-gru",
-      "title": "Airborne trajectories and time to zone entry: GRU, LSTM, TCN and MLP",
-      "date": "2026-09-16",
-      "summary": "21 synthetic motion profiles, 840 generated runs, 24 validation-only tuning trials and 12 final fits. Compare four model families, baseline coverage, non-entry tracking errors and streaming cost, with a regenerated C++ GRU reference."
     },
     {
       "slug": "browserlens-uist-2026",

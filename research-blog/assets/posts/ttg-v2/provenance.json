@@ -18,10 +18,10 @@
     "amovfly_uav_v2/distance_1050/scores.json": "3047f883656cf67dee031686637a340eec092615e0f74e09844a0410d1488b8f"
   },
   "figures": {
-    "01-training-design.svg": "c80419d501b43660955cbb54a552c9b975c47fc4ab0ce2e8aafcbed977161c5f",
-    "02-transfer-gap.svg": "3f64f56de0dde68fd5c6a277c4b96be2d64fb4cc287225eb81d8f3be7a8a8509",
-    "03-fixedwing-effects.svg": "b494d98ae70343705d16fe674dac02c3a63e486511fe7c457180ac4fe1fb972e",
-    "04-multicopter-effects.svg": "3d114f782cdd4fe3d241179a12acfe20d2a18eac60a67ab1ae4f02e6d2d9a2f4",
-    "05-evaluation-coverage.svg": "0697430f10c8828336ac916f44cac0d98be882dfbabb1beeba6ddbfb8c413099"
+    "01-training-design.svg": "3ac536135da06bc997afdf1e5c77c22622120bfea9e285d61d50f948f9de1de0",
+    "02-transfer-gap.svg": "66670174decd3177a3bebc8c427a1a0c107b67f70a8bb11f40e36e768047c0d2",
+    "03-fixedwing-effects.svg": "b79031e980379ba733e611986417382f18a01464feab196b9b7046a8269b734f",
+    "04-multicopter-effects.svg": "0a544963c641dec090dc75a308400842673edfb4c42538a54bb74ba419e3bda9",
+    "05-evaluation-coverage.svg": "bbc2365da561ef1d266adcacc7c511795e57fa550622ab3d3e49d0e348cf0818"
   }
 }
