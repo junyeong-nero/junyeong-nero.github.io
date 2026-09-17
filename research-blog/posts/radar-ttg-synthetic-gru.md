@@ -6,7 +6,7 @@ On all eligible test observations, GRU achieved a run-macro mean absolute error 
 
 ![Replay of balloon wind shear, a hovering multicopter, and an outside figure-eight circuit.](assets/posts/ttg/demo.gif "Figure 1. The new replay shows independent airborne motion, noisy observations, a filtered track and estimated time to zone entry. The blue sphere has a 1 km radius. Demo trajectories are illustrations; aggregate scores come from the separate test dataset.")
 
-[Watch the MP4](assets/posts/ttg/demo.mp4) · [Source repository](https://github.com/junyeong-nero/ttg-lab) · [Download comparison results](assets/posts/ttg/comparison.json).
+[Watch the MP4](assets/posts/ttg/demo.mp4) · [Source repository](https://github.com/junyeong-nero/uav-lab) · [Download comparison results](assets/posts/ttg/comparison.json).
 
 ## Define the event before fitting a predictor
 
