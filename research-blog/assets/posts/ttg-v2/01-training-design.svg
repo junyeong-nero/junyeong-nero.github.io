@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="650" viewBox="0 0 760 650" role="img" aria-labelledby="title desc">
+<title id="title">What changes between training arms?</title><desc id="desc">Same budget. Different synthetic motion profiles.</desc>
+<style>text{font-family:Arial,"Apple SD Gothic Neo",sans-serif;font-variant-numeric:tabular-nums} .title{font-family:Georgia,"Times New Roman",serif}</style>
+<rect x="0.00" y="0.00" width="760.00" height="650.00" rx="0" fill="#f8f7f3"/>
+<text x="36.00" y="30.00" font-size="12" fill="#52525b" text-anchor="start" class="">TTG LAB  /  REAL-FLIGHT STUDY  /  V2</text>
+<text x="36.00" y="68.00" font-size="29" fill="#212121" text-anchor="start" class="title">What changes between training arms?</text>
+<text x="36.00" y="96.00" font-size="14" fill="#52525b" text-anchor="start" class="">Same budget. Different synthetic motion profiles.</text>
+<line x1="36.00" y1="117.00" x2="724.00" y2="117.00" stroke="#e3e0d8" stroke-width="1" stroke-dasharray=""/>
+<rect x="36.00" y="144.00" width="12.00" height="12.00" rx="2" fill="#93939f"/>
+<text x="56.00" y="155.00" font-size="14" fill="#52525b" text-anchor="start" class="">CV</text>
+<rect x="170.00" y="144.00" width="12.00" height="12.00" rx="2" fill="#17171c"/>
+<text x="190.00" y="155.00" font-size="14" fill="#52525b" text-anchor="start" class="">CA</text>
+<rect x="300.00" y="144.00" width="12.00" height="12.00" rx="2" fill="#1863dc"/>
+<text x="320.00" y="155.00" font-size="14" fill="#52525b" text-anchor="start" class="">Fixed-wing</text>
+<rect x="506.00" y="144.00" width="12.00" height="12.00" rx="2" fill="#52525b"/>
+<text x="526.00" y="155.00" font-size="14" fill="#52525b" text-anchor="start" class="">Multicopter</text>
+<text x="36.00" y="214.00" font-size="18" fill="#212121" text-anchor="start" class="">Baseline</text>
+<rect x="183.00" y="191.00" width="247.50" height="33.00" rx="0" fill="#93939f"/>
+<rect x="430.50" y="191.00" width="247.50" height="33.00" rx="0" fill="#17171c"/>
+<text x="183.00" y="245.00" font-size="14" fill="#52525b" text-anchor="start" class="">250 CV + 250 CA</text>
+<text x="36.00" y="297.00" font-size="18" fill="#212121" text-anchor="start" class="">+ FW</text>
+<rect x="183.00" y="274.00" width="123.75" height="33.00" rx="0" fill="#93939f"/>
+<rect x="306.75" y="274.00" width="123.75" height="33.00" rx="0" fill="#17171c"/>
+<rect x="430.50" y="274.00" width="247.50" height="33.00" rx="0" fill="#1863dc"/>
+<text x="183.00" y="328.00" font-size="14" fill="#52525b" text-anchor="start" class="">250 CV/CA + 250 FW</text>
+<text x="36.00" y="380.00" font-size="18" fill="#212121" text-anchor="start" class="">+ MC</text>
+<rect x="183.00" y="357.00" width="123.75" height="33.00" rx="0" fill="#93939f"/>
+<rect x="306.75" y="357.00" width="123.75" height="33.00" rx="0" fill="#17171c"/>
+<rect x="430.50" y="357.00" width="247.50" height="33.00" rx="0" fill="#52525b"/>
+<text x="183.00" y="411.00" font-size="14" fill="#52525b" text-anchor="start" class="">250 CV/CA + 250 MC</text>
+<text x="36.00" y="463.00" font-size="18" fill="#212121" text-anchor="start" class="">Mixed</text>
+<rect x="183.00" y="440.00" width="123.75" height="33.00" rx="0" fill="#93939f"/>
+<rect x="306.75" y="440.00" width="123.75" height="33.00" rx="0" fill="#17171c"/>
+<rect x="430.50" y="440.00" width="247.50" height="33.00" rx="0" fill="#ff7759"/>
+<text x="183.00" y="494.00" font-size="14" fill="#52525b" text-anchor="start" class="">250 CV/CA + 250 mixed profiles</text>
+<rect x="36.00" y="527.00" width="688.00" height="49.00" rx="8" fill="#eeece7"/>
+<text x="52.00" y="557.00" font-size="17" fill="#212121" text-anchor="start" class="">500 runs / arm  ·  55,778 supervised timestamps / arm</text>
+<line x1="36.00" y1="586.00" x2="724.00" y2="586.00" stroke="#e3e0d8" stroke-width="1" stroke-dasharray=""/>
+<text x="36.00" y="606.00" font-size="12" fill="#52525b" text-anchor="start" class="">Shared validation: 100 runs. GRU / LSTM / MLP, three final seeds each.</text>
+<text x="36.00" y="625.00" font-size="12" fill="#52525b" text-anchor="start" class="">Matched update budget; initial-state distributions and selected settings still differ.</text>
+<metadata>{&quot;runs_per_arm&quot;: 500, &quot;timestamps_per_arm&quot;: 55778}</metadata>
+</svg>

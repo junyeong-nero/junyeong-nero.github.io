@@ -1,6 +1,12 @@
 {
   "posts": [
     {
+      "slug": "drone-swarm-constraint-study",
+      "title": "What limits a drone swarm's view? Seven constraints, from placement to flight",
+      "date": "2026-09-18",
+      "summary": "Seven constraint axes on twelve corridor and corner maps: grid-certified placement, interactions, a static estimator check and 108 flight episodes. Why sensing, standoff and swarm size mattered most—and why safety failures and observation loss stay in the results."
+    },
+    {
       "slug": "radar-ttg-synthetic-gru",
       "title": "Airborne trajectories and time to zone entry: GRU, LSTM, TCN and MLP",
       "date": "2026-09-16",
@@ -26,5 +32,5 @@
       "summary": "Starting a research blog to document experiments, paper reimplementations, and engineering insights."
     }
   ],
-  "updatedAt": "2026-09-16"
+  "updatedAt": "2026-09-18"
 }

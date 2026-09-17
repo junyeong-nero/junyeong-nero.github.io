@@ -1,0 +1,177 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="1073" viewBox="0 0 760 1073" role="img" aria-labelledby="title desc">
+<title id="title">Fixed-wing: effects depend on the dataset</title><desc id="desc">Added arm − Baseline · flight-macro MAE (s) · mean across three seeds</desc>
+<style>text{font-family:Arial,"Apple SD Gothic Neo",sans-serif;font-variant-numeric:tabular-nums} .title{font-family:Georgia,"Times New Roman",serif}</style>
+<rect x="0.00" y="0.00" width="760.00" height="1073.00" rx="0" fill="#f8f7f3"/>
+<text x="36.00" y="30.00" font-size="12" fill="#52525b" text-anchor="start" class="">TTG LAB  /  REAL-FLIGHT STUDY  /  V2</text>
+<text x="36.00" y="68.00" font-size="29" fill="#212121" text-anchor="start" class="title">Fixed-wing: effects depend on the dataset</text>
+<text x="36.00" y="96.00" font-size="14" fill="#52525b" text-anchor="start" class="">Added arm − Baseline · flight-macro MAE (s) · mean across three seeds</text>
+<line x1="36.00" y1="117.00" x2="724.00" y2="117.00" stroke="#e3e0d8" stroke-width="1" stroke-dasharray=""/>
+<circle cx="42.00" cy="143.00" r="5" fill="#1863dc"/>
+<text x="56.00" y="148.00" font-size="14" fill="#52525b" text-anchor="start" class="">+ FW</text>
+<rect x="214.00" y="138.00" width="10.00" height="10.00" rx="0" fill="#52525b"/>
+<text x="233.00" y="148.00" font-size="14" fill="#52525b" text-anchor="start" class="">+ MC</text>
+<path d="M396.00,136.00 l7,7 l-7,7 l-7,-7 Z" fill="#ff7759"/>
+<text x="410.00" y="148.00" font-size="14" fill="#52525b" text-anchor="start" class="">Mixed</text>
+<text x="36.00" y="193.00" font-size="21" fill="#212121" text-anchor="start" class="">MASC-3 · primary</text>
+<text x="36.00" y="217.00" font-size="13" fill="#52525b" text-anchor="start" class="">1,500 m · 14 flights / 10 dates</text>
+<line x1="238.00" y1="245.00" x2="238.00" y2="523.00" stroke="#e3e0d8" stroke-width="1" stroke-dasharray=""/>
+<text x="238.00" y="543.00" font-size="12" fill="#52525b" text-anchor="middle" class="">-0.4</text>
+<line x1="291.20" y1="245.00" x2="291.20" y2="523.00" stroke="#212121" stroke-width="1.4" stroke-dasharray=""/>
+<text x="291.20" y="543.00" font-size="12" fill="#52525b" text-anchor="middle" class="">0</text>
+<line x1="344.40" y1="245.00" x2="344.40" y2="523.00" stroke="#e3e0d8" stroke-width="1" stroke-dasharray=""/>
+<text x="344.40" y="543.00" font-size="12" fill="#52525b" text-anchor="middle" class="">0.4</text>
+<line x1="397.60" y1="245.00" x2="397.60" y2="523.00" stroke="#e3e0d8" stroke-width="1" stroke-dasharray=""/>
+<text x="397.60" y="543.00" font-size="12" fill="#52525b" text-anchor="middle" class="">0.8</text>
+<line x1="450.80" y1="245.00" x2="450.80" y2="523.00" stroke="#e3e0d8" stroke-width="1" stroke-dasharray=""/>
+<text x="450.80" y="543.00" font-size="12" fill="#52525b" text-anchor="middle" class="">1.2</text>
+<line x1="504.00" y1="245.00" x2="504.00" y2="523.00" stroke="#e3e0d8" stroke-width="1" stroke-dasharray=""/>
+<text x="504.00" y="543.00" font-size="12" fill="#52525b" text-anchor="middle" class="">1.6</text>
+<text x="36.00" y="263.00" font-size="16" fill="#212121" text-anchor="start" class="">GRU</text>
+<text x="117.00" y="263.00" font-size="13" fill="#52525b" text-anchor="start" class="">+ FW</text>
+<line x1="369.50" y1="258.00" x2="415.80" y2="258.00" stroke="#1863dc" stroke-width="2" stroke-dasharray=""/>
+<line x1="369.50" y1="254.00" x2="369.50" y2="262.00" stroke="#1863dc" stroke-width="1.5" stroke-dasharray=""/>
+<line x1="415.80" y1="254.00" x2="415.80" y2="262.00" stroke="#1863dc" stroke-width="1.5" stroke-dasharray=""/>
+<circle cx="390.05" cy="258.00" r="5" fill="#1863dc"/>
+<text x="724.00" y="263.00" font-size="13" fill="#212121" text-anchor="end" class="">+0.74 [+0.59, +0.94]</text>
+<text x="36.00" y="294.00" font-size="16" fill="#212121" text-anchor="start" class=""></text>
+<text x="117.00" y="294.00" font-size="13" fill="#52525b" text-anchor="start" class="">+ MC</text>
+<line x1="418.55" y1="289.00" x2="458.04" y2="289.00" stroke="#52525b" stroke-width="2" stroke-dasharray=""/>
+<line x1="418.55" y1="285.00" x2="418.55" y2="293.00" stroke="#52525b" stroke-width="1.5" stroke-dasharray=""/>
+<line x1="458.04" y1="285.00" x2="458.04" y2="293.00" stroke="#52525b" stroke-width="1.5" stroke-dasharray=""/>
+<rect x="432.97" y="284.00" width="10.00" height="10.00" rx="0" fill="#52525b"/>
+<text x="724.00" y="294.00" font-size="13" fill="#212121" text-anchor="end" class="">+1.10 [+0.96, +1.25]</text>
+<text x="36.00" y="325.00" font-size="16" fill="#212121" text-anchor="start" class=""></text>
+<text x="117.00" y="325.00" font-size="13" fill="#52525b" text-anchor="start" class="">Mixed</text>
+<line x1="356.63" y1="320.00" x2="395.09" y2="320.00" stroke="#ff7759" stroke-width="2" stroke-dasharray=""/>
+<line x1="356.63" y1="316.00" x2="356.63" y2="324.00" stroke="#ff7759" stroke-width="1.5" stroke-dasharray=""/>
+<line x1="395.09" y1="316.00" x2="395.09" y2="324.00" stroke="#ff7759" stroke-width="1.5" stroke-dasharray=""/>
+<path d="M374.04,313.00 l7,7 l-7,7 l-7,-7 Z" fill="#ff7759"/>
+<text x="724.00" y="325.00" font-size="13" fill="#212121" text-anchor="end" class="">+0.62 [+0.49, +0.78]</text>
+<text x="36.00" y="356.00" font-size="16" fill="#212121" text-anchor="start" class="">LSTM</text>
+<text x="117.00" y="356.00" font-size="13" fill="#52525b" text-anchor="start" class="">+ FW</text>
+<line x1="368.35" y1="351.00" x2="386.97" y2="351.00" stroke="#1863dc" stroke-width="2" stroke-dasharray=""/>
+<line x1="368.35" y1="347.00" x2="368.35" y2="355.00" stroke="#1863dc" stroke-width="1.5" stroke-dasharray=""/>
+<line x1="386.97" y1="347.00" x2="386.97" y2="355.00" stroke="#1863dc" stroke-width="1.5" stroke-dasharray=""/>
+<circle cx="375.66" cy="351.00" r="5" fill="#1863dc"/>
+<text x="724.00" y="356.00" font-size="13" fill="#212121" text-anchor="end" class="">+0.64 [+0.58, +0.72]</text>
+<text x="36.00" y="387.00" font-size="16" fill="#212121" text-anchor="start" class=""></text>
+<text x="117.00" y="387.00" font-size="13" fill="#52525b" text-anchor="start" class="">+ MC</text>
+<line x1="350.45" y1="382.00" x2="372.27" y2="382.00" stroke="#52525b" stroke-width="2" stroke-dasharray=""/>
+<line x1="350.45" y1="378.00" x2="350.45" y2="386.00" stroke="#52525b" stroke-width="1.5" stroke-dasharray=""/>
+<line x1="372.27" y1="378.00" x2="372.27" y2="386.00" stroke="#52525b" stroke-width="1.5" stroke-dasharray=""/>
+<rect x="355.87" y="377.00" width="10.00" height="10.00" rx="0" fill="#52525b"/>
+<text x="724.00" y="387.00" font-size="13" fill="#212121" text-anchor="end" class="">+0.52 [+0.45, +0.61]</text>
+<text x="36.00" y="418.00" font-size="16" fill="#212121" text-anchor="start" class=""></text>
+<text x="117.00" y="418.00" font-size="13" fill="#52525b" text-anchor="start" class="">Mixed</text>
+<line x1="354.04" y1="413.00" x2="388.15" y2="413.00" stroke="#ff7759" stroke-width="2" stroke-dasharray=""/>
+<line x1="354.04" y1="409.00" x2="354.04" y2="417.00" stroke="#ff7759" stroke-width="1.5" stroke-dasharray=""/>
+<line x1="388.15" y1="409.00" x2="388.15" y2="417.00" stroke="#ff7759" stroke-width="1.5" stroke-dasharray=""/>
+<path d="M373.10,406.00 l7,7 l-7,7 l-7,-7 Z" fill="#ff7759"/>
+<text x="724.00" y="418.00" font-size="13" fill="#212121" text-anchor="end" class="">+0.62 [+0.47, +0.73]</text>
+<text x="36.00" y="449.00" font-size="16" fill="#212121" text-anchor="start" class="">MLP</text>
+<text x="117.00" y="449.00" font-size="13" fill="#52525b" text-anchor="start" class="">+ FW</text>
+<line x1="439.53" y1="444.00" x2="489.58" y2="444.00" stroke="#1863dc" stroke-width="2" stroke-dasharray=""/>
+<line x1="439.53" y1="440.00" x2="439.53" y2="448.00" stroke="#1863dc" stroke-width="1.5" stroke-dasharray=""/>
+<line x1="489.58" y1="440.00" x2="489.58" y2="448.00" stroke="#1863dc" stroke-width="1.5" stroke-dasharray=""/>
+<circle cx="463.05" cy="444.00" r="5" fill="#1863dc"/>
+<text x="724.00" y="449.00" font-size="13" fill="#212121" text-anchor="end" class="">+1.29 [+1.12, +1.49]</text>
+<text x="36.00" y="480.00" font-size="16" fill="#212121" text-anchor="start" class=""></text>
+<text x="117.00" y="480.00" font-size="13" fill="#52525b" text-anchor="start" class="">+ MC</text>
+<line x1="333.42" y1="475.00" x2="396.73" y2="475.00" stroke="#52525b" stroke-width="2" stroke-dasharray=""/>
+<line x1="333.42" y1="471.00" x2="333.42" y2="479.00" stroke="#52525b" stroke-width="1.5" stroke-dasharray=""/>
+<line x1="396.73" y1="471.00" x2="396.73" y2="479.00" stroke="#52525b" stroke-width="1.5" stroke-dasharray=""/>
+<rect x="354.51" y="470.00" width="10.00" height="10.00" rx="0" fill="#52525b"/>
+<text x="724.00" y="480.00" font-size="13" fill="#212121" text-anchor="end" class="">+0.51 [+0.32, +0.79]</text>
+<text x="36.00" y="511.00" font-size="16" fill="#212121" text-anchor="start" class=""></text>
+<text x="117.00" y="511.00" font-size="13" fill="#52525b" text-anchor="start" class="">Mixed</text>
+<line x1="260.54" y1="506.00" x2="282.95" y2="506.00" stroke="#ff7759" stroke-width="2" stroke-dasharray=""/>
+<line x1="260.54" y1="502.00" x2="260.54" y2="510.00" stroke="#ff7759" stroke-width="1.5" stroke-dasharray=""/>
+<line x1="282.95" y1="502.00" x2="282.95" y2="510.00" stroke="#ff7759" stroke-width="1.5" stroke-dasharray=""/>
+<path d="M270.33,499.00 l7,7 l-7,7 l-7,-7 Z" fill="#ff7759"/>
+<text x="724.00" y="511.00" font-size="13" fill="#212121" text-anchor="end" class="">-0.16 [-0.23, -0.06]</text>
+<text x="238.00" y="569.00" font-size="13" fill="#52525b" text-anchor="start" class="">← lower error</text>
+<text x="504.00" y="569.00" font-size="13" fill="#52525b" text-anchor="end" class="">higher error →</text>
+<text x="36.00" y="602.00" font-size="21" fill="#212121" text-anchor="start" class="">ALFA · sensitivity</text>
+<text x="36.00" y="626.00" font-size="13" fill="#52525b" text-anchor="start" class="">1,050 m · 29 flights / 5 dates</text>
+<line x1="238.00" y1="654.00" x2="238.00" y2="932.00" stroke="#e3e0d8" stroke-width="1" stroke-dasharray=""/>
+<text x="238.00" y="952.00" font-size="12" fill="#52525b" text-anchor="middle" class="">-20</text>
+<line x1="288.67" y1="654.00" x2="288.67" y2="932.00" stroke="#212121" stroke-width="1.4" stroke-dasharray=""/>
+<text x="288.67" y="952.00" font-size="12" fill="#52525b" text-anchor="middle" class="">0</text>
+<line x1="339.33" y1="654.00" x2="339.33" y2="932.00" stroke="#e3e0d8" stroke-width="1" stroke-dasharray=""/>
+<text x="339.33" y="952.00" font-size="12" fill="#52525b" text-anchor="middle" class="">20</text>
+<line x1="390.00" y1="654.00" x2="390.00" y2="932.00" stroke="#e3e0d8" stroke-width="1" stroke-dasharray=""/>
+<text x="390.00" y="952.00" font-size="12" fill="#52525b" text-anchor="middle" class="">40</text>
+<line x1="440.67" y1="654.00" x2="440.67" y2="932.00" stroke="#e3e0d8" stroke-width="1" stroke-dasharray=""/>
+<text x="440.67" y="952.00" font-size="12" fill="#52525b" text-anchor="middle" class="">60</text>
+<line x1="491.33" y1="654.00" x2="491.33" y2="932.00" stroke="#e3e0d8" stroke-width="1" stroke-dasharray=""/>
+<text x="491.33" y="952.00" font-size="12" fill="#52525b" text-anchor="middle" class="">80</text>
+<text x="36.00" y="672.00" font-size="16" fill="#212121" text-anchor="start" class="">GRU</text>
+<text x="117.00" y="672.00" font-size="13" fill="#52525b" text-anchor="start" class="">+ FW</text>
+<line x1="258.84" y1="667.00" x2="266.43" y2="667.00" stroke="#1863dc" stroke-width="2" stroke-dasharray=""/>
+<line x1="258.84" y1="663.00" x2="258.84" y2="671.00" stroke="#1863dc" stroke-width="1.5" stroke-dasharray=""/>
+<line x1="266.43" y1="663.00" x2="266.43" y2="671.00" stroke="#1863dc" stroke-width="1.5" stroke-dasharray=""/>
+<circle cx="261.86" cy="667.00" r="5" fill="#1863dc"/>
+<text x="724.00" y="672.00" font-size="13" fill="#212121" text-anchor="end" class="">-10.58 [-11.77, -8.78]</text>
+<text x="36.00" y="703.00" font-size="16" fill="#212121" text-anchor="start" class=""></text>
+<text x="117.00" y="703.00" font-size="13" fill="#52525b" text-anchor="start" class="">+ MC</text>
+<line x1="452.04" y1="698.00" x2="489.14" y2="698.00" stroke="#52525b" stroke-width="2" stroke-dasharray=""/>
+<line x1="452.04" y1="694.00" x2="452.04" y2="702.00" stroke="#52525b" stroke-width="1.5" stroke-dasharray=""/>
+<line x1="489.14" y1="694.00" x2="489.14" y2="702.00" stroke="#52525b" stroke-width="1.5" stroke-dasharray=""/>
+<rect x="468.40" y="693.00" width="10.00" height="10.00" rx="0" fill="#52525b"/>
+<text x="724.00" y="703.00" font-size="13" fill="#212121" text-anchor="end" class="">+72.92 [+64.49, +79.13]</text>
+<text x="36.00" y="734.00" font-size="16" fill="#212121" text-anchor="start" class=""></text>
+<text x="117.00" y="734.00" font-size="13" fill="#52525b" text-anchor="start" class="">Mixed</text>
+<line x1="299.86" y1="729.00" x2="324.54" y2="729.00" stroke="#ff7759" stroke-width="2" stroke-dasharray=""/>
+<line x1="299.86" y1="725.00" x2="299.86" y2="733.00" stroke="#ff7759" stroke-width="1.5" stroke-dasharray=""/>
+<line x1="324.54" y1="725.00" x2="324.54" y2="733.00" stroke="#ff7759" stroke-width="1.5" stroke-dasharray=""/>
+<path d="M314.49,722.00 l7,7 l-7,7 l-7,-7 Z" fill="#ff7759"/>
+<text x="724.00" y="734.00" font-size="13" fill="#212121" text-anchor="end" class="">+10.20 [+4.42, +14.16]</text>
+<text x="36.00" y="765.00" font-size="16" fill="#212121" text-anchor="start" class="">LSTM</text>
+<text x="117.00" y="765.00" font-size="13" fill="#52525b" text-anchor="start" class="">+ FW</text>
+<line x1="262.41" y1="760.00" x2="273.80" y2="760.00" stroke="#1863dc" stroke-width="2" stroke-dasharray=""/>
+<line x1="262.41" y1="756.00" x2="262.41" y2="764.00" stroke="#1863dc" stroke-width="1.5" stroke-dasharray=""/>
+<line x1="273.80" y1="756.00" x2="273.80" y2="764.00" stroke="#1863dc" stroke-width="1.5" stroke-dasharray=""/>
+<circle cx="269.60" cy="760.00" r="5" fill="#1863dc"/>
+<text x="724.00" y="765.00" font-size="13" fill="#212121" text-anchor="end" class="">-7.53 [-10.36, -5.87]</text>
+<text x="36.00" y="796.00" font-size="16" fill="#212121" text-anchor="start" class=""></text>
+<text x="117.00" y="796.00" font-size="13" fill="#52525b" text-anchor="start" class="">+ MC</text>
+<line x1="291.96" y1="791.00" x2="310.99" y2="791.00" stroke="#52525b" stroke-width="2" stroke-dasharray=""/>
+<line x1="291.96" y1="787.00" x2="291.96" y2="795.00" stroke="#52525b" stroke-width="1.5" stroke-dasharray=""/>
+<line x1="310.99" y1="787.00" x2="310.99" y2="795.00" stroke="#52525b" stroke-width="1.5" stroke-dasharray=""/>
+<rect x="297.46" y="786.00" width="10.00" height="10.00" rx="0" fill="#52525b"/>
+<text x="724.00" y="796.00" font-size="13" fill="#212121" text-anchor="end" class="">+5.44 [+1.30, +8.81]</text>
+<text x="36.00" y="827.00" font-size="16" fill="#212121" text-anchor="start" class=""></text>
+<text x="117.00" y="827.00" font-size="13" fill="#52525b" text-anchor="start" class="">Mixed</text>
+<line x1="245.95" y1="822.00" x2="263.98" y2="822.00" stroke="#ff7759" stroke-width="2" stroke-dasharray=""/>
+<line x1="245.95" y1="818.00" x2="245.95" y2="826.00" stroke="#ff7759" stroke-width="1.5" stroke-dasharray=""/>
+<line x1="263.98" y1="818.00" x2="263.98" y2="826.00" stroke="#ff7759" stroke-width="1.5" stroke-dasharray=""/>
+<path d="M256.50,815.00 l7,7 l-7,7 l-7,-7 Z" fill="#ff7759"/>
+<text x="724.00" y="827.00" font-size="13" fill="#212121" text-anchor="end" class="">-12.70 [-16.86, -9.75]</text>
+<text x="36.00" y="858.00" font-size="16" fill="#212121" text-anchor="start" class="">MLP</text>
+<text x="117.00" y="858.00" font-size="13" fill="#52525b" text-anchor="start" class="">+ FW</text>
+<line x1="279.95" y1="853.00" x2="283.30" y2="853.00" stroke="#1863dc" stroke-width="2" stroke-dasharray=""/>
+<line x1="279.95" y1="849.00" x2="279.95" y2="857.00" stroke="#1863dc" stroke-width="1.5" stroke-dasharray=""/>
+<line x1="283.30" y1="849.00" x2="283.30" y2="857.00" stroke="#1863dc" stroke-width="1.5" stroke-dasharray=""/>
+<circle cx="281.24" cy="853.00" r="5" fill="#1863dc"/>
+<text x="724.00" y="858.00" font-size="13" fill="#212121" text-anchor="end" class="">-2.93 [-3.44, -2.12]</text>
+<text x="36.00" y="889.00" font-size="16" fill="#212121" text-anchor="start" class=""></text>
+<text x="117.00" y="889.00" font-size="13" fill="#52525b" text-anchor="start" class="">+ MC</text>
+<line x1="308.06" y1="884.00" x2="313.59" y2="884.00" stroke="#52525b" stroke-width="2" stroke-dasharray=""/>
+<line x1="308.06" y1="880.00" x2="308.06" y2="888.00" stroke="#52525b" stroke-width="1.5" stroke-dasharray=""/>
+<line x1="313.59" y1="880.00" x2="313.59" y2="888.00" stroke="#52525b" stroke-width="1.5" stroke-dasharray=""/>
+<rect x="305.73" y="879.00" width="10.00" height="10.00" rx="0" fill="#52525b"/>
+<text x="724.00" y="889.00" font-size="13" fill="#212121" text-anchor="end" class="">+8.71 [+7.65, +9.84]</text>
+<text x="36.00" y="920.00" font-size="16" fill="#212121" text-anchor="start" class=""></text>
+<text x="117.00" y="920.00" font-size="13" fill="#52525b" text-anchor="start" class="">Mixed</text>
+<line x1="291.31" y1="915.00" x2="292.93" y2="915.00" stroke="#ff7759" stroke-width="2" stroke-dasharray=""/>
+<line x1="291.31" y1="911.00" x2="291.31" y2="919.00" stroke="#ff7759" stroke-width="1.5" stroke-dasharray=""/>
+<line x1="292.93" y1="911.00" x2="292.93" y2="919.00" stroke="#ff7759" stroke-width="1.5" stroke-dasharray=""/>
+<path d="M291.99,908.00 l7,7 l-7,7 l-7,-7 Z" fill="#ff7759"/>
+<text x="724.00" y="920.00" font-size="13" fill="#212121" text-anchor="end" class="">+1.31 [+1.04, +1.68]</text>
+<text x="238.00" y="978.00" font-size="13" fill="#52525b" text-anchor="start" class="">← lower error</text>
+<text x="504.00" y="978.00" font-size="13" fill="#52525b" text-anchor="end" class="">higher error →</text>
+<line x1="36.00" y1="1009.00" x2="724.00" y2="1009.00" stroke="#e3e0d8" stroke-width="1" stroke-dasharray=""/>
+<text x="36.00" y="1029.00" font-size="12" fill="#52525b" text-anchor="start" class="">Intervals: paired date-cluster bootstrap, 2,000 resamples; no multiplicity correction.</text>
+<text x="36.00" y="1048.00" font-size="12" fill="#52525b" text-anchor="start" class="">Seed variability is not included. Separate panel scales; ALFA primary n=1 is not inferential.</text>
+<metadata>[{&quot;cohort&quot;: &quot;masc&quot;, &quot;architecture&quot;: &quot;gru&quot;, &quot;arm&quot;: &quot;baseline_fw&quot;, &quot;delta&quot;: 0.743235367725528, &quot;ci&quot;: [0.5887309796773732, 0.9368467872738049]}, {&quot;cohort&quot;: &quot;masc&quot;, &quot;architecture&quot;: &quot;gru&quot;, &quot;arm&quot;: &quot;baseline_mc&quot;, &quot;delta&quot;: 1.103550932679977, &quot;ci&quot;: [0.9574961936798266, 1.2544299345478562]}, {&quot;cohort&quot;: &quot;masc&quot;, &quot;architecture&quot;: &quot;gru&quot;, &quot;arm&quot;: &quot;ours&quot;, &quot;delta&quot;: 0.6228236708410121, &quot;ci&quot;: [0.4919213048843857, 0.7811410550895409]}, {&quot;cohort&quot;: &quot;masc&quot;, &quot;architecture&quot;: &quot;lstm&quot;, &quot;arm&quot;: &quot;baseline_fw&quot;, &quot;delta&quot;: 0.6350236733756954, &quot;ci&quot;: [0.5800647481201917, 0.7200553154800118]}, {&quot;cohort&quot;: &quot;masc&quot;, &quot;architecture&quot;: &quot;lstm&quot;, &quot;arm&quot;: &quot;baseline_mc&quot;, &quot;delta&quot;: 0.5238314838141593, &quot;ci&quot;: [0.4455011682681049, 0.6095351047833688]}, {&quot;cohort&quot;: &quot;masc&quot;, &quot;architecture&quot;: &quot;lstm&quot;, &quot;arm&quot;: &quot;ours&quot;, &quot;delta&quot;: 0.615781728863839, &quot;ci&quot;: [0.472503045709503, 0.7289510815107144]}, {&quot;cohort&quot;: &quot;masc&quot;, &quot;architecture&quot;: &quot;mlp&quot;, &quot;arm&quot;: &quot;baseline_fw&quot;, &quot;delta&quot;: 1.292087690094554, &quot;ci&quot;: [1.1152379035737459, 1.4916098699556986]}, {&quot;cohort&quot;: &quot;masc&quot;, &quot;architecture&quot;: &quot;mlp&quot;, &quot;arm&quot;: &quot;baseline_mc&quot;, &quot;delta&quot;: 0.5136224170760012, &quot;ci&quot;: [0.31745323348958115, 0.7934307426640645]}, {&quot;cohort&quot;: &quot;masc&quot;, &quot;architecture&quot;: &quot;mlp&quot;, &quot;arm&quot;: &quot;ours&quot;, &quot;delta&quot;: -0.15694242280053183, &quot;ci&quot;: [-0.23051796687675966, -0.06201810201461571]}, {&quot;cohort&quot;: &quot;alfa&quot;, &quot;architecture&quot;: &quot;gru&quot;, &quot;arm&quot;: &quot;baseline_fw&quot;, &quot;delta&quot;: -10.580506206482042, &quot;ci&quot;: [-11.774304605858218, -8.776904187425957]}, {&quot;cohort&quot;: &quot;alfa&quot;, &quot;architecture&quot;: &quot;gru&quot;, &quot;arm&quot;: &quot;baseline_mc&quot;, &quot;delta&quot;: 72.9228764074982, &quot;ci&quot;: [64.4908157732266, 79.13321485458354]}, {&quot;cohort&quot;: &quot;alfa&quot;, &quot;architecture&quot;: &quot;gru&quot;, &quot;arm&quot;: &quot;ours&quot;, &quot;delta&quot;: 10.195320654362366, &quot;ci&quot;: [4.419412548525532, 14.161391425594855]}, {&quot;cohort&quot;: &quot;alfa&quot;, &quot;architecture&quot;: &quot;lstm&quot;, &quot;arm&quot;: &quot;baseline_fw&quot;, &quot;delta&quot;: -7.526884672043041, &quot;ci&quot;: [-10.364358007183073, -5.868637950882946]}, {&quot;cohort&quot;: &quot;alfa&quot;, &quot;architecture&quot;: &quot;lstm&quot;, &quot;arm&quot;: &quot;baseline_mc&quot;, &quot;delta&quot;: 5.444970099587116, &quot;ci&quot;: [1.2998714693923803, 8.812862736620337]}, {&quot;cohort&quot;: &quot;alfa&quot;, &quot;architecture&quot;: &quot;lstm&quot;, &quot;arm&quot;: &quot;ours&quot;, &quot;delta&quot;: -12.69877476155161, &quot;ci&quot;: [-16.860949459746983, -9.745915354258196]}, {&quot;cohort&quot;: &quot;alfa&quot;, &quot;architecture&quot;: &quot;mlp&quot;, &quot;arm&quot;: &quot;baseline_fw&quot;, &quot;delta&quot;: -2.9302450452411604, &quot;ci&quot;: [-3.4424648269249465, -2.1203623452515465]}, {&quot;cohort&quot;: &quot;alfa&quot;, &quot;architecture&quot;: &quot;mlp&quot;, &quot;arm&quot;: &quot;baseline_mc&quot;, &quot;delta&quot;: 8.710359942277014, &quot;ci&quot;: [7.6537652812662165, 9.836542285019101]}, {&quot;cohort&quot;: &quot;alfa&quot;, &quot;architecture&quot;: &quot;mlp&quot;, &quot;arm&quot;: &quot;ours&quot;, &quot;delta&quot;: 1.3124651139666286, &quot;ci&quot;: [1.0445060856031332, 1.6813855694727182]}]</metadata>
+</svg>

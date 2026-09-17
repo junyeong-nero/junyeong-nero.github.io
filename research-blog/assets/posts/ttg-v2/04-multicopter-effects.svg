@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="664" viewBox="0 0 760 664" role="img" aria-labelledby="title desc">
+<title id="title">Multicopter: no mean gain from added profiles</title><desc id="desc">Added arm − Baseline · flight-macro MAE (s) · mean across three seeds</desc>
+<style>text{font-family:Arial,"Apple SD Gothic Neo",sans-serif;font-variant-numeric:tabular-nums} .title{font-family:Georgia,"Times New Roman",serif}</style>
+<rect x="0.00" y="0.00" width="760.00" height="664.00" rx="0" fill="#f8f7f3"/>
+<text x="36.00" y="30.00" font-size="12" fill="#52525b" text-anchor="start" class="">TTG LAB  /  REAL-FLIGHT STUDY  /  V2</text>
+<text x="36.00" y="68.00" font-size="29" fill="#212121" text-anchor="start" class="title">Multicopter: no mean gain from added profiles</text>
+<text x="36.00" y="96.00" font-size="14" fill="#52525b" text-anchor="start" class="">Added arm − Baseline · flight-macro MAE (s) · mean across three seeds</text>
+<line x1="36.00" y1="117.00" x2="724.00" y2="117.00" stroke="#e3e0d8" stroke-width="1" stroke-dasharray=""/>
+<circle cx="42.00" cy="143.00" r="5" fill="#1863dc"/>
+<text x="56.00" y="148.00" font-size="14" fill="#52525b" text-anchor="start" class="">+ FW</text>
+<rect x="214.00" y="138.00" width="10.00" height="10.00" rx="0" fill="#52525b"/>
+<text x="233.00" y="148.00" font-size="14" fill="#52525b" text-anchor="start" class="">+ MC</text>
+<path d="M396.00,136.00 l7,7 l-7,7 l-7,-7 Z" fill="#ff7759"/>
+<text x="410.00" y="148.00" font-size="14" fill="#52525b" text-anchor="start" class="">Mixed</text>
+<text x="36.00" y="193.00" font-size="21" fill="#212121" text-anchor="start" class="">AMOVFLY · primary</text>
+<text x="36.00" y="217.00" font-size="13" fill="#52525b" text-anchor="start" class="">1,050 m · 109 flights / 8 dates</text>
+<line x1="238.00" y1="245.00" x2="238.00" y2="523.00" stroke="#e3e0d8" stroke-width="1" stroke-dasharray=""/>
+<text x="238.00" y="543.00" font-size="12" fill="#52525b" text-anchor="middle" class="">-10</text>
+<line x1="273.47" y1="245.00" x2="273.47" y2="523.00" stroke="#212121" stroke-width="1.4" stroke-dasharray=""/>
+<text x="273.47" y="543.00" font-size="12" fill="#52525b" text-anchor="middle" class="">0</text>
+<line x1="308.93" y1="245.00" x2="308.93" y2="523.00" stroke="#e3e0d8" stroke-width="1" stroke-dasharray=""/>
+<text x="308.93" y="543.00" font-size="12" fill="#52525b" text-anchor="middle" class="">10</text>
+<line x1="344.40" y1="245.00" x2="344.40" y2="523.00" stroke="#e3e0d8" stroke-width="1" stroke-dasharray=""/>
+<text x="344.40" y="543.00" font-size="12" fill="#52525b" text-anchor="middle" class="">20</text>
+<line x1="379.87" y1="245.00" x2="379.87" y2="523.00" stroke="#e3e0d8" stroke-width="1" stroke-dasharray=""/>
+<text x="379.87" y="543.00" font-size="12" fill="#52525b" text-anchor="middle" class="">30</text>
+<line x1="415.33" y1="245.00" x2="415.33" y2="523.00" stroke="#e3e0d8" stroke-width="1" stroke-dasharray=""/>
+<text x="415.33" y="543.00" font-size="12" fill="#52525b" text-anchor="middle" class="">40</text>
+<line x1="450.80" y1="245.00" x2="450.80" y2="523.00" stroke="#e3e0d8" stroke-width="1" stroke-dasharray=""/>
+<text x="450.80" y="543.00" font-size="12" fill="#52525b" text-anchor="middle" class="">50</text>
+<line x1="486.27" y1="245.00" x2="486.27" y2="523.00" stroke="#e3e0d8" stroke-width="1" stroke-dasharray=""/>
+<text x="486.27" y="543.00" font-size="12" fill="#52525b" text-anchor="middle" class="">60</text>
+<text x="36.00" y="263.00" font-size="16" fill="#212121" text-anchor="start" class="">GRU</text>
+<text x="117.00" y="263.00" font-size="13" fill="#52525b" text-anchor="start" class="">+ FW</text>
+<line x1="270.78" y1="258.00" x2="283.04" y2="258.00" stroke="#1863dc" stroke-width="2" stroke-dasharray=""/>
+<line x1="270.78" y1="254.00" x2="270.78" y2="262.00" stroke="#1863dc" stroke-width="1.5" stroke-dasharray=""/>
+<line x1="283.04" y1="254.00" x2="283.04" y2="262.00" stroke="#1863dc" stroke-width="1.5" stroke-dasharray=""/>
+<circle cx="276.78" cy="258.00" r="5" fill="#1863dc"/>
+<text x="724.00" y="263.00" font-size="13" fill="#212121" text-anchor="end" class="">+0.93 [-0.76, +2.70]</text>
+<text x="36.00" y="294.00" font-size="16" fill="#212121" text-anchor="start" class=""></text>
+<text x="117.00" y="294.00" font-size="13" fill="#52525b" text-anchor="start" class="">+ MC</text>
+<line x1="400.36" y1="289.00" x2="484.89" y2="289.00" stroke="#52525b" stroke-width="2" stroke-dasharray=""/>
+<line x1="400.36" y1="285.00" x2="400.36" y2="293.00" stroke="#52525b" stroke-width="1.5" stroke-dasharray=""/>
+<line x1="484.89" y1="285.00" x2="484.89" y2="293.00" stroke="#52525b" stroke-width="1.5" stroke-dasharray=""/>
+<rect x="436.58" y="284.00" width="10.00" height="10.00" rx="0" fill="#52525b"/>
+<text x="724.00" y="294.00" font-size="13" fill="#212121" text-anchor="end" class="">+47.40 [+35.78, +59.61]</text>
+<text x="36.00" y="325.00" font-size="16" fill="#212121" text-anchor="start" class=""></text>
+<text x="117.00" y="325.00" font-size="13" fill="#52525b" text-anchor="start" class="">Mixed</text>
+<line x1="259.84" y1="320.00" x2="310.50" y2="320.00" stroke="#ff7759" stroke-width="2" stroke-dasharray=""/>
+<line x1="259.84" y1="316.00" x2="259.84" y2="324.00" stroke="#ff7759" stroke-width="1.5" stroke-dasharray=""/>
+<line x1="310.50" y1="316.00" x2="310.50" y2="324.00" stroke="#ff7759" stroke-width="1.5" stroke-dasharray=""/>
+<path d="M285.39,313.00 l7,7 l-7,7 l-7,-7 Z" fill="#ff7759"/>
+<text x="724.00" y="325.00" font-size="13" fill="#212121" text-anchor="end" class="">+3.36 [-3.84, +10.44]</text>
+<text x="36.00" y="356.00" font-size="16" fill="#212121" text-anchor="start" class="">LSTM</text>
+<text x="117.00" y="356.00" font-size="13" fill="#52525b" text-anchor="start" class="">+ FW</text>
+<line x1="268.19" y1="351.00" x2="282.36" y2="351.00" stroke="#1863dc" stroke-width="2" stroke-dasharray=""/>
+<line x1="268.19" y1="347.00" x2="268.19" y2="355.00" stroke="#1863dc" stroke-width="1.5" stroke-dasharray=""/>
+<line x1="282.36" y1="347.00" x2="282.36" y2="355.00" stroke="#1863dc" stroke-width="1.5" stroke-dasharray=""/>
+<circle cx="275.26" cy="351.00" r="5" fill="#1863dc"/>
+<text x="724.00" y="356.00" font-size="13" fill="#212121" text-anchor="end" class="">+0.51 [-1.49, +2.51]</text>
+<text x="36.00" y="387.00" font-size="16" fill="#212121" text-anchor="start" class=""></text>
+<text x="117.00" y="387.00" font-size="13" fill="#52525b" text-anchor="start" class="">+ MC</text>
+<line x1="267.59" y1="382.00" x2="284.62" y2="382.00" stroke="#52525b" stroke-width="2" stroke-dasharray=""/>
+<line x1="267.59" y1="378.00" x2="267.59" y2="386.00" stroke="#52525b" stroke-width="1.5" stroke-dasharray=""/>
+<line x1="284.62" y1="378.00" x2="284.62" y2="386.00" stroke="#52525b" stroke-width="1.5" stroke-dasharray=""/>
+<rect x="271.44" y="377.00" width="10.00" height="10.00" rx="0" fill="#52525b"/>
+<text x="724.00" y="387.00" font-size="13" fill="#212121" text-anchor="end" class="">+0.84 [-1.66, +3.15]</text>
+<text x="36.00" y="418.00" font-size="16" fill="#212121" text-anchor="start" class=""></text>
+<text x="117.00" y="418.00" font-size="13" fill="#52525b" text-anchor="start" class="">Mixed</text>
+<line x1="287.91" y1="413.00" x2="318.25" y2="413.00" stroke="#ff7759" stroke-width="2" stroke-dasharray=""/>
+<line x1="287.91" y1="409.00" x2="287.91" y2="417.00" stroke="#ff7759" stroke-width="1.5" stroke-dasharray=""/>
+<line x1="318.25" y1="409.00" x2="318.25" y2="417.00" stroke="#ff7759" stroke-width="1.5" stroke-dasharray=""/>
+<path d="M303.35,406.00 l7,7 l-7,7 l-7,-7 Z" fill="#ff7759"/>
+<text x="724.00" y="418.00" font-size="13" fill="#212121" text-anchor="end" class="">+8.43 [+4.07, +12.63]</text>
+<text x="36.00" y="449.00" font-size="16" fill="#212121" text-anchor="start" class="">MLP</text>
+<text x="117.00" y="449.00" font-size="13" fill="#52525b" text-anchor="start" class="">+ FW</text>
+<line x1="273.59" y1="444.00" x2="276.24" y2="444.00" stroke="#1863dc" stroke-width="2" stroke-dasharray=""/>
+<line x1="273.59" y1="440.00" x2="273.59" y2="448.00" stroke="#1863dc" stroke-width="1.5" stroke-dasharray=""/>
+<line x1="276.24" y1="440.00" x2="276.24" y2="448.00" stroke="#1863dc" stroke-width="1.5" stroke-dasharray=""/>
+<circle cx="274.73" cy="444.00" r="5" fill="#1863dc"/>
+<text x="724.00" y="449.00" font-size="13" fill="#212121" text-anchor="end" class="">+0.36 [+0.04, +0.78]</text>
+<text x="36.00" y="480.00" font-size="16" fill="#212121" text-anchor="start" class=""></text>
+<text x="117.00" y="480.00" font-size="13" fill="#52525b" text-anchor="start" class="">+ MC</text>
+<line x1="297.95" y1="475.00" x2="304.86" y2="475.00" stroke="#52525b" stroke-width="2" stroke-dasharray=""/>
+<line x1="297.95" y1="471.00" x2="297.95" y2="479.00" stroke="#52525b" stroke-width="1.5" stroke-dasharray=""/>
+<line x1="304.86" y1="471.00" x2="304.86" y2="479.00" stroke="#52525b" stroke-width="1.5" stroke-dasharray=""/>
+<rect x="296.61" y="470.00" width="10.00" height="10.00" rx="0" fill="#52525b"/>
+<text x="724.00" y="480.00" font-size="13" fill="#212121" text-anchor="end" class="">+7.94 [+6.90, +8.85]</text>
+<text x="36.00" y="511.00" font-size="16" fill="#212121" text-anchor="start" class=""></text>
+<text x="117.00" y="511.00" font-size="13" fill="#52525b" text-anchor="start" class="">Mixed</text>
+<line x1="273.43" y1="506.00" x2="274.76" y2="506.00" stroke="#ff7759" stroke-width="2" stroke-dasharray=""/>
+<line x1="273.43" y1="502.00" x2="273.43" y2="510.00" stroke="#ff7759" stroke-width="1.5" stroke-dasharray=""/>
+<line x1="274.76" y1="502.00" x2="274.76" y2="510.00" stroke="#ff7759" stroke-width="1.5" stroke-dasharray=""/>
+<path d="M274.13,499.00 l7,7 l-7,7 l-7,-7 Z" fill="#ff7759"/>
+<text x="724.00" y="511.00" font-size="13" fill="#212121" text-anchor="end" class="">+0.19 [-0.01, +0.37]</text>
+<text x="238.00" y="569.00" font-size="13" fill="#52525b" text-anchor="start" class="">← lower error</text>
+<text x="504.00" y="569.00" font-size="13" fill="#52525b" text-anchor="end" class="">higher error →</text>
+<line x1="36.00" y1="600.00" x2="724.00" y2="600.00" stroke="#e3e0d8" stroke-width="1" stroke-dasharray=""/>
+<text x="36.00" y="620.00" font-size="12" fill="#52525b" text-anchor="start" class="">Intervals: paired date-cluster bootstrap, 2,000 resamples; no multiplicity correction.</text>
+<text x="36.00" y="639.00" font-size="12" fill="#52525b" text-anchor="start" class="">Seed variability is not included. Negative = improvement; positive = higher error.</text>
+<metadata>[{&quot;cohort&quot;: &quot;amovfly&quot;, &quot;architecture&quot;: &quot;gru&quot;, &quot;arm&quot;: &quot;baseline_fw&quot;, &quot;delta&quot;: 0.9343122791620518, &quot;ci&quot;: [-0.7583652765622754, 2.698282705918549]}, {&quot;cohort&quot;: &quot;amovfly&quot;, &quot;architecture&quot;: &quot;gru&quot;, &quot;arm&quot;: &quot;baseline_mc&quot;, &quot;delta&quot;: 47.39994248855384, &quot;ci&quot;: [35.77879454418654, 59.611765624687614]}, {&quot;cohort&quot;: &quot;amovfly&quot;, &quot;architecture&quot;: &quot;gru&quot;, &quot;arm&quot;: &quot;ours&quot;, &quot;delta&quot;: 3.361951400242683, &quot;ci&quot;: [-3.8407975606263327, 10.442067888266322]}, {&quot;cohort&quot;: &quot;amovfly&quot;, &quot;architecture&quot;: &quot;lstm&quot;, &quot;arm&quot;: &quot;baseline_fw&quot;, &quot;delta&quot;: 0.5051951813388453, &quot;ci&quot;: [-1.4875106002832446, 2.5074640451037706]}, {&quot;cohort&quot;: &quot;amovfly&quot;, &quot;architecture&quot;: &quot;lstm&quot;, &quot;arm&quot;: &quot;baseline_mc&quot;, &quot;delta&quot;: 0.8394712175910876, &quot;ci&quot;: [-1.657551229662848, 3.1459725179691445]}, {&quot;cohort&quot;: &quot;amovfly&quot;, &quot;architecture&quot;: &quot;lstm&quot;, &quot;arm&quot;: &quot;ours&quot;, &quot;delta&quot;: 8.425931551843442, &quot;ci&quot;: [4.073537926256669, 12.625766547916989]}, {&quot;cohort&quot;: &quot;amovfly&quot;, &quot;architecture&quot;: &quot;mlp&quot;, &quot;arm&quot;: &quot;baseline_fw&quot;, &quot;delta&quot;: 0.3553260362696718, &quot;ci&quot;: [0.035388089395827646, 0.7831946227603149]}, {&quot;cohort&quot;: &quot;amovfly&quot;, &quot;architecture&quot;: &quot;mlp&quot;, &quot;arm&quot;: &quot;baseline_mc&quot;, &quot;delta&quot;: 7.93567708099233, &quot;ci&quot;: [6.904435321027111, 8.85193167467253]}, {&quot;cohort&quot;: &quot;amovfly&quot;, &quot;architecture&quot;: &quot;mlp&quot;, &quot;arm&quot;: &quot;ours&quot;, &quot;delta&quot;: 0.18838493142988286, &quot;ci&quot;: [-0.01064668060841113, 0.3657017284808588]}]</metadata>
+</svg>

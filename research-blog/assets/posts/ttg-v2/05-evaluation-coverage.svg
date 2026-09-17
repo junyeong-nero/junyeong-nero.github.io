@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="610" viewBox="0 0 760 610" role="img" aria-labelledby="title desc">
+<title id="title">Which flights contribute to the result?</title><desc id="desc">Eligible flights / source flights · geometry determines coverage</desc>
+<style>text{font-family:Arial,"Apple SD Gothic Neo",sans-serif;font-variant-numeric:tabular-nums} .title{font-family:Georgia,"Times New Roman",serif}</style>
+<rect x="0.00" y="0.00" width="760.00" height="610.00" rx="0" fill="#f8f7f3"/>
+<text x="36.00" y="30.00" font-size="12" fill="#52525b" text-anchor="start" class="">TTG LAB  /  REAL-FLIGHT STUDY  /  V2</text>
+<text x="36.00" y="68.00" font-size="29" fill="#212121" text-anchor="start" class="title">Which flights contribute to the result?</text>
+<text x="36.00" y="96.00" font-size="14" fill="#52525b" text-anchor="start" class="">Eligible flights / source flights · geometry determines coverage</text>
+<line x1="36.00" y1="117.00" x2="724.00" y2="117.00" stroke="#e3e0d8" stroke-width="1" stroke-dasharray=""/>
+<text x="36.00" y="168.00" font-size="19" fill="#212121" text-anchor="start" class="">MASC-3</text>
+<text x="36.00" y="190.00" font-size="13" fill="#52525b" text-anchor="start" class="">Primary · 1,500 m</text>
+<rect x="248.00" y="157.00" width="305.00" height="23.00" rx="3" fill="#e6e3db"/>
+<rect x="248.00" y="157.00" width="305.00" height="23.00" rx="3" fill="#ff7759"/>
+<text x="724.00" y="175.00" font-size="17" fill="#212121" text-anchor="end" class="">14 / 14  (100.0%)</text>
+<text x="248.00" y="203.00" font-size="13" fill="#52525b" text-anchor="start" class="">10 dates · 313 zone cases · 9,234 timestamps</text>
+<text x="36.00" y="250.00" font-size="19" fill="#212121" text-anchor="start" class="">ALFA</text>
+<text x="36.00" y="272.00" font-size="13" fill="#52525b" text-anchor="start" class="">Primary · 1,500 m</text>
+<rect x="248.00" y="239.00" width="305.00" height="23.00" rx="3" fill="#e6e3db"/>
+<rect x="248.00" y="239.00" width="9.84" height="23.00" rx="3" fill="#ff7759"/>
+<text x="724.00" y="257.00" font-size="17" fill="#212121" text-anchor="end" class="">1 / 31  (3.2%)</text>
+<text x="248.00" y="285.00" font-size="13" fill="#52525b" text-anchor="start" class="">1 date · 1 zone case · 67 timestamps</text>
+<text x="36.00" y="332.00" font-size="19" fill="#212121" text-anchor="start" class="">ALFA</text>
+<text x="36.00" y="354.00" font-size="13" fill="#52525b" text-anchor="start" class="">Sensitivity · 1,050 m</text>
+<rect x="248.00" y="321.00" width="305.00" height="23.00" rx="3" fill="#e6e3db"/>
+<rect x="248.00" y="321.00" width="285.32" height="23.00" rx="3" fill="#ff7759"/>
+<text x="724.00" y="339.00" font-size="17" fill="#212121" text-anchor="end" class="">29 / 31  (93.5%)</text>
+<text x="248.00" y="367.00" font-size="13" fill="#52525b" text-anchor="start" class="">5 dates · 114 zone cases · 8,635 timestamps</text>
+<text x="36.00" y="414.00" font-size="19" fill="#212121" text-anchor="start" class="">AMOVFLY</text>
+<text x="36.00" y="436.00" font-size="13" fill="#52525b" text-anchor="start" class="">Primary · 1,050 m</text>
+<rect x="248.00" y="403.00" width="305.00" height="23.00" rx="3" fill="#e6e3db"/>
+<rect x="248.00" y="403.00" width="120.02" height="23.00" rx="3" fill="#ff7759"/>
+<text x="724.00" y="421.00" font-size="17" fill="#212121" text-anchor="end" class="">109 / 277  (39.4%)</text>
+<text x="248.00" y="449.00" font-size="13" fill="#52525b" text-anchor="start" class="">8 dates · 348 zone cases · 37,546 timestamps</text>
+<rect x="36.00" y="500.00" width="688.00" height="38.00" rx="6" fill="#fff1ec"/>
+<text x="51.00" y="524.00" font-size="15" fill="#212121" text-anchor="start" class="">ALFA primary: one flight / one date — no population inference.</text>
+<line x1="36.00" y1="546.00" x2="724.00" y2="546.00" stroke="#e3e0d8" stroke-width="1" stroke-dasharray=""/>
+<text x="36.00" y="566.00" font-size="12" fill="#52525b" text-anchor="start" class="">Zone radius: 1,000 m in all panels. Distances are station-center placement distances.</text>
+<text x="36.00" y="585.00" font-size="12" fill="#52525b" text-anchor="start" class="">MASC-3 at 1,050 m and AMOVFLY at 1,500 m have no eligible crossings.</text>
+<metadata>[{&quot;cohort&quot;: &quot;masc&quot;, &quot;source_flights&quot;: 14, &quot;source_segments&quot;: 605, &quot;candidate_cases&quot;: 4840, &quot;eligible_cases&quot;: 313, &quot;eligible_flights&quot;: 14, &quot;eligible_days&quot;: 10, &quot;score_samples&quot;: 9234, &quot;reasons&quot;: {&quot;right_censored_no_entry&quot;: 4261, &quot;insufficient_score_samples&quot;: 248, &quot;included&quot;: 313, &quot;short_preentry_duration&quot;: 18}}, {&quot;cohort&quot;: &quot;alfa_primary&quot;, &quot;source_flights&quot;: 31, &quot;source_segments&quot;: 47, &quot;candidate_cases&quot;: 376, &quot;eligible_cases&quot;: 1, &quot;eligible_flights&quot;: 1, &quot;eligible_days&quot;: 1, &quot;score_samples&quot;: 67, &quot;reasons&quot;: {&quot;right_censored_no_entry&quot;: 375, &quot;included&quot;: 1}}, {&quot;cohort&quot;: &quot;alfa&quot;, &quot;source_flights&quot;: 31, &quot;source_segments&quot;: 47, &quot;candidate_cases&quot;: 376, &quot;eligible_cases&quot;: 114, &quot;eligible_flights&quot;: 29, &quot;eligible_days&quot;: 5, &quot;score_samples&quot;: 8635, &quot;reasons&quot;: {&quot;short_preentry_duration&quot;: 196, &quot;included&quot;: 114, &quot;right_censored_no_entry&quot;: 66}}, {&quot;cohort&quot;: &quot;amovfly&quot;, &quot;source_flights&quot;: 277, &quot;candidate_cases&quot;: 2216, &quot;eligible_cases&quot;: 348, &quot;eligible_flights&quot;: 109, &quot;eligible_days&quot;: 8, &quot;score_samples&quot;: 37546, &quot;reasons&quot;: {&quot;right_censored_no_entry&quot;: 1294, &quot;included&quot;: 348, &quot;short_preentry_duration&quot;: 110, &quot;invalid_position_before_entry&quot;: 453, &quot;initial_inside&quot;: 3, &quot;invalid_or_nonincreasing_time&quot;: 8}}]</metadata>
+</svg>

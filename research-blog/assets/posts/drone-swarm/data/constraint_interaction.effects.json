@@ -1,0 +1,1581 @@
+{
+ "fov_standoff": {
+  "gimbal/3.0": {
+   "inputs": 36,
+   "certified": 36,
+   "certified_maps": 12,
+   "undecided": 0,
+   "infeasible": 0,
+   "solved": 36,
+   "anomalies": 0,
+   "degenerate": 0,
+   "crlb_mean_cm": 3.977381929546133,
+   "visible_mean": 1.0,
+   "largest_set_mean": null,
+   "top_rejection": null,
+   "pairs": 36,
+   "quads": 36,
+   "delta": {
+    "mean": 1.3500947653646769,
+    "low": 1.3434132101519287,
+    "high": 1.3555639887900883,
+    "maps": 12
+   },
+   "interaction_add": {
+    "mean": 0.0,
+    "low": 0.0,
+    "high": 0.0,
+    "maps": 12
+   },
+   "interaction_log": {
+    "mean": 0.0,
+    "low": 0.0,
+    "high": 0.0,
+    "maps": 12
+   }
+  },
+  "gimbal/2.5": {
+   "inputs": 36,
+   "certified": 36,
+   "certified_maps": 12,
+   "undecided": 0,
+   "infeasible": 0,
+   "solved": 36,
+   "anomalies": 0,
+   "degenerate": 0,
+   "crlb_mean_cm": 3.3008122788361343,
+   "visible_mean": 1.0,
+   "largest_set_mean": null,
+   "top_rejection": null,
+   "pairs": 36,
+   "quads": 36,
+   "delta": {
+    "mean": 0.6735251146546788,
+    "low": 0.6689222882475329,
+    "high": 0.677721885354568,
+    "maps": 12
+   },
+   "interaction_add": {
+    "mean": 0.0,
+    "low": 0.0,
+    "high": 0.0,
+    "maps": 12
+   },
+   "interaction_log": {
+    "mean": 0.0,
+    "low": 0.0,
+    "high": 0.0,
+    "maps": 12
+   }
+  },
+  "gimbal/2.0": {
+   "inputs": 36,
+   "certified": 36,
+   "certified_maps": 12,
+   "undecided": 0,
+   "infeasible": 0,
+   "solved": 36,
+   "anomalies": 0,
+   "degenerate": 0,
+   "crlb_mean_cm": 2.627287164181455,
+   "visible_mean": 1.0,
+   "largest_set_mean": null,
+   "top_rejection": null,
+   "pairs": 36,
+   "quads": 36,
+   "delta": {
+    "mean": 0.0,
+    "low": 0.0,
+    "high": 0.0,
+    "maps": 12
+   },
+   "interaction_add": {
+    "mean": 0.0,
+    "low": 0.0,
+    "high": 0.0,
+    "maps": 12
+   },
+   "interaction_log": {
+    "mean": 0.0,
+    "low": 0.0,
+    "high": 0.0,
+    "maps": 12
+   }
+  },
+  "gimbal/1.5": {
+   "inputs": 36,
+   "certified": 36,
+   "certified_maps": 12,
+   "undecided": 0,
+   "infeasible": 0,
+   "solved": 36,
+   "anomalies": 0,
+   "degenerate": 0,
+   "crlb_mean_cm": 1.9658461583020777,
+   "visible_mean": 1.0,
+   "largest_set_mean": null,
+   "top_rejection": null,
+   "pairs": 36,
+   "quads": 36,
+   "delta": {
+    "mean": -0.6614410058793773,
+    "low": -0.6670980625701359,
+    "high": -0.6559654128692038,
+    "maps": 12
+   },
+   "interaction_add": {
+    "mean": 0.0,
+    "low": 0.0,
+    "high": 0.0,
+    "maps": 12
+   },
+   "interaction_log": {
+    "mean": 0.0,
+    "low": 0.0,
+    "high": 0.0,
+    "maps": 12
+   }
+  },
+  "40/1.5": {
+   "inputs": 36,
+   "certified": 36,
+   "certified_maps": 12,
+   "undecided": 0,
+   "infeasible": 0,
+   "solved": 36,
+   "anomalies": 0,
+   "degenerate": 0,
+   "crlb_mean_cm": 2.402975844362527,
+   "visible_mean": 1.0,
+   "largest_set_mean": null,
+   "top_rejection": null,
+   "pairs": 36,
+   "quads": 36,
+   "delta": {
+    "mean": -0.22431131981892874,
+    "low": -0.23954688623395826,
+    "high": -0.20999140184055354,
+    "maps": 12
+   },
+   "interaction_add": {
+    "mean": -0.1274782452625643,
+    "low": -0.14068155692644468,
+    "high": -0.1150194166605715,
+    "maps": 12
+   },
+   "interaction_log": {
+    "mean": 0.00609126453273291,
+    "low": 0.0011003192465796608,
+    "high": 0.010852339525921175,
+    "maps": 12
+   }
+  },
+  "40/2.0": {
+   "inputs": 36,
+   "certified": 36,
+   "certified_maps": 12,
+   "undecided": 0,
+   "infeasible": 0,
+   "solved": 36,
+   "anomalies": 0,
+   "degenerate": 0,
+   "crlb_mean_cm": 3.1918950955044685,
+   "visible_mean": 1.0,
+   "largest_set_mean": null,
+   "top_rejection": null,
+   "pairs": 36,
+   "quads": 36,
+   "delta": {
+    "mean": 0.5646079313230129,
+    "low": 0.5592442208930337,
+    "high": 0.5708855103406513,
+    "maps": 12
+   },
+   "interaction_add": {
+    "mean": 0.0,
+    "low": 0.0,
+    "high": 0.0,
+    "maps": 12
+   },
+   "interaction_log": {
+    "mean": 0.0,
+    "low": 0.0,
+    "high": 0.0,
+    "maps": 12
+   }
+  },
+  "gimbal/3.5": {
+   "inputs": 36,
+   "certified": 36,
+   "certified_maps": 12,
+   "undecided": 0,
+   "infeasible": 0,
+   "solved": 36,
+   "anomalies": 0,
+   "degenerate": 0,
+   "crlb_mean_cm": 4.6569286896717985,
+   "visible_mean": 1.0,
+   "largest_set_mean": null,
+   "top_rejection": null,
+   "pairs": 36,
+   "quads": 36,
+   "delta": {
+    "mean": 2.029641525490343,
+    "low": 2.0237437275585455,
+    "high": 2.03329771938663,
+    "maps": 12
+   },
+   "interaction_add": {
+    "mean": 0.0,
+    "low": 0.0,
+    "high": 0.0,
+    "maps": 12
+   },
+   "interaction_log": {
+    "mean": 0.0,
+    "low": 0.0,
+    "high": 0.0,
+    "maps": 12
+   }
+  },
+  "40/2.5": {
+   "inputs": 36,
+   "certified": 36,
+   "certified_maps": 12,
+   "undecided": 0,
+   "infeasible": 0,
+   "solved": 36,
+   "anomalies": 0,
+   "degenerate": 0,
+   "crlb_mean_cm": 3.996268166856605,
+   "visible_mean": 1.0,
+   "largest_set_mean": null,
+   "top_rejection": null,
+   "pairs": 36,
+   "quads": 36,
+   "delta": {
+    "mean": 1.3689810026751508,
+    "low": 1.3600126600216305,
+    "high": 1.382969502284835,
+    "maps": 12
+   },
+   "interaction_add": {
+    "mean": 0.13084795669745888,
+    "low": 0.11946442696815898,
+    "high": 0.1445812181761052,
+    "maps": 12
+   },
+   "interaction_log": {
+    "mean": -0.0034389955367746003,
+    "low": -0.006556112582932609,
+    "high": 4.774191045234672e-05,
+    "maps": 12
+   }
+  },
+  "40/3.0": {
+   "inputs": 36,
+   "certified": 36,
+   "certified_maps": 12,
+   "undecided": 0,
+   "infeasible": 0,
+   "solved": 36,
+   "anomalies": 0,
+   "degenerate": 0,
+   "crlb_mean_cm": 4.822389712343353,
+   "visible_mean": 1.0,
+   "largest_set_mean": null,
+   "top_rejection": null,
+   "pairs": 36,
+   "quads": 36,
+   "delta": {
+    "mean": 2.195102548161896,
+    "low": 2.1700770769832847,
+    "high": 2.2246796431406963,
+    "maps": 12
+   },
+   "interaction_add": {
+    "mean": 0.28039985147420626,
+    "low": 0.25275127176372314,
+    "high": 0.31091581325261525,
+    "maps": 12
+   },
+   "interaction_log": {
+    "mean": -0.0019765347600880154,
+    "low": -0.007918565130417204,
+    "high": 0.004422869185442746,
+    "maps": 12
+   }
+  },
+  "30/1.5": {
+   "inputs": 36,
+   "certified": 36,
+   "certified_maps": 12,
+   "undecided": 0,
+   "infeasible": 0,
+   "solved": 36,
+   "anomalies": 0,
+   "degenerate": 0,
+   "crlb_mean_cm": 2.7667306555001305,
+   "visible_mean": 1.0,
+   "largest_set_mean": null,
+   "top_rejection": null,
+   "pairs": 36,
+   "quads": 36,
+   "delta": {
+    "mean": 0.13944349131867548,
+    "low": 0.12121586798264851,
+    "high": 0.16114678227100046,
+    "maps": 12
+   },
+   "interaction_add": {
+    "mean": -0.4670503298963722,
+    "low": -0.5393469379000204,
+    "high": -0.37102857481078233,
+    "maps": 12
+   },
+   "interaction_log": {
+    "mean": -0.051475809193208766,
+    "low": -0.07199662450418799,
+    "high": -0.025128334312649745,
+    "maps": 12
+   }
+  },
+  "30/2.0": {
+   "inputs": 36,
+   "certified": 36,
+   "certified_maps": 12,
+   "undecided": 0,
+   "infeasible": 0,
+   "solved": 36,
+   "anomalies": 0,
+   "degenerate": 0,
+   "crlb_mean_cm": 3.895221991275879,
+   "visible_mean": 1.0,
+   "largest_set_mean": null,
+   "top_rejection": null,
+   "pairs": 36,
+   "quads": 36,
+   "delta": {
+    "mean": 1.267934827094425,
+    "low": 1.170322226103899,
+    "high": 1.3313137844730338,
+    "maps": 12
+   },
+   "interaction_add": {
+    "mean": 0.0,
+    "low": 0.0,
+    "high": 0.0,
+    "maps": 12
+   },
+   "interaction_log": {
+    "mean": 0.0,
+    "low": 0.0,
+    "high": 0.0,
+    "maps": 12
+   }
+  },
+  "30/3.5": {
+   "inputs": 36,
+   "certified": 0,
+   "certified_maps": 0,
+   "undecided": 0,
+   "infeasible": 36,
+   "solved": 0,
+   "anomalies": 0,
+   "degenerate": 0,
+   "crlb_mean_cm": null,
+   "visible_mean": null,
+   "largest_set_mean": 0.0,
+   "top_rejection": "fov",
+   "pairs": 0,
+   "quads": 0,
+   "delta": null,
+   "interaction_add": null,
+   "interaction_log": null
+  },
+  "30/2.5": {
+   "inputs": 36,
+   "certified": 36,
+   "certified_maps": 12,
+   "undecided": 0,
+   "infeasible": 0,
+   "solved": 36,
+   "anomalies": 0,
+   "degenerate": 0,
+   "crlb_mean_cm": 4.857787290173215,
+   "visible_mean": 1.0,
+   "largest_set_mean": null,
+   "top_rejection": null,
+   "pairs": 36,
+   "quads": 36,
+   "delta": {
+    "mean": 2.2305001259917607,
+    "low": 2.2245465706478567,
+    "high": 2.240063985190546,
+    "maps": 12
+   },
+   "interaction_add": {
+    "mean": 0.2890401842426572,
+    "low": 0.22879085331516716,
+    "high": 0.3827072090018213,
+    "maps": 12
+   },
+   "interaction_log": {
+    "mean": -0.0066571784644548935,
+    "low": -0.022600760939418343,
+    "high": 0.01874789360255164,
+    "maps": 12
+   }
+  },
+  "30/3.0": {
+   "inputs": 36,
+   "certified": 36,
+   "certified_maps": 12,
+   "undecided": 0,
+   "infeasible": 0,
+   "solved": 36,
+   "anomalies": 0,
+   "degenerate": 0,
+   "crlb_mean_cm": 5.839212330734213,
+   "visible_mean": 1.0,
+   "largest_set_mean": null,
+   "top_rejection": null,
+   "pairs": 36,
+   "quads": 36,
+   "delta": {
+    "mean": 3.2119251665527586,
+    "low": 3.2000533368667807,
+    "high": 3.224727764690046,
+    "maps": 12
+   },
+   "interaction_add": {
+    "mean": 0.593895574093657,
+    "low": 0.5272455328560477,
+    "high": 0.690005583666724,
+    "maps": 12
+   },
+   "interaction_log": {
+    "mean": -0.009075750576453627,
+    "low": -0.02634813520366534,
+    "high": 0.017025075753051438,
+    "maps": 12
+   }
+  },
+  "20/1.5": {
+   "inputs": 36,
+   "certified": 36,
+   "certified_maps": 12,
+   "undecided": 0,
+   "infeasible": 0,
+   "solved": 36,
+   "anomalies": 0,
+   "degenerate": 0,
+   "crlb_mean_cm": 3.9022053119649747,
+   "visible_mean": 0.9895833333333334,
+   "largest_set_mean": null,
+   "top_rejection": null,
+   "pairs": 36,
+   "quads": 36,
+   "delta": {
+    "mean": 1.2749181477835205,
+    "low": 1.2412062204608343,
+    "high": 1.3191682430066032,
+    "maps": 12
+   },
+   "interaction_add": {
+    "mean": -0.026662475650694576,
+    "low": -0.07232874754317797,
+    "high": 0.03499494991243725,
+    "maps": 12
+   },
+   "interaction_log": {
+    "mean": 0.12731227637802817,
+    "low": 0.11549231059722609,
+    "high": 0.14267221492274787,
+    "maps": 12
+   }
+  },
+  "20/2.0": {
+   "inputs": 36,
+   "certified": 36,
+   "certified_maps": 12,
+   "undecided": 0,
+   "infeasible": 0,
+   "solved": 36,
+   "anomalies": 0,
+   "degenerate": 0,
+   "crlb_mean_cm": 4.590308793495047,
+   "visible_mean": 1.0,
+   "largest_set_mean": null,
+   "top_rejection": null,
+   "pairs": 36,
+   "quads": 36,
+   "delta": {
+    "mean": 1.9630216293135927,
+    "low": 1.9514293648091814,
+    "high": 1.9725089869925334,
+    "maps": 12
+   },
+   "interaction_add": {
+    "mean": 0.0,
+    "low": 0.0,
+    "high": 0.0,
+    "maps": 12
+   },
+   "interaction_log": {
+    "mean": 0.0,
+    "low": 0.0,
+    "high": 0.0,
+    "maps": 12
+   }
+  },
+  "20/3.5": {
+   "inputs": 36,
+   "certified": 0,
+   "certified_maps": 0,
+   "undecided": 0,
+   "infeasible": 36,
+   "solved": 0,
+   "anomalies": 0,
+   "degenerate": 0,
+   "crlb_mean_cm": null,
+   "visible_mean": null,
+   "largest_set_mean": 0.0,
+   "top_rejection": "fov",
+   "pairs": 0,
+   "quads": 0,
+   "delta": null,
+   "interaction_add": null,
+   "interaction_log": null
+  },
+  "40/3.5": {
+   "inputs": 36,
+   "certified": 27,
+   "certified_maps": 9,
+   "undecided": 9,
+   "infeasible": 0,
+   "solved": 27,
+   "anomalies": 0,
+   "degenerate": 0,
+   "crlb_mean_cm": 5.478988616509117,
+   "visible_mean": 1.0,
+   "largest_set_mean": 6.0,
+   "top_rejection": "pairwise",
+   "pairs": 27,
+   "quads": 27,
+   "delta": {
+    "mean": 2.8591444732120976,
+    "low": 2.743695506812806,
+    "high": 2.9749757973701887,
+    "maps": 9
+   },
+   "interaction_add": {
+    "mean": 0.2730666332571771,
+    "low": 0.15808382821583006,
+    "high": 0.3927688786439531,
+    "maps": 9
+   },
+   "interaction_log": {
+    "mean": -0.029976236564559715,
+    "low": -0.05031119746508189,
+    "high": -0.008641022181812633,
+    "maps": 9
+   }
+  },
+  "20/3.0": {
+   "inputs": 36,
+   "certified": 36,
+   "certified_maps": 12,
+   "undecided": 0,
+   "infeasible": 0,
+   "solved": 36,
+   "anomalies": 0,
+   "degenerate": 0,
+   "crlb_mean_cm": 7.082934624133952,
+   "visible_mean": 1.0,
+   "largest_set_mean": null,
+   "top_rejection": null,
+   "pairs": 36,
+   "quads": 36,
+   "delta": {
+    "mean": 4.455647459952499,
+    "low": 4.442006626520857,
+    "high": 4.472797855187334,
+    "maps": 12
+   },
+   "interaction_add": {
+    "mean": 1.14253106527423,
+    "low": 1.1259472196819762,
+    "high": 1.1651586814061334,
+    "maps": 12
+   },
+   "interaction_log": {
+    "mean": 0.019126892753382974,
+    "low": 0.01623107828763799,
+    "high": 0.0229795876766888,
+    "maps": 12
+   }
+  },
+  "20/2.5": {
+   "inputs": 36,
+   "certified": 33,
+   "certified_maps": 11,
+   "undecided": 3,
+   "infeasible": 0,
+   "solved": 33,
+   "anomalies": 0,
+   "degenerate": 0,
+   "crlb_mean_cm": 5.934289904459707,
+   "visible_mean": 1.0,
+   "largest_set_mean": 7.0,
+   "top_rejection": "pairwise",
+   "pairs": 33,
+   "quads": 33,
+   "delta": {
+    "mean": 3.3103121557351356,
+    "low": 3.3087256813279193,
+    "high": 3.3117278042140494,
+    "maps": 11
+   },
+   "interaction_add": {
+    "mean": 0.6732143856182753,
+    "low": 0.6680210749360026,
+    "high": 0.6804465409275964,
+    "maps": 11
+   },
+   "interaction_log": {
+    "mean": 0.029177393728896262,
+    "low": 0.02788596001368388,
+    "high": 0.030808793268855817,
+    "maps": 11
+   }
+  }
+ },
+ "fov_ceiling": {
+  "gimbal/0.5": {
+   "inputs": 36,
+   "certified": 36,
+   "certified_maps": 12,
+   "undecided": 0,
+   "infeasible": 0,
+   "solved": 36,
+   "anomalies": 0,
+   "degenerate": 0,
+   "crlb_mean_cm": 2.7921504358166107,
+   "visible_mean": 1.0,
+   "largest_set_mean": null,
+   "top_rejection": null,
+   "pairs": 36,
+   "quads": 36,
+   "delta": {
+    "mean": 0.16486327163515618,
+    "low": 0.08422283379320772,
+    "high": 0.26759407110640376,
+    "maps": 12
+   },
+   "interaction_add": {
+    "mean": 0.0,
+    "low": 0.0,
+    "high": 0.0,
+    "maps": 12
+   },
+   "interaction_log": {
+    "mean": 0.0,
+    "low": 0.0,
+    "high": 0.0,
+    "maps": 12
+   }
+  },
+  "gimbal/1.0": {
+   "inputs": 36,
+   "certified": 36,
+   "certified_maps": 12,
+   "undecided": 0,
+   "infeasible": 0,
+   "solved": 36,
+   "anomalies": 0,
+   "degenerate": 0,
+   "crlb_mean_cm": 2.676456189319931,
+   "visible_mean": 1.0,
+   "largest_set_mean": null,
+   "top_rejection": null,
+   "pairs": 36,
+   "quads": 36,
+   "delta": {
+    "mean": 0.04916902513847571,
+    "low": 0.025947080857551028,
+    "high": 0.07341178041575004,
+    "maps": 12
+   },
+   "interaction_add": {
+    "mean": 0.0,
+    "low": 0.0,
+    "high": 0.0,
+    "maps": 12
+   },
+   "interaction_log": {
+    "mean": 0.0,
+    "low": 0.0,
+    "high": 0.0,
+    "maps": 12
+   }
+  },
+  "40/0.5": {
+   "inputs": 36,
+   "certified": 0,
+   "certified_maps": 0,
+   "undecided": 0,
+   "infeasible": 36,
+   "solved": 0,
+   "anomalies": 0,
+   "degenerate": 0,
+   "crlb_mean_cm": null,
+   "visible_mean": null,
+   "largest_set_mean": 0.0,
+   "top_rejection": "fov",
+   "pairs": 0,
+   "quads": 0,
+   "delta": null,
+   "interaction_add": null,
+   "interaction_log": null
+  },
+  "40/1.0": {
+   "inputs": 36,
+   "certified": 0,
+   "certified_maps": 0,
+   "undecided": 0,
+   "infeasible": 36,
+   "solved": 0,
+   "anomalies": 0,
+   "degenerate": 0,
+   "crlb_mean_cm": null,
+   "visible_mean": null,
+   "largest_set_mean": 0.0,
+   "top_rejection": "fov",
+   "pairs": 0,
+   "quads": 0,
+   "delta": null,
+   "interaction_add": null,
+   "interaction_log": null
+  },
+  "gimbal/2.0": {
+   "inputs": 36,
+   "certified": 36,
+   "certified_maps": 12,
+   "undecided": 0,
+   "infeasible": 0,
+   "solved": 36,
+   "anomalies": 0,
+   "degenerate": 0,
+   "crlb_mean_cm": 2.630028514542028,
+   "visible_mean": 1.0,
+   "largest_set_mean": null,
+   "top_rejection": null,
+   "pairs": 36,
+   "quads": 36,
+   "delta": {
+    "mean": 0.0027413503605732783,
+    "low": 0.000313923300944948,
+    "high": 0.005755846202575958,
+    "maps": 12
+   },
+   "interaction_add": {
+    "mean": 0.0,
+    "low": 0.0,
+    "high": 0.0,
+    "maps": 12
+   },
+   "interaction_log": {
+    "mean": 0.0,
+    "low": 0.0,
+    "high": 0.0,
+    "maps": 12
+   }
+  },
+  "gimbal/3.0": {
+   "inputs": 36,
+   "certified": 36,
+   "certified_maps": 12,
+   "undecided": 0,
+   "infeasible": 0,
+   "solved": 36,
+   "anomalies": 0,
+   "degenerate": 0,
+   "crlb_mean_cm": 2.627287164181455,
+   "visible_mean": 1.0,
+   "largest_set_mean": null,
+   "top_rejection": null,
+   "pairs": 36,
+   "quads": 36,
+   "delta": {
+    "mean": 0.0,
+    "low": 0.0,
+    "high": 0.0,
+    "maps": 12
+   },
+   "interaction_add": {
+    "mean": 0.0,
+    "low": 0.0,
+    "high": 0.0,
+    "maps": 12
+   },
+   "interaction_log": {
+    "mean": 0.0,
+    "low": 0.0,
+    "high": 0.0,
+    "maps": 12
+   }
+  },
+  "30/0.5": {
+   "inputs": 36,
+   "certified": 0,
+   "certified_maps": 0,
+   "undecided": 0,
+   "infeasible": 36,
+   "solved": 0,
+   "anomalies": 0,
+   "degenerate": 0,
+   "crlb_mean_cm": null,
+   "visible_mean": null,
+   "largest_set_mean": 0.0,
+   "top_rejection": "fov",
+   "pairs": 0,
+   "quads": 0,
+   "delta": null,
+   "interaction_add": null,
+   "interaction_log": null
+  },
+  "30/1.0": {
+   "inputs": 36,
+   "certified": 0,
+   "certified_maps": 0,
+   "undecided": 0,
+   "infeasible": 36,
+   "solved": 0,
+   "anomalies": 0,
+   "degenerate": 0,
+   "crlb_mean_cm": null,
+   "visible_mean": null,
+   "largest_set_mean": 0.0,
+   "top_rejection": "fov",
+   "pairs": 0,
+   "quads": 0,
+   "delta": null,
+   "interaction_add": null,
+   "interaction_log": null
+  },
+  "40/2.0": {
+   "inputs": 36,
+   "certified": 36,
+   "certified_maps": 12,
+   "undecided": 0,
+   "infeasible": 0,
+   "solved": 36,
+   "anomalies": 0,
+   "degenerate": 0,
+   "crlb_mean_cm": 3.1929574897060307,
+   "visible_mean": 1.0,
+   "largest_set_mean": null,
+   "top_rejection": null,
+   "pairs": 36,
+   "quads": 36,
+   "delta": {
+    "mean": 0.565670325524576,
+    "low": 0.5589149462775107,
+    "high": 0.5737495391089122,
+    "maps": 12
+   },
+   "interaction_add": {
+    "mean": -0.0016789561590102623,
+    "low": -0.005125314278777644,
+    "high": 0.0007364704762978924,
+    "maps": 12
+   },
+   "interaction_log": {
+    "mean": -0.0007051391924484118,
+    "low": -0.0019232680629670568,
+    "high": 0.00015161770130113402,
+    "maps": 12
+   }
+  },
+  "20/0.5": {
+   "inputs": 36,
+   "certified": 0,
+   "certified_maps": 0,
+   "undecided": 0,
+   "infeasible": 36,
+   "solved": 0,
+   "anomalies": 0,
+   "degenerate": 0,
+   "crlb_mean_cm": null,
+   "visible_mean": null,
+   "largest_set_mean": 0.0,
+   "top_rejection": "fov",
+   "pairs": 0,
+   "quads": 0,
+   "delta": null,
+   "interaction_add": null,
+   "interaction_log": null
+  },
+  "20/1.0": {
+   "inputs": 36,
+   "certified": 0,
+   "certified_maps": 0,
+   "undecided": 0,
+   "infeasible": 36,
+   "solved": 0,
+   "anomalies": 0,
+   "degenerate": 0,
+   "crlb_mean_cm": null,
+   "visible_mean": null,
+   "largest_set_mean": 0.0,
+   "top_rejection": "fov",
+   "pairs": 0,
+   "quads": 0,
+   "delta": null,
+   "interaction_add": null,
+   "interaction_log": null
+  },
+  "40/3.0": {
+   "inputs": 36,
+   "certified": 36,
+   "certified_maps": 12,
+   "undecided": 0,
+   "infeasible": 0,
+   "solved": 36,
+   "anomalies": 0,
+   "degenerate": 0,
+   "crlb_mean_cm": 3.1918950955044685,
+   "visible_mean": 1.0,
+   "largest_set_mean": null,
+   "top_rejection": null,
+   "pairs": 36,
+   "quads": 36,
+   "delta": {
+    "mean": 0.5646079313230129,
+    "low": 0.5592442208930337,
+    "high": 0.5708855103406513,
+    "maps": 12
+   },
+   "interaction_add": {
+    "mean": 0.0,
+    "low": 0.0,
+    "high": 0.0,
+    "maps": 12
+   },
+   "interaction_log": {
+    "mean": 0.0,
+    "low": 0.0,
+    "high": 0.0,
+    "maps": 12
+   }
+  },
+  "30/2.0": {
+   "inputs": 36,
+   "certified": 36,
+   "certified_maps": 12,
+   "undecided": 0,
+   "infeasible": 0,
+   "solved": 36,
+   "anomalies": 0,
+   "degenerate": 0,
+   "crlb_mean_cm": 3.9536874055646782,
+   "visible_mean": 1.0,
+   "largest_set_mean": null,
+   "top_rejection": null,
+   "pairs": 36,
+   "quads": 36,
+   "delta": {
+    "mean": 1.3264002413832245,
+    "low": 1.31914903549566,
+    "high": 1.332562068607722,
+    "maps": 12
+   },
+   "interaction_add": {
+    "mean": 0.05572406392822612,
+    "low": -0.003757542366412069,
+    "high": 0.15375543048339352,
+    "maps": 12
+   },
+   "interaction_log": {
+    "mean": 0.014565381505331277,
+    "low": -0.0014381390921171778,
+    "high": 0.04076645630504115,
+    "maps": 12
+   }
+  },
+  "30/3.0": {
+   "inputs": 36,
+   "certified": 36,
+   "certified_maps": 12,
+   "undecided": 0,
+   "infeasible": 0,
+   "solved": 36,
+   "anomalies": 0,
+   "degenerate": 0,
+   "crlb_mean_cm": 3.895221991275879,
+   "visible_mean": 1.0,
+   "largest_set_mean": null,
+   "top_rejection": null,
+   "pairs": 36,
+   "quads": 36,
+   "delta": {
+    "mean": 1.267934827094425,
+    "low": 1.170322226103899,
+    "high": 1.3313137844730338,
+    "maps": 12
+   },
+   "interaction_add": {
+    "mean": 0.0,
+    "low": 0.0,
+    "high": 0.0,
+    "maps": 12
+   },
+   "interaction_log": {
+    "mean": 0.0,
+    "low": 0.0,
+    "high": 0.0,
+    "maps": 12
+   }
+  },
+  "20/3.0": {
+   "inputs": 36,
+   "certified": 36,
+   "certified_maps": 12,
+   "undecided": 0,
+   "infeasible": 0,
+   "solved": 36,
+   "anomalies": 0,
+   "degenerate": 0,
+   "crlb_mean_cm": 4.590308793495047,
+   "visible_mean": 1.0,
+   "largest_set_mean": null,
+   "top_rejection": null,
+   "pairs": 36,
+   "quads": 36,
+   "delta": {
+    "mean": 1.9630216293135927,
+    "low": 1.9514293648091814,
+    "high": 1.9725089869925334,
+    "maps": 12
+   },
+   "interaction_add": {
+    "mean": 0.0,
+    "low": 0.0,
+    "high": 0.0,
+    "maps": 12
+   },
+   "interaction_log": {
+    "mean": 0.0,
+    "low": 0.0,
+    "high": 0.0,
+    "maps": 12
+   }
+  },
+  "20/2.0": {
+   "inputs": 36,
+   "certified": 0,
+   "certified_maps": 0,
+   "undecided": 33,
+   "infeasible": 3,
+   "solved": 0,
+   "anomalies": 0,
+   "degenerate": 0,
+   "crlb_mean_cm": null,
+   "visible_mean": null,
+   "largest_set_mean": 5.0,
+   "top_rejection": "pairwise",
+   "pairs": 0,
+   "quads": 0,
+   "delta": null,
+   "interaction_add": null,
+   "interaction_log": null
+  }
+ },
+ "comm_separation": {
+  "0.8/0.75": {
+   "inputs": 36,
+   "certified": 0,
+   "certified_maps": 0,
+   "undecided": 0,
+   "infeasible": 36,
+   "solved": 0,
+   "anomalies": 0,
+   "degenerate": 0,
+   "crlb_mean_cm": null,
+   "visible_mean": null,
+   "largest_set_mean": 1.0,
+   "top_rejection": "pairwise",
+   "pairs": 0,
+   "quads": 0,
+   "delta": null,
+   "interaction_add": null,
+   "interaction_log": null
+  },
+  "0.8/1.0": {
+   "inputs": 36,
+   "certified": 0,
+   "certified_maps": 0,
+   "undecided": 0,
+   "infeasible": 36,
+   "solved": 0,
+   "anomalies": 0,
+   "degenerate": 0,
+   "crlb_mean_cm": null,
+   "visible_mean": null,
+   "largest_set_mean": 1.0,
+   "top_rejection": "pairwise",
+   "pairs": 0,
+   "quads": 0,
+   "delta": null,
+   "interaction_add": null,
+   "interaction_log": null
+  },
+  "0.8/1.5": {
+   "inputs": 36,
+   "certified": 0,
+   "certified_maps": 0,
+   "undecided": 0,
+   "infeasible": 36,
+   "solved": 0,
+   "anomalies": 0,
+   "degenerate": 0,
+   "crlb_mean_cm": null,
+   "visible_mean": null,
+   "largest_set_mean": 1.0,
+   "top_rejection": "pairwise",
+   "pairs": 0,
+   "quads": 0,
+   "delta": null,
+   "interaction_add": null,
+   "interaction_log": null
+  },
+  "0.8/0.5": {
+   "inputs": 36,
+   "certified": 36,
+   "certified_maps": 12,
+   "undecided": 0,
+   "infeasible": 0,
+   "solved": 36,
+   "anomalies": 0,
+   "degenerate": 0,
+   "crlb_mean_cm": 3.2921936660997932,
+   "visible_mean": 0.9861111111111112,
+   "largest_set_mean": null,
+   "top_rejection": null,
+   "pairs": 36,
+   "quads": 36,
+   "delta": {
+    "mean": 0.6649065019183379,
+    "low": 0.37841906176946205,
+    "high": 1.0993981521453027,
+    "maps": 12
+   },
+   "interaction_add": {
+    "mean": 0.0,
+    "low": 0.0,
+    "high": 0.0,
+    "maps": 12
+   },
+   "interaction_log": {
+    "mean": 0.0,
+    "low": 0.0,
+    "high": 0.0,
+    "maps": 12
+   }
+  },
+  "1.2/0.5": {
+   "inputs": 36,
+   "certified": 36,
+   "certified_maps": 12,
+   "undecided": 0,
+   "infeasible": 0,
+   "solved": 36,
+   "anomalies": 0,
+   "degenerate": 0,
+   "crlb_mean_cm": 2.693695897531919,
+   "visible_mean": 1.0,
+   "largest_set_mean": null,
+   "top_rejection": null,
+   "pairs": 36,
+   "quads": 36,
+   "delta": {
+    "mean": 0.06640873335046413,
+    "low": 0.04721135632136077,
+    "high": 0.09071410705137864,
+    "maps": 12
+   },
+   "interaction_add": {
+    "mean": 0.0,
+    "low": 0.0,
+    "high": 0.0,
+    "maps": 12
+   },
+   "interaction_log": {
+    "mean": 0.0,
+    "low": 0.0,
+    "high": 0.0,
+    "maps": 12
+   }
+  },
+  "1.2/1.5": {
+   "inputs": 36,
+   "certified": 0,
+   "certified_maps": 0,
+   "undecided": 0,
+   "infeasible": 36,
+   "solved": 0,
+   "anomalies": 0,
+   "degenerate": 0,
+   "crlb_mean_cm": null,
+   "visible_mean": null,
+   "largest_set_mean": 1.0,
+   "top_rejection": "pairwise",
+   "pairs": 0,
+   "quads": 0,
+   "delta": null,
+   "interaction_add": null,
+   "interaction_log": null
+  },
+  "1.2/0.75": {
+   "inputs": 36,
+   "certified": 36,
+   "certified_maps": 12,
+   "undecided": 0,
+   "infeasible": 0,
+   "solved": 36,
+   "anomalies": 0,
+   "degenerate": 0,
+   "crlb_mean_cm": 2.7023067398401452,
+   "visible_mean": 1.0,
+   "largest_set_mean": null,
+   "top_rejection": null,
+   "pairs": 36,
+   "quads": 36,
+   "delta": {
+    "mean": 0.07501957565869075,
+    "low": 0.04729641195172812,
+    "high": 0.11627382844955994,
+    "maps": 12
+   },
+   "interaction_add": {
+    "mean": 0.007156167854320206,
+    "low": -0.03697127120576482,
+    "high": 0.06013446688610269,
+    "maps": 12
+   },
+   "interaction_log": {
+    "mean": 0.002501431340694286,
+    "low": -0.013493322663128839,
+    "high": 0.021673552813240345,
+    "maps": 12
+   }
+  },
+  "1.2/1.0": {
+   "inputs": 36,
+   "certified": 36,
+   "certified_maps": 12,
+   "undecided": 0,
+   "infeasible": 0,
+   "solved": 36,
+   "anomalies": 0,
+   "degenerate": 0,
+   "crlb_mean_cm": 2.81328888737021,
+   "visible_mean": 1.0,
+   "largest_set_mean": null,
+   "top_rejection": null,
+   "pairs": 36,
+   "quads": 36,
+   "delta": {
+    "mean": 0.18600172318875563,
+    "low": 0.13813911598807305,
+    "high": 0.23682331207509005,
+    "maps": 12
+   },
+   "interaction_add": {
+    "mean": 0.10446597982463769,
+    "low": 0.05171702273137355,
+    "high": 0.16524178592671562,
+    "maps": 12
+   },
+   "interaction_log": {
+    "mean": 0.0372723204679305,
+    "low": 0.018614031235941495,
+    "high": 0.058686846853688183,
+    "maps": 12
+   }
+  },
+  "2.0/0.5": {
+   "inputs": 36,
+   "certified": 36,
+   "certified_maps": 12,
+   "undecided": 0,
+   "infeasible": 0,
+   "solved": 36,
+   "anomalies": 0,
+   "degenerate": 0,
+   "crlb_mean_cm": 2.6296508525867215,
+   "visible_mean": 1.0,
+   "largest_set_mean": null,
+   "top_rejection": null,
+   "pairs": 36,
+   "quads": 36,
+   "delta": {
+    "mean": 0.0023636884052662295,
+    "low": 0.0006174699042482806,
+    "high": 0.004331456116972192,
+    "maps": 12
+   },
+   "interaction_add": {
+    "mean": 0.0,
+    "low": 0.0,
+    "high": 0.0,
+    "maps": 12
+   },
+   "interaction_log": {
+    "mean": 0.0,
+    "low": 0.0,
+    "high": 0.0,
+    "maps": 12
+   }
+  },
+  "2.0/0.75": {
+   "inputs": 36,
+   "certified": 36,
+   "certified_maps": 12,
+   "undecided": 0,
+   "infeasible": 0,
+   "solved": 36,
+   "anomalies": 0,
+   "degenerate": 0,
+   "crlb_mean_cm": 2.629134586095074,
+   "visible_mean": 1.0,
+   "largest_set_mean": null,
+   "top_rejection": null,
+   "pairs": 36,
+   "quads": 36,
+   "delta": {
+    "mean": 0.0018474219136187877,
+    "low": 0.00017933518985568638,
+    "high": 0.003887488956306305,
+    "maps": 12
+   },
+   "interaction_add": {
+    "mean": -0.001970940945553862,
+    "low": -0.0030336947835566783,
+    "high": -0.0009005373236843278,
+    "maps": 12
+   },
+   "interaction_log": {
+    "mean": -0.0007471548003324576,
+    "low": -0.0011503900346902646,
+    "high": -0.00034241159863184026,
+    "maps": 12
+   }
+  },
+  "2.0/1.0": {
+   "inputs": 36,
+   "certified": 36,
+   "certified_maps": 12,
+   "undecided": 0,
+   "infeasible": 0,
+   "solved": 36,
+   "anomalies": 0,
+   "degenerate": 0,
+   "crlb_mean_cm": 2.629233243867862,
+   "visible_mean": 1.0,
+   "largest_set_mean": null,
+   "top_rejection": null,
+   "pairs": 36,
+   "quads": 36,
+   "delta": {
+    "mean": 0.0019460796864074227,
+    "low": 0.0007465181780040042,
+    "high": 0.0032746594352405303,
+    "maps": 12
+   },
+   "interaction_add": {
+    "mean": -0.015544618732512625,
+    "low": -0.023849516708758945,
+    "high": -0.007156271419442921,
+    "maps": 12
+   },
+   "interaction_log": {
+    "mean": -0.005825892544974824,
+    "low": -0.008902014632953922,
+    "high": -0.002698611621674635,
+    "maps": 12
+   }
+  },
+  "4.0/0.5": {
+   "inputs": 36,
+   "certified": 36,
+   "certified_maps": 12,
+   "undecided": 0,
+   "infeasible": 0,
+   "solved": 36,
+   "anomalies": 0,
+   "degenerate": 0,
+   "crlb_mean_cm": 2.627287164181455,
+   "visible_mean": 1.0,
+   "largest_set_mean": null,
+   "top_rejection": null,
+   "pairs": 36,
+   "quads": 36,
+   "delta": {
+    "mean": 0.0,
+    "low": 0.0,
+    "high": 0.0,
+    "maps": 12
+   },
+   "interaction_add": {
+    "mean": 0.0,
+    "low": 0.0,
+    "high": 0.0,
+    "maps": 12
+   },
+   "interaction_log": {
+    "mean": 0.0,
+    "low": 0.0,
+    "high": 0.0,
+    "maps": 12
+   }
+  },
+  "4.0/0.75": {
+   "inputs": 36,
+   "certified": 36,
+   "certified_maps": 12,
+   "undecided": 0,
+   "infeasible": 0,
+   "solved": 36,
+   "anomalies": 0,
+   "degenerate": 0,
+   "crlb_mean_cm": 2.628741838635362,
+   "visible_mean": 1.0,
+   "largest_set_mean": null,
+   "top_rejection": null,
+   "pairs": 36,
+   "quads": 36,
+   "delta": {
+    "mean": 0.00145467445390642,
+    "low": 0.00045675016067953984,
+    "high": 0.0027039783448009258,
+    "maps": 12
+   },
+   "interaction_add": {
+    "mean": 0.0,
+    "low": 0.0,
+    "high": 0.0,
+    "maps": 12
+   },
+   "interaction_log": {
+    "mean": 0.0,
+    "low": 0.0,
+    "high": 0.0,
+    "maps": 12
+   }
+  },
+  "4.0/1.0": {
+   "inputs": 36,
+   "certified": 36,
+   "certified_maps": 12,
+   "undecided": 0,
+   "infeasible": 0,
+   "solved": 36,
+   "anomalies": 0,
+   "degenerate": 0,
+   "crlb_mean_cm": 2.6424141741951086,
+   "visible_mean": 1.0,
+   "largest_set_mean": null,
+   "top_rejection": null,
+   "pairs": 36,
+   "quads": 36,
+   "delta": {
+    "mean": 0.01512701001365382,
+    "low": 0.007522041989142202,
+    "high": 0.022460354182860603,
+    "maps": 12
+   },
+   "interaction_add": {
+    "mean": 0.0,
+    "low": 0.0,
+    "high": 0.0,
+    "maps": 12
+   },
+   "interaction_log": {
+    "mean": 0.0,
+    "low": 0.0,
+    "high": 0.0,
+    "maps": 12
+   }
+  },
+  "4.0/1.5": {
+   "inputs": 36,
+   "certified": 36,
+   "certified_maps": 12,
+   "undecided": 0,
+   "infeasible": 0,
+   "solved": 36,
+   "anomalies": 0,
+   "degenerate": 0,
+   "crlb_mean_cm": 2.8136145989600294,
+   "visible_mean": 1.0,
+   "largest_set_mean": null,
+   "top_rejection": null,
+   "pairs": 36,
+   "quads": 36,
+   "delta": {
+    "mean": 0.18632743477857514,
+    "low": 0.14372396040319135,
+    "high": 0.22689383716274278,
+    "maps": 12
+   },
+   "interaction_add": {
+    "mean": 0.0,
+    "low": 0.0,
+    "high": 0.0,
+    "maps": 12
+   },
+   "interaction_log": {
+    "mean": 0.0,
+    "low": 0.0,
+    "high": 0.0,
+    "maps": 12
+   }
+  },
+  "2.0/1.5": {
+   "inputs": 36,
+   "certified": 27,
+   "certified_maps": 9,
+   "undecided": 9,
+   "infeasible": 0,
+   "solved": 27,
+   "anomalies": 0,
+   "degenerate": 0,
+   "crlb_mean_cm": 2.759997564043454,
+   "visible_mean": 1.0,
+   "largest_set_mean": 6.666666666666667,
+   "top_rejection": "pairwise",
+   "pairs": 27,
+   "quads": 27,
+   "delta": {
+    "mean": 0.14015342074643228,
+    "low": 0.11107430055673409,
+    "high": 0.1679416871380589,
+    "maps": 9
+   },
+   "interaction_add": {
+    "mean": -0.020695105176797762,
+    "low": -0.05953558413295731,
+    "high": 0.021266987626917436,
+    "maps": 9
+   },
+   "interaction_log": {
+    "mean": -0.006979945903646893,
+    "low": -0.020672833957016003,
+    "high": 0.0076364136981316045,
+    "maps": 9
+   }
+  }
+ }
+}

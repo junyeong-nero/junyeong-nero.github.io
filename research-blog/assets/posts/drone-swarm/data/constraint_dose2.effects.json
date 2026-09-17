@@ -1,0 +1,326 @@
+{
+ "count/4": {
+  "inputs": 36,
+  "certified": 36,
+  "certified_maps": 12,
+  "undecided": 0,
+  "solved": 36,
+  "anomalies": 0,
+  "degenerate": 0,
+  "crlb_mean_cm": 3.716244560525699,
+  "visible_mean": 1.0,
+  "quality_pairs": 36,
+  "quality": {
+   "mean": 1.088957396344244,
+   "low": 1.0856769509948472,
+   "high": 1.0924813743169726,
+   "maps": 12
+  }
+ },
+ "count/6": {
+  "inputs": 36,
+  "certified": 36,
+  "certified_maps": 12,
+  "undecided": 0,
+  "solved": 36,
+  "anomalies": 0,
+  "degenerate": 0,
+  "crlb_mean_cm": 3.0352498836196244,
+  "visible_mean": 1.0,
+  "quality_pairs": 36,
+  "quality": {
+   "mean": 0.4079627194381685,
+   "low": 0.40700468528965833,
+   "high": 0.4089024894826426,
+   "maps": 12
+  }
+ },
+ "baseline/None": {
+  "inputs": 36,
+  "certified": 36,
+  "certified_maps": 12,
+  "undecided": 0,
+  "solved": 36,
+  "anomalies": 0,
+  "degenerate": 0,
+  "crlb_mean_cm": 2.627287164181455,
+  "visible_mean": 1.0,
+  "quality_pairs": 36,
+  "quality": {
+   "mean": 0.0,
+   "low": 0.0,
+   "high": 0.0,
+   "maps": 12
+  }
+ },
+ "count/10": {
+  "inputs": 36,
+  "certified": 36,
+  "certified_maps": 12,
+  "undecided": 0,
+  "solved": 36,
+  "anomalies": 0,
+  "degenerate": 0,
+  "crlb_mean_cm": 2.3520781669965842,
+  "visible_mean": 1.0,
+  "quality_pairs": 36,
+  "quality": {
+   "mean": -0.2752089971848704,
+   "low": -0.2766818485889029,
+   "high": -0.27407023922974366,
+   "maps": 12
+  }
+ },
+ "standoff/1.0": {
+  "inputs": 36,
+  "certified": 36,
+  "certified_maps": 12,
+  "undecided": 0,
+  "solved": 36,
+  "anomalies": 0,
+  "degenerate": 0,
+  "crlb_mean_cm": 1.321273521130723,
+  "visible_mean": 1.0,
+  "quality_pairs": 36,
+  "quality": {
+   "mean": -1.306013643050732,
+   "low": -1.3210857990537594,
+   "high": -1.28558315713814,
+   "maps": 12
+  }
+ },
+ "count/12": {
+  "inputs": 36,
+  "certified": 36,
+  "certified_maps": 12,
+  "undecided": 0,
+  "solved": 36,
+  "anomalies": 0,
+  "degenerate": 0,
+  "crlb_mean_cm": 2.150684335021039,
+  "visible_mean": 1.0,
+  "quality_pairs": 36,
+  "quality": {
+   "mean": -0.47660282916041513,
+   "low": -0.47837543536648747,
+   "high": -0.4745188300079551,
+   "maps": 12
+  }
+ },
+ "standoff/2.5": {
+  "inputs": 36,
+  "certified": 36,
+  "certified_maps": 12,
+  "undecided": 0,
+  "solved": 36,
+  "anomalies": 0,
+  "degenerate": 0,
+  "crlb_mean_cm": 3.3008122788361343,
+  "visible_mean": 1.0,
+  "quality_pairs": 36,
+  "quality": {
+   "mean": 0.6735251146546788,
+   "low": 0.6689222882475329,
+   "high": 0.677721885354568,
+   "maps": 12
+  }
+ },
+ "standoff/1.5": {
+  "inputs": 36,
+  "certified": 36,
+  "certified_maps": 12,
+  "undecided": 0,
+  "solved": 36,
+  "anomalies": 0,
+  "degenerate": 0,
+  "crlb_mean_cm": 1.9658461583020777,
+  "visible_mean": 1.0,
+  "quality_pairs": 36,
+  "quality": {
+   "mean": -0.6614410058793773,
+   "low": -0.6670980625701359,
+   "high": -0.6559654128692038,
+   "maps": 12
+  }
+ },
+ "standoff/3.0": {
+  "inputs": 36,
+  "certified": 36,
+  "certified_maps": 12,
+  "undecided": 0,
+  "solved": 36,
+  "anomalies": 0,
+  "degenerate": 0,
+  "crlb_mean_cm": 3.977381929546133,
+  "visible_mean": 1.0,
+  "quality_pairs": 36,
+  "quality": {
+   "mean": 1.3500947653646769,
+   "low": 1.3434132101519287,
+   "high": 1.3555639887900883,
+   "maps": 12
+  }
+ },
+ "standoff/3.5": {
+  "inputs": 36,
+  "certified": 36,
+  "certified_maps": 12,
+  "undecided": 0,
+  "solved": 36,
+  "anomalies": 0,
+  "degenerate": 0,
+  "crlb_mean_cm": 4.6569286896717985,
+  "visible_mean": 1.0,
+  "quality_pairs": 36,
+  "quality": {
+   "mean": 2.029641525490343,
+   "low": 2.0237437275585455,
+   "high": 2.03329771938663,
+   "maps": 12
+  }
+ },
+ "ceiling/0.5": {
+  "inputs": 36,
+  "certified": 36,
+  "certified_maps": 12,
+  "undecided": 0,
+  "solved": 36,
+  "anomalies": 0,
+  "degenerate": 0,
+  "crlb_mean_cm": 2.7921504358166107,
+  "visible_mean": 1.0,
+  "quality_pairs": 36,
+  "quality": {
+   "mean": 0.16486327163515618,
+   "low": 0.08422283379320772,
+   "high": 0.26759407110640376,
+   "maps": 12
+  }
+ },
+ "ceiling/1.0": {
+  "inputs": 36,
+  "certified": 36,
+  "certified_maps": 12,
+  "undecided": 0,
+  "solved": 36,
+  "anomalies": 0,
+  "degenerate": 0,
+  "crlb_mean_cm": 2.676456189319931,
+  "visible_mean": 1.0,
+  "quality_pairs": 36,
+  "quality": {
+   "mean": 0.04916902513847571,
+   "low": 0.025947080857551028,
+   "high": 0.07341178041575004,
+   "maps": 12
+  }
+ },
+ "ceiling/1.5": {
+  "inputs": 36,
+  "certified": 36,
+  "certified_maps": 12,
+  "undecided": 0,
+  "solved": 36,
+  "anomalies": 0,
+  "degenerate": 0,
+  "crlb_mean_cm": 2.6330364702298237,
+  "visible_mean": 1.0,
+  "quality_pairs": 36,
+  "quality": {
+   "mean": 0.005749306048369347,
+   "low": 0.0009770138599024117,
+   "high": 0.011541195159182801,
+   "maps": 12
+  }
+ },
+ "ceiling/2.0": {
+  "inputs": 36,
+  "certified": 36,
+  "certified_maps": 12,
+  "undecided": 0,
+  "solved": 36,
+  "anomalies": 0,
+  "degenerate": 0,
+  "crlb_mean_cm": 2.630028514542028,
+  "visible_mean": 1.0,
+  "quality_pairs": 36,
+  "quality": {
+   "mean": 0.0027413503605732783,
+   "low": 0.000313923300944948,
+   "high": 0.005755846202575958,
+   "maps": 12
+  }
+ },
+ "width/0.7": {
+  "inputs": 36,
+  "certified": 36,
+  "certified_maps": 12,
+  "undecided": 0,
+  "solved": 36,
+  "anomalies": 0,
+  "degenerate": 0,
+  "crlb_mean_cm": 2.6626504104943103,
+  "visible_mean": 1.0,
+  "quality_pairs": 36,
+  "quality": {
+   "mean": 0.03536324631285567,
+   "low": 0.03355602328198768,
+   "high": 0.036846071432319716,
+   "maps": 12
+  }
+ },
+ "width/0.85": {
+  "inputs": 36,
+  "certified": 36,
+  "certified_maps": 12,
+  "undecided": 0,
+  "solved": 36,
+  "anomalies": 0,
+  "degenerate": 0,
+  "crlb_mean_cm": 2.6466839607338146,
+  "visible_mean": 1.0,
+  "quality_pairs": 36,
+  "quality": {
+   "mean": 0.019396796552360207,
+   "low": 0.015203499434167473,
+   "high": 0.023487209041648794,
+   "maps": 12
+  }
+ },
+ "width/1.3": {
+  "inputs": 36,
+  "certified": 36,
+  "certified_maps": 12,
+  "undecided": 0,
+  "solved": 36,
+  "anomalies": 0,
+  "degenerate": 0,
+  "crlb_mean_cm": 2.6183598596211253,
+  "visible_mean": 1.0,
+  "quality_pairs": 36,
+  "quality": {
+   "mean": -0.008927304560330465,
+   "low": -0.016337536862348012,
+   "high": -0.0016713038680226853,
+   "maps": 12
+  }
+ },
+ "width/1.7": {
+  "inputs": 36,
+  "certified": 36,
+  "certified_maps": 12,
+  "undecided": 0,
+  "solved": 36,
+  "anomalies": 0,
+  "degenerate": 0,
+  "crlb_mean_cm": 2.6179946595454577,
+  "visible_mean": 1.0,
+  "quality_pairs": 36,
+  "quality": {
+   "mean": -0.009292504635996493,
+   "low": -0.017120986392884365,
+   "high": -0.0016882270053993702,
+   "maps": 12
+  }
+ }
+}

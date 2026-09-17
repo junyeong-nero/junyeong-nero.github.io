@@ -1,0 +1,27 @@
+{
+  "theme": {
+    "source": "junyeong-nero.github.io/research-blog/style.css",
+    "background": "#f8f7f3",
+    "text": "#212121",
+    "colors": {
+      "baseline": "#93939f",
+      "baseline_fw": "#1863dc",
+      "baseline_mc": "#52525b",
+      "ours": "#ff7759"
+    }
+  },
+  "sources": {
+    "ablation_uav_tuning_v2/comparison.json": "94bc263fea727f59afff5738d7c686fdef95d197a777748e1ebcb391a6ae86e6",
+    "fixedwing_uav_v2/masc/distance_1500/scores.json": "6169701f1fdce65dccfb8eac3caad6d0870a425dd4501c0a2159a7435f42706a",
+    "fixedwing_uav_v2/alfa/distance_1050/scores.json": "23b94fa80486a9dfb5a0919ca823a428b3f85d256a6728b397721097a114ea59",
+    "fixedwing_uav_v2/alfa/distance_1500/scores.json": "ec0e105bdccdb3ec1a01a4f6ef0be400b51d8ff9f5d803db02e6fcc5b8050928",
+    "amovfly_uav_v2/distance_1050/scores.json": "3047f883656cf67dee031686637a340eec092615e0f74e09844a0410d1488b8f"
+  },
+  "figures": {
+    "01-training-design.svg": "c80419d501b43660955cbb54a552c9b975c47fc4ab0ce2e8aafcbed977161c5f",
+    "02-transfer-gap.svg": "3f64f56de0dde68fd5c6a277c4b96be2d64fb4cc287225eb81d8f3be7a8a8509",
+    "03-fixedwing-effects.svg": "b494d98ae70343705d16fe674dac02c3a63e486511fe7c457180ac4fe1fb972e",
+    "04-multicopter-effects.svg": "3d114f782cdd4fe3d241179a12acfe20d2a18eac60a67ab1ae4f02e6d2d9a2f4",
+    "05-evaluation-coverage.svg": "0697430f10c8828336ac916f44cac0d98be882dfbabb1beeba6ddbfb8c413099"
+  }
+}
