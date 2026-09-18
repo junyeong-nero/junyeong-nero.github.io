@@ -4,7 +4,7 @@ This experiment compares four synthetic training arms with the same budget: cons
 
 That was the first half. The second half asks why, and measures instead of guessing. Nine motion and sensor statistics computed the same way on real and synthetic pre-entry tracks show that all four training arms sit far from AMOVFLY on almost every variable, and much closer to each other than to the target. So a second arm was built that keeps every profile, force model, filter setting and tuning candidate and changes only how runs are sampled, with the ranges read from three calibration dates. On the five held-out dates, GRU flight-macro MAE drops from 50.9 to 14.4 s and LSTM from 39.5 to 16.0 s; the MLP, already at 16 s, does not move.
 
-![Change in macro MAE for the mixed-profile arm against the baseline, on synthetic validation and on three real UAV cohorts.](assets/posts/ttg-v2/02-transfer-gap.svg "Figure 2. Mixed profiles versus baseline, change in macro MAE, lower is better. The synthetic column is a selection set, not an independent test. Real cohorts are seed means; they are not on a common absolute-error scale. ALFA primary has one flight and is not shown.")
+![Change in macro MAE for the mixed-profile arm against the baseline, on synthetic validation and on three real UAV cohorts.](assets/posts/ttg-v2/02-transfer-gap.svg "Figure 1. Mixed profiles versus baseline, change in macro MAE, lower is better. The synthetic column is a selection set, not an independent test. Real cohorts are seed means; they are not on a common absolute-error scale. ALFA primary has one flight and is not shown.")
 
 [Source repository](https://github.com/junyeong-nero/uav-lab) (findings, experiments table and reproduction commands in the README) · [v2 real-flight report](https://github.com/junyeong-nero/uav-lab/blob/main/docs/results_v2_real.md) · [v3 plan](https://github.com/junyeong-nero/uav-lab/blob/main/docs/plan_v3.md) · [v3 gap diagnostic](https://github.com/junyeong-nero/uav-lab/blob/main/docs/results_v3_gap.md) · [v3 result](https://github.com/junyeong-nero/uav-lab/blob/main/docs/results_v3_real.md) · [Figure provenance](assets/posts/ttg-v2/provenance.json), [v3](assets/posts/ttg-v2/provenance_v3.json)
 
@@ -24,7 +24,7 @@ Fixed-wing UAVs fly scheduled routes at 15 to 35 m/s and 100 to 500 m altitude, 
 
 The force evaluation is a pure function of state and time, so RK4's intermediate stages never draw random numbers, and every scenario and sensor seed is drawn before worker dispatch. Regenerating a dataset with a different worker count gives identical files.
 
-![Replay of a fixed-wing oscillating approach, a multicopter hover and resume, and an outside figure-eight circuit.](assets/posts/ttg-v2/demo.gif "Figure 1. The viewer replays a profile with its noisy observations, the filtered track and three TTG estimates. The blue wireframe is the 1 km zone. The GRU shown is a small demonstration model, not one of the research models, and the trajectories are illustrations.")
+![Replay of a fixed-wing oscillating approach, a multicopter hover and resume, and an outside figure-eight circuit.](assets/posts/ttg-v2/demo.gif "Figure 2. The viewer replays a profile with its noisy observations, the filtered track and three TTG estimates. The blue wireframe is the 1 km zone. The GRU shown is a small demonstration model, not one of the research models, and the trajectories are illustrations.")
 
 [Watch the MP4](assets/posts/ttg-v2/demo.mp4)
 
