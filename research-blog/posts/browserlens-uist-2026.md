@@ -1,3 +1,12 @@
+## TL;DR
+
+- BrowserLens was submitted to the UIST 2026 Posters track, joint work with Mingyu Kim and Seongkook Heo at UNIST. This post covers the review problem, the representation, and the limits of what it shows.
+- A finished browser-agent run tells you how it ended, not where it stopped making progress. Two gaps explain why: the agent's plan does not say what the browser's state was, and a complete linear log still hides patterns spread across distant steps.
+- The representation is a three-layer graph over one recorded run: page, viewport, and action. Visits with the same deterministic identity collapse into one node, and the graph indexes the original screenshots, DOM and ARIA snapshots, and tool logs rather than replacing them.
+- Four visual cues (visit counts, cycle edges, no-op markers, and badges on collapsed layers) point the reviewer at a place to look. The tool does not label failures; the reviewer forms a hypothesis and checks it against evidence.
+- A walkthrough on a Y Combinator directory run that ended at `exceeded max steps` after 98 tool calls surfaces a company page visited 35 times and an "All batches" click whose captured evidence shows no page change.
+- Not established: there is no user study, no claim that diagnosis becomes faster or more accurate, and portability and scale to longer runs are untested. State identity can also merge or split visits a person would judge differently.
+
 We submitted BrowserLens to the UIST 2026 Posters track. The paper, *BrowserLens: Interactive Diagnosis of Web-Agent Trajectories with a Layered State–Action Graph*, is joint work with Mingyu Kim and Seongkook Heo at UNIST. This post covers the review problem that motivated it, the representation we built, and what we have and have not shown so far.
 
 Suppose you ask a browser agent to find French startups from two Y Combinator batches that are currently hiring. It opens the directory, applies filters, visits company pages, and keeps going until it runs out of step budget.

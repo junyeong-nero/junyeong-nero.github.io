@@ -317,6 +317,43 @@ a.nav-item:hover {
   margin: 0 0 18px;
 }
 
+/* TL;DR callout: the summary block every post opens with. The renderer
+   emits plain markdown, so the block is matched structurally: the first
+   heading in the body plus the list that immediately follows it. */
+.post-body > h2:first-child {
+  margin: 0;
+  padding: 18px 24px 0 37px;
+  border-left: 3px solid var(--accent);
+  border-radius: var(--radius-m) var(--radius-m) 0 0;
+  background: var(--bg-secondary);
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--fg-muted);
+}
+
+.post-body > h2:first-child + ul {
+  margin: 0 0 36px;
+  padding: 12px 24px 18px 44px;
+  border-left: 3px solid var(--accent);
+  border-radius: 0 0 var(--radius-m) var(--radius-m);
+  background: var(--bg-secondary);
+  font-size: 15px;
+  line-height: 1.68;
+}
+
+.post-body > h2:first-child + ul li {
+  margin-bottom: 10px;
+}
+
+.post-body > h2:first-child + ul li:last-child {
+  margin-bottom: 0;
+}
+
+
 .post-body ul,
 .post-body ol {
   margin: 0 0 18px;

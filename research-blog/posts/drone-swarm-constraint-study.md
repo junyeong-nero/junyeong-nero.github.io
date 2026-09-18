@@ -1,3 +1,12 @@
+## TL;DR
+
+- Seven constraint axes were varied on twelve corridor and corner maps, separating three questions: does a feasible placement exist, how informative is it, and what survives flight. Observation quality is a model-based CRLB in centimetres, lower is better, not measured tracking accuracy.
+- The largest static effects came from distance, sensing and headcount, not corridor width: minimum standoff 2 to 3.5 m cost **+2.030 cm**, a gimbal replaced by a fixed 20° nadir sensor **+1.963 cm**, and eight drones cut to four **+1.089 cm**.
+- Communication, separation, ceiling and width mattered mainly at the extremes: +0.665 cm at a 0.8 m communication range, and 0.186, 0.165 and 0.035 cm for the strongest separation, lowest ceiling and narrowest corridor.
+- Every input was grid-certified before solving, so a failed solve is never reported as infeasible. Single-axis cells stayed feasible; constraint pairs did not, and a narrow nadir cone combined with a large standoff or low ceiling removed the feasible region entirely.
+- A maximum-likelihood estimator reached the bound under the same noise model, with a median RMSE/CRLB ratio of 0.999.
+- Flight cost much more than the static snapshot: across 108 episodes, nadir 30° raised flown CRLB by 4.403 cm against 1.268 cm statically. Safety held in 104 of 108 episodes, and three standoff episodes contained degenerate observations. Both failures stay in the results.
+
 A narrow corridor looks like the obvious enemy of a drone swarm trying to observe a person. In this experiment, the larger changes came from somewhere else: **how far the drones had to stay from the target, where their sensors could point, and how many drones were available**.
 
 I varied seven quantities on twelve predefined corridor and corner maps, then separated three questions: does a feasible placement exist, how informative is the returned placement, and what happens when the swarm tries to fly it? The results are conditional on this simulator and observation model. They are not a comparison of tracking algorithms.

@@ -1,3 +1,12 @@
+## TL;DR
+
+- The question was whether a browser agent uses fewer tokens when it receives only the page information it needs. The answer depends entirely on what gets removed.
+- Adaptive disclosure of whole page elements showed no measurable benefit on 20 paired tasks: +5,522 tokens/task, 95% CI [−43,034, +56,650], p = 0.815, while adding 4.9 reveal round-trips per task and 22% more model calls.
+- Pruning the per-link `/url:` attribute cut **36,090 tokens/task, about 22%**, 95% CI [−65,130, −9,150], p = 0.006, with no round-trips and no drop in success. It is the only task-level token result here whose interval excludes zero.
+- The success evaluator had to be fixed twice. Counting run completion gave 19/20 everywhere, a final-answer rule had language-dependent holes, and the trajectory judge scored full observation at 7/20 where reported completion gave 15/20.
+- A context audit found the bigger cost was duplication, not snapshot size: payloads carrying page snapshots were 84% of context and about half of all context was page content the model had already seen. Stabilizing the prompt prefix raised the cache hit rate from 37% to 51–57%.
+- Read-only text cannot be cut wholesale despite being 43.8% of snapshot characters: 51% of locatable answer tokens were available only there.
+
 A browser agent receives a lot of context at every step: the page observation, the tool definitions, and the interaction history. I wanted to know whether an agent could use fewer tokens if it received only the page information it needed at each step. The mechanism I tried is progressive observation disclosure: keep the full browser state outside the model and expose a smaller working set on demand.
 
 The short answer is that it depends on what you remove. Adaptive disclosure of whole page elements showed no measurable benefit on 20 paired tasks. Removing the per-link URL attribute from the observation cut tokens per task by about 22%, with a 95% confidence interval that excludes zero. So the question I ended up with is narrower than the one I started with: which parts of an observation can be removed without adding work for the model or withholding information the task needs?
