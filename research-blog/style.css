@@ -324,7 +324,7 @@ a.nav-item:hover {
   margin: 0;
   padding: 18px 24px 0 37px;
   border-left: 3px solid var(--accent);
-  border-radius: var(--radius-m) var(--radius-m) 0 0;
+  border-radius: 0;
   background: var(--bg-secondary);
   font-family: var(--font-mono);
   font-size: 13px;
@@ -339,7 +339,7 @@ a.nav-item:hover {
   margin: 0 0 36px;
   padding: 12px 24px 18px 44px;
   border-left: 3px solid var(--accent);
-  border-radius: 0 0 var(--radius-m) var(--radius-m);
+  border-radius: 0;
   background: var(--bg-secondary);
   font-size: 15px;
   line-height: 1.68;
