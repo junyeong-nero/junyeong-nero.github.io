@@ -7,13 +7,13 @@
 - A walkthrough on a Y Combinator directory run that ended at `exceeded max steps` after 98 tool calls surfaces a company page visited 35 times and an "All batches" click whose captured evidence shows no page change.
 - Not established: there is no user study, no claim that diagnosis becomes faster or more accurate, and portability and scale to longer runs are untested. State identity can also merge or split visits a person would judge differently.
 
-We submitted BrowserLens to the UIST 2026 Posters track. The paper, *BrowserLens: Interactive Diagnosis of Web-Agent Trajectories with a Layered State–Action Graph*, is joint work with Mingyu Kim and Seongkook Heo at UNIST. This post covers the review problem that motivated it, the representation we built, and what we have and have not shown so far.
+We submitted BrowserLens to the UIST 2026 Posters track. The paper, *BrowserLens: Interactive Diagnosis of Web-Agent Trajectories with a Layered State–Action Graph*, is joint work with Mingyu Kim and Seongkook Heo at UNIST. It grew out of a question that comes up whenever a browser agent fails: with the entire run recorded, why is it still so hard to see what went wrong?
 
 Suppose you ask a browser agent to find French startups from two Y Combinator batches that are currently hiring. It opens the directory, applies filters, visits company pages, and keeps going until it runs out of step budget.
 
-You now have screenshots, tool calls, and a long transcript, so you know how the run ended. What you do not know is where it stopped making progress. Did a filter fail to apply? Did the agent keep revisiting companies it had already checked? Was a repeated visit useful verification, or a loop?
+You have screenshots, tool calls, and a long transcript. You can see how the run ended, but finding where it stopped making progress takes more work. Did a filter fail to apply? Did the agent keep revisiting companies it had already checked? Was a repeated visit useful verification, or was it stuck in a loop?
 
-BrowserLens is built for that review. It reorganizes a recorded run around the browser states the agent visited, so a reviewer can spot recurring structure and then look at the evidence behind it.
+BrowserLens helps with that review. It groups a recorded run by the browser states the agent visited, making repeated visits easier to spot. A reviewer can start with a pattern in the graph, then open the records to see what happened.
 
 ![Three panels show scattered visits in a linear log, their aggregation into a graph with a navigation cycle, and recorded before-and-after evidence for a no-op click.](assets/posts/browserlens/overview.png "Figure 1. The paper's overview figure. A scattered log becomes a structural cue, and the cue points to recorded evidence. The cue tells the reviewer where to look; the reviewer still has to work out what happened.")
 
@@ -27,7 +27,7 @@ There are several established ways to study these agents. [Mind2Web](https://arx
 
 A success rate does not explain an individual run, though, and even the success judgment takes care. The [Online-Mind2Web study](https://arxiv.org/abs/2504.01382) reports that agents' hallucinated final responses can mislead automatic evaluation, and that intermediate screenshots matter for judging completion.
 
-So whoever is building or studying the agent has a second job once the run finishes: reconstruct what happened. That is a human-computer interaction question. How should an autonomous system expose its behavior to the person responsible for judging it?
+Once the run finishes, the person building or studying the agent still has to reconstruct what happened. That is the human-computer interaction problem behind BrowserLens: how can an autonomous system make its behavior easier for someone to judge?
 
 ## Two gaps in reviewing a browser agent
 
@@ -47,7 +47,7 @@ In a sequence like `directory → company A → company B → company A → comp
 
 We call this the linear-trace gap. It matters most when a failure spans many steps: revisits, navigation loops, or repeated attempts that leave the page unchanged.
 
-The two gaps gave us three design goals. Make browser state an explicit unit of review. Expose structure across distant steps, with a path from overview to detail. And connect suspicious structure to evidence without declaring failure prematurely.
+These gaps shaped three design goals: organize the review around browser state, make patterns across distant steps visible, and let reviewers check those patterns against the recorded evidence before deciding that something failed.
 
 ## Where BrowserLens fits
 
@@ -55,7 +55,7 @@ Agent diagnosis tools already go beyond a raw transcript. Alongside DiLLS, [Agen
 
 Visualization research offers precedents too. [LifeFlow](https://www.cs.umd.edu/projects/hcil/lifeflow/) aggregates event sequences so that temporal patterns can be inspected. [ScreenTrack](https://doi.org/10.1145/3313831.3376753) uses a visual history of the screen to help people find previously used documents and pages. They address different tasks, but they point in the same direction: reorganize history around meaningful units while keeping access to the detail.
 
-We bring that direction to browser-agent diagnosis with a layered index of visited states, visual cues for recurring structure, and a synchronized route back to the recorded evidence.
+BrowserLens follows the same principle. Its graph groups visited states at several levels, highlights recurring patterns, and links each view to the original records.
 
 ## The representation: page, viewport, action
 
@@ -71,15 +71,15 @@ The middle layer answers "which visible region?" A viewport is the part of a pag
 
 The bottom layer answers "what was done there?" It places tool calls and their arguments in the viewport context where they occurred, so a click issued in one context is distinct from a click issued elsewhere. Once the reviewer has narrowed down the page and viewport, they can inspect the local action structure.
 
-This identity is a reproducible grouping rule and nothing more. The same URL and scroll position can hold a different modal, form value, or dynamic result. That is why the original records stay central: the graph is an index over them. Selecting a node retrieves the associated screenshots, DOM and ARIA snapshots, tool logs, model context, and replay artifacts. The DOM records page structure; ARIA snapshots expose the accessibility tree, including element roles and names. Together with screenshots, they give several views of what the agent encountered.
+These identities make grouping reproducible, but they do not capture everything about a page. The same URL and scroll position can contain a different modal, form value, or dynamic result. Selecting a node therefore opens the original screenshots, DOM and ARIA snapshots, tool logs, model context, and replay artifacts. The DOM records page structure; ARIA snapshots expose the accessibility tree, including element roles and names. Together with screenshots, they help the reviewer check what the agent actually encountered.
 
 ## From a visual cue to a supported diagnosis
 
 BrowserLens uses four visual cues. Visit counts, node size, and color draw attention to revisited identities. Marked cycle edges show paths that return to an earlier identity. A no-op marker on an action node points to explicit evidence that the page did not change. And a badge on a collapsed parent summarizes the cues in its lower layers, so the reviewer can decide where to drill down.
 
-The intended workflow is cue, then tentative failure point, then evidence. The tentative failure vocabulary covers repeated state, repeated action, navigation loop, dead-end, navigation stuck, and grounding error. The graph does not assign these labels. They are hypotheses the reviewer forms from a cue and then checks against the evidence.
+A reviewer starts with a cue, forms a possible explanation, and checks it against the evidence. Possible explanations include repeated state, repeated action, navigation loop, dead-end, navigation stuck, and grounding error. The graph does not assign these labels; the reviewer decides whether the records support them.
 
-That separation is deliberate. A loop might mean the agent is stuck, or it might mean the agent is comparing two products. A repeated action could be a failed attempt, a correction, or an intentional re-check. Several cues can point to one hypothesis, and one cue can suggest several.
+The distinction matters in ordinary cases. An agent cycling between two pages might be stuck, or it might be comparing products. A repeated action could be a failed attempt, a correction, or an intentional re-check. A cue is a reason to look closer, and several explanations may still fit.
 
 The no-op cue is the strictest of the four because it is tied to before-and-after evidence. In the current prototype it requires no difference under the normalized DOM and ARIA comparison and a screenshot difference of at most 1% under the implemented image comparison. Returning to the same URL is not enough on its own. Even so, these are comparisons of captured artifacts; they cannot prove that no hidden application state changed.
 
@@ -95,7 +95,7 @@ At the URL layer, one company page has accumulated 35 visits, and the graph show
 
 Drilling into the directory page's actions reveals an "All batches" click with a no-op marker. Its evidence panel reports unchanged DOM and ARIA and no detected screenshot difference. The conclusion at this point is narrow but concrete: the captured page evidence shows no change after this click.
 
-That observation supports investigating navigation stuck or a grounding error. It does not settle which mechanism made the click ineffective, or show that this click alone explains the failed run. To make that causal argument the reviewer needs the target, the tool arguments, the surrounding steps, and the model context.
+The next question is why the click had no visible effect. Navigation may be stuck, or the agent may have targeted the wrong element. To distinguish those explanations, the reviewer needs the target, tool arguments, surrounding steps, and model context. The no-op marker alone cannot explain the failed run.
 
 ![The BrowserLens action layer shows an All batches click with a no-op marker. The right-hand evidence panel displays unchanged DOM and ARIA, zero screenshot difference, a before-and-after comparison, and supporting action context.](assets/posts/browserlens/action-evidence.png "Figure 4. Drilling down brings a local action and its recorded evidence into the same workspace. This is a prototype screenshot. The evidence supports a local no-progress observation; the root cause is still the reviewer's call.")
 
@@ -105,7 +105,7 @@ The timeline stays available throughout. The graph helps locate recurring struct
 
 ## What the poster establishes, and what it does not
 
-The poster presents a representation, an implemented workspace, and a walkthrough on a logged run. It does not report a user study, and it does not show that BrowserLens makes diagnosis faster or more accurate.
+The poster presents the representation, a working interface, and a walkthrough of one logged run. We have not yet run a user study, so we cannot say whether BrowserLens makes diagnosis faster or more accurate.
 
 The prototype supports read-only review of logging-enabled live sessions and saved sessions. The walkthrough is of a completed run. Automatic agent repair, steering, and compatibility with arbitrary external logs are out of scope.
 
@@ -115,17 +115,17 @@ The study plan introduces the interfaces in a fixed order and rotates trajectory
 
 ## Open problems
 
-State identity can merge too much and split too much. Two meaningful application states can share a URL and viewport. Volatile query parameters can split visits a person would consider equivalent. Similarity-aware grouping and inspectable explanations of why visits were merged look promising, but the current deterministic rules do not solve semantic equivalence.
+The grouping rules can both hide differences and create unnecessary ones. Two meaningful application states can share a URL and viewport, while changing query parameters can split visits a person would consider equivalent. Grouping similar states and showing why visits were merged are possible next steps; the current rules do not resolve those cases.
 
 Visible change is not task progress. A wrong click may change the page substantially. A correct action may update hidden state or produce a delayed result outside the captured interval. A quiet graph cannot certify success, and a busy graph cannot certify failure. The reviewer still needs the task requirements and the original evidence.
 
 The diagnosis is bounded by what was logged. Missing screenshots, tool results, or browser states cannot be reconstructed from the graph. Recorded model context can help explain an action choice, but it does not reveal unrecorded internal reasoning. Non-browser operations need their own instrumentation and representation.
 
-Portability and scale are untested. The workspace was developed around one reference agent runtime. Adapting other frameworks means translating their logs into the expected trajectory records and checking that the evidence lines up. We also have not tried the interface on much longer or denser runs, or across multiple runs.
+We built the workspace around one reference agent runtime. Supporting other frameworks will require translating their logs and checking that each graph element still points to the right evidence. We also have not tested much longer or denser runs, or comparisons across multiple runs.
 
 A visual signal can anchor a wrong explanation. Reviewers may over-trust highlighted nodes or miss failures with no prominent cue. Evaluation should include benign revisits, misleading cues, and missing evidence alongside the cases where the design works well. Logged URLs, screenshots, form contents, and model context can also contain sensitive information, so sharing and redaction are practical constraints on deployment.
 
-Before we ask a reviewer to intervene in an autonomous run, we want to know whether they can reliably explain the run in front of them. The poster gives us a concrete workspace for studying that question.
+For now, the question is whether reviewers can use this workspace to explain a run reliably: where progress stopped, what evidence supports that judgment, and what remains uncertain. That is what we want to study next.
 
 ## References
 

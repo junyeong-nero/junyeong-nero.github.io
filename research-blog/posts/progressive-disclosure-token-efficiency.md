@@ -7,11 +7,11 @@
 - A context audit found the bigger cost was duplication, not snapshot size: payloads carrying page snapshots were 84% of context and about half of all context was page content the model had already seen. Stabilizing the prompt prefix raised the cache hit rate from 37% to 51–57%.
 - Read-only text cannot be cut wholesale despite being 43.8% of snapshot characters: 51% of locatable answer tokens were available only there.
 
-A browser agent receives a lot of context at every step: the page observation, the tool definitions, and the interaction history. I wanted to know whether an agent could use fewer tokens if it received only the page information it needed at each step. The mechanism I tried is progressive observation disclosure: keep the full browser state outside the model and expose a smaller working set on demand.
+A browser agent gets a fresh bundle of context at every step: the page observation, tool definitions, and interaction history. I wanted to know how much of that page information it really needed. I tried progressive observation disclosure: keep the full browser state in the controller and let the model request a smaller set of relevant elements as it works.
 
-The short answer is that it depends on what you remove. Adaptive disclosure of whole page elements showed no measurable benefit on 20 paired tasks. Removing the per-link URL attribute from the observation cut tokens per task by about 22%, with a 95% confidence interval that excludes zero. So the question I ended up with is narrower than the one I started with: which parts of an observation can be removed without adding work for the model or withholding information the task needs?
+Across 20 paired tasks, adaptive disclosure of whole page elements showed no measurable benefit. A smaller change worked better: removing the per-link URL attribute cut tokens per task by about 22%, with a 95% confidence interval that excludes zero. That shifted my attention from how much information to hide to which information the agent could do without.
 
-Getting there took longer than I expected. The first version of my success evaluator was wrong, and once I looked at the context my harness was actually sending, observation size turned out to be a smaller problem than duplication. This post walks through that sequence: the setup, the evaluator fixes, the disclosure comparison, the context audit, and the pruning result.
+Getting there took longer than I expected. My first success evaluator counted failed tasks as successes. Once I corrected it and inspected the prompts, I also found that the harness was repeatedly sending page content the model had already seen. Both problems changed how I read the experiment.
 
 ## Setup
 
@@ -36,7 +36,7 @@ My first harness marked a task successful whenever the agent's plan terminated w
 "task_success": True,      # Unconditional: records termination, not task completion.
 ```
 
-That conflates execution status with task outcome. An agent that hit a bot block and reported restricted access was labeled a success. So was a run whose final answer began `**TASK_FAILED** I was unable to navigate to the 상가·업무 tab`.
+The code recorded that the run had ended, regardless of whether the task was complete. An agent that hit a bot block and reported restricted access was labeled a success. So was a run whose final answer began `**TASK_FAILED** I was unable to navigate to the 상가·업무 tab`.
 
 Under this evaluator every condition scored 19/20 in the initial experiment. With no visible variation in success, I read the comparison through token counts alone, and concluded early on that disclosure helped the weaker model but added overhead for GPT-5.4-mini. The success labels did not support that reading.
 
@@ -46,7 +46,7 @@ Next I added a rule that rejected answers containing an explicit failure stateme
 
 The rule was incomplete. It caught 확인할 수 없 ("cannot confirm") and 찾을 수 없 ("cannot find") but missed 진행할 수 없 ("cannot proceed"), so an answer like *"검색을 진행할 수 없습니다"* ("I cannot proceed with the search") still counted as a success.
 
-The hole was not evenly distributed. It over-credited adaptive disclosure by five tasks and full observation by one, so the apparent advantage came down to how each agent happened to phrase its failures.
+The missed wording affected the conditions unequally: it gave adaptive disclosure five extra successes and full observation one. What looked like an advantage for disclosure was largely a difference in how the agents described their failures.
 
 ### Judging the trajectory instead of the final answer
 
@@ -79,7 +79,7 @@ Neither success measure nor token use differed significantly. The token interval
 
 Adaptive PD also added interaction overhead: 4.9 reveal round-trips per task versus 0.80 in the baseline, 22% more model calls, and a higher invalid-action rate. Its tokens per success were 14% higher under the strict rule and 81% higher under WebJudge, though with so few successes those ratios are unstable.
 
-In this setup, then, the disclosure mechanism did not pay for itself. I would not generalize that to progressive disclosure as an idea; the result is about this implementation, model, and task set.
+For this implementation, model, and task set, adaptive disclosure added work without a measurable payoff. Other disclosure policies may behave differently, but these results gave me little reason to keep this one.
 
 ## Context audit: the same page snapshot, over and over
 
@@ -97,11 +97,11 @@ tab_count                       1
 aria_snapshot              25,232
 ```
 
-Thirty-two characters of non-snapshot fields, and a 25,232-character page representation. Across the audited calls, snapshot-bearing payloads were 84% of context, and about half of all context was page content the model had already been given.
+The non-snapshot fields took 32 characters; the page representation took 25,232. Across the audited calls, payloads containing snapshots accounted for 84% of context, and roughly half of all context repeated page content the model had already received.
 
 Restricting page-state output to observation tools cut context per call by about 50%, with no disclosure round-trips. That is a character-based measurement of context per call, separate from the task-level token results.
 
-This changed how I thought about observation compression. Shrinking individual snapshots does nothing about duplication across calls, so the baseline's context assembly has to be examined before any savings can be attributed to a disclosure policy.
+Before designing a better disclosure policy, I needed to fix how the harness assembled context. Even a small snapshot becomes expensive when it is sent repeatedly. Savings from removing that duplication also needed to be measured separately from savings due to disclosure.
 
 ## Prompt caching: keeping a stable prefix
 
@@ -109,7 +109,7 @@ The same audit found that consecutive model calls shared an identical prefix of 
 
 Two harness behaviors were responsible. A recent-turn window advanced on every call, shifting the position of the historical messages. And a compaction summary placed ahead of that history included the current step count and active subgoal, so updating those fields invalidated the prefix in front of otherwise reusable content.
 
-Advancing the history boundary in chunks and holding the summary fixed between advances raised the shared prefix from 1.0 to 10.0 turns. Cache hit rate went from 37% to 51 to 57%, in both two-task and twenty-task runs.
+Advancing the history boundary in chunks and holding the summary fixed between advances raised the shared prefix from 1.0 to 10.0 turns. In the two-task and twenty-task runs, cache hit rates rose from 37% to 51–57%.
 
 Prefix stability is a directly inspectable explanation for the change. The realized hit rate still depends on request composition and execution conditions, and a small diagnostic run does not establish a general task-level cost reduction.
 
@@ -121,7 +121,7 @@ The playwright-mcp version I examined also returned page snapshots on clicks. It
 
 browser-use is structured differently. It rebuilds a single state message at each step instead of accumulating snapshots in tool responses, and its prompt builder puts per-step metadata toward the end of the message to preserve a cacheable prefix. A sliding history window and a changing omitted-step marker could still break prefix reuse.
 
-So the harness changes above are not new practices. Avoiding duplicated state and preserving stable prefixes are established engineering; what the measurements add is their size in this particular setup.
+These comparisons helped put my changes in perspective. Avoiding duplicate state and preserving stable prefixes are established engineering practices. The audit showed how much they mattered in my harness.
 
 ## Attribute-level pruning: the result that held
 
@@ -135,7 +135,7 @@ Having looked at how snapshots accumulate, I looked at what was in them. Across 
 
 Playwright emits a `/url:` child line under every link. The agent interacts through element references such as `click_by_ref(e2)`, so the click interface never needs those URLs. That suggested a narrower intervention than element-level disclosure: drop the URL attribute, keep the link and its reference.
 
-This is observation reduction at the attribute level. Unlike the PD conditions it is static pruning; the model never has to ask for hidden information.
+The change removes an attribute while retaining every element. It adds no request step: the model sees the same links and references, without the URL child lines.
 
 ![Paired changes in tokens per task for element disclosure and URL-attribute pruning](assets/posts/chart-two-interventions.svg "Dots are paired mean differences; bars are 95% bootstrap confidence intervals. The URL-pruning interval excludes zero; the adaptive-disclosure interval does not.")
 
@@ -146,7 +146,7 @@ URL-attribute pruning:       −36,090 tokens/task; 95% CI [−65,130,  −9,150
 
 On the same 20 paired tasks, model, and analysis, URL pruning reduced tokens per task by about 22%. Step count was 0.910 times the baseline, and strict success moved from 11/20 to 12/20. Success did not drop, though a sample this small cannot establish non-inferiority. No reveal round-trips were introduced.
 
-This is the only task-level token comparison here whose confidence interval excludes zero. Reference-based clicking explains why URLs were a plausible thing to remove; it does not prove that URL text is irrelevant to every task or model decision. That is the general point: whether observation reduction works depends on what the removed information was for and how much work it takes to recover it.
+Of the task-level token comparisons here, only URL pruning produced a confidence interval that excludes zero. Reference-based clicking made URLs a reasonable candidate for removal, but URL text can still help a model understand a destination. The result supports this particular pruning choice on these tasks; it does not make URLs universally expendable.
 
 ## Two follow-up checks
 
@@ -156,7 +156,7 @@ Read-only nodes were 43.8% of snapshot characters, the next obvious compression 
 
 Of twelve successful answers examined, six had their answer content only in read-only nodes, and none had it only in actionable nodes. Among answer tokens that could be located in the page, 51% were available only through read-only nodes.
 
-So read-only text cannot be removed wholesale. It does not support interaction, but it is often what the task asks the agent to retrieve. This was a content audit, not an ablation; I did not measure the effect of deleting it on task success.
+That made wholesale removal of read-only text a poor next experiment. The agent often needs that text to answer the question, even when it cannot click it. This audit checked where answers came from; it did not measure task success after deleting the text.
 
 ### A wider cache boundary did not deliver the simulated savings
 
@@ -164,9 +164,9 @@ The revised history policy still broke prefix reuse at each boundary, roughly on
 
 A five-task check said otherwise: cache hit rate went from 56% to 55%, context grew by 21%, and token use grew by 38%. The simulation assumed regularly spaced observations and similar message sizes, and the live trajectories did not look like that.
 
-Five tasks is enough to reject the change even if it does not estimate the regression precisely. Cache reuse has to be weighed against the extra history retained to get it.
+That five-task regression was enough for me to drop the change, though it gives only a rough estimate of the effect. A wider cache boundary also retains more history, and the extra context outweighed the hoped-for reuse in this check.
 
-## What I would do differently, and what this does not show
+## What I would check first next time
 
 If I were starting this study again, the order would be:
 
@@ -178,4 +178,4 @@ If I were starting this study again, the order would be:
 
 The main comparison covers 20 paired tasks on live websites with one model. Automated success judgments, trajectory variability, and the small sample limit what can be claimed. The context, caching, and pruning measurements were made separately and should not be summed into a single combined reduction.
 
-The strongest task-level result is the URL-pruning reduction. Adaptive element disclosure showed no measurable benefit, and the context audit found substantial duplication and room for prefix reuse. What I want to answer next is how an agent's observation can keep the information needed for action and verification while dropping content that is redundant or unnecessary.
+I would keep URL pruning as the most promising result from this study and start the next experiment with a context audit. The harder question remains: how can an observation retain what the agent needs to act and verify its answer, while leaving out information it already has or never uses?

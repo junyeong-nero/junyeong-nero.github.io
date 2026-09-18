@@ -2,34 +2,34 @@
   "posts": [
     {
       "slug": "uav-synthetic-ttg-real-flight",
-      "title": "UAV-specific synthetic data and time to zone entry: diversity failed, distribution matching worked",
+      "title": "Predicting UAV zone entry: matching the data before adding more motion",
       "date": "2026-09-18",
-      "summary": "Four synthetic training arms with one budget, 36 frozen models scored on MASC-3, ALFA and AMOVFLY: more motion diversity raised MASC-3 error by 53%. Measuring the distance to the target showed every arm was far from AMOVFLY; matching only the generator's sampling cut GRU error from 51 to 14 s on held-out dates while the MLP stayed at 16 s."
+      "summary": "More varied synthetic motion did not reliably improve predictions on real UAV flights. Matching the generator to AMOVFLY calibration data cut GRU error from 51 to 14 seconds on held-out dates, while the MLP stayed near 16 seconds."
     },
     {
       "slug": "drone-swarm-constraint-study",
-      "title": "What limits a drone swarm's view? Seven constraints, from placement to flight",
+      "title": "What limits a drone swarm's view? From static placement to flight",
       "date": "2026-09-18",
-      "summary": "Seven constraint axes on twelve corridor and corner maps: grid-certified placement, interactions, a static estimator check and 108 flight episodes. Why sensing, standoff and swarm size mattered most—and why safety failures and observation loss stay in the results."
+      "summary": "Across twelve corridor and corner maps, target distance, sensor direction, and drone count had the largest effects on static observation quality. Flight added new losses: four of 108 episodes violated safety constraints."
     },
     {
       "slug": "browserlens-uist-2026",
       "title": "BrowserLens: finding where a browser agent stopped making progress",
       "date": "2026-09-11",
-      "summary": "Submitted to the UIST 2026 Posters track. Why complete logs can still hide navigation loops and ineffective actions, how BrowserLens reorganizes a run around browser state, and what the prototype has yet to establish.",
+      "summary": "A complete browser-agent log can still make failures hard to explain. Our UIST 2026 poster submission introduces a graph for spotting repeated states and checking the evidence behind them, with evaluation still to come.",
       "paperUrl": "https://doi.org/10.1145/3830397.3841876"
     },
     {
       "slug": "progressive-disclosure-token-efficiency",
-      "title": "Reducing browser-agent token use: progressive disclosure and context design",
+      "title": "Reducing browser-agent tokens: what helped, what added work",
       "date": "2026-07-23",
-      "summary": "An empirical study of observation reduction in a browser agent. Across 20 paired tasks, adaptive element disclosure showed no measurable benefit, while pruning per-link URL attributes reduced token use by approximately 22%. Context audits and revised success evaluation explain how the interpretation changed."
+      "summary": "Across 20 paired tasks, adaptive page disclosure added work without a measurable benefit. Removing per-link URL attributes cut token use by about 22%. Evaluator fixes and a context audit changed how I understood the results."
     },
     {
       "slug": "welcome",
-      "title": "Welcome to Research Blog",
+      "title": "Why I keep research notes",
       "date": "2026-07-01",
-      "summary": "Starting a research blog to document experiments, paper reimplementations, and engineering insights."
+      "summary": "Notes from rebuilding AI systems, testing ideas, and working through experiments: what worked, what failed, and what to try next."
     }
   ],
   "updatedAt": "2026-09-18"

@@ -7,11 +7,13 @@
 - Changing **only** the generator's sampling to match three calibration dates brought the gap to 0.89 and cut GRU flight-macro MAE from 50.9 to 14.4 s and LSTM from 39.5 to 16.0 s on 69 held-out flights, in all three seeds. The MLP stayed at 16 s: matching removed the recurrent models' penalty, it did not beat a single-step model's floor.
 - Distribution matching is target-specific. It transferred to ALFA, which shares the near-boundary geometry, and lost to the generic baseline on MASC-3, which does not.
 
-A ground station tracking a UAV wants one number early: how many seconds until the aircraft first enters its observation zone. The regression target is easy to state. The training data is the hard part. Public UAV flight logs are few, none were recorded from a fixed station, and none carry an entry-time label for a zone that did not exist when they were flown. So the data has to be synthetic, and then the question becomes whether richer synthetic motion actually helps on real flights.
+How many seconds until a UAV enters a ground station's observation zone? That is the prediction task in this experiment. The label is easy to define; suitable training data is harder to find. The public flight logs used here were not recorded from a fixed station and have no entry-time labels for a zone placed after the flight. I used synthetic trajectories for training, then tested whether adding more varied UAV motion helped on real recordings.
 
-This experiment compares four synthetic training arms with the same budget: constant-velocity and constant-acceleration motion only, that baseline with fixed-wing profiles added, with multicopter profiles added, and with both. Each arm trains a GRU, an LSTM and an MLP through 72 tuning trials and 36 final models, which are then frozen and scored on measured positions from three public UAV datasets. **The broad version of the hypothesis is not supported.** The mixed-profile GRU cut synthetic validation error by 24.1% and then raised error on MASC-3 fixed-wing flights by 53.0%. One conditional gain held up: adding fixed-wing profiles improved all three architectures by 13 to 17% on a predeclared secondary ALFA geometry.
+The first study compared four synthetic training sets with the same budget: simple constant-velocity and constant-acceleration motion, that baseline with fixed-wing profiles, with multicopter profiles, and with both. Across the four sets and three model architectures (GRU, LSTM, and MLP), there were 72 tuning trials and 36 final models. I froze those models before scoring them on measured positions from three public UAV datasets.
 
-That was the first half. The second half asks why, and measures instead of guessing. Nine motion and sensor statistics computed the same way on real and synthetic pre-entry tracks show that all four training arms sit far from AMOVFLY on almost every variable, and much closer to each other than to the target. So a second arm was built that keeps every profile, force model, filter setting and tuning candidate and changes only how runs are sampled, with the ranges read from three calibration dates. On the five held-out dates, GRU flight-macro MAE drops from 50.9 to 14.4 s and LSTM from 39.5 to 16.0 s; the MLP, already at 16 s, does not move.
+**More varied synthetic motion did not reliably improve real-flight predictions.** The mixed-profile GRU cut synthetic validation error by 24.1%, then raised error on MASC-3 fixed-wing flights by 53.0%. There was a narrower gain: adding fixed-wing profiles improved all three architectures by 13 to 17% on a predeclared secondary ALFA geometry.
+
+The follow-up asked whether the training data resembled the flights I wanted to predict. Motion and sensor statistics showed that all four training sets differed substantially from AMOVFLY, and much less from each other. I then built a matched training set using statistics from three calibration dates, changing how the generator sampled runs while keeping its physics, filter, and model candidates fixed. On five held-out dates, flight-macro mean absolute error (MAE) fell from 50.9 to 14.4 s for the GRU and from 39.5 to 16.0 s for the LSTM. The MLP stayed near 16 s.
 
 ![Change in macro MAE for the mixed-profile arm against the baseline, on synthetic validation and on three real UAV cohorts.](assets/posts/ttg-v2/02-transfer-gap.svg "Figure 1. Mixed profiles versus baseline, change in macro MAE, lower is better. The synthetic column is a selection set, not an independent test. Real cohorts are seed means; they are not on a common absolute-error scale. ALFA primary has one flight and is not shown.")
 
@@ -19,11 +21,13 @@ That was the first half. The second half asks why, and measures instead of guess
 
 This post replaces an earlier one about a balloon, multicopter and parachute generator. That work used a different task definition and its scores are not comparable to anything here.
 
-## Define the event, then be clear about what real data cannot supply
+## What counts as zone entry
 
-The station sits at the origin, with x north, y east and z up, in meters and seconds. The observation zone is a sphere of radius 1,000 m. Entry is the first intersection between a trajectory segment and that sphere, interpolated inside the step. The label at time t is `entry_time - t`, defined only for tracks that enter. A track that never enters during the recording keeps a missing label, NaN in memory and null in Parquet, and is masked out of the loss and every metric. It is never filled with zero or a large constant. The models therefore regress time conditional on eventual entry; they do not predict whether or with what probability a UAV enters.
+The station sits at the origin, with x north, y east, and z up, in meters and seconds. Its observation zone is a sphere of radius 1,000 m. Entry is the first intersection between a trajectory segment and the sphere, interpolated within the step. At time t, the label is `entry_time - t`.
 
-Real flights cannot provide that label directly. A recording that ends outside the zone only says that the recording ended. So the real-flight evaluation places a virtual zone relative to each flight segment's first position, at a fixed horizontal distance from the station center, and counts only the first crossing. That makes the evaluation a test of measured trajectories against a constructed zone, not a test of a fielded sensor. It is still a much harder test than held-out data from the same generator, which says nothing about real motion.
+Only tracks that enter have a label. A track that never enters during the recording keeps a missing value, NaN in memory and null in Parquet, and is excluded from the loss and every metric. Missing labels are never replaced with zero or a large constant. The models therefore predict time conditional on eventual entry; they do not predict whether a UAV will enter.
+
+For the real-flight evaluation, I place a virtual zone relative to each flight segment's first position, using a fixed horizontal distance to the station center, and count only the first crossing. A recording that ends outside the zone cannot tell us when, or whether, the aircraft would later enter. This evaluation tests measured trajectories against a constructed zone. It lets me check transfer to real motion, but it is not a test of a deployed ground-station sensor.
 
 ## Generate motion that never looks at the station
 
@@ -50,11 +54,11 @@ In the ablation datasets, every run draws its own observation period between 0.5
 | + MC: 125 CV + 125 CA, plus 250 runs cycling the multicopter profiles | 500 | 55,778 |
 | Mixed (Ours): 125 CV + 125 CA, plus 250 runs cycling all profiles | 500 | 55,778 |
 
-The baseline has no wind and no maneuvers. Its runs start 1,100 to 4,000 m from the station so that short pre-entry tracks, which real launches produce, are well represented. All four arms share one validation set of 100 synthetic runs: 25 constant-velocity, 25 constant-acceleration and 50 entering UAV-profile runs, giving 12,473 eligible timestamps.
+The baseline has no wind or maneuvers. Its runs start 1,100 to 4,000 m from the station, a range intended to include shorter pre-entry tracks. As the later distribution check shows, that did not make them representative of AMOVFLY launches. All four arms share one validation set of 100 synthetic runs: 25 constant-velocity, 25 constant-acceleration, and 50 entering UAV-profile runs, giving 12,473 eligible timestamps.
 
 For each architecture and arm, six predeclared candidates are compared at tuning seed 17: hidden width 32 or 64, learning rate 0.001 or 0.003, log or raw target, and weight decay 0 or 0.0001, in six fixed combinations, each trained for 60 epochs or 480 updates. The candidate with the lowest validation run-macro MAE is retrained with seeds 0, 1 and 2 for 200 epochs or 1,600 updates, keeping the best validation checkpoint. That is 72 tuning trials and 36 final models. Every selected candidate used the log target. No real data touched any selection, and no model is retrained or renormalized on real data afterwards.
 
-Two things this design does not match. The initial-state, trajectory-length and remaining-time distributions differ between arms, because the profiles differ. And because each arm selects its own candidate, the final hidden widths differ too. The intervention is "which profiles fill half the budget", not "environmental forces alone".
+Two differences remain between the arms. Their initial states, trajectory lengths, and remaining-time distributions vary with the profiles. Each arm also selects its own model candidate, so the final hidden widths can differ. The comparison tests which profiles fill half the training budget; it cannot isolate the effect of environmental forces.
 
 ## Synthetic validation favored the mixed GRU
 
@@ -70,7 +74,7 @@ The GRU improved for every added arm and every seed. Its timestep MAE fell from 
 
 On the 10,759 timestamps (86.3%) where both analytic estimators are defined, the capped Kalman constant-velocity estimate scores 14.594 s against 4.774 s for the mixed GRU. On MASC-3 that ordering reverses.
 
-Two cautions apply to this table. These are selection-set scores: the same runs chose the candidates and the checkpoints. And the added arms train on the same profile families the validation set contains, so part of the gain is distribution match rather than anything about UAV physics.
+These scores come from the same validation runs used to choose candidates and checkpoints, so they are not independent test results. The added arms also train on profile families present in that set. Some of the gain may come from that distribution match.
 
 ## Freeze everything, then score real flights
 
@@ -114,7 +118,7 @@ Three-seed mean flight-macro MAE in seconds.
 
 On MASC-3, every added arm made the GRU and the LSTM worse, and every interval sits above zero. The MLP mixed arm improved by 8.4% with an interval below zero, but it beat its own same-seed baseline in only one seed of three, and it is still worse than the analytic estimators below. MASC-3 consists of straight measurement legs, the kind of motion the baseline arm is made of. That the added profiles pull the recurrent models away from a prior that already fits is a plausible reading, not a tested one.
 
-On the ALFA sensitivity geometry, adding fixed-wing profiles helped all three architectures: GRU by 10.581 s (17.3%), LSTM by 7.527 s (13.4%), MLP by 2.930 s (17.2%), with every interval below zero. Adding multicopter profiles hurt badly here, up to 72.923 s for the GRU. The mixed arm helped only the LSTM, by 22.6%. Per seed, the fixed-wing arm beat the baseline in two of three seeds for the GRU and LSTM and in all three for the MLP. That is the one result that can be called a positive finding, and it is limited to this geometry and these five dates.
+On the ALFA sensitivity geometry, adding fixed-wing profiles helped all three architectures: GRU by 10.581 s (17.3%), LSTM by 7.527 s (13.4%), and MLP by 2.930 s (17.2%), with every interval below zero. Adding multicopter profiles raised GRU error by 72.923 s. The mixed arm helped only the LSTM, by 22.6%. The fixed-wing arm beat the same-seed baseline in two of three seeds for the GRU and LSTM and in all three for the MLP. This was the clearest gain shared by all three architectures in v2, limited to this geometry and these five dates.
 
 The ALFA primary geometry at 1,500 m keeps one flight, so its numbers are descriptive only: GRU 14.156 to 17.935 s, LSTM 15.272 to 15.663 s, MLP 3.646 to 2.810 s for baseline versus mixed.
 
@@ -128,7 +132,7 @@ The ALFA primary geometry at 1,500 m keeps one flight, so its numbers are descri
 | AMOVFLY, 1,050 m | LSTM | 41.307 | 41.812 | 42.146 | 49.733 | +20.4% | [+4.074, +12.626] |
 | AMOVFLY, 1,050 m | MLP | 18.043 | 18.399 | 25.979 | 18.232 | +1.0% | [-0.011, +0.366] |
 
-No added arm lowered mean error for any architecture. The mixed-arm GRU and MLP intervals include zero, so those differences are unresolved; the LSTM is worse by 8.426 s with an interval above zero. The multicopter-only arm, the one most obviously matched to this platform, raised GRU error by 47.4 s. The naive expectation that platform-matched synthetic profiles help on that platform does not hold in this evaluation.
+No added arm lowered mean error for any architecture. The mixed-arm GRU and MLP intervals include zero, leaving those differences unresolved; the LSTM is worse by 8.426 s, with an interval above zero. Adding multicopter profiles raised GRU error by 47.4 s. Matching the platform name was clearly not enough to make the synthetic data useful here.
 
 Absolute errors are also much larger here than on MASC-3, and the MLP is the best architecture by a wide margin in every arm. AMOVFLY flights cover at most 172 m horizontally and approach a zone edge only about 50 m from their first position, so the eligible tracks are short and close to the boundary. Which of those properties drives the recurrent models' errors is not something this experiment isolates.
 
@@ -138,17 +142,21 @@ Output collapse does not explain the differences. The largest fraction of exactl
 
 Seed averaging is not hiding a consistent effect either. Counting how often an added arm beats the baseline trained with the same seed: on MASC-3, the only wins are one of three for the GRU mixed arm and one of three for the MLP mixed arm. On AMOVFLY the GRU mixed arm wins two seeds of three while losing on the mean, because its third seed scores 71.231 s against a 49.814 s baseline.
 
-The analytic estimators set an uncomfortable bar on MASC-3. On the identical timestamps, differencing consecutive measured ranges gives 0.993 s and extrapolating the Kalman state gives 1.065 s, lower than every trained model in every arm. Those two estimators are undefined wherever the estimated range rate is not closing, which costs nothing on MASC-3 but excludes 48.4% of ALFA sensitivity timestamps and 42.7% of AMOVFLY timestamps. Scores on those common subsets should not be compared with full-cohort scores, and the report keeps them apart.
+Simple analytic estimators did better on MASC-3. On the same timestamps, differencing consecutive measured ranges gives 0.993 s MAE, and extrapolating the Kalman state gives 1.065 s, lower than every trained model in every arm.
+
+Both estimators are undefined when the estimated range rate is not closing. That excludes no MASC-3 timestamps, but it removes 48.4% of ALFA sensitivity timestamps and 42.7% of AMOVFLY timestamps. The report therefore compares methods on their common subsets and keeps those scores separate from full-cohort results.
 
 ## What the v2 design cannot separate
 
-The v2 experiment shows that more diverse synthetic motion does not reliably help every architecture or every real-flight distribution. It does not show why. Environmental forces, maneuver profiles, initial-state and remaining-time distributions, and the validation-selected hyperparameters all change together between arms. Rather than add another arm and guess again, the follow-up was preregistered with a different question: how far is each training distribution from the target, and does closing that distance help?
+The v2 results left me with a question the design could not answer: why did added motion diversity help in some cases and hurt in others? Forces, maneuvers, initial states, remaining-time distributions, and selected hyperparameters all varied between arms. For the preregistered follow-up, I asked a more specific question: how far was the training distribution from the target, and would narrowing that gap help?
 
 ## Measure the distance before blaming the physics
 
-AMOVFLY was chosen as the target because it has the most flights (109 on 8 dates) and the worst v2 errors. Its eight dates were split before anything was measured: the first three (40 entering flights, 145 zone cases) are calibration dates whose statistics may inform the generator; the other five (69 flights) are evaluation dates whose positions stay unread until prediction. The plan fixed the split, the variables, the knobs the generator may turn, the number of adjustment rounds, and the verdict rule in advance.
+I chose AMOVFLY because it had the most eligible flights (109 on 8 dates) and large errors in v2. Before measuring the distribution gap, I split its dates into three calibration dates (40 entering flights, 145 zone cases) and five evaluation dates (69 flights). Calibration statistics could inform the generator; evaluation positions stayed unread until prediction. The plan fixed the split, measured variables, allowed sampling adjustments, number of adjustment rounds, and decision rule.
 
-Nine statistics are computed from the observed pre-entry track of every case with one definition for real and synthetic data: range to the zone boundary at the first observation, pre-entry duration, ground speed (median, P10, P90), heading rate, vertical speed, the fraction of samples stopped, observation period, a position-noise estimate from second differences, and the remaining-time label itself. Speeds come from windowed linear fits rather than raw differences, because 1 to 10 m of synthetic noise differenced at 0.5 s would read as 14 m/s of velocity. Each variable's distance is a one-dimensional Wasserstein distance divided by the RMS of the real and synthetic spreads; the summary gap is the plain mean over the twelve.
+I computed motion and sensor statistics from observed pre-entry tracks using the same definitions for real and synthetic data. These covered initial range to the boundary, pre-entry duration, ground speed (median, P10, P90), heading rate (P90), vertical speed (median and P90), the fraction of stopped samples, observation period, position noise estimated from second differences, and the remaining-time label.
+
+Speeds came from windowed linear fits because directly differencing positions with 1 to 10 m of noise at 0.5 s intervals can create large apparent velocities. For each variable, I measured the one-dimensional Wasserstein distance and divided it by the RMS of the real and synthetic spreads. The summary gap is the unweighted mean across the twelve diagnostic variables.
 
 ![Normalized W1 per variable for the four v2 arms and the matched arm against AMOVFLY.](assets/posts/ttg-v2/06-distribution-gap.svg "Figure 7. Distance to the AMOVFLY calibration distribution, per variable. Values above 4 are clipped. The right-hand column is the matched arm described in the next section.")
 
@@ -161,15 +169,21 @@ Nine statistics are computed from the observed pre-entry track of every case wit
 | Observation period (s) | 0.50 | 0.75 | 0.76 | 0.75 | 0.74 |
 | Summary gap | | 2.05 | 2.25 | 1.81 | 1.90 |
 
-Every v2 arm starts more than a kilometre outside the zone, flies four to six times faster than the real drones, never hovers, and is observed with 25 times the position noise. AMOVFLY positions are MAVROS EKF output with about 0.2 m of noise, not the GPS-grade 1 to 10 m the sensor randomization assumed. The four arms differ from one another far less than all of them differ from the target, and the arm closest to it (+ MC) has the worst GRU and MLP error. The v2 ablation compared variants inside a distribution that was nowhere near this target, which is consistent with nothing helping.
+The typical v2 track looked very different from an AMOVFLY track. Median initial distances exceeded a kilometre outside the zone, speeds were four to six times higher, the stopped fraction had a median of zero, and estimated position noise was about 25 times larger. AMOVFLY positions come from MAVROS EKF output, with about 0.2 m of estimated noise; the generator assumed 1 to 10 m.
+
+All four arms were much farther from the target than from each other. Even their relative ordering was unhelpful: the closest arm (+ MC) had the worst GRU and MLP error. Before adding more profiles, I needed to test whether sampling trajectories closer to the target would help.
 
 ## Match the sampling, keep everything else
 
-The matched arm changes only how the generator samples runs: start range 1,013 to 1,027 m, altitude 10 to 40 m, speed 1.5 to 8 m/s, scheduled events starting at 1 to 6 s, a profile mix weighted toward hover, climb and turn, 0.5 to 0.58 s observation periods and 0.09 to 0.28 m noise. Profile physics, wind, the Kalman filter, the eight features, the model architectures and the six tuning candidates are untouched. Five rounds of adjustment against the calibration statistics bring the summary gap from 2.05 to 0.89. Three knobs had to be added to the plan before the first round and are logged there: altitude, because the drone profiles cruise at 300 m and the 3D boundary distance could not fall below 90 m otherwise; and event timing, because a drone starting 50 m from the boundary enters in about 12 s, before any hover scheduled at 25 s could happen.
+The matched arm changes how the generator samples runs: start range 1,013 to 1,027 m, altitude 10 to 40 m, speed 1.5 to 8 m/s, scheduled events starting at 1 to 6 s, a profile mix weighted toward hover, climb, and turn, observation periods of 0.5 to 0.58 s, and noise of 0.09 to 0.28 m. Profile physics, wind, the Kalman filter, eight features, model architectures, and six tuning candidates remain fixed. Five rounds of adjustment against calibration statistics reduced the summary gap from 2.05 to 0.89.
 
-What the sampling cannot reproduce is the takeoff. Every AMOVFLY track starts when the aircraft passes 5 m, so its first seconds are a near-vertical climb: that is where the real stops, the 1.3 m/s vertical speeds and the 30 deg/s heading rates come from. No profile does that, and adding one would be a profile change, which the plan forbids. Those variables stay far apart in Figure 6.
+Before the first round, I amended the plan to allow additional altitude and event-timing adjustments, as recorded there. The original drone profiles cruised at 300 m, keeping the 3D boundary distance above 90 m. Events also needed to happen earlier: a drone starting 50 m from the boundary could enter in about 12 s, before a hover scheduled at 25 s began.
 
-Because the matched tracks are short (26 observations at the median), 500 of them carry only 14,400 supervised timestamps against v2's 55,778. The arm therefore has 1,984 runs, its usable labels are subsampled per run to exactly 55,778, and the epoch counts are set so the optimizer budget matches (496 and 1,612 updates against 480 and 1,600). Candidates and checkpoints are still chosen on the v2 synthetic validation set, which is far from the matched distribution; the matched models score 29 to 87 s there. Nothing is selected on real data.
+Sampling changes could not reproduce takeoff. Each AMOVFLY track starts when the aircraft passes 5 m, so its first seconds include a near-vertical climb. That phase contributes the stopped samples, vertical speeds around 1.3 m/s, and heading rates around 30 deg/s. None of the existing profiles reproduces it, and adding a profile was outside the plan. Those variables remain far apart in Figure 7.
+
+The matched tracks are short: a median of 26 observations. Five hundred runs therefore supply only 14,400 supervised timestamps, compared with v2's 55,778. To match the label budget, I used 1,984 runs and subsampled their usable labels to exactly 55,778. The optimizer budgets were close, though not identical: 496 and 1,612 updates, compared with 480 and 1,600.
+
+Candidates and checkpoints were still selected on the v2 synthetic validation set, where the matched models scored 29 to 87 s. That set is far from the matched distribution, so it remains a limitation of model selection. Real data informed generator calibration, but was not used to choose model candidates or checkpoints.
 
 ## The recurrent models lose most of their error
 
@@ -183,27 +197,37 @@ The nine frozen matched models were scored on the five evaluation dates (69 flig
 | LSTM | 39.52 | 39.64 | 39.29 | 45.45 | 16.01 | [-25.43, -21.69] | 3/3 |
 | MLP | 15.94 | 16.43 | 24.16 | 16.30 | 16.34 | [-0.36, +1.28] | 1/3 |
 
-The GRU improves by 72% and the LSTM by 60%, in all three seeds, with intervals well below zero. The MLP does not move: it was at 16 s before and is at 16 s after, and its interval spans zero. The hypothesis is supported by the rule, and the shape of the result is as informative as the verdict. All three architectures end at the same floor of 14 to 16 s. Matching the distribution removed the penalty the recurrent models paid for applying the time structure of kilometre-long 20 m/s approaches to 50 m hovering ones; it did not make them better than a single-step model. The floor is set by the long-horizon cases: errors in the 40 s+ band are about 90 s and the P95 is near 190 s, and the seven manually flown Random-scenario flights score above 50 s in every architecture. Whether that floor is the untreated takeoff phase or pilot intent that no position history can predict, this experiment cannot say.
+The GRU improved by 72% and the LSTM by 60%. Both improved in all three seeds, with intervals well below zero, satisfying the predeclared rule. The MLP stayed near 16 s, with an interval spanning zero. After matching, all three architectures had mean errors around 14 to 16 s.
 
-Two checks: the independent recomputation of all nine scores from the saved arrays passed, and on the common subset where the analytic estimators are defined, the capped Kalman constant-velocity estimate scores 29.6 s against 11.1 s for the matched GRU. On AMOVFLY the learned models beat the analytic baseline, the opposite of MASC-3.
+This is consistent with a mismatch in the temporal patterns learned by the recurrent models: kilometre-long approaches at about 20 m/s differ greatly from short approaches with hovering near the boundary. The experiment does not isolate that mechanism, though, or establish a lower bound on achievable error.
 
-![Summary gap against evaluation-date MAE for all arms.](assets/posts/ttg-v2/07-gap-vs-error.svg "Figure 9. Summary gap against flight-macro MAE on the evaluation dates. The four v2 arms cluster at gap 1.8 to 2.3, so their ordering carries no information; the matched arm is the only point that moved along the axis.")
+Long-horizon cases remained difficult. Errors in the 40 s+ band were about 90 s, P95 was near 190 s, and all three architectures scored above 50 s on the seven manually flown Random-scenario flights. The experiment cannot separate the contribution of the unmodeled takeoff phase from uncertainty about what the pilot will do next.
 
-Figure 9 also shows what the diagnostic alone could not do. The four v2 arms share one sampling envelope, so their gaps sit within 1.8 to 2.3 and their ordering does not track their error; the closest arm is the worst. The relationship between gap and error only appears once an arm actually moves along the axis.
+An independent recomputation from saved prediction arrays reproduced all nine scores. On the common subset where the analytic estimators are defined, the capped Kalman constant-velocity estimate scores 29.6 s, compared with 11.1 s for the matched GRU. Here the learned model outperforms the analytic estimate, reversing the MASC-3 comparison.
 
-## It transfers by geometry, and it is target-specific
+![Summary gap against evaluation-date MAE for all arms.](assets/posts/ttg-v2/07-gap-vs-error.svg "Figure 9. Summary gap against flight-macro MAE on the evaluation dates. The four v2 arms cluster at gap 1.8 to 2.3, and their ordering does not track prediction error. The matched arm has a substantially smaller gap.")
 
-A predeclared secondary check scored the same nine matched models on ALFA at 1,050 m, a fixed-wing cohort that shares the near-boundary geometry but nothing else: 15 to 35 m/s aircraft with injected actuator faults, 29 flights on five dates. GRU error falls from 61.2 to 11.1 s and LSTM from 56.1 to 19.8 s against the v2 baseline, in all three seeds; the MLP gets worse, from 17.0 to 28.8 s. The matched arm contains no fixed-wing profile, so what transferred is the geometry of starting 50 m from the boundary, which no v2 arm had seen, not anything about the platform.
+Figure 9 also shows what the diagnostic alone could not do. The four v2 arms share one sampling envelope, so their gaps sit within 1.8 to 2.3 and their ordering does not track their error; the closest arm is the worst. The matched arm combines a much smaller gap with lower recurrent-model error. That makes the gap useful as a diagnostic here, but not a general predictor of accuracy.
 
-The same run also scored MASC-3 at 1,500 m, which was not in the plan and is reported only as a description. There the matched GRU scores 6.2 s against the v2 baseline's 1.2 s, and the matched MLP 35 s against 1.9 s. Straight legs starting 500 m out are simply not in the matched sampling. Distribution matching is target-specific: inside the matched distribution it removes most of the error, outside it loses to the generic baseline. A single synthetic dataset that covers every real-flight distribution and a dataset calibrated to one target are different things, and this experiment only shows the second working.
+## Transfer to another geometry has limits
+
+A predeclared secondary check scored the same nine matched models on ALFA at 1,050 m: 29 flights on five dates, flown by fixed-wing aircraft at 15 to 35 m/s with injected actuator faults. Against the v2 baseline, GRU error fell from 61.2 to 11.1 s and LSTM error from 56.1 to 19.8 s, in all three seeds. The MLP worsened from 17.0 to 28.8 s.
+
+The matched arm contains no fixed-wing profile, but it shares ALFA's near-boundary starting geometry. That suggests starting distance may explain some of the transfer. It does not isolate geometry from the other sampling changes.
+
+I also scored MASC-3 at 1,500 m. This check was outside the plan and is descriptive only. The matched GRU scored 6.2 s against the v2 baseline's 1.2 s; the matched MLP scored 35 s against 1.9 s. Those straight legs start about 500 m outside the zone, beyond the matched sampling range.
+
+Calibrating to AMOVFLY helped the recurrent models there and on the secondary ALFA geometry, but hurt transfer to MASC-3. The matched dataset is useful for a particular target distribution; these results do not establish a single training set that works across all three cohorts.
 
 ## What is still open
 
-The comparison isolates sampling from physics, filter and model, but not the individual knobs from each other: which of start range, speed, noise and event timing did the work is a separate ablation, and the ALFA result suggests start range matters most. The label budget was matched by using four times as many short runs; the same 500-run version was not trained. The candidates were selected on a validation set the matched arm does not resemble, which is conservative but unresolved. The intervals resample dates, not training seeds, although all three seeds agree. And a v4 arm with a takeoff profile would be a profile change requiring its own preregistration.
+The follow-up changed sampling while holding the physics, filter, and model candidates fixed. It did not separate the contributions of start range, speed, noise, and event timing. ALFA makes starting distance worth testing next, but a separate ablation is needed.
+
+There are other limits. Matching the label budget required about four times as many short runs; I did not train a 500-run matched version. Model selection still used a validation distribution unlike the matched training set. The confidence intervals resample dates rather than training seeds, although the recurrent-model gains appeared in all three seeds. Adding a takeoff profile would require a new experiment and preregistration.
 
 ## Reproduce the experiment
 
-Python 3.13+, the locked `uv` environment, a C++17 compiler and `make`. Each step refuses to overwrite an existing output folder. Training takes hours.
+Run these commands from the source repository with Python 3.13+, its locked `uv` environment, a C++17 compiler, and `make`. Each step refuses to overwrite an existing output folder. Training takes hours.
 
 ```bash
 uv sync
@@ -249,4 +273,8 @@ The `--models` option freezes model hashes and zone geometry into a protocol bef
 
 ## What this experiment establishes
 
-Within one matched budget, UAV-specific synthetic profiles helped the GRU on the shared synthetic validation set and hurt both recurrent models on MASC-3. Adding fixed-wing profiles improved all three architectures on ALFA at 1,050 m. No added arm improved the mean on AMOVFLY, and on the straight MASC-3 legs two analytic constant-velocity estimators beat every trained model. Measured against AMOVFLY, all four arms were far from the target and close to each other. Changing only the generator's sampling to match three calibration dates cut GRU error from 50.9 to 14.4 s and LSTM error from 39.5 to 16.0 s on 69 held-out flights, in every seed, and left the MLP at 16 s. The defensible claims are that synthetic validation gains are not evidence of real-flight transfer, that the distance between training and target distributions can be measured before training and was the problem here, and that closing it recovers the recurrent models up to, and not past, a single-step model's floor, on the target it was matched to and on another cohort with the same geometry, while losing to the generic baseline everywhere else.
+The first study showed how misleading synthetic validation gains can be. Added UAV profiles helped the GRU on synthetic validation, hurt both recurrent models on MASC-3, and gave a more limited benefit on the secondary ALFA geometry. None of the added arms lowered mean error on AMOVFLY.
+
+The follow-up made more progress by measuring how the synthetic tracks differed from AMOVFLY and adjusting their sampling. On 69 held-out flights, GRU error fell from 50.9 to 14.4 s and LSTM error from 39.5 to 16.0 s, while the MLP stayed near 16 s. That supports distribution mismatch as an important part of the problem, without identifying which sampling change mattered most.
+
+For the next experiment, I would test those sampling choices individually before adding more complex physics. The useful question is whether the generated tracks resemble the situations the model will actually face, and which remaining differences explain its errors.
