@@ -2,9 +2,9 @@
   "posts": [
     {
       "slug": "uav-synthetic-ttg-real-flight",
-      "title": "UAV-specific synthetic data and time to zone entry: what transferred to real flights and what did not",
+      "title": "UAV-specific synthetic data and time to zone entry: diversity failed, distribution matching worked",
       "date": "2026-09-18",
-      "summary": "Four synthetic training arms with one matched budget, 72 tuning trials and 36 frozen models scored on MASC-3, ALFA and AMOVFLY. The mixed-profile GRU cut synthetic validation error by 24.1% and raised MASC-3 error by 53.0%. Where the gains held, where they reversed, and what the design cannot separate."
+      "summary": "Four synthetic training arms with one budget, 36 frozen models scored on MASC-3, ALFA and AMOVFLY: more motion diversity raised MASC-3 error by 53%. Measuring the distance to the target showed every arm was far from AMOVFLY; matching only the generator's sampling cut GRU error from 51 to 14 s on held-out dates while the MLP stayed at 16 s."
     },
     {
       "slug": "drone-swarm-constraint-study",

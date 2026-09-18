@@ -1,0 +1,120 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="720" viewBox="0 0 760 720" role="img" aria-labelledby="title desc">
+<title id="title">How far is the training data from the target?</title><desc id="desc">Normalized W1 vs. AMOVFLY calibration dates · per variable · closer to 0 is closer</desc>
+<style>text{font-family:Arial,"Apple SD Gothic Neo",sans-serif;font-variant-numeric:tabular-nums} .title{font-family:Georgia,"Times New Roman",serif}</style>
+<rect x="0.00" y="0.00" width="760.00" height="720.00" rx="0" fill="#f8f7f3"/>
+<text x="36.00" y="30.00" font-size="12" fill="#52525b" text-anchor="start" class="">UAV LAB  /  REAL-FLIGHT STUDY  /  V3</text>
+<text x="36.00" y="68.00" font-size="29" fill="#212121" text-anchor="start" class="title">How far is the training data from the target?</text>
+<text x="36.00" y="96.00" font-size="14" fill="#52525b" text-anchor="start" class="">Normalized W1 vs. AMOVFLY calibration dates · per variable · closer to 0 is closer</text>
+<line x1="36.00" y1="117.00" x2="724.00" y2="117.00" stroke="#e3e0d8" stroke-width="1" stroke-dasharray=""/>
+<circle cx="36.00" cy="143.00" r="5" fill="#93939f"/>
+<text x="50.00" y="148.00" font-size="14" fill="#52525b" text-anchor="start" class="">Baseline</text>
+<rect x="166.00" y="138.00" width="10.00" height="10.00" rx="0" fill="#1863dc"/>
+<text x="185.00" y="148.00" font-size="14" fill="#52525b" text-anchor="start" class="">+ FW</text>
+<path d="M306.00,136.00 l7,7 l-7,7 l-7,-7 Z" fill="#52525b"/>
+<text x="320.00" y="148.00" font-size="14" fill="#52525b" text-anchor="start" class="">+ MC</text>
+<path d="M441.00,136.00 l7,7 l-7,7 l-7,-7 Z" fill="#ff7759"/>
+<text x="455.00" y="148.00" font-size="14" fill="#52525b" text-anchor="start" class="">Mixed</text>
+<circle cx="576.00" cy="143.00" r="5" fill="#0f7b6c"/>
+<text x="590.00" y="148.00" font-size="14" fill="#52525b" text-anchor="start" class="">Matched</text>
+<line x1="300.00" y1="170.00" x2="300.00" y2="524.00" stroke="#212121" stroke-width="1.3" stroke-dasharray=""/>
+<text x="300.00" y="542.00" font-size="12" fill="#52525b" text-anchor="middle" class="">0</text>
+<line x1="387.50" y1="170.00" x2="387.50" y2="524.00" stroke="#e3e0d8" stroke-width="1" stroke-dasharray="3 5"/>
+<text x="387.50" y="542.00" font-size="12" fill="#52525b" text-anchor="middle" class="">1</text>
+<line x1="475.00" y1="170.00" x2="475.00" y2="524.00" stroke="#e3e0d8" stroke-width="1" stroke-dasharray="3 5"/>
+<text x="475.00" y="542.00" font-size="12" fill="#52525b" text-anchor="middle" class="">2</text>
+<line x1="562.50" y1="170.00" x2="562.50" y2="524.00" stroke="#e3e0d8" stroke-width="1" stroke-dasharray="3 5"/>
+<text x="562.50" y="542.00" font-size="12" fill="#52525b" text-anchor="middle" class="">3</text>
+<line x1="650.00" y1="170.00" x2="650.00" y2="524.00" stroke="#e3e0d8" stroke-width="1" stroke-dasharray="3 5"/>
+<text x="650.00" y="542.00" font-size="12" fill="#52525b" text-anchor="middle" class="">4</text>
+<text x="290.00" y="189.00" font-size="13" fill="#212121" text-anchor="end" class="">Range to boundary at first observation</text>
+<circle cx="532.24" cy="184.00" r="5" fill="#93939f"/>
+<rect x="582.18" y="179.00" width="10.00" height="10.00" rx="0" fill="#1863dc"/>
+<path d="M549.49,177.00 l7,7 l-7,7 l-7,-7 Z" fill="#52525b"/>
+<path d="M535.40,177.00 l7,7 l-7,7 l-7,-7 Z" fill="#ff7759"/>
+<circle cx="382.82" cy="184.00" r="5" fill="#0f7b6c"/>
+<text x="724.00" y="189.00" font-size="13" fill="#0f7b6c" text-anchor="end" class="">0.95</text>
+<text x="290.00" y="218.00" font-size="13" fill="#212121" text-anchor="end" class="">Pre-entry history</text>
+<circle cx="350.01" cy="213.00" r="5" fill="#93939f"/>
+<rect x="347.95" y="208.00" width="10.00" height="10.00" rx="0" fill="#1863dc"/>
+<path d="M364.34,206.00 l7,7 l-7,7 l-7,-7 Z" fill="#52525b"/>
+<path d="M353.33,206.00 l7,7 l-7,7 l-7,-7 Z" fill="#ff7759"/>
+<circle cx="379.77" cy="213.00" r="5" fill="#0f7b6c"/>
+<text x="724.00" y="218.00" font-size="13" fill="#0f7b6c" text-anchor="end" class="">0.91</text>
+<text x="290.00" y="247.00" font-size="13" fill="#212121" text-anchor="end" class="">Ground speed, median</text>
+<circle cx="551.97" cy="242.00" r="5" fill="#93939f"/>
+<rect x="611.35" y="237.00" width="10.00" height="10.00" rx="0" fill="#1863dc"/>
+<path d="M480.05,235.00 l7,7 l-7,7 l-7,-7 Z" fill="#52525b"/>
+<path d="M521.12,235.00 l7,7 l-7,7 l-7,-7 Z" fill="#ff7759"/>
+<circle cx="342.71" cy="242.00" r="5" fill="#0f7b6c"/>
+<text x="724.00" y="247.00" font-size="13" fill="#0f7b6c" text-anchor="end" class="">0.49</text>
+<text x="290.00" y="276.00" font-size="13" fill="#212121" text-anchor="end" class="">Ground speed, P10</text>
+<circle cx="538.62" cy="271.00" r="5" fill="#93939f"/>
+<rect x="599.63" y="266.00" width="10.00" height="10.00" rx="0" fill="#1863dc"/>
+<path d="M473.90,264.00 l7,7 l-7,7 l-7,-7 Z" fill="#52525b"/>
+<path d="M514.91,264.00 l7,7 l-7,7 l-7,-7 Z" fill="#ff7759"/>
+<circle cx="401.80" cy="271.00" r="5" fill="#0f7b6c"/>
+<text x="724.00" y="276.00" font-size="13" fill="#0f7b6c" text-anchor="end" class="">1.16</text>
+<text x="290.00" y="305.00" font-size="13" fill="#212121" text-anchor="end" class="">Ground speed, P90</text>
+<circle cx="581.77" cy="300.00" r="5" fill="#93939f"/>
+<rect x="627.61" y="295.00" width="10.00" height="10.00" rx="0" fill="#1863dc"/>
+<path d="M507.46,293.00 l7,7 l-7,7 l-7,-7 Z" fill="#52525b"/>
+<path d="M544.15,293.00 l7,7 l-7,7 l-7,-7 Z" fill="#ff7759"/>
+<circle cx="354.22" cy="300.00" r="5" fill="#0f7b6c"/>
+<text x="724.00" y="305.00" font-size="13" fill="#0f7b6c" text-anchor="end" class="">0.62</text>
+<text x="290.00" y="334.00" font-size="13" fill="#212121" text-anchor="end" class="">Heading rate, P90</text>
+<circle cx="451.16" cy="329.00" r="5" fill="#93939f"/>
+<rect x="453.13" y="324.00" width="10.00" height="10.00" rx="0" fill="#1863dc"/>
+<path d="M414.47,322.00 l7,7 l-7,7 l-7,-7 Z" fill="#52525b"/>
+<path d="M433.24,322.00 l7,7 l-7,7 l-7,-7 Z" fill="#ff7759"/>
+<circle cx="473.78" cy="329.00" r="5" fill="#0f7b6c"/>
+<text x="724.00" y="334.00" font-size="13" fill="#0f7b6c" text-anchor="end" class="">1.99</text>
+<text x="290.00" y="363.00" font-size="13" fill="#212121" text-anchor="end" class="">Vertical speed, median</text>
+<circle cx="396.27" cy="358.00" r="5" fill="#93939f"/>
+<rect x="371.56" y="353.00" width="10.00" height="10.00" rx="0" fill="#1863dc"/>
+<path d="M376.68,351.00 l7,7 l-7,7 l-7,-7 Z" fill="#52525b"/>
+<path d="M376.96,351.00 l7,7 l-7,7 l-7,-7 Z" fill="#ff7759"/>
+<circle cx="347.90" cy="358.00" r="5" fill="#0f7b6c"/>
+<text x="724.00" y="363.00" font-size="13" fill="#0f7b6c" text-anchor="end" class="">0.55</text>
+<text x="290.00" y="392.00" font-size="13" fill="#212121" text-anchor="end" class="">|Vertical speed|, P90</text>
+<circle cx="473.06" cy="387.00" r="5" fill="#93939f"/>
+<rect x="458.23" y="382.00" width="10.00" height="10.00" rx="0" fill="#1863dc"/>
+<path d="M470.03,380.00 l7,7 l-7,7 l-7,-7 Z" fill="#52525b"/>
+<path d="M463.69,380.00 l7,7 l-7,7 l-7,-7 Z" fill="#ff7759"/>
+<circle cx="403.79" cy="387.00" r="5" fill="#0f7b6c"/>
+<text x="724.00" y="392.00" font-size="13" fill="#0f7b6c" text-anchor="end" class="">1.19</text>
+<text x="290.00" y="421.00" font-size="13" fill="#212121" text-anchor="end" class="">Fraction stopped</text>
+<circle cx="506.76" cy="416.00" r="5" fill="#93939f"/>
+<rect x="502.01" y="411.00" width="10.00" height="10.00" rx="0" fill="#1863dc"/>
+<path d="M505.22,409.00 l7,7 l-7,7 l-7,-7 Z" fill="#52525b"/>
+<path d="M505.87,409.00 l7,7 l-7,7 l-7,-7 Z" fill="#ff7759"/>
+<circle cx="377.70" cy="416.00" r="5" fill="#0f7b6c"/>
+<text x="724.00" y="421.00" font-size="13" fill="#0f7b6c" text-anchor="end" class="">0.89</text>
+<text x="290.00" y="450.00" font-size="13" fill="#212121" text-anchor="end" class="">Observation period</text>
+<circle cx="489.80" cy="445.00" r="5" fill="#93939f"/>
+<rect x="491.72" y="440.00" width="10.00" height="10.00" rx="0" fill="#1863dc"/>
+<path d="M488.81,438.00 l7,7 l-7,7 l-7,-7 Z" fill="#52525b"/>
+<path d="M480.88,438.00 l7,7 l-7,7 l-7,-7 Z" fill="#ff7759"/>
+<circle cx="365.96" cy="445.00" r="5" fill="#0f7b6c"/>
+<text x="724.00" y="450.00" font-size="13" fill="#0f7b6c" text-anchor="end" class="">0.75</text>
+<text x="290.00" y="479.00" font-size="13" fill="#212121" text-anchor="end" class="">Position noise estimate</text>
+<circle cx="552.84" cy="474.00" r="5" fill="#93939f"/>
+<rect x="531.70" y="469.00" width="10.00" height="10.00" rx="0" fill="#1863dc"/>
+<path d="M548.97,467.00 l7,7 l-7,7 l-7,-7 Z" fill="#52525b"/>
+<path d="M542.76,467.00 l7,7 l-7,7 l-7,-7 Z" fill="#ff7759"/>
+<circle cx="323.01" cy="474.00" r="5" fill="#0f7b6c"/>
+<text x="724.00" y="479.00" font-size="13" fill="#0f7b6c" text-anchor="end" class="">0.26</text>
+<text x="290.00" y="508.00" font-size="13" fill="#212121" text-anchor="end" class="">Remaining time (TTG)</text>
+<circle cx="325.79" cy="503.00" r="5" fill="#93939f"/>
+<rect x="324.19" y="498.00" width="10.00" height="10.00" rx="0" fill="#1863dc"/>
+<path d="M324.73,496.00 l7,7 l-7,7 l-7,-7 Z" fill="#52525b"/>
+<path d="M323.58,496.00 l7,7 l-7,7 l-7,-7 Z" fill="#ff7759"/>
+<circle cx="375.93" cy="503.00" r="5" fill="#0f7b6c"/>
+<text x="724.00" y="508.00" font-size="13" fill="#0f7b6c" text-anchor="end" class="">0.87</text>
+<rect x="36.00" y="568.00" width="688.00" height="44.00" rx="8" fill="#eeece7"/>
+<text x="52.00" y="595.00" font-size="14" fill="#212121" text-anchor="start" class="">Mean over 12 variables:  Baseline 2.05  ·  + FW 2.25  ·  + MC 1.81  ·  Mixed 1.90  ·  Matched 0.89</text>
+<line x1="36.00" y1="637.00" x2="724.00" y2="637.00" stroke="#e3e0d8" stroke-width="1" stroke-dasharray=""/>
+<text x="36.00" y="657.00" font-size="12" fill="#52525b" text-anchor="start" class="">Statistics from observed pre-entry tracks with one definition for real and synthetic data.</text>
+<text x="36.00" y="676.00" font-size="12" fill="#52525b" text-anchor="start" class="">W1 divided by the RMS of the real and synthetic standard deviations; values above 4 are clipped to the axis.</text>
+<text x="36.00" y="695.00" font-size="12" fill="#52525b" text-anchor="start" class="">Right-hand numbers are the matched arm. Calibration dates only; evaluation dates were not read.</text>
+<metadata>[{&quot;arm&quot;: &quot;baseline&quot;, &quot;variable&quot;: &quot;boundary_distance_m&quot;, &quot;normalized_w1&quot;: 2.65418565079279}, {&quot;arm&quot;: &quot;baseline_fw&quot;, &quot;variable&quot;: &quot;boundary_distance_m&quot;, &quot;normalized_w1&quot;: 3.282010582825053}, {&quot;arm&quot;: &quot;baseline_mc&quot;, &quot;variable&quot;: &quot;boundary_distance_m&quot;, &quot;normalized_w1&quot;: 2.851310776033142}, {&quot;arm&quot;: &quot;ours&quot;, &quot;variable&quot;: &quot;boundary_distance_m&quot;, &quot;normalized_w1&quot;: 2.690305804608821}, {&quot;arm&quot;: &quot;matched&quot;, &quot;variable&quot;: &quot;boundary_distance_m&quot;, &quot;normalized_w1&quot;: 0.9465413227406585}, {&quot;arm&quot;: &quot;baseline&quot;, &quot;variable&quot;: &quot;preentry_duration_s&quot;, &quot;normalized_w1&quot;: 0.5714921399808041}, {&quot;arm&quot;: &quot;baseline_fw&quot;, &quot;variable&quot;: &quot;preentry_duration_s&quot;, &quot;normalized_w1&quot;: 0.6051637868502635}, {&quot;arm&quot;: &quot;baseline_mc&quot;, &quot;variable&quot;: &quot;preentry_duration_s&quot;, &quot;normalized_w1&quot;: 0.7353482328900292}, {&quot;arm&quot;: &quot;ours&quot;, &quot;variable&quot;: &quot;preentry_duration_s&quot;, &quot;normalized_w1&quot;: 0.6094346347591558}, {&quot;arm&quot;: &quot;matched&quot;, &quot;variable&quot;: &quot;preentry_duration_s&quot;, &quot;normalized_w1&quot;: 0.9117108707084687}, {&quot;arm&quot;: &quot;baseline&quot;, &quot;variable&quot;: &quot;speed_median_m_s&quot;, &quot;normalized_w1&quot;: 2.8796757901735957}, {&quot;arm&quot;: &quot;baseline_fw&quot;, &quot;variable&quot;: &quot;speed_median_m_s&quot;, &quot;normalized_w1&quot;: 3.615478490653824}, {&quot;arm&quot;: &quot;baseline_mc&quot;, &quot;variable&quot;: &quot;speed_median_m_s&quot;, &quot;normalized_w1&quot;: 2.057771165643403}, {&quot;arm&quot;: &quot;ours&quot;, &quot;variable&quot;: &quot;speed_median_m_s&quot;, &quot;normalized_w1&quot;: 2.5270721941048597}, {&quot;arm&quot;: &quot;matched&quot;, &quot;variable&quot;: &quot;speed_median_m_s&quot;, &quot;normalized_w1&quot;: 0.4880686715853948}, {&quot;arm&quot;: &quot;baseline&quot;, &quot;variable&quot;: &quot;speed_p10_m_s&quot;, &quot;normalized_w1&quot;: 2.72709963393463}, {&quot;arm&quot;: &quot;baseline_fw&quot;, &quot;variable&quot;: &quot;speed_p10_m_s&quot;, &quot;normalized_w1&quot;: 3.481515055308599}, {&quot;arm&quot;: &quot;baseline_mc&quot;, &quot;variable&quot;: &quot;speed_p10_m_s&quot;, &quot;normalized_w1&quot;: 1.9874162247783207}, {&quot;arm&quot;: &quot;ours&quot;, &quot;variable&quot;: &quot;speed_p10_m_s&quot;, &quot;normalized_w1&quot;: 2.456100771597994}, {&quot;arm&quot;: &quot;matched&quot;, &quot;variable&quot;: &quot;speed_p10_m_s&quot;, &quot;normalized_w1&quot;: 1.163437052087053}, {&quot;arm&quot;: &quot;baseline&quot;, &quot;variable&quot;: &quot;speed_p90_m_s&quot;, &quot;normalized_w1&quot;: 3.220205104255609}, {&quot;arm&quot;: &quot;baseline_fw&quot;, &quot;variable&quot;: &quot;speed_p90_m_s&quot;, &quot;normalized_w1&quot;: 3.801238264073547}, {&quot;arm&quot;: &quot;baseline_mc&quot;, &quot;variable&quot;: &quot;speed_p90_m_s&quot;, &quot;normalized_w1&quot;: 2.3710094362058522}, {&quot;arm&quot;: &quot;ours&quot;, &quot;variable&quot;: &quot;speed_p90_m_s&quot;, &quot;normalized_w1&quot;: 2.790234114574563}, {&quot;arm&quot;: &quot;matched&quot;, &quot;variable&quot;: &quot;speed_p90_m_s&quot;, &quot;normalized_w1&quot;: 0.6196507211090676}, {&quot;arm&quot;: &quot;baseline&quot;, &quot;variable&quot;: &quot;heading_rate_p90_deg_s&quot;, &quot;normalized_w1&quot;: 1.7275234312081251}, {&quot;arm&quot;: &quot;baseline_fw&quot;, &quot;variable&quot;: &quot;heading_rate_p90_deg_s&quot;, &quot;normalized_w1&quot;: 1.807161921815253}, {&quot;arm&quot;: &quot;baseline_mc&quot;, &quot;variable&quot;: &quot;heading_rate_p90_deg_s&quot;, &quot;normalized_w1&quot;: 1.30819017591608}, {&quot;arm&quot;: &quot;ours&quot;, &quot;variable&quot;: &quot;heading_rate_p90_deg_s&quot;, &quot;normalized_w1&quot;: 1.5227162502614568}, {&quot;arm&quot;: &quot;matched&quot;, &quot;variable&quot;: &quot;heading_rate_p90_deg_s&quot;, &quot;normalized_w1&quot;: 1.9860846160760584}, {&quot;arm&quot;: &quot;baseline&quot;, &quot;variable&quot;: &quot;vertical_speed_median_m_s&quot;, &quot;normalized_w1&quot;: 1.1001792937561647}, {&quot;arm&quot;: &quot;baseline_fw&quot;, &quot;variable&quot;: &quot;vertical_speed_median_m_s&quot;, &quot;normalized_w1&quot;: 0.8750249271042422}, {&quot;arm&quot;: &quot;baseline_mc&quot;, &quot;variable&quot;: &quot;vertical_speed_median_m_s&quot;, &quot;normalized_w1&quot;: 0.8763069828182314}, {&quot;arm&quot;: &quot;ours&quot;, &quot;variable&quot;: &quot;vertical_speed_median_m_s&quot;, &quot;normalized_w1&quot;: 0.8795364830986825}, {&quot;arm&quot;: &quot;matched&quot;, &quot;variable&quot;: &quot;vertical_speed_median_m_s&quot;, &quot;normalized_w1&quot;: 0.5474722583191342}, {&quot;arm&quot;: &quot;baseline&quot;, &quot;variable&quot;: &quot;vertical_speed_p90_m_s&quot;, &quot;normalized_w1&quot;: 1.9777897097534356}, {&quot;arm&quot;: &quot;baseline_fw&quot;, &quot;variable&quot;: &quot;vertical_speed_p90_m_s&quot;, &quot;normalized_w1&quot;: 1.865437314311738}, {&quot;arm&quot;: &quot;baseline_mc&quot;, &quot;variable&quot;: &quot;vertical_speed_p90_m_s&quot;, &quot;normalized_w1&quot;: 1.9431808734173805}, {&quot;arm&quot;: &quot;ours&quot;, &quot;variable&quot;: &quot;vertical_speed_p90_m_s&quot;, &quot;normalized_w1&quot;: 1.87075068301481}, {&quot;arm&quot;: &quot;matched&quot;, &quot;variable&quot;: &quot;vertical_speed_p90_m_s&quot;, &quot;normalized_w1&quot;: 1.18620039356262}, {&quot;arm&quot;: &quot;baseline&quot;, &quot;variable&quot;: &quot;stop_fraction&quot;, &quot;normalized_w1&quot;: 2.363013573813023}, {&quot;arm&quot;: &quot;baseline_fw&quot;, &quot;variable&quot;: &quot;stop_fraction&quot;, &quot;normalized_w1&quot;: 2.3658512105674965}, {&quot;arm&quot;: &quot;baseline_mc&quot;, &quot;variable&quot;: &quot;stop_fraction&quot;, &quot;normalized_w1&quot;: 2.3454134902120494}, {&quot;arm&quot;: &quot;ours&quot;, &quot;variable&quot;: &quot;stop_fraction&quot;, &quot;normalized_w1&quot;: 2.3528209327750256}, {&quot;arm&quot;: &quot;matched&quot;, &quot;variable&quot;: &quot;stop_fraction&quot;, &quot;normalized_w1&quot;: 0.8879801591504588}, {&quot;arm&quot;: &quot;baseline&quot;, &quot;variable&quot;: &quot;period_median_s&quot;, &quot;normalized_w1&quot;: 2.1691660336661562}, {&quot;arm&quot;: &quot;baseline_fw&quot;, &quot;variable&quot;: &quot;period_median_s&quot;, &quot;normalized_w1&quot;: 2.248222866213281}, {&quot;arm&quot;: &quot;baseline_mc&quot;, &quot;variable&quot;: &quot;period_median_s&quot;, &quot;normalized_w1&quot;: 2.1578291378311425}, {&quot;arm&quot;: &quot;ours&quot;, &quot;variable&quot;: &quot;period_median_s&quot;, &quot;normalized_w1&quot;: 2.0671883792731776}, {&quot;arm&quot;: &quot;matched&quot;, &quot;variable&quot;: &quot;period_median_s&quot;, &quot;normalized_w1&quot;: 0.753861587518017}, {&quot;arm&quot;: &quot;baseline&quot;, &quot;variable&quot;: &quot;noise_estimate_m&quot;, &quot;normalized_w1&quot;: 2.8895855791775698}, {&quot;arm&quot;: &quot;baseline_fw&quot;, &quot;variable&quot;: &quot;noise_estimate_m&quot;, &quot;normalized_w1&quot;: 2.705162690930645}, {&quot;arm&quot;: &quot;baseline_mc&quot;, &quot;variable&quot;: &quot;noise_estimate_m&quot;, &quot;normalized_w1&quot;: 2.845348552082495}, {&quot;arm&quot;: &quot;ours&quot;, &quot;variable&quot;: &quot;noise_estimate_m&quot;, &quot;normalized_w1&quot;: 2.7744170098783436}, {&quot;arm&quot;: &quot;matched&quot;, &quot;variable&quot;: &quot;noise_estimate_m&quot;, &quot;normalized_w1&quot;: 0.26295136485105847}, {&quot;arm&quot;: &quot;baseline&quot;, &quot;variable&quot;: &quot;ttg_s&quot;, &quot;normalized_w1&quot;: 0.29477339013216836}, {&quot;arm&quot;: &quot;baseline_fw&quot;, &quot;variable&quot;: &quot;ttg_s&quot;, &quot;normalized_w1&quot;: 0.33354514856038925}, {&quot;arm&quot;: &quot;baseline_mc&quot;, &quot;variable&quot;: &quot;ttg_s&quot;, &quot;normalized_w1&quot;: 0.28262745164129316}, {&quot;arm&quot;: &quot;ours&quot;, &quot;variable&quot;: &quot;ttg_s&quot;, &quot;normalized_w1&quot;: 0.2694402708653332}, {&quot;arm&quot;: &quot;matched&quot;, &quot;variable&quot;: &quot;ttg_s&quot;, &quot;normalized_w1&quot;: 0.8677559252105352}]</metadata>
+</svg>

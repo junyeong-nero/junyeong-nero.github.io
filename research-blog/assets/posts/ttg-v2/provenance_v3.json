@@ -1,0 +1,24 @@
+{
+  "theme": {
+    "source": "junyeong-nero.github.io/research-blog/style.css",
+    "background": "#f8f7f3",
+    "text": "#212121",
+    "colors": {
+      "baseline": "#93939f",
+      "baseline_fw": "#1863dc",
+      "baseline_mc": "#52525b",
+      "ours": "#ff7759",
+      "matched": "#0f7b6c"
+    }
+  },
+  "sources": {
+    "gap_v3/gap.json": "c5c75215db5b709fb8262b2cb273a7b4cca883cf622ef3b17d902bba555a10ae",
+    "gap_v3/final/gap.json": "ec4e3dda39bec8ffdb166170f1b476357042609685a107d704fece27baf8127d",
+    "amovfly_uav_v3/v3_comparison.json": "201104777080572713bbbdec8000f90b69896862ec5d35ddc01215862afed52e"
+  },
+  "figures": {
+    "06-distribution-gap.svg": "1f8a758726bf7fe3d2152c3e8bb5b692c60913de65c9ecf576d9745a919f3c61",
+    "07-gap-vs-error.svg": "0a0100871174b64f2b768f661710a1f0a1c53f026389d9fd2d3bc1edb5f017d5",
+    "08-matched-effects.svg": "2db12ee9e0c3cd90d7ca7f0c56bbfdb4e1e0428dd5a21ac175deda1359af2506"
+  }
+}

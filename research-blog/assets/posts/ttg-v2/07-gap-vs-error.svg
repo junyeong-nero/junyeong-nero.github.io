@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="700" viewBox="0 0 760 700" role="img" aria-labelledby="title desc">
+<title id="title">Closer distribution, lower error?</title><desc id="desc">Summary gap vs. AMOVFLY flight-macro MAE on the evaluation dates</desc>
+<style>text{font-family:Arial,"Apple SD Gothic Neo",sans-serif;font-variant-numeric:tabular-nums} .title{font-family:Georgia,"Times New Roman",serif}</style>
+<rect x="0.00" y="0.00" width="760.00" height="700.00" rx="0" fill="#f8f7f3"/>
+<text x="36.00" y="30.00" font-size="12" fill="#52525b" text-anchor="start" class="">UAV LAB  /  REAL-FLIGHT STUDY  /  V3</text>
+<text x="36.00" y="68.00" font-size="29" fill="#212121" text-anchor="start" class="title">Closer distribution, lower error?</text>
+<text x="36.00" y="96.00" font-size="14" fill="#52525b" text-anchor="start" class="">Summary gap vs. AMOVFLY flight-macro MAE on the evaluation dates</text>
+<line x1="36.00" y1="117.00" x2="724.00" y2="117.00" stroke="#e3e0d8" stroke-width="1" stroke-dasharray=""/>
+<rect x="36.00" y="137.00" width="12.00" height="12.00" rx="2" fill="#93939f"/>
+<text x="56.00" y="148.00" font-size="14" fill="#52525b" text-anchor="start" class="">Baseline</text>
+<rect x="171.00" y="137.00" width="12.00" height="12.00" rx="2" fill="#1863dc"/>
+<text x="191.00" y="148.00" font-size="14" fill="#52525b" text-anchor="start" class="">+ FW</text>
+<rect x="306.00" y="137.00" width="12.00" height="12.00" rx="2" fill="#52525b"/>
+<text x="326.00" y="148.00" font-size="14" fill="#52525b" text-anchor="start" class="">+ MC</text>
+<rect x="441.00" y="137.00" width="12.00" height="12.00" rx="2" fill="#ff7759"/>
+<text x="461.00" y="148.00" font-size="14" fill="#52525b" text-anchor="start" class="">Mixed</text>
+<rect x="576.00" y="137.00" width="12.00" height="12.00" rx="2" fill="#0f7b6c"/>
+<text x="596.00" y="148.00" font-size="14" fill="#52525b" text-anchor="start" class="">Matched</text>
+<circle cx="42.00" cy="172.00" r="5" fill="#212121"/>
+<text x="56.00" y="177.00" font-size="14" fill="#52525b" text-anchor="start" class="">GRU</text>
+<rect x="147.00" y="167.00" width="10.00" height="10.00" rx="0" fill="#212121"/>
+<text x="166.00" y="177.00" font-size="14" fill="#52525b" text-anchor="start" class="">LSTM</text>
+<path d="M262.00,165.00 l7,7 l-7,7 l-7,-7 Z" fill="#212121"/>
+<text x="276.00" y="177.00" font-size="14" fill="#52525b" text-anchor="start" class="">MLP</text>
+<line x1="90.00" y1="205.00" x2="90.00" y2="545.00" stroke="#e3e0d8" stroke-width="1" stroke-dasharray=""/>
+<text x="90.00" y="563.00" font-size="12" fill="#52525b" text-anchor="middle" class="">0.5</text>
+<line x1="242.50" y1="205.00" x2="242.50" y2="545.00" stroke="#e3e0d8" stroke-width="1" stroke-dasharray=""/>
+<text x="242.50" y="563.00" font-size="12" fill="#52525b" text-anchor="middle" class="">1.0</text>
+<line x1="395.00" y1="205.00" x2="395.00" y2="545.00" stroke="#e3e0d8" stroke-width="1" stroke-dasharray=""/>
+<text x="395.00" y="563.00" font-size="12" fill="#52525b" text-anchor="middle" class="">1.5</text>
+<line x1="547.50" y1="205.00" x2="547.50" y2="545.00" stroke="#e3e0d8" stroke-width="1" stroke-dasharray=""/>
+<text x="547.50" y="563.00" font-size="12" fill="#52525b" text-anchor="middle" class="">2.0</text>
+<line x1="700.00" y1="205.00" x2="700.00" y2="545.00" stroke="#e3e0d8" stroke-width="1" stroke-dasharray=""/>
+<text x="700.00" y="563.00" font-size="12" fill="#52525b" text-anchor="middle" class="">2.5</text>
+<line x1="90.00" y1="545.00" x2="700.00" y2="545.00" stroke="#e3e0d8" stroke-width="1" stroke-dasharray=""/>
+<text x="82.00" y="549.00" font-size="12" fill="#52525b" text-anchor="end" class="">0</text>
+<line x1="90.00" y1="460.00" x2="700.00" y2="460.00" stroke="#e3e0d8" stroke-width="1" stroke-dasharray=""/>
+<text x="82.00" y="464.00" font-size="12" fill="#52525b" text-anchor="end" class="">25</text>
+<line x1="90.00" y1="375.00" x2="700.00" y2="375.00" stroke="#e3e0d8" stroke-width="1" stroke-dasharray=""/>
+<text x="82.00" y="379.00" font-size="12" fill="#52525b" text-anchor="end" class="">50</text>
+<line x1="90.00" y1="290.00" x2="700.00" y2="290.00" stroke="#e3e0d8" stroke-width="1" stroke-dasharray=""/>
+<text x="82.00" y="294.00" font-size="12" fill="#52525b" text-anchor="end" class="">75</text>
+<line x1="90.00" y1="205.00" x2="700.00" y2="205.00" stroke="#e3e0d8" stroke-width="1" stroke-dasharray=""/>
+<text x="82.00" y="209.00" font-size="12" fill="#52525b" text-anchor="end" class="">100</text>
+<text x="395.00" y="585.00" font-size="13" fill="#52525b" text-anchor="middle" class="">Normalized gap to the AMOVFLY calibration distribution (mean of 12 variables)</text>
+<text x="36.00" y="193.00" font-size="13" fill="#52525b" text-anchor="start" class="">Flight-macro MAE (s), 69 evaluation-date flights, three-seed mean</text>
+<circle cx="562.11" cy="372.04" r="5" fill="#93939f"/>
+<circle cx="623.39" cy="369.74" r="5" fill="#1863dc"/>
+<circle cx="490.61" cy="242.09" r="5" fill="#52525b"/>
+<circle cx="517.25" cy="378.15" r="5" fill="#ff7759"/>
+<circle cx="207.47" cy="496.05" r="5" fill="#0f7b6c"/>
+<rect x="557.11" y="405.63" width="10.00" height="10.00" rx="0" fill="#93939f"/>
+<rect x="618.39" y="405.22" width="10.00" height="10.00" rx="0" fill="#1863dc"/>
+<rect x="485.61" y="406.40" width="10.00" height="10.00" rx="0" fill="#52525b"/>
+<rect x="512.25" y="385.46" width="10.00" height="10.00" rx="0" fill="#ff7759"/>
+<rect x="202.47" y="485.58" width="10.00" height="10.00" rx="0" fill="#0f7b6c"/>
+<path d="M562.11,483.81 l7,7 l-7,7 l-7,-7 Z" fill="#93939f"/>
+<path d="M623.39,482.15 l7,7 l-7,7 l-7,-7 Z" fill="#1863dc"/>
+<path d="M490.61,455.85 l7,7 l-7,7 l-7,-7 Z" fill="#52525b"/>
+<path d="M517.25,482.59 l7,7 l-7,7 l-7,-7 Z" fill="#ff7759"/>
+<path d="M207.47,482.44 l7,7 l-7,7 l-7,-7 Z" fill="#0f7b6c"/>
+<line x1="36.00" y1="636.00" x2="724.00" y2="636.00" stroke="#e3e0d8" stroke-width="1" stroke-dasharray=""/>
+<text x="36.00" y="656.00" font-size="12" fill="#52525b" text-anchor="start" class="">The four v2 arms share one sampling envelope, so their gaps sit together; the matched arm changes only sampling.</text>
+<text x="36.00" y="675.00" font-size="12" fill="#52525b" text-anchor="start" class="">MAE is re-aggregated from saved per-flight errors on the same 69 flights; nothing was re-predicted.</text>
+<metadata>[{&quot;arm&quot;: &quot;baseline&quot;, &quot;architecture&quot;: &quot;gru&quot;, &quot;gap&quot;: 2.0478907775536728, &quot;mae&quot;: 50.870668845089355}, {&quot;arm&quot;: &quot;baseline_fw&quot;, &quot;architecture&quot;: &quot;gru&quot;, &quot;gap&quot;: 2.2488176882678608, &quot;mae&quot;: 51.54566307282738}, {&quot;arm&quot;: &quot;baseline_mc&quot;, &quot;architecture&quot;: &quot;gru&quot;, &quot;gap&quot;: 1.813479374955785, &quot;mae&quot;: 89.09220698581385}, {&quot;arm&quot;: &quot;ours&quot;, &quot;architecture&quot;: &quot;gru&quot;, &quot;gap&quot;: 1.9008347940676853, &quot;mae&quot;: 49.07331315193339}, {&quot;arm&quot;: &quot;matched&quot;, &quot;architecture&quot;: &quot;gru&quot;, &quot;gap&quot;: 0.885142911909877, &quot;mae&quot;: 14.396504213160469}, {&quot;arm&quot;: &quot;baseline&quot;, &quot;architecture&quot;: &quot;lstm&quot;, &quot;gap&quot;: 2.0478907775536728, &quot;mae&quot;: 39.52190168973758}, {&quot;arm&quot;: &quot;baseline_fw&quot;, &quot;architecture&quot;: &quot;lstm&quot;, &quot;gap&quot;: 2.2488176882678608, &quot;mae&quot;: 39.64135708134986}, {&quot;arm&quot;: &quot;baseline_mc&quot;, &quot;architecture&quot;: &quot;lstm&quot;, &quot;gap&quot;: 1.813479374955785, &quot;mae&quot;: 39.29267925937428}, {&quot;arm&quot;: &quot;ours&quot;, &quot;architecture&quot;: &quot;lstm&quot;, &quot;gap&quot;: 1.9008347940676853, &quot;mae&quot;: 45.452557543314214}, {&quot;arm&quot;: &quot;matched&quot;, &quot;architecture&quot;: &quot;lstm&quot;, &quot;gap&quot;: 0.885142911909877, &quot;mae&quot;: 16.005783052204457}, {&quot;arm&quot;: &quot;baseline&quot;, &quot;architecture&quot;: &quot;mlp&quot;, &quot;gap&quot;: 2.0478907775536728, &quot;mae&quot;: 15.938301368581806}, {&quot;arm&quot;: &quot;baseline_fw&quot;, &quot;architecture&quot;: &quot;mlp&quot;, &quot;gap&quot;: 2.2488176882678608, &quot;mae&quot;: 16.426800546816}, {&quot;arm&quot;: &quot;baseline_mc&quot;, &quot;architecture&quot;: &quot;mlp&quot;, &quot;gap&quot;: 1.813479374955785, &quot;mae&quot;: 24.16087068032618}, {&quot;arm&quot;: &quot;ours&quot;, &quot;architecture&quot;: &quot;mlp&quot;, &quot;gap&quot;: 1.9008347940676853, &quot;mae&quot;: 16.29595297996225}, {&quot;arm&quot;: &quot;matched&quot;, &quot;architecture&quot;: &quot;mlp&quot;, &quot;gap&quot;: 0.885142911909877, &quot;mae&quot;: 16.34121583169415}]</metadata>
+</svg>
