@@ -178,9 +178,15 @@ Two checks: the independent recomputation of all nine scores from the saved arra
 
 Figure 8 also shows what the diagnostic alone could not do. The four v2 arms share one sampling envelope, so their gaps sit within 1.8 to 2.3 and their ordering does not track their error; the closest arm is the worst. The relationship between gap and error only appears once an arm actually moves along the axis.
 
+## It transfers by geometry, and it is target-specific
+
+A predeclared secondary check scored the same nine matched models on ALFA at 1,050 m, a fixed-wing cohort that shares the near-boundary geometry but nothing else: 15 to 35 m/s aircraft with injected actuator faults, 29 flights on five dates. GRU error falls from 61.2 to 11.1 s and LSTM from 56.1 to 19.8 s against the v2 baseline, in all three seeds; the MLP gets worse, from 17.0 to 28.8 s. The matched arm contains no fixed-wing profile, so what transferred is the geometry of starting 50 m from the boundary, which no v2 arm had seen, not anything about the platform.
+
+The same run also scored MASC-3 at 1,500 m, which was not in the plan and is reported only as a description. There the matched GRU scores 6.2 s against the v2 baseline's 1.2 s, and the matched MLP 35 s against 1.9 s. Straight legs starting 500 m out are simply not in the matched sampling. Distribution matching is target-specific: inside the matched distribution it removes most of the error, outside it loses to the generic baseline. A single synthetic dataset that covers every real-flight distribution and a dataset calibrated to one target are different things, and this experiment only shows the second working.
+
 ## What is still open
 
-The comparison isolates sampling from physics, filter and model, but not the individual knobs from each other: which of start range, speed, noise and event timing did the work is a separate ablation. The label budget was matched by using four times as many short runs; the same 500-run version was not trained. The candidates were selected on a validation set the matched arm does not resemble, which is conservative but unresolved. The intervals resample dates, not training seeds, although all three seeds agree. And the result is one dataset and one geometry; transfer of the matched models to ALFA at 1,050 m is planned as a secondary check, and a v4 arm with a takeoff profile would be a profile change requiring its own preregistration.
+The comparison isolates sampling from physics, filter and model, but not the individual knobs from each other: which of start range, speed, noise and event timing did the work is a separate ablation, and the ALFA result suggests start range matters most. The label budget was matched by using four times as many short runs; the same 500-run version was not trained. The candidates were selected on a validation set the matched arm does not resemble, which is conservative but unresolved. The intervals resample dates, not training seeds, although all three seeds agree. And a v4 arm with a takeoff profile would be a profile change requiring its own preregistration.
 
 ## Reproduce the experiment
 
@@ -220,10 +226,14 @@ uv run scripts/evaluate_amovfly.py --models out/airspace/research/ablation_uav_t
   --calibration-days 2024-11-9 2024-11-20 2024-11-21
 uv run scripts/verify_fixedwing.py --output out/airspace/research/amovfly_uav_v3
 uv run scripts/compare_v3.py
+uv run scripts/evaluate_fixedwing.py --models out/airspace/research/ablation_uav_tuning_v3 \
+  --output out/airspace/research/fixedwing_uav_v3
+uv run scripts/compare_v3.py --v2 out/airspace/research/fixedwing_uav_v2 \
+  --v3 out/airspace/research/fixedwing_uav_v3 --cohort alfa --distance 1050
 ```
 
 The `--models` option freezes model hashes and zone geometry into a protocol before prediction. Frozen protocols, selections, per-cohort scores, comparisons and the independent diagnostics are tracked in the repository; prediction arrays and source downloads are regenerated locally. The figures above are built from those JSON files, and [provenance.json](assets/posts/ttg-v2/provenance.json) records the SHA-256 of every input and every SVG.
 
 ## What this experiment establishes
 
-Within one matched budget, UAV-specific synthetic profiles helped the GRU on the shared synthetic validation set and hurt both recurrent models on MASC-3. Adding fixed-wing profiles improved all three architectures on ALFA at 1,050 m. No added arm improved the mean on AMOVFLY, and on the straight MASC-3 legs two analytic constant-velocity estimators beat every trained model. Measured against AMOVFLY, all four arms were far from the target and close to each other. Changing only the generator's sampling to match three calibration dates cut GRU error from 50.9 to 14.4 s and LSTM error from 39.5 to 16.0 s on 69 held-out flights, in every seed, and left the MLP at 16 s. The defensible claims are that synthetic validation gains are not evidence of real-flight transfer, that the distance between training and target distributions can be measured before training and was the problem here, and that closing it recovers the recurrent models up to, and not past, a single-step model's floor.
+Within one matched budget, UAV-specific synthetic profiles helped the GRU on the shared synthetic validation set and hurt both recurrent models on MASC-3. Adding fixed-wing profiles improved all three architectures on ALFA at 1,050 m. No added arm improved the mean on AMOVFLY, and on the straight MASC-3 legs two analytic constant-velocity estimators beat every trained model. Measured against AMOVFLY, all four arms were far from the target and close to each other. Changing only the generator's sampling to match three calibration dates cut GRU error from 50.9 to 14.4 s and LSTM error from 39.5 to 16.0 s on 69 held-out flights, in every seed, and left the MLP at 16 s. The defensible claims are that synthetic validation gains are not evidence of real-flight transfer, that the distance between training and target distributions can be measured before training and was the problem here, and that closing it recovers the recurrent models up to, and not past, a single-step model's floor, on the target it was matched to and on another cohort with the same geometry, while losing to the generic baseline everywhere else.
