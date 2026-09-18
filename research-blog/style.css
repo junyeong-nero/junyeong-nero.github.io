@@ -322,17 +322,10 @@ a.nav-item:hover {
    heading in the body plus the list that immediately follows it. */
 .post-body > h2:first-child {
   margin: 0;
-  padding: 18px 24px 0 37px;
+  padding: 22px 24px 0 37px;
   border-left: 3px solid var(--accent);
   border-radius: 0;
   background: var(--bg-secondary);
-  font-family: var(--font-mono);
-  font-size: 13px;
-  font-weight: 700;
-  line-height: 1.4;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--fg-muted);
 }
 
 .post-body > h2:first-child + ul {
