@@ -4,7 +4,7 @@ This experiment compares four synthetic training arms with the same budget: cons
 
 That was the first half. The second half asks why, and measures instead of guessing. Nine motion and sensor statistics computed the same way on real and synthetic pre-entry tracks show that all four training arms sit far from AMOVFLY on almost every variable, and much closer to each other than to the target. So a second arm was built that keeps every profile, force model, filter setting and tuning candidate and changes only how runs are sampled, with the ranges read from three calibration dates. On the five held-out dates, GRU flight-macro MAE drops from 50.9 to 14.4 s and LSTM from 39.5 to 16.0 s; the MLP, already at 16 s, does not move.
 
-![Change in macro MAE for the mixed-profile arm against the baseline, on synthetic validation and on three real UAV cohorts.](assets/posts/ttg-v2/02-transfer-gap.svg "Figure 1. Mixed profiles versus baseline, change in macro MAE, lower is better. The synthetic column is a selection set, not an independent test. Real cohorts are seed means; they are not on a common absolute-error scale. ALFA primary has one flight and is not shown.")
+![Change in macro MAE for the mixed-profile arm against the baseline, on synthetic validation and on three real UAV cohorts.](assets/posts/ttg-v2/02-transfer-gap.svg "Figure 2. Mixed profiles versus baseline, change in macro MAE, lower is better. The synthetic column is a selection set, not an independent test. Real cohorts are seed means; they are not on a common absolute-error scale. ALFA primary has one flight and is not shown.")
 
 [Source repository](https://github.com/junyeong-nero/uav-lab) (findings, experiments table and reproduction commands in the README) · [v2 real-flight report](https://github.com/junyeong-nero/uav-lab/blob/main/docs/results_v2_real.md) · [v3 plan](https://github.com/junyeong-nero/uav-lab/blob/main/docs/plan_v3.md) · [v3 gap diagnostic](https://github.com/junyeong-nero/uav-lab/blob/main/docs/results_v3_gap.md) · [v3 result](https://github.com/junyeong-nero/uav-lab/blob/main/docs/results_v3_real.md) · [Figure provenance](assets/posts/ttg-v2/provenance.json), [v3](assets/posts/ttg-v2/provenance_v3.json)
 
@@ -24,7 +24,7 @@ Fixed-wing UAVs fly scheduled routes at 15 to 35 m/s and 100 to 500 m altitude, 
 
 The force evaluation is a pure function of state and time, so RK4's intermediate stages never draw random numbers, and every scenario and sensor seed is drawn before worker dispatch. Regenerating a dataset with a different worker count gives identical files.
 
-![Replay of a fixed-wing oscillating approach, a multicopter hover and resume, and an outside figure-eight circuit.](assets/posts/ttg-v2/demo.gif "Figure 0. The viewer replays a profile with its noisy observations, the filtered track and three TTG estimates. The blue wireframe is the 1 km zone. The GRU shown is a small demonstration model, not one of the research models, and the trajectories are illustrations.")
+![Replay of a fixed-wing oscillating approach, a multicopter hover and resume, and an outside figure-eight circuit.](assets/posts/ttg-v2/demo.gif "Figure 1. The viewer replays a profile with its noisy observations, the filtered track and three TTG estimates. The blue wireframe is the 1 km zone. The GRU shown is a small demonstration model, not one of the research models, and the trajectories are illustrations.")
 
 [Watch the MP4](assets/posts/ttg-v2/demo.mp4)
 
@@ -32,7 +32,7 @@ In the ablation datasets, every run draws its own observation period between 0.5
 
 ## Hold the budget fixed and change only which profiles fill it
 
-![Composition of the four training arms.](assets/posts/ttg-v2/01-training-design.svg "Figure 2. Every arm has 500 runs and 55,778 supervised timestamps. The added-profile arms replace half of the simple-motion runs with UAV profiles. The update budget is matched; initial-state distributions and the selected model settings are not.")
+![Composition of the four training arms.](assets/posts/ttg-v2/01-training-design.svg "Figure 3. Every arm has 500 runs and 55,778 supervised timestamps. The added-profile arms replace half of the simple-motion runs with UAV profiles. The update budget is matched; initial-state distributions and the selected model settings are not.")
 
 | Arm | Training runs | Supervised timestamps |
 | --- | --- | --- |
@@ -77,7 +77,7 @@ Inputs stay causal. On a 0.5 s availability grid the filter receives the most re
 
 The scoring unit is a case, one flight segment paired with one zone bearing. Case MAE is averaged within a flight, flights are averaged with equal weight, and then the three seeds are averaged. Several bearings on one flight never count as separate flights. Confidence intervals are paired differences against the same architecture's baseline, computed after averaging seeds, with 2,000 bootstrap resamples that treat each flight date as a cluster. They do not include training-seed uncertainty and are not adjusted for multiple comparisons. With five to ten dates per cohort they are conditional evidence, not population claims.
 
-![Eligible flights, dates, zone cases and timestamps for each evaluated cohort.](assets/posts/ttg-v2/05-evaluation-coverage.svg "Figure 3. Coverage per cohort. MASC-3 at 1,050 m and AMOVFLY at 1,500 m produce no eligible crossings at all. ALFA at 1,500 m keeps one flight on one date, so its bootstrap collapses to a point.")
+![Eligible flights, dates, zone cases and timestamps for each evaluated cohort.](assets/posts/ttg-v2/05-evaluation-coverage.svg "Figure 4. Coverage per cohort. MASC-3 at 1,050 m and AMOVFLY at 1,500 m produce no eligible crossings at all. ALFA at 1,500 m keeps one flight on one date, so its bootstrap collapses to a point.")
 
 | Cohort | Role | Eligible / source flights | Dates | Cases kept / candidates | Timestamps |
 | --- | --- | --- | --- | --- | --- |
@@ -90,7 +90,7 @@ Every reported flight-macro MAE was recomputed from the saved prediction arrays 
 
 ## Fixed-wing: MASC-3 got worse, one ALFA geometry got better
 
-![Added arm minus baseline flight-macro MAE on MASC-3 and ALFA, with date-cluster bootstrap intervals.](assets/posts/ttg-v2/03-fixedwing-effects.svg "Figure 4. Each point is an added arm minus the same architecture's baseline, mean over three seeds. Positive is worse. The two panels have different axes in seconds. Intervals are paired date-cluster bootstraps without seed uncertainty or multiplicity correction.")
+![Added arm minus baseline flight-macro MAE on MASC-3 and ALFA, with date-cluster bootstrap intervals.](assets/posts/ttg-v2/03-fixedwing-effects.svg "Figure 5. Each point is an added arm minus the same architecture's baseline, mean over three seeds. Positive is worse. The two panels have different axes in seconds. Intervals are paired date-cluster bootstraps without seed uncertainty or multiplicity correction.")
 
 Three-seed mean flight-macro MAE in seconds.
 
@@ -111,7 +111,7 @@ The ALFA primary geometry at 1,500 m keeps one flight, so its numbers are descri
 
 ## Multicopter: no added arm helped on AMOVFLY
 
-![Added arm minus baseline flight-macro MAE on AMOVFLY, with date-cluster bootstrap intervals.](assets/posts/ttg-v2/04-multicopter-effects.svg "Figure 5. Same construction as Figure 4, for the 109 eligible AMOVFLY flights on eight dates. An interval that includes zero means the difference was not resolved, not that it is zero.")
+![Added arm minus baseline flight-macro MAE on AMOVFLY, with date-cluster bootstrap intervals.](assets/posts/ttg-v2/04-multicopter-effects.svg "Figure 6. Same construction as Figure 5, for the 109 eligible AMOVFLY flights on eight dates. An interval that includes zero means the difference was not resolved, not that it is zero.")
 
 | Cohort | Model | Baseline | + FW | + MC | Mixed | Mixed change | Mixed minus baseline, 95% CI (s) |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -141,7 +141,7 @@ AMOVFLY was chosen as the target because it has the most flights (109 on 8 dates
 
 Nine statistics are computed from the observed pre-entry track of every case with one definition for real and synthetic data: range to the zone boundary at the first observation, pre-entry duration, ground speed (median, P10, P90), heading rate, vertical speed, the fraction of samples stopped, observation period, a position-noise estimate from second differences, and the remaining-time label itself. Speeds come from windowed linear fits rather than raw differences, because 1 to 10 m of synthetic noise differenced at 0.5 s would read as 14 m/s of velocity. Each variable's distance is a one-dimensional Wasserstein distance divided by the RMS of the real and synthetic spreads; the summary gap is the plain mean over the twelve.
 
-![Normalized W1 per variable for the four v2 arms and the matched arm against AMOVFLY.](assets/posts/ttg-v2/06-distribution-gap.svg "Figure 6. Distance to the AMOVFLY calibration distribution, per variable. Values above 4 are clipped. The right-hand column is the matched arm described in the next section.")
+![Normalized W1 per variable for the four v2 arms and the matched arm against AMOVFLY.](assets/posts/ttg-v2/06-distribution-gap.svg "Figure 7. Distance to the AMOVFLY calibration distribution, per variable. Values above 4 are clipped. The right-hand column is the matched arm described in the next section.")
 
 | Statistic | AMOVFLY (median) | Baseline | + FW | + MC | Mixed |
 | --- | --- | --- | --- | --- | --- |
@@ -166,7 +166,7 @@ Because the matched tracks are short (26 observations at the median), 500 of the
 
 The nine frozen matched models were scored on the five evaluation dates (69 flights, 203 zone cases, 19,744 timestamps). The v2 arms were re-aggregated from their saved per-flight errors on the same 69 flights; nothing was re-predicted. The verdict rule, fixed before prediction, asks whether the matched-minus-baseline interval lies below zero in at least two of the three architectures.
 
-![Matched minus baseline per architecture with intervals, and absolute means per arm.](assets/posts/ttg-v2/08-matched-effects.svg "Figure 7. Matched − baseline flight-macro MAE with paired date-cluster bootstrap intervals, seeds averaged first. Below, the absolute means of every arm on the same flights.")
+![Matched minus baseline per architecture with intervals, and absolute means per arm.](assets/posts/ttg-v2/08-matched-effects.svg "Figure 8. Matched − baseline flight-macro MAE with paired date-cluster bootstrap intervals, seeds averaged first. Below, the absolute means of every arm on the same flights.")
 
 | Model | Baseline | + FW | + MC | Mixed | Matched | Matched − baseline, 95% CI (s) | Seeds better |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -178,9 +178,9 @@ The GRU improves by 72% and the LSTM by 60%, in all three seeds, with intervals 
 
 Two checks: the independent recomputation of all nine scores from the saved arrays passed, and on the common subset where the analytic estimators are defined, the capped Kalman constant-velocity estimate scores 29.6 s against 11.1 s for the matched GRU. On AMOVFLY the learned models beat the analytic baseline, the opposite of MASC-3.
 
-![Summary gap against evaluation-date MAE for all arms.](assets/posts/ttg-v2/07-gap-vs-error.svg "Figure 8. Summary gap against flight-macro MAE on the evaluation dates. The four v2 arms cluster at gap 1.8 to 2.3, so their ordering carries no information; the matched arm is the only point that moved along the axis.")
+![Summary gap against evaluation-date MAE for all arms.](assets/posts/ttg-v2/07-gap-vs-error.svg "Figure 9. Summary gap against flight-macro MAE on the evaluation dates. The four v2 arms cluster at gap 1.8 to 2.3, so their ordering carries no information; the matched arm is the only point that moved along the axis.")
 
-Figure 8 also shows what the diagnostic alone could not do. The four v2 arms share one sampling envelope, so their gaps sit within 1.8 to 2.3 and their ordering does not track their error; the closest arm is the worst. The relationship between gap and error only appears once an arm actually moves along the axis.
+Figure 9 also shows what the diagnostic alone could not do. The four v2 arms share one sampling envelope, so their gaps sit within 1.8 to 2.3 and their ordering does not track their error; the closest arm is the worst. The relationship between gap and error only appears once an arm actually moves along the axis.
 
 ## It transfers by geometry, and it is target-specific
 
