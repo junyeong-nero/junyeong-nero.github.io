@@ -102,6 +102,61 @@
       "arxivUrl": ""
     },
     {
+      "id": "2608.08392",
+      "slug": "cap-cross-site-browser-benchmark",
+      "title": "CAP: A Scalable Benchmark for Evaluating Cross-Site Browser Agents with Complex Actions and Perception",
+      "authors": [
+        "Zejun Xu",
+        "Taiyi Chen",
+        "Jin Li",
+        "Yongtong Gu",
+        "Qi Cheng",
+        "Aixuan Lv",
+        "Shuai Zhu",
+        "Pengfei Zhu",
+        "Kaichen Yang",
+        "Boyu Sun",
+        "Yixian Yang",
+        "Mulong Xie",
+        "Xin Liu",
+        "Dagang Li",
+        "Xiaoteng Ma",
+        "Hongru Wang"
+      ],
+      "publishedAt": "2026-08-09",
+      "reviewedAt": "2026-09-19",
+      "summary": "A 420-task cross-site browser-agent benchmark built by decomposing sites into structured cards and recomposing them into workflows, scored with a verifiable agent-as-a-judge rubric tree; the best of eight SOTA systems reaches only 8.0% success with perception as the bottleneck.",
+      "category": "evaluation",
+      "tags": [
+        "benchmark",
+        "llm-judge",
+        "long-horizon-agents",
+        "vision-language",
+        "web-agents"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2608.08392",
+      "pdfUrl": "https://arxiv.org/pdf/2608.08392.pdf",
+      "reviewPath": "reviews/cap-cross-site-browser-benchmark.md",
+      "assets": {
+        "figures": [
+          {
+            "path": "assets/cap-cross-site-browser-benchmark/figures/figure-01.png",
+            "caption": "Distributions over the bottom-10 (by mean score) complex-execution types, complex-perception types, and websites."
+          },
+          {
+            "path": "assets/cap-cross-site-browser-benchmark/figures/figure-02.png",
+            "caption": "Distribution of (a) complex execution types and (b) complex perception types in the benchmark."
+          },
+          {
+            "path": "assets/cap-cross-site-browser-benchmark/figures/figure-03.png",
+            "caption": "Task complexity as a function of the number of websites, under normalized and raw-sum definitions, colored by score."
+          }
+        ],
+        "tables": []
+      },
+      "sourceUrl": ""
+    },
+    {
       "id": "openai-2026-hugging-face-incident",
       "slug": "openai-hugging-face-incident",
       "title": "The Hugging Face Incident and the Road Ahead",
