@@ -148,30 +148,6 @@ a.nav-item:hover {
   margin-bottom: 44px;
 }
 
-.kicker {
-  display: inline-flex;
-  align-items: center;
-  gap: 9px;
-  height: auto;
-  margin: 0 0 18px;
-  padding: 0;
-  background: none;
-  color: var(--fg-muted);
-  font-family: var(--font-mono);
-  font-size: 12px;
-  font-weight: 400;
-  letter-spacing: 0.13em;
-  text-transform: uppercase;
-}
-
-.kicker::before {
-  content: "";
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--accent);
-}
-
 .intro h1 {
   margin: 0;
   font-family: var(--font-serif);
