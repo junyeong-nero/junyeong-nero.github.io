@@ -9,10 +9,16 @@ compatibility: opencode
 
 ## Target Repository
 
-Repo root:
+Repo root (`REPO_ROOT`):
 ```
-/Users/junyeong-nero/workspace/junyeong-nero.github.io
+ /Users/junyeong-nero/workspace/junyeong-nero.github.io
 ```
+
+This skill writes to that repo even when invoked from another
+working directory (e.g. via the global opencode skill). Always
+operate on `REPO_ROOT` with absolute paths — do not assume `cwd`
+is the repo root. `cd` to `REPO_ROOT` first, or prefix every repo
+path with `REPO_ROOT`.
 
 Archive paths relative to root:
 ```
@@ -22,24 +28,27 @@ paper-review/assets/<slug>/figures/figure-01.png
 paper-review/assets/<slug>/tables/table-01.png
 ```
 
-Scripts are at `.codex/skills/paper-review-ingest/scripts/`:
+Scripts live at `REPO_ROOT/.codex/skills/paper-review-ingest/scripts/`:
 - `arxiv_id.py` — Parse arXiv URL/ID
 - `capture_arxiv_figures.py` — Extract figures from arXiv TeX source (`\includegraphics`) and render tables from TeX via `pdflatex` + `pdftoppm`
 - `update_reviews_index.py` — Upsert entry into reviews.json
 
+Set `REPO_ROOT=/Users/junyeong-nero/workspace/junyeong-nero.github.io`
+and invoke scripts as `$REPO_ROOT/.codex/skills/paper-review-ingest/scripts/<name>.py`.
+
 ## Workflow
 
-1. **Parse the arXiv ID** — Use `python3 .codex/skills/paper-review-ingest/scripts/arxiv_id.py "<url-or-id>"`. Preserve the raw version suffix for reporting; use the versionless canonical ID for duplicate detection in reviews.json.
+1. **Parse the arXiv ID** — Use `python3 $REPO_ROOT/.codex/skills/paper-review-ingest/scripts/arxiv_id.py "<url-or-id>"`. Preserve the raw version suffix for reporting; use the versionless canonical ID for duplicate detection in reviews.json.
 
 2. **Fetch paper metadata and text** — Prefer the arXiv Atom API for title, authors, abstract, and published date. Download PDF from `https://arxiv.org/pdf/<canonical-id>.pdf`. Use `pdftotext -layout` when available. If network or text extraction fails, ask the user for a PDF, abstract, or pasted text.
 
-3. **Generate the Markdown review** — Save to `paper-review/reviews/<slug>.md`. Section order: TL;DR, Background, Problem, Method, Experiments, Critical Analysis, Implementation Notes, Captured Figures and Tables. Include LaTeX equations where useful. Keep figure/table image paths relative to the review file, e.g. `../assets/<slug>/figures/figure-01.png`.
+3. **Generate the Markdown review** — Save to `$REPO_ROOT/paper-review/reviews/<slug>.md`. Section order: TL;DR, Background, Problem, Method, Experiments, Critical Analysis, Implementation Notes, Captured Figures and Tables. Include LaTeX equations where useful. Keep figure/table image paths relative to the review file, e.g. `../assets/<slug>/figures/figure-01.png`.
 
-4. **Capture figures and tables** — Use `python3 .codex/skills/paper-review-ingest/scripts/capture_arxiv_figures.py --arxiv-id <canonical-id> --out-dir paper-review/assets/<slug> --slug <slug>`. This downloads the arXiv TeX source (tar.gz from `https://arxiv.org/e-print/<id>`), extracts figure files (PDF/PNG/EPS) from `\includegraphics` in `.tex` files, converts them to PNG, and parses `\caption` from the `.tex` files for accurate captions. For tables, it finds `\begin{table}` environments, compiles them with `pdflatex` and converts to PNG via `pdftoppm`. Default limit: 3 figures and 3 tables. Capture failure must not block the review or JSON index update.
+4. **Capture figures and tables** — Use `python3 $REPO_ROOT/.codex/skills/paper-review-ingest/scripts/capture_arxiv_figures.py --arxiv-id <canonical-id> --out-dir $REPO_ROOT/paper-review/assets/<slug> --slug <slug>`. This downloads the arXiv TeX source (tar.gz from `https://arxiv.org/e-print/<id>`), extracts figure files (PDF/PNG/EPS) from `\includegraphics` in `.tex` files, converts them to PNG, and parses `\caption` from the `.tex` files for accurate captions. For tables, it finds `\begin{table}` environments, compiles them with `pdflatex` and converts to PNG via `pdftoppm`. Default limit: 3 figures and 3 tables. Capture failure must not block the review or JSON index update.
 
-5. **Update the JSON index** — Create a JSON entry matching the shape below, write it to a temp file, then run `python3 .codex/skills/paper-review-ingest/scripts/update_reviews_index.py --index paper-review/data/reviews.json --entry <tmp-entry.json>`. Paths are relative to `paper-review/`, not the repo root. Tags are lowercase and sorted.
+5. **Update the JSON index** — Create a JSON entry matching the shape below, write it to a temp file, then run `python3 $REPO_ROOT/.codex/skills/paper-review-ingest/scripts/update_reviews_index.py --index $REPO_ROOT/paper-review/data/reviews.json --entry <tmp-entry.json>`. Paths are relative to `paper-review/`, not the repo root. Tags are lowercase and sorted.
 
-6. **Verify** — Run `node --test paper-review/script.test.js` from the repo root.
+6. **Verify** — Run `node --test paper-review/script.test.js` from `$REPO_ROOT`.
 
 ## JSON Entry Shape
 
