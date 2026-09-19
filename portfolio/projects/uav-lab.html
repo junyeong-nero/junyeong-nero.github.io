@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UAV Time-to-Go | Junyeong Song</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="projects.css">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+</head>
+
+<body>
+    <a href="../index.html" class="back-btn">← Back to Portfolio</a>
+
+    <main class="container project-detail">
+        <div class="project-header">
+            <span class="project-icon-large"><i data-lucide="plane"></i></span>
+            <div class="project-meta">
+                <h1>UAV Time-to-Go</h1>
+                <span class="project-date">2026.09</span>
+            </div>
+        </div>
+
+        <section class="project-section">
+            <h2> Overview</h2>
+            <p>Predicts seconds until a UAV first enters a 1 km observation sphere, trained only on synthetic motion. Two preregistered sim-to-real experiments (72 tuning trials, 36 frozen models) on MASC-3, ALFA, and AMOVFLY ask what makes synthetic training data useful on real flights.</p>
+        </section>
+
+        <section class="project-section">
+            <h2> Technologies</h2>
+            <div class="tech-tags">
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">PyTorch</span>
+                <span class="tech-tag">GRU / LSTM / MLP</span>
+                <span class="tech-tag">Kalman Filter</span>
+                <span class="tech-tag">uv</span>
+            </div>
+        </section>
+
+        <section class="project-section">
+            <h2> Features</h2>
+            <ul class="feature-list">
+                <li><strong>Synthetic-Only Training</strong> - RK4 point-mass generator with 30 fixed-wing / multicopter profiles; deterministic across worker counts.</li>
+                <li><strong>Finding: Diversity ≠ Transfer</strong> - Mixed profiles cut synthetic error 24% but raised MASC-3 GRU error 53%; no arm improved AMOVFLY mean.</li>
+                <li><strong>Finding: Matching Helps</strong> - Sampling matched to 3 calibration dates cut GRU error 50.9 → 14.4 s and LSTM 39.5 → 16.0 s on 69 held-out flights (all 3 seeds); MLP stayed near 16 s.</li>
+                <li><strong>Frozen Protocols</strong> - Model hashes and zone geometry locked before prediction; 144 combinations independently recomputed from saved arrays.</li>
+            </ul>
+        </section>
+
+        <section class="project-section">
+            <h2> Links</h2>
+            <div class="project-links">
+                <a href="https://github.com/junyeong-nero/uav-lab" target="_blank" rel="noopener" class="project-link">
+                     GitHub Repository
+                </a>
+                <a href="/research-blog/post.html?slug=uav-synthetic-ttg-real-flight" class="project-link">
+                     Research Write-up
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+    <script>if (window.lucide) lucide.createIcons();</script>
+</body>
+
+</html>

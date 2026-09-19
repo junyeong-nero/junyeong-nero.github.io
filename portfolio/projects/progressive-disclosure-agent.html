@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Progressive Disclosure Agent | Junyeong Song</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="projects.css">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+</head>
+
+<body>
+    <a href="../index.html" class="back-btn">← Back to Portfolio</a>
+
+    <main class="container project-detail">
+        <div class="project-header">
+            <span class="project-icon-large"><i data-lucide="layers"></i></span>
+            <div class="project-meta">
+                <h1>Progressive Disclosure Agent</h1>
+                <span class="project-date">2026.07</span>
+            </div>
+        </div>
+
+        <section class="project-section">
+            <h2> Overview</h2>
+            <p>Research prototype asking whether a browser agent uses fewer tokens when it receives only the page information it needs. Keeps full browser state in the controller, shows the model a compact working set, and reveals more on demand. Tested on 20 paired Korean Online-Mind2Web tasks with GPT-5.4-mini.</p>
+        </section>
+
+        <section class="project-section">
+            <h2> Technologies</h2>
+            <div class="tech-tags">
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">Playwright</span>
+                <span class="tech-tag">Browser Agents</span>
+                <span class="tech-tag">Prompt Caching</span>
+                <span class="tech-tag">Token Analysis</span>
+            </div>
+        </section>
+
+        <section class="project-section">
+            <h2> Features</h2>
+            <ul class="feature-list">
+                <li><strong>Adaptive Disclosure Policy</strong> - Starts from a small grounded candidate set; budget grows on undisclosed-reference errors and shrinks after grounded runs.</li>
+                <li><strong>Externalized Observation Memory</strong> - Full DOM/ARIA state lives in the controller; the model sees a compact summary plus the newest disclosure delta.</li>
+                <li><strong>Finding: Element Disclosure ≈ No Gain</strong> - +5,522 tokens/task, 95% CI [−43,034, +56,650], p = 0.815, with 4.9 reveal round-trips per task.</li>
+                <li><strong>Finding: URL-Attribute Pruning −22%</strong> - Dropping per-link <code>/url:</code> lines cut 36,090 tokens/task, 95% CI [−65,130, −9,150], p = 0.006, with no success drop (11/20 → 12/20 strict).</li>
+            </ul>
+        </section>
+
+        <section class="project-section">
+            <h2> Links</h2>
+            <div class="project-links">
+                <a href="https://github.com/junyeong-nero/progressive-disclosure-agent" target="_blank" rel="noopener" class="project-link">
+                     GitHub Repository
+                </a>
+                <a href="/research-blog/post.html?slug=progressive-disclosure-token-efficiency" class="project-link">
+                     Research Write-up
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+    <script>if (window.lucide) lucide.createIcons();</script>
+</body>
+
+</html>

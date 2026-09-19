@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Constrained Swarm Observation | Junyeong Song</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="projects.css">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+</head>
+
+<body>
+    <a href="../index.html" class="back-btn">← Back to Portfolio</a>
+
+    <main class="container project-detail">
+        <div class="project-header">
+            <span class="project-icon-large"><i data-lucide="radar"></i></span>
+            <div class="project-meta">
+                <h1>Constrained Swarm Observation</h1>
+                <span class="project-date">2026.09</span>
+            </div>
+        </div>
+
+        <section class="project-section">
+            <h2> Overview</h2>
+            <p>How do flight constraints change what a drone swarm can observe of a known moving target in confined geometry? Varies seven constraint axes across corridor and corner maps, separating feasibility, static observation quality (bearing-only CRLB), and what survives closed-loop flight.</p>
+        </section>
+
+        <section class="project-section">
+            <h2> Technologies</h2>
+            <div class="tech-tags">
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">Robotics Simulation</span>
+                <span class="tech-tag">SLSQP Optimization</span>
+                <span class="tech-tag">ORCA Safety Filter</span>
+                <span class="tech-tag">CRLB Analysis</span>
+            </div>
+        </section>
+
+        <section class="project-section">
+            <h2> Features</h2>
+            <ul class="feature-list">
+                <li><strong>Largest Static Effects</strong> - Standoff 2 → 3.5 m +2.03 cm, gimbal → fixed 20° nadir +1.96 cm, 8 → 4 drones +1.09 cm (baseline CRLB 2.63 cm).</li>
+                <li><strong>Grid-Certified Feasibility</strong> - Every input checked before solving; single-axis cells stayed feasible while pairs (narrow cone + large standoff / low ceiling) removed the feasible region.</li>
+                <li><strong>Flight Costs More</strong> - Nadir 30° raised flown CRLB +4.40 cm vs +1.27 cm statically; safety held in 104/108 episodes, with 3 standoff episodes showing degenerate observations.</li>
+                <li><strong>Estimator Check</strong> - Maximum-likelihood estimator reached the bound under the same noise model (median RMSE/CRLB 0.999).</li>
+            </ul>
+        </section>
+
+        <section class="project-section">
+            <h2> Links</h2>
+            <div class="project-links">
+                <a href="https://github.com/junyeong-nero/constrained-swarm-observation" target="_blank" rel="noopener" class="project-link">
+                     GitHub Repository
+                </a>
+                <a href="/research-blog/post.html?slug=drone-swarm-constraint-study" class="project-link">
+                     Research Write-up
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+    <script>if (window.lucide) lucide.createIcons();</script>
+</body>
+
+</html>

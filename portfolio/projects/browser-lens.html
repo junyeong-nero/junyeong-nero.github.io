@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BrowserLens | Junyeong Song</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="projects.css">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+</head>
+
+<body>
+    <a href="../index.html" class="back-btn">← Back to Portfolio</a>
+
+    <main class="container project-detail">
+        <div class="project-header">
+            <span class="project-icon-large"><i data-lucide="scan-search"></i></span>
+            <div class="project-meta">
+                <h1>BrowserLens</h1>
+                <span class="project-date">2026.03 - 2026.09</span>
+            </div>
+        </div>
+
+        <section class="project-section">
+            <h2> Overview</h2>
+            <p>Interactive diagnosis workspace for browser-agent trajectories. A recorded run is reconstructed as a URL → Viewport → State-Anchored Action graph stack, so reviewers can spot repeated states and navigation loops, then check each cue against replayable evidence. Submitted to UIST 2026 Posters (joint work with Mingyu Kim and Seongkook Heo, UNIST).</p>
+        </section>
+
+        <section class="project-section">
+            <h2> Technologies</h2>
+            <div class="tech-tags">
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">Playwright</span>
+                <span class="tech-tag">Web Agents</span>
+                <span class="tech-tag">Interactive Visualization</span>
+                <span class="tech-tag">DOM &amp; ARIA Snapshots</span>
+            </div>
+        </section>
+
+        <section class="project-section">
+            <h2> Features</h2>
+            <ul class="feature-list">
+                <li><strong>Layered State-Action Graph</strong> - Groups visits by normalized URL, viewport geometry, and state-anchored actions; identical identities collapse into one node.</li>
+                <li><strong>Cue-Driven Review</strong> - Visit counts, cycle edges, no-op markers (unchanged DOM/ARIA + ≤1% screenshot diff), and hidden-cue badges point at where to look.</li>
+                <li><strong>Evidence-Linked Inspection</strong> - Selecting a node retrieves screenshots, DOM/ARIA snapshots, tool logs, and model context instead of replacing them.</li>
+                <li><strong>Walkthrough</strong> - On a 98-tool-call YC directory run ending in <code>exceeded max steps</code>, surfaced a 35-visit company page and a no-op "All batches" click.</li>
+            </ul>
+        </section>
+
+        <section class="project-section">
+            <h2> Links</h2>
+            <div class="project-links">
+                <a href="https://github.com/junyeong-nero/browser-lens" target="_blank" rel="noopener" class="project-link">
+                     GitHub Repository
+                </a>
+                <a href="https://doi.org/10.1145/3830397.3841876" target="_blank" rel="noopener" class="project-link">
+                     Paper (UIST 2026 Posters)
+                </a>
+                <a href="/research-blog/post.html?slug=browserlens-uist-2026" class="project-link">
+                     Research Write-up
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+    <script>if (window.lucide) lucide.createIcons();</script>
+</body>
+
+</html>
