@@ -175,15 +175,6 @@ a.nav-item:hover {
     color: var(--fg-primary);
 }
 
-.hero-meta {
-    margin: -12px 0 20px;
-    color: var(--fg-tertiary);
-    font-family: var(--font-mono);
-    font-size: 12px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-}
-
 .vision-callout {
     padding: 0;
     border: none;
