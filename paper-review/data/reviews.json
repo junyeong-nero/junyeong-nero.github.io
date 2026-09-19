@@ -50,6 +50,58 @@
       "category": "rl-posttraining"
     },
     {
+      "id": "acl-2026-colorbrowseragent",
+      "slug": "colorbrowseragent",
+      "title": "ColorBrowserAgent: Complex Long-Horizon Browser Agent with Adaptive Knowledge Evolution",
+      "authors": [
+        "Jihong Wang",
+        "Jiamu Zhou",
+        "Weiming Zhang",
+        "Teng Wang",
+        "Weiwen Liu",
+        "Zhuosheng Zhang",
+        "Xingyu Lou",
+        "Weinan Zhang",
+        "Huarong Deng",
+        "Jun Wang"
+      ],
+      "publishedAt": "2026-07-02",
+      "reviewedAt": "2026-09-19",
+      "summary": "A tuning-free web agent that crystallizes sparse human feedback into a frozen site-knowledge base and stabilizes long trajectories with a knowledge-aligned summarizer, reaching 71.2% on WebArena and transferring zero-shot to WebChoreArena.",
+      "category": "web-agents",
+      "tags": [
+        "agent-memory",
+        "long-horizon-agents",
+        "vision-language",
+        "web-agents",
+        "webarena"
+      ],
+      "sourceUrl": "https://aclanthology.org/2026.acl-industry.46/",
+      "pdfUrl": "https://aclanthology.org/2026.acl-industry.46.pdf",
+      "reviewPath": "reviews/colorbrowseragent.md",
+      "assets": {
+        "figures": [
+          {
+            "path": "assets/colorbrowseragent/figures/figure-01.png",
+            "caption": "Figure 1. The two challenges (site heterogeneity, long-horizon instability) and the two mechanisms (knowledge adaptation, progressive summarization).",
+            "page": 1
+          },
+          {
+            "path": "assets/colorbrowseragent/figures/figure-02.png",
+            "caption": "Figure 2. The ColorBrowserAgent framework: offline knowledge-adaptation loop and online execution loop.",
+            "page": 2
+          },
+          {
+            "path": "assets/colorbrowseragent/figures/figure-03.png",
+            "caption": "Figure 3. Ablation on WebArena-Lite: full system vs no-Summarizer, no-Adaptor, vanilla.",
+            "page": 5
+          }
+        ],
+        "tables": []
+      },
+      "arxivUrl": ""
+    },
+    {
       "id": "openai-2026-hugging-face-incident",
       "slug": "openai-hugging-face-incident",
       "title": "The Hugging Face Incident and the Road Ahead",
