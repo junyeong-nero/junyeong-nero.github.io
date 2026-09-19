@@ -2,9 +2,13 @@ const test = require('node:test');
 const assert = require('node:assert/strict');
 
 const {
+  categoryLabel,
   coerceReviewData,
+  countCategories,
   filterReviews,
+  getAllCategories,
   getAllTags,
+  getFrequentTags,
   getReviewUrl,
   initReviewDetailApp,
   initPaperReviewApp,
@@ -25,6 +29,7 @@ const fixture = {
       publishedAt: '2024-03-03',
       reviewedAt: '2026-06-04',
       summary: 'A Korean healthcare licensing exam benchmark for LLM evaluation.',
+      category: 'evaluation',
       tags: ['benchmark', 'medical-llm', 'korean'],
       arxivUrl: 'https://arxiv.org/abs/2403.01469',
       pdfUrl: 'https://arxiv.org/pdf/2403.01469.pdf',
@@ -48,6 +53,7 @@ const fixture = {
       publishedAt: '2025-01-10',
       reviewedAt: '2026-05-20',
       summary: 'A survey of planning patterns for LLM agents.',
+      category: 'web-agents',
       tags: ['agents', 'planning'],
       arxivUrl: 'https://arxiv.org/abs/2501.00001',
       pdfUrl: 'https://arxiv.org/pdf/2501.00001.pdf',
@@ -91,8 +97,67 @@ test('coerceReviewData normalizes wrapped review payloads', () => {
   const reviews = coerceReviewData(fixture);
 
   assert.equal(reviews.length, 2);
+  assert.equal(reviews[0].category, 'evaluation');
   assert.deepEqual(reviews[0].tags, ['benchmark', 'medical-llm', 'korean']);
   assert.deepEqual(reviews[1].assets, { figures: [], tables: [] });
+});
+
+test('coerceReviewData defaults missing categories to uncategorized', () => {
+  const [review] = coerceReviewData([{ id: 'x', title: 'T' }]);
+
+  assert.equal(review.category, 'uncategorized');
+  assert.equal(categoryLabel('evaluation'), 'Evaluation');
+  assert.equal(categoryLabel('rl-posttraining'), 'RL & Post-training');
+});
+
+test('getAllCategories returns unique sorted categories', () => {
+  const reviews = coerceReviewData(fixture);
+
+  assert.deepEqual(getAllCategories(reviews), ['evaluation', 'web-agents']);
+  assert.deepEqual(Object.fromEntries(countCategories(reviews)), {
+    evaluation: 1,
+    'web-agents': 1,
+  });
+});
+
+test('getFrequentTags keeps only tags at or above the threshold', () => {
+  const reviews = coerceReviewData(fixture);
+
+  assert.deepEqual(getFrequentTags(reviews, 1).sort(), [
+    'agents',
+    'benchmark',
+    'korean',
+    'medical-llm',
+    'planning',
+  ]);
+  assert.deepEqual(getFrequentTags(reviews, 2), []);
+});
+
+test('filterReviews matches category exactly and stays optional', () => {
+  const reviews = coerceReviewData(fixture);
+
+  assert.equal(filterReviews(reviews, { category: 'evaluation' }).length, 1);
+  assert.equal(filterReviews(reviews, { category: 'evaluation' })[0].slug, 'kormedmcqa');
+  assert.equal(filterReviews(reviews, { category: 'all' }).length, 2);
+  assert.equal(filterReviews(reviews, {}).length, 2);
+  assert.equal(filterReviews(reviews, { query: 'benchmark', category: 'web-agents' }).length, 0);
+});
+
+test('renderReviewList renders category filters with counts and badges', () => {
+  const elements = {
+    count: createFakeElement(),
+    list: createFakeElement(),
+    tags: createFakeElement(),
+    categories: createFakeElement(),
+  };
+  const reviews = coerceReviewData(fixture);
+
+  renderReviewList(reviews, { query: '', category: 'all', tags: [], sort: 'newest' }, elements);
+
+  assert.ok(elements.categories.innerHTML.includes('data-category="evaluation"'));
+  assert.ok(elements.categories.innerHTML.includes('Evaluation (1)'));
+  assert.ok(elements.list.innerHTML.includes('review-category'));
+  assert.ok(elements.list.innerHTML.includes('Evaluation'));
 });
 
 test('getAllTags returns unique sorted tags', () => {

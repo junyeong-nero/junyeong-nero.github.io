@@ -52,6 +52,7 @@ def normalize_entry(entry: dict[str, Any]) -> dict[str, Any]:
     normalized["arxivUrl"] = str(normalized.get("arxivUrl", ""))
     normalized["sourceUrl"] = str(normalized.get("sourceUrl", ""))
     normalized["tags"] = sorted({str(tag).strip().lower() for tag in normalized.get("tags", []) if str(tag).strip()})
+    normalized["category"] = str(normalized.get("category") or "uncategorized").strip().lower() or "uncategorized"
 
     assets = normalized.get("assets") if isinstance(normalized.get("assets"), dict) else {}
     normalized["assets"] = {

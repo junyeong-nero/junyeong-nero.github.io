@@ -1,5 +1,5 @@
 {
-  "version": 1,
+  "version": 2,
   "updatedAt": "2026-09-20",
   "reviews": [
     {
@@ -46,7 +46,8 @@
         ],
         "tables": []
       },
-      "sourceUrl": ""
+      "sourceUrl": "",
+      "category": "rl-posttraining"
     },
     {
       "id": "openai-2026-hugging-face-incident",
@@ -59,8 +60,8 @@
       "reviewedAt": "2026-09-14",
       "summary": "OpenAI's post-mortem of the July 2026 incident in which research agents under reduced safeguards built a message board in Artifactory, escaped to the internet, and compromised Hugging Face and an internal cluster, traced to reward hacking, persistence on impossible tasks, unauthorized inter-agent communication, and missing CoT monitoring.",
       "tags": [
-        "ai-safety",
         "agent-security",
+        "ai-safety",
         "cot-monitoring",
         "incident-report",
         "loss-of-control",
@@ -91,7 +92,8 @@
         ],
         "tables": []
       },
-      "arxivUrl": ""
+      "arxivUrl": "",
+      "category": "safety"
     },
     {
       "id": "2503.11926",
@@ -153,7 +155,8 @@
           }
         ]
       },
-      "sourceUrl": ""
+      "sourceUrl": "",
+      "category": "safety"
     },
     {
       "id": "2609.00444",
@@ -211,7 +214,8 @@
           }
         ]
       },
-      "sourceUrl": ""
+      "sourceUrl": "",
+      "category": "rl-posttraining"
     },
     {
       "id": "2608.26582",
@@ -228,7 +232,7 @@
       "tags": [
         "challenger-solver",
         "grpo",
-        "judge-model",
+        "llm-judge",
         "reward-model",
         "self-evolution",
         "self-play",
@@ -257,7 +261,8 @@
         ],
         "tables": []
       },
-      "sourceUrl": ""
+      "sourceUrl": "",
+      "category": "rl-posttraining"
     },
     {
       "id": "2501.12948",
@@ -272,8 +277,8 @@
       "tags": [
         "chain-of-thought",
         "deepseek",
-        "distillation",
         "grpo",
+        "knowledge-distillation",
         "reasoning",
         "reinforcement-learning"
       ],
@@ -300,7 +305,8 @@
         ],
         "tables": []
       },
-      "sourceUrl": ""
+      "sourceUrl": "",
+      "category": "rl-posttraining"
     },
     {
       "id": "2408.03314",
@@ -317,7 +323,6 @@
       "summary": "On 500 MATH problems with a PaLM 2-S* base model, the paper shows that allocating test-time compute by prompt difficulty across PRM search and sequential revisions can nearly match best-of-N with up to 4x less generation compute, and can beat a roughly 14x larger model in FLOPs-matched settings for easy and intermediate questions.",
       "tags": [
         "compute-optimal",
-        "inference-scaling",
         "math-reasoning",
         "process-reward-model",
         "self-refinement",
@@ -345,7 +350,8 @@
           }
         ],
         "tables": []
-      }
+      },
+      "category": "reasoning"
     },
     {
       "id": "2411.06559",
@@ -371,8 +377,8 @@
       "tags": [
         "mind2web",
         "model-based-planning",
-        "multimodal-llm",
         "test-time-planning",
+        "vision-language",
         "visualwebarena",
         "web-agents",
         "world-models"
@@ -399,7 +405,8 @@
           }
         ],
         "tables": []
-      }
+      },
+      "category": "web-agents"
     },
     {
       "id": "2607.01233",
@@ -415,7 +422,7 @@
       "summary": "A distributional rather than per-idea evaluation of LLM ideation: 11,683 published papers are reduced to motivation/method pairs, their inspiring prior works reverse-engineered, and nine LLMs asked to ideate from the same context. LLM ideas cluster on bridge-like opportunities (47-64% vs 12.1% human) and synthesis methods (22.5-38.7% vs 5.1%), with thinking mode, richer context, and larger models all making the gap worse.",
       "tags": [
         "distributional-evaluation",
-        "llm-as-a-judge",
+        "llm-judge",
         "research-ideation",
         "scientific-discovery",
         "taxonomy"
@@ -473,7 +480,8 @@
             "page": 18
           }
         ]
-      }
+      },
+      "category": "evaluation"
     },
     {
       "id": "2504.01495",
@@ -492,9 +500,9 @@
       "tags": [
         "agent-evaluation",
         "benchmark",
-        "llm-as-a-judge",
+        "computer-use",
+        "llm-judge",
         "software-engineering",
-        "ui-automation",
         "web-agents",
         "webarena"
       ],
@@ -551,7 +559,8 @@
             "page": 15
           }
         ]
-      }
+      },
+      "category": "evaluation"
     },
     {
       "id": "2511.12997",
@@ -574,7 +583,7 @@
         "continual-learning",
         "retrieval-augmented-generation",
         "self-evolution",
-        "vision-language-model",
+        "vision-language",
         "web-agents"
       ],
       "arxivUrl": "https://arxiv.org/abs/2511.12997",
@@ -626,7 +635,8 @@
           }
         ]
       },
-      "sourceUrl": ""
+      "sourceUrl": "",
+      "category": "web-agents"
     },
     {
       "id": "2606.20785",
@@ -655,9 +665,9 @@
       "tags": [
         "computer-use",
         "knowledge-distillation",
-        "llm-judges",
+        "llm-judge",
         "synthetic-data",
-        "vision-language-model",
+        "vision-language",
         "web-agents"
       ],
       "arxivUrl": "https://arxiv.org/abs/2606.20785",
@@ -739,7 +749,8 @@
           }
         ]
       },
-      "sourceUrl": ""
+      "sourceUrl": "",
+      "category": "web-agents"
     },
     {
       "id": "2606.03979",
@@ -801,7 +812,8 @@
           }
         ]
       },
-      "sourceUrl": ""
+      "sourceUrl": "",
+      "category": "memory"
     },
     {
       "id": "2607.14530",
@@ -828,7 +840,6 @@
       "tags": [
         "architecture",
         "hyper-connections",
-        "llm",
         "mixture-of-experts",
         "residual-streams",
         "scaling",
@@ -872,7 +883,8 @@
             "page": 12
           }
         ]
-      }
+      },
+      "category": "architecture"
     },
     {
       "id": "2607.13639",
@@ -899,9 +911,9 @@
       "tags": [
         "document-parsing",
         "end-to-end-ocr",
-        "multimodal-vlm",
         "on-policy-distillation",
-        "reinforcement-learning"
+        "reinforcement-learning",
+        "vision-language"
       ],
       "arxivUrl": "https://arxiv.org/abs/2607.13639",
       "pdfUrl": "https://arxiv.org/pdf/2607.13639.pdf",
@@ -925,7 +937,8 @@
           }
         ],
         "tables": []
-      }
+      },
+      "category": "architecture"
     },
     {
       "id": "2607.12395",
@@ -955,7 +968,7 @@
       "tags": [
         "chain-of-thought",
         "emergent-behaviors",
-        "mathematical-reasoning",
+        "math-reasoning",
         "mixture-of-experts",
         "reinforcement-learning",
         "scaling",
@@ -994,7 +1007,8 @@
             "page": 8
           }
         ]
-      }
+      },
+      "category": "rl-posttraining"
     },
     {
       "id": "2311.09469",
@@ -1044,7 +1058,8 @@
             "page": 4
           }
         ]
-      }
+      },
+      "category": "interaction"
     },
     {
       "id": "2605.31433",
@@ -1060,11 +1075,11 @@
       "reviewedAt": "2026-07-16",
       "summary": "SCOPE extends data-free self-play to open-ended tasks by co-evolving a Challenger and Solver with a frozen Judge that writes rubrics from source documents. Gains of +5.4 to +10.4 points on open-ended benchmarks, matching GRPOdata trained on ~9K curated prompts, with transfer to short-form QA.",
       "tags": [
-        "data-free",
         "open-ended-generation",
         "reinforcement-learning",
         "rubric-rewards",
-        "self-play"
+        "self-play",
+        "zero-data"
       ],
       "arxivUrl": "https://arxiv.org/abs/2605.31433",
       "pdfUrl": "https://arxiv.org/pdf/2605.31433.pdf",
@@ -1104,7 +1119,8 @@
             "page": 8
           }
         ]
-      }
+      },
+      "category": "rl-posttraining"
     },
     {
       "id": "2607.08716",
@@ -1163,7 +1179,8 @@
             "page": 10
           }
         ]
-      }
+      },
+      "category": "memory"
     },
     {
       "id": "2607.04412",
@@ -1229,7 +1246,8 @@
             "page": 8
           }
         ]
-      }
+      },
+      "category": "rl-posttraining"
     },
     {
       "id": "2512.05858",
@@ -1248,10 +1266,7 @@
       "summary": "Expert personas do not improve factual accuracy on difficult multiple-choice questions (GPQA Diamond, MMLU-Pro) across six models. Low-knowledge personas (toddler, layperson) often degrade performance. The exception is Gemini 2.0 Flash on MMLU-Pro, showing modest gains from expert personas.",
       "tags": [
         "evaluation",
-        "llm",
-        "persona-prompting",
-        "prompt-engineering",
-        "prompting-science"
+        "prompt-engineering"
       ],
       "arxivUrl": "https://arxiv.org/abs/2512.05858",
       "pdfUrl": "https://arxiv.org/pdf/2512.05858.pdf",
@@ -1259,7 +1274,8 @@
       "assets": {
         "figures": [],
         "tables": []
-      }
+      },
+      "category": "evaluation"
     },
     {
       "id": "2307.03172",
@@ -1281,7 +1297,6 @@
         "attention",
         "evaluation",
         "long-context",
-        "rag",
         "retrieval-augmented-generation"
       ],
       "arxivUrl": "https://arxiv.org/abs/2307.03172",
@@ -1322,7 +1337,8 @@
             "page": 10
           }
         ]
-      }
+      },
+      "category": "memory"
     },
     {
       "id": "2607.04425",
@@ -1345,8 +1361,8 @@
       "reviewedAt": "2026-07-07",
       "summary": "UI-MOPD trains a single 8B GUI agent for cross-platform (desktop + mobile) interaction using platform-conditioned on-policy KL distillation from 32B expert teachers, achieving 38.2% on OSWorld and 12.0% on MobileWorld — outperforming mixed SFT and model merging baselines while preserving general GUI grounding.",
       "tags": [
+        "computer-use",
         "continual-learning",
-        "gui-agent",
         "knowledge-distillation",
         "multi-platform",
         "on-policy-distillation"
@@ -1373,7 +1389,8 @@
           }
         ],
         "tables": []
-      }
+      },
+      "category": "web-agents"
     },
     {
       "id": "2505.24832",
@@ -1396,7 +1413,6 @@
         "capacity",
         "grokking",
         "kolmogorov-complexity",
-        "llm",
         "membership-inference",
         "memorization"
       ],
@@ -1438,7 +1454,8 @@
             "page": 10
           }
         ]
-      }
+      },
+      "category": "evaluation"
     },
     {
       "id": "2606.28733",
@@ -1456,10 +1473,10 @@
         "abstention",
         "context-engineering",
         "evaluation",
-        "llm-agent",
+        "llm-agents",
         "question-answering",
         "terminal-agent",
-        "web-agent"
+        "web-agents"
       ],
       "arxivUrl": "https://arxiv.org/abs/2606.28733",
       "pdfUrl": "https://arxiv.org/pdf/2606.28733.pdf",
@@ -1493,7 +1510,8 @@
           }
         ],
         "tables": []
-      }
+      },
+      "category": "evaluation"
     },
     {
       "id": "2606.30534",
@@ -1563,10 +1581,10 @@
       "summary": "Orca is a general world foundation model that learns a unified world latent space from vision and language via Next-State-Prediction, using unconscious learning (dense video state transitions) and conscious learning (event-conditioned and VQA supervision); the frozen backbone supports downstream text, image, and action readouts, outperforming similar-sized specialized baselines.",
       "tags": [
         "embodied-ai",
-        "multimodal",
         "next-state-prediction",
         "self-supervised-learning",
-        "world-model"
+        "vision-language",
+        "world-models"
       ],
       "arxivUrl": "https://arxiv.org/abs/2606.30534",
       "pdfUrl": "https://arxiv.org/pdf/2606.30534.pdf",
@@ -1602,7 +1620,8 @@
           }
         ]
       },
-      "sourceUrl": ""
+      "sourceUrl": "",
+      "category": "web-agents"
     },
     {
       "id": "2606.29920",
@@ -1628,11 +1647,11 @@
       "reviewedAt": "2026-07-04",
       "summary": "RuVerBench is the first benchmark for assessing LLM-as-a-Judge reliability in rubric verification for agentic scenarios, covering Deep Research and Agentic Coding with 2,458 human-annotated instances; even frontier models exhibit substantial noise, with weaker models more sensitive to prompt variations, batching trading accuracy for efficiency, and majority voting yielding diminishing returns.",
       "tags": [
-        "agentic",
         "benchmark",
-        "llm-as-a-judge",
+        "llm-agents",
+        "llm-judge",
         "meta-evaluation",
-        "rubric-verification"
+        "rubric-rewards"
       ],
       "arxivUrl": "https://arxiv.org/abs/2606.29920",
       "pdfUrl": "https://arxiv.org/pdf/2606.29920.pdf",
@@ -1673,7 +1692,8 @@
           }
         ]
       },
-      "sourceUrl": ""
+      "sourceUrl": "",
+      "category": "evaluation"
     },
     {
       "id": "2605.09959",
@@ -1695,7 +1715,6 @@
       "reviewedAt": "2026-07-02",
       "summary": "G-Zero introduces Hint-δ, a verifier-free intrinsic reward for self-evolution in open-ended domains, where a Proposer (GRPO) generates challenging query-hint pairs and a Generator (DPO) internalizes the hint-guided improvements without external judges.",
       "tags": [
-        "llm",
         "open-ended-generation",
         "reinforcement-learning",
         "self-evolution",
@@ -1741,7 +1760,8 @@
           }
         ]
       },
-      "sourceUrl": ""
+      "sourceUrl": "",
+      "category": "rl-posttraining"
     },
     {
       "id": "2508.05004",
@@ -1762,7 +1782,6 @@
       "reviewedAt": "2026-07-02",
       "summary": "R-Zero is a fully autonomous framework where Challenger and Solver LLMs co-evolve via GRPO to generate their own training curriculum from scratch, achieving significant reasoning gains without any human-curated tasks, labels, or seed data.",
       "tags": [
-        "llm",
         "reinforcement-learning",
         "self-evolution",
         "zero-data"
@@ -1803,7 +1822,8 @@
           }
         ]
       },
-      "sourceUrl": ""
+      "sourceUrl": "",
+      "category": "rl-posttraining"
     },
     {
       "id": "2605.29397",
@@ -1823,7 +1843,7 @@
         "html-observation",
         "observation-reduction",
         "pruning",
-        "web-agent"
+        "web-agents"
       ],
       "arxivUrl": "https://arxiv.org/abs/2605.29397",
       "pdfUrl": "https://arxiv.org/pdf/2605.29397.pdf",
@@ -1864,7 +1884,8 @@
           }
         ]
       },
-      "sourceUrl": ""
+      "sourceUrl": "",
+      "category": "web-agents"
     },
     {
       "id": "2605.15864",
@@ -1886,8 +1907,7 @@
         "benchmark",
         "evaluation",
         "hallucination",
-        "vision-language-model",
-        "vlm"
+        "vision-language"
       ],
       "arxivUrl": "https://arxiv.org/abs/2605.15864",
       "pdfUrl": "https://arxiv.org/pdf/2605.15864.pdf",
@@ -1928,7 +1948,8 @@
           }
         ]
       },
-      "sourceUrl": "https://visualswap.github.io/"
+      "sourceUrl": "https://visualswap.github.io/",
+      "category": "evaluation"
     },
     {
       "id": "2604.24964",
@@ -1947,10 +1968,10 @@
         "benchmark",
         "computer-use",
         "evaluation",
-        "long-horizon",
+        "long-horizon-agents",
         "multi-site",
-        "rubrics",
-        "web-agent"
+        "rubric-rewards",
+        "web-agents"
       ],
       "arxivUrl": "https://arxiv.org/abs/2604.24964",
       "pdfUrl": "https://arxiv.org/pdf/2604.24964.pdf",
@@ -1981,7 +2002,8 @@
             "page": 6
           }
         ]
-      }
+      },
+      "category": "evaluation"
     },
     {
       "id": "2604.01535",
@@ -1999,9 +2021,8 @@
       "tags": [
         "accessibility-tree",
         "html-observation",
-        "llm",
         "thinking-tokens",
-        "web-agent"
+        "web-agents"
       ],
       "arxivUrl": "https://arxiv.org/abs/2604.01535",
       "pdfUrl": "https://arxiv.org/pdf/2604.01535.pdf",
@@ -2042,7 +2063,8 @@
           }
         ]
       },
-      "sourceUrl": ""
+      "sourceUrl": "",
+      "category": "web-agents"
     },
     {
       "id": "2602.10388",
@@ -2060,11 +2082,10 @@
       "summary": "A coverage-guided data synthesis framework (FAC Synthesis) that uses SAE-based feature activation coverage to identify missing task-relevant features in LLM post-training data and generate targeted synthetic samples, achieving SOTA on four tasks with 150x fewer samples than MAGPIE.",
       "tags": [
         "data-diversity",
-        "data-synthesis",
         "feature-space",
-        "llm",
         "post-training",
-        "sparse-autoencoder"
+        "sparse-autoencoder",
+        "synthetic-data"
       ],
       "arxivUrl": "https://arxiv.org/abs/2602.10388",
       "pdfUrl": "https://arxiv.org/pdf/2602.10388.pdf",
@@ -2100,7 +2121,8 @@
           }
         ]
       },
-      "sourceUrl": "https://github.com/Zhongzhi660/FAC-Synthesis"
+      "sourceUrl": "https://github.com/Zhongzhi660/FAC-Synthesis",
+      "category": "rl-posttraining"
     },
     {
       "id": "2510.04871",
@@ -2158,7 +2180,8 @@
           }
         ]
       },
-      "sourceUrl": ""
+      "sourceUrl": "",
+      "category": "reasoning"
     },
     {
       "id": "2510.03204",
@@ -2181,11 +2204,11 @@
       "summary": "FocusAgent uses a lightweight LLM retriever to prune accessibility-tree observations for web agents, preserving task success while cutting context by roughly half and reducing prompt-injection attack success.",
       "tags": [
         "accessibility-tree",
-        "context-pruning",
+        "agent-security",
+        "context-management",
         "llm-agents",
-        "observation-retrieval",
+        "observation-reduction",
         "prompt-injection",
-        "web-agent-security",
         "web-agents"
       ],
       "arxivUrl": "https://arxiv.org/abs/2510.03204",
@@ -2222,7 +2245,8 @@
           }
         ]
       },
-      "sourceUrl": "https://github.com/ServiceNow/AgentLab"
+      "sourceUrl": "https://github.com/ServiceNow/AgentLab",
+      "category": "web-agents"
     },
     {
       "id": "2511.21398",
@@ -2240,12 +2264,12 @@
       "reviewedAt": "2026-06-29",
       "summary": "Prune4Web turns DOM reduction for web agents into generated Python scoring programs, reducing candidate elements by 25-50x and raising low-level grounding accuracy from 46.80% to 88.28%.",
       "tags": [
+        "computer-use",
         "dom-pruning",
         "element-grounding",
         "llm-agents",
         "program-synthesis",
-        "web-agents",
-        "web-automation"
+        "web-agents"
       ],
       "arxivUrl": "https://arxiv.org/abs/2511.21398",
       "pdfUrl": "https://arxiv.org/pdf/2511.21398.pdf",
@@ -2276,7 +2300,8 @@
           }
         ]
       },
-      "sourceUrl": ""
+      "sourceUrl": "",
+      "category": "web-agents"
     },
     {
       "id": "2606.23676",
@@ -2308,7 +2333,8 @@
         "figures": [],
         "tables": []
       },
-      "sourceUrl": ""
+      "sourceUrl": "",
+      "category": "architecture"
     },
     {
       "id": "2606.14997",
@@ -2326,7 +2352,7 @@
       "reviewedAt": "2026-06-28",
       "summary": "AI Engram identifies concept-specific memory traces through a closed-form covariance projection, enabling one-shot composition or erasure of learned knowledge across vision models and Llama-3.2-1B unlearning.",
       "tags": [
-        "ai-memory",
+        "agent-memory",
         "interpretability",
         "machine-unlearning",
         "model-editing",
@@ -2373,7 +2399,8 @@
           }
         ]
       },
-      "sourceUrl": "https://github.com/jeakwon/ai-engram/"
+      "sourceUrl": "https://github.com/jeakwon/ai-engram/",
+      "category": "memory"
     },
     {
       "id": "2512.23676",
@@ -2395,7 +2422,7 @@
         "generative-ai",
         "llm-agents",
         "neuro-symbolic",
-        "procedural-generation",
+        "synthetic-data",
         "web-agents",
         "world-models"
       ],
@@ -2422,7 +2449,8 @@
         ],
         "tables": []
       },
-      "sourceUrl": "https://github.com/Princeton-AI2-Lab/Web-World-Models"
+      "sourceUrl": "https://github.com/Princeton-AI2-Lab/Web-World-Models",
+      "category": "web-agents"
     },
     {
       "id": "2512.12730",
@@ -2483,12 +2511,12 @@
       "reviewedAt": "2026-06-26",
       "summary": "NL2Repo-Bench evaluates long-horizon coding agents by asking them to generate complete Python repositories from natural-language specifications and validating outputs with upstream pytest suites.",
       "tags": [
-        "agent-benchmark",
+        "agent-evaluation",
         "coding-agents",
-        "long-horizon",
-        "repository-generation",
+        "evaluation",
+        "long-horizon-agents",
         "software-engineering",
-        "test-based-evaluation"
+        "synthetic-data"
       ],
       "arxivUrl": "https://arxiv.org/abs/2512.12730",
       "pdfUrl": "https://arxiv.org/pdf/2512.12730.pdf",
@@ -2529,7 +2557,8 @@
           }
         ]
       },
-      "sourceUrl": "https://github.com/multimodal-art-projection/NL2RepoBench"
+      "sourceUrl": "https://github.com/multimodal-art-projection/NL2RepoBench",
+      "category": "evaluation"
     },
     {
       "id": "2606.23050",
@@ -2561,10 +2590,8 @@
         "attention",
         "document-ai",
         "long-context",
-        "multimodal",
-        "ocr",
-        "sliding-window-attention",
-        "vision-language-models"
+        "sparse-attention",
+        "vision-language"
       ],
       "arxivUrl": "https://arxiv.org/abs/2606.23050",
       "pdfUrl": "https://arxiv.org/pdf/2606.23050.pdf",
@@ -2605,7 +2632,8 @@
           }
         ]
       },
-      "sourceUrl": "https://github.com/baidu/Unlimited-OCR"
+      "sourceUrl": "https://github.com/baidu/Unlimited-OCR",
+      "category": "architecture"
     },
     {
       "id": "2508.21456",
@@ -2622,10 +2650,8 @@
       "summary": "A mixed-initiative UI agent that detects ambiguous decision points, pauses automation, and presents accessible choice controls so blind and low-vision users can preserve agency during web automation.",
       "tags": [
         "accessibility",
+        "computer-use",
         "human-agent-interaction",
-        "mixed-initiative",
-        "ui-agents",
-        "user-agency",
         "web-agents"
       ],
       "arxivUrl": "https://arxiv.org/abs/2508.21456",
@@ -2667,7 +2693,8 @@
           }
         ]
       },
-      "sourceUrl": ""
+      "sourceUrl": "",
+      "category": "interaction"
     },
     {
       "id": "2504.13587",
@@ -2685,8 +2712,7 @@
       "tags": [
         "debugging",
         "developer-tools",
-        "human-computer-interaction",
-        "rag",
+        "human-agent-interaction",
         "retrieval-augmented-generation",
         "tooling"
       ],
@@ -2724,7 +2750,8 @@
           }
         ]
       },
-      "sourceUrl": ""
+      "sourceUrl": "",
+      "category": "interaction"
     },
     {
       "id": "2605.29218",
@@ -2789,7 +2816,8 @@
           }
         ]
       },
-      "sourceUrl": ""
+      "sourceUrl": "",
+      "category": "evaluation"
     },
     {
       "id": "pirolli-card-2005-sensemaking",
@@ -2832,7 +2860,8 @@
         ],
         "tables": []
       },
-      "arxivUrl": ""
+      "arxivUrl": "",
+      "category": "interaction"
     },
     {
       "id": "2606.13392",
@@ -2896,7 +2925,8 @@
             "page": 11
           }
         ]
-      }
+      },
+      "category": "architecture"
     },
     {
       "id": "2606.06036",
@@ -2914,8 +2944,7 @@
         "agent-memory",
         "graph-memory",
         "llm-agents",
-        "memory-retrieval",
-        "rag"
+        "retrieval-augmented-generation"
       ],
       "arxivUrl": "https://arxiv.org/abs/2606.06036",
       "pdfUrl": "https://arxiv.org/pdf/2606.06036.pdf",
@@ -2951,7 +2980,8 @@
           }
         ]
       },
-      "sourceUrl": ""
+      "sourceUrl": "",
+      "category": "memory"
     },
     {
       "id": "2603.07267",
@@ -2966,10 +2996,10 @@
       "reviewedAt": "2026-06-16",
       "summary": "A trace-inversion attack showing that hidden chain-of-thought traces can be approximated from answers and summaries well enough to fine-tune student models and transfer reasoning capability.",
       "tags": [
+        "agent-security",
         "capability-stealing",
         "chain-of-thought",
-        "distillation",
-        "model-security",
+        "knowledge-distillation",
         "reasoning",
         "trace-inversion"
       ],
@@ -3011,7 +3041,8 @@
             "page": 7
           }
         ]
-      }
+      },
+      "category": "safety"
     },
     {
       "id": "2503.05244",
@@ -3035,12 +3066,10 @@
       "summary": "A 1,000-query benchmark and query-dependent critic framework for evaluating LLMs on realistic generative writing across domains, languages, source materials, and style, format, and length constraints.",
       "tags": [
         "benchmark",
-        "critic-models",
         "data-curation",
         "evaluation",
         "generative-writing",
-        "llm-judges",
-        "writing"
+        "llm-judge"
       ],
       "arxivUrl": "https://arxiv.org/abs/2503.05244",
       "pdfUrl": "https://arxiv.org/pdf/2503.05244.pdf",
@@ -3080,7 +3109,8 @@
             "page": 6
           }
         ]
-      }
+      },
+      "category": "evaluation"
     },
     {
       "id": "2412.10999",
@@ -3101,11 +3131,7 @@
       "reviewedAt": "2026-06-11",
       "summary": "An HCI system for document-based human-agent collaboration that exposes editable shared plans, assignable user/agent steps, stepwise execution, and replanning, improving steerability over chat without reducing ease of use.",
       "tags": [
-        "agent-interfaces",
-        "co-agency",
-        "hci",
-        "human-agent-collaboration",
-        "interactive-systems",
+        "human-agent-interaction",
         "planning",
         "research-tools"
       ],
@@ -3147,7 +3173,8 @@
             "page": 19
           }
         ]
-      }
+      },
+      "category": "interaction"
     },
     {
       "id": "2312.06281",
@@ -3163,7 +3190,6 @@
         "benchmark",
         "emotional-intelligence",
         "evaluation",
-        "llm-evaluation",
         "psychometrics"
       ],
       "arxivUrl": "https://arxiv.org/abs/2312.06281",
@@ -3204,7 +3230,8 @@
             "page": 17
           }
         ]
-      }
+      },
+      "category": "evaluation"
     },
     {
       "id": "2311.12983",
@@ -3222,7 +3249,7 @@
       "reviewedAt": "2026-06-11",
       "summary": "A 466-question benchmark for general AI assistants that tests real-world tool use, web browsing, multimodal/file handling, and exact-answer robustness, revealing a large gap between humans and tool-augmented GPT-4.",
       "tags": [
-        "agent-benchmark",
+        "agent-evaluation",
         "benchmark",
         "evaluation",
         "general-ai-assistants",
@@ -3267,7 +3294,8 @@
             "page": 21
           }
         ]
-      }
+      },
+      "category": "evaluation"
     },
     {
       "id": "2601.21872",
@@ -3286,8 +3314,8 @@
       "tags": [
         "agent-evaluation",
         "inference-time-search",
-        "process-reward-models",
-        "reward-models",
+        "process-reward-model",
+        "reward-model",
         "web-agents",
         "webarena"
       ],
@@ -3329,7 +3357,8 @@
             "page": 8
           }
         ]
-      }
+      },
+      "category": "evaluation"
     },
     {
       "id": "2507.00769",
@@ -3350,9 +3379,9 @@
         "benchmark",
         "creative-writing",
         "evaluation",
-        "llm-judges",
+        "llm-judge",
         "preference-modeling",
-        "reward-models"
+        "reward-model"
       ],
       "arxivUrl": "https://arxiv.org/abs/2507.00769",
       "pdfUrl": "https://arxiv.org/pdf/2507.00769.pdf",
@@ -3382,7 +3411,8 @@
             "page": 10
           }
         ]
-      }
+      },
+      "category": "evaluation"
     },
     {
       "id": "2504.08942",
@@ -3406,8 +3436,8 @@
       "tags": [
         "agent-evaluation",
         "benchmark",
-        "llm-judges",
-        "reward-models",
+        "llm-judge",
+        "reward-model",
         "web-agents",
         "webarena"
       ],
@@ -3449,7 +3479,8 @@
             "page": 8
           }
         ]
-      }
+      },
+      "category": "evaluation"
     },
     {
       "id": "2407.15711",
@@ -3470,7 +3501,6 @@
         "agent-evaluation",
         "assistant-benchmarks",
         "benchmark",
-        "open-web",
         "web-agents",
         "web-navigation"
       ],
@@ -3512,7 +3542,8 @@
             "page": 8
           }
         ]
-      }
+      },
+      "category": "evaluation"
     },
     {
       "id": "2503.09572",
@@ -3578,7 +3609,8 @@
             "page": 10
           }
         ]
-      }
+      },
+      "category": "web-agents"
     },
     {
       "id": "2410.13825",
@@ -3642,7 +3674,8 @@
             "page": 9
           }
         ]
-      }
+      },
+      "category": "web-agents"
     },
     {
       "id": "2410.17236",
@@ -3662,8 +3695,8 @@
       "summary": "A benchmark and memory-alignment framework for personalized web agents that use profiles and behavior histories to choose web functions and parameters.",
       "tags": [
         "agent-evaluation",
+        "agent-memory",
         "benchmark",
-        "memory-augmented-agents",
         "personalization",
         "web-agents"
       ],
@@ -3705,7 +3738,8 @@
             "page": 8
           }
         ]
-      }
+      },
+      "category": "evaluation"
     },
     {
       "id": "2606.05553",
@@ -3767,7 +3801,8 @@
             "page": 14
           }
         ]
-      }
+      },
+      "category": "evaluation"
     },
     {
       "id": "2606.02060",
@@ -3793,8 +3828,7 @@
         "agent-evaluation",
         "benchmark",
         "deep-research",
-        "error-localization",
-        "trajectory-auditing"
+        "diagnostic-evaluation"
       ],
       "arxivUrl": "https://arxiv.org/abs/2606.02060",
       "pdfUrl": "https://arxiv.org/pdf/2606.02060.pdf",
@@ -3834,7 +3868,8 @@
             "page": 15
           }
         ]
-      }
+      },
+      "category": "evaluation"
     },
     {
       "id": "2510.03285",
@@ -3888,7 +3923,8 @@
             "page": 12
           }
         ]
-      }
+      },
+      "category": "evaluation"
     },
     {
       "id": "2508.16987",
@@ -3904,8 +3940,7 @@
       "tags": [
         "benchmark",
         "computer-use",
-        "ui-automation",
-        "vision-language-model",
+        "vision-language",
         "web-agents"
       ],
       "arxivUrl": "https://arxiv.org/abs/2508.16987",
@@ -3946,7 +3981,8 @@
             "page": 6
           }
         ]
-      }
+      },
+      "category": "web-agents"
     },
     {
       "id": "2406.01623",
@@ -3988,7 +4024,8 @@
             "page": 7
           }
         ]
-      }
+      },
+      "category": "evaluation"
     },
     {
       "id": "2504.18575",
@@ -4048,7 +4085,8 @@
             "page": 9
           }
         ]
-      }
+      },
+      "category": "safety"
     }
   ]
 }

@@ -9,9 +9,28 @@
 })(typeof globalThis !== 'undefined' ? globalThis : window, function createPaperReviewApp() {
   const DEFAULT_STATE = {
     query: '',
+    category: 'all',
     tags: [],
     sort: 'newest',
   };
+
+  const CATEGORY_LABELS = {
+    'web-agents': 'Web Agents',
+    evaluation: 'Evaluation',
+    'rl-posttraining': 'RL & Post-training',
+    reasoning: 'Reasoning',
+    memory: 'Memory & Continual',
+    safety: 'Safety & Security',
+    architecture: 'Architecture & Training',
+    interaction: 'Interaction & HCI',
+    uncategorized: 'Uncategorized',
+  };
+
+  const TAG_FILTER_MIN_COUNT = 3;
+
+  function categoryLabel(category) {
+    return CATEGORY_LABELS[category] || category;
+  }
 
   function normalizeText(value) {
     return String(value || '').trim().toLowerCase();
@@ -41,6 +60,7 @@
       publishedAt: String(review.publishedAt || ''),
       reviewedAt: String(review.reviewedAt || ''),
       summary: String(review.summary || ''),
+      category: String(review.category || 'uncategorized'),
       tags: normalizeArray(review.tags).map(String),
       arxivUrl: String(review.arxivUrl || ''),
       sourceUrl: String(review.sourceUrl || ''),
@@ -54,6 +74,32 @@
     return Array.from(new Set(reviews.flatMap((review) => review.tags))).sort((a, b) => a.localeCompare(b));
   }
 
+  function getAllCategories(reviews) {
+    return Array.from(new Set(reviews.map((review) => review.category))).sort((a, b) => a.localeCompare(b));
+  }
+
+  function countCategories(reviews) {
+    const counts = new Map();
+    for (const review of reviews) {
+      counts.set(review.category, (counts.get(review.category) || 0) + 1);
+    }
+    return counts;
+  }
+
+  function getFrequentTags(reviews, minCount = TAG_FILTER_MIN_COUNT) {
+    const counts = new Map();
+    for (const review of reviews) {
+      for (const tag of new Set(review.tags)) {
+        counts.set(tag, (counts.get(tag) || 0) + 1);
+      }
+    }
+
+    return Array.from(counts.entries())
+      .filter(([, count]) => count >= minCount)
+      .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
+      .map(([tag]) => tag);
+  }
+
   function reviewSearchBlob(review) {
     return normalizeText([
       review.id,
@@ -61,19 +107,22 @@
       review.title,
       review.summary,
       review.authors.join(' '),
+      review.category,
       review.tags.join(' '),
     ].join(' '));
   }
 
   function filterReviews(reviews, state = DEFAULT_STATE) {
     const query = normalizeText(state.query);
+    const category = normalizeText(state.category);
     const selectedTags = new Set(normalizeArray(state.tags));
 
     return reviews.filter((review) => {
       const queryMatches = !query || reviewSearchBlob(review).includes(query);
+      const categoryMatches = !category || category === 'all' || normalizeText(review.category) === category;
       const tagMatches = selectedTags.size === 0 || Array.from(selectedTags).every((tag) => review.tags.includes(tag));
 
-      return queryMatches && tagMatches;
+      return queryMatches && categoryMatches && tagMatches;
     });
   }
 
@@ -311,6 +360,7 @@
     return `
       <article class="review-card">
         <div class="review-main">
+          <p class="review-category">${escapeHtml(categoryLabel(review.category))}</p>
           <p class="review-meta">
             <span>${escapeHtml(review.id)}</span>
             ${published ? `<span>${escapeHtml(published)}</span>` : ''}
@@ -333,6 +383,19 @@
     `;
   }
 
+  function renderCategoryFilters(categories, activeCategory, categoryContainer, counts) {
+    if (!categoryContainer) return;
+
+    categoryContainer.innerHTML = [
+      `<button type="button" class="category-chip${!activeCategory || activeCategory === 'all' ? ' active' : ''}" data-category="all">All</button>`,
+      ...categories.map((category) => {
+        const count = counts ? counts.get(category) || 0 : 0;
+        const label = count ? `${categoryLabel(category)} (${count})` : categoryLabel(category);
+        return `<button type="button" class="category-chip${activeCategory === category ? ' active' : ''}" data-category="${escapeHtml(category)}">${escapeHtml(label)}</button>`;
+      }),
+    ].join('');
+  }
+
   function renderTagFilters(tags, activeTags, tagContainer) {
     if (!tagContainer) return;
 
@@ -344,7 +407,8 @@
 
   function renderReviewList(reviews, state, elements) {
     const filtered = sortReviews(filterReviews(reviews, state), state.sort);
-    renderTagFilters(getAllTags(reviews), state.tags, elements.tags);
+    renderCategoryFilters(getAllCategories(reviews), state.category, elements.categories, countCategories(reviews));
+    renderTagFilters(getFrequentTags(reviews), state.tags, elements.tags);
 
     if (elements.count) {
       elements.count.textContent = `${filtered.length} review${filtered.length === 1 ? '' : 's'}`;
@@ -398,6 +462,17 @@
         renderReviewList(reviews, state, elements);
       });
     }
+
+    if (elements.categories) {
+      elements.categories.addEventListener('click', (event) => {
+        const button = event.target.closest('[data-category]');
+        if (!button) return;
+
+        state.category = button.dataset.category || 'all';
+
+        renderReviewList(reviews, state, elements);
+      });
+    }
   }
 
   async function loadReviews(url = 'data/reviews.json') {
@@ -433,6 +508,7 @@
 
     return `
       <article class="review-detail">
+        <p class="review-category">${escapeHtml(categoryLabel(review.category))}</p>
         <p class="review-meta">
           <span>${escapeHtml(review.id)}</span>
           ${published ? `<span>${escapeHtml(published)}</span>` : ''}
@@ -459,6 +535,7 @@
     const elements = {
       search: documentRef.querySelector('[data-review-search]'),
       sort: documentRef.querySelector('[data-review-sort]'),
+      categories: documentRef.querySelector('[data-review-categories]'),
       tags: documentRef.querySelector('[data-review-tags]'),
       count: documentRef.querySelector('[data-review-count]'),
       list: documentRef.querySelector('[data-review-list]'),
@@ -537,9 +614,13 @@
   }
 
   return {
+    categoryLabel,
     coerceReviewData,
+    countCategories,
     filterReviews,
+    getAllCategories,
     getAllTags,
+    getFrequentTags,
     getReviewUrl,
     initReviewDetailApp,
     initPaperReviewApp,

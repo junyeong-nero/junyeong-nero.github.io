@@ -56,10 +56,13 @@ This skill is stored repo-locally at:
 - Capture failure must not block the review or JSON index update.
 
 5. Update the JSON index.
-- Create a JSON entry with keys matching `paper-review/data/reviews.json`.
+- Create a JSON entry with keys matching `paper-review/data/reviews.json` (see JSON Entry Shape below, including the required `category` field).
 - Use `.codex/skills/paper-review-ingest/scripts/update_reviews_index.py` to upsert by canonical arXiv ID.
 - Store paths relative to `paper-review/`, not the repository root.
-- Keep tags lowercase and sorted.
+- Assign exactly one `category` from the taxonomy below (the paper's primary contribution, not its evaluation target).
+- Keep tags lowercase, hyphenated, sorted, max 5 per paper. Reuse an existing tag from `reviews.json` when one fits; never use bare `llm`. Normalize variants to canonical tags: `web-agent`→`web-agents`, `llm-agent`/`agentic`→`llm-agents`, `llm-as-a-judge`/`llm-judges`/`llm-judge`/`judge-model`/`critic-models`→`llm-judge`, `reward-models`→`reward-model`, `process-reward-models`→`process-reward-model`, `vision-language-model(s)`/`multimodal(-llm,-vlm)`/`vlm`→`vision-language`, `agent-benchmark`→`agent-evaluation`, `long-horizon`→`long-horizon-agents`, `gui-agent`/`ui-agents`/`ui-automation`/`web-automation`→`computer-use`, `mathematical-reasoning`→`math-reasoning`, `rag`→`retrieval-augmented-generation`, `distillation`→`knowledge-distillation`, `data-free`→`zero-data`, `ai-memory`/`memory-retrieval`/`memory-augmented-agents`→`agent-memory`, `world-model`→`world-models`, `observation-retrieval`→`observation-reduction`, `web-agent-security`/`model-security`→`agent-security`, `hci`/`human-agent-collaboration`/`human-computer-interaction`/`interactive-systems`/`co-agency`/`agent-interfaces`/`mixed-initiative`/`user-agency`→`human-agent-interaction`, `writing`→`generative-writing`, `data-synthesis`/`procedural-generation`/`repository-generation`→`synthetic-data`, `inference-scaling`→`test-time-compute`, `sliding-window-attention`→`sparse-attention`, `context-pruning`→`context-management`, `error-localization`/`trajectory-auditing`→`diagnostic-evaluation`, `test-based-evaluation`/`llm-evaluation`→`evaluation`, `ocr`→`document-ai`, `open-web`→`web-navigation`, `rubric-verification`/`rubrics`→`rubric-rewards`, `persona-prompting`/`prompting-science`→`prompt-engineering`.
+
+Categories: `web-agents` (web/GUI/computer-use agent methods), `evaluation` (benchmarks, eval methodology, reward/judge models), `rl-posttraining` (RL/RLVR/RLHF/GRPO, self-play, synthetic training data), `reasoning` (test-time compute, CoT, efficient reasoning), `memory` (agent memory, continual learning, long-context), `safety` (safety, security, oversight, incidents), `architecture` (model architecture, optimizers, efficient inference, document/OCR models), `interaction` (human-agent interaction, HCI, copilots, tooling).
 
 6. Verify before reporting completion.
 - Run `node --test paper-review/script.test.js` from the repo root.
@@ -119,6 +122,7 @@ python3 .codex/skills/paper-review-ingest/scripts/update_reviews_index.py --inde
   "publishedAt": "2024-03-03",
   "reviewedAt": "2026-06-04",
   "summary": "One sentence summary.",
+  "category": "evaluation",
   "tags": ["benchmark", "medical-llm"],
   "arxivUrl": "https://arxiv.org/abs/2403.01469",
   "pdfUrl": "https://arxiv.org/pdf/2403.01469.pdf",
