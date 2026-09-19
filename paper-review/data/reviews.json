@@ -1,7 +1,53 @@
 {
   "version": 1,
-  "updatedAt": "2026-09-14",
+  "updatedAt": "2026-09-20",
   "reviews": [
+    {
+      "id": "2609.20807",
+      "slug": "score-centering-off-policy-rl",
+      "title": "Score Centering Stabilizes Off-policy Reinforcement Learning",
+      "authors": [
+        "Martin Marek",
+        "Max Ryabinin"
+      ],
+      "publishedAt": "2026-09-17",
+      "reviewedAt": "2026-09-19",
+      "summary": "Score centering subtracts the sampler-expected score from each token score to cancel drift from training-inference mismatch, matching or beating importance sampling under quantization and composing with it under staleness.",
+      "tags": [
+        "drift-correction",
+        "importance-sampling",
+        "off-policy",
+        "policy-gradient",
+        "quantization",
+        "reinforcement-learning",
+        "staleness",
+        "training-inference-mismatch"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2609.20807",
+      "pdfUrl": "https://arxiv.org/pdf/2609.20807.pdf",
+      "reviewPath": "reviews/score-centering-off-policy-rl.md",
+      "assets": {
+        "figures": [
+          {
+            "path": "assets/score-centering-off-policy-rl/figures/figure-01.png",
+            "caption": "Figure 1. Score centering outperforms importance sampling under heavy quantization on Qwen3-30B-A3B-Base / INTELLECT-2 math.",
+            "page": 1
+          },
+          {
+            "path": "assets/score-centering-off-policy-rl/figures/figure-02.png",
+            "caption": "Figure 2. Offline vs online training of Qwen3-1.7B on Countdown under three reward modes.",
+            "page": 3
+          },
+          {
+            "path": "assets/score-centering-off-policy-rl/figures/figure-03.png",
+            "caption": "Figure 3. Qwen3-0.6B on Countdown with Gaussian noise added to sampler weights; only score centering trains stably under the largest noise.",
+            "page": 7
+          }
+        ],
+        "tables": []
+      },
+      "sourceUrl": ""
+    },
     {
       "id": "openai-2026-hugging-face-incident",
       "slug": "openai-hugging-face-incident",
