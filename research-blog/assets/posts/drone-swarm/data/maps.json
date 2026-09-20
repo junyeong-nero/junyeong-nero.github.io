@@ -1,0 +1,6308 @@
+[
+ {
+  "name": "open_00",
+  "family": "open",
+  "variant": 0,
+  "seed": 8300,
+  "window": [
+   4.0,
+   16.0
+  ],
+  "arc_time": null,
+  "parameters": {
+   "width_in": 3.3512945819071,
+   "width_out": 3.3512945819071,
+   "width_scale": 1.0,
+   "turn": null,
+   "radius": null,
+   "angle_deg": null,
+   "direction": "right",
+   "arc_s": [
+    9.0,
+    9.0
+   ],
+   "start_lateral": [
+    -2.0,
+    2.0
+   ]
+  },
+  "scenario": {
+   "name": "open_00",
+   "seed": 8300,
+   "time": {
+    "duration": 20.0,
+    "sim_hz": 50,
+    "plan_hz": 2
+   },
+   "drones": {
+    "count": 8,
+    "radius": 0.15,
+    "downwash_ratio": 3.0,
+    "limits": {
+     "v_max": 4.0,
+     "a_max": 8.0
+    }
+   },
+   "constraints": {
+    "safety_margin": 0.2,
+    "obstacle_margin": 0.2,
+    "comm_range": 4.0,
+    "connectivity": "monitor"
+   },
+   "world": {
+    "bounds": [
+     [
+      -29.0,
+      -15.0,
+      0.0
+     ],
+     [
+      39.0,
+      15.0,
+      8.0
+     ]
+    ],
+    "obstacles": []
+   },
+   "target": {
+    "motion": "constant_velocity",
+    "position": [
+     -6.0,
+     0.0,
+     0.0
+    ],
+    "heading": 0.0,
+    "speed": 1.5,
+    "altitude": 1.7,
+    "window": [
+     4.0,
+     16.0
+    ]
+   },
+   "perception": {
+    "boresight": "gimbal",
+    "fov_half_angle_deg": 60
+   },
+   "start": {
+    "mode": "random",
+    "region": [
+     [
+      -12.0,
+      -2.0,
+      1.0
+     ],
+     [
+      -8.0,
+      2.0,
+      3.0
+     ]
+    ],
+    "min_spacing": 0.8
+   },
+   "goal": {
+    "formation": {
+     "type": "circle",
+     "n": 8,
+     "radius": 3.0
+    },
+    "pose": {
+     "translation": [
+      0.0,
+      0.0,
+      2.0
+     ]
+    },
+    "tolerance": 0.3,
+    "track_target": true,
+    "align_heading": true
+   },
+   "stack": {
+    "assignment": "hungarian",
+    "planner": "track",
+    "planner_params": {
+     "hysteresis": 0.15
+    },
+    "placement": "dopt_c",
+    "placement_params": {
+     "separation": true,
+     "connectivity": true,
+     "fov": true,
+     "clearance": true,
+     "lambda2_floor": 0.05,
+     "standoff_min": 2.0,
+     "standoff_max": 4.0,
+     "altitude_min": -1.0,
+     "altitude_max": 3.0,
+     "restarts": 6,
+     "warm_restarts": 1,
+     "every": 4
+    },
+    "controller": "velocity_p",
+    "safety_filter": "orca"
+   },
+   "output": {
+    "dir": "runs/dynamic_geometry/open_00"
+   }
+  }
+ },
+ {
+  "name": "open_01",
+  "family": "open",
+  "variant": 1,
+  "seed": 8301,
+  "window": [
+   4.0,
+   16.0
+  ],
+  "arc_time": null,
+  "parameters": {
+   "width_in": 2.7895754360520884,
+   "width_out": 2.7895754360520884,
+   "width_scale": 1.0,
+   "turn": null,
+   "radius": null,
+   "angle_deg": null,
+   "direction": "right",
+   "arc_s": [
+    9.0,
+    9.0
+   ],
+   "start_lateral": [
+    -2.0,
+    2.0
+   ]
+  },
+  "scenario": {
+   "name": "open_01",
+   "seed": 8301,
+   "time": {
+    "duration": 20.0,
+    "sim_hz": 50,
+    "plan_hz": 2
+   },
+   "drones": {
+    "count": 8,
+    "radius": 0.15,
+    "downwash_ratio": 3.0,
+    "limits": {
+     "v_max": 4.0,
+     "a_max": 8.0
+    }
+   },
+   "constraints": {
+    "safety_margin": 0.2,
+    "obstacle_margin": 0.2,
+    "comm_range": 4.0,
+    "connectivity": "monitor"
+   },
+   "world": {
+    "bounds": [
+     [
+      -29.0,
+      -15.0,
+      0.0
+     ],
+     [
+      39.0,
+      15.0,
+      8.0
+     ]
+    ],
+    "obstacles": []
+   },
+   "target": {
+    "motion": "constant_velocity",
+    "position": [
+     -6.0,
+     0.0,
+     0.0
+    ],
+    "heading": 0.0,
+    "speed": 1.5,
+    "altitude": 1.7,
+    "window": [
+     4.0,
+     16.0
+    ]
+   },
+   "perception": {
+    "boresight": "gimbal",
+    "fov_half_angle_deg": 60
+   },
+   "start": {
+    "mode": "random",
+    "region": [
+     [
+      -12.0,
+      -2.0,
+      1.0
+     ],
+     [
+      -8.0,
+      2.0,
+      3.0
+     ]
+    ],
+    "min_spacing": 0.8
+   },
+   "goal": {
+    "formation": {
+     "type": "circle",
+     "n": 8,
+     "radius": 3.0
+    },
+    "pose": {
+     "translation": [
+      0.0,
+      0.0,
+      2.0
+     ]
+    },
+    "tolerance": 0.3,
+    "track_target": true,
+    "align_heading": true
+   },
+   "stack": {
+    "assignment": "hungarian",
+    "planner": "track",
+    "planner_params": {
+     "hysteresis": 0.15
+    },
+    "placement": "dopt_c",
+    "placement_params": {
+     "separation": true,
+     "connectivity": true,
+     "fov": true,
+     "clearance": true,
+     "lambda2_floor": 0.05,
+     "standoff_min": 2.0,
+     "standoff_max": 4.0,
+     "altitude_min": -1.0,
+     "altitude_max": 3.0,
+     "restarts": 6,
+     "warm_restarts": 1,
+     "every": 4
+    },
+    "controller": "velocity_p",
+    "safety_filter": "orca"
+   },
+   "output": {
+    "dir": "runs/dynamic_geometry/open_01"
+   }
+  }
+ },
+ {
+  "name": "open_02",
+  "family": "open",
+  "variant": 2,
+  "seed": 8302,
+  "window": [
+   4.0,
+   16.0
+  ],
+  "arc_time": null,
+  "parameters": {
+   "width_in": 3.247098130048743,
+   "width_out": 3.247098130048743,
+   "width_scale": 1.0,
+   "turn": null,
+   "radius": null,
+   "angle_deg": null,
+   "direction": "right",
+   "arc_s": [
+    9.0,
+    9.0
+   ],
+   "start_lateral": [
+    -2.0,
+    2.0
+   ]
+  },
+  "scenario": {
+   "name": "open_02",
+   "seed": 8302,
+   "time": {
+    "duration": 20.0,
+    "sim_hz": 50,
+    "plan_hz": 2
+   },
+   "drones": {
+    "count": 8,
+    "radius": 0.15,
+    "downwash_ratio": 3.0,
+    "limits": {
+     "v_max": 4.0,
+     "a_max": 8.0
+    }
+   },
+   "constraints": {
+    "safety_margin": 0.2,
+    "obstacle_margin": 0.2,
+    "comm_range": 4.0,
+    "connectivity": "monitor"
+   },
+   "world": {
+    "bounds": [
+     [
+      -29.0,
+      -15.0,
+      0.0
+     ],
+     [
+      39.0,
+      15.0,
+      8.0
+     ]
+    ],
+    "obstacles": []
+   },
+   "target": {
+    "motion": "constant_velocity",
+    "position": [
+     -6.0,
+     0.0,
+     0.0
+    ],
+    "heading": 0.0,
+    "speed": 1.5,
+    "altitude": 1.7,
+    "window": [
+     4.0,
+     16.0
+    ]
+   },
+   "perception": {
+    "boresight": "gimbal",
+    "fov_half_angle_deg": 60
+   },
+   "start": {
+    "mode": "random",
+    "region": [
+     [
+      -12.0,
+      -2.0,
+      1.0
+     ],
+     [
+      -8.0,
+      2.0,
+      3.0
+     ]
+    ],
+    "min_spacing": 0.8
+   },
+   "goal": {
+    "formation": {
+     "type": "circle",
+     "n": 8,
+     "radius": 3.0
+    },
+    "pose": {
+     "translation": [
+      0.0,
+      0.0,
+      2.0
+     ]
+    },
+    "tolerance": 0.3,
+    "track_target": true,
+    "align_heading": true
+   },
+   "stack": {
+    "assignment": "hungarian",
+    "planner": "track",
+    "planner_params": {
+     "hysteresis": 0.15
+    },
+    "placement": "dopt_c",
+    "placement_params": {
+     "separation": true,
+     "connectivity": true,
+     "fov": true,
+     "clearance": true,
+     "lambda2_floor": 0.05,
+     "standoff_min": 2.0,
+     "standoff_max": 4.0,
+     "altitude_min": -1.0,
+     "altitude_max": 3.0,
+     "restarts": 6,
+     "warm_restarts": 1,
+     "every": 4
+    },
+    "controller": "velocity_p",
+    "safety_filter": "orca"
+   },
+   "output": {
+    "dir": "runs/dynamic_geometry/open_02"
+   }
+  }
+ },
+ {
+  "name": "one_wall_00",
+  "family": "one_wall",
+  "variant": 0,
+  "seed": 8303,
+  "window": [
+   4.0,
+   16.0
+  ],
+  "arc_time": null,
+  "parameters": {
+   "width_in": 2.5300251201355883,
+   "width_out": 2.5300251201355883,
+   "width_scale": 1.0,
+   "turn": null,
+   "radius": null,
+   "angle_deg": null,
+   "direction": "left",
+   "arc_s": [
+    9.0,
+    9.0
+   ],
+   "wall_one": "left",
+   "start_lateral": [
+    -2.0,
+    0.6650125600677942
+   ]
+  },
+  "scenario": {
+   "name": "one_wall_00",
+   "seed": 8303,
+   "time": {
+    "duration": 20.0,
+    "sim_hz": 50,
+    "plan_hz": 2
+   },
+   "drones": {
+    "count": 8,
+    "radius": 0.15,
+    "downwash_ratio": 3.0,
+    "limits": {
+     "v_max": 4.0,
+     "a_max": 8.0
+    }
+   },
+   "constraints": {
+    "safety_margin": 0.2,
+    "obstacle_margin": 0.2,
+    "comm_range": 4.0,
+    "connectivity": "monitor"
+   },
+   "world": {
+    "bounds": [
+     [
+      -29.0,
+      -15.0,
+      0.0
+     ],
+     [
+      39.0,
+      15.0,
+      8.0
+     ]
+    ],
+    "obstacles": [
+     {
+      "type": "wall",
+      "points": [
+       [
+        -40.0,
+        1.2650125600677942
+       ],
+       [
+        0.0,
+        1.2650125600677942
+       ],
+       [
+        18.0,
+        1.2650125600677942
+       ],
+       [
+        20.0,
+        1.2650125600677942
+       ]
+      ],
+      "thickness": 0.5,
+      "height": 6.0
+     }
+    ]
+   },
+   "target": {
+    "motion": "constant_velocity",
+    "position": [
+     -6.0,
+     0.0,
+     0.0
+    ],
+    "heading": 0.0,
+    "speed": 1.5,
+    "altitude": 1.7,
+    "window": [
+     4.0,
+     16.0
+    ]
+   },
+   "perception": {
+    "boresight": "gimbal",
+    "fov_half_angle_deg": 60
+   },
+   "start": {
+    "mode": "random",
+    "region": [
+     [
+      -13.5,
+      -2.0,
+      1.0
+     ],
+     [
+      -8.0,
+      0.6650125600677942,
+      3.0
+     ]
+    ],
+    "min_spacing": 0.8
+   },
+   "goal": {
+    "formation": {
+     "type": "circle",
+     "n": 8,
+     "radius": 3.0
+    },
+    "pose": {
+     "translation": [
+      0.0,
+      0.0,
+      2.0
+     ]
+    },
+    "tolerance": 0.3,
+    "track_target": true,
+    "align_heading": true
+   },
+   "stack": {
+    "assignment": "hungarian",
+    "planner": "track",
+    "planner_params": {
+     "hysteresis": 0.15
+    },
+    "placement": "dopt_c",
+    "placement_params": {
+     "separation": true,
+     "connectivity": true,
+     "fov": true,
+     "clearance": true,
+     "lambda2_floor": 0.05,
+     "standoff_min": 2.0,
+     "standoff_max": 4.0,
+     "altitude_min": -1.0,
+     "altitude_max": 3.0,
+     "restarts": 6,
+     "warm_restarts": 1,
+     "every": 4
+    },
+    "controller": "velocity_p",
+    "safety_filter": "orca"
+   },
+   "output": {
+    "dir": "runs/dynamic_geometry/one_wall_00"
+   }
+  }
+ },
+ {
+  "name": "one_wall_01",
+  "family": "one_wall",
+  "variant": 1,
+  "seed": 8304,
+  "window": [
+   4.0,
+   16.0
+  ],
+  "arc_time": null,
+  "parameters": {
+   "width_in": 3.518464351988972,
+   "width_out": 3.518464351988972,
+   "width_scale": 1.0,
+   "turn": null,
+   "radius": null,
+   "angle_deg": null,
+   "direction": "right",
+   "arc_s": [
+    9.0,
+    9.0
+   ],
+   "wall_one": "right",
+   "start_lateral": [
+    -1.159232175994486,
+    2.0
+   ]
+  },
+  "scenario": {
+   "name": "one_wall_01",
+   "seed": 8304,
+   "time": {
+    "duration": 20.0,
+    "sim_hz": 50,
+    "plan_hz": 2
+   },
+   "drones": {
+    "count": 8,
+    "radius": 0.15,
+    "downwash_ratio": 3.0,
+    "limits": {
+     "v_max": 4.0,
+     "a_max": 8.0
+    }
+   },
+   "constraints": {
+    "safety_margin": 0.2,
+    "obstacle_margin": 0.2,
+    "comm_range": 4.0,
+    "connectivity": "monitor"
+   },
+   "world": {
+    "bounds": [
+     [
+      -29.0,
+      -15.0,
+      0.0
+     ],
+     [
+      39.0,
+      15.0,
+      8.0
+     ]
+    ],
+    "obstacles": [
+     {
+      "type": "wall",
+      "points": [
+       [
+        -40.0,
+        -1.759232175994486
+       ],
+       [
+        0.0,
+        -1.759232175994486
+       ],
+       [
+        18.0,
+        -1.759232175994486
+       ],
+       [
+        20.0,
+        -1.759232175994486
+       ]
+      ],
+      "thickness": 0.5,
+      "height": 6.0
+     }
+    ]
+   },
+   "target": {
+    "motion": "constant_velocity",
+    "position": [
+     -6.0,
+     0.0,
+     0.0
+    ],
+    "heading": 0.0,
+    "speed": 1.5,
+    "altitude": 1.7,
+    "window": [
+     4.0,
+     16.0
+    ]
+   },
+   "perception": {
+    "boresight": "gimbal",
+    "fov_half_angle_deg": 60
+   },
+   "start": {
+    "mode": "random",
+    "region": [
+     [
+      -12.0,
+      -1.159232175994486,
+      1.0
+     ],
+     [
+      -8.0,
+      2.0,
+      3.0
+     ]
+    ],
+    "min_spacing": 0.8
+   },
+   "goal": {
+    "formation": {
+     "type": "circle",
+     "n": 8,
+     "radius": 3.0
+    },
+    "pose": {
+     "translation": [
+      0.0,
+      0.0,
+      2.0
+     ]
+    },
+    "tolerance": 0.3,
+    "track_target": true,
+    "align_heading": true
+   },
+   "stack": {
+    "assignment": "hungarian",
+    "planner": "track",
+    "planner_params": {
+     "hysteresis": 0.15
+    },
+    "placement": "dopt_c",
+    "placement_params": {
+     "separation": true,
+     "connectivity": true,
+     "fov": true,
+     "clearance": true,
+     "lambda2_floor": 0.05,
+     "standoff_min": 2.0,
+     "standoff_max": 4.0,
+     "altitude_min": -1.0,
+     "altitude_max": 3.0,
+     "restarts": 6,
+     "warm_restarts": 1,
+     "every": 4
+    },
+    "controller": "velocity_p",
+    "safety_filter": "orca"
+   },
+   "output": {
+    "dir": "runs/dynamic_geometry/one_wall_01"
+   }
+  }
+ },
+ {
+  "name": "one_wall_02",
+  "family": "one_wall",
+  "variant": 2,
+  "seed": 8305,
+  "window": [
+   4.0,
+   16.0
+  ],
+  "arc_time": null,
+  "parameters": {
+   "width_in": 2.9606823673796456,
+   "width_out": 2.9606823673796456,
+   "width_scale": 1.0,
+   "turn": null,
+   "radius": null,
+   "angle_deg": null,
+   "direction": "right",
+   "arc_s": [
+    9.0,
+    9.0
+   ],
+   "wall_one": "right",
+   "start_lateral": [
+    -0.8803411836898228,
+    2.0
+   ]
+  },
+  "scenario": {
+   "name": "one_wall_02",
+   "seed": 8305,
+   "time": {
+    "duration": 20.0,
+    "sim_hz": 50,
+    "plan_hz": 2
+   },
+   "drones": {
+    "count": 8,
+    "radius": 0.15,
+    "downwash_ratio": 3.0,
+    "limits": {
+     "v_max": 4.0,
+     "a_max": 8.0
+    }
+   },
+   "constraints": {
+    "safety_margin": 0.2,
+    "obstacle_margin": 0.2,
+    "comm_range": 4.0,
+    "connectivity": "monitor"
+   },
+   "world": {
+    "bounds": [
+     [
+      -29.0,
+      -15.0,
+      0.0
+     ],
+     [
+      39.0,
+      15.0,
+      8.0
+     ]
+    ],
+    "obstacles": [
+     {
+      "type": "wall",
+      "points": [
+       [
+        -40.0,
+        -1.4803411836898228
+       ],
+       [
+        0.0,
+        -1.4803411836898228
+       ],
+       [
+        18.0,
+        -1.4803411836898228
+       ],
+       [
+        20.0,
+        -1.4803411836898228
+       ]
+      ],
+      "thickness": 0.5,
+      "height": 6.0
+     }
+    ]
+   },
+   "target": {
+    "motion": "constant_velocity",
+    "position": [
+     -6.0,
+     0.0,
+     0.0
+    ],
+    "heading": 0.0,
+    "speed": 1.5,
+    "altitude": 1.7,
+    "window": [
+     4.0,
+     16.0
+    ]
+   },
+   "perception": {
+    "boresight": "gimbal",
+    "fov_half_angle_deg": 60
+   },
+   "start": {
+    "mode": "random",
+    "region": [
+     [
+      -13.5,
+      -0.8803411836898228,
+      1.0
+     ],
+     [
+      -8.0,
+      2.0,
+      3.0
+     ]
+    ],
+    "min_spacing": 0.8
+   },
+   "goal": {
+    "formation": {
+     "type": "circle",
+     "n": 8,
+     "radius": 3.0
+    },
+    "pose": {
+     "translation": [
+      0.0,
+      0.0,
+      2.0
+     ]
+    },
+    "tolerance": 0.3,
+    "track_target": true,
+    "align_heading": true
+   },
+   "stack": {
+    "assignment": "hungarian",
+    "planner": "track",
+    "planner_params": {
+     "hysteresis": 0.15
+    },
+    "placement": "dopt_c",
+    "placement_params": {
+     "separation": true,
+     "connectivity": true,
+     "fov": true,
+     "clearance": true,
+     "lambda2_floor": 0.05,
+     "standoff_min": 2.0,
+     "standoff_max": 4.0,
+     "altitude_min": -1.0,
+     "altitude_max": 3.0,
+     "restarts": 6,
+     "warm_restarts": 1,
+     "every": 4
+    },
+    "controller": "velocity_p",
+    "safety_filter": "orca"
+   },
+   "output": {
+    "dir": "runs/dynamic_geometry/one_wall_02"
+   }
+  }
+ },
+ {
+  "name": "corridor_00",
+  "family": "corridor",
+  "variant": 0,
+  "seed": 8306,
+  "window": [
+   4.0,
+   16.0
+  ],
+  "arc_time": null,
+  "parameters": {
+   "width_in": 3.2443008827099717,
+   "width_out": 3.2443008827099717,
+   "width_scale": 1.0,
+   "turn": null,
+   "radius": null,
+   "angle_deg": null,
+   "direction": "left",
+   "arc_s": [
+    9.0,
+    9.0
+   ],
+   "wall_left": "left",
+   "wall_right": "right",
+   "start_lateral": [
+    -1.0221504413549858,
+    1.0221504413549858
+   ]
+  },
+  "scenario": {
+   "name": "corridor_00",
+   "seed": 8306,
+   "time": {
+    "duration": 20.0,
+    "sim_hz": 50,
+    "plan_hz": 2
+   },
+   "drones": {
+    "count": 8,
+    "radius": 0.15,
+    "downwash_ratio": 3.0,
+    "limits": {
+     "v_max": 4.0,
+     "a_max": 8.0
+    }
+   },
+   "constraints": {
+    "safety_margin": 0.2,
+    "obstacle_margin": 0.2,
+    "comm_range": 4.0,
+    "connectivity": "monitor"
+   },
+   "world": {
+    "bounds": [
+     [
+      -29.0,
+      -15.0,
+      0.0
+     ],
+     [
+      39.0,
+      15.0,
+      8.0
+     ]
+    ],
+    "obstacles": [
+     {
+      "type": "wall",
+      "points": [
+       [
+        -40.0,
+        1.6221504413549859
+       ],
+       [
+        0.0,
+        1.6221504413549859
+       ],
+       [
+        18.0,
+        1.6221504413549859
+       ],
+       [
+        20.0,
+        1.6221504413549859
+       ]
+      ],
+      "thickness": 0.5,
+      "height": 6.0
+     },
+     {
+      "type": "wall",
+      "points": [
+       [
+        -40.0,
+        -1.6221504413549859
+       ],
+       [
+        0.0,
+        -1.6221504413549859
+       ],
+       [
+        18.0,
+        -1.6221504413549859
+       ],
+       [
+        20.0,
+        -1.6221504413549859
+       ]
+      ],
+      "thickness": 0.5,
+      "height": 6.0
+     }
+    ]
+   },
+   "target": {
+    "motion": "constant_velocity",
+    "position": [
+     -6.0,
+     0.0,
+     0.0
+    ],
+    "heading": 0.0,
+    "speed": 1.5,
+    "altitude": 1.7,
+    "window": [
+     4.0,
+     16.0
+    ]
+   },
+   "perception": {
+    "boresight": "gimbal",
+    "fov_half_angle_deg": 60
+   },
+   "start": {
+    "mode": "random",
+    "region": [
+     [
+      -13.5,
+      -1.0221504413549858,
+      1.0
+     ],
+     [
+      -8.0,
+      1.0221504413549858,
+      3.0
+     ]
+    ],
+    "min_spacing": 0.8
+   },
+   "goal": {
+    "formation": {
+     "type": "circle",
+     "n": 8,
+     "radius": 3.0
+    },
+    "pose": {
+     "translation": [
+      0.0,
+      0.0,
+      2.0
+     ]
+    },
+    "tolerance": 0.3,
+    "track_target": true,
+    "align_heading": true
+   },
+   "stack": {
+    "assignment": "hungarian",
+    "planner": "track",
+    "planner_params": {
+     "hysteresis": 0.15
+    },
+    "placement": "dopt_c",
+    "placement_params": {
+     "separation": true,
+     "connectivity": true,
+     "fov": true,
+     "clearance": true,
+     "lambda2_floor": 0.05,
+     "standoff_min": 2.0,
+     "standoff_max": 4.0,
+     "altitude_min": -1.0,
+     "altitude_max": 3.0,
+     "restarts": 6,
+     "warm_restarts": 1,
+     "every": 4
+    },
+    "controller": "velocity_p",
+    "safety_filter": "orca"
+   },
+   "output": {
+    "dir": "runs/dynamic_geometry/corridor_00"
+   }
+  }
+ },
+ {
+  "name": "corridor_01",
+  "family": "corridor",
+  "variant": 1,
+  "seed": 8307,
+  "window": [
+   4.0,
+   16.0
+  ],
+  "arc_time": null,
+  "parameters": {
+   "width_in": 2.5457263521579288,
+   "width_out": 2.5457263521579288,
+   "width_scale": 1.0,
+   "turn": null,
+   "radius": null,
+   "angle_deg": null,
+   "direction": "left",
+   "arc_s": [
+    9.0,
+    9.0
+   ],
+   "wall_left": "left",
+   "wall_right": "right",
+   "start_lateral": [
+    -0.6728631760789644,
+    0.6728631760789644
+   ]
+  },
+  "scenario": {
+   "name": "corridor_01",
+   "seed": 8307,
+   "time": {
+    "duration": 20.0,
+    "sim_hz": 50,
+    "plan_hz": 2
+   },
+   "drones": {
+    "count": 8,
+    "radius": 0.15,
+    "downwash_ratio": 3.0,
+    "limits": {
+     "v_max": 4.0,
+     "a_max": 8.0
+    }
+   },
+   "constraints": {
+    "safety_margin": 0.2,
+    "obstacle_margin": 0.2,
+    "comm_range": 4.0,
+    "connectivity": "monitor"
+   },
+   "world": {
+    "bounds": [
+     [
+      -29.0,
+      -15.0,
+      0.0
+     ],
+     [
+      39.0,
+      15.0,
+      8.0
+     ]
+    ],
+    "obstacles": [
+     {
+      "type": "wall",
+      "points": [
+       [
+        -40.0,
+        1.2728631760789644
+       ],
+       [
+        0.0,
+        1.2728631760789644
+       ],
+       [
+        18.0,
+        1.2728631760789644
+       ],
+       [
+        20.0,
+        1.2728631760789644
+       ]
+      ],
+      "thickness": 0.5,
+      "height": 6.0
+     },
+     {
+      "type": "wall",
+      "points": [
+       [
+        -40.0,
+        -1.2728631760789644
+       ],
+       [
+        0.0,
+        -1.2728631760789644
+       ],
+       [
+        18.0,
+        -1.2728631760789644
+       ],
+       [
+        20.0,
+        -1.2728631760789644
+       ]
+      ],
+      "thickness": 0.5,
+      "height": 6.0
+     }
+    ]
+   },
+   "target": {
+    "motion": "constant_velocity",
+    "position": [
+     -6.0,
+     0.0,
+     0.0
+    ],
+    "heading": 0.0,
+    "speed": 1.5,
+    "altitude": 1.7,
+    "window": [
+     4.0,
+     16.0
+    ]
+   },
+   "perception": {
+    "boresight": "gimbal",
+    "fov_half_angle_deg": 60
+   },
+   "start": {
+    "mode": "random",
+    "region": [
+     [
+      -15.0,
+      -0.6728631760789644,
+      1.0
+     ],
+     [
+      -8.0,
+      0.6728631760789644,
+      3.0
+     ]
+    ],
+    "min_spacing": 0.8
+   },
+   "goal": {
+    "formation": {
+     "type": "circle",
+     "n": 8,
+     "radius": 3.0
+    },
+    "pose": {
+     "translation": [
+      0.0,
+      0.0,
+      2.0
+     ]
+    },
+    "tolerance": 0.3,
+    "track_target": true,
+    "align_heading": true
+   },
+   "stack": {
+    "assignment": "hungarian",
+    "planner": "track",
+    "planner_params": {
+     "hysteresis": 0.15
+    },
+    "placement": "dopt_c",
+    "placement_params": {
+     "separation": true,
+     "connectivity": true,
+     "fov": true,
+     "clearance": true,
+     "lambda2_floor": 0.05,
+     "standoff_min": 2.0,
+     "standoff_max": 4.0,
+     "altitude_min": -1.0,
+     "altitude_max": 3.0,
+     "restarts": 6,
+     "warm_restarts": 1,
+     "every": 4
+    },
+    "controller": "velocity_p",
+    "safety_filter": "orca"
+   },
+   "output": {
+    "dir": "runs/dynamic_geometry/corridor_01"
+   }
+  }
+ },
+ {
+  "name": "corridor_02",
+  "family": "corridor",
+  "variant": 2,
+  "seed": 8308,
+  "window": [
+   4.0,
+   16.0
+  ],
+  "arc_time": null,
+  "parameters": {
+   "width_in": 3.2400883072075035,
+   "width_out": 3.2400883072075035,
+   "width_scale": 1.0,
+   "turn": null,
+   "radius": null,
+   "angle_deg": null,
+   "direction": "right",
+   "arc_s": [
+    9.0,
+    9.0
+   ],
+   "wall_left": "left",
+   "wall_right": "right",
+   "start_lateral": [
+    -1.020044153603752,
+    1.020044153603752
+   ]
+  },
+  "scenario": {
+   "name": "corridor_02",
+   "seed": 8308,
+   "time": {
+    "duration": 20.0,
+    "sim_hz": 50,
+    "plan_hz": 2
+   },
+   "drones": {
+    "count": 8,
+    "radius": 0.15,
+    "downwash_ratio": 3.0,
+    "limits": {
+     "v_max": 4.0,
+     "a_max": 8.0
+    }
+   },
+   "constraints": {
+    "safety_margin": 0.2,
+    "obstacle_margin": 0.2,
+    "comm_range": 4.0,
+    "connectivity": "monitor"
+   },
+   "world": {
+    "bounds": [
+     [
+      -29.0,
+      -15.0,
+      0.0
+     ],
+     [
+      39.0,
+      15.0,
+      8.0
+     ]
+    ],
+    "obstacles": [
+     {
+      "type": "wall",
+      "points": [
+       [
+        -40.0,
+        1.6200441536037518
+       ],
+       [
+        0.0,
+        1.6200441536037518
+       ],
+       [
+        18.0,
+        1.6200441536037518
+       ],
+       [
+        20.0,
+        1.6200441536037518
+       ]
+      ],
+      "thickness": 0.5,
+      "height": 6.0
+     },
+     {
+      "type": "wall",
+      "points": [
+       [
+        -40.0,
+        -1.6200441536037518
+       ],
+       [
+        0.0,
+        -1.6200441536037518
+       ],
+       [
+        18.0,
+        -1.6200441536037518
+       ],
+       [
+        20.0,
+        -1.6200441536037518
+       ]
+      ],
+      "thickness": 0.5,
+      "height": 6.0
+     }
+    ]
+   },
+   "target": {
+    "motion": "constant_velocity",
+    "position": [
+     -6.0,
+     0.0,
+     0.0
+    ],
+    "heading": 0.0,
+    "speed": 1.5,
+    "altitude": 1.7,
+    "window": [
+     4.0,
+     16.0
+    ]
+   },
+   "perception": {
+    "boresight": "gimbal",
+    "fov_half_angle_deg": 60
+   },
+   "start": {
+    "mode": "random",
+    "region": [
+     [
+      -13.5,
+      -1.020044153603752,
+      1.0
+     ],
+     [
+      -8.0,
+      1.020044153603752,
+      3.0
+     ]
+    ],
+    "min_spacing": 0.8
+   },
+   "goal": {
+    "formation": {
+     "type": "circle",
+     "n": 8,
+     "radius": 3.0
+    },
+    "pose": {
+     "translation": [
+      0.0,
+      0.0,
+      2.0
+     ]
+    },
+    "tolerance": 0.3,
+    "track_target": true,
+    "align_heading": true
+   },
+   "stack": {
+    "assignment": "hungarian",
+    "planner": "track",
+    "planner_params": {
+     "hysteresis": 0.15
+    },
+    "placement": "dopt_c",
+    "placement_params": {
+     "separation": true,
+     "connectivity": true,
+     "fov": true,
+     "clearance": true,
+     "lambda2_floor": 0.05,
+     "standoff_min": 2.0,
+     "standoff_max": 4.0,
+     "altitude_min": -1.0,
+     "altitude_max": 3.0,
+     "restarts": 6,
+     "warm_restarts": 1,
+     "every": 4
+    },
+    "controller": "velocity_p",
+    "safety_filter": "orca"
+   },
+   "output": {
+    "dir": "runs/dynamic_geometry/corridor_02"
+   }
+  }
+ },
+ {
+  "name": "taper_00",
+  "family": "taper",
+  "variant": 0,
+  "seed": 8309,
+  "window": [
+   4.0,
+   16.0
+  ],
+  "arc_time": null,
+  "parameters": {
+   "width_in": 4.117709460441372,
+   "width_out": 2.435595348691626,
+   "width_scale": 1.0,
+   "turn": null,
+   "radius": null,
+   "angle_deg": null,
+   "direction": "right",
+   "arc_s": [
+    9.0,
+    9.0
+   ],
+   "wall_left": "left",
+   "wall_right": "right",
+   "start_lateral": [
+    -1.4588547302206858,
+    1.4588547302206858
+   ]
+  },
+  "scenario": {
+   "name": "taper_00",
+   "seed": 8309,
+   "time": {
+    "duration": 20.0,
+    "sim_hz": 50,
+    "plan_hz": 2
+   },
+   "drones": {
+    "count": 8,
+    "radius": 0.15,
+    "downwash_ratio": 3.0,
+    "limits": {
+     "v_max": 4.0,
+     "a_max": 8.0
+    }
+   },
+   "constraints": {
+    "safety_margin": 0.2,
+    "obstacle_margin": 0.2,
+    "comm_range": 4.0,
+    "connectivity": "monitor"
+   },
+   "world": {
+    "bounds": [
+     [
+      -29.0,
+      -15.0,
+      0.0
+     ],
+     [
+      39.0,
+      15.0,
+      8.0
+     ]
+    ],
+    "obstacles": [
+     {
+      "type": "wall",
+      "points": [
+       [
+        -40.0,
+        2.058854730220686
+       ],
+       [
+        0.0,
+        2.058854730220686
+       ],
+       [
+        18.0,
+        1.217797674345813
+       ],
+       [
+        20.0,
+        1.217797674345813
+       ]
+      ],
+      "thickness": 0.5,
+      "height": 6.0
+     },
+     {
+      "type": "wall",
+      "points": [
+       [
+        -40.0,
+        -2.058854730220686
+       ],
+       [
+        0.0,
+        -2.058854730220686
+       ],
+       [
+        18.0,
+        -1.217797674345813
+       ],
+       [
+        20.0,
+        -1.217797674345813
+       ]
+      ],
+      "thickness": 0.5,
+      "height": 6.0
+     }
+    ]
+   },
+   "target": {
+    "motion": "constant_velocity",
+    "position": [
+     -6.0,
+     0.0,
+     0.0
+    ],
+    "heading": 0.0,
+    "speed": 1.5,
+    "altitude": 1.7,
+    "window": [
+     4.0,
+     16.0
+    ]
+   },
+   "perception": {
+    "boresight": "gimbal",
+    "fov_half_angle_deg": 60
+   },
+   "start": {
+    "mode": "random",
+    "region": [
+     [
+      -13.5,
+      -1.4588547302206858,
+      1.0
+     ],
+     [
+      -8.0,
+      1.4588547302206858,
+      3.0
+     ]
+    ],
+    "min_spacing": 0.8
+   },
+   "goal": {
+    "formation": {
+     "type": "circle",
+     "n": 8,
+     "radius": 3.0
+    },
+    "pose": {
+     "translation": [
+      0.0,
+      0.0,
+      2.0
+     ]
+    },
+    "tolerance": 0.3,
+    "track_target": true,
+    "align_heading": true
+   },
+   "stack": {
+    "assignment": "hungarian",
+    "planner": "track",
+    "planner_params": {
+     "hysteresis": 0.15
+    },
+    "placement": "dopt_c",
+    "placement_params": {
+     "separation": true,
+     "connectivity": true,
+     "fov": true,
+     "clearance": true,
+     "lambda2_floor": 0.05,
+     "standoff_min": 2.0,
+     "standoff_max": 4.0,
+     "altitude_min": -1.0,
+     "altitude_max": 3.0,
+     "restarts": 6,
+     "warm_restarts": 1,
+     "every": 4
+    },
+    "controller": "velocity_p",
+    "safety_filter": "orca"
+   },
+   "output": {
+    "dir": "runs/dynamic_geometry/taper_00"
+   }
+  }
+ },
+ {
+  "name": "taper_01",
+  "family": "taper",
+  "variant": 1,
+  "seed": 8310,
+  "window": [
+   4.0,
+   16.0
+  ],
+  "arc_time": null,
+  "parameters": {
+   "width_in": 3.9549414875379814,
+   "width_out": 2.4913069211508256,
+   "width_scale": 1.0,
+   "turn": null,
+   "radius": null,
+   "angle_deg": null,
+   "direction": "left",
+   "arc_s": [
+    9.0,
+    9.0
+   ],
+   "wall_left": "left",
+   "wall_right": "right",
+   "start_lateral": [
+    -1.3774707437689906,
+    1.3774707437689906
+   ]
+  },
+  "scenario": {
+   "name": "taper_01",
+   "seed": 8310,
+   "time": {
+    "duration": 20.0,
+    "sim_hz": 50,
+    "plan_hz": 2
+   },
+   "drones": {
+    "count": 8,
+    "radius": 0.15,
+    "downwash_ratio": 3.0,
+    "limits": {
+     "v_max": 4.0,
+     "a_max": 8.0
+    }
+   },
+   "constraints": {
+    "safety_margin": 0.2,
+    "obstacle_margin": 0.2,
+    "comm_range": 4.0,
+    "connectivity": "monitor"
+   },
+   "world": {
+    "bounds": [
+     [
+      -29.0,
+      -15.0,
+      0.0
+     ],
+     [
+      39.0,
+      15.0,
+      8.0
+     ]
+    ],
+    "obstacles": [
+     {
+      "type": "wall",
+      "points": [
+       [
+        -40.0,
+        1.9774707437689907
+       ],
+       [
+        0.0,
+        1.9774707437689907
+       ],
+       [
+        18.0,
+        1.2456534605754128
+       ],
+       [
+        20.0,
+        1.2456534605754128
+       ]
+      ],
+      "thickness": 0.5,
+      "height": 6.0
+     },
+     {
+      "type": "wall",
+      "points": [
+       [
+        -40.0,
+        -1.9774707437689907
+       ],
+       [
+        0.0,
+        -1.9774707437689907
+       ],
+       [
+        18.0,
+        -1.2456534605754128
+       ],
+       [
+        20.0,
+        -1.2456534605754128
+       ]
+      ],
+      "thickness": 0.5,
+      "height": 6.0
+     }
+    ]
+   },
+   "target": {
+    "motion": "constant_velocity",
+    "position": [
+     -6.0,
+     0.0,
+     0.0
+    ],
+    "heading": 0.0,
+    "speed": 1.5,
+    "altitude": 1.7,
+    "window": [
+     4.0,
+     16.0
+    ]
+   },
+   "perception": {
+    "boresight": "gimbal",
+    "fov_half_angle_deg": 60
+   },
+   "start": {
+    "mode": "random",
+    "region": [
+     [
+      -13.5,
+      -1.3774707437689906,
+      1.0
+     ],
+     [
+      -8.0,
+      1.3774707437689906,
+      3.0
+     ]
+    ],
+    "min_spacing": 0.8
+   },
+   "goal": {
+    "formation": {
+     "type": "circle",
+     "n": 8,
+     "radius": 3.0
+    },
+    "pose": {
+     "translation": [
+      0.0,
+      0.0,
+      2.0
+     ]
+    },
+    "tolerance": 0.3,
+    "track_target": true,
+    "align_heading": true
+   },
+   "stack": {
+    "assignment": "hungarian",
+    "planner": "track",
+    "planner_params": {
+     "hysteresis": 0.15
+    },
+    "placement": "dopt_c",
+    "placement_params": {
+     "separation": true,
+     "connectivity": true,
+     "fov": true,
+     "clearance": true,
+     "lambda2_floor": 0.05,
+     "standoff_min": 2.0,
+     "standoff_max": 4.0,
+     "altitude_min": -1.0,
+     "altitude_max": 3.0,
+     "restarts": 6,
+     "warm_restarts": 1,
+     "every": 4
+    },
+    "controller": "velocity_p",
+    "safety_filter": "orca"
+   },
+   "output": {
+    "dir": "runs/dynamic_geometry/taper_01"
+   }
+  }
+ },
+ {
+  "name": "taper_02",
+  "family": "taper",
+  "variant": 2,
+  "seed": 8311,
+  "window": [
+   4.0,
+   16.0
+  ],
+  "arc_time": null,
+  "parameters": {
+   "width_in": 4.002135824449275,
+   "width_out": 2.0795743893479024,
+   "width_scale": 1.0,
+   "turn": null,
+   "radius": null,
+   "angle_deg": null,
+   "direction": "right",
+   "arc_s": [
+    9.0,
+    9.0
+   ],
+   "wall_left": "left",
+   "wall_right": "right",
+   "start_lateral": [
+    -1.4010679122246374,
+    1.4010679122246374
+   ]
+  },
+  "scenario": {
+   "name": "taper_02",
+   "seed": 8311,
+   "time": {
+    "duration": 20.0,
+    "sim_hz": 50,
+    "plan_hz": 2
+   },
+   "drones": {
+    "count": 8,
+    "radius": 0.15,
+    "downwash_ratio": 3.0,
+    "limits": {
+     "v_max": 4.0,
+     "a_max": 8.0
+    }
+   },
+   "constraints": {
+    "safety_margin": 0.2,
+    "obstacle_margin": 0.2,
+    "comm_range": 4.0,
+    "connectivity": "monitor"
+   },
+   "world": {
+    "bounds": [
+     [
+      -29.0,
+      -15.0,
+      0.0
+     ],
+     [
+      39.0,
+      15.0,
+      8.0
+     ]
+    ],
+    "obstacles": [
+     {
+      "type": "wall",
+      "points": [
+       [
+        -40.0,
+        2.0010679122246375
+       ],
+       [
+        0.0,
+        2.0010679122246375
+       ],
+       [
+        18.0,
+        1.0397871946739512
+       ],
+       [
+        20.0,
+        1.0397871946739512
+       ]
+      ],
+      "thickness": 0.5,
+      "height": 6.0
+     },
+     {
+      "type": "wall",
+      "points": [
+       [
+        -40.0,
+        -2.0010679122246375
+       ],
+       [
+        0.0,
+        -2.0010679122246375
+       ],
+       [
+        18.0,
+        -1.0397871946739512
+       ],
+       [
+        20.0,
+        -1.0397871946739512
+       ]
+      ],
+      "thickness": 0.5,
+      "height": 6.0
+     }
+    ]
+   },
+   "target": {
+    "motion": "constant_velocity",
+    "position": [
+     -6.0,
+     0.0,
+     0.0
+    ],
+    "heading": 0.0,
+    "speed": 1.5,
+    "altitude": 1.7,
+    "window": [
+     4.0,
+     16.0
+    ]
+   },
+   "perception": {
+    "boresight": "gimbal",
+    "fov_half_angle_deg": 60
+   },
+   "start": {
+    "mode": "random",
+    "region": [
+     [
+      -13.5,
+      -1.4010679122246374,
+      1.0
+     ],
+     [
+      -8.0,
+      1.4010679122246374,
+      3.0
+     ]
+    ],
+    "min_spacing": 0.8
+   },
+   "goal": {
+    "formation": {
+     "type": "circle",
+     "n": 8,
+     "radius": 3.0
+    },
+    "pose": {
+     "translation": [
+      0.0,
+      0.0,
+      2.0
+     ]
+    },
+    "tolerance": 0.3,
+    "track_target": true,
+    "align_heading": true
+   },
+   "stack": {
+    "assignment": "hungarian",
+    "planner": "track",
+    "planner_params": {
+     "hysteresis": 0.15
+    },
+    "placement": "dopt_c",
+    "placement_params": {
+     "separation": true,
+     "connectivity": true,
+     "fov": true,
+     "clearance": true,
+     "lambda2_floor": 0.05,
+     "standoff_min": 2.0,
+     "standoff_max": 4.0,
+     "altitude_min": -1.0,
+     "altitude_max": 3.0,
+     "restarts": 6,
+     "warm_restarts": 1,
+     "every": 4
+    },
+    "controller": "velocity_p",
+    "safety_filter": "orca"
+   },
+   "output": {
+    "dir": "runs/dynamic_geometry/taper_02"
+   }
+  }
+ },
+ {
+  "name": "corner_open_00",
+  "family": "corner_open",
+  "variant": 0,
+  "seed": 8312,
+  "window": [
+   4.0,
+   16.0
+  ],
+  "arc_time": [
+   9.018243787182104,
+   10.981756212817896
+  ],
+  "parameters": {
+   "width_in": 3.197452318492333,
+   "width_out": 3.197452318492333,
+   "width_scale": 1.0,
+   "turn": "corner",
+   "radius": 1.8750162501737606,
+   "angle_deg": 90.0,
+   "direction": "left",
+   "arc_s": [
+    7.527365680773158,
+    10.472634319226842
+   ],
+   "wall_inner": "left",
+   "start_lateral": [
+    -2.0,
+    0.9987261592461666
+   ]
+  },
+  "scenario": {
+   "name": "corner_open_00",
+   "seed": 8312,
+   "time": {
+    "duration": 20.0,
+    "sim_hz": 50,
+    "plan_hz": 2
+   },
+   "drones": {
+    "count": 8,
+    "radius": 0.15,
+    "downwash_ratio": 3.0,
+    "limits": {
+     "v_max": 4.0,
+     "a_max": 8.0
+    }
+   },
+   "constraints": {
+    "safety_margin": 0.2,
+    "obstacle_margin": 0.2,
+    "comm_range": 4.0,
+    "connectivity": "monitor"
+   },
+   "world": {
+    "bounds": [
+     [
+      -29.0,
+      -15.0,
+      0.0
+     ],
+     [
+      24.402381930946927,
+      30.402381930946916,
+      8.0
+     ]
+    ],
+    "obstacles": [
+     {
+      "type": "wall",
+      "points": [
+       [
+        -40.0,
+        1.5987261592461666
+       ],
+       [
+        7.803655771700754,
+        1.5987261592461666
+       ]
+      ],
+      "thickness": 0.5,
+      "height": 6.0
+     },
+     {
+      "type": "wall",
+      "points": [
+       [
+        7.803655771700754,
+        1.5987261592461666
+       ],
+       [
+        7.803655771700758,
+        11.402381930946918
+       ]
+      ],
+      "thickness": 0.5,
+      "height": 6.0
+     }
+    ]
+   },
+   "target": {
+    "motion": "segments",
+    "segments": [
+     {
+      "duration": 9.018243787182104
+     },
+     {
+      "duration": 1.9635124256357912,
+      "a_lat": 1.1999895999789276
+     },
+     {
+      "duration": 10.018243787182104
+     }
+    ],
+    "position": [
+     -6.0,
+     0.0,
+     0.0
+    ],
+    "heading": 0.0,
+    "speed": 1.5,
+    "altitude": 1.7,
+    "window": [
+     4.0,
+     16.0
+    ]
+   },
+   "perception": {
+    "boresight": "gimbal",
+    "fov_half_angle_deg": 60
+   },
+   "start": {
+    "mode": "random",
+    "region": [
+     [
+      -13.5,
+      -2.0,
+      1.0
+     ],
+     [
+      -8.0,
+      0.9987261592461666,
+      3.0
+     ]
+    ],
+    "min_spacing": 0.8
+   },
+   "goal": {
+    "formation": {
+     "type": "circle",
+     "n": 8,
+     "radius": 3.0
+    },
+    "pose": {
+     "translation": [
+      0.0,
+      0.0,
+      2.0
+     ]
+    },
+    "tolerance": 0.3,
+    "track_target": true,
+    "align_heading": true
+   },
+   "stack": {
+    "assignment": "hungarian",
+    "planner": "track",
+    "planner_params": {
+     "hysteresis": 0.15
+    },
+    "placement": "dopt_c",
+    "placement_params": {
+     "separation": true,
+     "connectivity": true,
+     "fov": true,
+     "clearance": true,
+     "lambda2_floor": 0.05,
+     "standoff_min": 2.0,
+     "standoff_max": 4.0,
+     "altitude_min": -1.0,
+     "altitude_max": 3.0,
+     "restarts": 6,
+     "warm_restarts": 1,
+     "every": 4
+    },
+    "controller": "velocity_p",
+    "safety_filter": "orca"
+   },
+   "output": {
+    "dir": "runs/dynamic_geometry/corner_open_00"
+   }
+  }
+ },
+ {
+  "name": "corner_open_01",
+  "family": "corner_open",
+  "variant": 1,
+  "seed": 8313,
+  "window": [
+   4.0,
+   16.0
+  ],
+  "arc_time": [
+   9.231089662333545,
+   10.768910337666455
+  ],
+  "parameters": {
+   "width_in": 2.9861876317065437,
+   "width_out": 2.9861876317065437,
+   "width_scale": 1.0,
+   "turn": "corner",
+   "radius": 1.468510572408894,
+   "angle_deg": 90.0,
+   "direction": "left",
+   "arc_s": [
+    7.84663449350032,
+    10.153365506499682
+   ],
+   "wall_inner": "left",
+   "start_lateral": [
+    -2.0,
+    0.8930938158532719
+   ]
+  },
+  "scenario": {
+   "name": "corner_open_01",
+   "seed": 8313,
+   "time": {
+    "duration": 20.0,
+    "sim_hz": 50,
+    "plan_hz": 2
+   },
+   "drones": {
+    "count": 8,
+    "radius": 0.15,
+    "downwash_ratio": 3.0,
+    "limits": {
+     "v_max": 4.0,
+     "a_max": 8.0
+    }
+   },
+   "constraints": {
+    "safety_margin": 0.2,
+    "obstacle_margin": 0.2,
+    "comm_range": 4.0,
+    "connectivity": "monitor"
+   },
+   "world": {
+    "bounds": [
+     [
+      -29.0,
+      -15.0,
+      0.0
+     ],
+     [
+      24.315145065909213,
+      30.315145065909213,
+      8.0
+     ]
+    ],
+    "obstacles": [
+     {
+      "type": "wall",
+      "points": [
+       [
+        -40.0,
+        1.4930938158532718
+       ],
+       [
+        7.822051250055942,
+        1.4930938158532718
+       ]
+      ],
+      "thickness": 0.5,
+      "height": 6.0
+     },
+     {
+      "type": "wall",
+      "points": [
+       [
+        7.822051250055942,
+        1.4930938158532718
+       ],
+       [
+        7.822051250055936,
+        11.315145065909212
+       ]
+      ],
+      "thickness": 0.5,
+      "height": 6.0
+     }
+    ]
+   },
+   "target": {
+    "motion": "segments",
+    "segments": [
+     {
+      "duration": 9.231089662333545
+     },
+     {
+      "duration": 1.5378206753329096,
+      "a_lat": 1.5321646587189206
+     },
+     {
+      "duration": 10.231089662333545
+     }
+    ],
+    "position": [
+     -6.0,
+     0.0,
+     0.0
+    ],
+    "heading": 0.0,
+    "speed": 1.5,
+    "altitude": 1.7,
+    "window": [
+     4.0,
+     16.0
+    ]
+   },
+   "perception": {
+    "boresight": "gimbal",
+    "fov_half_angle_deg": 60
+   },
+   "start": {
+    "mode": "random",
+    "region": [
+     [
+      -13.5,
+      -2.0,
+      1.0
+     ],
+     [
+      -8.0,
+      0.8930938158532719,
+      3.0
+     ]
+    ],
+    "min_spacing": 0.8
+   },
+   "goal": {
+    "formation": {
+     "type": "circle",
+     "n": 8,
+     "radius": 3.0
+    },
+    "pose": {
+     "translation": [
+      0.0,
+      0.0,
+      2.0
+     ]
+    },
+    "tolerance": 0.3,
+    "track_target": true,
+    "align_heading": true
+   },
+   "stack": {
+    "assignment": "hungarian",
+    "planner": "track",
+    "planner_params": {
+     "hysteresis": 0.15
+    },
+    "placement": "dopt_c",
+    "placement_params": {
+     "separation": true,
+     "connectivity": true,
+     "fov": true,
+     "clearance": true,
+     "lambda2_floor": 0.05,
+     "standoff_min": 2.0,
+     "standoff_max": 4.0,
+     "altitude_min": -1.0,
+     "altitude_max": 3.0,
+     "restarts": 6,
+     "warm_restarts": 1,
+     "every": 4
+    },
+    "controller": "velocity_p",
+    "safety_filter": "orca"
+   },
+   "output": {
+    "dir": "runs/dynamic_geometry/corner_open_01"
+   }
+  }
+ },
+ {
+  "name": "corner_open_02",
+  "family": "corner_open",
+  "variant": 2,
+  "seed": 8314,
+  "window": [
+   4.0,
+   16.0
+  ],
+  "arc_time": [
+   9.012943794100513,
+   10.987056205899489
+  ],
+  "parameters": {
+   "width_in": 3.3554189691062954,
+   "width_out": 3.3554189691062954,
+   "width_scale": 1.0,
+   "turn": "corner",
+   "radius": 1.8851384913412195,
+   "angle_deg": 90.0,
+   "direction": "right",
+   "arc_s": [
+    7.51941569115077,
+    10.480584308849231
+   ],
+   "wall_inner": "right",
+   "start_lateral": [
+    -1.0777094845531479,
+    2.0
+   ]
+  },
+  "scenario": {
+   "name": "corner_open_02",
+   "seed": 8314,
+   "time": {
+    "duration": 20.0,
+    "sim_hz": 50,
+    "plan_hz": 2
+   },
+   "drones": {
+    "count": 8,
+    "radius": 0.15,
+    "downwash_ratio": 3.0,
+    "limits": {
+     "v_max": 4.0,
+     "a_max": 8.0
+    }
+   },
+   "constraints": {
+    "safety_margin": 0.2,
+    "obstacle_margin": 0.2,
+    "comm_range": 4.0,
+    "connectivity": "monitor"
+   },
+   "world": {
+    "bounds": [
+     [
+      -29.0,
+      -30.40455418249199,
+      0.0
+     ],
+     [
+      24.40455418249199,
+      15.0,
+      8.0
+     ]
+    ],
+    "obstacles": [
+     {
+      "type": "wall",
+      "points": [
+       [
+        -40.0,
+        -1.6777094845531477
+       ],
+       [
+        7.726844697938837,
+        -1.6777094845531477
+       ]
+      ],
+      "thickness": 0.5,
+      "height": 6.0
+     },
+     {
+      "type": "wall",
+      "points": [
+       [
+        7.726844697938837,
+        -1.6777094845531477
+       ],
+       [
+        7.726844697938839,
+        -11.404554182491989
+       ]
+      ],
+      "thickness": 0.5,
+      "height": 6.0
+     }
+    ]
+   },
+   "target": {
+    "motion": "segments",
+    "segments": [
+     {
+      "duration": 9.012943794100513
+     },
+     {
+      "duration": 1.9741124117989752,
+      "a_lat": -1.193546262163048
+     },
+     {
+      "duration": 10.012943794100511
+     }
+    ],
+    "position": [
+     -6.0,
+     0.0,
+     0.0
+    ],
+    "heading": 0.0,
+    "speed": 1.5,
+    "altitude": 1.7,
+    "window": [
+     4.0,
+     16.0
+    ]
+   },
+   "perception": {
+    "boresight": "gimbal",
+    "fov_half_angle_deg": 60
+   },
+   "start": {
+    "mode": "random",
+    "region": [
+     [
+      -12.0,
+      -1.0777094845531479,
+      1.0
+     ],
+     [
+      -8.0,
+      2.0,
+      3.0
+     ]
+    ],
+    "min_spacing": 0.8
+   },
+   "goal": {
+    "formation": {
+     "type": "circle",
+     "n": 8,
+     "radius": 3.0
+    },
+    "pose": {
+     "translation": [
+      0.0,
+      0.0,
+      2.0
+     ]
+    },
+    "tolerance": 0.3,
+    "track_target": true,
+    "align_heading": true
+   },
+   "stack": {
+    "assignment": "hungarian",
+    "planner": "track",
+    "planner_params": {
+     "hysteresis": 0.15
+    },
+    "placement": "dopt_c",
+    "placement_params": {
+     "separation": true,
+     "connectivity": true,
+     "fov": true,
+     "clearance": true,
+     "lambda2_floor": 0.05,
+     "standoff_min": 2.0,
+     "standoff_max": 4.0,
+     "altitude_min": -1.0,
+     "altitude_max": 3.0,
+     "restarts": 6,
+     "warm_restarts": 1,
+     "every": 4
+    },
+    "controller": "velocity_p",
+    "safety_filter": "orca"
+   },
+   "output": {
+    "dir": "runs/dynamic_geometry/corner_open_02"
+   }
+  }
+ },
+ {
+  "name": "corner_closed_00",
+  "family": "corner_closed",
+  "variant": 0,
+  "seed": 8315,
+  "window": [
+   4.0,
+   16.0
+  ],
+  "arc_time": [
+   9.412914252017305,
+   10.587085747982695
+  ],
+  "parameters": {
+   "width_in": 2.460067347748335,
+   "width_out": 2.460067347748335,
+   "width_scale": 1.0,
+   "turn": "corner",
+   "radius": 1.1212511857229837,
+   "angle_deg": 90.0,
+   "direction": "left",
+   "arc_s": [
+    8.119371378025958,
+    9.880628621974044
+   ],
+   "wall_inner": "left",
+   "wall_outer": "right",
+   "start_lateral": [
+    -0.6300336738741675,
+    0.6300336738741675
+   ]
+  },
+  "scenario": {
+   "name": "corner_closed_00",
+   "seed": 8315,
+   "time": {
+    "duration": 20.0,
+    "sim_hz": 50,
+    "plan_hz": 2
+   },
+   "drones": {
+    "count": 8,
+    "radius": 0.15,
+    "downwash_ratio": 3.0,
+    "limits": {
+     "v_max": 4.0,
+     "a_max": 8.0
+    }
+   },
+   "constraints": {
+    "safety_margin": 0.2,
+    "obstacle_margin": 0.2,
+    "comm_range": 4.0,
+    "connectivity": "monitor"
+   },
+   "world": {
+    "bounds": [
+     [
+      -29.0,
+      -15.0,
+      0.0
+     ],
+     [
+      24.240622563748943,
+      30.240622563748943,
+      8.0
+     ]
+    ],
+    "obstacles": [
+     {
+      "type": "wall",
+      "points": [
+       [
+        -40.0,
+        1.2300336738741675
+       ],
+       [
+        8.010588889874775,
+        1.2300336738741675
+       ]
+      ],
+      "thickness": 0.5,
+      "height": 6.0
+     },
+     {
+      "type": "wall",
+      "points": [
+       [
+        8.010588889874775,
+        1.2300336738741675
+       ],
+       [
+        8.010588889874773,
+        11.240622563748941
+       ]
+      ],
+      "thickness": 0.5,
+      "height": 6.0
+     },
+     {
+      "type": "wall",
+      "points": [
+       [
+        -40.0,
+        -1.2300336738741675
+       ],
+       [
+        10.47065623762311,
+        -1.2300336738741675
+       ]
+      ],
+      "thickness": 0.5,
+      "height": 6.0
+     },
+     {
+      "type": "wall",
+      "points": [
+       [
+        10.47065623762311,
+        -1.2300336738741675
+       ],
+       [
+        10.470656237623109,
+        11.240622563748941
+       ]
+      ],
+      "thickness": 0.5,
+      "height": 6.0
+     }
+    ]
+   },
+   "target": {
+    "motion": "segments",
+    "segments": [
+     {
+      "duration": 9.412914252017305
+     },
+     {
+      "duration": 1.174171495965389,
+      "a_lat": 2.0066868411373835
+     },
+     {
+      "duration": 10.412914252017305
+     }
+    ],
+    "position": [
+     -6.0,
+     0.0,
+     0.0
+    ],
+    "heading": 0.0,
+    "speed": 1.5,
+    "altitude": 1.7,
+    "window": [
+     4.0,
+     16.0
+    ]
+   },
+   "perception": {
+    "boresight": "gimbal",
+    "fov_half_angle_deg": 60
+   },
+   "start": {
+    "mode": "random",
+    "region": [
+     [
+      -15.0,
+      -0.6300336738741675,
+      1.0
+     ],
+     [
+      -8.0,
+      0.6300336738741675,
+      3.0
+     ]
+    ],
+    "min_spacing": 0.8
+   },
+   "goal": {
+    "formation": {
+     "type": "circle",
+     "n": 8,
+     "radius": 3.0
+    },
+    "pose": {
+     "translation": [
+      0.0,
+      0.0,
+      2.0
+     ]
+    },
+    "tolerance": 0.3,
+    "track_target": true,
+    "align_heading": true
+   },
+   "stack": {
+    "assignment": "hungarian",
+    "planner": "track",
+    "planner_params": {
+     "hysteresis": 0.15
+    },
+    "placement": "dopt_c",
+    "placement_params": {
+     "separation": true,
+     "connectivity": true,
+     "fov": true,
+     "clearance": true,
+     "lambda2_floor": 0.05,
+     "standoff_min": 2.0,
+     "standoff_max": 4.0,
+     "altitude_min": -1.0,
+     "altitude_max": 3.0,
+     "restarts": 6,
+     "warm_restarts": 1,
+     "every": 4
+    },
+    "controller": "velocity_p",
+    "safety_filter": "orca"
+   },
+   "output": {
+    "dir": "runs/dynamic_geometry/corner_closed_00"
+   }
+  }
+ },
+ {
+  "name": "corner_closed_01",
+  "family": "corner_closed",
+  "variant": 1,
+  "seed": 8316,
+  "window": [
+   4.0,
+   16.0
+  ],
+  "arc_time": [
+   9.259089988827407,
+   10.740910011172591
+  ],
+  "parameters": {
+   "width_in": 3.169927685673251,
+   "width_out": 3.169927685673251,
+   "width_scale": 1.0,
+   "turn": "corner",
+   "radius": 1.4150338879726752,
+   "angle_deg": 90.0,
+   "direction": "left",
+   "arc_s": [
+    7.8886349832411105,
+    10.111365016758889
+   ],
+   "wall_inner": "left",
+   "wall_outer": "right",
+   "start_lateral": [
+    -0.9849638428366255,
+    0.9849638428366255
+   ]
+  },
+  "scenario": {
+   "name": "corner_closed_01",
+   "seed": 8316,
+   "time": {
+    "duration": 20.0,
+    "sim_hz": 50,
+    "plan_hz": 2
+   },
+   "drones": {
+    "count": 8,
+    "radius": 0.15,
+    "downwash_ratio": 3.0,
+    "limits": {
+     "v_max": 4.0,
+     "a_max": 8.0
+    }
+   },
+   "constraints": {
+    "safety_margin": 0.2,
+    "obstacle_margin": 0.2,
+    "comm_range": 4.0,
+    "connectivity": "monitor"
+   },
+   "world": {
+    "bounds": [
+     [
+      -29.0,
+      -15.0,
+      0.0
+     ],
+     [
+      24.303668871213794,
+      30.303668871213787,
+      8.0
+     ]
+    ],
+    "obstacles": [
+     {
+      "type": "wall",
+      "points": [
+       [
+        -40.0,
+        1.5849638428366255
+       ],
+       [
+        7.718705028377158,
+        1.5849638428366255
+       ]
+      ],
+      "thickness": 0.5,
+      "height": 6.0
+     },
+     {
+      "type": "wall",
+      "points": [
+       [
+        7.718705028377158,
+        1.5849638428366255
+       ],
+       [
+        7.718705028377167,
+        11.303668871213787
+       ]
+      ],
+      "thickness": 0.5,
+      "height": 6.0
+     },
+     {
+      "type": "wall",
+      "points": [
+       [
+        -40.0,
+        -1.5849638428366255
+       ],
+       [
+        10.88863271405041,
+        -1.5849638428366255
+       ]
+      ],
+      "thickness": 0.5,
+      "height": 6.0
+     },
+     {
+      "type": "wall",
+      "points": [
+       [
+        10.88863271405041,
+        -1.5849638428366255
+       ],
+       [
+        10.888632714050418,
+        11.303668871213784
+       ]
+      ],
+      "thickness": 0.5,
+      "height": 6.0
+     }
+    ]
+   },
+   "target": {
+    "motion": "segments",
+    "segments": [
+     {
+      "duration": 9.259089988827407
+     },
+     {
+      "duration": 1.4818200223451843,
+      "a_lat": 1.5900679263756603
+     },
+     {
+      "duration": 10.259089988827409
+     }
+    ],
+    "position": [
+     -6.0,
+     0.0,
+     0.0
+    ],
+    "heading": 0.0,
+    "speed": 1.5,
+    "altitude": 1.7,
+    "window": [
+     4.0,
+     16.0
+    ]
+   },
+   "perception": {
+    "boresight": "gimbal",
+    "fov_half_angle_deg": 60
+   },
+   "start": {
+    "mode": "random",
+    "region": [
+     [
+      -15.0,
+      -0.9849638428366255,
+      1.0
+     ],
+     [
+      -8.0,
+      0.9849638428366255,
+      3.0
+     ]
+    ],
+    "min_spacing": 0.8
+   },
+   "goal": {
+    "formation": {
+     "type": "circle",
+     "n": 8,
+     "radius": 3.0
+    },
+    "pose": {
+     "translation": [
+      0.0,
+      0.0,
+      2.0
+     ]
+    },
+    "tolerance": 0.3,
+    "track_target": true,
+    "align_heading": true
+   },
+   "stack": {
+    "assignment": "hungarian",
+    "planner": "track",
+    "planner_params": {
+     "hysteresis": 0.15
+    },
+    "placement": "dopt_c",
+    "placement_params": {
+     "separation": true,
+     "connectivity": true,
+     "fov": true,
+     "clearance": true,
+     "lambda2_floor": 0.05,
+     "standoff_min": 2.0,
+     "standoff_max": 4.0,
+     "altitude_min": -1.0,
+     "altitude_max": 3.0,
+     "restarts": 6,
+     "warm_restarts": 1,
+     "every": 4
+    },
+    "controller": "velocity_p",
+    "safety_filter": "orca"
+   },
+   "output": {
+    "dir": "runs/dynamic_geometry/corner_closed_01"
+   }
+  }
+ },
+ {
+  "name": "corner_closed_02",
+  "family": "corner_closed",
+  "variant": 2,
+  "seed": 8317,
+  "window": [
+   4.0,
+   16.0
+  ],
+  "arc_time": [
+   9.000606556009341,
+   10.999393443990659
+  ],
+  "parameters": {
+   "width_in": 3.4988240149984797,
+   "width_out": 3.4988240149984797,
+   "width_scale": 1.0,
+   "turn": "corner",
+   "radius": 1.908700880456962,
+   "angle_deg": 90.0,
+   "direction": "right",
+   "arc_s": [
+    7.50090983401401,
+    10.49909016598599
+   ],
+   "wall_inner": "right",
+   "wall_outer": "left",
+   "start_lateral": [
+    -1.1494120074992398,
+    1.1494120074992398
+   ]
+  },
+  "scenario": {
+   "name": "corner_closed_02",
+   "seed": 8317,
+   "time": {
+    "duration": 20.0,
+    "sim_hz": 50,
+    "plan_hz": 2
+   },
+   "drones": {
+    "count": 8,
+    "radius": 0.15,
+    "downwash_ratio": 3.0,
+    "limits": {
+     "v_max": 4.0,
+     "a_max": 8.0
+    }
+   },
+   "constraints": {
+    "safety_margin": 0.2,
+    "obstacle_margin": 0.2,
+    "comm_range": 4.0,
+    "connectivity": "monitor"
+   },
+   "world": {
+    "bounds": [
+     [
+      -29.0,
+      -30.409610714470972,
+      0.0
+     ],
+     [
+      24.40961071447098,
+      15.0,
+      8.0
+     ]
+    ],
+    "obstacles": [
+     {
+      "type": "wall",
+      "points": [
+       [
+        -40.0,
+        -1.7494120074992399
+       ],
+       [
+        7.660198706971734,
+        -1.7494120074992399
+       ]
+      ],
+      "thickness": 0.5,
+      "height": 6.0
+     },
+     {
+      "type": "wall",
+      "points": [
+       [
+        7.660198706971734,
+        -1.7494120074992399
+       ],
+       [
+        7.660198706971737,
+        -11.409610714470972
+       ]
+      ],
+      "thickness": 0.5,
+      "height": 6.0
+     },
+     {
+      "type": "wall",
+      "points": [
+       [
+        -40.0,
+        1.7494120074992399
+       ],
+       [
+        11.15902272197021,
+        1.7494120074992399
+       ]
+      ],
+      "thickness": 0.5,
+      "height": 6.0
+     },
+     {
+      "type": "wall",
+      "points": [
+       [
+        11.15902272197021,
+        1.7494120074992399
+       ],
+       [
+        11.159022721970217,
+        -11.409610714470972
+       ]
+      ],
+      "thickness": 0.5,
+      "height": 6.0
+     }
+    ]
+   },
+   "target": {
+    "motion": "segments",
+    "segments": [
+     {
+      "duration": 9.000606556009341
+     },
+     {
+      "duration": 1.9987868879813178,
+      "a_lat": -1.1788122607568177
+     },
+     {
+      "duration": 10.000606556009341
+     }
+    ],
+    "position": [
+     -6.0,
+     0.0,
+     0.0
+    ],
+    "heading": 0.0,
+    "speed": 1.5,
+    "altitude": 1.7,
+    "window": [
+     4.0,
+     16.0
+    ]
+   },
+   "perception": {
+    "boresight": "gimbal",
+    "fov_half_angle_deg": 60
+   },
+   "start": {
+    "mode": "random",
+    "region": [
+     [
+      -13.5,
+      -1.1494120074992398,
+      1.0
+     ],
+     [
+      -8.0,
+      1.1494120074992398,
+      3.0
+     ]
+    ],
+    "min_spacing": 0.8
+   },
+   "goal": {
+    "formation": {
+     "type": "circle",
+     "n": 8,
+     "radius": 3.0
+    },
+    "pose": {
+     "translation": [
+      0.0,
+      0.0,
+      2.0
+     ]
+    },
+    "tolerance": 0.3,
+    "track_target": true,
+    "align_heading": true
+   },
+   "stack": {
+    "assignment": "hungarian",
+    "planner": "track",
+    "planner_params": {
+     "hysteresis": 0.15
+    },
+    "placement": "dopt_c",
+    "placement_params": {
+     "separation": true,
+     "connectivity": true,
+     "fov": true,
+     "clearance": true,
+     "lambda2_floor": 0.05,
+     "standoff_min": 2.0,
+     "standoff_max": 4.0,
+     "altitude_min": -1.0,
+     "altitude_max": 3.0,
+     "restarts": 6,
+     "warm_restarts": 1,
+     "every": 4
+    },
+    "controller": "velocity_p",
+    "safety_filter": "orca"
+   },
+   "output": {
+    "dir": "runs/dynamic_geometry/corner_closed_02"
+   }
+  }
+ },
+ {
+  "name": "curve_00",
+  "family": "curve",
+  "variant": 0,
+  "seed": 8318,
+  "window": [
+   4.0,
+   16.0
+  ],
+  "arc_time": [
+   8.059308911632318,
+   11.940691088367682
+  ],
+  "parameters": {
+   "width_in": 3.390643621765678,
+   "width_out": 3.390643621765678,
+   "width_scale": 1.0,
+   "turn": "curve",
+   "radius": 8.129710145644758,
+   "angle_deg": 41.032241018464916,
+   "direction": "right",
+   "arc_s": [
+    6.088963367448478,
+    11.911036632551522
+   ],
+   "wall_left": "left",
+   "wall_right": "right",
+   "start_lateral": [
+    -1.0953218108828389,
+    1.0953218108828389
+   ]
+  },
+  "scenario": {
+   "name": "curve_00",
+   "seed": 8318,
+   "time": {
+    "duration": 20.0,
+    "sim_hz": 50,
+    "plan_hz": 2
+   },
+   "drones": {
+    "count": 8,
+    "radius": 0.15,
+    "downwash_ratio": 3.0,
+    "limits": {
+     "v_max": 4.0,
+     "a_max": 8.0
+    }
+   },
+   "constraints": {
+    "safety_margin": 0.2,
+    "obstacle_margin": 0.2,
+    "comm_range": 4.0,
+    "connectivity": "monitor"
+   },
+   "world": {
+    "bounds": [
+     [
+      -29.0,
+      -24.933348551557366,
+      0.0
+     ],
+     [
+      35.54517693990332,
+      15.0,
+      8.0
+     ]
+    ],
+    "obstacles": [
+     {
+      "type": "wall",
+      "points": [
+       [
+        -40.0,
+        1.695321810882839
+       ],
+       [
+        0.0,
+        1.695321810882839
+       ],
+       [
+        6.088963,
+        1.695321810882839
+       ],
+       [
+        6.674963047752189,
+        1.6778306940088026
+       ],
+       [
+        7.258876704734679,
+        1.6254195679996666
+       ],
+       [
+        7.838624854268033,
+        1.5382750440588797
+       ],
+       [
+        8.41214211343505,
+        1.4167076883380376
+       ],
+       [
+        8.977388822311294,
+        1.261149843647438
+       ],
+       [
+        9.532351215789935,
+        1.0721555930347018
+       ],
+       [
+        10.075053335558204,
+        0.8503978555389409
+       ],
+       [
+        10.603562876332873,
+        0.5966662054628011
+       ],
+       [
+        11.115997027523363,
+        0.31186467942565765
+       ],
+       [
+        11.610533365505296,
+        -0.0029938528640547357
+       ],
+       [
+        12.085410007144933,
+        -0.34678777393491256
+       ],
+       [
+        12.538936083770091,
+        -0.7182929461143313
+       ],
+       [
+        17.13208618994614,
+        -4.715597352524223
+       ],
+       [
+        18.640766766975773,
+        -6.02856457088633
+       ]
+      ],
+      "thickness": 0.5,
+      "height": 6.0
+     },
+     {
+      "type": "wall",
+      "points": [
+       [
+        -40.0,
+        -1.695321810882839
+       ],
+       [
+        0.0,
+        -1.695321810882839
+       ],
+       [
+        6.088963,
+        -1.695321810882839
+       ],
+       [
+        6.472733061410167,
+        -1.7067766986505557
+       ],
+       [
+        6.855136624026586,
+        -1.7411006112135954
+       ],
+       [
+        7.234812206453454,
+        -1.798171337371432
+       ],
+       [
+        7.61040719469338,
+        -1.8777854881445852
+       ],
+       [
+        7.980585820671233,
+        -1.9796599233308145
+       ],
+       [
+        8.344029274761793,
+        -2.103431775357385
+       ],
+       [
+        8.699443506912713,
+        -2.248660351264248
+       ],
+       [
+        9.045563055329204,
+        -2.4148285608572078
+       ],
+       [
+        9.381154872164274,
+        -2.601344352863186
+       ],
+       [
+        9.705025456840866,
+        -2.807544401497042
+       ],
+       [
+        10.01602095659463,
+        -3.0326941623414028
+       ],
+       [
+        10.313034121506641,
+        -3.2759920340079787
+       ],
+       [
+        14.90618422768269,
+        -7.27329644041787
+       ],
+       [
+        16.414864804712323,
+        -8.586263658779977
+       ]
+      ],
+      "thickness": 0.5,
+      "height": 6.0
+     }
+    ]
+   },
+   "target": {
+    "motion": "segments",
+    "segments": [
+     {
+      "duration": 8.059308911632318
+     },
+     {
+      "duration": 3.8813821767353645,
+      "a_lat": -0.27676263479152063
+     },
+     {
+      "duration": 9.059308911632318
+     }
+    ],
+    "position": [
+     -6.0,
+     0.0,
+     0.0
+    ],
+    "heading": 0.0,
+    "speed": 1.5,
+    "altitude": 1.7,
+    "window": [
+     4.0,
+     16.0
+    ]
+   },
+   "perception": {
+    "boresight": "gimbal",
+    "fov_half_angle_deg": 60
+   },
+   "start": {
+    "mode": "random",
+    "region": [
+     [
+      -13.5,
+      -1.0953218108828389,
+      1.0
+     ],
+     [
+      -8.0,
+      1.0953218108828389,
+      3.0
+     ]
+    ],
+    "min_spacing": 0.8
+   },
+   "goal": {
+    "formation": {
+     "type": "circle",
+     "n": 8,
+     "radius": 3.0
+    },
+    "pose": {
+     "translation": [
+      0.0,
+      0.0,
+      2.0
+     ]
+    },
+    "tolerance": 0.3,
+    "track_target": true,
+    "align_heading": true
+   },
+   "stack": {
+    "assignment": "hungarian",
+    "planner": "track",
+    "planner_params": {
+     "hysteresis": 0.15
+    },
+    "placement": "dopt_c",
+    "placement_params": {
+     "separation": true,
+     "connectivity": true,
+     "fov": true,
+     "clearance": true,
+     "lambda2_floor": 0.05,
+     "standoff_min": 2.0,
+     "standoff_max": 4.0,
+     "altitude_min": -1.0,
+     "altitude_max": 3.0,
+     "restarts": 6,
+     "warm_restarts": 1,
+     "every": 4
+    },
+    "controller": "velocity_p",
+    "safety_filter": "orca"
+   },
+   "output": {
+    "dir": "runs/dynamic_geometry/curve_00"
+   }
+  }
+ },
+ {
+  "name": "curve_01",
+  "family": "curve",
+  "variant": 1,
+  "seed": 8319,
+  "window": [
+   4.0,
+   16.0
+  ],
+  "arc_time": [
+   7.460585420628332,
+   12.539414579371668
+  ],
+  "parameters": {
+   "width_in": 2.435203339159774,
+   "width_out": 2.435203339159774,
+   "width_scale": 1.0,
+   "turn": "curve",
+   "radius": 9.911740201764825,
+   "angle_deg": 44.037999847719774,
+   "direction": "right",
+   "arc_s": [
+    5.190878130942497,
+    12.809121869057503
+   ],
+   "wall_left": "left",
+   "wall_right": "right",
+   "start_lateral": [
+    -0.617601669579887,
+    0.617601669579887
+   ]
+  },
+  "scenario": {
+   "name": "curve_01",
+   "seed": 8319,
+   "time": {
+    "duration": 20.0,
+    "sim_hz": 50,
+    "plan_hz": 2
+   },
+   "drones": {
+    "count": 8,
+    "radius": 0.15,
+    "downwash_ratio": 3.0,
+    "limits": {
+     "v_max": 4.0,
+     "a_max": 8.0
+    }
+   },
+   "constraints": {
+    "safety_margin": 0.2,
+    "obstacle_margin": 0.2,
+    "comm_range": 4.0,
+    "connectivity": "monitor"
+   },
+   "world": {
+    "bounds": [
+     [
+      -29.0,
+      -25.565573445992893,
+      0.0
+     ],
+     [
+      35.12576511603985,
+      15.0,
+      8.0
+     ]
+    ],
+    "obstacles": [
+     {
+      "type": "wall",
+      "points": [
+       [
+        -40.0,
+        1.217601669579887
+       ],
+       [
+        0.0,
+        1.217601669579887
+       ],
+       [
+        5.190878,
+        1.217601669579887
+       ],
+       [
+        5.725303511828321,
+        1.2047628455757216
+       ],
+       [
+        6.258497129029625,
+        1.166275873516437
+       ],
+       [
+        6.7892264098545985,
+        1.102229712329064
+       ],
+       [
+        7.316267975130492,
+        1.0127720756546645
+       ],
+       [
+        7.838405832447562,
+        0.8981093605107717
+       ],
+       [
+        8.354436379776724,
+        0.7585057980001075
+       ],
+       [
+        8.863166862236264,
+        0.594284068304201
+       ],
+       [
+        9.36342462543069,
+        0.4058227973450377
+       ],
+       [
+        9.854055472645664,
+        0.19355680372159534
+       ],
+       [
+        10.333927418425953,
+        -0.04202417161570238
+       ],
+       [
+        10.801934269991627,
+        -0.30037716139923387
+       ],
+       [
+        11.25699427460582,
+        -0.5809050075898767
+       ],
+       [
+        11.698058511763913,
+        -0.8829609941022802
+       ],
+       [
+        12.124109356291859,
+        -1.2058482161548962
+       ],
+       [
+        12.534164665713842,
+        -1.5488224479236168
+       ],
+       [
+        12.92727662513447,
+        -1.9110909263415594
+       ],
+       [
+        16.65888944304323,
+        -5.519453461911268
+       ],
+       [
+        18.096647301312583,
+        -6.909724061825081
+       ]
+      ],
+      "thickness": 0.5,
+      "height": 6.0
+     },
+     {
+      "type": "wall",
+      "points": [
+       [
+        -40.0,
+        -1.217601669579887
+       ],
+       [
+        0.0,
+        -1.217601669579887
+       ],
+       [
+        5.190878,
+        -1.217601669579887
+       ],
+       [
+        5.608366276265834,
+        -1.227631239681418
+       ],
+       [
+        6.0248921792359456,
+        -1.2576969048964737
+       ],
+       [
+        6.439492965510621,
+        -1.3077291713372552
+       ],
+       [
+        6.851212942639382,
+        -1.3776126464789102
+       ],
+       [
+        7.25910218864242,
+        -1.4671860948877709
+       ],
+       [
+        7.662220460790246,
+        -1.5762431016798175
+       ],
+       [
+        8.05963599004419,
+        -1.7045315920933777
+       ],
+       [
+        8.45043270967877,
+        -1.851755787073798
+       ],
+       [
+        8.833708971937652,
+        -2.0175760103689164
+       ],
+       [
+        9.208580480293866,
+        -2.2016096808955847
+       ],
+       [
+        9.574183087218909,
+        -2.4034326376658752
+       ],
+       [
+        9.92967173751899,
+        -2.6225783863643315
+       ],
+       [
+        10.274227024235293,
+        -2.85854171838994
+       ],
+       [
+        10.607053988030666,
+        -3.1107782181982273
+       ],
+       [
+        10.927385388322346,
+        -3.378706503485655
+       ],
+       [
+        11.23448082151158,
+        -3.6617072950219294
+       ],
+       [
+        14.966093639420338,
+        -7.2700698305916385
+       ],
+       [
+        16.40385149768969,
+        -8.660340430505451
+       ]
+      ],
+      "thickness": 0.5,
+      "height": 6.0
+     }
+    ]
+   },
+   "target": {
+    "motion": "segments",
+    "segments": [
+     {
+      "duration": 7.460585420628332
+     },
+     {
+      "duration": 5.078829158743336,
+      "a_lat": -0.227003528562964
+     },
+     {
+      "duration": 8.460585420628332
+     }
+    ],
+    "position": [
+     -6.0,
+     0.0,
+     0.0
+    ],
+    "heading": 0.0,
+    "speed": 1.5,
+    "altitude": 1.7,
+    "window": [
+     4.0,
+     16.0
+    ]
+   },
+   "perception": {
+    "boresight": "gimbal",
+    "fov_half_angle_deg": 60
+   },
+   "start": {
+    "mode": "random",
+    "region": [
+     [
+      -15.0,
+      -0.617601669579887,
+      1.0
+     ],
+     [
+      -8.0,
+      0.617601669579887,
+      3.0
+     ]
+    ],
+    "min_spacing": 0.8
+   },
+   "goal": {
+    "formation": {
+     "type": "circle",
+     "n": 8,
+     "radius": 3.0
+    },
+    "pose": {
+     "translation": [
+      0.0,
+      0.0,
+      2.0
+     ]
+    },
+    "tolerance": 0.3,
+    "track_target": true,
+    "align_heading": true
+   },
+   "stack": {
+    "assignment": "hungarian",
+    "planner": "track",
+    "planner_params": {
+     "hysteresis": 0.15
+    },
+    "placement": "dopt_c",
+    "placement_params": {
+     "separation": true,
+     "connectivity": true,
+     "fov": true,
+     "clearance": true,
+     "lambda2_floor": 0.05,
+     "standoff_min": 2.0,
+     "standoff_max": 4.0,
+     "altitude_min": -1.0,
+     "altitude_max": 3.0,
+     "restarts": 6,
+     "warm_restarts": 1,
+     "every": 4
+    },
+    "controller": "velocity_p",
+    "safety_filter": "orca"
+   },
+   "output": {
+    "dir": "runs/dynamic_geometry/curve_01"
+   }
+  }
+ },
+ {
+  "name": "curve_02",
+  "family": "curve",
+  "variant": 2,
+  "seed": 8320,
+  "window": [
+   4.0,
+   16.0
+  ],
+  "arc_time": [
+   7.0968558111590365,
+   12.903144188840963
+  ],
+  "parameters": {
+   "width_in": 3.2878026746950297,
+   "width_out": 3.2878026746950297,
+   "width_scale": 1.0,
+   "turn": "curve",
+   "radius": 10.200939646718211,
+   "angle_deg": 48.91840803862556,
+   "direction": "right",
+   "arc_s": [
+    4.645283716738554,
+    13.354716283261446
+   ],
+   "wall_left": "left",
+   "wall_right": "right",
+   "start_lateral": [
+    -1.0439013373475148,
+    1.0439013373475148
+   ]
+  },
+  "scenario": {
+   "name": "curve_02",
+   "seed": 8320,
+   "time": {
+    "duration": 20.0,
+    "sim_hz": 50,
+    "plan_hz": 2
+   },
+   "drones": {
+    "count": 8,
+    "radius": 0.15,
+    "downwash_ratio": 3.0,
+    "limits": {
+     "v_max": 4.0,
+     "a_max": 8.0
+    }
+   },
+   "constraints": {
+    "safety_margin": 0.2,
+    "obstacle_margin": 0.2,
+    "comm_range": 4.0,
+    "connectivity": "monitor"
+   },
+   "world": {
+    "bounds": [
+     [
+      -29.0,
+      -26.52170849070614,
+      0.0
+     ],
+     [
+      34.32986082153109,
+      15.0,
+      8.0
+     ]
+    ],
+    "obstacles": [
+     {
+      "type": "wall",
+      "points": [
+       [
+        -40.0,
+        1.6439013373475149
+       ],
+       [
+        0.0,
+        1.6439013373475149
+       ],
+       [
+        4.645284045648135,
+        1.6439013373475109
+       ],
+       [
+        5.206904896231539,
+        1.6305792578243503
+       ],
+       [
+        5.767262419892012,
+        1.5906430175161872
+       ],
+       [
+        6.325097281626474,
+        1.5241822854845262
+       ],
+       [
+        6.879152366217753,
+        1.4313468350822223
+       ],
+       [
+        7.428183650716068,
+        1.3123451102601835
+       ],
+       [
+        7.970953859307751,
+        1.1674452887344458
+       ],
+       [
+        8.506243209304156,
+        0.9969730933673575
+       ],
+       [
+        9.032848683913864,
+        0.8013115591313924
+       ],
+       [
+        9.549583545266968,
+        0.5809016213444618
+       ],
+       [
+        10.05528653275608,
+        0.33623869800413475
+       ],
+       [
+        10.548821110110076,
+        0.06787256224087979
+       ],
+       [
+        11.0290750667628,
+        -0.22359200633007403
+       ],
+       [
+        11.494969138536987,
+        -0.5374999092228123
+       ],
+       [
+        11.945456244239582,
+        -0.8731457485597403
+       ],
+       [
+        12.37952118343302,
+        -1.2297731257699644
+       ],
+       [
+        12.796189347705493,
+        -1.6065813034284369
+       ],
+       [
+        13.194521749686812,
+        -2.002721121099725
+       ],
+       [
+        13.573623248397476,
+        -2.4173022486105857
+       ],
+       [
+        16.626193183232747,
+        -5.9187991653153365
+       ],
+       [
+        17.94045939595015,
+        -7.426348276326138
+       ]
+      ],
+      "thickness": 0.5,
+      "height": 6.0
+     },
+     {
+      "type": "wall",
+      "points": [
+       [
+        -40.0,
+        -1.6439013373475149
+       ],
+       [
+        0.0,
+        -1.6439013373475149
+       ],
+       [
+        4.645283954351865,
+        -1.643901337347518
+       ],
+       [
+        5.05101427527796,
+        -1.6535255733329164
+       ],
+       [
+        5.455831934152168,
+        -1.6823766097215773
+       ],
+       [
+        5.858827152795096,
+        -1.7303896671217396
+       ],
+       [
+        6.259091756661635,
+        -1.7974565451514966
+       ],
+       [
+        6.65572702942006,
+        -1.8834266581781927
+       ],
+       [
+        7.047839129055013,
+        -1.9881062672573442
+       ],
+       [
+        7.434546851064897,
+        -2.1112600612509547
+       ],
+       [
+        7.814981103092557,
+        -2.2526113251792528
+       ],
+       [
+        8.188284553120647,
+        -2.411841515263357
+       ],
+       [
+        8.553618274605713,
+        -2.5885927279408603
+       ],
+       [
+        8.910161202543577,
+        -2.7824677920091085
+       ],
+       [
+        9.257109845487168,
+        -2.9930297980707348
+       ],
+       [
+        9.593684513365233,
+        -3.2198054849947626
+       ],
+       [
+        9.919128765977854,
+        -3.4622852539887665
+       ],
+       [
+        10.23270919465812,
+        -3.719922661959338
+       ],
+       [
+        10.533721715532916,
+        -3.9921392342075666
+       ],
+       [
+        10.821487978347514,
+        -4.27832151392246
+       ],
+       [
+        11.095361308683563,
+        -4.577826302144178
+       ],
+       [
+        14.147931183525033,
+        -8.079323150032124
+       ],
+       [
+        15.462197396242436,
+        -9.586872261042927
+       ]
+      ],
+      "thickness": 0.5,
+      "height": 6.0
+     }
+    ]
+   },
+   "target": {
+    "motion": "segments",
+    "segments": [
+     {
+      "duration": 7.0968558111590365
+     },
+     {
+      "duration": 5.806288377681927,
+      "a_lat": -0.22056791608642223
+     },
+     {
+      "duration": 8.096855811159037
+     }
+    ],
+    "position": [
+     -6.0,
+     0.0,
+     0.0
+    ],
+    "heading": 0.0,
+    "speed": 1.5,
+    "altitude": 1.7,
+    "window": [
+     4.0,
+     16.0
+    ]
+   },
+   "perception": {
+    "boresight": "gimbal",
+    "fov_half_angle_deg": 60
+   },
+   "start": {
+    "mode": "random",
+    "region": [
+     [
+      -13.5,
+      -1.0439013373475148,
+      1.0
+     ],
+     [
+      -8.0,
+      1.0439013373475148,
+      3.0
+     ]
+    ],
+    "min_spacing": 0.8
+   },
+   "goal": {
+    "formation": {
+     "type": "circle",
+     "n": 8,
+     "radius": 3.0
+    },
+    "pose": {
+     "translation": [
+      0.0,
+      0.0,
+      2.0
+     ]
+    },
+    "tolerance": 0.3,
+    "track_target": true,
+    "align_heading": true
+   },
+   "stack": {
+    "assignment": "hungarian",
+    "planner": "track",
+    "planner_params": {
+     "hysteresis": 0.15
+    },
+    "placement": "dopt_c",
+    "placement_params": {
+     "separation": true,
+     "connectivity": true,
+     "fov": true,
+     "clearance": true,
+     "lambda2_floor": 0.05,
+     "standoff_min": 2.0,
+     "standoff_max": 4.0,
+     "altitude_min": -1.0,
+     "altitude_max": 3.0,
+     "restarts": 6,
+     "warm_restarts": 1,
+     "every": 4
+    },
+    "controller": "velocity_p",
+    "safety_filter": "orca"
+   },
+   "output": {
+    "dir": "runs/dynamic_geometry/curve_02"
+   }
+  }
+ },
+ {
+  "name": "curve_taper_00",
+  "family": "curve_taper",
+  "variant": 0,
+  "seed": 8321,
+  "window": [
+   4.0,
+   16.0
+  ],
+  "arc_time": [
+   6.994823503131128,
+   13.005176496868872
+  ],
+  "parameters": {
+   "width_in": 4.253476054083195,
+   "width_out": 2.019038353236036,
+   "width_scale": 1.0,
+   "turn": "curve",
+   "radius": 9.239683032200318,
+   "angle_deg": 55.905791149685946,
+   "direction": "right",
+   "arc_s": [
+    4.492235254696693,
+    13.507764745303307
+   ],
+   "wall_left": "left",
+   "wall_right": "right",
+   "start_lateral": [
+    -1.5267380270415973,
+    1.5267380270415973
+   ]
+  },
+  "scenario": {
+   "name": "curve_taper_00",
+   "seed": 8321,
+   "time": {
+    "duration": 20.0,
+    "sim_hz": 50,
+    "plan_hz": 2
+   },
+   "drones": {
+    "count": 8,
+    "radius": 0.15,
+    "downwash_ratio": 3.0,
+    "limits": {
+     "v_max": 4.0,
+     "a_max": 8.0
+    }
+   },
+   "constraints": {
+    "safety_margin": 0.2,
+    "obstacle_margin": 0.2,
+    "comm_range": 4.0,
+    "connectivity": "monitor"
+   },
+   "world": {
+    "bounds": [
+     [
+      -29.0,
+      -27.749128125449488,
+      0.0
+     ],
+     [
+      33.02525185532569,
+      15.0,
+      8.0
+     ]
+    ],
+    "obstacles": [
+     {
+      "type": "wall",
+      "points": [
+       [
+        -40.0,
+        2.1267380270415974
+       ],
+       [
+        0.0,
+        2.1267380270415974
+       ],
+       [
+        4.492235,
+        1.8479152702342325
+       ],
+       [
+        5.059874207502506,
+        1.8038853293168546
+       ],
+       [
+        5.622995960990708,
+        1.7308918161503801
+       ],
+       [
+        6.180129727739922,
+        1.6292816861163963
+       ],
+       [
+        6.729824030437125,
+        1.4994772658543547
+       ],
+       [
+        7.270659543702366,
+        1.3419730258446834
+       ],
+       [
+        7.801244622047502,
+        1.157335638741633
+       ],
+       [
+        8.320222444947431,
+        0.9462015238204828
+       ],
+       [
+        8.826277661540646,
+        0.7092731849866272
+       ],
+       [
+        9.31813214319604,
+        0.44732021917441767
+       ],
+       [
+        9.794556713603807,
+        0.16117292337027678
+       ],
+       [
+        10.254365941693107,
+        -0.14827586024568662
+       ],
+       [
+        10.696429090890078,
+        -0.4800782725368222
+       ],
+       [
+        11.119665154303961,
+        -0.8332290834617149
+       ],
+       [
+        11.523052914662603,
+        -1.2066742631927716
+       ],
+       [
+        11.905627054636003,
+        -1.5993089963187963
+       ],
+       [
+        12.26648331119837,
+        -2.0099829588129174
+       ],
+       [
+        12.604782664802121,
+        -2.4375064281438834
+       ],
+       [
+        12.919748058815605,
+        -2.8806475650447267
+       ],
+       [
+        13.210671813935376,
+        -3.338143094237646
+       ],
+       [
+        15.49792006920105,
+        -7.214534824148698
+       ],
+       [
+        16.61903066081724,
+        -8.870768817691275
+       ]
+      ],
+      "thickness": 0.5,
+      "height": 6.0
+     },
+     {
+      "type": "wall",
+      "points": [
+       [
+        -40.0,
+        -2.1267380270415974
+       ],
+       [
+        0.0,
+        -2.1267380270415974
+       ],
+       [
+        4.492235,
+        -1.8479152702342325
+       ],
+       [
+        4.873182711145005,
+        -1.828247899643041
+       ],
+       [
+        5.256144715772799,
+        -1.828277707049588
+       ],
+       [
+        5.640100961187961,
+        -1.8481594124060194
+       ],
+       [
+        6.024017564330793,
+        -1.8879944899472414
+       ],
+       [
+        6.406856100207469,
+        -1.9478308306026897
+       ],
+       [
+        6.787570754217597,
+        -2.0276617305801503
+       ],
+       [
+        7.165113618746699,
+        -2.127425572760965
+       ],
+       [
+        7.538439935063679,
+        -2.2470064156301737
+       ],
+       [
+        7.906505439694592,
+        -2.386232337477515
+       ],
+       [
+        8.268275551473305,
+        -2.5448775234178242
+       ],
+       [
+        8.622722081284694,
+        -2.7226601462649245
+       ],
+       [
+        8.968832220269704,
+        -2.919245418215647
+       ],
+       [
+        9.305605458533284,
+        -3.1342431301983904
+       ],
+       [
+        9.632062272853247,
+        -3.3672116490875763
+       ],
+       [
+        9.94724194166378,
+        -3.6176556820466947
+       ],
+       [
+        10.250207574048874,
+        -3.8850284601779017
+       ],
+       [
+        10.540050664451703,
+        -4.168734733686413
+       ],
+       [
+        10.815889384255366,
+        -4.468128028185979
+       ],
+       [
+        11.07687610848989,
+        -4.782516881424126
+       ],
+       [
+        13.825920091753176,
+        -8.346317465494815
+       ],
+       [
+        14.947030683369368,
+        -10.002551459037392
+       ]
+      ],
+      "thickness": 0.5,
+      "height": 6.0
+     }
+    ]
+   },
+   "target": {
+    "motion": "segments",
+    "segments": [
+     {
+      "duration": 6.994823503131128
+     },
+     {
+      "duration": 6.010352993737744,
+      "a_lat": -0.2435148470092258
+     },
+     {
+      "duration": 7.994823503131128
+     }
+    ],
+    "position": [
+     -6.0,
+     0.0,
+     0.0
+    ],
+    "heading": 0.0,
+    "speed": 1.5,
+    "altitude": 1.7,
+    "window": [
+     4.0,
+     16.0
+    ]
+   },
+   "perception": {
+    "boresight": "gimbal",
+    "fov_half_angle_deg": 60
+   },
+   "start": {
+    "mode": "random",
+    "region": [
+     [
+      -12.0,
+      -1.5267380270415973,
+      1.0
+     ],
+     [
+      -8.0,
+      1.5267380270415973,
+      3.0
+     ]
+    ],
+    "min_spacing": 0.8
+   },
+   "goal": {
+    "formation": {
+     "type": "circle",
+     "n": 8,
+     "radius": 3.0
+    },
+    "pose": {
+     "translation": [
+      0.0,
+      0.0,
+      2.0
+     ]
+    },
+    "tolerance": 0.3,
+    "track_target": true,
+    "align_heading": true
+   },
+   "stack": {
+    "assignment": "hungarian",
+    "planner": "track",
+    "planner_params": {
+     "hysteresis": 0.15
+    },
+    "placement": "dopt_c",
+    "placement_params": {
+     "separation": true,
+     "connectivity": true,
+     "fov": true,
+     "clearance": true,
+     "lambda2_floor": 0.05,
+     "standoff_min": 2.0,
+     "standoff_max": 4.0,
+     "altitude_min": -1.0,
+     "altitude_max": 3.0,
+     "restarts": 6,
+     "warm_restarts": 1,
+     "every": 4
+    },
+    "controller": "velocity_p",
+    "safety_filter": "orca"
+   },
+   "output": {
+    "dir": "runs/dynamic_geometry/curve_taper_00"
+   }
+  }
+ },
+ {
+  "name": "curve_taper_01",
+  "family": "curve_taper",
+  "variant": 1,
+  "seed": 8322,
+  "window": [
+   4.0,
+   16.0
+  ],
+  "arc_time": [
+   6.617354860533517,
+   13.382645139466483
+  ],
+  "parameters": {
+   "width_in": 3.748600301465703,
+   "width_out": 2.0257418687386486,
+   "width_scale": 1.0,
+   "turn": "curve",
+   "radius": 11.025908922523666,
+   "angle_deg": 52.73341856269679,
+   "direction": "left",
+   "arc_s": [
+    3.9260322908002747,
+    14.073967709199724
+   ],
+   "wall_left": "left",
+   "wall_right": "right",
+   "start_lateral": [
+    -1.2743001507328517,
+    1.2743001507328517
+   ]
+  },
+  "scenario": {
+   "name": "curve_taper_01",
+   "seed": 8322,
+   "time": {
+    "duration": 20.0,
+    "sim_hz": 50,
+    "plan_hz": 2
+   },
+   "drones": {
+    "count": 8,
+    "radius": 0.15,
+    "downwash_ratio": 3.0,
+    "limits": {
+     "v_max": 4.0,
+     "a_max": 8.0
+    }
+   },
+   "constraints": {
+    "safety_margin": 0.2,
+    "obstacle_margin": 0.2,
+    "comm_range": 4.0,
+    "connectivity": "monitor"
+   },
+   "world": {
+    "bounds": [
+     [
+      -29.0,
+      -15.0,
+      0.0
+     ],
+     [
+      33.711200084296415,
+      27.248855333435117,
+      8.0
+     ]
+    ],
+    "obstacles": [
+     {
+      "type": "wall",
+      "points": [
+       [
+        -40.0,
+        1.8743001507328516
+       ],
+       [
+        0.0,
+        1.8743001507328516
+       ],
+       [
+        3.926032,
+        1.6864113357785109
+       ],
+       [
+        4.336238521722411,
+        1.6722756063284276
+       ],
+       [
+        4.747681715539115,
+        1.676192486737661
+       ],
+       [
+        5.159565607681864,
+        1.6982430702255233
+       ],
+       [
+        5.571089456602271,
+        1.7384732831997671
+       ],
+       [
+        5.981449353938623,
+        1.7968936275204186
+       ],
+       [
+        6.389839794496641,
+        1.8734789917770267
+       ],
+       [
+        6.795455256656859,
+        1.9681685322654554
+       ],
+       [
+        7.197491790109197,
+        2.0808656242140553
+       ],
+       [
+        7.595148607787296,
+        2.2114378836709463
+       ],
+       [
+        7.987629678853207,
+        2.359717260324736
+       ],
+       [
+        8.374146112704388,
+        2.5255005624115925
+       ],
+       [
+        8.753914557240979,
+        2.708548283028214
+       ],
+       [
+        9.126163577510246,
+        2.90858696513319
+       ],
+       [
+        9.49013200753433,
+        3.125308241420014
+       ],
+       [
+        9.845071307270603,
+        3.358369605980917
+       ],
+       [
+        10.190247095323665,
+        3.6073949305318953
+       ],
+       [
+        10.524940660576378,
+        3.8719750495138823
+       ],
+       [
+        10.84845044964248,
+        4.151668413209989
+       ],
+       [
+        11.16009352707823,
+        4.446001807879331
+       ],
+       [
+        11.459207005331987,
+        4.7544711417699625
+       ],
+       [
+        11.745149460634625,
+        5.076542320940403
+       ],
+       [
+        14.271984295855178,
+        8.087212543220629
+       ],
+       [
+        15.48303294827421,
+        9.678866136649187
+       ]
+      ],
+      "thickness": 0.5,
+      "height": 6.0
+     },
+     {
+      "type": "wall",
+      "points": [
+       [
+        -40.0,
+        -1.8743001507328516
+       ],
+       [
+        0.0,
+        -1.8743001507328516
+       ],
+       [
+        3.926032,
+        -1.6864113357785109
+       ],
+       [
+        4.481986105144401,
+        -1.6511001722068148
+       ],
+       [
+        5.034848010169317,
+        -1.591531367095931
+       ],
+       [
+        5.583561723276319,
+        -1.5079079390845078
+       ],
+       [
+        6.1270831407563175,
+        -1.4004787634507605
+       ],
+       [
+        6.664381989081792,
+        -1.2695379246092777
+       ],
+       [
+        7.19444377750586,
+        -1.1154239827627666
+       ],
+       [
+        7.716271712990383,
+        -0.9385191564408972
+       ],
+       [
+        8.228888573849623,
+        -0.7392484228173397
+       ],
+       [
+        8.731338538589275,
+        -0.5180785378509789
+       ],
+       [
+        9.222688966520646,
+        -0.275516978447488
+       ],
+       [
+        9.702033105745812,
+        -0.012110242723223141
+       ],
+       [
+        10.168487824289567,
+        0.27155513288116184
+       ],
+       [
+        10.621201181026196,
+        0.5748571231271236
+       ],
+       [
+        11.059349986610888,
+        0.8971374203604949
+       ],
+       [
+        11.482142300275187,
+        1.2377033681159069
+       ],
+       [
+        11.888818855636577,
+        1.5958294329400262
+       ],
+       [
+        12.278654417645248,
+        1.9707587350518732
+       ],
+       [
+        12.650959068256517,
+        2.3617046346369728
+       ],
+       [
+        13.005079418565524,
+        2.767852370473988
+       ],
+       [
+        13.340399745292931,
+        3.188360747501213
+       ],
+       [
+        13.656343030490014,
+        3.6223638446429636
+       ],
+       [
+        15.884123958223457,
+        6.8605765630782525
+       ],
+       [
+        17.09517261064249,
+        8.452230156506811
+       ]
+      ],
+      "thickness": 0.5,
+      "height": 6.0
+     }
+    ]
+   },
+   "target": {
+    "motion": "segments",
+    "segments": [
+     {
+      "duration": 6.617354860533517
+     },
+     {
+      "duration": 6.765290278932966,
+      "a_lat": 0.2040648091518072
+     },
+     {
+      "duration": 7.617354860533517
+     }
+    ],
+    "position": [
+     -6.0,
+     0.0,
+     0.0
+    ],
+    "heading": 0.0,
+    "speed": 1.5,
+    "altitude": 1.7,
+    "window": [
+     4.0,
+     16.0
+    ]
+   },
+   "perception": {
+    "boresight": "gimbal",
+    "fov_half_angle_deg": 60
+   },
+   "start": {
+    "mode": "random",
+    "region": [
+     [
+      -13.5,
+      -1.2743001507328517,
+      1.0
+     ],
+     [
+      -8.0,
+      1.2743001507328517,
+      3.0
+     ]
+    ],
+    "min_spacing": 0.8
+   },
+   "goal": {
+    "formation": {
+     "type": "circle",
+     "n": 8,
+     "radius": 3.0
+    },
+    "pose": {
+     "translation": [
+      0.0,
+      0.0,
+      2.0
+     ]
+    },
+    "tolerance": 0.3,
+    "track_target": true,
+    "align_heading": true
+   },
+   "stack": {
+    "assignment": "hungarian",
+    "planner": "track",
+    "planner_params": {
+     "hysteresis": 0.15
+    },
+    "placement": "dopt_c",
+    "placement_params": {
+     "separation": true,
+     "connectivity": true,
+     "fov": true,
+     "clearance": true,
+     "lambda2_floor": 0.05,
+     "standoff_min": 2.0,
+     "standoff_max": 4.0,
+     "altitude_min": -1.0,
+     "altitude_max": 3.0,
+     "restarts": 6,
+     "warm_restarts": 1,
+     "every": 4
+    },
+    "controller": "velocity_p",
+    "safety_filter": "orca"
+   },
+   "output": {
+    "dir": "runs/dynamic_geometry/curve_taper_01"
+   }
+  }
+ },
+ {
+  "name": "curve_taper_02",
+  "family": "curve_taper",
+  "variant": 2,
+  "seed": 8323,
+  "window": [
+   4.0,
+   16.0
+  ],
+  "arc_time": [
+   7.305054099113772,
+   12.694945900886227
+  ],
+  "parameters": {
+   "width_in": 4.25702145117006,
+   "width_out": 2.237151384342898,
+   "width_scale": 1.0,
+   "turn": "curve",
+   "radius": 8.276502822560278,
+   "angle_deg": 55.96893861353036,
+   "direction": "right",
+   "arc_s": [
+    4.957581148670658,
+    13.04241885132934
+   ],
+   "wall_left": "left",
+   "wall_right": "right",
+   "start_lateral": [
+    -1.52851072558503,
+    1.52851072558503
+   ]
+  },
+  "scenario": {
+   "name": "curve_taper_02",
+   "seed": 8323,
+   "time": {
+    "duration": 20.0,
+    "sim_hz": 50,
+    "plan_hz": 2
+   },
+   "drones": {
+    "count": 8,
+    "radius": 0.15,
+    "downwash_ratio": 3.0,
+    "limits": {
+     "v_max": 4.0,
+     "a_max": 8.0
+    }
+   },
+   "constraints": {
+    "safety_margin": 0.2,
+    "obstacle_margin": 0.2,
+    "comm_range": 4.0,
+    "connectivity": "monitor"
+   },
+   "world": {
+    "bounds": [
+     [
+      -29.0,
+      -27.72554539514114,
+      0.0
+     ],
+     [
+      32.94892841479029,
+      15.0,
+      8.0
+     ]
+    ],
+    "obstacles": [
+     {
+      "type": "wall",
+      "points": [
+       [
+        -40.0,
+        2.12851072558503
+       ],
+       [
+        0.0,
+        2.12851072558503
+       ],
+       [
+        4.957581,
+        1.8503532404247227
+       ],
+       [
+        5.537631159076555,
+        1.8069998816122403
+       ],
+       [
+        6.112706865702987,
+        1.730537922851346
+       ],
+       [
+        6.680923792590243,
+        1.6213954537416753
+       ],
+       [
+        7.240433911021376,
+        1.4801065561603983
+       ],
+       [
+        7.7894243078557395,
+        1.30731034319322
+       ],
+       [
+        8.326126733470776,
+        1.1037478899877917
+       ],
+       [
+        8.848826572408832,
+        0.870257645192261
+       ],
+       [
+        9.355861553372259,
+        0.6077746788762934
+       ],
+       [
+        9.845630553986291,
+        0.31732604610446913
+       ],
+       [
+        10.316601581234123,
+        2.476448175237067e-05
+       ],
+       [
+        10.767310378595552,
+        -0.34293070923728064
+       ],
+       [
+        11.19636823521164,
+        -0.7102625196169505
+       ],
+       [
+        11.602468752186926,
+        -1.1006206662928004
+       ],
+       [
+        11.984386386878427,
+        -1.5125832855708767
+       ],
+       [
+        12.340983047853705,
+        -1.944663891934188
+       ],
+       [
+        12.671213463071231,
+        -2.395319626523594
+       ],
+       [
+        12.974123688753867,
+        -2.8629512699616013
+       ],
+       [
+        15.518076885107968,
+        -7.127137369661221
+       ],
+       [
+        16.6373614091013,
+        -8.784605967960756
+       ]
+      ],
+      "thickness": 0.5,
+      "height": 6.0
+     },
+     {
+      "type": "wall",
+      "points": [
+       [
+        -40.0,
+        -2.12851072558503
+       ],
+       [
+        0.0,
+        -2.12851072558503
+       ],
+       [
+        4.957581,
+        -1.8503532404247227
+       ],
+       [
+        5.328165504559087,
+        -1.834319756120637
+       ],
+       [
+        5.700586514493238,
+        -1.8397272749183622
+       ],
+       [
+        6.073598796720879,
+        -1.8667333005601654
+       ],
+       [
+        6.445947435512996,
+        -1.9154230750322276
+       ],
+       [
+        6.816367386498213,
+        -1.9858083818626746
+       ],
+       [
+        7.183590137216201,
+        -2.077826902851228
+       ],
+       [
+        7.546350338650164,
+        -2.1913426466973736
+       ],
+       [
+        7.903385530803349,
+        -2.3261446853577223
+       ],
+       [
+        8.253442890085546,
+        -2.4819476878070965
+       ],
+       [
+        8.595285759206307,
+        -2.6583935166760924
+       ],
+       [
+        8.927693586544068,
+        -2.8550499325300747
+       ],
+       [
+        9.249468551777376,
+        -3.071412314641483
+       ],
+       [
+        9.559441787934642,
+        -3.3069064023816077
+       ],
+       [
+        9.85647353763449,
+        -3.560887003418461
+       ],
+       [
+        10.139459447683763,
+        -3.8326408744401173
+       ],
+       [
+        10.407336282262913,
+        -4.121390547586861
+       ],
+       [
+        10.659082307123345,
+        -4.426293099497068
+       ],
+       [
+        13.664072800512626,
+        -8.379141830823851
+       ],
+       [
+        14.783357324505955,
+        -10.036610429123387
+       ]
+      ],
+      "thickness": 0.5,
+      "height": 6.0
+     }
+    ]
+   },
+   "target": {
+    "motion": "segments",
+    "segments": [
+     {
+      "duration": 7.305054099113772
+     },
+     {
+      "duration": 5.389891801772455,
+      "a_lat": -0.2718539518728731
+     },
+     {
+      "duration": 8.305054099113773
+     }
+    ],
+    "position": [
+     -6.0,
+     0.0,
+     0.0
+    ],
+    "heading": 0.0,
+    "speed": 1.5,
+    "altitude": 1.7,
+    "window": [
+     4.0,
+     16.0
+    ]
+   },
+   "perception": {
+    "boresight": "gimbal",
+    "fov_half_angle_deg": 60
+   },
+   "start": {
+    "mode": "random",
+    "region": [
+     [
+      -12.0,
+      -1.52851072558503,
+      1.0
+     ],
+     [
+      -8.0,
+      1.52851072558503,
+      3.0
+     ]
+    ],
+    "min_spacing": 0.8
+   },
+   "goal": {
+    "formation": {
+     "type": "circle",
+     "n": 8,
+     "radius": 3.0
+    },
+    "pose": {
+     "translation": [
+      0.0,
+      0.0,
+      2.0
+     ]
+    },
+    "tolerance": 0.3,
+    "track_target": true,
+    "align_heading": true
+   },
+   "stack": {
+    "assignment": "hungarian",
+    "planner": "track",
+    "planner_params": {
+     "hysteresis": 0.15
+    },
+    "placement": "dopt_c",
+    "placement_params": {
+     "separation": true,
+     "connectivity": true,
+     "fov": true,
+     "clearance": true,
+     "lambda2_floor": 0.05,
+     "standoff_min": 2.0,
+     "standoff_max": 4.0,
+     "altitude_min": -1.0,
+     "altitude_max": 3.0,
+     "restarts": 6,
+     "warm_restarts": 1,
+     "every": 4
+    },
+    "controller": "velocity_p",
+    "safety_filter": "orca"
+   },
+   "output": {
+    "dir": "runs/dynamic_geometry/curve_taper_02"
+   }
+  }
+ },
+ {
+  "name": "one_wall_curve_00",
+  "family": "one_wall_curve",
+  "variant": 0,
+  "seed": 8324,
+  "window": [
+   4.0,
+   16.0
+  ],
+  "arc_time": [
+   7.465059290998857,
+   12.534940709001141
+  ],
+  "parameters": {
+   "width_in": 3.122325887134448,
+   "width_out": 3.122325887134448,
+   "width_scale": 1.0,
+   "turn": "curve",
+   "radius": 8.443244870331775,
+   "angle_deg": 51.606250738512145,
+   "direction": "left",
+   "arc_s": [
+    5.197588936498287,
+    12.802411063501712
+   ],
+   "wall_one": "left",
+   "start_lateral": [
+    -2.0,
+    0.9611629435672241
+   ]
+  },
+  "scenario": {
+   "name": "one_wall_curve_00",
+   "seed": 8324,
+   "time": {
+    "duration": 20.0,
+    "sim_hz": 50,
+    "plan_hz": 2
+   },
+   "drones": {
+    "count": 8,
+    "radius": 0.15,
+    "downwash_ratio": 3.0,
+    "limits": {
+     "v_max": 4.0,
+     "a_max": 8.0
+    }
+   },
+   "constraints": {
+    "safety_margin": 0.2,
+    "obstacle_margin": 0.2,
+    "comm_range": 4.0,
+    "connectivity": "monitor"
+   },
+   "world": {
+    "bounds": [
+     [
+      -29.0,
+      -15.0,
+      0.0
+     ],
+     [
+      33.76947691651804,
+      26.975699907408398,
+      8.0
+     ]
+    ],
+    "obstacles": [
+     {
+      "type": "wall",
+      "points": [
+       [
+        -40.0,
+        1.561162943567224
+       ],
+       [
+        0.0,
+        1.561162943567224
+       ],
+       [
+        5.197588988258481,
+        1.561162943567224
+       ],
+       [
+        5.584801854184712,
+        1.5720646366982511
+       ],
+       [
+        5.970788786362859,
+        1.6047352637823566
+       ],
+       [
+        6.354325301450125,
+        1.6590711823505133
+       ],
+       [
+        6.734197116916048,
+        1.7349002946132246
+       ],
+       [
+        7.109201529717618,
+        1.8319825899389814
+       ],
+       [
+        7.478148896841891,
+        1.9500100898870665
+       ],
+       [
+        7.839871889525856,
+        2.0886093620717476
+       ],
+       [
+        8.193222997990489,
+        2.2473407219183246
+       ],
+       [
+        8.537083526454829,
+        2.425701556790089
+       ],
+       [
+        8.870364766875868,
+        2.6231272300693775
+       ],
+       [
+        9.192009436497786,
+        2.838991439598738
+       ],
+       [
+        9.500999869637683,
+        3.0726112031342456
+       ],
+       [
+        9.796355842337379,
+        3.3232453984120354
+       ],
+       [
+        10.077142290079536,
+        3.590100454980708
+       ],
+       [
+        10.3424701842157,
+        3.8723315487312657
+       ],
+       [
+        10.591497813382952,
+        4.169043345536288
+       ],
+       [
+        13.81952427462342,
+        8.24271201841546
+       ],
+       [
+        15.06164883219528,
+        9.810234453175777
+       ]
+      ],
+      "thickness": 0.5,
+      "height": 6.0
+     }
+    ]
+   },
+   "target": {
+    "motion": "segments",
+    "segments": [
+     {
+      "duration": 7.465059290998857
+     },
+     {
+      "duration": 5.069881418002284,
+      "a_lat": 0.26648522393400476
+     },
+     {
+      "duration": 8.465059290998859
+     }
+    ],
+    "position": [
+     -6.0,
+     0.0,
+     0.0
+    ],
+    "heading": 0.0,
+    "speed": 1.5,
+    "altitude": 1.7,
+    "window": [
+     4.0,
+     16.0
+    ]
+   },
+   "perception": {
+    "boresight": "gimbal",
+    "fov_half_angle_deg": 60
+   },
+   "start": {
+    "mode": "random",
+    "region": [
+     [
+      -13.5,
+      -2.0,
+      1.0
+     ],
+     [
+      -8.0,
+      0.9611629435672241,
+      3.0
+     ]
+    ],
+    "min_spacing": 0.8
+   },
+   "goal": {
+    "formation": {
+     "type": "circle",
+     "n": 8,
+     "radius": 3.0
+    },
+    "pose": {
+     "translation": [
+      0.0,
+      0.0,
+      2.0
+     ]
+    },
+    "tolerance": 0.3,
+    "track_target": true,
+    "align_heading": true
+   },
+   "stack": {
+    "assignment": "hungarian",
+    "planner": "track",
+    "planner_params": {
+     "hysteresis": 0.15
+    },
+    "placement": "dopt_c",
+    "placement_params": {
+     "separation": true,
+     "connectivity": true,
+     "fov": true,
+     "clearance": true,
+     "lambda2_floor": 0.05,
+     "standoff_min": 2.0,
+     "standoff_max": 4.0,
+     "altitude_min": -1.0,
+     "altitude_max": 3.0,
+     "restarts": 6,
+     "warm_restarts": 1,
+     "every": 4
+    },
+    "controller": "velocity_p",
+    "safety_filter": "orca"
+   },
+   "output": {
+    "dir": "runs/dynamic_geometry/one_wall_curve_00"
+   }
+  }
+ },
+ {
+  "name": "one_wall_curve_01",
+  "family": "one_wall_curve",
+  "variant": 1,
+  "seed": 8325,
+  "window": [
+   4.0,
+   16.0
+  ],
+  "arc_time": [
+   6.992922501163106,
+   13.007077498836894
+  ],
+  "parameters": {
+   "width_in": 3.099923372596495,
+   "width_out": 3.099923372596495,
+   "width_scale": 1.0,
+   "turn": "curve",
+   "radius": 11.15395694822877,
+   "angle_deg": 46.34037503062165,
+   "direction": "right",
+   "arc_s": [
+    4.489383751744659,
+    13.510616248255342
+   ],
+   "wall_one": "left",
+   "start_lateral": [
+    -2.0,
+    0.9499616862982475
+   ]
+  },
+  "scenario": {
+   "name": "one_wall_curve_01",
+   "seed": 8325,
+   "time": {
+    "duration": 20.0,
+    "sim_hz": 50,
+    "plan_hz": 2
+   },
+   "drones": {
+    "count": 8,
+    "radius": 0.15,
+    "downwash_ratio": 3.0,
+    "limits": {
+     "v_max": 4.0,
+     "a_max": 8.0
+    }
+   },
+   "constraints": {
+    "safety_margin": 0.2,
+    "obstacle_margin": 0.2,
+    "comm_range": 4.0,
+    "connectivity": "monitor"
+   },
+   "world": {
+    "bounds": [
+     [
+      -29.0,
+      -26.04215336662397,
+      0.0
+     ],
+     [
+      34.80034149623099,
+      15.0,
+      8.0
+     ]
+    ],
+    "obstacles": [
+     {
+      "type": "wall",
+      "points": [
+       [
+        -40.0,
+        1.5499616862982475
+       ],
+       [
+        0.0,
+        1.5499616862982475
+       ],
+       [
+        4.4893840344977365,
+        1.5499616862982453
+       ],
+       [
+        5.030000411108327,
+        1.538453472975757
+       ],
+       [
+        5.569638457002811,
+        1.5039496103001886
+       ],
+       [
+        6.107319336560107,
+        1.4465126111198305
+       ],
+       [
+        6.642068899042894,
+        1.3662465377088435
+       ],
+       [
+        7.172917191307953,
+        1.2632970538212973
+       ],
+       [
+        7.698904677401909,
+        1.1378502460145161
+       ],
+       [
+        8.219077269764211,
+        0.9901335872673225
+       ],
+       [
+        8.73249146498424,
+        0.820415085683053
+       ],
+       [
+        9.238219240147615,
+        0.6290015162981861
+       ],
+       [
+        9.735343247224158,
+        0.41624000966573504
+       ],
+       [
+        10.222962814948737,
+        0.1825160393750327
+       ],
+       [
+        10.700193498287467,
+        -0.07174638512667464
+       ],
+       [
+        11.166172677909397,
+        -0.3460876712562406
+       ],
+       [
+        11.62005509325602,
+        -0.6400102633710152
+       ],
+       [
+        12.061017502050293,
+        -0.9529809643380425
+       ],
+       [
+        12.488262841757619,
+        -1.284434063304887
+       ],
+       [
+        12.901016102130306,
+        -1.6337684062602658
+       ],
+       [
+        13.298529471765335,
+        -2.0003510818980503
+       ],
+       [
+        13.680081964034123,
+        -2.3835171050223836
+       ],
+       [
+        16.779430505377846,
+        -5.6313791138635425
+       ],
+       [
+        18.16017606758746,
+        -7.0782867447918125
+       ]
+      ],
+      "thickness": 0.5,
+      "height": 6.0
+     }
+    ]
+   },
+   "target": {
+    "motion": "segments",
+    "segments": [
+     {
+      "duration": 6.992922501163106
+     },
+     {
+      "duration": 6.0141549976737885,
+      "a_lat": -0.2017221341666821
+     },
+     {
+      "duration": 7.992922501163106
+     }
+    ],
+    "position": [
+     -6.0,
+     0.0,
+     0.0
+    ],
+    "heading": 0.0,
+    "speed": 1.5,
+    "altitude": 1.7,
+    "window": [
+     4.0,
+     16.0
+    ]
+   },
+   "perception": {
+    "boresight": "gimbal",
+    "fov_half_angle_deg": 60
+   },
+   "start": {
+    "mode": "random",
+    "region": [
+     [
+      -13.5,
+      -2.0,
+      1.0
+     ],
+     [
+      -8.0,
+      0.9499616862982475,
+      3.0
+     ]
+    ],
+    "min_spacing": 0.8
+   },
+   "goal": {
+    "formation": {
+     "type": "circle",
+     "n": 8,
+     "radius": 3.0
+    },
+    "pose": {
+     "translation": [
+      0.0,
+      0.0,
+      2.0
+     ]
+    },
+    "tolerance": 0.3,
+    "track_target": true,
+    "align_heading": true
+   },
+   "stack": {
+    "assignment": "hungarian",
+    "planner": "track",
+    "planner_params": {
+     "hysteresis": 0.15
+    },
+    "placement": "dopt_c",
+    "placement_params": {
+     "separation": true,
+     "connectivity": true,
+     "fov": true,
+     "clearance": true,
+     "lambda2_floor": 0.05,
+     "standoff_min": 2.0,
+     "standoff_max": 4.0,
+     "altitude_min": -1.0,
+     "altitude_max": 3.0,
+     "restarts": 6,
+     "warm_restarts": 1,
+     "every": 4
+    },
+    "controller": "velocity_p",
+    "safety_filter": "orca"
+   },
+   "output": {
+    "dir": "runs/dynamic_geometry/one_wall_curve_01"
+   }
+  }
+ },
+ {
+  "name": "one_wall_curve_02",
+  "family": "one_wall_curve",
+  "variant": 2,
+  "seed": 8326,
+  "window": [
+   4.0,
+   16.0
+  ],
+  "arc_time": [
+   6.324656984286483,
+   13.675343015713517
+  ],
+  "parameters": {
+   "width_in": 2.5005927371307672,
+   "width_out": 2.5005927371307672,
+   "width_scale": 1.0,
+   "turn": "curve",
+   "radius": 11.230170621389272,
+   "angle_deg": 56.25425921727035,
+   "direction": "right",
+   "arc_s": [
+    3.486985476429725,
+    14.513014523570275
+   ],
+   "wall_one": "left",
+   "start_lateral": [
+    -2.0,
+    0.6502963685653836
+   ]
+  },
+  "scenario": {
+   "name": "one_wall_curve_02",
+   "seed": 8326,
+   "time": {
+    "duration": 20.0,
+    "sim_hz": 50,
+    "plan_hz": 2
+   },
+   "drones": {
+    "count": 8,
+    "radius": 0.15,
+    "downwash_ratio": 3.0,
+    "limits": {
+     "v_max": 4.0,
+     "a_max": 8.0
+    }
+   },
+   "constraints": {
+    "safety_margin": 0.2,
+    "obstacle_margin": 0.2,
+    "comm_range": 4.0,
+    "connectivity": "monitor"
+   },
+   "world": {
+    "bounds": [
+     [
+      -29.0,
+      -27.880248181362546,
+      0.0
+     ],
+     [
+      33.09509519882625,
+      15.0,
+      8.0
+     ]
+    ],
+    "obstacles": [
+     {
+      "type": "wall",
+      "points": [
+       [
+        -40.0,
+        1.2502963685653836
+       ],
+       [
+        0.0,
+        1.2502963685653836
+       ],
+       [
+        3.486985,
+        1.2502963685653836
+       ],
+       [
+        4.019588748921984,
+        1.23892678144941
+       ],
+       [
+        4.551222155893573,
+        1.2048386901243937
+       ],
+       [
+        5.080915437726096,
+        1.1480943445027407
+       ],
+       [
+        5.6077057109037245,
+        1.0687968952131026
+       ],
+       [
+        6.130630978227656,
+        0.967091151163262
+       ],
+       [
+        6.6487406591691505,
+        0.8431619944118924
+       ],
+       [
+        7.161088608578771,
+        0.6972357379866159
+       ],
+       [
+        7.666743473517419,
+        0.5295776485835708
+       ],
+       [
+        8.164782883497152,
+        0.3404934782111082
+       ],
+       [
+        8.654298406747065,
+        0.1303281954551283
+       ],
+       [
+        9.13440019541701,
+        -0.10053615842897279
+       ],
+       [
+        9.604211512408073,
+        -0.3516779908776131
+       ],
+       [
+        10.062878328439165,
+        -0.6226407729165868
+       ],
+       [
+        10.509563049851732,
+        -0.9129296863030849
+       ],
+       [
+        10.943453687198728,
+        -1.222017039976806
+       ],
+       [
+        11.363758753837732,
+        -1.549339095964458
+       ],
+       [
+        11.769711629063702,
+        -1.8942987409583414
+       ],
+       [
+        12.160574366323104,
+        -2.2562689027127205
+       ],
+       [
+        12.535633192265317,
+        -2.634588570006647
+       ],
+       [
+        12.89420631995184,
+        -3.028570028300696
+       ],
+       [
+        13.235638941649952,
+        -3.437493808996917
+       ],
+       [
+        13.559310396583928,
+        -3.860616564990171
+       ],
+       [
+        13.86463020054344,
+        -4.297166491329718
+       ],
+       [
+        15.80167973621433,
+        -7.196632560553877
+       ],
+       [
+        16.912696580663557,
+        -8.85965437981846
+       ]
+      ],
+      "thickness": 0.5,
+      "height": 6.0
+     }
+    ]
+   },
+   "target": {
+    "motion": "segments",
+    "segments": [
+     {
+      "duration": 6.324656984286483
+     },
+     {
+      "duration": 7.350686031427035,
+      "a_lat": -0.2003531447433748
+     },
+     {
+      "duration": 7.324656984286483
+     }
+    ],
+    "position": [
+     -6.0,
+     0.0,
+     0.0
+    ],
+    "heading": 0.0,
+    "speed": 1.5,
+    "altitude": 1.7,
+    "window": [
+     4.0,
+     16.0
+    ]
+   },
+   "perception": {
+    "boresight": "gimbal",
+    "fov_half_angle_deg": 60
+   },
+   "start": {
+    "mode": "random",
+    "region": [
+     [
+      -13.5,
+      -2.0,
+      1.0
+     ],
+     [
+      -8.0,
+      0.6502963685653836,
+      3.0
+     ]
+    ],
+    "min_spacing": 0.8
+   },
+   "goal": {
+    "formation": {
+     "type": "circle",
+     "n": 8,
+     "radius": 3.0
+    },
+    "pose": {
+     "translation": [
+      0.0,
+      0.0,
+      2.0
+     ]
+    },
+    "tolerance": 0.3,
+    "track_target": true,
+    "align_heading": true
+   },
+   "stack": {
+    "assignment": "hungarian",
+    "planner": "track",
+    "planner_params": {
+     "hysteresis": 0.15
+    },
+    "placement": "dopt_c",
+    "placement_params": {
+     "separation": true,
+     "connectivity": true,
+     "fov": true,
+     "clearance": true,
+     "lambda2_floor": 0.05,
+     "standoff_min": 2.0,
+     "standoff_max": 4.0,
+     "altitude_min": -1.0,
+     "altitude_max": 3.0,
+     "restarts": 6,
+     "warm_restarts": 1,
+     "every": 4
+    },
+    "controller": "velocity_p",
+    "safety_filter": "orca"
+   },
+   "output": {
+    "dir": "runs/dynamic_geometry/one_wall_curve_02"
+   }
+  }
+ }
+]

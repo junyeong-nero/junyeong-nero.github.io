@@ -1,64 +1,35 @@
 {
   "source_repository": "https://github.com/junyeong-nero/constrained-swarm-observation",
-  "source_commit": "bd3a2e70f7dedf2a399fb4172fc090763039ac09",
-  "article_date": "2026-09-18",
-  "experiment_date": "2026-09-17",
-  "sensor_axis": "constraint_dose_fov only; original sensor records retained, not plotted as main evidence",
+  "source_commit": "8b301ec1a01da0ce6b34e0575968a09a99f3ed24",
+  "article_date": "2026-09-20",
+  "experiment_date": "2026-09-19",
+  "study": "dynamic_geometry (62 cells x 27 maps x 3 start seeds = 4,878 closed-loop episodes)",
+  "not_copied": "results/dynamic_geometry/runs.jsonl.gz (5 MB per-episode records, sha256 45f68324e2fdaeb9e8c3e458e2c2d59b9b3be0ec5459d5a1a6ac5f7a0157737e) and manifest.json.gz remain in the source repository",
   "files": [
     {
-      "source": "results/constraint_dose/effects.json",
-      "file": "data/constraint_dose.effects.json",
-      "sha256": "5a2780114bb61ec2ab9d6b7a4b04a89cc77757f922f3e1ebe5e245aa9762aec5"
+      "source": "results/dynamic_geometry/effects.json",
+      "file": "data/effects.json",
+      "sha256": "b303c65815d0213705f9b166fe1cb00a6bed2cd3b59bdeb34681ff9649aeb55b"
     },
     {
-      "source": "results/constraint_dose/runs.jsonl.gz",
-      "file": "data/constraint_dose.runs.jsonl.gz",
-      "sha256": "edc12bcc936d5334a052ac4231af36c619db032077f5b400416988188d8ce0e1"
+      "source": "results/dynamic_geometry/interactions.json",
+      "file": "data/interactions.json",
+      "sha256": "c7602886430ae45e2fc9d3f2f0cb4f33b0c49ba7f262011e06137681fd5bb1d3"
     },
     {
-      "source": "results/constraint_dose_fov/effects.json",
-      "file": "data/constraint_dose_fov.effects.json",
-      "sha256": "6e0676d50f065195dab81cf958555a27014d1d9992d62b5d758223aa8a9e4470"
+      "source": "results/dynamic_geometry/maps.json",
+      "file": "data/maps.json",
+      "sha256": "b50627d2f4d1710e2be42918e330cdac2266bffcf71060bd8ec2eafbfdd3232c"
     },
     {
-      "source": "results/constraint_dose_fov/runs.jsonl.gz",
-      "file": "data/constraint_dose_fov.runs.jsonl.gz",
-      "sha256": "34423071fc7f9b7e566fc7d2c8ac5564e26e86f49b659f7a5800f1e70240376b"
+      "source": "results/dynamic_geometry/summary.json",
+      "file": "data/summary.json",
+      "sha256": "d2befd60b8ba6d03156a696ba86e721f1df708b87cec6da4d6a0136010bd8ff0"
     },
     {
-      "source": "results/constraint_dose2/effects.json",
-      "file": "data/constraint_dose2.effects.json",
-      "sha256": "7bc78ea4ffde3788a31e6b0a1ecf4c1654c060ae5d609dcd559aab4ab08c26d9"
-    },
-    {
-      "source": "results/constraint_dose2/runs.jsonl.gz",
-      "file": "data/constraint_dose2.runs.jsonl.gz",
-      "sha256": "da41b1cb5aea58726db42896689936f12707c913e14603941746897f7e41aca3"
-    },
-    {
-      "source": "results/constraint_interaction/effects.json",
-      "file": "data/constraint_interaction.effects.json",
-      "sha256": "4ab2b69b83b230d574597eb9f21195df2c088b66283601b37133d76e0154bde7"
-    },
-    {
-      "source": "results/constraint_interaction/undecided_recertification.json",
-      "file": "data/constraint_interaction.undecided_recertification.json",
-      "sha256": "d4ea0a1477972cbcea300dbc5136c6b5268f810634698af68987627cb3f4a0f0"
-    },
-    {
-      "source": "results/constraint_dynamic/summary_by_condition.json",
-      "file": "data/constraint_dynamic.summary_by_condition.json",
-      "sha256": "cdcdae7a6bd1d5b6c718487297331135d6f83b3989c2b92a557997e466edeb08"
-    },
-    {
-      "source": "results/constraint_dynamic/runs.jsonl.gz",
-      "file": "data/constraint_dynamic.runs.jsonl.gz",
-      "sha256": "4ed2a71a1da228da17428c475136cebb9a4d4386bfb7cc641051029a0ace106a"
-    },
-    {
-      "source": "results/estimator_check/estimator_check.json",
-      "file": "data/estimator_check.estimator_check.json",
-      "sha256": "8f0a51d322bf3ea1e91d64523b41122902f03f6293eb0c33e35c2fdae945a3ac"
+      "source": "results/dynamic_geometry/PROTOCOL.md",
+      "file": "data/PROTOCOL.md",
+      "sha256": "5e95ff4b6bfc9536869da22e0ea2bda5b434cee3f53076a1d5e7233073cc0a85"
     }
   ]
 }

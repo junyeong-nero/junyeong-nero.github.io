@@ -1,16 +1,16 @@
 {
   "posts": [
     {
+      "slug": "drone-swarm-constraint-study",
+      "title": "What limits a drone swarm's view? Three constraints that are mild on paper and severe in flight",
+      "date": "2026-09-20",
+      "summary": "Across 4,878 closed-loop flights on nine geometry families, a narrow sensor cone, a short communication range and a large separation cost far more in flight than their planned placements suggested. Standoff and swarm size transfer from plan to flight almost exactly. Safety held in 4,800 episodes."
+    },
+    {
       "slug": "uav-synthetic-ttg-real-flight",
       "title": "Predicting UAV zone entry: matching the data before adding more motion",
       "date": "2026-09-18",
       "summary": "More varied synthetic motion did not reliably improve predictions on real UAV flights. Matching the generator to AMOVFLY calibration data cut GRU error from 51 to 14 seconds on held-out dates, while the MLP stayed near 16 seconds."
-    },
-    {
-      "slug": "drone-swarm-constraint-study",
-      "title": "What limits a drone swarm's view? From static placement to flight",
-      "date": "2026-09-18",
-      "summary": "Across twelve corridor and corner maps, target distance, sensor direction, and drone count had the largest effects on static observation quality. Flight added new losses: four of 108 episodes violated safety constraints."
     },
     {
       "slug": "browserlens-uist-2026",
@@ -32,5 +32,5 @@
       "summary": "Notes from rebuilding AI systems, testing ideas, and working through experiments: what worked, what failed, and what to try next."
     }
   ],
-  "updatedAt": "2026-09-18"
+  "updatedAt": "2026-09-20"
 }

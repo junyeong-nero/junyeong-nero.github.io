@@ -28,7 +28,7 @@
 
         <section class="project-section">
             <h2> Overview</h2>
-            <p>How do flight constraints change what a drone swarm can observe of a known moving target in confined geometry? Varies seven constraint axes across corridor and corner maps, separating feasibility, static observation quality (bearing-only CRLB), and what survives closed-loop flight.</p>
+            <p>How do flight constraints change what a drone swarm can observe of a known moving target in confined geometry? Flies 62 constraint cells closed loop on 27 maps from nine geometry families (4,878 episodes) and reports, for each, the bearing-only CRLB the placement planned, the CRLB the drones' real positions realised, feasibility at window entry, and safety.</p>
         </section>
 
         <section class="project-section">
@@ -45,10 +45,10 @@
         <section class="project-section">
             <h2> Features</h2>
             <ul class="feature-list">
-                <li><strong>Largest Static Effects</strong> - Standoff 2 → 3.5 m +2.03 cm, gimbal → fixed 20° nadir +1.96 cm, 8 → 4 drones +1.09 cm (baseline CRLB 2.63 cm).</li>
-                <li><strong>Grid-Certified Feasibility</strong> - Every input checked before solving; single-axis cells stayed feasible while pairs (narrow cone + large standoff / low ceiling) removed the feasible region.</li>
-                <li><strong>Flight Costs More</strong> - Nadir 30° raised flown CRLB +4.40 cm vs +1.27 cm statically; safety held in 104/108 episodes, with 3 standoff episodes showing degenerate observations.</li>
-                <li><strong>Estimator Check</strong> - Maximum-likelihood estimator reached the bound under the same noise model (median RMSE/CRLB 0.999).</li>
+                <li><strong>Plan vs. Flight</strong> - Three constraints are mild on paper and severe in flight: nadir 20° +1.98 cm planned vs +9.06 cm flown, communication 0.8 m +0.26 vs +6.92 cm, separation 1.5 m +0.25 vs +3.32 cm. Standoff and swarm size transfer almost exactly.</li>
+                <li><strong>Geometry Acts Through Constraints</strong> - Baseline CRLB is 2.56–2.64 cm across all nine families; the separation loss ranges from 3.3 cm in open space to 18.8 cm in closed corners, while the communication loss appears even without walls.</li>
+                <li><strong>Grid-Certified Feasibility</strong> - Every episode certified at window entry (987 grid-infeasible, 102 undecided, all still flown and marked); safety held in 4,800/4,878 episodes, all 78 violations wall clearance around the turn.</li>
+                <li><strong>Archived Static Study</strong> - The first, static-placement study (1,404 placements, estimator check with median RMSE/CRLB 0.999, 108 flights) is archived unchanged and not merged.</li>
             </ul>
         </section>
 

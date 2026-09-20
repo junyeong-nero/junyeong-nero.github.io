@@ -1,169 +1,176 @@
 ## TL;DR
 
-- Seven constraint axes were varied on twelve corridor and corner maps, separating three questions: does a feasible placement exist, how informative is it, and what survives flight. Observation quality is a model-based CRLB in centimetres, lower is better, not measured tracking accuracy.
-- The largest static effects came from distance, sensing and headcount, not corridor width: minimum standoff 2 to 3.5 m cost **+2.030 cm**, a gimbal replaced by a fixed 20° nadir sensor **+1.963 cm**, and eight drones cut to four **+1.089 cm**.
-- Communication, separation, ceiling and width mattered mainly at the extremes: +0.665 cm at a 0.8 m communication range, and 0.186, 0.165 and 0.035 cm for the strongest separation, lowest ceiling and narrowest corridor.
-- Every input was grid-certified before solving, so a failed solve is never reported as infeasible. Single-axis cells stayed feasible; constraint pairs did not, and a narrow nadir cone combined with a large standoff or low ceiling removed the feasible region entirely.
-- A maximum-likelihood estimator reached the bound under the same noise model, with a median RMSE/CRLB ratio of 0.999.
-- Flight cost much more than the static snapshot: across 108 episodes, nadir 30° raised flown CRLB by 4.403 cm against 1.268 cm statically. Safety held in 104 of 108 episodes, and three standoff episodes contained degenerate observations. Both failures stay in the results.
+- 4,878 closed-loop flights: 62 constraint cells × 27 maps from nine geometry families × 3 start seeds, each 20 s, each measured on the same 12 s event window. Every cell was flown, and the CRLB of the drones' real positions is reported next to the CRLB their own placement planned.
+- Three constraints are mild on paper and severe in flight. A fixed 20° nadir cone raised the planned-slot CRLB by 1.98 cm and the flown CRLB by **9.06 cm**; a 0.8 m communication range by 0.26 cm planned and **6.92 cm** flown; a 1.5 m separation by 0.25 cm planned and **3.32 cm** flown.
+- Two transfer from plan to flight almost exactly: minimum standoff 3.5 m (+2.06 planned, +1.83 flown) and four drones instead of eight (+1.15, +1.16). Ceiling and corridor width barely move either number.
+- The separation loss depends on the walls: 3.3 cm in open space, 10.1 cm in corridors, 18.8 cm in closed corners. The communication loss does not: 10.5 cm in open space with no wall at all.
+- Geometry alone changes nothing at baseline. The nine families sit between 2.56 and 2.64 cm with every episode safe and visible. The families act through the constraints.
+- Safety held in 4,800 of 4,878 episodes. All 78 violations were wall clearance, 51 of them in closed corners, and 42 under a separation of 1 m or more. The grid certificate found no feasible placement at window entry in 987 episodes and ran out of budget in 102; those cells were flown anyway on the solver's fallback and are marked as such.
 
-How much does a narrow corridor limit a drone swarm's view of a person? In this experiment, three other constraints had larger effects: **how far the drones had to stay from the target, where their sensors could point, and how many drones were available**.
+How much do a narrow corridor, a short radio range or a downward-looking camera limit what a drone swarm can see of a person walking past? The first version of this study answered that with static placements and a small flight check. This version flies everything. Each of the 62 constraint cells was run closed loop on 27 maps, and for each I report what the placement planner promised, what the drones' real positions delivered during the event window, and whether the flight stayed safe.
 
-I varied seven constraints across twelve corridor and corner maps. For each condition, I asked whether a feasible placement existed, how much position information it provided, and what happened when the swarm tried to fly it. The study uses a simulator and a fixed observation model, so its findings concern those placements and flight conditions rather than the relative performance of tracking algorithms.
+The answer changed. In the static study the largest effects came from distance, sensing and headcount. In flight, distance and headcount behave exactly as planned, while three other constraints that looked nearly free on paper become the largest losses: a narrow sensor cone, a short communication range and a large separation distance.
 
-The experiments finished on September 17, 2026. They include static sweeps, selected pairs of constraints, a check against a position estimator, and 108 closed-loop flight episodes. Four flight episodes violated safety constraints; I include them in the results below.
+The experiments finished on September 19, 2026. All 4,878 episodes completed without error and were audited against their manifest before the tables below were generated.
 
-![Paired CRLB increases for seven constraint axes, with map-cluster confidence intervals. Standoff, sensor operation and swarm size have the largest effects at the selected levels.](assets/posts/drone-swarm/constraint-effects.svg "Figure 1. Selected restrictive levels of each axis. Positive values mean a larger position-error bound. Whiskers are 95% map-cluster bootstrap intervals, not uncertainty across independent solver seeds. The common baseline CRLB is 2.627 cm.")
+![Dumbbell chart of seven constraint axes showing the planned-slot effect and the flown effect with confidence intervals. Sensor, communication and separation have flown effects far larger than their planned effects; standoff and swarm size match.](assets/posts/drone-swarm/plan-vs-flight.svg "Figure 1. The strongest level of each axis, paired against the shared baseline within map and start seed. Squares are the change in planned-slot CRLB, circles the change in flown event-window CRLB. Whiskers are 95% map-cluster bootstrap intervals. Baseline flown CRLB is 2.60 cm.")
 
-[View full-size figure](assets/posts/drone-swarm/constraint-effects.svg)
+[View full-size figure](assets/posts/drone-swarm/plan-vs-flight.svg)
 
-[Source repository](https://github.com/junyeong-nero/constrained-swarm-observation) · [Full results](https://github.com/junyeong-nero/constrained-swarm-observation/blob/bd3a2e7/docs/RESULTS.md) · [Figure data and provenance](assets/posts/drone-swarm/provenance.json)
+[Source repository](https://github.com/junyeong-nero/constrained-swarm-observation) · [Full results tables](https://github.com/junyeong-nero/constrained-swarm-observation/blob/8b301ec/docs/RESULTS.md) · [Frozen protocol](https://github.com/junyeong-nero/constrained-swarm-observation/blob/8b301ec/experiments/dynamic_geometry/PROTOCOL.md) · [Figure data and provenance](assets/posts/drone-swarm/provenance.json)
 
-## What the observation metric measures
+## What replaced the static study
 
-The target position is known to the placement planner. The experiment asks where observers should be placed around that target under a set of constraints. It does not ask an autonomous swarm to find an unknown person.
+An earlier version of this post reported a static-placement study on twelve corridor and corner maps: single-axis sweeps of 1,404 placements, three constraint pairs, an estimator check and 108 flight episodes. That study is archived unchanged in the repository under `deprecated/static-study-2026-09/`, with its own results document and tests, and its numbers are not merged with anything here. Its baseline constraint levels, its metric and its grid certificate were kept; its maps and its unit of evidence were replaced.
 
-Each observer supplies a bearing measurement with 1° angular noise. Observer positions are assumed known. The Fisher information depends on the viewing directions and the distance to the target: information weakens with the square of distance, and a bearing gives information perpendicular to its line of sight.
+Two things motivated the change. The 108 flight episodes showed that a placement's CRLB was a poor predictor of what the swarm realised in flight, so the static sweeps were measuring the wrong quantity for the original question. And twelve maps of two families could not say whether an effect depended on the walls or on the constraint. The dynamic study therefore flies every cell and uses nine generated families, including an open-space control.
 
-I report the Cramér–Rao lower bound (CRLB) as the square root of the trace of the inverse Fisher information matrix. In this form, it is an RMS bound on three-dimensional position error, expressed in centimetres. **Lower is better.** It measures the quality of the viewing geometry under the assumed noise model; it is not a measurement of real drone localization accuracy.
+## What is measured
 
-Only visible observers contribute information. The evaluator includes sensor field of view, wall occlusion and drone–drone occlusion. When communication disconnects, it uses the best-informed connected component rather than silently pooling information across the whole swarm. Degenerate geometry has an infinite bound and is reported separately from finite averages.
+The person's position is known to the placement planner throughout. The swarm's job is to keep good viewing geometry around it while it walks, under a set of constraints. This is not a search task, and there is no estimator in the loop.
 
-The placement objective is D-optimal information, based on a log-determinant. That is not identical to the trace-based CRLB we report. A finite-budget local optimizer does not establish a globally optimal CRLB or guarantee that its returned values vary monotonically with every constraint.
+Each drone supplies a bearing measurement with 1° angular noise. Observer positions are assumed known. Information weakens with the square of distance, and a bearing gives information perpendicular to its line of sight. I report the Cramér–Rao lower bound (CRLB) as the square root of the trace of the inverse Fisher information: an RMS bound on three-dimensional position error, in centimetres. **Lower is better.** It measures the quality of the viewing geometry under the assumed noise model, not the accuracy of a real tracker.
 
-## A failed solve does not prove that a placement is impossible
+Two versions of the bound appear in every table:
 
-Early in the study, both optimizers sometimes failed even though another condition or initialization supplied a feasible placement. A failed solve could mean that the search had missed a solution. I needed a separate way to check feasibility before interpreting those failures.
+- **Planned-slot CRLB.** At each replan, every 2 s, the placement solver returns one slot per drone. This is the bound those slots would give if the drones were on them.
+- **Flown CRLB.** The bound at the drones' real positions, averaged over the finite samples of the event window. The evaluator counts sensor field of view, wall occlusion and drone–drone occlusion, and when the communication graph splits it uses the best-informed connected component rather than pooling information across the whole swarm.
 
-For the main sweeps, every input first goes through a grid feasibility check. The check uses the same hard-constraint oracle as the placement solver. It looks for a connected set of separated slots on a 0.25 m grid, refining to 0.125 m when needed.
+The difference between the two, aggregated over placement instants where both are finite, is the realisation gap. Degenerate geometry has an infinite bound. Those samples are excluded from the mean and reported as a degeneracy fraction; a quality mean has to be read next to that fraction and the visible fraction, and unsafe episodes remain in every mean.
 
-When the check finds a feasible placement, SLSQP starts from that placement, a seeded random ring, and a connected arc, with up to 1,200 objective calls per start. If the check exhausts its search budget, I record the outcome as **undecided**. A negative certificate applies only to the tested grid; a placement may still exist between its points.
+The solver's line-of-sight check traces walls only; the evaluator also counts drones as occluders. That is a modelling choice, disclosed rather than corrected.
 
-The constraints include standoff, altitude, workspace, wall clearance, line of sight, sensor FOV, pairwise separation and communication. Separation uses a downwash-aware ellipsoidal distance with vertical scaling fixed at three. Planned slots keep an additional 0.15 m beyond the hard separation distance; this is distinct from the flight safety threshold.
+## Nine families, one skeleton
 
-The solver's hard LOS check considers walls, while the evaluator also counts drone–drone occlusion. That modelling difference remains a limitation of the placement stage.
+Every map shares a skeleton. A person walks at 1.5 m/s for 20 s along a centreline, starting 6 m before the walled span, entering it at 4 s and leaving it at 16 s. That 4–16 s span is the event window of every map, and any turn is centred at 10 s. Walls are 6 m high and 0.5 m thick and extend 40 m behind the person, so the swarm always starts inside the corridor. The drones start in a box 2 m behind the person, sized to the cell's swarm and separation; a widely separated swarm in a narrow corridor is a long line and starts farther back, and that start transient can reach into the window.
 
-## Seven axes, one shared reference
+![Nine top-view panels showing walls, the person's path with the event window highlighted, and the start box for each geometry family.](assets/posts/drone-swarm/geometry-families.svg "Figure 2. Variant 00 of each family. Black: walls. Coral: the 12 s event window of the person's walk. Soft coral: the baseline start box. Three random variants per family give 27 maps, generated from fixed seeds.")
 
-The maps contain six staggered corridors and six asymmetric corners. The person is represented by a target point moving at 1.5 m/s; the static experiment evaluates the middle of its manoeuvre. Walls are 6 m high. The maps were defined before the earlier held-out validation and reused in the later studies. They are not a new independent map set at every stage.
+[View full-size figure](assets/posts/drone-swarm/geometry-families.svg)
 
-The reference condition uses eight drones, communication range 4 m, required separation 0.5 m, a free gimbal, target standoff 2–4 m and ceiling 3 m above the target. One axis changes at a time.
+| Family | Turn | Walls | Width |
+| --- | --- | --- | --- |
+| open | none | none | – |
+| one_wall | none | one side | 2.4–3.6 m |
+| corridor | none | both | 2.4–3.6 m |
+| taper | none | both | 3.6–4.4 → 2.0–2.6 m |
+| corner_open | 90° | inner L | 2.4–3.6 m |
+| corner_closed | 90° | both L | 2.4–3.6 m |
+| curve | 40–60°, R 8–12 m | both | 2.4–3.6 m |
+| curve_taper | same bend | both | 3.6–4.4 → 2.0–2.6 m |
+| one_wall_curve | same bend | one side | 2.4–3.6 m |
+
+One-walled families put their wall on a random side at half the listed width from the path. The 2.0 m tapered exits are deliberately tight for eight drones. The certificate, not a level change, records where placement becomes infeasible.
+
+## 62 cells, 4,878 episodes
+
+The baseline is eight drones, communication range 4 m, required separation 0.5 m, a free gimbal, standoff 2–4 m from the person, altitude −1 to +3 m relative to the person and wall clearance 0.5 m. One axis changes at a time:
 
 | Axis | Levels tested |
 | --- | --- |
-| Communication | 0.8, 1.2, 1.6, 2, 3, 4 m |
+| Communication range | 0.8, 1.2, 1.6, 2, 3, 4 m |
 | Separation | 0.5, 0.75, 1, 1.25, 1.5 m |
-| Sensor operation | Gimbal, then fixed nadir half-angles 60°, 50°, 40°, 30°, 20° |
+| Sensor | gimbal, then fixed nadir half-angles 60°, 50°, 40°, 30°, 20° |
 | Swarm size | 4, 6, 8, 10, 12 drones |
 | Minimum standoff | 1, 1.5, 2, 2.5, 3, 3.5 m; maximum stays 4 m |
-| Ceiling above target | 0.5, 1, 1.5, 2, 3 m |
-| Corridor width multiplier | 0.7, 0.85, 1, 1.3, 1.7 |
+| Ceiling above person | +0.5, +1, +1.5, +2, +3 m |
+| Corridor width multiplier | 0.7, 0.85, 1, 1.3, 1.7, on the five two-walled families only |
 
-Each cell has twelve maps and three solver seeds. Effects are condition-minus-baseline differences within the same map and seed, averaged within map and then across maps. The 95% intervals resample maps within the two geometry families, retaining the seed pairs, for 10,000 bootstrap draws. Solver seeds are repeated searches, not independent environments.
+Three two-way grids add the cells not already in that list: sensor {40°, 30°, 20°} × standoff {1.5, 2.5, 3, 3.5 m}, sensor × ceiling {+0.5, +1, +2 m}, and communication {0.8, 1.2, 2 m} × separation {0.75, 1, 1.5 m}. Every cell runs on all 27 maps with three start seeds, which gives 62 × 27 × 3 minus the width cells on the four families without two walls: 4,878 episodes.
 
-Three stored sweep studies contain 1,404 records. All were grid-certified feasible and returned valid, nondegenerate placements. That count includes repeated baseline cells and the first sensor run; it is not the number of independent samples or unique final conditions. The final sensor curves use only the corrected sensor study.
+Each episode is a closed loop at 50 Hz for 20 s. Placement is re-solved every 2 s from a warm start (D-optimal objective, SLSQP), followed by Hungarian assignment, a local VisPlanner transit, a velocity controller and an ORCA safety filter with per-shape obstacle barriers. Before the flight, the grid certificate from the static study runs on the flight's own constraints with the person at the window entry: feasible, infeasible at the tested resolution (0.25 m, refined once to 0.125 m), or undecided when its budget is exhausted. The flight runs regardless of the verdict, and the verdict is recorded with the episode.
 
-### Distance, sensor operation and drone count
+Effects are paired within map and start seed, cell minus baseline, averaged within a map, then over maps. The 95% intervals resample maps within each family, 10,000 draws, fixed seed. Start seeds are repeats, not independent maps. All of this was fixed in the protocol before the run. A first full run was stopped after 632 episodes when the separation cells could not sample their start box inside narrow corridors; the box rule was changed and the run restarted from scratch. That history is in the protocol file.
 
-Increasing minimum standoff from 2 m to 3.5 m raised CRLB by **2.030 cm**, to 4.657 cm. Across the tested range, the curve was approximately linear in distance, consistent with the distance dependence of the bearing information model.
+## Geometry alone changes nothing at baseline
 
-Switching from a gimbal to a fixed nadir sensor with a 20° half-angle raised CRLB by **1.963 cm**. The increases at 40° and 30° were 0.565 and 1.268 cm. The comparison with a gimbal changes sensor operation as well as angular coverage; it is not a pure half-angle change with the boresight held fixed.
+Across the nine families, the baseline cell gives flown CRLB between 2.56 and 2.64 cm, with all 81 episodes safe and visible fractions at or above 0.997. The realisation gap is slightly negative everywhere, −0.02 to −0.12 cm: the drones' real positions are marginally better than the planned slots. I have not traced why.
 
-Reducing the swarm from eight drones to four increased CRLB by **1.089 cm**. Twelve drones reduced it by 0.477 cm. The curve was close to the familiar inverse-square-root dependence on observer count. Within this static 4–12 drone range, crowding did not reverse the benefit of adding observers.
+| Family | Safe | Certified | Visible | Flown CRLB | Planned CRLB |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| open | 9/9 | 9/9 | 1.000 | 2.611 cm | 2.618 cm |
+| one_wall | 9/9 | 9/9 | 1.000 | 2.591 | 2.618 |
+| corridor | 9/9 | 9/9 | 0.999 | 2.638 | 2.667 |
+| taper | 9/9 | 9/9 | 1.000 | 2.583 | 2.660 |
+| corner_open | 9/9 | 9/9 | 1.000 | 2.623 | 2.618 |
+| corner_closed | 9/9 | 9/9 | 0.998 | 2.557 | 2.659 |
+| curve | 9/9 | 9/9 | 0.997 | 2.593 | 2.666 |
+| curve_taper | 9/9 | 9/9 | 1.000 | 2.561 | 2.668 |
+| one_wall_curve | 9/9 | 9/9 | 1.000 | 2.602 | 2.618 |
 
-![Three dose-response panels showing absolute CRLB against minimum standoff, sensor half-angle and drone count, with separate corridor and corner curves.](assets/posts/drone-swarm/main-dose-response.svg "Figure 2. The three larger effects over the tested ranges. Charcoal circles are corridors; coral squares are corners. Thin lines retain individual maps, bold lines show family means. Each panel has its own vertical scale.")
+So the walls themselves, at the baseline constraint levels, do not cost observation quality. Whatever the families do, they do through the constraints.
 
-[View full-size figure](assets/posts/drone-swarm/main-dose-response.svg)
+## Seven axes, planned and flown
 
-The sensor curve initially reflected a mismatch between the solver and evaluator. The solver accepted up to 1 mm of hard-constraint violation, while the evaluator used a strict cone test. At 20°, that meant some accepted slots on the cone edge were counted as blind. I reran the sensor study with a 2 mm inward margin. The strict and cone-tolerant evaluations then agreed. All sensor-axis values in this post come from that corrected run; the original records remain archived.
+![Seven dose-response panels, one per axis, with thin lines for each family, a bold line for the all-family flown mean and a dashed line for the all-family planned mean.](assets/posts/drone-swarm/dose-panels.svg "Figure 3. Flown and planned event-window CRLB against each constraint. Where bold and dashed lines coincide the plan is realised; where they part, the loss happens in flight. Vertical scales differ per panel; width uses the five two-walled families only.")
 
-### The other constraints mattered nearer the extremes
+[View full-size figure](assets/posts/drone-swarm/dose-panels.svg)
 
-Communication range had little effect over much of the sweep, then became more costly at the shortest levels. The CRLB increase was 0.066 cm at 1.2 m and **0.665 cm at 0.8 m**, with a relatively wide map-cluster interval of 0.378–1.099 cm. Visibility at 0.8 m was 98.6%, reflecting the evaluator's treatment of mutual occlusion.
+### Standoff and swarm size: the plan is realised
 
-The strongest tested separation, lowest ceiling and narrowest width produced smaller mean increases: **0.186, 0.165 and 0.035 cm**, respectively. Those values describe this baseline and these ranges. They do not establish that walls or safety separation are unimportant in other environments.
+Minimum standoff moves the bound almost linearly in distance, as the bearing model predicts, and the flown curve follows the planned one. From 2 m to 3.5 m the planned-slot CRLB rises by 2.06 cm and the flown CRLB by 1.83 cm [1.80, 1.86]. At 3.5 m the flown mean (4.42 cm) is a little better than the planned mean (4.70 cm). Standoff is a placement constraint, not a flight constraint, and the most likely explanation is that drones lagging their slots were closer to the person than the slots allowed. I have not confirmed that from the traces yet; it is listed under open checks below.
 
-![Four dose-response panels for communication range, safety separation, ceiling and corridor width, using the same charcoal and coral map-family colors.](assets/posts/drone-swarm/secondary-dose-response.svg "Figure 3. Smaller single-axis effects. Vertical scales differ and some curves are not monotone. All tested single-axis cells were certified feasible; a flat feasibility curve would not imply flat observation quality.")
+Swarm size follows the inverse-square-root shape from four to twelve drones: four drones cost +1.16 cm flown against +1.15 planned, twelve gain −0.46 against −0.49. Visibility stays at or above 0.998 across the axis. Within this range, crowding did not reverse the benefit of adding observers.
 
-[View full-size figure](assets/posts/drone-swarm/secondary-dose-response.svg)
+### Ceiling and width: small either way
 
-## Constraint pairs can remove the feasible region
+The lowest ceiling, +0.5 m above the person, costs 0.35 cm planned and 0.14 cm [0.06, 0.23] flown. Like standoff, its flown mean sits below its planned mean, and the same unconfirmed explanation applies. Corridor width at ×0.7 costs 0.10 cm planned and 0.25 cm [0.09, 0.44] flown. The wider levels change almost nothing.
 
-Every condition in the single-constraint sweeps remained feasible. Combining constraints exposed limits that those sweeps had missed.
+### Sensor cone: the loss is visibility
 
-I tested sensor × standoff, sensor × ceiling, and communication × separation: 52 cells and 1,872 inputs in total. The original run contained **1,383 certified feasible inputs, 435 grid-infeasible inputs and 54 undecided inputs**. Every certified input returned a valid, nondegenerate placement.
+A fixed nadir sensor loses the person as soon as a drone leaves the cone, and in flight the drones are often off their slots. At 20° the visible fraction falls to 0.28 and every one of the 81 episodes contains degenerate samples, with 23% of the event window degenerate on average. The planned-slot CRLB rises by 1.98 cm; the flown CRLB, over the finite 77% of the window, rises by **9.06 cm** [8.75, 9.37], to 11.65 cm. The 30° level already shows it: visible fraction 0.73, degenerate samples in 52 of 81 episodes, +1.25 cm planned against +2.00 cm flown.
 
-A narrow nadir cone restricts where an observer can be while seeing the target. Combining it with a large minimum distance or low ceiling can leave no placement on the tested grid. Both 30° and 20° were grid-infeasible at standoff 3.5 m; every tested nadir condition was grid-infeasible at ceilings of 1 m and below. Communication also conflicts with separation when its range is smaller than the required separation plus the slot margin: no neighbor can satisfy both distance requirements.
+The loss is nearly the same in every family, from 9.86 cm in the taper to 13.09 cm with one wall. Walls are not what removes the person from the cone.
 
-![Three certification grids with feasible counts in charcoal, grid-infeasible cells in stone and budget-exhausted cells in soft coral. Each cell explicitly lists F, I or U counts.](assets/posts/drone-swarm/interaction-feasibility.svg "Figure 4. The original certification outcomes. F means certified feasible, I means infeasible on the tested grid, and U means the search budget was exhausted. Counts sum to 36 in every cell. Undecided cells have a distinct color and are never relabeled as failures.")
+### Communication: the loss appears even in open space
 
-[View full-size figure](assets/posts/drone-swarm/interaction-feasibility.svg)
+At a communication range of 0.8 m, the required separation plus the slot margin (0.65 m) leaves the planner 0.15 m of play to chain its slots, and it does: the planned slots stay connected and barely notice (+0.26 cm). The flying swarm, off its slots, does not stay connected. It splits into components that cannot fuse their bearings, and the evaluator scores the best-informed component only. Flown CRLB rises by **6.92 cm** [6.68, 7.19], to 9.52 cm, with the visible fraction still at 0.998: every drone sees the person, but their measurements are not shared. Eighty of 81 episodes contain degenerate samples, 23% of the window on average.
 
-The 54 undecided inputs were re-certified post hoc on the 0.125 m grid with a larger budget. Twenty-one were feasible and 33 were grid-infeasible. The original cells and quality tables were preserved. Finding a later feasible witness does not create an additional optimized quality result for the frozen experiment.
+This loss needs no walls. In the open control family it is 10.54 cm. At 1.2 m the flown increase is 0.70 cm with no degeneracy, and from 1.6 m upward it is below 0.25 cm.
 
-Quality interaction also depends on the scale used to measure it. For each map and seed, the additive interaction subtracts both single-axis changes from the combined change. The log interaction makes the corresponding comparison on log CRLB, where zero represents a multiplicative relationship. Only quadruples with valid, nondegenerate results in all four cells contribute.
+![Two panels of flown CRLB by family. Separation: closed corner and corridor rise steeply while the other families stay flat. Communication: all families including open space rise at 0.8 m.](assets/posts/drone-swarm/family-dependence.svg "Figure 4. The same flown metric split by family. A: separation, with the closed corner and the corridor highlighted. B: communication, with the open control highlighted. Safe counts under each level are episodes without any hard-constraint violation over the full 20 s.")
 
-Many log interactions were small, but they were not universally zero. At nadir 20° and standoff 1.5 m, the log interaction was **+0.127 [0.115, 0.143]**. At 30° and 1.5 m it was **−0.051 [−0.072, −0.025]**. At 20° and 3 m, the additive interaction was +1.143 cm while the log interaction was only +0.019. These examples use 36 paired quadruples across twelve maps.
+[View full-size figure](assets/posts/drone-swarm/family-dependence.svg)
 
-Many feasible combinations were close to multiplicative on this metric, but some showed clear interactions. More importantly for placement, combining constraints could rule out every solution on the tested grid even when either constraint alone was manageable.
+### Separation: mild in open space, severe between two walls
 
-## An estimator can reach the static bound under the same model
+A required separation of 1.5 m costs 0.25 cm in planned-slot CRLB; the planner finds spread-out slots without trouble. In flight the all-family increase is **3.32 cm** [1.63, 5.78], and the wide interval is the point: the loss is 3.34 cm in open space, 3.29 cm with one wall, 10.05 cm in corridors and 18.84 cm in closed corners. Visibility stays at 0.97, so the loss is viewing geometry rather than occlusion. The likely mechanism is that eight drones 1.5 m apart between two walls form a line long enough that its tail cannot follow the person through the turn or the narrowing, so its bearings arrive from far behind. Safety also drops along this axis: 76 of 81 episodes at 1.25 m, 74 of 81 at 1.5 m, and in the closed corner 5 of 9 and 7 of 9.
 
-To see whether an estimator could approach the static bound, I generated 200 noisy bearing-measurement sets for each of the 1,404 stored sweep placements and ran a maximum-likelihood estimator under the same observation model.
+## Constraint pairs
 
-The estimator initializes from the intersection of noisy measurement lines, then refines the position with Gauss–Newton iterations. The true target position is used to simulate measurements and score errors, not to supply the estimator's initial position.
+Every single-axis cell was certified feasible at window entry in every episode. Constraint pairs are where the certificate starts returning negatives, and where flying an infeasible cell shows what the solver's fallback placement does.
 
-The median **RMSE/CRLB ratio was 0.999**, with a 5th–95th percentile range of 0.951–1.055. The log-log correlation was 0.9924, and the stored and recomputed CRLB values agreed.
+![Three grids of constraint pairs. Each cell shows the certification counts and the flown CRLB, coloured dark for fully certified, stone for grid-infeasible and soft coral for cells with undecided episodes.](assets/posts/drone-swarm/pair-grids.svg "Figure 5. Certification at window entry and flown CRLB for the three pairs. Cells marked with an asterisk were flown on the solver's fallback placement in at least some episodes; their CRLB is not the same kind of quality as in a certified cell. Undecided means the search budget was exhausted, not that the cell is infeasible.")
 
-![Static maximum-likelihood RMSE versus CRLB for all stored placements. Charcoal and coral points follow the dashed equality line.](assets/posts/drone-swarm/estimator-check.svg "Figure 5. A post-hoc check under the same bearing-noise model. The percentile range describes the distribution of placement-level ratios, not a confidence interval on a condition effect. The original sensor placements are included using only the observers the evaluator counted as visible and fused.")
+[View full-size figure](assets/posts/drone-swarm/pair-grids.svg)
 
-[View full-size figure](assets/posts/drone-swarm/estimator-check.svg)
+A nadir cone of 30° or 20° with a minimum standoff of 3.5 m is infeasible on the tested grid in every episode, and so is any nadir cone under a ceiling of +1 m or lower. Communication shorter than the separation plus the slot margin leaves no neighbour that satisfies both distances, so every 0.8 m communication cell with a separation of 0.75 m or more is grid-infeasible, as is 1.2 m with 1.5 m. Those cells were still flown; the solver returns its least-violating placement and the swarm follows it. The grids report what happened, with the asterisk, and I do not quote those values as observation quality.
 
-This supports the bound as a useful static error scale under the chosen noise model. It does not validate real sensor noise, observer-position error, temporal filtering or tracking through missed observations.
+The pair that matters most for flight is communication × separation. At 2 m range and 1.5 m separation, a cell certified in 72 of 81 episodes, flown CRLB reaches **24.9 cm**, with a log interaction of +1.05 [+0.86, +1.25]: the two constraints multiply. At 1.2 m and 1.0 m, certified in 75 of 81 episodes, every episode is degenerate for the whole window; the placement exists on the grid, but the flying swarm never fuses. On the sensor grids, interactions on the log scale are mostly small or negative; a 20° cone with standoff 2.5 m has a log interaction of −0.39, meaning the two losses overlap rather than compound.
 
-## Flight makes the sensor penalty much larger
+## Safety
 
-A good placement on paper may be difficult to maintain in flight. Drones can overshoot, lose sight of the target, or spend time moving to newly assigned slots. To measure that gap, I ran 108 episodes: twelve maps, three conditions, and three random initial-position seeds, for 30 seconds each.
+Safety held in **4,800 of 4,878** episodes. Every one of the 78 violations was wall clearance: the minimum clearance slack ranged from −0.001 to −0.232 m (median −0.043 m), the violated time from 0.04 to 2.94 s (median 0.67 s), and 76 of the 78 first violations fell between 8 and 12 s, around the turn. Fifty-one were in closed corners, 23 in curved tapers, three in curves and one with one curved wall. Forty-two occurred under a separation of 1 m or more and 26 under a nadir cone of 40° or narrower; the worst single cell was communication 0.8 m × separation 1.5 m with 8 unsafe episodes. No cell was re-run and no episode was relabelled; all 78 stay in every mean above.
 
-The three conditions were baseline, nadir 30°, and minimum standoff 3 m. The loop replanned every 2 s, using a warm-started placement solver, Hungarian assignment, a local VisPlanner transit implementation, a velocity controller and an ORCA safety filter. The dynamic placement stage did not run the static grid-certification procedure. No estimator was in the flight loop.
+## What cannot be claimed
 
-The safety filter had been corrected before this study: its obstacle barrier now considered each nearby shape rather than only the nearest surface. The 108 episodes are the results after that fix, not a mixture of old and new controllers.
+- A negative certificate is a statement at the tested grid resolution, not a proof that no placement exists in continuous space. Undecided is never counted as infeasible.
+- Flown CRLB is a mean over finite samples. It has to be read next to the degeneracy and visible fractions of the same cell; the 11.65 cm at nadir 20° describes 77% of the window, and the infinite bound in the remaining 23% is not an acceptable error.
+- The study does not decompose why a drone stopped contributing (out of cone, behind a wall, behind another drone, or cut off from the fused component). The explanations above for the sensor, communication and separation losses are interpretations consistent with the visibility and degeneracy numbers, not measured attributions.
+- No safety guarantee, no estimator accuracy under motion, and no generality beyond these nine generated families are claimed. The transit and placement components are local implementations of published objectives, not the authors' systems, and nothing here ranks algorithms.
 
-| Condition | Actual CRLB | Planned slot CRLB | Visibility | Safe episodes |
-| --- | ---: | ---: | ---: | ---: |
-| Baseline | 2.965 cm | 2.636 cm | 91.9% | 35/36 |
-| Nadir 30° | 7.368 cm | 3.955 cm | 55.3% | 33/36 |
-| Standoff 3 m | 5.178 cm | 4.064 cm | 75.7% | 36/36 |
+## What comes next
 
-The baseline-to-nadir increase was **4.403 cm in flight**, compared with **1.268 cm statically**. Standoff 3 m increased flown CRLB by 2.212 cm versus 1.350 cm statically. These compare a static snapshot with a dynamic event window; I did not test the significance of their difference or isolate the causal contributions of FOV loss, occlusion and tracking lag.
-
-![Planned and actual CRLB by condition, followed by static and flown condition effects with confidence intervals. Safety and observation-degeneracy counts appear below the panels.](assets/posts/drone-swarm/dynamic-realisation.svg "Figure 6. Observation quality during flight. Actual CRLB averages finite event-window samples within each episode. Planned slot CRLB pools valid actual/slot placement pairs. The two means therefore do not define the separately reported, paired realisation gap.")
-
-[View full-size figure](assets/posts/drone-swarm/dynamic-realisation.svg)
-
-**Safety held throughout 104 of 108 episodes.** In the other four, wall clearance fell below the required threshold for 0.28–0.80 s, with minimum clearance slack down to −0.161 m. These episodes are included in the quality statistics as well as the safety count.
-
-A second limitation is easy to miss in the mean: **3 of the 36 standoff episodes contained degenerate observations**. The mean episode-level event-window degeneracy fraction was 0.890%, and the maximum was 20.902%. Baseline and nadir 30° had no event-window degeneracy.
-
-Every episode had some finite CRLB samples. The 5.178 cm standoff mean therefore describes the finite part of the observation record; it does not turn the periods with an infinite bound into an acceptable finite error. Visibility, degeneracy and safety must be read alongside the quality average.
-
-## What I would carry into the next study
-
-The static and flight results answer different parts of the original question. Standoff, sensor operation, and drone count had the largest effects on static observation geometry over the tested ranges. Combining constraints sometimes left no feasible placement on the tested grid. A static estimator approached the predicted bound, but maintaining good viewing geometry in flight proved harder, especially with limited sensing.
-
-Those findings are limited to the two map families, the observation model, and the configured flight controller. They do not establish guaranteed safe flight, infeasibility in continuous space, or accuracy with real sensors. The study also does not compare transit planners.
-
-The four wall-clearance violations are the clearest place to start a follow-up. Other questions need separate experiments: how much of the observation loss comes from motion or occlusion, whether a different replanning period helps, and how an estimator behaves inside the flight loop. The current results give those questions a measured starting point.
+The remaining work is post-hoc analysis of the stored traces, not new experiments. The traces record, for each drone at each step, whether it was in the cone, occluded by a wall, occluded by another drone, or outside the fused component, so the loss can be decomposed per cell and the interpretations above replaced with counts. Two checks are pending: whether drones in the ceiling and standoff cells were in fact outside the placement limits during the window, which would explain their flown means beating their planned means, and where along the corner the 78 clearance violations occurred. After that comes a paper built around the three constraints where plan and flight part, with standoff and swarm size as the controls where they do not.
 
 ## Data, figures and reproduction
 
-All six figures were redrawn from archived numerical records. Shapes, line styles, and explicit certification labels make the results readable alongside the color coding. The links below include the renderer, its inputs, and the original results.
+All five figures are rendered from the archived aggregates of the run. The renderer verifies the hash of every input, reads the blog's style tokens, and does not run an experiment or alter a record. The 5 MB per-episode file and the manifest remain in the source repository and are referenced by hash in the provenance file.
 
 - [Figure source and reproduction notes](assets/posts/drone-swarm/README.md)
 - [Figure renderer](assets/posts/drone-swarm/render_figures.py)
-- [Source-file hashes and provenance](assets/posts/drone-swarm/provenance.json)
-- [Original full results and frozen protocols](https://github.com/junyeong-nero/constrained-swarm-observation/blob/bd3a2e7/docs/RESULTS.md)
-- [Dynamic condition summary](assets/posts/drone-swarm/data/constraint_dynamic.summary_by_condition.json)
-- [Post-hoc re-certification](assets/posts/drone-swarm/data/constraint_interaction.undecided_recertification.json)
-
-The archived data includes the first sensor run and the original undecided outcomes. Rendering the figures does not rerun the simulation or alter those records.
+- [Source hashes and provenance](assets/posts/drone-swarm/provenance.json)
+- [Per-cell effects and per-family aggregates](assets/posts/drone-swarm/data/effects.json), [two-way interactions](assets/posts/drone-swarm/data/interactions.json), [the 27 maps](assets/posts/drone-swarm/data/maps.json)
+- [Frozen protocol](assets/posts/drone-swarm/data/PROTOCOL.md)
+- [Full results tables in the repository](https://github.com/junyeong-nero/constrained-swarm-observation/blob/8b301ec/docs/RESULTS.md)
+- [The archived static study](https://github.com/junyeong-nero/constrained-swarm-observation/blob/8b301ec/deprecated/static-study-2026-09/README.md)
