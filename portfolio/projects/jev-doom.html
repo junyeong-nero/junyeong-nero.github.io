@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jev-doom | Junyeong Song</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="projects.css">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+</head>
+
+<body>
+    <a href="../index.html" class="back-btn">← Back to Portfolio</a>
+
+    <main class="container project-detail">
+        <div class="project-header">
+            <div class="project-icon-large"><i data-lucide="gamepad-2"></i></div>
+            <div class="project-meta">
+                <h1>jev-doom</h1>
+                <span class="project-date">2025.12 - 2026.01</span>
+            </div>
+        </div>
+
+        <section class="project-section">
+            <h2> Overview</h2>
+            <p>An LLM-driven agent (Jev / TypeSafe's <code>MODEL=jev-latest</code>) that plays VizDoom's <code>defend_the_center</code> scenario. The agent makes one structured decision per tick — indexed target + shoot/hold + danger score — without using pixels. Everything is numeric/textual: enemy positions, bearings, distances, player state. A geometry-only heuristic baseline (no API key) is included for comparison.</p>
+        </section>
+
+        <section class="project-section">
+            <h2> Technologies</h2>
+            <div class="tech-tags">
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">VizDoom</span>
+                <span class="tech-tag">TypeSafe / Jev</span>
+                <span class="tech-tag">Async 1-Flight Pipeline</span>
+                <span class="tech-tag">uv</span>
+            </div>
+        </section>
+
+        <section class="project-section">
+            <h2> Key Features</h2>
+            <ul class="feature-list">
+                <li><strong>Structured LLM Decisions</strong> - Jev outputs typed choices: <code>target: Choice(idx.../none)</code>, <code>fire: Choice(shoot/hold)</code>, <code>danger: Score(0–2)</code> — no free-form text.</li>
+                <li><strong>1-Flight Async Pipeline</strong> - While the next <code>decide()</code> runs in a background thread, the agent holds the last safe action. The ~10-tic latency gap is spent tracking the picked target (re-aim at 4-tic cadence, re-fire only after a <code>shoot</code> pick).</li>
+                <li><strong>Latency-Gap Compensation</strong> - Snapshots carry a latency lead (<code>lead_tics</code>, EMA of gap length): enemies dead-reckoned along velocity, facing advanced along the held turn.</li>
+                <li><strong>Geometry-Only Baseline</strong> - Synchronous heuristic: nearest visible enemy by distance, fire within ±8°, else turn toward it. No API key needed, serves as honest comparison.</li>
+                <li><strong>Deterministic Evaluation Suite</strong> - <code>game.set_seed(seed)</code> before each episode; seeds 1–5 reported with mean±std. Logs to <code>runs/*.jsonl</code> + <code>.summary.json</code> (final hp/ammo/kills).</li>
+                <li><strong>Live Visualizer</strong> - <code>doom.watch</code> shows game on left, Jev's mind on right: enemy context list, decision with confidences, latency/tokens/hp/ammo/kills.</li>
+            </ul>
+        </section>
+
+        <section class="project-section">
+            <h2> Results</h2>
+            <p><strong>Jev (indexed target + latency-gap tracking):</strong> 10.20 ± 2.04 kills (seeds 1–5)</p>
+            <p><strong>Heuristic baseline (geometry only, no API):</strong> 14.80 ± 1.94 kills</p>
+            <p>The honest baseline out-kills Jev — it never hesitates, never mis-picks, fires the instant something centers. Jev's cost is the experiment itself: API latency (~10 tics/decision) plus occasional wrong picks. What Jev buys is judgment the baseline lacks — target lock (finish one enemy before switching), sustained chained bursts, and flinch-turns toward off-screen shooters.</p>
+        </section>
+
+        <section class="project-section">
+            <h2> Commands</h2>
+            <pre><code># Jev on defend (the 10.20±2.04 setup)
+uv run python -m doom.play --brain jev --suite
+
+# Watch it play
+uv run python -m doom.play --brain jev --seed 1 --visible
+
+# No-API baseline for comparison
+uv run python -m doom.play --brain heuristic --suite
+
+# Scoreboard (seeds 1..5)
+uv run python -m doom.compare
+
+# Live visualizer: game + Jev's mind
+uv run python -m doom.watch --brain jev --seed 1
+
+# Play yourself
+uv run python -m doom.human
+</code></pre>
+        </section>
+
+        <section class="project-section">
+            <h2> Links</h2>
+            <div class="project-links">
+                <a href="https://github.com/junyeong-nero/jev-doom" target="_blank" rel="noopener" class="project-link">
+                     GitHub Repository
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+    <script>if (window.lucide) lucide.createIcons();</script>
+</body>
+
+</html>
