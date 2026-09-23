@@ -1,59 +1,70 @@
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
-  <!--
-    If you are serving your web app in a path other than the root, change the
-    href value below to reflect the base path you are serving from.
-
-    The path provided below has to start and end with a slash "/" in order for
-    it to work correctly.
-
-    For more details:
-    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
-
-    This is a placeholder for base href that will be replaced by the value of
-    the `--base-href` argument provided to `flutter build`.
-  -->
-  <base href="/delivery/">
-
   <meta charset="UTF-8">
-  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-  <meta name="description" content="A new Flutter project.">
-
-  <!-- iOS meta tags & icons -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="배달 기사를 위한 아파트 공동현관 비밀번호 공유 서비스">
+  <meta name="theme-color" content="#6750a4">
   <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="delivery">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Delivery">
   <link rel="apple-touch-icon" href="icons/Icon-192.png">
-
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="favicon.png"/>
-
-  <title>delivery</title>
+  <link rel="icon" type="image/png" href="favicon.png">
   <link rel="manifest" href="manifest.json">
-
-  <script>
-    // The value below is injected by flutter build, do not touch.
-    const serviceWorkerVersion = "2134080471";
-  </script>
-  <!-- This script adds the flutter initialization JS code -->
-  <script src="flutter.js" defer></script>
+  <link rel="stylesheet" href="style.css">
+  <title>Delivery</title>
 </head>
 <body>
-  <script>
-    window.addEventListener('load', function(ev) {
-      // Download main.dart.js
-      _flutter.loader.loadEntrypoint({
-        serviceWorker: {
-          serviceWorkerVersion: serviceWorkerVersion,
-        },
-        onEntrypointLoaded: function(engineInitializer) {
-          engineInitializer.initializeEngine().then(function(appRunner) {
-            appRunner.runApp();
-          });
-        }
-      });
-    });
-  </script>
+  <header class="top">
+    <form id="search-form" class="search" autocomplete="off">
+      <input id="q-apt" class="apt" type="search" placeholder="아파트" enterkeyhint="search" aria-label="아파트">
+      <input id="q-line" type="search" inputmode="numeric" placeholder="동" enterkeyhint="search" aria-label="동">
+      <input id="q-number" type="search" inputmode="numeric" placeholder="호" enterkeyhint="search" aria-label="호">
+      <button type="submit" class="btn primary">검색</button>
+    </form>
+  </header>
+
+  <main>
+    <p id="status" class="status" role="status"></p>
+    <ul id="results" class="results"></ul>
+  </main>
+
+  <button id="add-btn" class="fab" type="button" aria-label="추가">+</button>
+
+  <dialog id="edit-dialog" class="sheet">
+    <form id="edit-form" method="dialog" autocomplete="off">
+      <h2 id="edit-title">비밀번호 등록</h2>
+      <input id="f-apt" type="text" placeholder="아파트" required aria-label="아파트">
+      <div class="row">
+        <input id="f-line" type="text" inputmode="numeric" placeholder="동" required aria-label="동">
+        <input id="f-number" type="text" inputmode="numeric" placeholder="호수" required aria-label="호수">
+      </div>
+      <input id="f-pwd" type="text" inputmode="tel" placeholder="비밀번호" aria-label="비밀번호">
+      <div class="emoji-row">
+        <button type="button" data-insert="👮🏻" aria-label="경비실">👮🏻</button>
+        <button type="button" data-insert="🔑" aria-label="열쇠">🔑</button>
+        <button type="button" data-insert="🛎️" aria-label="호출">🛎️</button>
+        <button type="button" data-insert="/">/</button>
+      </div>
+      <div class="actions">
+        <button type="button" class="btn" data-close>취소</button>
+        <button type="submit" class="btn primary">적용하기</button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog id="confirm-dialog" class="sheet">
+    <form method="dialog">
+      <p id="confirm-text">이 항목을 삭제하시겠습니까?</p>
+      <div class="actions">
+        <button value="no" class="btn">아니오</button>
+        <button value="yes" class="btn danger">삭제</button>
+      </div>
+    </form>
+  </dialog>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script src="app.js"></script>
 </body>
 </html>
