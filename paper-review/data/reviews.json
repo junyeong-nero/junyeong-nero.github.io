@@ -1,7 +1,65 @@
 {
   "version": 2,
-  "updatedAt": "2026-09-20",
+  "updatedAt": "2026-10-04",
   "reviews": [
+    {
+      "id": "2609.36178",
+      "slug": "prover-pivotal-credit-assignment",
+      "title": "Targeting Pivotal Decisions for Credit Assignment in Agentic Reinforcement Learning",
+      "authors": [
+        "Dongwon Jung",
+        "Hemanth Neelgund Ramesh",
+        "Yifan Wang",
+        "Xiaomin Li",
+        "Yuexing Hao",
+        "Yu Hu",
+        "Muhao Chen",
+        "Varun Chandrasekaran",
+        "Andrzej Banburski-Fahey",
+        "Jaron Lanier"
+      ],
+      "publishedAt": "2026-09-28",
+      "reviewedAt": "2026-10-04",
+      "summary": "ProVer lets an agentic LLM judge propose the pivotal segment of a successful trajectory, then verifies it with boundary Monte Carlo continuations and adds positive advantage estimates to GRPO, giving the best average on ALFWorld, WebShop, and SearchQA at both Qwen3.5 scales with modest overhead.",
+      "category": "rl-posttraining",
+      "tags": [
+        "credit-assignment",
+        "grpo",
+        "llm-agents",
+        "llm-judge",
+        "reinforcement-learning"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2609.36178",
+      "pdfUrl": "https://arxiv.org/pdf/2609.36178.pdf",
+      "reviewPath": "reviews/prover-pivotal-credit-assignment.md",
+      "assets": {
+        "figures": [
+          {
+            "path": "assets/prover-pivotal-credit-assignment/figures/figure-01.png",
+            "caption": "Figure 1. ProVer overview: propose a segment by contrasting trajectories, verify it with boundary continuations, and credit positive estimates to segment tokens.",
+            "page": 4
+          }
+        ],
+        "tables": [
+          {
+            "path": "assets/prover-pivotal-credit-assignment/tables/table-01.png",
+            "caption": "Table 1. Main results on ALFWorld, WebShop, and SearchQA with Qwen3.5-2B and Qwen3.5-4B.",
+            "page": 7
+          },
+          {
+            "path": "assets/prover-pivotal-credit-assignment/tables/table-02.png",
+            "caption": "Table 2. Per-step training cost for Qwen3.5-4B: generated tokens, judge API cost, and wall time.",
+            "page": 8
+          },
+          {
+            "path": "assets/prover-pivotal-credit-assignment/tables/table-03.png",
+            "caption": "Table 3. Effect of judge model choice and random segment selection, with SearchQA proposal diagnostics.",
+            "page": 9
+          }
+        ]
+      },
+      "sourceUrl": ""
+    },
     {
       "id": "2609.20807",
       "slug": "score-centering-off-policy-rl",
