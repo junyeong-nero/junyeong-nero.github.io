@@ -16,7 +16,7 @@
       "slug": "browserlens-uist-2026",
       "title": "BrowserLens: finding where a browser agent stopped making progress",
       "date": "2026-09-11",
-      "summary": "A complete browser-agent log can still make failures hard to explain. Our UIST 2026 poster submission introduces a graph for spotting repeated states and checking the evidence behind them, with evaluation still to come.",
+      "summary": "A complete browser-agent log can still make failures hard to explain. Our UIST 2026 poster introduces a graph for spotting repeated states and checking the evidence behind them.",
       "paperUrl": "https://doi.org/10.1145/3830397.3841876"
     },
     {

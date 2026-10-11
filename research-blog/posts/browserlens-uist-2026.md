@@ -105,13 +105,11 @@ The timeline stays available throughout. The graph helps locate recurring struct
 
 ## What the poster establishes, and what it does not
 
-The poster presents the representation, a working interface, and a walkthrough of one logged run. We have not yet run a user study, so we cannot say whether BrowserLens makes diagnosis faster or more accurate.
+The poster presents the representation, a working interface, and a walkthrough of one logged run. We did not run a user study, so we cannot say whether BrowserLens makes diagnosis faster or more accurate.
 
 The prototype supports read-only review of logging-enabled live sessions and saved sessions. The walkthrough is of a completed run. Automatic agent repair, steering, and compatibility with arbitrary external logs are out of scope.
 
-Our next step is an evaluation of how the representation changes reviewers' reasoning. The planned comparison uses three interfaces: a linear step viewer; the same viewer with orientation and linked evidence; and the full BrowserLens workspace with graph and cues. Think-aloud review and retrospective interviews should show when a graph helps someone notice a pattern, when evidence changes their explanation, and when a cue misleads them.
-
-The study plan introduces the interfaces in a fixed order and rotates trajectory groups across conditions. That supports qualitative comparison but leaves learning and order effects in place. Each interface increment also adds several features at once, so the study will not isolate the effect of an individual cue or panel. Our eventual claims will have to respect those limits.
+The prototype, the paper, the poster, and the video are available in the [GitHub repository](https://github.com/junyeong-nero/browser-lens).
 
 ## Open problems
 
@@ -125,7 +123,7 @@ We built the workspace around one reference agent runtime. Supporting other fram
 
 A visual signal can anchor a wrong explanation. Reviewers may over-trust highlighted nodes or miss failures with no prominent cue. Evaluation should include benign revisits, misleading cues, and missing evidence alongside the cases where the design works well. Logged URLs, screenshots, form contents, and model context can also contain sensitive information, so sharing and redaction are practical constraints on deployment.
 
-For now, the question is whether reviewers can use this workspace to explain a run reliably: where progress stopped, what evidence supports that judgment, and what remains uncertain. That is what we want to study next.
+The question that remains is whether reviewers can use this workspace to explain a run reliably: where progress stopped, what evidence supports that judgment, and what remains uncertain.
 
 ## References
 
