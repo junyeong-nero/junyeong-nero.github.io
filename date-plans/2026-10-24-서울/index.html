@@ -743,20 +743,29 @@ body:not(.explorer-ready) .map-pane { display: none; }
     return google > 0 && google * 2 >= current.length;
   }
   function latlng(stop) { return stop.point[0] + ',' + stop.point[1]; }
+  // 크게 보기는 플랜의 구글맵 링크를 연다. 장소 ID가 붙어 있어 좌표 핀 대신 가게가 열린다 (2026-10-25).
+  // 키 없는 임베드는 장소 ID를 못 받아서 좌표로 둔다.
+  function placeHref(stop) {
+    return (stop.links && stop.links.web) || 'https://www.google.com/maps/search/?api=1&query=' + latlng(stop);
+  }
   function showGoogle(stop) {
     var embed = 'https://maps.google.com/maps?hl=ko&output=embed';
     var points = [];
+    var first = null;
     stops().forEach(function (s) {
-      if (s.point && s.provider === 'google' && points[points.length - 1] !== latlng(s)) { points.push(latlng(s)); }
+      if (s.point && s.provider === 'google' && points[points.length - 1] !== latlng(s)) {
+        points.push(latlng(s));
+        first = first || s;
+      }
     });
     var src = '';
     var href = '';
     if (stop && stop.point) {
       src = embed + '&z=15&q=' + latlng(stop);
-      href = 'https://www.google.com/maps/search/?api=1&query=' + latlng(stop);
+      href = placeHref(stop);
     } else if (points.length === 1) {
       src = embed + '&z=15&q=' + points[0];
-      href = 'https://www.google.com/maps/search/?api=1&query=' + points[0];
+      href = placeHref(first);
     } else if (points.length) {
       src = embed + '&saddr=' + points[0] + '&daddr=' + points.slice(1).join('+to:');
       href = 'https://www.google.com/maps/dir/' + points.join('/');
