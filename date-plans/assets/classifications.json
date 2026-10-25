@@ -853,7 +853,7 @@
           "key": "[\"2026-11-15\", \"준페이\", \"food\"]",
           "date": "2026-11-15",
           "name": "준페이",
-          "activity": "점심 (에비동)",
+          "activity": "점심 (에비동 후보)",
           "category": "food",
           "cuisine": "japanese",
           "url": "2026-11-14-%EC%82%BF%ED%8F%AC%EB%A1%9C/"
@@ -880,7 +880,7 @@
           "key": "[\"2026-11-15\", \"스프카레 가라쿠\", \"food\"]",
           "date": "2026-11-15",
           "name": "스프카레 가라쿠",
-          "activity": "저녁 (스프카레)",
+          "activity": "저녁 (스프카레 후보)",
           "category": "food",
           "cuisine": "japanese",
           "url": "2026-11-14-%EC%82%BF%ED%8F%AC%EB%A1%9C/"
@@ -895,10 +895,10 @@
           "url": "2026-11-14-%EC%82%BF%ED%8F%AC%EB%A1%9C/"
         },
         {
-          "key": "[\"2026-11-15\", \"파르페 커피 술 사토\", \"cafe\"]",
+          "key": "[\"2026-11-15\", \"도미인 프리미엄 삿포로\", \"cafe\"]",
           "date": "2026-11-15",
-          "name": "파르페 커피 술 사토",
-          "activity": "디저트 (시메파르페)",
+          "name": "도미인 프리미엄 삿포로",
+          "activity": "편의점 디저트·휴식",
           "category": "cafe",
           "cuisine": null,
           "url": "2026-11-14-%EC%82%BF%ED%8F%AC%EB%A1%9C/"
@@ -1015,7 +1015,7 @@
           "key": "[\"2026-11-18\", \"삿포로 신치토세공항\", \"food\"]",
           "date": "2026-11-18",
           "name": "삿포로 신치토세공항",
-          "activity": "점심 (라멘)·쇼핑",
+          "activity": "공항 수속·점심 (라멘)·쇼핑",
           "category": "food",
           "cuisine": "japanese",
           "url": "2026-11-14-%EC%82%BF%ED%8F%AC%EB%A1%9C/"
