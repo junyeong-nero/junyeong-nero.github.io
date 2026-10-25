@@ -84,9 +84,30 @@
 .category-visit-meta { display: block; margin-top: 2px; color: var(--text-secondary); font-size: .8125rem; }
 .category-arrow { position: absolute; right: 6px; top: 50%; transform: translateY(-50%); color: var(--text-tertiary); }
 
-/* 함께 다녀온 곳 — 지도 아래 장소는 chip(34px pill, 헤어라인)이다 */
-#record-map { height: 280px; overflow: hidden; border-radius: var(--r-xl); background: var(--fill-secondary); }
-.visited-places { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+/* 함께 다녀온 곳 — Wrapped처럼 한 문장 + 하이라이트 타일 + 지도. 장소 chip(34px pill, 헤어라인)은 접어 둔다 (2026-10-25) */
+.recap-hero { margin: 8px 0 0; word-break: keep-all; }
+.recap-hero:empty { display: none; }
+.recap-lead { display: block; color: var(--text-secondary); font-size: .9375rem; font-weight: 600; line-height: 1.5; }
+.recap-big { display: block; margin-top: 2px; font-size: 1.375rem; font-weight: 700; line-height: 1.35; letter-spacing: -.02em; }
+.recap-sub { display: block; margin-top: 4px; color: var(--text-secondary); font-size: .875rem; line-height: 1.5; }
+.recap-highlights { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin-top: 16px; }
+.recap-highlights:empty { display: none; }
+.recap-tile {
+  display: flex; flex-direction: column; min-width: 0; padding: 14px; border-radius: var(--r-xl);
+  background: var(--fill-weak); color: var(--text-primary); transition: background var(--dur-fast) var(--ease);
+}
+/* 타일이 홀수면 마지막 한 장을 가로로 편다 */
+.recap-tile:last-child:nth-child(odd) { grid-column: 1 / -1; }
+a.recap-tile:active { background: var(--fill-secondary); }
+.recap-label { color: var(--text-secondary); font-size: .8125rem; font-weight: 600; }
+.recap-value {
+  margin-top: 6px; font-size: 1.125rem; font-weight: 700; line-height: 1.35; letter-spacing: -.02em;
+  word-break: keep-all; overflow-wrap: anywhere; font-variant-numeric: tabular-nums;
+}
+.recap-note { margin-top: 4px; color: var(--text-tertiary); font-size: .75rem; line-height: 1.45; word-break: keep-all; }
+.record-card #map-status { margin: 16px 0 0; }
+#record-map { height: 280px; margin-top: 12px; overflow: hidden; border-radius: var(--r-xl); background: var(--fill-secondary); }
+.visited-places { display: flex; flex-wrap: wrap; gap: 8px; padding: 8px 0 4px; }
 .visited-places a {
   display: inline-flex; align-items: center; min-height: 34px; padding: 0 12px;
   border: 1px solid var(--line-default); border-radius: var(--r-full);
@@ -120,7 +141,7 @@
 .chart-dot.is-current { fill: var(--fill-brand); }
 
 @media (hover: hover) {
-  .category-board button:not([aria-pressed="true"]):hover, .visited-places a:hover, .soft-button:hover { background: var(--fill-secondary); }
+  .category-board button:not([aria-pressed="true"]):hover, a.recap-tile:hover, .visited-places a:hover, .soft-button:hover { background: var(--fill-secondary); }
   .category-visits a:hover .category-visit-title, .ranking li a:hover { text-decoration: underline; text-underline-offset: 3px; }
 }
 @media (min-width: 560px) {

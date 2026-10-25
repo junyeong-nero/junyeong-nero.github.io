@@ -709,11 +709,13 @@ body:not(.explorer-ready) .map-pane { display: none; }
     });
   });
 
-  // 오늘이 일정 범위 안이면 그 날을 편다. 아니면 첫날.
+  // 주소가 #YYYY-MM-DD면 그 날을 편다 ('우리의 기록'의 하이라이트·지도 핀·장소에서 넘어올 때, 2026-10-25).
+  // 아니면 오늘이 일정 범위 안이면 그 날, 그것도 아니면 첫날.
+  var linked = decodeURIComponent(location.hash.slice(1));
   var inRange = today >= tabs.dataset.start && today <= tabs.dataset.end;
   var hasToday = dates.indexOf(today) !== -1;
   tabs.hidden = false;
-  show(inRange && hasToday ? today : dates[0]);
+  show(dates.indexOf(linked) !== -1 ? linked : inRange && hasToday ? today : dates[0]);
 })();
 
 (function () {

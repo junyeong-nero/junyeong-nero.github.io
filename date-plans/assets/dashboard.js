@@ -20,6 +20,18 @@
   const cuisines = [['korean', '한식'], ['chinese', '중식'], ['japanese', '일식'],
     ['western', '양식'], ['asian', '동남아'], ['other', '기타 음식']];
   let selectedCategory = 'all', selectedCuisine = 'all';
+  const weekday = date => '일월화수목금토'[new Date(date + 'T00:00:00Z').getUTCDay()];
+  const dayLabel = date => `${Number(date.slice(5, 7))}월 ${Number(date.slice(8))}일 (${weekday(date)})`;
+  const hasPoint = p => Array.isArray(p.point) && p.point.length === 2 && p.point.every(Number.isFinite);
+  const km = (a, b) => {
+    const r = Math.PI / 180, dLat = (b[0] - a[0]) * r, dLng = (b[1] - a[1]) * r;
+    const h = Math.sin(dLat / 2) ** 2 + Math.cos(a[0] * r) * Math.cos(b[0] * r) * Math.sin(dLng / 2) ** 2;
+    return 12742 * Math.asin(Math.sqrt(h));
+  };
+  const median = values => {
+    const s = [...values].sort((a, b) => a - b), m = s.length >> 1;
+    return s.length % 2 ? s[m] : (s[m - 1] + s[m]) / 2;
+  };
   async function load() {
     if (loaded || loading) return;
     loading = true; $('records-retry').hidden = true;
@@ -39,7 +51,9 @@
         const parts = address.split(/\s+/);
         const regions = { '서울특별시': '서울', '경기도': '경기', '인천광역시': '인천', '부산광역시': '부산', '대구광역시': '대구', '경상북도': '경북' };
         parts[0] = regions[parts[0]] || parts[0];
-        return [p.id, { ...p, address, region: parts.length > 1 ? parts.slice(0, 2).join(' ') : '지역 미상' }];
+        // '화서문(팔달구 장안동) ~ 장안문 …'처럼 주소 대신 구간을 적은 장소는 지역으로 세지 않는다 (2026-10-25)
+        const known = parts.length > 1 && !/[()]/.test(parts[0]) && /^[^()]+(시|군|구|도|현|부)$/.test(parts[1]);
+        return [p.id, { ...p, address, region: known ? parts.slice(0, 2).join(' ') : '지역 미상' }];
       }));
       return Array.from(doc.querySelectorAll('.day'), section => {
         const date = section.dataset.day || plan.start;
@@ -85,6 +99,7 @@
     records.forEach(day => visitedPlaces(day).forEach(p => {
       if (!places.has(p.key)) places.set(p.key, { ...p, dates: new Set(), url: day.plan.url });
       places.get(p.key).dates.add(day.date);
+      places.get(p.key).href = day.plan.url + '#' + day.date;
       if (p.region !== '지역 미상') {
         if (!regions.has(p.region)) regions.set(p.region, new Set());
         regions.get(p.region).add(day.date);
@@ -102,7 +117,7 @@
     $('record-stats').innerHTML = cards.map(([label, value, note]) => `<div class="stat"><span>${esc(label)}</span><strong>${esc(value)}</strong><small>${esc(note)}</small></div>`).join('');
     $('region-ranking').innerHTML = data.regions.slice(0,3).map(([name, dates]) => `<li>${esc(name)}<span>${dates.size}일</span></li>`).join('') || '<li class="empty-record">다녀온 지역이 여기에 모여요.</li>';
     $('place-ranking').innerHTML = data.places.slice(0,3).map(p => `<li><a href="${esc(p.url)}">${esc(p.name)}</a><span>${p.dates.size}일</span></li>`).join('') || '<li class="empty-record">다녀온 장소가 여기에 모여요.</li>';
-    $('visited-places').innerHTML = data.places.map(p => `<a href="${esc(p.url)}" title="${esc(p.name)} 데이트 일정 보기">${esc(p.name)} · ${p.dates.size}일</a>`).join('');
+    renderRecap(complete, current, data);
     const year = $('record-period').value.slice(0,4);
     $('timeline-heading').textContent = year + '년 월별 함께한 날';
     const counts = Array.from({length:12}, (_,i) => new Set(complete.filter(d => d.date.startsWith(year + '-' + String(i+1).padStart(2,'0'))).map(d => d.date)).size);
@@ -126,6 +141,63 @@
     renderCategories(current);
     renderCuisines(current);
     drawMap(data.places);
+  }
+  // 함께 다녀온 곳 — Wrapped처럼 한 문장과 하이라이트 몇 장으로 돌아본다.
+  // 위의 숫자 카드·순위와 겹치지 않는 것만 고르고, 장소 전체 목록은 접어 둔다 (2026-10-25).
+  function renderRecap(complete, records, data) {
+    const regions = records.flatMap(day => visitedPlaces(day).map(p => p.region)).filter(r => r !== '지역 미상');
+    const distinct = [...new Set(regions)];
+    const first = regions[0], last = regions[regions.length - 1];
+    $('recap-hero').innerHTML = !distinct.length ? '' : distinct.length === 1
+      ? `<span class="recap-big">${esc(first)}에서 함께했어요</span>`
+      : (first === last ? '' : `<span class="recap-lead">${esc(first)}에서 시작해 ${esc(last)}까지</span>`) +
+        `<span class="recap-big">${distinct.length}개 동네를 다녀왔어요</span>`;
+
+    const visits = new Map(), nth = new Map(), firstRegion = new Map();
+    complete.forEach(day => visitedPlaces(day).forEach(p => {
+      const dates = visits.get(p.key) || new Set();
+      dates.add(day.date); visits.set(p.key, dates);
+      nth.set(day.id + '|' + p.key, dates.size);
+      if (p.region !== '지역 미상' && !firstRegion.has(p.region)) firstRegion.set(p.region, day.date);
+    }));
+    const link = day => day.plan.url + '#' + day.date;
+    const cards = [];
+    // '평소 다니던 곳'은 지금까지 다녀온 모든 장소 좌표의 중앙값이다. 평균은 먼 여행 한 번에 끌려간다.
+    // 거리는 직선이고, 30km 안쪽이면 멀리 갔다고 하지 않는다.
+    const points = complete.flatMap(day => visitedPlaces(day).filter(hasPoint).map(p => p.point));
+    if (points.length >= 3) {
+      const home = [median(points.map(p => p[0])), median(points.map(p => p[1]))];
+      let far = null;
+      records.forEach(day => visitedPlaces(day).filter(hasPoint).forEach(p => {
+        const d = km(home, p.point);
+        if (!far || d >= far.d) far = { d, day, p };
+      }));
+      if (far && far.d >= 30) cards.push(['가장 멀리 간 날', far.p.region === '지역 미상' ? far.p.name : far.p.region,
+        `${dayLabel(far.day.date)} · 평소 다니던 곳에서 직선 약 ${Math.round(far.d).toLocaleString('ko-KR')}km`, link(far.day)]);
+    }
+    let busy = null;
+    records.forEach(day => { if (visitedPlaces(day).length >= Math.max(2, busy ? visitedPlaces(busy).length : 0)) busy = day; });
+    if (busy) cards.push(['가장 바빴던 날', dayLabel(busy.date), `하루에 ${visitedPlaces(busy).length}곳을 다녀왔어요`, link(busy)]);
+    // 동네가 모두 처음이면 hero와 같은 숫자라 타일 대신 hero 아래 한 줄로 단다.
+    // '처음'은 기록 기준이다. 위 숫자 카드의 '처음 기록한 곳'과 같은 말을 쓴다
+    const fresh = distinct.filter(r => inPeriod(firstRegion.get(r)));
+    if (distinct.length > 1 && fresh.length === distinct.length) $('recap-hero').insertAdjacentHTML('beforeend', '<span class="recap-sub">모두 처음 기록한 동네예요</span>');
+    else if (fresh.length) cards.push(['처음 기록한 동네', `${fresh.length}개`,
+      fresh.slice(0, 2).join(', ') + (fresh.length > 2 ? ` 외 ${fresh.length - 2}개` : '')]);
+    let again = null;
+    records.forEach(day => visitedPlaces(day).forEach(p => {
+      const n = nth.get(day.id + '|' + p.key);
+      if (n > 1 && (!again || n >= again.n)) again = { n, day, p };
+    }));
+    if (again) cards.push(['다시 찾은 곳', again.p.name, `${dayLabel(again.day.date)} · ${again.n}번째 방문이에요`, link(again.day)]);
+    $('recap-highlights').innerHTML = cards.map(([label, value, note, href]) => {
+      const body = `<span class="recap-label">${esc(label)}</span><strong class="recap-value">${esc(value)}</strong><span class="recap-note">${esc(note)}</span>`;
+      return href ? `<a class="recap-tile" href="${esc(href)}">${body}</a>` : `<div class="recap-tile">${body}</div>`;
+    }).join('');
+
+    $('visited-details').hidden = !data.places.length;
+    $('visited-heading').textContent = `장소 ${data.places.length}곳 모두 보기`;
+    $('visited-places').innerHTML = data.places.map(p => `<a href="${esc(p.href)}" title="${esc(p.name)} 데이트 일정 보기">${esc(p.name)} · ${p.dates.size}일</a>`).join('');
   }
   function renderCategories(records) {
     const entries = [...new Map(records.flatMap(day => day.activities).map(a => [a.key, a])).values()]
@@ -199,7 +271,7 @@
     $('map-retry').hidden = true;
     $('record-map').hidden = !located.length;
     if (!located.length) {
-      $('map-status').textContent = places.length ? '좌표가 등록된 장소가 없어요. 아래 장소를 누르면 일정을 볼 수 있어요.' : '이 기간에는 오늘까지 다녀온 장소가 없어요.';
+      $('map-status').textContent = places.length ? '지도에 올릴 좌표가 있는 장소가 없어요. 아래 장소 목록에서 일정을 볼 수 있어요.' : '이 기간에는 오늘까지 다녀온 장소가 없어요.';
       return;
     }
     $('map-status').textContent = '방문 지도를 불러오고 있어요.';
@@ -217,12 +289,12 @@
       located.forEach(p => {
         const position = new k.LatLng(...p.point);
         const marker = new k.Marker({ map, position, title: p.name });
-        k.event.addListener(marker, 'click', () => { window.location.href = p.url; });
+        k.event.addListener(marker, 'click', () => { window.location.href = p.href; });
         markers.push(marker); bounds.extend(position);
       });
       if (located.length === 1) { map.setCenter(new k.LatLng(...located[0].point)); map.setLevel(5); }
       else map.setBounds(bounds);
-      $('map-status').textContent = `${located.length}곳을 지도에 표시했어요.${places.length > located.length ? ' 지도에 없는 장소는 목록에서 볼 수 있어요.' : ''} 장소를 누르면 데이트 일정으로 이동해요.`;
+      $('map-status').textContent = places.length > located.length ? `${located.length}곳을 지도에 표시했어요. 나머지 ${places.length - located.length}곳은 아래 장소 목록에 있어요.` : '';
     } catch {
       if (version !== revision) return;
       $('record-map').hidden = true;
