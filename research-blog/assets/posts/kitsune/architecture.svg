@@ -73,21 +73,21 @@
   <text x="224" y="212" font-size="11.5" font-weight="700" fill="#2c2925">user's tabs</text>
   <g font-size="10" fill="#5d584f">
     <text x="224" y="230">agent may read them</text>
-    <text x="224" y="246">writes and select are refused:</text>
-    <text x="224" y="262" fill="#2c2925">user_tab_read_only</text>
+    <text x="224" y="246">writes and tab switches</text>
+    <text x="224" y="262">are refused with an explanation</text>
     <text x="224" y="278">view and focus never move</text>
   </g>
 
   <text x="434" y="212" font-size="11.5" font-weight="700" fill="#2c2925">agent's tabs</text>
   <g font-size="10" fill="#5d584f">
     <text x="434" y="230">opened in the background</text>
-    <text x="434" y="246">read / draft / act, by KITSUNE_MODE</text>
+    <text x="434" y="246">read / draft / act, set by mode</text>
     <text x="434" y="262">waits while the user types in one</text>
     <text x="434" y="278">idle tabs close after 5 min</text>
   </g>
 
   <line x1="224" y1="296" x2="724" y2="296" stroke="#e7e4dc"/>
   <text x="224" y="316" font-size="11.5" font-weight="700" fill="#2c2925">toolbar popup</text>
-  <text x="224" y="334" font-size="10" fill="#5d584f">browser_ask_user → user approves a handoff of one tab · takes it back</text>
+  <text x="224" y="334" font-size="10" fill="#5d584f">agent asks → user approves a handoff of one tab · takes it back</text>
   <text x="224" y="349" font-size="10" fill="#5d584f">at any time · closes every agent tab with one click</text>
 </svg>

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 400" width="760" height="400" role="img" font-family="'Space Mono', ui-monospace, Menlo, Monaco, monospace">
   <title>Input-token ratio of eight planned Kitsune experiments</title>
-  <desc>Intervention over baseline input-token ratios. Rich observation bundle 1.062 and target catalog 1.060, both not adopted. H18 table cells 0.679 but a guard cell at 1.171, inconclusive. H310 0.768 with guards 0.973, supported. H321 stopped with no estimate. H323 0.878 with guards 0.963, supported. H89 0.746, supported. Issue 472 1.001, not supported.</desc>
+  <desc>Version B over version A input-token ratios. Rich observation bundle 1.062 and target catalog 1.060, both not adopted. Expanding short lists 0.679 on table tasks but a guard task at 1.171, inconclusive. Truncating around main content 0.768 with guards 0.973, supported. The same change on live sites was stopped with no estimate. Compact search results 0.878 with guards 0.963, supported. Naming the user's tab 0.746, supported. Warning about new references 1.001, not supported.</desc>
   <rect x="0" y="0" width="760" height="400" fill="#f8f7f3"/>
 
-  <text x="20" y="28" font-size="12" font-weight="700" fill="#2c2925">Input tokens, intervention ÷ baseline, on the experiment's primary cells</text>
+  <text x="20" y="28" font-size="12" font-weight="700" fill="#2c2925">Input tokens, version B ÷ version A, on each experiment's target tasks</text>
 
   <!-- grid: r -> 300 + (r - 0.5) * 440 -->
   <g stroke="#e7e4dc" stroke-width="1">
@@ -24,17 +24,17 @@
     <text x="20" y="83" font-size="9.5" fill="#5d584f">10-22 · 72 runs · Haiku</text>
     <text x="20" y="102" font-weight="700">role-bucketed target catalog</text>
     <text x="20" y="115" font-size="9.5" fill="#5d584f">10-22 · 60 runs · Haiku</text>
-    <text x="20" y="134" font-weight="700">H18 list short runs in full</text>
+    <text x="20" y="134" font-weight="700">expand short lists</text>
     <text x="20" y="147" font-size="9.5" fill="#5d584f">10-28 · 66 runs · Opus</text>
-    <text x="20" y="166" font-weight="700">H310 budget fills main first</text>
+    <text x="20" y="166" font-weight="700">truncate around main content</text>
     <text x="20" y="179" font-size="9.5" fill="#5d584f">10-28 · 66 runs · Opus</text>
-    <text x="20" y="198" font-weight="700">H321 same, on live sites</text>
+    <text x="20" y="198" font-weight="700">same change, on live sites</text>
     <text x="20" y="211" font-size="9.5" fill="#5d584f">10-28 · 9 of 36 runs · Opus</text>
-    <text x="20" y="230" font-weight="700">H323 compact browser_find</text>
+    <text x="20" y="230" font-weight="700">compact search results</text>
     <text x="20" y="243" font-size="9.5" fill="#5d584f">10-29 · 44 runs · Opus</text>
-    <text x="20" y="262" font-weight="700">H89 say the tab is the user's</text>
+    <text x="20" y="262" font-weight="700">name the user's tab</text>
     <text x="20" y="275" font-size="9.5" fill="#5d584f">11-02 · 64 runs · Opus</text>
-    <text x="20" y="294" font-weight="700">#472 say new tab, new refs</text>
+    <text x="20" y="294" font-weight="700">warn about new references</text>
     <text x="20" y="307" font-size="9.5" fill="#5d584f">11-06 · 64 runs · Opus</text>
   </g>
 
@@ -43,24 +43,24 @@
   <circle cx="547.3" cy="70" r="6" fill="#857f74"/>
   <!-- target catalog 1.060 -->
   <circle cx="546.4" cy="102" r="6" fill="#857f74"/>
-  <!-- H18 table 0.679, guard max 1.171 -->
+  <!-- expand short lists: table 0.679, guard max 1.171 -->
   <line x1="378.8" y1="134" x2="595.2" y2="134" stroke="#c9c4ba" stroke-width="1.5" stroke-dasharray="3 3"/>
   <circle cx="378.8" cy="134" r="6" fill="#857f74"/>
   <path d="M595.2 128 l6 6 l-6 6 l-6 -6 z" fill="#f8f7f3" stroke="#857f74" stroke-width="1.6"/>
-  <!-- H310 0.768, guard 0.973 -->
+  <!-- truncate around main content: 0.768, guard 0.973 -->
   <line x1="417.9" y1="166" x2="508.1" y2="166" stroke="#ffc2b3" stroke-width="1.5" stroke-dasharray="3 3"/>
   <circle cx="417.9" cy="166" r="6" fill="#ff7759"/>
   <path d="M508.1 160 l6 6 l-6 6 l-6 -6 z" fill="#f8f7f3" stroke="#ff7759" stroke-width="1.6"/>
-  <!-- H321 stopped -->
+  <!-- live-site rerun stopped -->
   <rect x="446" y="190" width="148" height="16" fill="#f8f7f3"/>
   <text x="520" y="202" font-size="10" fill="#93939f" text-anchor="middle">change never exercised</text>
-  <!-- H323 0.878, guard 0.963 -->
+  <!-- compact search results: 0.878, guard 0.963 -->
   <line x1="466.3" y1="230" x2="503.7" y2="230" stroke="#ffc2b3" stroke-width="1.5" stroke-dasharray="3 3"/>
   <circle cx="466.3" cy="230" r="6" fill="#ff7759"/>
   <path d="M503.7 224 l6 6 l-6 6 l-6 -6 z" fill="#f8f7f3" stroke="#ff7759" stroke-width="1.6"/>
-  <!-- H89 0.746 -->
+  <!-- name the user's tab: 0.746 -->
   <circle cx="408.2" cy="262" r="6" fill="#ff7759"/>
-  <!-- #472 1.001 -->
+  <!-- warn about new references: 1.001 -->
   <circle cx="520.4" cy="294" r="6" fill="#857f74"/>
 
   <!-- verdicts -->
@@ -89,10 +89,10 @@
   <text x="610" y="354" font-size="10.5" fill="#5d584f" text-anchor="end">more tokens &#8594;</text>
 
   <circle cx="26" cy="375" r="5" fill="#ff7759"/>
-  <text x="36" y="379" font-size="10" fill="#5d584f">primary cells, supported</text>
+  <text x="36" y="379" font-size="10" fill="#5d584f">target tasks, supported</text>
   <circle cx="226" cy="375" r="5" fill="#857f74"/>
-  <text x="236" y="379" font-size="10" fill="#5d584f">primary cells, other verdicts</text>
+  <text x="236" y="379" font-size="10" fill="#5d584f">target tasks, other verdicts</text>
   <path d="M456 370 l5 5 l-5 5 l-5 -5 z" fill="#f8f7f3" stroke="#5d584f" stroke-width="1.4"/>
-  <text x="466" y="379" font-size="10" fill="#5d584f">guard cells (H18: worst cell)</text>
-  <text x="20" y="395" font-size="9.5" fill="#93939f">Kitsune-only A/B, Claude Code. Rows 1–2 compare matched sums; the rest are predeclared ratios. Not one pooled analysis.</text>
+  <text x="466" y="379" font-size="10" fill="#5d584f">guard tasks (worst one for row 3)</text>
+  <text x="20" y="395" font-size="9.5" fill="#93939f">Kitsune against itself, Claude Code. Rows 1–2 compare matched sums; the rest use predeclared rules. Not one pooled analysis.</text>
 </svg>
