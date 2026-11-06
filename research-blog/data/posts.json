@@ -1,6 +1,12 @@
 {
   "posts": [
     {
+      "slug": "kitsune-shared-browser-agent",
+      "title": "Kitsune: letting a coding agent share your browser, and what it costs in tokens",
+      "date": "2026-11-06",
+      "summary": "With a user in the browser, Kitsune kept their tab in front in 28 of 28 tasks against Playwright MCP's 2. Its first token audit found 30.5% more input despite 42% smaller tool results. Of eight planned A/B experiments, the three that held all removed requests the agent did not need, not characters per observation."
+    },
+    {
       "slug": "drone-swarm-constraint-study",
       "title": "What limits a drone swarm's view? Three constraints that are mild on paper and severe in flight",
       "date": "2026-09-20",
@@ -32,5 +38,5 @@
       "summary": "Notes from rebuilding AI systems, testing ideas, and working through experiments: what worked, what failed, and what to try next."
     }
   ],
-  "updatedAt": "2026-09-20"
+  "updatedAt": "2026-11-06"
 }

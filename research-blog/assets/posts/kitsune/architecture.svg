@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 380" width="760" height="380" role="img" font-family="'Space Mono', ui-monospace, Menlo, Monaco, monospace">
+  <title>Kitsune architecture and tab ownership</title>
+  <desc>An agent talks to a per-agent Kitsune MCP server over stdio. The server talks to a per-user bridge daemon over local HTTP with a bearer token, and the daemon talks to a Firefox extension over a local WebSocket. In the browser, the user's tabs stay in front and are read-only to the agent; the agent works in background tabs it opened. A toolbar popup handles handoff approvals.</desc>
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#2c2925"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="760" height="380" fill="#f8f7f3"/>
+
+  <!-- top row: process chain -->
+  <g font-size="11.5" fill="#2c2925">
+    <rect x="20" y="40" width="140" height="62" rx="6" fill="#ffffff" stroke="#857f74"/>
+    <text x="90" y="64" text-anchor="middle" font-weight="700">coding agent</text>
+    <text x="90" y="80" text-anchor="middle" font-size="10" fill="#5d584f">Claude Code,</text>
+    <text x="90" y="93" text-anchor="middle" font-size="10" fill="#5d584f">Codex, Pi…</text>
+
+    <rect x="208" y="40" width="140" height="62" rx="6" fill="#ffffff" stroke="#ff7759" stroke-width="1.6"/>
+    <text x="278" y="64" text-anchor="middle" font-weight="700">kitsune</text>
+    <text x="278" y="80" text-anchor="middle" font-size="10" fill="#5d584f">MCP server,</text>
+    <text x="278" y="93" text-anchor="middle" font-size="10" fill="#5d584f">one per agent</text>
+
+    <rect x="396" y="40" width="140" height="62" rx="6" fill="#ffffff" stroke="#ff7759" stroke-width="1.6"/>
+    <text x="466" y="64" text-anchor="middle" font-weight="700">bridge daemon</text>
+    <text x="466" y="80" text-anchor="middle" font-size="10" fill="#5d584f">one per user,</text>
+    <text x="466" y="93" text-anchor="middle" font-size="10" fill="#5d584f">127.0.0.1 only</text>
+
+    <rect x="584" y="40" width="156" height="62" rx="6" fill="#ffffff" stroke="#ff7759" stroke-width="1.6"/>
+    <text x="662" y="64" text-anchor="middle" font-weight="700">browser extension</text>
+    <text x="662" y="80" text-anchor="middle" font-size="10" fill="#5d584f">Firefox, Zen,</text>
+    <text x="662" y="93" text-anchor="middle" font-size="10" fill="#5d584f">LibreWolf</text>
+  </g>
+  <g stroke="#2c2925" stroke-width="1.3" fill="none">
+    <line x1="162" y1="71" x2="205" y2="71" marker-end="url(#arr)"/>
+    <line x1="350" y1="71" x2="393" y2="71" marker-end="url(#arr)"/>
+    <line x1="538" y1="71" x2="581" y2="71" marker-end="url(#arr)"/>
+    <line x1="662" y1="104" x2="662" y2="150" marker-end="url(#arr)"/>
+  </g>
+  <g font-size="9.5" fill="#5d584f" text-anchor="middle">
+    <text x="184" y="32">stdio</text>
+    <text x="372" y="26">HTTP +</text>
+    <text x="372" y="36">bearer token</text>
+    <text x="560" y="32">WebSocket</text>
+  </g>
+  <text x="654" y="132" font-size="9.5" fill="#5d584f" text-anchor="end">content scripts</text>
+
+  <!-- user -->
+  <circle cx="90" cy="186" r="14" fill="#ffffff" stroke="#2c2925" stroke-width="1.3"/>
+  <path d="M62 236 q28 -36 56 0" fill="#ffffff" stroke="#2c2925" stroke-width="1.3"/>
+  <text x="90" y="258" font-size="11.5" font-weight="700" fill="#2c2925" text-anchor="middle">user</text>
+  <text x="90" y="274" font-size="10" fill="#5d584f" text-anchor="middle">keeps browsing</text>
+  <text x="90" y="288" font-size="10" fill="#5d584f" text-anchor="middle">and typing</text>
+  <line x1="122" y1="210" x2="204" y2="210" stroke="#2c2925" stroke-width="1.3" marker-end="url(#arr)"/>
+
+  <!-- browser window -->
+  <rect x="208" y="152" width="532" height="208" rx="8" fill="#ffffff" stroke="#857f74"/>
+  <line x1="208" y1="186" x2="740" y2="186" stroke="#d4d1c9"/>
+  <!-- tab strip -->
+  <rect x="218" y="160" width="118" height="26" rx="4" fill="#2c2925"/>
+  <text x="277" y="177" font-size="10" fill="#f8f7f3" text-anchor="middle">user tab (front)</text>
+  <rect x="342" y="160" width="86" height="26" rx="4" fill="#ece9e2"/>
+  <text x="385" y="177" font-size="10" fill="#2c2925" text-anchor="middle">user tab</text>
+  <rect x="434" y="160" width="96" height="26" rx="4" fill="#ffe3db"/>
+  <text x="482" y="177" font-size="10" fill="#2c2925" text-anchor="middle">agent tab</text>
+  <rect x="536" y="160" width="96" height="26" rx="4" fill="#ffe3db"/>
+  <text x="584" y="177" font-size="10" fill="#2c2925" text-anchor="middle">agent tab</text>
+  <!-- popup icon -->
+  <rect x="700" y="162" width="30" height="20" rx="4" fill="#ff7759"/>
+  <text x="715" y="176" font-size="10" fill="#ffffff" text-anchor="middle" font-weight="700">K</text>
+
+  <!-- ownership columns -->
+  <text x="224" y="212" font-size="11.5" font-weight="700" fill="#2c2925">user's tabs</text>
+  <g font-size="10" fill="#5d584f">
+    <text x="224" y="230">agent may read them</text>
+    <text x="224" y="246">writes and select are refused:</text>
+    <text x="224" y="262" fill="#2c2925">user_tab_read_only</text>
+    <text x="224" y="278">view and focus never move</text>
+  </g>
+
+  <text x="434" y="212" font-size="11.5" font-weight="700" fill="#2c2925">agent's tabs</text>
+  <g font-size="10" fill="#5d584f">
+    <text x="434" y="230">opened in the background</text>
+    <text x="434" y="246">read / draft / act, by KITSUNE_MODE</text>
+    <text x="434" y="262">waits while the user types in one</text>
+    <text x="434" y="278">idle tabs close after 5 min</text>
+  </g>
+
+  <line x1="224" y1="296" x2="724" y2="296" stroke="#e7e4dc"/>
+  <text x="224" y="316" font-size="11.5" font-weight="700" fill="#2c2925">toolbar popup</text>
+  <text x="224" y="334" font-size="10" fill="#5d584f">browser_ask_user → user approves a handoff of one tab · takes it back</text>
+  <text x="224" y="349" font-size="10" fill="#5d584f">at any time · closes every agent tab with one click</text>
+</svg>
