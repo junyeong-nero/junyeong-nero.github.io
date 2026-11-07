@@ -1,0 +1,111 @@
+/* 오목 전용 스타일 (공용은 ../shared/ui.css) */
+:root {
+  --cell: 24px;
+  --grid-line: #93bf7e;
+  --white-edge: #9fb592;
+}
+
+/* 돌 (판, HUD, 결과 공통) */
+.dot { display: inline-block; width: 22px; height: 22px; border-radius: 50%; flex: none; }
+.dot.b { background: var(--ink); }
+.dot.w { background: #fff; box-shadow: inset 0 0 0 2px var(--white-edge); }
+
+/* 로비 규칙 그림: 돌 5개 */
+.rule .dot { width: 30px; height: 30px; }
+.rule .dot.win { box-shadow: 0 0 0 3px var(--gold); }
+
+.player .name { font-size: 20px; font-weight: 800; }
+.player { padding: 4px 12px; border: 2px solid transparent; border-radius: 99px; }
+.hud .me { justify-self: start; }
+.player.turn { background: #fff; border-color: var(--line); }
+.player.opp.turn .dot { animation: wait 1.2s ease-in-out infinite; }
+
+.stage {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  place-items: center;
+  padding: 0 max(12px, env(safe-area-inset-right)) 4px max(12px, env(safe-area-inset-left));
+  touch-action: none;
+}
+
+/* 판: 칸마다 교차점 하나. 줄은 SVG로 칸 가운데를 잇는다 */
+.goban {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(15, var(--cell));
+  grid-auto-rows: var(--cell);
+  padding: calc(var(--cell) * .2);
+  background: var(--field);
+  border: 4px solid var(--field-border);
+  border-radius: 14px;
+  cursor: pointer;
+}
+.goban .lines {
+  position: absolute;
+  inset: calc(var(--cell) * .2);
+  width: calc(var(--cell) * 15);
+  height: calc(var(--cell) * 15);
+  pointer-events: none;
+}
+.goban .lines line { stroke: var(--grid-line); stroke-width: 1.4; }
+.goban .lines circle { fill: var(--grid-line); }
+
+.pt { position: relative; }
+.stone { position: absolute; inset: 5%; border-radius: 50%; }
+.stone.b { background: var(--ink); }
+.stone.w { background: #fff; box-shadow: inset 0 0 0 2px var(--white-edge); }
+.stone.ghost { opacity: .45; }
+.stone.drop { animation: drop .14s ease-out; }
+@keyframes drop { from { transform: scale(1.25); } }
+/* 마지막 수 표시 */
+.pt.last .stone::after {
+  content: "";
+  position: absolute;
+  inset: 37%;
+  border-radius: 50%;
+  background: var(--accent);
+}
+/* 5목 완성 줄 */
+.pt.win .stone { box-shadow: 0 0 0 3px var(--gold); }
+.pt.win .stone.w { box-shadow: inset 0 0 0 2px var(--white-edge), 0 0 0 3px var(--gold); }
+/* 지금 둘 사람에게 금지(삼삼)인 자리 */
+.pt.ban::before, .pt.ban::after {
+  content: "";
+  position: absolute;
+  left: 32%;
+  right: 32%;
+  top: calc(50% - 1px);
+  height: 2px;
+  border-radius: 2px;
+  background: var(--accent);
+  opacity: .75;
+  transform: rotate(45deg);
+}
+.pt.ban::after { transform: rotate(-45deg); }
+
+.hint {
+  margin: 0;
+  padding: 0 16px max(10px, env(safe-area-inset-bottom));
+  text-align: center;
+  font-size: 13px;
+  color: var(--muted);
+}
+@media (pointer: fine) { .hint { visibility: hidden; } }
+
+.result-scores .dot { width: 40px; height: 40px; margin: 4px 0; }
+
+@media (orientation: landscape) and (max-height: 540px) {
+  .game { display: grid; grid-template-columns: auto 1fr; grid-template-rows: 1fr auto; }
+  .hud {
+    grid-row: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 0 0 12px max(12px, env(safe-area-inset-left));
+  }
+  .stage { padding-bottom: 8px; }
+  .hint { display: none; }
+}

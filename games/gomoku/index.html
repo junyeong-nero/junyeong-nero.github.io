@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>오목 | Games</title>
+  <meta name="description" content="15×15 오목. 삼삼 금지, AI 대전(하/중/상), 친구와 실시간 대결(수당 30초).">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="stylesheet" href="../shared/ui.css">
+  <link rel="stylesheet" href="gomoku.css">
+  <script src="https://unpkg.com/peerjs@1.5.4/dist/peerjs.min.js" defer></script>
+  <script type="module" src="game.js"></script>
+</head>
+
+<body>
+  <header class="topbar">
+    <a class="back" href="../" aria-label="게임 목록"><svg class="icon"><use href="../shared/icons.svg#i-back"/></svg></a>
+    <h1>오목</h1>
+  </header>
+
+  <main id="lobby" class="lobby"></main>
+
+  <main id="game" class="game" hidden>
+    <div class="hud">
+      <div class="player me" id="me-panel" aria-label="나">
+        <i class="dot" id="me-dot"></i><span class="name">나</span>
+      </div>
+      <div class="clock" id="clock" aria-label="남은 시간" hidden><svg class="icon"><use href="../shared/icons.svg#i-clock"/></svg><span id="clock-text">0:30</span></div>
+      <div class="player opp" id="opp-panel" aria-label="상대">
+        <i class="dot" id="opp-dot"></i><span class="name" id="opp-name">AI</span>
+      </div>
+    </div>
+
+    <div class="stage" id="stage">
+      <div class="goban" id="board"></div>
+    </div>
+    <p class="hint">같은 곳을 한 번 더 탭하면 착수</p>
+  </main>
+</body>
+
+</html>

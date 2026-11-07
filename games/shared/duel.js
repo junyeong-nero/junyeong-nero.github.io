@@ -12,6 +12,8 @@ const randomSeed = () => Math.floor(Math.random() * 2 ** 32);
 // cfg: {
 //   gameId,                       // peer id 네임스페이스
 //   rule, chips: [{ icon, text, label }], levels: bool,   // 로비 상단 그림/칩/난이도
+//   levelsSoloOnly: bool,             // 난이도를 혼자(AI) 할 때만 쓴다 → 방 화면에서는 숨김
+//   solo: { icon, label },            // 혼자 타일 (기본: 사람 아이콘 + '혼자')
 //   onStart({ seed, level, mode }),   // 새 판 (혼자/대결 모두, 대결은 양쪽 같은 seed·level)
 //   onMessage(msg),                   // 게임 메시지 (ready/start/level 외)
 //   onPeerGone(),                     // 게임 중/결과 화면에서 상대 연결이 끊김
@@ -30,7 +32,7 @@ export function createDuel(cfg) {
         `<button type="button" role="radio" data-level="${id}" aria-checked="${id === 'normal'}">${icon(ic)}${label}</button>`).join('')}</div>` : ''}
       <div class="stack" data-ref="menu">
         <div class="tiles">
-          <button class="tile" data-ref="solo">${icon('user')}<span>혼자</span></button>
+          <button class="tile" data-ref="solo">${icon(cfg.solo?.icon || 'user')}<span>${cfg.solo?.label || '혼자'}</span></button>
           <button class="tile primary" data-ref="host">${icon('users')}<span>대결</span></button>
         </div>
         <form class="join" data-ref="joinForm">
@@ -131,6 +133,7 @@ export function createDuel(cfg) {
     lobby.hidden = false;
     ref.menu.hidden = view !== 'menu';
     ref.roomView.hidden = view !== 'room';
+    if (ref.levels && cfg.levelsSoloOnly) ref.levels.hidden = view === 'room';
     ref.error.hidden = true;
     cfg.onLeave?.();
   }

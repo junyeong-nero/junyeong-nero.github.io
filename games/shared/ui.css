@@ -231,7 +231,7 @@ body {
   gap: 12px;
   padding: 0 max(16px, env(safe-area-inset-right)) 8px max(16px, env(safe-area-inset-left));
 }
-.hud .opp { justify-self: end; }
+.hud .opp { grid-column: 3; justify-self: end; } /* 가운데 시계를 숨겨도 오른쪽에 */
 .clock {
   display: inline-flex;
   align-items: center;
