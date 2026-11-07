@@ -13,35 +13,78 @@
 </head>
 
 <body>
+  <!-- 플랫 아이콘 스프라이트 (24×24, 단색 = currentColor) -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="7.5" r="4.5"/><path d="M3 21c0-4.7 4-8 9-8s9 3.3 9 8z"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24"><g opacity=".5"><circle cx="16.5" cy="7" r="3.5"/><path d="M13 13.2c1-.5 2.2-.7 3.5-.7 3.9 0 7 2.5 7 6.5h-6.2z"/></g><circle cx="9" cy="8" r="4"/><path d="M1 21c0-4.4 3.6-7.5 8-7.5s8 3.1 8 7.5z"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><path d="M7 4.6v14.8a1 1 0 0 0 1.5.9l12-7.4a1 1 0 0 0 0-1.8l-12-7.4A1 1 0 0 0 7 4.6z"/></symbol>
+    <symbol id="i-enter" viewBox="0 0 24 24"><path d="M4 10.5h11.4l-4.2-4.2 2.1-2.1L21.1 12l-7.8 7.8-2.1-2.1 4.2-4.2H4z"/></symbol>
+    <symbol id="i-link" viewBox="0 0 24 24"><path d="M10.6 13.4a4 4 0 0 0 5.7 0l3.5-3.5a4 4 0 0 0-5.7-5.7l-1.2 1.2M13.4 10.6a4 4 0 0 0-5.7 0l-3.5 3.5a4 4 0 0 0 5.7 5.7l1.2-1.2" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6.5V12l3.6 2.3" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-replay" viewBox="0 0 24 24"><path d="M12 5V1.5L6.5 6.5l5.5 5V8a5 5 0 1 1-5 5H4a8 8 0 1 0 8-8z"/></symbol>
+    <symbol id="i-home" viewBox="0 0 24 24"><path d="M12 2.8 1.8 11.5h3V21h5.4v-5.6h3.6V21h5.4v-9.5h3z"/></symbol>
+    <symbol id="i-exit" viewBox="0 0 24 24"><path d="M4 3h8v2.6H6.6v12.8H12V21H4zM15.6 6.6l5.4 5.4-5.4 5.4-1.9-1.9 2.2-2.2H9v-2.6h6.9l-2.2-2.2z"/></symbol>
+    <symbol id="i-trophy" viewBox="0 0 24 24"><path d="M6 2h12v2h3v3a5 5 0 0 1-4.3 4.95A5 5 0 0 1 13.3 15v3H17v3H7v-3h3.7v-3a5 5 0 0 1-3.4-3.05A5 5 0 0 1 3 7V4h3zm0 4.2H5.2V7A2.8 2.8 0 0 0 6 9zm12 0V9a2.8 2.8 0 0 0 .8-2V6.2z"/></symbol>
+    <symbol id="i-hourglass" viewBox="0 0 24 24"><path d="M5 2h14v2h-1.5v2.5a5 5 0 0 1-2.6 4.4L13.2 12l1.7 1.1a5 5 0 0 1 2.6 4.4V20H19v2H5v-2h1.5v-2.5a5 5 0 0 1 2.6-4.4l1.7-1.1-1.7-1.1a5 5 0 0 1-2.6-4.4V4H5z"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 1.8 3.1 6.6 7.2.9-5.3 5 1.4 7.1L12 17.9l-6.4 3.5L7 14.3l-5.3-5 7.2-.9z"/></symbol>
+    <symbol id="i-sad" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="8.5" cy="10" r="1.5" fill="#fff"/><circle cx="15.5" cy="10" r="1.5" fill="#fff"/><path d="M8 16.6c1.1-1.3 2.4-1.9 4-1.9s2.9.6 4 1.9" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-even" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="8.5" cy="10" r="1.5" fill="#fff"/><circle cx="15.5" cy="10" r="1.5" fill="#fff"/><path d="M8.5 15.5h7" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-hash" viewBox="0 0 24 24"><path d="M9.2 3h2.6l-.8 5h4l.8-5h2.6l-.8 5H21v2.6h-3.8l-.6 2.8H20V16h-3.8l-.8 5h-2.6l.8-5h-4l-.8 5H6.2l.8-5H3v-2.6h4.4l.6-2.8H4V8h4.4zm1.4 7.6-.6 2.8h4l.6-2.8z"/></symbol>
+    <symbol id="i-back" viewBox="0 0 24 24"><path d="M15.4 3.6 17.5 5.7 11.2 12l6.3 6.3-2.1 2.1L7 12z"/></symbol>
+    <symbol id="i-lv1" viewBox="0 0 24 24"><rect x="3" y="14" width="5" height="7" rx="1.5"/><rect x="9.5" y="9" width="5" height="12" rx="1.5" opacity=".25"/><rect x="16" y="4" width="5" height="17" rx="1.5" opacity=".25"/></symbol>
+    <symbol id="i-lv2" viewBox="0 0 24 24"><rect x="3" y="14" width="5" height="7" rx="1.5"/><rect x="9.5" y="9" width="5" height="12" rx="1.5"/><rect x="16" y="4" width="5" height="17" rx="1.5" opacity=".25"/></symbol>
+    <symbol id="i-lv3" viewBox="0 0 24 24"><rect x="3" y="14" width="5" height="7" rx="1.5"/><rect x="9.5" y="9" width="5" height="12" rx="1.5"/><rect x="16" y="4" width="5" height="17" rx="1.5"/></symbol>
+    <symbol id="i-apple" viewBox="0 0 24 24"><path d="M12 7.6C10.4 6.4 8.6 6 7 6.5 4.2 7.3 2.8 10.1 3.3 13.5 3.9 17.7 6.9 21.6 9.6 21.6c1 0 1.6-.5 2.4-.5s1.4.5 2.4.5c2.7 0 5.7-3.9 6.3-8.1.5-3.4-.9-6.2-3.7-7-1.6-.5-3.4-.1-5 1.1z" fill="#e8352f"/><path d="M12 7.6c0-2 .5-3.7 1.6-4.9" fill="none" stroke="#6b4a2b" stroke-width="1.8" stroke-linecap="round"/><path d="M13.4 4.7c1.2-1.9 3.3-2.6 5.4-2.1-.6 2-2.7 3.1-5.4 2.1z" fill="#5cb83f"/></symbol>
+  </svg>
+
   <header class="topbar">
-    <a class="back" href="../">← Games</a>
+    <a class="back" href="../" aria-label="게임 목록"><svg class="icon"><use href="#i-back"/></svg></a>
     <h1>사과게임</h1>
-    <span class="room-tag" id="room-tag" hidden></span>
+    <span class="room-tag" id="room-tag" hidden><svg class="icon"><use href="#i-link"/></svg><span id="room-tag-code"></span></span>
   </header>
 
   <!-- 로비 -->
   <main id="lobby" class="lobby">
     <div class="lobby-card">
-      <div class="logo-apple" aria-hidden="true"><span>10</span></div>
-      <h2>사과게임</h2>
-      <p class="rules">드래그로 사각형을 그려 <b>합이 10</b>이 되는 사과를 지우세요.<br>지운 사과 1개당 1점, 제한 시간 2분.</p>
+      <div class="rule" role="img" aria-label="합이 10이 되도록 사과를 묶기">
+        <span class="apple">4</span><span class="op">+</span><span class="apple">6</span><span class="op">=</span><span class="ten">10</span>
+      </div>
+      <div class="chips">
+        <span class="chip" aria-label="제한 시간 2분"><svg class="icon"><use href="#i-clock"/></svg>2:00</span>
+        <span class="chip" aria-label="사과 1개당 1점"><svg class="icon"><use href="#i-apple"/></svg>1점</span>
+      </div>
+
+      <div class="levels" id="levels" role="radiogroup" aria-label="난이도">
+        <button type="button" role="radio" data-level="easy" aria-checked="false"><svg class="icon"><use href="#i-lv1"/></svg>하</button>
+        <button type="button" role="radio" data-level="normal" aria-checked="true"><svg class="icon"><use href="#i-lv2"/></svg>중</button>
+        <button type="button" role="radio" data-level="hard" aria-checked="false"><svg class="icon"><use href="#i-lv3"/></svg>상</button>
+      </div>
 
       <div id="lobby-menu" class="stack">
-        <button class="btn primary" id="btn-host">친구와 대결 · 방 만들기</button>
+        <div class="tiles">
+          <button class="tile" id="btn-solo"><svg class="icon"><use href="#i-user"/></svg><span>혼자</span></button>
+          <button class="tile primary" id="btn-host"><svg class="icon"><use href="#i-users"/></svg><span>대결</span></button>
+        </div>
         <form class="join" id="join-form">
-          <input id="join-code" maxlength="5" placeholder="방 코드" autocomplete="off" autocapitalize="characters" spellcheck="false">
-          <button class="btn" type="submit">참가</button>
+          <label class="code-field">
+            <svg class="icon"><use href="#i-hash"/></svg>
+            <input id="join-code" maxlength="5" placeholder="코드" aria-label="방 코드" autocomplete="off" autocapitalize="characters" spellcheck="false">
+          </label>
+          <button class="btn" type="submit"><svg class="icon"><use href="#i-enter"/></svg>참가</button>
         </form>
-        <button class="btn ghost" id="btn-solo">혼자 하기</button>
       </div>
 
       <div id="lobby-room" class="stack" hidden>
-        <p class="label">방 코드</p>
-        <p class="code" id="room-code">-----</p>
-        <button class="btn ghost small" id="btn-copy">초대 링크 복사</button>
+        <div class="room-code"><svg class="icon"><use href="#i-hash"/></svg><span class="code" id="room-code">-----</span></div>
+        <button class="btn ghost small" id="btn-copy"><svg class="icon"><use href="#i-link"/></svg>링크 복사</button>
+        <div class="versus">
+          <div class="seat me"><svg class="icon"><use href="#i-user"/></svg><span>나</span></div>
+          <span class="vs">VS</span>
+          <div class="seat opp empty" id="seat-opp"><svg class="icon"><use href="#i-user"/></svg><span id="seat-opp-label">대기</span></div>
+        </div>
         <p class="status" id="room-status">연결 중…</p>
-        <button class="btn primary" id="btn-start" hidden>게임 시작</button>
-        <button class="btn ghost small" id="btn-leave">나가기</button>
+        <button class="btn primary" id="btn-start" hidden><svg class="icon"><use href="#i-play"/></svg>시작</button>
+        <button class="btn ghost small" id="btn-leave"><svg class="icon"><use href="#i-exit"/></svg>나가기</button>
       </div>
 
       <p class="error" id="lobby-error" hidden></p>
@@ -51,17 +94,15 @@
   <!-- 게임 -->
   <main id="game" class="game" hidden>
     <div class="hud">
-      <div class="player me">
-        <span class="name">나</span>
+      <div class="player me" aria-label="내 점수">
+        <svg class="icon"><use href="#i-user"/></svg>
         <span class="score" id="my-score">0</span>
       </div>
-      <div class="clock" id="clock">2:00</div>
-      <div class="player opp" id="opp-panel" hidden>
+      <div class="clock" id="clock" aria-label="남은 시간"><svg class="icon"><use href="#i-clock"/></svg><span id="clock-text">2:00</span></div>
+      <div class="player opp" id="opp-panel" aria-label="상대 점수" hidden>
         <div class="mini" id="opp-mini" aria-hidden="true"></div>
-        <div>
-          <span class="name">상대</span>
-          <span class="score" id="opp-score">0</span>
-        </div>
+        <svg class="icon"><use href="#i-user"/></svg>
+        <span class="score" id="opp-score">0</span>
       </div>
     </div>
 
@@ -77,12 +118,13 @@
 
     <div class="overlay" id="result" hidden>
       <div class="result-card">
-        <p class="result-title" id="result-title">시간 종료!</p>
+        <div class="result-badge" id="result-badge"></div>
+        <p class="result-title" id="result-title"></p>
         <div class="result-scores" id="result-scores"></div>
         <p class="status" id="result-status"></p>
-        <div class="stack">
-          <button class="btn primary" id="btn-again">다시 하기</button>
-          <button class="btn ghost small" id="btn-exit">로비로</button>
+        <div class="result-actions">
+          <button class="btn primary" id="btn-again"><svg class="icon"><use href="#i-replay"/></svg>다시</button>
+          <button class="btn" id="btn-exit"><svg class="icon"><use href="#i-home"/></svg>홈</button>
         </div>
       </div>
     </div>

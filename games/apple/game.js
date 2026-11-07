@@ -11,14 +11,19 @@ const el = {
   lobby: $('lobby'), menu: $('lobby-menu'), roomBox: $('lobby-room'), code: $('room-code'),
   roomStatus: $('room-status'), start: $('btn-start'), copy: $('btn-copy'), lobbyError: $('lobby-error'),
   game: $('game'), stage: $('stage'), frame: $('frame'), board: $('board'), selBox: $('sel-box'),
-  timerFill: $('timer-fill'), clock: $('clock'), myScore: $('my-score'), oppPanel: $('opp-panel'), oppScore: $('opp-score'),
+  timerFill: $('timer-fill'), clock: $('clock'), clockText: $('clock-text'), myScore: $('my-score'), oppPanel: $('opp-panel'), oppScore: $('opp-score'),
   oppMini: $('opp-mini'), countdown: $('countdown'), countdownNum: $('countdown-num'),
   result: $('result'), resultTitle: $('result-title'), resultScores: $('result-scores'),
-  resultStatus: $('result-status'), again: $('btn-again'), roomTag: $('room-tag'), toast: $('toast'),
+  resultStatus: $('result-status'), resultBadge: $('result-badge'), again: $('btn-again'),
+  roomTag: $('room-tag'), roomTagCode: $('room-tag-code'), seatOpp: $('seat-opp'), seatOppLabel: $('seat-opp-label'),
+  toast: $('toast'), levels: $('levels'),
 };
+
+const icon = (name) => `<svg class="icon" aria-hidden="true"><use href="#i-${name}"/></svg>`;
 
 const state = {
   mode: 'solo', // 'solo' | 'pvp'
+  level: 'normal', // 'easy' | 'normal' | 'hard' (대결에서는 방장 기준)
   phase: 'lobby', // 'lobby' | 'countdown' | 'play' | 'over'
   values: [],
   removed: [],
@@ -163,7 +168,7 @@ function clear(indices) {
 // ---------- 게임 진행 ----------
 function newGame(seed) {
   stopTimers();
-  const { values } = generateBoard(seed);
+  const { values } = generateBoard(seed, state.level);
   state.values = values;
   state.removed = new Array(SIZE).fill(false);
   state.score = 0;
@@ -224,7 +229,7 @@ function play() {
 function renderClock(leftMs) {
   const sec = Math.max(0, Math.ceil(leftMs / 1000));
   const text = `${Math.floor(sec / 60)}:${String(sec % 60).padStart(2, '0')}`;
-  if (el.clock.textContent !== text) el.clock.textContent = text;
+  if (el.clockText.textContent !== text) el.clockText.textContent = text;
   el.clock.classList.toggle('low', leftMs < 10_000);
 }
 
@@ -242,24 +247,33 @@ function finish() {
 function renderResult() {
   el.result.hidden = false;
   const me = state.score;
+  const badge = (name, tone, title) => {
+    el.resultBadge.className = `result-badge ${tone}`;
+    el.resultBadge.innerHTML = icon(name);
+    el.resultTitle.textContent = title;
+  };
   if (state.mode !== 'pvp') {
-    el.resultTitle.textContent = state.cleared ? '전부 지웠어요! 🍎' : '시간 종료!';
-    el.resultScores.innerHTML = `<div class="win"><span>점수</span><b>${me}</b></div>`;
+    if (state.cleared) badge('star', 'gold', '올클리어');
+    else badge('clock', '', '시간 끝');
+    el.resultScores.innerHTML = `<div class="me win">${icon('apple')}<span>점수</span><b>${me}</b></div>`;
     el.resultStatus.textContent = '';
     return;
   }
   const opp = state.opp;
-  let title = state.cleared ? '전부 지웠어요!' : '시간 종료!';
-  if (opp.finished || opp.gone) title = me > opp.score ? '승리! 🍎' : me < opp.score ? '패배…' : '무승부';
-  el.resultTitle.textContent = title;
+  if (opp.finished || opp.gone) {
+    if (me > opp.score) badge('trophy', 'gold', '승리');
+    else if (me < opp.score) badge('sad', 'lose', '패배');
+    else badge('even', 'even', '무승부');
+  } else {
+    badge('hourglass', '', '상대 진행 중');
+  }
   el.resultScores.innerHTML = `
-    <div class="${me >= opp.score ? 'win' : ''}"><span>나</span><b>${me}</b></div>
-    <div class="${opp.score >= me ? 'win' : ''}"><span>상대</span><b>${opp.score}</b></div>`;
+    <div class="me ${me >= opp.score ? 'win' : ''}">${icon('user')}<span>나</span><b>${me}</b></div>
+    <div class="opp ${opp.score >= me ? 'win' : ''}">${icon('user')}<span>상대</span><b>${opp.score}</b></div>`;
   let status = '';
-  if (opp.gone) status = '상대 연결이 끊어졌어요.';
-  else if (!opp.finished) status = '상대가 아직 플레이 중이에요…';
-  else if (state.meReady) status = '상대를 기다리는 중…';
-  else if (opp.ready) status = '상대가 한 판 더 하고 싶어해요!';
+  if (opp.gone) status = '상대 연결 끊김';
+  else if (state.meReady) status = '상대 기다리는 중…';
+  else if (opp.finished && opp.ready) status = '상대가 한 판 더 원해요';
   el.resultStatus.textContent = status;
 }
 
@@ -276,7 +290,7 @@ function maybeStart() {
   if (!state.room?.isHost || !state.room.connected) return;
   if (!state.meReady || !state.opp.ready) return;
   const seed = randomSeed();
-  state.room.send({ t: 'start', seed });
+  state.room.send({ t: 'start', seed, level: state.level });
   newGame(seed);
 }
 
@@ -288,7 +302,12 @@ function onMessage(msg) {
       if (state.phase === 'over') renderResult();
       break;
     case 'start':
-      if (!state.room.isHost) newGame(msg.seed);
+      if (state.room.isHost) break;
+      setLevel(msg.level);
+      newGame(msg.seed);
+      break;
+    case 'level':
+      if (!state.room.isHost) setLevel(msg.level);
       break;
     case 'clear':
       state.opp.score = msg.score;
@@ -311,36 +330,40 @@ function openRoom(join) {
   showLobby('room');
   el.code.textContent = join || '-----';
   el.roomStatus.textContent = '연결 중…';
+  setSeat(false);
   el.start.hidden = true;
   el.copy.hidden = !!join;
 
   const room = new Room('apple', {
     onOpen(code) {
       el.code.textContent = code;
-      el.roomStatus.textContent = '친구에게 코드나 링크를 보내 주세요. 상대를 기다리는 중…';
-      setRoomTag(`방 ${code}`, false);
+      el.roomStatus.textContent = '';
+      setRoomTag(code, false);
     },
     onConnect() {
       state.opp = { score: 0, finished: false, ready: false, gone: false };
-      setRoomTag(`방 ${room.code} · 연결됨`, true);
+      setRoomTag(room.code, true);
+      setSeat(true);
       if (room.isHost) {
-        el.roomStatus.textContent = '상대가 들어왔어요!';
+        el.roomStatus.textContent = '';
         el.start.hidden = false;
+        room.send({ t: 'level', level: state.level });
       } else {
-        el.roomStatus.textContent = '연결됐어요! 방장이 시작하기를 기다리는 중…';
+        el.roomStatus.textContent = '방장 시작 대기';
         room.send({ t: 'ready' });
       }
     },
     onMessage,
     onClose() {
       state.opp.gone = true;
-      setRoomTag(`방 ${room.code}`, false);
-      toast('상대 연결이 끊어졌어요.');
+      setRoomTag(room.code, false);
+      setSeat(false);
+      toast('상대 연결 끊김');
       if (state.phase === 'over') renderResult();
       if (state.phase === 'lobby') {
         if (room.isHost) {
           el.start.hidden = true;
-          el.roomStatus.textContent = '상대를 기다리는 중…';
+          el.roomStatus.textContent = '';
         } else {
           leaveRoom();
         }
@@ -353,6 +376,7 @@ function openRoom(join) {
     },
   });
   state.room = room;
+  renderLevel();
   if (join) room.join(join);
   else room.host();
 }
@@ -362,14 +386,20 @@ function leaveRoom() {
   state.room = null;
   state.mode = 'solo';
   el.roomTag.hidden = true;
+  renderLevel();
   if (new URLSearchParams(location.search).has('room')) history.replaceState(null, '', location.pathname);
   showLobby('menu');
 }
 
-function setRoomTag(text, live) {
+function setRoomTag(code, live) {
   el.roomTag.hidden = false;
-  el.roomTag.textContent = text;
+  el.roomTagCode.textContent = code;
   el.roomTag.classList.toggle('live', live);
+}
+
+function setSeat(filled) {
+  el.seatOpp.classList.toggle('empty', !filled);
+  el.seatOppLabel.textContent = filled ? '상대' : '대기';
 }
 
 // ---------- 화면 ----------
@@ -400,7 +430,7 @@ function toast(text) {
 
 function requirePeer() {
   if (window.Peer) return true;
-  showError('P2P 라이브러리를 불러오지 못했어요. 네트워크를 확인해 주세요.');
+  showError('연결 모듈을 못 불러왔어요. 네트워크를 확인해 주세요.');
   return false;
 }
 
@@ -412,9 +442,29 @@ $('btn-host').addEventListener('click', () => { if (requirePeer()) openRoom(); }
 $('join-form').addEventListener('submit', (e) => {
   e.preventDefault();
   const code = $('join-code').value.trim().toUpperCase();
-  if (code.length !== 5) { showError('5자리 방 코드를 입력해 주세요.'); return; }
+  if (code.length !== 5) { showError('5자리 코드를 입력해 주세요.'); return; }
   if (requirePeer()) openRoom(code);
 });
+function setLevel(level) {
+  state.level = ['easy', 'normal', 'hard'].includes(level) ? level : 'normal';
+  renderLevel();
+}
+
+function renderLevel() {
+  el.levels.querySelectorAll('[data-level]').forEach((b) => {
+    b.setAttribute('aria-checked', String(b.dataset.level === state.level));
+  });
+  // 대결 참가자는 방장이 고른 난이도를 따른다
+  el.levels.classList.toggle('locked', !!state.room && !state.room.isHost);
+}
+
+el.levels.addEventListener('click', (e) => {
+  const b = e.target.closest('[data-level]');
+  if (!b || (state.room && !state.room.isHost)) return;
+  setLevel(b.dataset.level);
+  state.room?.send({ t: 'level', level: state.level });
+});
+
 el.start.addEventListener('click', () => {
   state.meReady = true;
   maybeStart();
@@ -423,7 +473,7 @@ el.copy.addEventListener('click', async () => {
   const url = `${location.origin}${location.pathname}?room=${state.room?.code}`;
   try {
     await navigator.clipboard.writeText(url);
-    toast('초대 링크를 복사했어요.');
+    toast('링크 복사됨');
   } catch {
     toast(url);
   }
@@ -449,11 +499,14 @@ $('btn-exit').addEventListener('click', () => {
 
 // ---------- 확대 막기 ----------
 // iOS Safari는 viewport user-scalable/touch-action만으로는 더블탭·핀치 확대를 다 막지 못한다
-let lastTouchEnd = 0;
+// 같은 자리를 350ms 안에 다시 탭할 때만 막는다 (다른 버튼을 연달아 누르는 건 허용)
+let lastTap = { t: -1e9, x: 0, y: 0 };
 document.addEventListener('touchend', (e) => {
-  const now = e.timeStamp;
-  if (now - lastTouchEnd < 350) e.preventDefault();
-  lastTouchEnd = now;
+  const p = e.changedTouches[0];
+  if (!p) return;
+  const tap = { t: e.timeStamp, x: p.clientX, y: p.clientY };
+  if (tap.t - lastTap.t < 350 && Math.hypot(tap.x - lastTap.x, tap.y - lastTap.y) < 40) e.preventDefault();
+  lastTap = tap;
 }, { passive: false });
 document.addEventListener('dblclick', (e) => e.preventDefault());
 document.addEventListener('gesturestart', (e) => e.preventDefault());
