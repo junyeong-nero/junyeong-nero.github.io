@@ -95,6 +95,27 @@
   background: #ff9f1c;
   transform: scale(1.06);
 }
+/* 상대가 지운 자리: 파란 테두리가 번챍인 뒤 작은 파란 점으로 남는다 */
+.cell.opp-flash .apple { animation: opp-flash 1s ease-out; }
+@keyframes opp-flash {
+  0%, 45% { box-shadow: 0 0 0 calc(var(--cell) * .09) var(--opp); }
+  100% { box-shadow: 0 0 0 calc(var(--cell) * .09) transparent; }
+}
+.cell.opp-taken::after {
+  content: "";
+  position: absolute;
+  right: 1%;
+  bottom: 1%;
+  width: 28%;
+  height: 28%;
+  border-radius: 50%;
+  background: var(--opp);
+  border: 2px solid #fff;
+  pointer-events: none;
+}
+.cell.gone.opp-taken::after { display: none; }
+
+/* 내가 지울 때 (위의 번챍임보다 뒤에 있어야 우선) */
 .cell.gone .apple { animation: fall .7s ease-in forwards; pointer-events: none; }
 
 @keyframes fall {

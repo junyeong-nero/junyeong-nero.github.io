@@ -39,7 +39,11 @@ const duel = createDuel({
     if (msg.t === 'clear') {
       state.opp.score = msg.score;
       el.oppScore.textContent = msg.score;
-      msg.cells.forEach((i) => minis[i]?.classList.add('gone'));
+      msg.cells.forEach((i) => {
+        minis[i]?.classList.add('gone');
+        // 내 판의 같은 자리에 표시: 파란 테두리가 번챍이고 점으로 남는다 (내 사과는 그대로 지울 수 있음)
+        if (cells[i] && !state.removed[i]) cells[i].classList.add('opp-taken', 'opp-flash');
+      });
     } else if (msg.t === 'end') {
       state.opp.score = msg.score;
       state.opp.finished = true;
