@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
   <title>사과게임 | Games</title>
-  <meta name="description" content="합이 10이 되도록 사과를 드래그해서 지우는 사과게임. 친구와 같은 판으로 실시간 대결.">
+  <meta name="description" content="합이 10이 되도록 사과를 드래그해서 지우는 사과게임. 친구와 한 판에서 사과 쟁탈전.">
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="stylesheet" href="../shared/ui.css">
   <link rel="stylesheet" href="apple.css">
@@ -29,7 +29,6 @@
       </div>
       <div class="clock" id="clock" aria-label="남은 시간"><svg class="icon"><use href="../shared/icons.svg#i-clock"/></svg><span id="clock-text">2:00</span></div>
       <div class="player opp" id="opp-panel" aria-label="상대 점수" hidden>
-        <div class="mini" id="opp-mini" aria-hidden="true"></div>
         <svg class="icon"><use href="../shared/icons.svg#i-user"/></svg>
         <span class="score" id="opp-score">0</span>
       </div>
@@ -38,6 +37,7 @@
     <div class="stage" id="stage">
       <div class="frame" id="frame">
         <div class="board" id="board"></div>
+        <div class="opp-box" id="opp-box" hidden></div>
         <div class="sel-box" id="sel-box" hidden></div>
         <div class="timer" aria-hidden="true"><div class="timer-fill" id="timer-fill"></div></div>
       </div>

@@ -43,20 +43,6 @@
   transform: rotate(-12deg);
 }
 
-.mini {
-  display: grid;
-  grid-template-columns: repeat(17, 4px);
-  grid-auto-rows: 4px;
-  gap: 1px;
-  padding: 3px;
-  margin-right: 4px;
-  background: var(--field);
-  border: 1px solid var(--field-border);
-  border-radius: 4px;
-}
-.mini i { background: var(--apple); border-radius: 50%; }
-.mini i.gone { background: transparent; }
-
 .stage {
   flex: 1;
   min-height: 0;
@@ -95,28 +81,13 @@
   background: #ff9f1c;
   transform: scale(1.06);
 }
-/* 상대가 지운 자리: 파란 테두리가 번챍인 뒤 작은 파란 점으로 남는다 */
-.cell.opp-flash .apple { animation: opp-flash 1s ease-out; }
-@keyframes opp-flash {
-  0%, 45% { box-shadow: 0 0 0 calc(var(--cell) * .09) var(--opp); }
-  100% { box-shadow: 0 0 0 calc(var(--cell) * .09) transparent; }
-}
-.cell.opp-taken::after {
-  content: "";
-  position: absolute;
-  right: 1%;
-  bottom: 1%;
-  width: 28%;
-  height: 28%;
-  border-radius: 50%;
-  background: var(--opp);
-  border: 2px solid #fff;
-  pointer-events: none;
-}
-.cell.gone.opp-taken::after { display: none; }
-
-/* 내가 지울 때 (위의 번챍임보다 뒤에 있어야 우선) */
+/* 상대가 지금 고르고 있는 사과 */
+.cell.opp-on .apple { box-shadow: 0 0 0 calc(var(--cell) * .08) var(--opp); }
+/* 방장 확인을 기다리는 내 사과 (참가자) */
+.cell.pending .apple { opacity: .45; transform: scale(.88); }
 .cell.gone .apple { animation: fall .7s ease-in forwards; pointer-events: none; }
+/* 상대가 가져간 사과는 파랗게 변하며 떨어진다 */
+.cell.gone.by-opp .apple { background: var(--opp); }
 
 @keyframes fall {
   0% { transform: translate(0, 0) rotate(0); opacity: 1; }
@@ -124,14 +95,24 @@
   100% { transform: translate(var(--dx), calc(var(--cell) * 6)) rotate(var(--rot)); opacity: 0; }
 }
 
+/* 내 선택 상자 (합 10이면 빨간색) */
 .sel-box {
   position: absolute;
-  border: 2px solid rgba(40, 90, 220, .85);
-  background: rgba(60, 120, 255, .12);
+  border: 2px solid rgba(35, 51, 28, .7);
+  background: rgba(35, 51, 28, .08);
   border-radius: 4px;
   pointer-events: none;
 }
 .sel-box.ok { border-color: #e8352f; background: rgba(255, 70, 60, .16); }
+/* 상대 선택 상자 (실시간) */
+.opp-box {
+  position: absolute;
+  border: 2px dashed var(--opp);
+  background: rgba(47, 111, 214, .1);
+  border-radius: 4px;
+  pointer-events: none;
+  transition: left .06s linear, top .06s linear, width .06s linear, height .06s linear;
+}
 
 .timer {
   width: calc(var(--cell) * .38);
