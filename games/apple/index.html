@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>사과게임 | Games</title>
+  <meta name="description" content="합이 10이 되도록 사과를 드래그해서 지우는 사과게임. 친구와 같은 판으로 실시간 대결.">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="stylesheet" href="apple.css">
+  <script src="https://unpkg.com/peerjs@1.5.4/dist/peerjs.min.js" defer></script>
+  <script type="module" src="game.js"></script>
+</head>
+
+<body>
+  <header class="topbar">
+    <a class="back" href="../">← Games</a>
+    <h1>사과게임</h1>
+    <span class="room-tag" id="room-tag" hidden></span>
+  </header>
+
+  <!-- 로비 -->
+  <main id="lobby" class="lobby">
+    <div class="lobby-card">
+      <div class="logo-apple" aria-hidden="true"><span>10</span></div>
+      <h2>사과게임</h2>
+      <p class="rules">드래그로 사각형을 그려 <b>합이 10</b>이 되는 사과를 지우세요.<br>지운 사과 1개당 1점, 제한 시간 2분.</p>
+
+      <div id="lobby-menu" class="stack">
+        <button class="btn primary" id="btn-host">친구와 대결 · 방 만들기</button>
+        <form class="join" id="join-form">
+          <input id="join-code" maxlength="5" placeholder="방 코드" autocomplete="off" autocapitalize="characters" spellcheck="false">
+          <button class="btn" type="submit">참가</button>
+        </form>
+        <button class="btn ghost" id="btn-solo">혼자 하기</button>
+      </div>
+
+      <div id="lobby-room" class="stack" hidden>
+        <p class="label">방 코드</p>
+        <p class="code" id="room-code">-----</p>
+        <button class="btn ghost small" id="btn-copy">초대 링크 복사</button>
+        <p class="status" id="room-status">연결 중…</p>
+        <button class="btn primary" id="btn-start" hidden>게임 시작</button>
+        <button class="btn ghost small" id="btn-leave">나가기</button>
+      </div>
+
+      <p class="error" id="lobby-error" hidden></p>
+    </div>
+  </main>
+
+  <!-- 게임 -->
+  <main id="game" class="game" hidden>
+    <div class="hud">
+      <div class="player me">
+        <span class="name">나</span>
+        <span class="score" id="my-score">0</span>
+      </div>
+      <div class="player opp" id="opp-panel" hidden>
+        <div class="mini" id="opp-mini" aria-hidden="true"></div>
+        <div>
+          <span class="name">상대</span>
+          <span class="score" id="opp-score">0</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="stage" id="stage">
+      <div class="frame" id="frame">
+        <div class="board" id="board"></div>
+        <div class="sel-box" id="sel-box" hidden></div>
+        <div class="timer" aria-hidden="true"><div class="timer-fill" id="timer-fill"></div></div>
+      </div>
+    </div>
+
+    <div class="overlay" id="countdown" hidden><span id="countdown-num">3</span></div>
+
+    <div class="overlay" id="result" hidden>
+      <div class="result-card">
+        <p class="result-title" id="result-title">시간 종료!</p>
+        <div class="result-scores" id="result-scores"></div>
+        <p class="status" id="result-status"></p>
+        <div class="stack">
+          <button class="btn primary" id="btn-again">다시 하기</button>
+          <button class="btn ghost small" id="btn-exit">로비로</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div class="toast" id="toast" hidden></div>
+</body>
+
+</html>

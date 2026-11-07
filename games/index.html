@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Games | Junyeong Song</title>
+  <meta name="description" content="둘이서 할 수 있는 웹 게임 모음.">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <style>
+    :root { font-family: "Pretendard", "Apple SD Gothic Neo", "Noto Sans KR", system-ui, sans-serif; color: #212121; }
+    body { margin: 0; background: #fff; }
+    main { max-width: 880px; margin: 0 auto; padding: 56px 20px; }
+    h1 { font-size: 48px; letter-spacing: -0.02em; margin: 0 0 8px; }
+    .lead { color: #75758a; margin: 0 0 40px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; }
+    .card {
+      display: block; padding: 22px; border-radius: 18px; background: #eeece7;
+      color: inherit; text-decoration: none; transition: transform .15s;
+    }
+    .card:hover { transform: translateY(-3px); }
+    .card .icon { font-size: 40px; }
+    .card h2 { font-size: 22px; margin: 12px 0 6px; }
+    .card p { margin: 0; color: #5a5a66; font-size: 14px; line-height: 1.5; }
+    .tags { margin-top: 14px; display: flex; gap: 6px; flex-wrap: wrap; }
+    .tags span { font-size: 12px; padding: 3px 9px; border-radius: 99px; background: #fff; color: #75758a; }
+  </style>
+</head>
+
+<body>
+  <main>
+    <h1>Games</h1>
+    <p class="lead">둘이서 할 수 있는 작은 게임들. 방 코드를 공유하면 각자 기기에서 같이 할 수 있어요.</p>
+    <div class="grid">
+      <a class="card" href="apple/">
+        <div class="icon">🍎</div>
+        <h2>사과게임</h2>
+        <p>합이 10이 되도록 사과를 드래그해서 지우기. 같은 판으로 2분 동안 실시간 점수 대결.</p>
+        <div class="tags"><span>1–2인</span><span>실시간 P2P</span><span>2분</span></div>
+      </a>
+    </div>
+  </main>
+</body>
+
+</html>
