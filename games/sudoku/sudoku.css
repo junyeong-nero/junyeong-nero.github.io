@@ -1,0 +1,147 @@
+/* 스도쿠 전용 스타일 (공용은 ../shared/ui.css) */
+:root {
+  --cell: 40px;
+  --thin: #dbe8cf;
+  --thick: var(--field-border);
+  --mine: #2f6fd6;
+  --sel: #cdeab6;
+  --peer: #eef6e6;
+  --same: #dcefc9;
+  --wrong-bg: #fde3e1;
+}
+
+/* 로비 규칙 그림: 3×3 미니 판 */
+.rule .mini-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 26px);
+  grid-auto-rows: 26px;
+  border: 3px solid var(--thick);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.rule .mini-grid span {
+  display: grid;
+  place-items: center;
+  font-size: 15px;
+  font-weight: 800;
+  border: 1px solid var(--thin);
+}
+.rule .mini-grid .mine { color: var(--mine); }
+.rule .mini-grid .sel { background: var(--sel); }
+
+.play { flex: 1; min-height: 0; display: flex; flex-direction: column; }
+.board-wrap {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  place-items: center;
+  padding: 0 12px;
+}
+.board {
+  display: grid;
+  grid-template-columns: repeat(9, var(--cell));
+  grid-auto-rows: var(--cell);
+  background: #fff;
+  border: 3px solid var(--thick);
+  border-radius: 10px;
+  overflow: hidden;
+  touch-action: none;
+}
+.cell {
+  position: relative;
+  display: grid;
+  place-items: center;
+  font-size: calc(var(--cell) * .56);
+  font-weight: 700;
+  line-height: 1;
+  color: var(--ink);
+  border-right: 1px solid var(--thin);
+  border-bottom: 1px solid var(--thin);
+  cursor: pointer;
+}
+.cell.br { border-right: 2px solid var(--thick); }
+.cell.bb { border-bottom: 2px solid var(--thick); }
+.cell.c8 { border-right: 0; }
+.cell.r8 { border-bottom: 0; }
+.cell.mine { color: var(--mine); }
+.cell.peer { background: var(--peer); }
+.cell.same { background: var(--same); }
+.cell.wrong { color: var(--accent); background: var(--wrong-bg); }
+.cell.sel { background: var(--sel); }
+.cell.pop { animation: pop-in .18s ease-out; }
+@keyframes pop-in { 50% { transform: scale(1.15); } }
+
+.notes {
+  position: absolute;
+  inset: 2px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  font-size: calc(var(--cell) * .24);
+  font-weight: 700;
+  color: var(--muted);
+}
+.notes i { display: grid; place-items: center; font-style: normal; }
+
+/* 상대 진행률 */
+.progress {
+  width: 64px;
+  height: 10px;
+  margin-right: 4px;
+  border-radius: 99px;
+  background: #e3ebd9;
+  overflow: hidden;
+}
+.progress i { display: block; height: 100%; width: 0; background: var(--opp); border-radius: 99px; transition: width .3s; }
+
+/* 메모·지우기 + 숫자 패드 */
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px max(12px, env(safe-area-inset-right)) max(12px, env(safe-area-inset-bottom)) max(12px, env(safe-area-inset-left));
+}
+.tools { display: flex; justify-content: center; gap: 10px; }
+.tool {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  font: inherit;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--muted);
+  background: #fff;
+  border: 2px solid var(--line);
+  border-radius: 99px;
+  cursor: pointer;
+}
+.tool .icon { font-size: 20px; }
+.tool[aria-pressed="true"] { color: #fff; background: var(--field-border); border-color: var(--field-border); }
+.pad { display: grid; grid-template-columns: repeat(9, 1fr); gap: 5px; max-width: 520px; width: 100%; margin: 0 auto; }
+.num {
+  height: 56px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  font: inherit;
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--mine);
+  background: #e3ebd9;
+  border: 0;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.num.done { visibility: hidden; }
+.num.down { transform: translateY(1px); filter: brightness(.92); }
+.memo-on .num { color: var(--muted); background: #fff; box-shadow: inset 0 0 0 2px var(--line); font-size: 20px; }
+
+/* 가로로 돌린 폰: 판은 왼쪽, 도구·패드는 오른쪽 (패드 3×3) */
+@media (orientation: landscape) and (max-height: 540px) {
+  .play { flex-direction: row; }
+  .board-wrap { padding: 0 8px 8px max(12px, env(safe-area-inset-left)); }
+  .controls { justify-content: center; width: min(300px, 40vw); padding-top: 0; }
+  .pad { grid-template-columns: repeat(3, 1fr); }
+  .num { height: 48px; }
+}

@@ -1,41 +1,62 @@
 import { COLS, ROWS, SIZE, TARGET, generateBoard, sumOf } from './board.js';
-import { Room } from '../shared/room.js';
+import { createDuel, clockText } from '../shared/duel.js';
 
 const GAME_MS = 120_000;
-const COUNTDOWN = 3;
 // 사각형이 칸의 가장자리에서 이 비율만큼 들어온 안쪽 영역에 닿으면 선택 (0 = 칸에 닿기만 해도, 0.5 = 중점)
 const HIT_INSET = 0.2;
 const $ = (id) => document.getElementById(id);
 
 const el = {
-  lobby: $('lobby'), menu: $('lobby-menu'), roomBox: $('lobby-room'), code: $('room-code'),
-  roomStatus: $('room-status'), start: $('btn-start'), copy: $('btn-copy'), lobbyError: $('lobby-error'),
   game: $('game'), stage: $('stage'), frame: $('frame'), board: $('board'), selBox: $('sel-box'),
-  timerFill: $('timer-fill'), clock: $('clock'), clockText: $('clock-text'), myScore: $('my-score'), oppPanel: $('opp-panel'), oppScore: $('opp-score'),
-  oppMini: $('opp-mini'), countdown: $('countdown'), countdownNum: $('countdown-num'),
-  result: $('result'), resultTitle: $('result-title'), resultScores: $('result-scores'),
-  resultStatus: $('result-status'), resultBadge: $('result-badge'), again: $('btn-again'),
-  roomTag: $('room-tag'), roomTagCode: $('room-tag-code'), seatOpp: $('seat-opp'), seatOppLabel: $('seat-opp-label'),
-  toast: $('toast'), levels: $('levels'),
+  timerFill: $('timer-fill'), clock: $('clock'), clockText: $('clock-text'), myScore: $('my-score'),
+  oppPanel: $('opp-panel'), oppScore: $('opp-score'), oppMini: $('opp-mini'),
 };
 
-const icon = (name) => `<svg class="icon" aria-hidden="true"><use href="#i-${name}"/></svg>`;
-
 const state = {
-  mode: 'solo', // 'solo' | 'pvp'
-  level: 'normal', // 'easy' | 'normal' | 'hard' (대결에서는 방장 기준)
-  phase: 'lobby', // 'lobby' | 'countdown' | 'play' | 'over'
+  phase: 'idle', // 'idle' | 'countdown' | 'play' | 'over'
   values: [],
   removed: [],
   score: 0,
   endsAt: 0,
   cleared: false,
-  meReady: false,
-  opp: { score: 0, finished: false, ready: false, gone: false },
-  room: null,
+  opp: { score: 0, finished: false, gone: false },
   timers: [],
   raf: 0,
 };
+
+const duel = createDuel({
+  gameId: 'apple',
+  rule: `<div class="rule" role="img" aria-label="합이 10이 되도록 사과를 묶기">
+      <span class="apple">4</span><span class="op">+</span><span class="apple">6</span><span class="op">=</span><span class="ten">10</span>
+    </div>`,
+  chips: [
+    { icon: 'clock', text: '2:00', label: '제한 시간 2분' },
+    { icon: 'apple', text: '1점', label: '사과 1개당 1점' },
+  ],
+  levels: true,
+  onStart: ({ seed, level }) => newGame(seed, level),
+  onMessage(msg) {
+    if (msg.t === 'clear') {
+      state.opp.score = msg.score;
+      el.oppScore.textContent = msg.score;
+      msg.cells.forEach((i) => minis[i]?.classList.add('gone'));
+    } else if (msg.t === 'end') {
+      state.opp.score = msg.score;
+      state.opp.finished = true;
+      el.oppScore.textContent = msg.score;
+      if (state.phase === 'over') renderResult();
+    }
+  },
+  onPeerGone() {
+    state.opp.gone = true;
+    if (state.phase === 'over') renderResult();
+  },
+  onLeave() {
+    stopTimers();
+    if (drag) endDrag(false);
+    state.phase = 'idle';
+  },
+});
 
 // ---------- 보드 DOM ----------
 const cells = [];
@@ -117,6 +138,8 @@ el.stage.addEventListener('pointerdown', (e) => {
 el.stage.addEventListener('pointermove', (e) => { if (drag && e.pointerId === drag.id) updateDrag(e); });
 el.stage.addEventListener('pointerup', (e) => { if (drag && e.pointerId === drag.id) endDrag(true); });
 el.stage.addEventListener('pointercancel', (e) => { if (drag && e.pointerId === drag.id) endDrag(false); });
+// 보드에서는 터치 기본 동작(확대·스크롤) 자체를 끔. pointer 이벤트는 그대로 온다
+el.stage.addEventListener('touchstart', (e) => e.preventDefault(), { passive: false });
 
 function updateDrag(e) {
   const x1 = Math.min(drag.x0, e.clientX);
@@ -158,7 +181,7 @@ function clear(indices) {
   });
   state.score += indices.length;
   el.myScore.textContent = state.score;
-  state.room?.send({ t: 'clear', cells: indices, score: state.score });
+  duel.send({ t: 'clear', cells: indices, score: state.score });
   if (state.score === SIZE) {
     state.cleared = true;
     finish();
@@ -166,17 +189,14 @@ function clear(indices) {
 }
 
 // ---------- 게임 진행 ----------
-function newGame(seed) {
+function newGame(seed, level) {
   stopTimers();
-  const { values } = generateBoard(seed, state.level);
+  const { values } = generateBoard(seed, level);
   state.values = values;
   state.removed = new Array(SIZE).fill(false);
   state.score = 0;
   state.cleared = false;
-  state.meReady = false;
-  state.opp.score = 0;
-  state.opp.finished = false;
-  state.opp.ready = false;
+  state.opp = { score: 0, finished: false, gone: duel.oppGone };
   cells.forEach((cell, i) => {
     cell.className = 'cell';
     cell.firstChild.textContent = values[i];
@@ -184,30 +204,13 @@ function newGame(seed) {
   minis.forEach((m) => { m.className = ''; });
   el.myScore.textContent = '0';
   el.oppScore.textContent = '0';
-  el.oppPanel.hidden = state.mode !== 'pvp';
+  el.oppPanel.hidden = duel.mode !== 'pvp';
   el.timerFill.style.setProperty('--left', '1');
   el.timerFill.classList.remove('low');
   renderClock(GAME_MS);
-  el.result.hidden = true;
-  el.lobby.hidden = true;
-  el.game.hidden = false;
   layout();
-
   state.phase = 'countdown';
-  el.countdown.hidden = false;
-  let n = COUNTDOWN;
-  el.countdownNum.textContent = n;
-  const step = () => {
-    n -= 1;
-    if (n > 0) {
-      el.countdownNum.textContent = n;
-      state.timers.push(setTimeout(step, 1000));
-    } else {
-      el.countdown.hidden = true;
-      play();
-    }
-  };
-  state.timers.push(setTimeout(step, 1000));
+  duel.countdown(play);
 }
 
 function play() {
@@ -227,8 +230,7 @@ function play() {
 }
 
 function renderClock(leftMs) {
-  const sec = Math.max(0, Math.ceil(leftMs / 1000));
-  const text = `${Math.floor(sec / 60)}:${String(sec % 60).padStart(2, '0')}`;
+  const text = clockText(Math.ceil(leftMs / 1000));
   if (el.clockText.textContent !== text) el.clockText.textContent = text;
   el.clock.classList.toggle('low', leftMs < 10_000);
 }
@@ -239,42 +241,35 @@ function finish() {
   cancelAnimationFrame(state.raf);
   if (!state.cleared) renderClock(0);
   if (drag) endDrag(false);
-  state.room?.send({ t: 'end', score: state.score });
-  el.again.disabled = false;
+  duel.send({ t: 'end', score: state.score });
   renderResult();
 }
 
 function renderResult() {
-  el.result.hidden = false;
   const me = state.score;
-  const badge = (name, tone, title) => {
-    el.resultBadge.className = `result-badge ${tone}`;
-    el.resultBadge.innerHTML = icon(name);
-    el.resultTitle.textContent = title;
-  };
-  if (state.mode !== 'pvp') {
-    if (state.cleared) badge('star', 'gold', '올클리어');
-    else badge('clock', '', '시간 끝');
-    el.resultScores.innerHTML = `<div class="me win">${icon('apple')}<span>점수</span><b>${me}</b></div>`;
-    el.resultStatus.textContent = '';
+  if (duel.mode !== 'pvp') {
+    duel.showResult({
+      icon: state.cleared ? 'star' : 'clock',
+      tone: state.cleared ? 'gold' : '',
+      title: state.cleared ? '올클리어' : '시간 끝',
+      scores: [{ side: 'me', icon: 'apple', label: '점수', value: me, win: true }],
+    });
     return;
   }
   const opp = state.opp;
+  let result = { icon: 'hourglass', tone: '', title: '상대 진행 중' };
   if (opp.finished || opp.gone) {
-    if (me > opp.score) badge('trophy', 'gold', '승리');
-    else if (me < opp.score) badge('sad', 'lose', '패배');
-    else badge('even', 'even', '무승부');
-  } else {
-    badge('hourglass', '', '상대 진행 중');
+    if (me > opp.score) result = { icon: 'trophy', tone: 'gold', title: '승리' };
+    else if (me < opp.score) result = { icon: 'sad', tone: 'lose', title: '패배' };
+    else result = { icon: 'even', tone: 'even', title: '무승부' };
   }
-  el.resultScores.innerHTML = `
-    <div class="me ${me >= opp.score ? 'win' : ''}">${icon('user')}<span>나</span><b>${me}</b></div>
-    <div class="opp ${opp.score >= me ? 'win' : ''}">${icon('user')}<span>상대</span><b>${opp.score}</b></div>`;
-  let status = '';
-  if (opp.gone) status = '상대 연결 끊김';
-  else if (state.meReady) status = '상대 기다리는 중…';
-  else if (opp.finished && opp.ready) status = '상대가 한 판 더 원해요';
-  el.resultStatus.textContent = status;
+  duel.showResult({
+    ...result,
+    scores: [
+      { side: 'me', label: '나', value: me, win: me >= opp.score },
+      { side: 'opp', label: '상대', value: opp.score, win: opp.score >= me },
+    ],
+  });
 }
 
 function stopTimers() {
@@ -282,239 +277,3 @@ function stopTimers() {
   state.timers = [];
   cancelAnimationFrame(state.raf);
 }
-
-const randomSeed = () => Math.floor(Math.random() * 2 ** 32);
-
-// ---------- 2인 대결 ----------
-function maybeStart() {
-  if (!state.room?.isHost || !state.room.connected) return;
-  if (!state.meReady || !state.opp.ready) return;
-  const seed = randomSeed();
-  state.room.send({ t: 'start', seed, level: state.level });
-  newGame(seed);
-}
-
-function onMessage(msg) {
-  switch (msg.t) {
-    case 'ready':
-      state.opp.ready = true;
-      maybeStart();
-      if (state.phase === 'over') renderResult();
-      break;
-    case 'start':
-      if (state.room.isHost) break;
-      setLevel(msg.level);
-      newGame(msg.seed);
-      break;
-    case 'level':
-      if (!state.room.isHost) setLevel(msg.level);
-      break;
-    case 'clear':
-      state.opp.score = msg.score;
-      el.oppScore.textContent = msg.score;
-      msg.cells.forEach((i) => minis[i]?.classList.add('gone'));
-      break;
-    case 'end':
-      state.opp.score = msg.score;
-      state.opp.finished = true;
-      el.oppScore.textContent = msg.score;
-      if (state.phase === 'over') renderResult();
-      break;
-  }
-}
-
-function openRoom(join) {
-  state.mode = 'pvp';
-  state.opp = { score: 0, finished: false, ready: false, gone: false };
-  state.meReady = false;
-  showLobby('room');
-  el.code.textContent = join || '-----';
-  el.roomStatus.textContent = '연결 중…';
-  setSeat(false);
-  el.start.hidden = true;
-  el.copy.hidden = !!join;
-
-  const room = new Room('apple', {
-    onOpen(code) {
-      el.code.textContent = code;
-      el.roomStatus.textContent = '';
-      setRoomTag(code, false);
-    },
-    onConnect() {
-      state.opp = { score: 0, finished: false, ready: false, gone: false };
-      setRoomTag(room.code, true);
-      setSeat(true);
-      if (room.isHost) {
-        el.roomStatus.textContent = '';
-        el.start.hidden = false;
-        room.send({ t: 'level', level: state.level });
-      } else {
-        el.roomStatus.textContent = '방장 시작 대기';
-        room.send({ t: 'ready' });
-      }
-    },
-    onMessage,
-    onClose() {
-      state.opp.gone = true;
-      setRoomTag(room.code, false);
-      setSeat(false);
-      toast('상대 연결 끊김');
-      if (state.phase === 'over') renderResult();
-      if (state.phase === 'lobby') {
-        if (room.isHost) {
-          el.start.hidden = true;
-          el.roomStatus.textContent = '';
-        } else {
-          leaveRoom();
-        }
-      }
-    },
-    onError(text) {
-      if (state.phase !== 'lobby') { toast(text); return; }
-      leaveRoom();
-      showError(text);
-    },
-  });
-  state.room = room;
-  renderLevel();
-  if (join) room.join(join);
-  else room.host();
-}
-
-function leaveRoom() {
-  state.room?.close();
-  state.room = null;
-  state.mode = 'solo';
-  el.roomTag.hidden = true;
-  renderLevel();
-  if (new URLSearchParams(location.search).has('room')) history.replaceState(null, '', location.pathname);
-  showLobby('menu');
-}
-
-function setRoomTag(code, live) {
-  el.roomTag.hidden = false;
-  el.roomTagCode.textContent = code;
-  el.roomTag.classList.toggle('live', live);
-}
-
-function setSeat(filled) {
-  el.seatOpp.classList.toggle('empty', !filled);
-  el.seatOppLabel.textContent = filled ? '상대' : '대기';
-}
-
-// ---------- 화면 ----------
-function showLobby(view) {
-  stopTimers();
-  state.phase = 'lobby';
-  el.game.hidden = true;
-  el.result.hidden = true;
-  el.countdown.hidden = true;
-  el.lobby.hidden = false;
-  el.menu.hidden = view !== 'menu';
-  el.roomBox.hidden = view !== 'room';
-  el.lobbyError.hidden = true;
-}
-
-function showError(text) {
-  el.lobbyError.textContent = text;
-  el.lobbyError.hidden = false;
-}
-
-let toastTimer = 0;
-function toast(text) {
-  el.toast.textContent = text;
-  el.toast.hidden = false;
-  clearTimeout(toastTimer);
-  toastTimer = setTimeout(() => { el.toast.hidden = true; }, 2500);
-}
-
-function requirePeer() {
-  if (window.Peer) return true;
-  showError('연결 모듈을 못 불러왔어요. 네트워크를 확인해 주세요.');
-  return false;
-}
-
-$('btn-solo').addEventListener('click', () => {
-  state.mode = 'solo';
-  newGame(randomSeed());
-});
-$('btn-host').addEventListener('click', () => { if (requirePeer()) openRoom(); });
-$('join-form').addEventListener('submit', (e) => {
-  e.preventDefault();
-  const code = $('join-code').value.trim().toUpperCase();
-  if (code.length !== 5) { showError('5자리 코드를 입력해 주세요.'); return; }
-  if (requirePeer()) openRoom(code);
-});
-function setLevel(level) {
-  state.level = ['easy', 'normal', 'hard'].includes(level) ? level : 'normal';
-  renderLevel();
-}
-
-function renderLevel() {
-  el.levels.querySelectorAll('[data-level]').forEach((b) => {
-    b.setAttribute('aria-checked', String(b.dataset.level === state.level));
-  });
-  // 대결 참가자는 방장이 고른 난이도를 따른다
-  el.levels.classList.toggle('locked', !!state.room && !state.room.isHost);
-}
-
-el.levels.addEventListener('click', (e) => {
-  const b = e.target.closest('[data-level]');
-  if (!b || (state.room && !state.room.isHost)) return;
-  setLevel(b.dataset.level);
-  state.room?.send({ t: 'level', level: state.level });
-});
-
-el.start.addEventListener('click', () => {
-  state.meReady = true;
-  maybeStart();
-});
-el.copy.addEventListener('click', async () => {
-  const url = `${location.origin}${location.pathname}?room=${state.room?.code}`;
-  try {
-    await navigator.clipboard.writeText(url);
-    toast('링크 복사됨');
-  } catch {
-    toast(url);
-  }
-});
-$('btn-leave').addEventListener('click', leaveRoom);
-el.again.addEventListener('click', () => {
-  if (state.mode !== 'pvp' || !state.room?.connected) {
-    if (state.mode === 'pvp') leaveRoom();
-    state.mode = 'solo';
-    newGame(randomSeed());
-    return;
-  }
-  state.meReady = true;
-  el.again.disabled = true;
-  state.room.send({ t: 'ready' });
-  maybeStart();
-  if (state.phase === 'over') renderResult();
-});
-$('btn-exit').addEventListener('click', () => {
-  if (state.mode === 'pvp') leaveRoom();
-  else showLobby('menu');
-});
-
-// ---------- 확대 막기 ----------
-// iOS Safari는 viewport user-scalable/touch-action만으로는 더블탭·핀치 확대를 다 막지 못한다
-// 같은 자리를 350ms 안에 다시 탭할 때만 막는다 (다른 버튼을 연달아 누르는 건 허용)
-let lastTap = { t: -1e9, x: 0, y: 0 };
-document.addEventListener('touchend', (e) => {
-  const p = e.changedTouches[0];
-  if (!p) return;
-  const tap = { t: e.timeStamp, x: p.clientX, y: p.clientY };
-  if (tap.t - lastTap.t < 350 && Math.hypot(tap.x - lastTap.x, tap.y - lastTap.y) < 40) e.preventDefault();
-  lastTap = tap;
-}, { passive: false });
-document.addEventListener('dblclick', (e) => e.preventDefault());
-document.addEventListener('gesturestart', (e) => e.preventDefault());
-// 보드에서는 터치 기본 동작(확대·스크롤) 자체를 끔. pointer 이벤트는 그대로 온다
-el.stage.addEventListener('touchstart', (e) => e.preventDefault(), { passive: false });
-
-// 초대 링크로 들어온 경우 자동 참가
-window.addEventListener('load', () => {
-  const code = new URLSearchParams(location.search).get('room');
-  if (code && requirePeer()) openRoom(code.toUpperCase());
-});

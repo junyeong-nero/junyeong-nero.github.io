@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg">
+  <!-- 플랫 아이콘 스프라이트 (24×24, 단색 = currentColor). 사용: <svg class="icon"><use href="../shared/icons.svg#i-user"/></svg> -->
+  <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="7.5" r="4.5"/><path d="M3 21c0-4.7 4-8 9-8s9 3.3 9 8z"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><g opacity=".5"><circle cx="16.5" cy="7" r="3.5"/><path d="M13 13.2c1-.5 2.2-.7 3.5-.7 3.9 0 7 2.5 7 6.5h-6.2z"/></g><circle cx="9" cy="8" r="4"/><path d="M1 21c0-4.4 3.6-7.5 8-7.5s8 3.1 8 7.5z"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><path d="M7 4.6v14.8a1 1 0 0 0 1.5.9l12-7.4a1 1 0 0 0 0-1.8l-12-7.4A1 1 0 0 0 7 4.6z"/></symbol>
+  <symbol id="i-enter" viewBox="0 0 24 24"><path d="M4 10.5h11.4l-4.2-4.2 2.1-2.1L21.1 12l-7.8 7.8-2.1-2.1 4.2-4.2H4z"/></symbol>
+  <symbol id="i-link" viewBox="0 0 24 24"><path d="M10.6 13.4a4 4 0 0 0 5.7 0l3.5-3.5a4 4 0 0 0-5.7-5.7l-1.2 1.2M13.4 10.6a4 4 0 0 0-5.7 0l-3.5 3.5a4 4 0 0 0 5.7 5.7l1.2-1.2" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6.5V12l3.6 2.3" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-replay" viewBox="0 0 24 24"><path d="M12 5V1.5L6.5 6.5l5.5 5V8a5 5 0 1 1-5 5H4a8 8 0 1 0 8-8z"/></symbol>
+  <symbol id="i-home" viewBox="0 0 24 24"><path d="M12 2.8 1.8 11.5h3V21h5.4v-5.6h3.6V21h5.4v-9.5h3z"/></symbol>
+  <symbol id="i-exit" viewBox="0 0 24 24"><path d="M4 3h8v2.6H6.6v12.8H12V21H4zM15.6 6.6l5.4 5.4-5.4 5.4-1.9-1.9 2.2-2.2H9v-2.6h6.9l-2.2-2.2z"/></symbol>
+  <symbol id="i-trophy" viewBox="0 0 24 24"><path d="M6 2h12v2h3v3a5 5 0 0 1-4.3 4.95A5 5 0 0 1 13.3 15v3H17v3H7v-3h3.7v-3a5 5 0 0 1-3.4-3.05A5 5 0 0 1 3 7V4h3zm0 4.2H5.2V7A2.8 2.8 0 0 0 6 9zm12 0V9a2.8 2.8 0 0 0 .8-2V6.2z"/></symbol>
+  <symbol id="i-hourglass" viewBox="0 0 24 24"><path d="M5 2h14v2h-1.5v2.5a5 5 0 0 1-2.6 4.4L13.2 12l1.7 1.1a5 5 0 0 1 2.6 4.4V20H19v2H5v-2h1.5v-2.5a5 5 0 0 1 2.6-4.4l1.7-1.1-1.7-1.1a5 5 0 0 1-2.6-4.4V4H5z"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 1.8 3.1 6.6 7.2.9-5.3 5 1.4 7.1L12 17.9l-6.4 3.5L7 14.3l-5.3-5 7.2-.9z"/></symbol>
+  <symbol id="i-sad" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="8.5" cy="10" r="1.5" fill="#fff"/><circle cx="15.5" cy="10" r="1.5" fill="#fff"/><path d="M8 16.6c1.1-1.3 2.4-1.9 4-1.9s2.9.6 4 1.9" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"/></symbol>
+  <symbol id="i-even" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="8.5" cy="10" r="1.5" fill="#fff"/><circle cx="15.5" cy="10" r="1.5" fill="#fff"/><path d="M8.5 15.5h7" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"/></symbol>
+  <symbol id="i-hash" viewBox="0 0 24 24"><path d="M9.2 3h2.6l-.8 5h4l.8-5h2.6l-.8 5H21v2.6h-3.8l-.6 2.8H20V16h-3.8l-.8 5h-2.6l.8-5h-4l-.8 5H6.2l.8-5H3v-2.6h4.4l.6-2.8H4V8h4.4zm1.4 7.6-.6 2.8h4l.6-2.8z"/></symbol>
+  <symbol id="i-back" viewBox="0 0 24 24"><path d="M15.4 3.6 17.5 5.7 11.2 12l6.3 6.3-2.1 2.1L7 12z"/></symbol>
+  <symbol id="i-lv1" viewBox="0 0 24 24"><rect x="3" y="14" width="5" height="7" rx="1.5"/><rect x="9.5" y="9" width="5" height="12" rx="1.5" opacity=".25"/><rect x="16" y="4" width="5" height="17" rx="1.5" opacity=".25"/></symbol>
+  <symbol id="i-lv2" viewBox="0 0 24 24"><rect x="3" y="14" width="5" height="7" rx="1.5"/><rect x="9.5" y="9" width="5" height="12" rx="1.5"/><rect x="16" y="4" width="5" height="17" rx="1.5" opacity=".25"/></symbol>
+  <symbol id="i-lv3" viewBox="0 0 24 24"><rect x="3" y="14" width="5" height="7" rx="1.5"/><rect x="9.5" y="9" width="5" height="12" rx="1.5"/><rect x="16" y="4" width="5" height="17" rx="1.5"/></symbol>
+  <symbol id="i-apple" viewBox="0 0 24 24"><path d="M12 7.6C10.4 6.4 8.6 6 7 6.5 4.2 7.3 2.8 10.1 3.3 13.5 3.9 17.7 6.9 21.6 9.6 21.6c1 0 1.6-.5 2.4-.5s1.4.5 2.4.5c2.7 0 5.7-3.9 6.3-8.1.5-3.4-.9-6.2-3.7-7-1.6-.5-3.4-.1-5 1.1z" fill="#e8352f"/><path d="M12 7.6c0-2 .5-3.7 1.6-4.9" fill="none" stroke="#6b4a2b" stroke-width="1.8" stroke-linecap="round"/><path d="M13.4 4.7c1.2-1.9 3.3-2.6 5.4-2.1-.6 2-2.7 3.1-5.4 2.1z" fill="#5cb83f"/></symbol>
+  <symbol id="i-pencil" viewBox="0 0 24 24"><path d="M3 17.3V21h3.7L17.8 9.9l-3.7-3.7zM20.7 7a1 1 0 0 0 0-1.4l-2.3-2.3a1 1 0 0 0-1.4 0l-1.8 1.8 3.7 3.7z"/></symbol>
+  <symbol id="i-eraser" viewBox="0 0 24 24"><path d="M15.1 3.3a1.6 1.6 0 0 1 2.3 0l4.3 4.3a1.6 1.6 0 0 1 0 2.3L13 18.6h7.5V21H8.1l-5-5a1.6 1.6 0 0 1 0-2.3zM8.2 10.2 4.9 13.5 9.2 17.8h1.4l2.3-2.3z"/></symbol>
+  <symbol id="i-backspace" viewBox="0 0 24 24"><path d="M8 4h13a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H8l-7-8zm3.2 4.6L14.6 12l-3.4 3.4 1.4 1.4L16 13.4l3.4 3.4 1.4-1.4-3.4-3.4 3.4-3.4-1.4-1.4L16 10.6l-3.4-3.4z"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M5.6 3.5 12 9.9l6.4-6.4 2.1 2.1-6.4 6.4 6.4 6.4-2.1 2.1-6.4-6.4-6.4 6.4-2.1-2.1 6.4-6.4-6.4-6.4z"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="m9 16.2-4.2-4.2-2.1 2.1L9 20.4 21.3 8.1l-2.1-2.1z"/></symbol>
+</svg>

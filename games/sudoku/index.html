@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>스도쿠 | Games</title>
+  <meta name="description" content="하/중/상 스도쿠. 메모, 실수 3번 제한. 친구와 같은 퍼즐로 실시간 레이스.">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="stylesheet" href="../shared/ui.css">
+  <link rel="stylesheet" href="sudoku.css">
+  <script src="https://unpkg.com/peerjs@1.5.4/dist/peerjs.min.js" defer></script>
+  <script type="module" src="game.js"></script>
+</head>
+
+<body>
+  <header class="topbar">
+    <a class="back" href="../" aria-label="게임 목록"><svg class="icon"><use href="../shared/icons.svg#i-back"/></svg></a>
+    <h1>스도쿠</h1>
+  </header>
+
+  <main id="lobby" class="lobby"></main>
+
+  <main id="game" class="game" hidden>
+    <div class="hud">
+      <div class="player me" aria-label="실수">
+        <svg class="icon"><use href="../shared/icons.svg#i-x"/></svg>
+        <span class="score" id="mistakes">0/3</span>
+      </div>
+      <div class="clock" aria-label="걸린 시간"><svg class="icon"><use href="../shared/icons.svg#i-clock"/></svg><span id="clock-text">0:00</span></div>
+      <div class="player opp" id="opp-panel" aria-label="상대 진행률" hidden>
+        <div class="progress" aria-hidden="true"><i id="opp-bar"></i></div>
+        <svg class="icon"><use href="../shared/icons.svg#i-user"/></svg>
+        <span class="score" id="opp-pct">0%</span>
+      </div>
+    </div>
+
+    <div class="play">
+      <div class="board-wrap" id="board-wrap"><div class="board" id="board"></div></div>
+      <div class="controls">
+        <div class="tools">
+          <button type="button" class="tool" id="btn-memo" aria-pressed="false"><svg class="icon"><use href="../shared/icons.svg#i-pencil"/></svg><span>메모</span></button>
+          <button type="button" class="tool" id="btn-erase"><svg class="icon"><use href="../shared/icons.svg#i-eraser"/></svg><span>지우기</span></button>
+        </div>
+        <div class="pad" id="pad" aria-label="숫자"></div>
+      </div>
+    </div>
+  </main>
+</body>
+
+</html>

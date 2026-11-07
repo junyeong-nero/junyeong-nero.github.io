@@ -1,19 +1,10 @@
 // 사과게임 보드 로직 (DOM 없음, node 테스트 가능)
+import { mulberry32 } from '../shared/rng.js';
+
 export const COLS = 17;
 export const ROWS = 10;
 export const SIZE = COLS * ROWS;
 export const TARGET = 10;
-
-export function mulberry32(seed) {
-  let a = seed >>> 0;
-  return function () {
-    a = (a + 0x6d2b79f5) >>> 0;
-    let t = a;
-    t = Math.imul(t ^ (t >>> 15), t | 1);
-    t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
-    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
-  };
-}
 
 const rc = (i) => [Math.floor(i / COLS), i % COLS];
 const pick = (rand, arr) => arr[Math.floor(rand() * arr.length)];
