@@ -447,6 +447,19 @@ $('btn-exit').addEventListener('click', () => {
   else showLobby('menu');
 });
 
+// ---------- 확대 막기 ----------
+// iOS Safari는 viewport user-scalable/touch-action만으로는 더블탭·핀치 확대를 다 막지 못한다
+let lastTouchEnd = 0;
+document.addEventListener('touchend', (e) => {
+  const now = e.timeStamp;
+  if (now - lastTouchEnd < 350) e.preventDefault();
+  lastTouchEnd = now;
+}, { passive: false });
+document.addEventListener('dblclick', (e) => e.preventDefault());
+document.addEventListener('gesturestart', (e) => e.preventDefault());
+// 보드에서는 터치 기본 동작(확대·스크롤) 자체를 끔. pointer 이벤트는 그대로 온다
+el.stage.addEventListener('touchstart', (e) => e.preventDefault(), { passive: false });
+
 // 초대 링크로 들어온 경우 자동 참가
 window.addEventListener('load', () => {
   const code = new URLSearchParams(location.search).get('room');

@@ -11,7 +11,8 @@
   color: var(--ink);
 }
 
-* { box-sizing: border-box; }
+/* 모든 요소에서 더블탭 확대 끄기 (보드 .stage는 아래에서 none으로 더 강하게) */
+* { box-sizing: border-box; touch-action: manipulation; }
 
 html, body { height: 100%; margin: 0; }
 
