@@ -3,13 +3,15 @@ import { Room } from '../shared/room.js';
 
 const GAME_MS = 120_000;
 const COUNTDOWN = 3;
+// 사각형이 칸의 가장자리에서 이 비율만큼 들어온 안쪽 영역에 닿으면 선택 (0 = 칸에 닿기만 해도, 0.5 = 중점)
+const HIT_INSET = 0.2;
 const $ = (id) => document.getElementById(id);
 
 const el = {
   lobby: $('lobby'), menu: $('lobby-menu'), roomBox: $('lobby-room'), code: $('room-code'),
   roomStatus: $('room-status'), start: $('btn-start'), copy: $('btn-copy'), lobbyError: $('lobby-error'),
   game: $('game'), stage: $('stage'), frame: $('frame'), board: $('board'), selBox: $('sel-box'),
-  timerFill: $('timer-fill'), myScore: $('my-score'), oppPanel: $('opp-panel'), oppScore: $('opp-score'),
+  timerFill: $('timer-fill'), clock: $('clock'), myScore: $('my-score'), oppPanel: $('opp-panel'), oppScore: $('opp-score'),
   oppMini: $('opp-mini'), countdown: $('countdown'), countdownNum: $('countdown-num'),
   result: $('result'), resultTitle: $('result-title'), resultScores: $('result-scores'),
   resultStatus: $('result-status'), again: $('btn-again'), roomTag: $('room-tag'), toast: $('toast'),
@@ -47,7 +49,17 @@ for (let i = 0; i < SIZE; i++) {
 }
 
 function layout() {
-  const portrait = window.innerHeight > window.innerWidth;
+  if (drag) endDrag(false);
+  const cs = getComputedStyle(el.stage);
+  const border = el.frame.offsetWidth - el.frame.clientWidth;
+  const w = el.stage.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight) - border;
+  const h = el.stage.clientHeight - parseFloat(cs.paddingTop) - parseFloat(cs.paddingBottom) - border;
+  // 프레임 = 보드 + 패딩(0.3*2) + 간격(0.3) + 타이머(0.38). 타이머는 가로판이면 오른쪽, 세로판이면 아래
+  const fitLandscape = Math.min(w / (COLS + 1.28), h / (ROWS + 0.6));
+  const fitPortrait = Math.min(w / (ROWS + 0.6), h / (COLS + 1.28));
+  // 가로(17×10)/세로(10×17) 중 사과가 더 크게 나오는 쪽
+  const portrait = fitPortrait > fitLandscape;
+  el.frame.classList.toggle('portrait', portrait);
   const cols = portrait ? ROWS : COLS;
   const rows = portrait ? COLS : ROWS;
   cells.forEach((cell, i) => {
@@ -56,42 +68,50 @@ function layout() {
     cell.style.gridRow = String((portrait ? c : r) + 1);
     cell.style.gridColumn = String((portrait ? r : c) + 1);
   });
-  const box = el.stage.getBoundingClientRect();
-  const w = box.width - 24 - 8;
-  const h = box.height - 12 - 8;
-  // 프레임 = 보드 + 패딩(0.3*2) + 간격(0.3) + 타이머(0.38)
-  const size = Math.floor(Math.min(w / (cols + 1.28), h / (rows + 0.6), 64));
+  const size = Math.floor(Math.min(portrait ? fitPortrait : fitLandscape, 64));
   document.documentElement.style.setProperty('--cell', `${Math.max(size, 14)}px`);
   el.board.style.setProperty('--cols', cols);
   el.board.style.setProperty('--rows', rows);
 }
-window.addEventListener('resize', () => { if (!el.game.hidden) layout(); });
+
+let layoutQueued = false;
+function queueLayout() {
+  if (layoutQueued || el.game.hidden) return;
+  layoutQueued = true;
+  requestAnimationFrame(() => { layoutQueued = false; layout(); });
+}
+window.addEventListener('resize', queueLayout);
+window.addEventListener('orientationchange', () => setTimeout(queueLayout, 150));
+window.visualViewport?.addEventListener('resize', queueLayout);
 
 // ---------- 드래그 선택 ----------
 let drag = null;
 
-el.frame.addEventListener('pointerdown', (e) => {
+// 보드 바깥 여백에서 시작해도 드래그되도록 stage 전체에서 받는다
+el.stage.addEventListener('pointerdown', (e) => {
   if (state.phase !== 'play' || (drag && e.pointerId !== drag.id && e.pointerType === 'touch')) return;
   if (drag) endDrag(false); // pointerup을 놓친 이전 드래그 정리
   e.preventDefault();
-  try { el.frame.setPointerCapture(e.pointerId); } catch { /* 합성 이벤트 등 */ }
+  try { el.stage.setPointerCapture(e.pointerId); } catch { /* 합성 이벤트 등 */ }
   drag = {
     id: e.pointerId,
     x0: e.clientX,
     y0: e.clientY,
     frame: el.frame.getBoundingClientRect(),
-    centers: cells.map((c) => {
+    hitBoxes: cells.map((c) => {
       const r = c.getBoundingClientRect();
-      return [r.left + r.width / 2, r.top + r.height / 2];
+      const dx = r.width * HIT_INSET;
+      const dy = r.height * HIT_INSET;
+      return [r.left + dx, r.top + dy, r.right - dx, r.bottom - dy];
     }),
     selected: [],
   };
   el.selBox.hidden = false;
   updateDrag(e);
 });
-el.frame.addEventListener('pointermove', (e) => { if (drag && e.pointerId === drag.id) updateDrag(e); });
-el.frame.addEventListener('pointerup', (e) => { if (drag && e.pointerId === drag.id) endDrag(true); });
-el.frame.addEventListener('pointercancel', (e) => { if (drag && e.pointerId === drag.id) endDrag(false); });
+el.stage.addEventListener('pointermove', (e) => { if (drag && e.pointerId === drag.id) updateDrag(e); });
+el.stage.addEventListener('pointerup', (e) => { if (drag && e.pointerId === drag.id) endDrag(true); });
+el.stage.addEventListener('pointercancel', (e) => { if (drag && e.pointerId === drag.id) endDrag(false); });
 
 function updateDrag(e) {
   const x1 = Math.min(drag.x0, e.clientX);
@@ -107,8 +127,8 @@ function updateDrag(e) {
   });
   drag.selected.forEach((i) => cells[i].classList.remove('on'));
   drag.selected = [];
-  drag.centers.forEach(([cx, cy], i) => {
-    if (!state.removed[i] && cx >= x1 && cx <= x2 && cy >= y1 && cy <= y2) drag.selected.push(i);
+  drag.hitBoxes.forEach(([l, t, r, b], i) => {
+    if (!state.removed[i] && x1 <= r && x2 >= l && y1 <= b && y2 >= t) drag.selected.push(i);
   });
   drag.selected.forEach((i) => cells[i].classList.add('on'));
   el.selBox.classList.toggle('ok', sumOf(state.values, state.removed, drag.selected) === TARGET);
@@ -160,8 +180,9 @@ function newGame(seed) {
   el.myScore.textContent = '0';
   el.oppScore.textContent = '0';
   el.oppPanel.hidden = state.mode !== 'pvp';
-  el.timerFill.style.height = '100%';
+  el.timerFill.style.setProperty('--left', '1');
   el.timerFill.classList.remove('low');
+  renderClock(GAME_MS);
   el.result.hidden = true;
   el.lobby.hidden = true;
   el.game.hidden = false;
@@ -189,8 +210,9 @@ function play() {
   state.endsAt = performance.now() + GAME_MS;
   const tick = () => {
     const left = state.endsAt - performance.now();
-    el.timerFill.style.height = `${Math.max(0, (left / GAME_MS) * 100)}%`;
+    el.timerFill.style.setProperty('--left', String(Math.max(0, left / GAME_MS)));
     el.timerFill.classList.toggle('low', left < 10_000);
+    renderClock(left);
     if (left <= 0) finish();
     else state.raf = requestAnimationFrame(tick);
   };
@@ -199,10 +221,18 @@ function play() {
   state.timers.push(setTimeout(finish, GAME_MS));
 }
 
+function renderClock(leftMs) {
+  const sec = Math.max(0, Math.ceil(leftMs / 1000));
+  const text = `${Math.floor(sec / 60)}:${String(sec % 60).padStart(2, '0')}`;
+  if (el.clock.textContent !== text) el.clock.textContent = text;
+  el.clock.classList.toggle('low', leftMs < 10_000);
+}
+
 function finish() {
   if (state.phase !== 'play') return;
   state.phase = 'over';
   cancelAnimationFrame(state.raf);
+  if (!state.cleared) renderClock(0);
   if (drag) endDrag(false);
   state.room?.send({ t: 'end', score: state.score });
   el.again.disabled = false;
