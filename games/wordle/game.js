@@ -31,7 +31,7 @@ function newOpp(gone) {
 }
 
 const tilesRule = [['w', 'correct'], ['o', 'present'], ['r', 'absent'], ['d', 'absent'], ['s', 'correct']]
-  .map(([ch, cls]) => `<span class="tile ${cls}">${ch}</span>`).join('');
+  .map(([ch, cls]) => `<span class="letter ${cls}">${ch}</span>`).join('');
 
 const duel = createDuel({
   gameId: 'wordle',
@@ -72,7 +72,7 @@ for (let r = 0; r < MAX_TRIES; r++) {
   const rowTiles = [];
   for (let c = 0; c < WORD_LEN; c++) {
     const t = document.createElement('div');
-    t.className = 'tile';
+    t.className = 'letter';
     row.append(t);
     rowTiles.push(t);
   }
@@ -212,7 +212,7 @@ function newGame(seed, mode) {
   state.solved = false;
   state.ms = 0;
   state.opp = newOpp(duel.oppGone);
-  tiles.flat().forEach((t) => { t.className = 'tile'; t.textContent = ''; t.style.removeProperty('--d'); });
+  tiles.flat().forEach((t) => { t.className = 'letter'; t.textContent = ''; t.style.removeProperty('--d'); });
   rowEls.forEach((r) => r.classList.remove('shake'));
   Object.values(keyEls).forEach((k) => k.classList.remove('correct', 'present', 'absent'));
   el.myTries.textContent = `0/${MAX_TRIES}`;
