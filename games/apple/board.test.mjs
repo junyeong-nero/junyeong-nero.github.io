@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { COLS, ROWS, SIZE, TARGET, LEVELS, generateBoard } from './board.js';
+import { COLS, ROWS, SIZE, TARGET, LEVELS, generateBoard, hasMove } from './board.js';
 
 const levels = Object.keys(LEVELS);
 
@@ -34,6 +34,22 @@ test('every board is fully clearable by its solution order', () => {
       assert.ok(removed.every(Boolean));
     }
   }
+});
+
+test('hasMove detects whether any rectangle still sums to 10', () => {
+  const none = new Array(SIZE).fill(false);
+  const all = new Array(SIZE).fill(true);
+  assert.equal(hasMove(new Array(SIZE).fill(9), none), false);
+  assert.equal(hasMove(new Array(SIZE).fill(9), all), false);
+  // 5 _ 5 : 가운데를 지우면 양쪽 5가 이어진다
+  const values = new Array(SIZE).fill(9);
+  values[0] = 5; values[1] = 9; values[2] = 5;
+  assert.equal(hasMove(values, none), false);
+  const removed = none.slice();
+  removed[1] = true;
+  assert.equal(hasMove(values, removed), true);
+  // 생성된 판은 처음에 항상 지울 것이 있다
+  for (const level of levels) assert.ok(hasMove(generateBoard(3, level).values, none));
 });
 
 // 시작 판에서 바로 지울 수 있는 "붙어 있는 2개 짝" 수: 쉬울수록 많아야 한다

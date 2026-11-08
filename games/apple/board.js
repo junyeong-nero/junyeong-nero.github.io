@@ -118,6 +118,23 @@ export function generateBoard(seed, levelName = 'normal') {
   }
 }
 
+// 남은 사과로 합 10 사각형을 하나라도 만들 수 있는지 (지운 칸은 0으로 취급)
+export function hasMove(values, removed) {
+  const W = COLS + 1;
+  const pre = new Array((ROWS + 1) * W).fill(0); // 2차원 누적합
+  for (let r = 0; r < ROWS; r++) for (let c = 0; c < COLS; c++) {
+    const v = removed[r * COLS + c] ? 0 : values[r * COLS + c];
+    pre[(r + 1) * W + c + 1] = v + pre[r * W + c + 1] + pre[(r + 1) * W + c] - pre[r * W + c];
+  }
+  for (let r0 = 0; r0 < ROWS; r0++) for (let r1 = r0 + 1; r1 <= ROWS; r1++)
+    for (let c0 = 0; c0 < COLS; c0++) for (let c1 = c0 + 1; c1 <= COLS; c1++) {
+      const s = pre[r1 * W + c1] - pre[r0 * W + c1] - pre[r1 * W + c0] + pre[r0 * W + c0];
+      if (s === TARGET) return true;
+      if (s > TARGET) break; // 오른쪽으로 넓힐수록 합은 커지기만 한다
+    }
+  return false;
+}
+
 // 선택된 칸들의 합 (이미 지운 칸은 0으로 취급)
 export function sumOf(values, removed, indices) {
   let s = 0;

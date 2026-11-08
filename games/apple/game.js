@@ -1,4 +1,4 @@
-import { COLS, ROWS, SIZE, TARGET, generateBoard, sumOf } from './board.js';
+import { COLS, ROWS, SIZE, TARGET, generateBoard, hasMove, sumOf } from './board.js';
 import { createDuel, clockText } from '../shared/duel.js';
 
 const GAME_MS = 120_000;
@@ -30,6 +30,7 @@ const state = {
   oppSel: [], // 상대가 지금 고르고 있는 칸
   oppGone: false,
   cleared: false,
+  stuck: false, // 더 지울 수 있는 사과가 없어서 끝남
   portrait: false,
   cell: 40,
   endsAt: 0,
@@ -70,6 +71,7 @@ const duel = createDuel({
     state.pending.clear();
     renderScores();
     if (state.phase === 'over') renderResult();
+    else if (state.phase === 'play') checkEnd();
   },
   onLeave() {
     stopTimers();
@@ -229,7 +231,7 @@ function commit(cells) {
   state.scores[myIdx()] += cells.length;
   renderScores();
   if (shared()) duel.send({ t: 'clear', cells, by: 'host', scores: state.scores });
-  checkAllCleared();
+  checkEnd();
 }
 
 // 방장: 참가자가 지우겠다는 사과가 아직 판에 있고 합이 10이면 확정
@@ -246,7 +248,7 @@ function onClaim({ id, cells }) {
   state.scores[1] += cells.length;
   renderScores();
   duel.send({ t: 'clear', cells, by: 'guest', id, scores: state.scores });
-  checkAllCleared();
+  checkEnd();
 }
 
 // 참가자: 방장이 확정한 지우기 (방장 것이든 내 것이든)
@@ -257,7 +259,7 @@ function onRemoteClear({ cells, by, id, scores }) {
   state.scores = scores;
   renderScores();
   if (state.phase === 'over') renderResult();
-  else checkAllCleared();
+  else checkEnd();
 }
 
 // 참가자: 한발 늦어서 거절됨 → 흐려졌던 사과를 되돌린다 (그새 방장이 가져간 사과는 이미 사라져 있음)
@@ -270,9 +272,11 @@ function onReject({ id }) {
   });
 }
 
-function checkAllCleared() {
-  if (state.removedCount < SIZE) return;
-  state.cleared = true;
+function checkEnd() {
+  if (state.removedCount >= SIZE) state.cleared = true;
+  else if (shared() && !duel.isHost) return; // 대결 중에는 방장이 판정해서 'end'로 알려준다
+  else if (hasMove(state.values, state.removed)) return;
+  else state.stuck = true;
   finish();
 }
 
@@ -339,6 +343,7 @@ function newGame(seed, level) {
     oppSel: [],
     oppGone: duel.oppGone,
     cleared: false,
+    stuck: false,
   });
   cellEls.forEach((cell, i) => {
     cell.className = 'cell';
@@ -385,18 +390,19 @@ function finish() {
   if (state.phase !== 'play' && state.phase !== 'countdown') return;
   state.phase = 'over';
   cancelAnimationFrame(state.raf);
-  if (!state.cleared) renderClock(0);
+  if (!state.cleared && !state.stuck) renderClock(0);
   if (drag) endDrag(false);
   showOppSel({ rect: null });
   // 방장이 최종 점수를 알린다 (참가자 쪽 시계가 조금 늦어도 함께 끝나도록)
-  if (shared() && duel.isHost) duel.send({ t: 'end', scores: state.scores, cleared: state.cleared });
+  if (shared() && duel.isHost) duel.send({ t: 'end', scores: state.scores, cleared: state.cleared, stuck: state.stuck });
   renderResult();
 }
 
 // 참가자: 방장 쪽 게임이 끝남 → 최종 점수로 같이 끝낸다
-function onRemoteEnd({ scores, cleared }) {
+function onRemoteEnd({ scores, cleared, stuck }) {
   state.scores = scores;
   state.cleared = cleared;
+  state.stuck = !!stuck;
   renderScores();
   if (state.phase === 'over') renderResult();
   else finish();
@@ -406,9 +412,9 @@ function renderResult() {
   const me = state.scores[myIdx()];
   if (!isPvp()) {
     duel.showResult({
-      icon: state.cleared ? 'star' : 'clock',
+      icon: state.cleared ? 'star' : state.stuck ? 'apple' : 'clock',
       tone: state.cleared ? 'gold' : '',
-      title: state.cleared ? '올클리어' : '시간 끝',
+      title: state.cleared ? '올클리어' : state.stuck ? '더 없앨 사과 없음' : '시간 끝',
       scores: [{ side: 'me', icon: 'apple', label: '점수', value: me, win: true }],
     });
     return;
