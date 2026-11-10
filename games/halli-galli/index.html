@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>할리갈리 | Games</title>
+  <meta name="description" content="손패를 스와이프해 탁! 같은 과일이 정확히 5개면 종을 치세요. AI 대전과 친구와 2인 P2P 대결.">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="stylesheet" href="../shared/ui.css">
+  <link rel="stylesheet" href="halli-galli.css">
+  <script src="https://unpkg.com/peerjs@1.5.4/dist/peerjs.min.js" defer></script>
+  <script type="module" src="game.js"></script>
+</head>
+
+<body>
+  <header class="topbar">
+    <a class="back" href="../" aria-label="게임 목록"><svg class="icon"><use href="../shared/icons.svg#i-back"/></svg></a>
+    <h1>할리갈리</h1>
+    <button class="btn ghost small sound-toggle" id="sound" type="button" aria-label="효과음" aria-pressed="true" title="효과음 켜짐">🔊</button>
+    <button class="btn ghost small" id="show-rules" type="button">규칙</button>
+  </header>
+
+  <main id="lobby" class="lobby"></main>
+
+  <main id="game" class="game" hidden>
+    <div class="hud">
+      <div class="player me" id="me-panel"><span class="name">나</span><b id="me-count">28</b><small>장</small></div>
+      <div class="pot"><span>테이블</span><b id="pot-count">0<span>장</span></b></div>
+      <div class="player opp" id="opp-panel"><span class="name" id="opp-name">AI</span><b id="opp-count">28</b><small>장</small></div>
+    </div>
+    <div class="messages">
+      <p class="turn-status" id="turn-status" role="status">시작 준비 중…</p>
+      <p class="notice" id="notice" role="status">같은 과일이 정확히 5개면 종!</p>
+    </div>
+
+    <div class="felt" id="felt">
+      <section class="pile-station" aria-label="내 공개 카드">
+        <div class="pile-label">나 <span id="me-pile-count">0장</span></div>
+        <div class="pile-slot" id="me-pile"><span class="empty-pile">여기에 착지!</span></div>
+      </section>
+      <section class="pile-station" aria-label="상대 공개 카드">
+        <div class="pile-label"><span id="opp-pile-name">AI</span> <span id="opp-pile-count">0장</span></div>
+        <div class="pile-slot" id="opp-pile"><span class="empty-pile">상대 카드</span></div>
+      </section>
+
+      <section class="deck-station" aria-label="내 손패">
+        <div class="swipe-arrow" aria-hidden="true">↑</div>
+        <button class="stock" id="deck" type="button" aria-label="내 손패. 위로 스와이프하거나 Enter 키로 카드 내기" disabled>
+          <span class="card-back deck-top" id="deck-top">
+            <svg class="back-fruit f1" aria-hidden="true"><use href="fruits.svg#strawberry"/></svg>
+            <svg class="back-fruit f2" aria-hidden="true"><use href="fruits.svg#banana"/></svg>
+            <svg class="back-fruit f3" aria-hidden="true"><use href="fruits.svg#lime"/></svg>
+            <svg class="back-fruit f4" aria-hidden="true"><use href="fruits.svg#plum"/></svg>
+            <b>HG</b><small>SWIPE ↑</small>
+          </span>
+        </button>
+        <p class="swipe-hint" id="swipe-hint">내 차례에 위로 스와이프</p>
+      </section>
+      <section class="bell-station" aria-label="종">
+        <button class="bell" id="bell" type="button" aria-label="종 치기" disabled>
+          <svg viewBox="0 0 120 120" aria-hidden="true">
+            <ellipse class="bell-shadow" cx="60" cy="99" rx="46" ry="9"/>
+            <path d="M19 88h82v10H19Z" fill="#8c6327"/>
+            <ellipse cx="60" cy="88" rx="43" ry="10" fill="#c88b24"/>
+            <path d="M24 84c0-26 11-45 36-45s36 19 36 45Z" fill="#f3bf42" stroke="#bb8125" stroke-width="2"/>
+            <path d="M36 75c2-14 8-24 19-27" fill="none" stroke="#ffe7a1" stroke-width="7" stroke-linecap="round"/>
+            <path d="M57 29h6v13h-6Z" fill="#966a2c"/>
+            <ellipse cx="60" cy="28" rx="14" ry="5" fill="#f3bf42" stroke="#bb8125" stroke-width="2"/>
+            <path d="M20 89h80" stroke="#ffe7a1" stroke-width="3" stroke-linecap="round"/>
+          </svg>
+        </button>
+        <p class="bell-hint">정확히 5개면 <strong>딩!</strong></p>
+      </section>
+      <div class="start-cue" id="start-cue">준비!</div>
+    </div>
+    <p class="input-help">스와이프 ↑ / 키보드 Enter: 카드 내기 · Space: 종</p>
+  </main>
+  <div class="flier card-back" id="flier" aria-hidden="true" hidden></div>
+
+  <dialog class="rules-dialog" id="rules" aria-labelledby="rules-title">
+    <h2 id="rules-title">할리갈리 규칙</h2>
+    <p>카드를 <strong>탁!</strong> 같은 과일이 정확히 5개면 <strong>딩!</strong></p>
+    <ul>
+      <li>과일 카드 56장을 28장씩 나눠 가져요. 자기 차례에 손패를 <strong>위로 스와이프</strong>해서 1장을 공개하세요. 짧게 밀면 돌아오고, 빠르게 튕겨도 낼 수 있어요.</li>
+      <li>각자 공개 더미의 <strong>맨 위 카드만</strong> 세요. 같은 과일이 합계 정확히 5개면 누구나 종을 칠 수 있어요. 서로 다른 과일을 합치거나 5개를 넘으면 안 돼요.</li>
+      <li>먼저 맞힌 사람이 공개 더미 전체를 손패 아래에 가져가고, 다음 카드도 먼저 내요. 잘못 종을 치면 상대에게 손패 1장을 넘겨요.</li>
+      <li>이 2인 웹 버전은 한쪽의 손패가 떨어질 때까지 이어가요. 마지막 카드로 5개가 되면 종을 칠 마지막 기회가 있고, 되찾지 못하면 패배해요.</li>
+      <li><strong>온라인 판정:</strong> 각 화면에 카드가 공개된 뒤의 반응 시간을 비교해요. 차이가 60ms 이하면 동시 입력으로 보고 카드를 그대로 둔 채 다시 진행해요. 큰 통신 지연에서는 오차가 생길 수 있어요.</li>
+      <li>마우스 드래그도 가능해요. 키보드는 <strong>Enter / ↑</strong>로 카드 내기, <strong>Space</strong>로 종 치기. 효과음은 상단에서 끌 수 있고, 지원 기기에서는 짧은 진동도 느낄 수 있어요.</li>
+    </ul>
+    <p class="credit">Haim Shafir의 Halli Galli를 바탕으로 한 비공식 웹 구현. 과일과 종 그림은 자체 제작했습니다.</p>
+    <form method="dialog"><button class="btn primary" type="submit">알겠어요</button></form>
+  </dialog>
+</body>
+
+</html>
