@@ -1,115 +1,110 @@
-/* 카후나 전용 스타일 (공용은 ../shared/ui.css) */
-.rule-map { width: 200px; height: 84px; }
-.rule-map path { fill: none; stroke: var(--ink); stroke-width: 8; }
-.rule-map ellipse { fill: #dcecc5; stroke: var(--field-border); stroke-width: 3; }
-.rule-map circle { fill: var(--ink); }
-.rule-caption { margin: 8px 0 0; font-size: 15px; color: var(--muted); }
-.chip { font-size: 14px; }
-.game { width: min(1180px, 100%); margin: 0 auto; padding: 0 16px max(12px, env(safe-area-inset-bottom)); gap: 10px; overflow-y: auto; }
-.hud { padding: 0; gap: 8px; flex: none; }
-.player { flex-direction: column; align-items: flex-start; gap: 3px; padding: 7px 10px; border: 2px solid transparent; border-radius: 14px; }
-.player > div { display: flex; align-items: center; gap: 4px; }
-.hud .me { justify-self: start; }
-.player.turn { background: #fff; border-color: var(--field-border); }
-.player .name { font-size: 16px; font-weight: 800; }
-.player b { font-size: 25px; font-variant-numeric: tabular-nums; }
-.player .unit { font-size: 12px; }
-.player small { font-size: 12px; color: var(--muted); }
-.stone { display: inline-block; width: 16px; height: 16px; border-radius: 50%; flex: none; }
-.stone.black { background: #263b38; }
-.stone.white { background: #fff; border: 2px solid #8aaca3; }
-.round { display: flex; flex-direction: column; align-items: center; gap: 2px; }
-.round b { font-size: 22px; }
+/* 섬 실루엣, 내 파랑 / 상대 주황, 세 단계 조작에 집중한 지도. */
+.rule-map { color: var(--accent); gap: 16px; }
+.rule-map .island-icon { width: 80px; height: 60px; }
+.rule-map > span { font-size: 32px; }
+.game { width: min(1120px, 100%); margin: 0 auto; padding: 0 20px max(16px, env(safe-area-inset-bottom)); gap: 10px; overflow-y: auto; }
+.stone { display: inline-block; width: 9px; height: 9px; border-radius: 2px; flex: none; }
+.stone.mine { background: var(--accent); }
+.stone.theirs { background: var(--opp); }
+.round { display: flex; flex-direction: column; align-items: center; gap: 3px; }
+.round b { font-size: 20px; font-variant-numeric: tabular-nums; }
 .round span { font-size: 11px; color: var(--muted); }
-.turn-status { margin: 0; text-align: center; font-size: 13px; min-height: 20px; flex: none; }
-.play-area { flex: 1; display: grid; grid-template-columns: minmax(0, 1fr) 310px; gap: 16px; align-items: center; }
-.board-area { background: #d9eef0; border: 2px solid #a5cccd; border-radius: 22px; overflow: hidden; }
-#board { display: block; width: 100%; max-height: 72dvh; aspect-ratio: 560 / 505; }
-.sea-wave { fill: none; stroke: #b7dadd; stroke-width: 3; }
-.route { fill: none; stroke: #97bfc3; stroke-width: 3; stroke-dasharray: 4 7; }
-.bridge-line { fill: none; stroke-width: 8; stroke-linecap: round; }
+.play-area { display: grid; grid-template-columns: minmax(0, 1fr) 300px; grid-template-rows: auto auto 1fr; grid-template-areas: "board hand" "board draw" "board extra"; gap: 14px; align-items: start; padding-bottom: 4px; }
+.hand-area { grid-area: hand; }
+.board-area { grid-area: board; min-width: 0; background: #fff; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+.draw-area { grid-area: draw; }
+.turn-extra { grid-area: extra; }
+.board-heading { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 14px 14px 0; }
+.board-heading h2 { margin: 0; font-size: 14px; }
+.map-legend { display: flex; align-items: center; gap: 5px; font-size: 11px; color: var(--muted); }
+.map-legend .theirs { margin-left: 7px; }
+.selection-status { min-height: 36px; margin: 8px 14px 0; color: var(--accent); font-size: 12px; line-height: 1.6; }
+#board { display: block; width: 100%; max-height: 66dvh; aspect-ratio: 560 / 525; --target-color: var(--accent); }
+#board.removing { --target-color: #b54708; }
+.route { fill: none; stroke: #d4dce5; stroke-width: 2; stroke-dasharray: 3 6; }
+.bridge-line { fill: none; stroke-width: 6; stroke-linecap: round; }
 .bridge.empty .bridge-line { stroke: none; }
-.bridge.black .bridge-line { stroke: #263b38; }
-.bridge.white .route { stroke: #769f9e; stroke-width: 11; stroke-dasharray: none; }
-.bridge.white .bridge-line { stroke: #fff; }
-.hit-area { fill: none; stroke: transparent; stroke-width: 24; pointer-events: stroke; }
+.bridge.mine .bridge-line { stroke: var(--accent); }
+.bridge.theirs .bridge-line { stroke: var(--opp); stroke-dasharray: 12 4; }
+.hit-area { fill: none; stroke: transparent; stroke-width: 22; pointer-events: stroke; }
 .bridge.available { cursor: pointer; }
-.bridge.available .route { stroke: #308d6b; stroke-width: 7; stroke-dasharray: 4 6; }
-.bridge.available:not(.empty) .route { stroke: #d34b3f; stroke-width: 13; stroke-dasharray: none; }
-.action-dot { fill: #fff; stroke: #308d6b; stroke-width: 2; pointer-events: none; }
-.bridge.available:not(.empty) .action-dot { stroke: #d34b3f; }
-.action-mark { fill: #244b40; font-size: 18px; font-weight: 800; text-anchor: middle; pointer-events: none; }
+.bridge.available .route { stroke: var(--target-color); stroke-width: 4; stroke-dasharray: 5 5; }
 .bridge:focus-visible { outline: none; }
-.bridge:focus-visible .hit-area { stroke: #f2a90088; }
-.island { pointer-events: none; }
-.shore { fill: #bddad3; stroke: #fff8df; stroke-width: 2; }
-.land { fill: #e6efd0; stroke: #8bad74; stroke-width: 2; }
-.island.black .land { fill: #263b38; stroke: #263b38; }
-.island.white .land { fill: #fffdf5; stroke: #7b9d90; }
-.island.selected .shore { fill: #ffe392; stroke: #d39d1a; stroke-width: 4; }
-.island text { text-anchor: middle; fill: #294532; }
-.island-name { font-size: 17px; font-weight: 800; }
-.island-need { font-size: 12px; }
-.island.black text { fill: #fff; }
-.board-caption { margin: 0; padding: 0 8px 10px; color: #587c7d; text-align: center; font-size: 11px; }
-.cards-panel { display: flex; flex-direction: column; gap: 12px; min-width: 0; }
-.hand-area, .draw-area { padding: 12px; background: #fff; border: 2px solid var(--line); border-radius: 16px; }
-.section-title { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-bottom: 10px; }
-.section-title h2 { margin: 0; font-size: 14px; }
-.section-title > span, #hand-count { color: var(--muted); font-size: 11px; font-weight: 400; }
-.hand { display: flex; gap: 5px; flex-wrap: wrap; }
-.island-card { min-width: 0; display: inline-flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; width: 48px; min-height: 66px; padding: 8px 3px; border: 1px solid #c8ccb0; border-bottom: 4px solid #b6c09d; border-radius: 9px; background: #fffcef; color: var(--ink); font: inherit; cursor: pointer; }
-.card-name { font-size: 13px; font-weight: 800; }
-.card-detail { font-size: 10px; color: var(--muted); }
-.island-card.selected { background: #fff0b3; outline: 2px solid var(--gold); outline-offset: 1px; transform: translateY(-2px); }
+.bridge:focus-visible .hit-area { stroke: #2563eb20; }
+.island { cursor: default; }
+.island[role="button"] { cursor: pointer; }
+.island-hit { fill: transparent; stroke: transparent; pointer-events: all; }
+.land { fill: #e5ebf1; stroke: #b5c0ce; stroke-width: 1.5; stroke-linejoin: round; pointer-events: none; }
+.island.mine .land { fill: #dce9ff; stroke: var(--accent); }
+.island.theirs .land { fill: #ffecdd; stroke: var(--opp); }
+.island.selected .land { fill: var(--accent); stroke: var(--accent); }
+.island.has-card:not(.selected) .land { stroke: #829fc7; stroke-width: 2; }
+.island.destination .land { fill: #eff5ff; stroke: var(--target-color); stroke-width: 3; }
+.removing .island.destination .land { fill: #fff2e7; }
+.island.destination .island-hit { stroke: var(--target-color); stroke-dasharray: 3 5; }
+.has-selection .island:not(.selected):not(.destination) { opacity: .5; }
+.island:focus-visible { outline: none; }
+.island:focus-visible .island-hit { stroke: var(--accent); stroke-width: 3; stroke-dasharray: none; }
+.island text { text-anchor: middle; pointer-events: none; }
+.island-name { font-size: 18px; font-weight: 650; fill: var(--ink); paint-order: stroke; stroke: #fff; stroke-width: 3; }
+.island-need { font-size: 12px; fill: var(--muted); paint-order: stroke; stroke: #fff; stroke-width: 2; }
+.island.mine .island-need { fill: var(--accent); }
+.island.theirs .island-need { fill: var(--opp); }
+.target-mark { pointer-events: none; }
+.target-mark circle { fill: var(--target-color); }
+.target-mark text { fill: #fff; font-size: 19px; font-weight: 600; stroke: none; }
+.board-caption { margin: 0; padding: 0 12px 12px; color: var(--muted); text-align: center; font-size: 11px; line-height: 1.5; }
+.hand-area, .draw-area { min-width: 0; padding: 12px; background: #fff; border: 1px solid var(--line); border-radius: 8px; }
+#hand-count { color: var(--muted); font-size: 11px; font-weight: 400; }
+.mode-toggle { display: flex; gap: 2px; border: 1px solid var(--line); border-radius: 5px; padding: 2px; }
+.mode-toggle button { min-height: 30px; padding: 5px 9px; background: transparent; border: 0; border-radius: 3px; font: inherit; font-size: 11px; color: var(--muted); cursor: pointer; }
+.mode-toggle [aria-pressed="true"] { background: #eaf0ff; color: var(--accent); font-weight: 700; }
+.mode-toggle [data-mode="remove"][aria-pressed="true"] { background: #fff1e7; color: #b54708; }
+.mode-toggle button:disabled { cursor: default; opacity: .5; }
+.hand { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 5px; }
+.island-card { min-width: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; min-height: 74px; padding: 7px 3px; border: 1px solid var(--line); border-radius: 5px; background: #fff; color: #7a8a9e; font: inherit; cursor: pointer; }
+.island-icon { display: block; width: 44px; height: 32px; max-width: 100%; fill: currentColor; flex: none; }
+.card-name { font-size: 12px; font-weight: 650; color: var(--ink); }
+.card-detail, .card-action { font-size: 10px; color: var(--muted); }
+.card-action { color: var(--accent); }
+.island-card.selected { background: #eff5ff; border-color: var(--accent); outline: 1px solid var(--accent); color: var(--accent); }
 .island-card:disabled { cursor: default; }
-.market-card:disabled, .deck-card:disabled { opacity: .55; }
-.deck-card { background: #e1eee5; border-color: #97b49c; }
-.deck-card .card-name { color: #3e7552; }
-.selection-status { min-height: 32px; margin: 10px 0 6px; font-size: 12px; line-height: 1.5; color: var(--muted); }
-.edit-actions { display: flex; justify-content: space-between; gap: 4px; }
-.edit-actions .btn { padding: 6px; font-size: 12px; min-height: 34px; }
+.market-card:disabled, .deck-card:disabled { opacity: .45; }
+.hand-footer { min-height: 32px; display: flex; align-items: center; margin-top: 5px; }
+#hand-tip { font-size: 11px; color: var(--muted); line-height: 1.5; }
+.edit-actions { display: flex; justify-content: space-between; width: 100%; gap: 4px; }
+.edit-actions .btn { padding: 5px 3px; min-height: 32px; font-size: 11px; }
 .market { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px; }
-.market .island-card { width: 100%; }
-.empty-hand { font-size: 12px; color: var(--muted); margin: 10px 0; }
-.turn-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-.turn-actions .btn { min-height: 42px; }
-.move-count, .score-history { margin: 0; color: var(--muted); font-size: 11px; text-align: center; line-height: 1.6; }
+.market .island-card { min-height: 90px; }
+.deck-card { background: var(--bg); }
+.deck-symbol { width: 25px; height: 30px; display: grid; place-items: center; border: 1px dashed #a7b4c5; border-radius: 3px; font-size: 20px; }
+#draw-hint { margin: 10px 0 0; color: var(--muted); font-size: 11px; line-height: 1.6; }
+.empty-hand { grid-column: 1 / -1; margin: 16px 0; font-size: 12px; color: var(--muted); }
+.turn-actions { display: flex; justify-content: space-between; gap: 4px; }
+.turn-actions .btn { padding-left: 5px; padding-right: 5px; }
+.move-count, .score-history, .opponent-hand { margin: 8px 0 0; color: var(--muted); font-size: 11px; line-height: 1.6; }
 .score-history:empty { display: none; }
 .score-breakdown { color: var(--muted); font-size: 13px; line-height: 1.8; }
-button:focus-visible, .back:focus-visible { outline: 3px solid var(--opp); outline-offset: 2px; }
-.rules-dialog { width: min(560px, calc(100% - 32px)); max-height: 85dvh; overflow-y: auto; border: 3px solid var(--field-border); border-radius: 20px; padding: 22px; color: var(--ink); background: #fff; }
-.rules-dialog::backdrop { background: #23331c88; }
-.rules-dialog h2 { margin-top: 0; }
-.rules-dialog p, .rules-dialog li { font-size: 14px; line-height: 1.7; }
-.rules-dialog ul { padding-left: 20px; }
-.rules-dialog li + li { margin-top: 8px; }
-.rules-tip { background: var(--bg); padding: 12px; border-radius: 10px; }
 .rules-dialog .credit { color: var(--muted); font-size: 12px; }
 .credit a { color: inherit; }
-.rules-dialog form { text-align: right; }
-.toast { white-space: normal; width: max-content; max-width: calc(100% - 24px); text-align: center; }
 @media (max-width: 760px) {
-  .game { padding-left: 10px; padding-right: 10px; gap: 6px; }
-  .player { padding: 4px 6px; }
-  .player .name { font-size: 14px; }
-  .player small { font-size: 11px; }
-  .round b { font-size: 20px; }
+  .game { padding-left: 12px; padding-right: 12px; gap: 8px; }
+  .round b { font-size: 18px; }
   .round span { font-size: 10px; }
-  .turn-status { font-size: 12px; }
   .play-area { display: flex; flex-direction: column; gap: 10px; flex: none; }
-  .board-area, .cards-panel { width: 100%; }
-  #board { max-height: 46dvh; }
-  .cards-panel { gap: 8px; }
-  .hand-area, .draw-area { padding: 8px 10px; }
-  .section-title { margin-bottom: 7px; }
+  .play-area > * { width: 100%; }
+  .hand-area, .draw-area { padding: 10px; }
   .hand { gap: 7px; }
-  .hand .island-card { width: 54px; min-height: 54px; }
-  .market .island-card { min-height: 54px; }
-  .selection-status { min-height: 18px; margin: 8px 0 4px; font-size: 11px; }
-  .turn-actions .btn { min-height: 38px; }
+  .hand .island-card { min-height: 65px; }
+  .hand-area .section-title { margin-bottom: 8px; }
+  .board-heading { padding: 12px 12px 0; }
+  .selection-status { margin: 7px 12px 0; min-height: 36px; }
+  #board { max-height: none; }
+  .board-caption { font-size: 10px; }
+  .market .island-card { min-height: 82px; }
+  .turn-extra { padding-bottom: 6px; }
 }
-@media (orientation: landscape) and (max-height: 600px) {
-  .play-area { display: grid; grid-template-columns: minmax(300px, 1fr) 290px; align-items: start; }
+@media (orientation: landscape) and (max-height: 600px) and (min-width: 700px) {
+  .play-area { display: grid; grid-template-columns: minmax(300px, 1fr) 280px; }
   #board { max-height: none; }
 }

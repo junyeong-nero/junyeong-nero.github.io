@@ -1,0 +1,57 @@
+/* 루미큐브·카후나에서만 사용하는 flat UI. 다른 게임의 공용 테마는 유지한다. */
+:root {
+  --bg: #f7f8fa; --field: #fff; --field-border: #2563eb; --line: #dde2e9;
+  --ink: #202938; --muted: #667085; --faint: #98a2b3;
+  --accent: #2563eb; --opp: #bf581c; --gold: #b77900;
+}
+.topbar { background: #fff; border-bottom: 1px solid var(--line); margin-bottom: 12px; }
+.topbar .back { min-width: 36px; min-height: 36px; align-items: center; }
+.btn, .tile, .code-field, .seat, .chip, .room-tag { border-width: 1px; border-radius: 6px; }
+.btn { border-color: var(--line); min-height: 44px; font-size: 14px; padding: 10px 14px; }
+.btn.small { min-height: 36px; font-size: 12px; padding: 7px 10px; }
+.btn.primary, .tile.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+.btn:active, .tile:active { transform: none; }
+.btn:disabled { opacity: .4; }
+.tile { border-color: var(--line); }
+.tile .icon { color: var(--accent); }
+.lobby-card, .result-card { border: 1px solid var(--line); border-radius: 12px; box-shadow: none; }
+.rule-caption { font-size: 14px; line-height: 1.7; margin: 18px 0 0; color: var(--muted); }
+.rule-caption strong { color: var(--ink); }
+.chips { gap: 8px; }
+.chip { font-size: 12px; font-weight: 500; padding: 5px 8px; background: var(--bg); border: 0; }
+.overlay { background: #f7f8fae6; }
+.hud { padding: 0; gap: 8px; flex: none; }
+.player { flex-direction: column; align-items: flex-start; gap: 3px; padding: 7px 4px; border-bottom: 2px solid transparent; }
+.hud .me { justify-self: start; }
+.player.turn { border-bottom-color: currentColor; }
+.player > div { display: flex; align-items: center; gap: 5px; }
+.player .name { font-size: 14px; font-weight: 700; }
+.player b { font-size: 23px; font-variant-numeric: tabular-nums; }
+.player .unit { font-size: 12px; }
+.player small { font-size: 11px; color: var(--muted); }
+.turn-status { font-size: 13px; color: var(--muted); margin: 0; flex: none; line-height: 1.5; }
+.section-title { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 10px; flex: none; }
+.section-title h2 { font-size: 14px; margin: 0; }
+.section-title > span { font-size: 11px; color: var(--muted); }
+.step-number { display: inline-grid; place-items: center; width: 21px; height: 21px; margin-right: 5px; border-radius: 4px; background: #eaf0ff; color: var(--accent); font-size: 12px; }
+button:focus-visible, .back:focus-visible, summary:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+.rules-dialog { width: min(560px, calc(100% - 32px)); max-height: 85dvh; overflow-y: auto; border: 1px solid var(--line); border-radius: 10px; padding: 24px; color: var(--ink); background: #fff; }
+.rules-dialog::backdrop { background: #18223080; }
+.rules-dialog h2 { margin-top: 0; font-size: 21px; }
+.rules-dialog p, .rules-dialog li { font-size: 14px; line-height: 1.8; }
+.rules-dialog ul, .rules-dialog ol { padding-left: 22px; }
+.rules-dialog li + li { margin-top: 10px; }
+.rules-dialog details { border-top: 1px solid var(--line); padding-top: 14px; margin: 18px 0; }
+.rules-dialog summary { cursor: pointer; font-size: 14px; font-weight: 600; }
+.rules-dialog form { text-align: right; }
+.rules-tip { background: var(--bg); padding: 12px; border-radius: 6px; }
+.toast { white-space: normal; width: max-content; max-width: calc(100% - 24px); text-align: center; border-radius: 6px; background: var(--ink); }
+@media (hover: hover) {
+  .btn:not(:disabled):not(.primary):hover, .tile:not(.primary):hover { background: #edf0f5; }
+}
+@media (max-width: 600px) {
+  .topbar { margin-bottom: 8px; }
+  .player { padding: 4px 0; }
+  .player b { font-size: 21px; }
+  .turn-status { font-size: 12px; }
+}

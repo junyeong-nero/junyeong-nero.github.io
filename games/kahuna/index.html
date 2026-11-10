@@ -8,16 +8,17 @@
   <meta name="description" content="12개의 섬을 잇는 다리 놓기 전략 게임. 과반의 다리로 섬을 점유하고 AI 또는 친구와 3라운드 대결.">
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="stylesheet" href="../shared/ui.css">
-  <link rel="stylesheet" href="kahuna.css">
+  <link rel="stylesheet" href="../shared/flat.css">
+  <link rel="stylesheet" href="kahuna.css?v=2">
   <script src="https://unpkg.com/peerjs@1.5.4/dist/peerjs.min.js" defer></script>
-  <script type="module" src="game.js"></script>
+  <script type="module" src="game.js?v=2"></script>
 </head>
 
 <body>
   <header class="topbar">
     <a class="back" href="../" aria-label="게임 목록"><svg class="icon"><use href="../shared/icons.svg#i-back"/></svg></a>
     <h1>카후나</h1>
-    <button class="btn ghost small" id="show-rules" type="button">규칙</button>
+    <button class="btn ghost small" id="show-rules" type="button">하는 방법</button>
   </header>
 
   <main id="lobby" class="lobby"></main>
@@ -36,50 +37,69 @@
     </div>
     <p class="turn-status" id="turn-status" role="status"></p>
     <div class="play-area">
-      <section class="board-area" aria-label="12개 섬 지도">
-        <svg id="board" viewBox="0 0 560 505" role="group" aria-label="손패를 선택하고 연결선을 눌러 다리를 놓거나 제거하세요"></svg>
-        <p class="board-caption">섬의 숫자는 점유에 필요한 다리 수 · 점선은 빈 연결선</p>
-      </section>
-      <div class="cards-panel">
-        <section class="hand-area" aria-label="내 손패">
-          <div class="section-title"><h2>내 손패 <span id="hand-count">3 / 5</span></h2><span id="opp-hand">상대 3장</span></div>
-          <div class="hand" id="hand"></div>
-          <p class="selection-status" id="selection-status" role="status">카드 1장과 빈 연결선을 선택해 다리를 놓으세요.</p>
-          <div class="edit-actions">
-            <button class="btn small" id="discard" type="button">선택 카드 버리기</button>
-            <button class="btn ghost small" id="clear-selection" type="button">선택 해제</button>
+      <section class="hand-area" aria-label="내 손패">
+        <div class="section-title">
+          <h2><span class="step-number">1</span>카드 고르기 <span id="hand-count">3장</span></h2>
+          <div class="mode-toggle" role="group" aria-label="카드 사용 방법">
+            <button type="button" data-mode="build" aria-pressed="true">놓기</button>
+            <button type="button" data-mode="remove" aria-pressed="false">제거</button>
           </div>
-        </section>
-        <section class="draw-area" aria-label="카드 뽑기">
-          <div class="section-title"><h2>1장 뽑고 턴 종료</h2><span id="draw-hint">공개 카드 또는 더미</span></div>
-          <div class="market" id="market"></div>
-        </section>
+        </div>
+        <div class="hand" id="hand"></div>
+        <div class="hand-footer">
+          <span id="hand-tip">한 턴에 여러 장을 써도 돼요.</span>
+          <div class="edit-actions" id="selection-tools" hidden>
+            <button class="btn ghost small" id="clear-selection" type="button">선택 해제</button>
+            <button class="btn ghost small" id="discard" type="button">선택 카드 버리기</button>
+          </div>
+        </div>
+      </section>
+      <section class="board-area" aria-label="12개 섬 지도">
+        <div class="board-heading"><h2><span class="step-number">2</span>연결할 섬 누르기</h2><span class="map-legend"><i class="stone mine"></i>나 <i class="stone theirs"></i>상대</span></div>
+        <p class="selection-status" id="selection-status" role="status"></p>
+        <svg id="board" viewBox="0 0 560 525" role="group" aria-label="카드를 고른 뒤 강조된 도착 섬을 누르세요"></svg>
+        <p class="board-caption">섬 아래의 ‘N개 더’만큼 내 다리를 놓으면 내 섬이 돼요.</p>
+      </section>
+      <section class="draw-area" aria-label="카드 뽑기">
+        <div class="section-title"><h2><span class="step-number">3</span>1장 뽑고 턴 마치기</h2></div>
+        <div class="market" id="market"></div>
+        <p id="draw-hint"></p>
+      </section>
+      <div class="turn-extra">
         <div class="turn-actions">
-          <button class="btn small" id="undo" type="button">턴 되돌리기</button>
-          <button class="btn primary small" id="end-turn" type="button">뽑지 않고 종료</button>
+          <button class="btn ghost small" id="undo" type="button">이번 턴 취소</button>
+          <button class="btn ghost small" id="end-turn" type="button">뽑지 않고 마치기</button>
         </div>
         <p class="move-count" id="move-count" role="status"></p>
+        <p class="opponent-hand" id="opp-hand">상대 3장</p>
         <div class="score-history" id="score-history" aria-label="라운드별 점수"></div>
       </div>
     </div>
   </main>
 
   <dialog class="rules-dialog" id="rules" aria-labelledby="rules-title">
-    <h2 id="rules-title">카후나 규칙</h2>
-    <p>섬을 연결하고 과반을 차지하세요. <strong>3라운드 합계 점수가 높은 쪽이 승리!</strong></p>
-    <ul>
-      <li>12개 섬마다 카드 2장씩 총 24장. 각자 3장으로 시작하며 손패는 최대 5장이에요.</li>
-      <li><strong>다리 놓기:</strong> 카드 1장을 선택하고, 그 섬과 연결된 빈 점선을 누르세요. 같은 턴에 카드를 여러 장 사용할 수 있어요.</li>
-      <li><strong>섬 점유:</strong> 연결선의 절반을 넘는 내 다리가 있으면 섬을 점유해요. 새로 점유한 섬에 연결된 상대 다리는 모두 제거돼요. 이 때문에 이웃 섬의 점유도 사라질 수 있어요.</li>
-      <li><strong>다리 제거:</strong> 연결선 양끝 섬에 해당하는 카드 2장을 선택하고 상대 다리를 누르세요. 같은 섬 카드 2장도 가능해요. 제거 후 내 다리를 놓으려면 카드 1장을 더 써야 해요.</li>
-      <li><strong>턴 종료:</strong> 공개 카드 3장 또는 더미에서 1장을 뽑으면 끝나요. 손패가 5장이면 먼저 사용하거나 버리세요. 뽑지 않고 끝낼 수도 있지만, 상대가 직전에 뽑지 않았다면 반드시 뽑아야 해요.</li>
-      <li><strong>중간 점수:</strong> 더미와 공개 카드가 모두 소진되면 섬이 많은 쪽이 1라운드 1점, 2라운드 2점을 얻어요. 동점이면 0점. 버린 카드만 섞고 손패·다리·점유는 유지해요.</li>
-      <li><strong>마지막 점수:</strong> 3라운드 카드 소진 후 각자 한 턴씩 더 플레이해요. 추가 턴에는 뽑기·버리기 없이 카드를 사용하고, 섬 수 차이만큼 득점해요. 합계 동점은 마지막 라운드 점수 → 남은 다리 수 순으로 비교해요.</li>
-      <li><strong>조기 종료:</strong> 2·3라운드에 한쪽의 다리가 모두 사라지면 다른 쪽이 승리해요.</li>
-    </ul>
-    <p class="rules-tip">이 웹 버전에서는 턴을 확정하기 전까지 되돌릴 수 있고, 조기 승리도 확정 시 판정해요. 카드 사용과 버리기를 같은 턴에 할 수 있어요. 시간 제한은 없어요.</p>
-    <p class="credit">Günter Cornett의 Kahuna를 바탕으로 한 비공식 웹 구현. 보드 그래픽은 자체 제작했습니다.
-      <a href="https://www.thamesandkosmos.co.uk/wp-content/uploads/2020/05/691806_kahuna_manual.pdf" target="_blank" rel="noopener noreferrer">공식 규칙 (영문 PDF)</a></p>
+    <h2 id="rules-title">카후나, 이렇게 해 보세요</h2>
+    <p><strong>다리를 놓아 섬을 차지하고, 3라운드 동안 점수를 모으세요.</strong></p>
+    <ol>
+      <li><strong>카드 1장을 고르세요.</strong> 카드와 같은 모양의 섬이 지도에서 강조돼요.</li>
+      <li><strong>연결할 이웃 섬을 누르세요.</strong> 강조된 섬을 누르면 카드가 사용되고 내 파란 다리가 놓여요. 한 턴에 여러 장을 써도 돼요.</li>
+      <li><strong>아래에서 카드 1장을 뽑아 턴을 마치세요.</strong> 놓을 곳이 없다면 바로 뽑아도 돼요.</li>
+    </ol>
+    <p class="rules-tip">섬의 ‘2개 더’는 내 다리 2개가 더 필요하다는 뜻이에요. 섬을 차지하면 그 섬에 연결된 <strong>상대 다리가 사라져요.</strong> 라운드가 끝났을 때 섬이 많은 쪽이 점수를 얻어요.</p>
+    <details><summary>다리 제거·점수 등 자세한 규칙</summary>
+      <ul>
+        <li>12개 섬마다 카드 2장씩 총 24장. 각자 3장으로 시작하며 손패는 최대 5장이에요.</li>
+        <li><strong>섬 점유:</strong> 연결선의 절반을 넘는 내 다리가 있으면 섬을 점유해요. 새로 점유한 섬에 연결된 상대 다리는 모두 제거돼요. 이 때문에 이웃 섬의 점유도 사라질 수 있어요.</li>
+        <li><strong>다리 제거:</strong> ‘제거’를 누르고, 연결선 양끝 섬에 해당하는 카드 2장을 선택하세요. 같은 섬 카드 2장도 가능해요. 강조된 섬이나 상대 다리를 누르면 제거해요. 내 다리를 놓으려면 카드 1장을 더 써야 해요.</li>
+        <li><strong>턴 종료:</strong> 공개 카드 3장 또는 랜덤 카드에서 1장을 뽑으면 끝나요. 손패가 5장이면 먼저 사용하거나 선택해서 버리세요. 뽑지 않고 끝낼 수도 있지만, 상대가 직전에 뽑지 않았다면 반드시 뽑아야 해요.</li>
+        <li><strong>중간 점수:</strong> 더미와 공개 카드가 모두 소진되면 섬이 많은 쪽이 1라운드 1점, 2라운드 2점을 얻어요. 동점이면 0점. 버린 카드만 섞고 손패·다리·점유는 유지해요.</li>
+        <li><strong>마지막 점수:</strong> 3라운드 카드 소진 후 각자 한 턴씩 더 플레이해요. 추가 턴에는 뽑기·버리기 없이 카드를 사용하고, 섬 수 차이만큼 득점해요. 합계 동점은 마지막 라운드 점수 → 남은 다리 수 순으로 비교해요.</li>
+        <li><strong>조기 종료:</strong> 2·3라운드에 한쪽의 다리가 모두 사라지면 다른 쪽이 승리해요.</li>
+      </ul>
+      <p>이 웹 버전에서는 턴을 확정하기 전까지 되돌릴 수 있고, 조기 승리도 확정 시 판정해요. 카드 사용과 버리기를 같은 턴에 할 수 있어요. 시간 제한은 없어요.</p>
+      <p class="credit">Günter Cornett의 Kahuna를 바탕으로 한 비공식 웹 구현. 보드 그래픽은 자체 제작했습니다.
+        <a href="https://www.thamesandkosmos.co.uk/wp-content/uploads/2020/05/691806_kahuna_manual.pdf" target="_blank" rel="noopener noreferrer">공식 규칙 (영문 PDF)</a></p>
+    </details>
     <form method="dialog"><button class="btn primary" type="submit">알겠어요</button></form>
   </dialog>
 </body>

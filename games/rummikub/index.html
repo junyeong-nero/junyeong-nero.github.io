@@ -8,16 +8,17 @@
   <meta name="description" content="숫자 타일을 조합해 손패를 먼저 비우세요. AI와 혼자, 또는 방 코드를 공유해 친구와 2인 루미큐브 대결.">
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="stylesheet" href="../shared/ui.css">
-  <link rel="stylesheet" href="rummikub.css">
+  <link rel="stylesheet" href="../shared/flat.css">
+  <link rel="stylesheet" href="rummikub.css?v=2">
   <script src="https://unpkg.com/peerjs@1.5.4/dist/peerjs.min.js" defer></script>
-  <script type="module" src="game.js"></script>
+  <script type="module" src="game.js?v=2"></script>
 </head>
 
 <body>
   <header class="topbar">
     <a class="back" href="../" aria-label="게임 목록"><svg class="icon"><use href="../shared/icons.svg#i-back"/></svg></a>
     <h1>루미큐브</h1>
-    <button class="btn ghost small" id="show-rules" type="button">규칙</button>
+    <button class="btn ghost small" id="show-rules" type="button">하는 방법</button>
   </header>
 
   <main id="lobby" class="lobby"></main>
@@ -38,18 +39,13 @@
 
     <section class="table-area" aria-label="공용 테이블">
       <div class="section-title"><h2>테이블</h2><span id="table-count">0개 조합</span></div>
-      <div class="table" id="table"></div>
+      <div class="table" id="table" data-drop="new"></div>
+      <button class="new-meld" id="new-meld" data-drop="new" type="button">+ 여기에 타일을 끌어 새 조합 만들기</button>
     </section>
 
-    <div class="edit-bar" aria-label="선택한 타일 이동">
-      <button class="btn small" id="new-meld" type="button">+ 새 조합</button>
-      <button class="btn small" id="to-rack" type="button">손패로</button>
-      <button class="btn ghost small" id="clear-selection" type="button">선택 해제</button>
-      <button class="btn ghost small" id="undo" type="button">턴 되돌리기</button>
-    </div>
-    <p class="move-status" id="move-status" role="status">타일을 선택한 뒤 새 조합을 만들거나 테이블 조합에 놓으세요.</p>
+    <p class="move-status" id="move-status" role="status"></p>
 
-    <section class="rack-area" aria-label="내 손패">
+    <section class="rack-area" data-drop="rack" aria-label="내 손패 · 내 타일을 다시 끌어오면 취소">
       <div class="section-title">
         <h2>내 손패 <span id="rack-count">14</span></h2>
         <div class="sort-buttons" aria-label="손패 정렬">
@@ -58,8 +54,17 @@
         </div>
       </div>
       <div class="rack" id="rack"></div>
+      <div class="selection-bar" id="selection-bar" hidden>
+        <span id="selection-count"></span>
+        <button class="btn ghost small" id="to-rack" type="button">손패로 가져오기</button>
+        <button class="btn ghost small" id="clear-selection" type="button">선택 해제</button>
+      </div>
     </section>
 
+    <div class="turn-footer">
+      <button class="btn ghost small" id="undo" type="button">이번 턴 취소</button>
+      <span>드래그 또는 타일 선택 후 놓을 곳 누르기</span>
+    </div>
     <div class="turn-actions">
       <button class="btn" id="draw" type="button">1개 뽑고 넘기기</button>
       <button class="btn primary" id="commit" type="button">등록 완료</button>
@@ -68,7 +73,14 @@
 
   <dialog class="rules-dialog" id="rules" aria-labelledby="rules-title">
     <h2 id="rules-title">루미큐브 규칙</h2>
-    <p>각자 14개로 시작해 <strong>손패를 먼저 비우면 승리!</strong></p>
+    <p><strong>3개 이상의 타일을 묶어 내고, 손패를 먼저 비우면 승리!</strong></p>
+    <div class="examples" id="rules-examples"></div>
+    <ol>
+      <li>손패의 타일을 <strong>테이블로 끌어 놓으세요.</strong> 여러 개를 먼저 선택해서 한 번에 옮길 수도 있어요.</li>
+      <li>처음에는 내 타일만으로 <strong>합계 30점 이상</strong>을 만드세요. 조합을 여러 개 만들어 합쳐도 돼요.</li>
+      <li>준비되면 <strong>턴 마치기</strong>. 낼 수 없다면 <strong>1개 뽑기</strong>를 누르세요.</li>
+    </ol>
+    <details><summary>조커·재배치 등 자세한 규칙</summary>
     <ul>
       <li><strong>그룹:</strong> 숫자가 같고 색상이 서로 다른 타일 3~4개.</li>
       <li><strong>연속:</strong> 같은 색상의 연속된 숫자 3개 이상. 13 다음에 1을 붙일 수 없어요.</li>
@@ -78,7 +90,8 @@
       <li><strong>뽑기:</strong> 내려놓지 않으면 타일 1개를 뽑고 턴을 넘겨요. 작업 중인 테이블은 원래대로 돌아가요. 시간 제한은 없어요.</li>
       <li>더 뽑을 타일 없이 두 사람이 연속으로 패스하면 손패 점수가 낮은 쪽이 이겨요. 남은 조커는 30점, 나머지는 표시된 숫자예요.</li>
     </ul>
-    <p class="rules-tip">조작: 타일 선택 → <strong>새 조합</strong> 또는 조합의 <strong>여기에 놓기</strong>. 잘못 옮겼다면 <strong>턴 되돌리기</strong>로 다시 시작하세요.</p>
+    </details>
+    <p class="rules-tip">끌기 어려우면 타일을 하나씩 누른 뒤 놓을 곳을 누르세요. 잘못 옮긴 내 타일은 손패로 다시 끌어오거나, <strong>이번 턴 취소</strong>로 되돌릴 수 있어요.</p>
     <form method="dialog"><button class="btn primary" type="submit">알겠어요</button></form>
   </dialog>
 </body>
