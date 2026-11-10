@@ -1,0 +1,115 @@
+/* 카후나 전용 스타일 (공용은 ../shared/ui.css) */
+.rule-map { width: 200px; height: 84px; }
+.rule-map path { fill: none; stroke: var(--ink); stroke-width: 8; }
+.rule-map ellipse { fill: #dcecc5; stroke: var(--field-border); stroke-width: 3; }
+.rule-map circle { fill: var(--ink); }
+.rule-caption { margin: 8px 0 0; font-size: 15px; color: var(--muted); }
+.chip { font-size: 14px; }
+.game { width: min(1180px, 100%); margin: 0 auto; padding: 0 16px max(12px, env(safe-area-inset-bottom)); gap: 10px; overflow-y: auto; }
+.hud { padding: 0; gap: 8px; flex: none; }
+.player { flex-direction: column; align-items: flex-start; gap: 3px; padding: 7px 10px; border: 2px solid transparent; border-radius: 14px; }
+.player > div { display: flex; align-items: center; gap: 4px; }
+.hud .me { justify-self: start; }
+.player.turn { background: #fff; border-color: var(--field-border); }
+.player .name { font-size: 16px; font-weight: 800; }
+.player b { font-size: 25px; font-variant-numeric: tabular-nums; }
+.player .unit { font-size: 12px; }
+.player small { font-size: 12px; color: var(--muted); }
+.stone { display: inline-block; width: 16px; height: 16px; border-radius: 50%; flex: none; }
+.stone.black { background: #263b38; }
+.stone.white { background: #fff; border: 2px solid #8aaca3; }
+.round { display: flex; flex-direction: column; align-items: center; gap: 2px; }
+.round b { font-size: 22px; }
+.round span { font-size: 11px; color: var(--muted); }
+.turn-status { margin: 0; text-align: center; font-size: 13px; min-height: 20px; flex: none; }
+.play-area { flex: 1; display: grid; grid-template-columns: minmax(0, 1fr) 310px; gap: 16px; align-items: center; }
+.board-area { background: #d9eef0; border: 2px solid #a5cccd; border-radius: 22px; overflow: hidden; }
+#board { display: block; width: 100%; max-height: 72dvh; aspect-ratio: 560 / 505; }
+.sea-wave { fill: none; stroke: #b7dadd; stroke-width: 3; }
+.route { fill: none; stroke: #97bfc3; stroke-width: 3; stroke-dasharray: 4 7; }
+.bridge-line { fill: none; stroke-width: 8; stroke-linecap: round; }
+.bridge.empty .bridge-line { stroke: none; }
+.bridge.black .bridge-line { stroke: #263b38; }
+.bridge.white .route { stroke: #769f9e; stroke-width: 11; stroke-dasharray: none; }
+.bridge.white .bridge-line { stroke: #fff; }
+.hit-area { fill: none; stroke: transparent; stroke-width: 24; pointer-events: stroke; }
+.bridge.available { cursor: pointer; }
+.bridge.available .route { stroke: #308d6b; stroke-width: 7; stroke-dasharray: 4 6; }
+.bridge.available:not(.empty) .route { stroke: #d34b3f; stroke-width: 13; stroke-dasharray: none; }
+.action-dot { fill: #fff; stroke: #308d6b; stroke-width: 2; pointer-events: none; }
+.bridge.available:not(.empty) .action-dot { stroke: #d34b3f; }
+.action-mark { fill: #244b40; font-size: 18px; font-weight: 800; text-anchor: middle; pointer-events: none; }
+.bridge:focus-visible { outline: none; }
+.bridge:focus-visible .hit-area { stroke: #f2a90088; }
+.island { pointer-events: none; }
+.shore { fill: #bddad3; stroke: #fff8df; stroke-width: 2; }
+.land { fill: #e6efd0; stroke: #8bad74; stroke-width: 2; }
+.island.black .land { fill: #263b38; stroke: #263b38; }
+.island.white .land { fill: #fffdf5; stroke: #7b9d90; }
+.island.selected .shore { fill: #ffe392; stroke: #d39d1a; stroke-width: 4; }
+.island text { text-anchor: middle; fill: #294532; }
+.island-name { font-size: 17px; font-weight: 800; }
+.island-need { font-size: 12px; }
+.island.black text { fill: #fff; }
+.board-caption { margin: 0; padding: 0 8px 10px; color: #587c7d; text-align: center; font-size: 11px; }
+.cards-panel { display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+.hand-area, .draw-area { padding: 12px; background: #fff; border: 2px solid var(--line); border-radius: 16px; }
+.section-title { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-bottom: 10px; }
+.section-title h2 { margin: 0; font-size: 14px; }
+.section-title > span, #hand-count { color: var(--muted); font-size: 11px; font-weight: 400; }
+.hand { display: flex; gap: 5px; flex-wrap: wrap; }
+.island-card { min-width: 0; display: inline-flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; width: 48px; min-height: 66px; padding: 8px 3px; border: 1px solid #c8ccb0; border-bottom: 4px solid #b6c09d; border-radius: 9px; background: #fffcef; color: var(--ink); font: inherit; cursor: pointer; }
+.card-name { font-size: 13px; font-weight: 800; }
+.card-detail { font-size: 10px; color: var(--muted); }
+.island-card.selected { background: #fff0b3; outline: 2px solid var(--gold); outline-offset: 1px; transform: translateY(-2px); }
+.island-card:disabled { cursor: default; }
+.market-card:disabled, .deck-card:disabled { opacity: .55; }
+.deck-card { background: #e1eee5; border-color: #97b49c; }
+.deck-card .card-name { color: #3e7552; }
+.selection-status { min-height: 32px; margin: 10px 0 6px; font-size: 12px; line-height: 1.5; color: var(--muted); }
+.edit-actions { display: flex; justify-content: space-between; gap: 4px; }
+.edit-actions .btn { padding: 6px; font-size: 12px; min-height: 34px; }
+.market { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px; }
+.market .island-card { width: 100%; }
+.empty-hand { font-size: 12px; color: var(--muted); margin: 10px 0; }
+.turn-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.turn-actions .btn { min-height: 42px; }
+.move-count, .score-history { margin: 0; color: var(--muted); font-size: 11px; text-align: center; line-height: 1.6; }
+.score-history:empty { display: none; }
+.score-breakdown { color: var(--muted); font-size: 13px; line-height: 1.8; }
+button:focus-visible, .back:focus-visible { outline: 3px solid var(--opp); outline-offset: 2px; }
+.rules-dialog { width: min(560px, calc(100% - 32px)); max-height: 85dvh; overflow-y: auto; border: 3px solid var(--field-border); border-radius: 20px; padding: 22px; color: var(--ink); background: #fff; }
+.rules-dialog::backdrop { background: #23331c88; }
+.rules-dialog h2 { margin-top: 0; }
+.rules-dialog p, .rules-dialog li { font-size: 14px; line-height: 1.7; }
+.rules-dialog ul { padding-left: 20px; }
+.rules-dialog li + li { margin-top: 8px; }
+.rules-tip { background: var(--bg); padding: 12px; border-radius: 10px; }
+.rules-dialog .credit { color: var(--muted); font-size: 12px; }
+.credit a { color: inherit; }
+.rules-dialog form { text-align: right; }
+.toast { white-space: normal; width: max-content; max-width: calc(100% - 24px); text-align: center; }
+@media (max-width: 760px) {
+  .game { padding-left: 10px; padding-right: 10px; gap: 6px; }
+  .player { padding: 4px 6px; }
+  .player .name { font-size: 14px; }
+  .player small { font-size: 11px; }
+  .round b { font-size: 20px; }
+  .round span { font-size: 10px; }
+  .turn-status { font-size: 12px; }
+  .play-area { display: flex; flex-direction: column; gap: 10px; flex: none; }
+  .board-area, .cards-panel { width: 100%; }
+  #board { max-height: 46dvh; }
+  .cards-panel { gap: 8px; }
+  .hand-area, .draw-area { padding: 8px 10px; }
+  .section-title { margin-bottom: 7px; }
+  .hand { gap: 7px; }
+  .hand .island-card { width: 54px; min-height: 54px; }
+  .market .island-card { min-height: 54px; }
+  .selection-status { min-height: 18px; margin: 8px 0 4px; font-size: 11px; }
+  .turn-actions .btn { min-height: 38px; }
+}
+@media (orientation: landscape) and (max-height: 600px) {
+  .play-area { display: grid; grid-template-columns: minmax(300px, 1fr) 290px; align-items: start; }
+  #board { max-height: none; }
+}
