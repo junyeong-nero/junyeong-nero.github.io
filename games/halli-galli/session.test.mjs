@@ -71,7 +71,7 @@ test('bell works immediately after landing, even while the next flip is cooling 
   assert.deepEqual(r.peers[0].match, r.peers[1].match);
 });
 
-test('two close rings resolve once as a tie and cannot award the piles twice', () => {
+test('two close rings award the faster player once, with no tie', () => {
   const r = rig();
   r.reveal();
   r.advance(200);
@@ -79,10 +79,9 @@ test('two close rings resolve once as a tie and cannot award the piles twice', (
   r.advance(40);
   assert.equal(r.peers[1].ring(), true);
   r.advance(1400);
-  assert.equal(r.peers[0].match.ties, 1);
   assert.equal(r.peers[0].match.revision, 2);
-  assert.deepEqual(r.peers[0].match.catches, [0, 0]);
-  assert.equal(r.peers[0].match.piles[0].length, 1);
+  assert.deepEqual(r.peers[0].match.catches, [1, 0]);
+  assert.deepEqual(r.peers[0].match.piles, [[], []]);
   assert.deepEqual(r.peers[0].match, r.peers[1].match);
 });
 
@@ -127,7 +126,7 @@ test('ring arbitration locks flips, but still accepts the other player’s bell'
   assert.equal(r.peers[1].canRing(), true);
   r.peers[1].ring();
   r.advance(1400);
-  assert.equal(r.peers[0].match.ties, 1);
+  assert.deepEqual(r.peers[0].match.catches, [1, 0]);
 });
 
 test('an early guest reveal does not lose a legitimate ring before the host reveals', () => {

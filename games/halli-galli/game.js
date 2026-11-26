@@ -49,8 +49,8 @@ const duel = createDuel({
         } else if (event.type === 'catch') {
           state.notice = `${name} 성공! 테이블의 ${event.count}장을 가져갔어요.`;
         } else if (event.type === 'miss') {
-          state.notice = `${name} 오답! 상대에게 카드 1장을 넘겼어요.`;
-        } else state.notice = '거의 동시에 눌렀어요! 잠깐 뒤 다시 도전하세요.';
+          state.notice = `${name} 오답! 테이블의 ${event.count}장을 상대에게 넘겼어요.`;
+        }
         render();
         if (event.type === 'flip') {
           landCard(event.player);
@@ -61,7 +61,10 @@ const duel = createDuel({
           if (event.type === 'catch') {
             collectCards(before, event.player);
             vibrate(event.player === state.me ? [15, 30, 15] : 8);
-          } else if (event.type === 'miss') playSound('miss');
+          } else if (event.type === 'miss') {
+            collectCards(before, 1 - event.player);
+            playSound('miss');
+          }
         }
         if (match.winner !== null) finish(match.winner, '한쪽의 손패가 모두 떨어졌어요.');
         else scheduleAI();
@@ -73,7 +76,7 @@ const duel = createDuel({
           clearAI();
           flyCard(event.player, event.delay);
         } else if (event.type === 'judging') {
-          // AI의 종 타이머는 남겨 둔다. 거의 동시라면 사람과 같은 기준으로 판정한다.
+          // AI의 종 타이머는 남겨 둔다. 거의 동시라도 반응 시간이 더 빠른 쪽이 가져간다.
           dropFlier();
           if (event.player !== state.me) bellFeedback();
         } else if (event.type === 'sync' || event.type === 'start') {
@@ -141,7 +144,7 @@ function controls() {
   const lastChance = session.match.decks.some((deck) => !deck.length) && session.match.winner === null;
   $('turn-status').textContent = state.phase === 'over' ? '게임 종료'
     : !playing ? state.pending === 'sync' ? '두 화면의 시간을 맞추는 중…' : '잠시 후 시작해요'
-      : state.pending === 'judging' || state.pending === 'ring' || state.pending === 'tie' ? '종 판정 중…'
+      : state.pending === 'judging' || state.pending === 'ring' ? '종 판정 중…'
         : state.pending === 'flip' ? '카드가 놓이는 중…'
           : lastChance ? '마지막 기회! 종을 쳐서 카드를 되찾으세요.'
             : session.match.turn === state.me ? canPlay ? '내 차례 · 손패를 위로 스와이프' : '내 차례 · 다음 카드 준비 중…'
@@ -329,7 +332,7 @@ function bellFeedback() {
   ], { duration: 380, easing: 'ease-out' });
 }
 function flash(type) {
-  const color = type === 'miss' ? '#dc6b5555' : type === 'tie' ? '#6da4d355' : '#edc34f66';
+  const color = type === 'miss' ? '#dc6b5555' : '#edc34f66';
   $('felt').animate([{ boxShadow: `inset 0 0 0 8px ${color}` }, { boxShadow: 'inset 0 0 0 0 transparent' }], { duration: reducedMotion.matches ? 1 : 450 });
 }
 $('bell').addEventListener('pointerdown', (e) => { if (e.button === 0) { e.preventDefault(); ring(); } });

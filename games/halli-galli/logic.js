@@ -7,13 +7,12 @@ export const FRUITS = [
 const COPIES = [5, 3, 3, 2, 1];
 export const CARDS = FRUITS.flatMap((_, fruit) => COPIES.flatMap((copies, i) =>
   Array.from({ length: copies }, () => ({ fruit, count: i + 1 })))).map((card, id) => ({ ...card, id }));
-export const TIE_MS = 60;
 
 export function createGame(seed) {
   const deck = shuffle(mulberry32(seed), CARDS.map((card) => card.id));
   return {
     seed: seed >>> 0, decks: [deck.slice(0, 28), deck.slice(28)], piles: [[], []],
-    turn: seed & 1, revision: 0, catches: [0, 0], mistakes: [0, 0], ties: 0,
+    turn: seed & 1, revision: 0, catches: [0, 0], mistakes: [0, 0],
     winner: null, last: null,
   };
 }
@@ -30,12 +29,12 @@ export const hasFive = (state) => fruitCounts(state).includes(5);
 export const canFlip = (state, player) => state.winner === null && state.turn === player && state.decks.every((deck) => deck.length > 0);
 const fail = (error) => ({ ok: false, error });
 
-// 2인 긴 게임: 오답은 상대에게 1장. 마지막 공개가 5라면 종을 칠 마지막 기회를 준다.
+// 2인 긴 게임: 오답은 테이블의 카드 전부를 상대에게 준다. 마지막 공개가 5라면 종을 칠 마지막 기회를 준다.
 export function applyAction(state, action) {
   if (state.winner !== null) return fail('이미 끝난 게임이에요.');
-  if (!action || !['flip', 'ring', 'tie'].includes(action.type)) return fail('알 수 없는 행동이에요.');
+  if (!action || !['flip', 'ring'].includes(action.type)) return fail('알 수 없는 행동이에요.');
   const { type, player } = action;
-  if (type !== 'tie' && player !== 0 && player !== 1) return fail('플레이어를 확인해 주세요.');
+  if (player !== 0 && player !== 1) return fail('플레이어를 확인해 주세요.');
   if (type === 'flip' && !canFlip(state, player)) return fail('지금은 카드를 낼 수 없어요.');
   if (type !== 'flip' && !state.piles.some((pile) => pile.length)) return fail('먼저 카드를 공개해 주세요.');
   const next = {
@@ -47,9 +46,6 @@ export function applyAction(state, action) {
     next.piles[player].push(card);
     next.turn = 1 - player;
     next.last = { type: 'flip', player, card };
-  } else if (type === 'tie') {
-    next.ties++;
-    next.last = { type: 'tie' };
   } else if (hasFive(state)) {
     const cards = next.piles.flat();
     next.decks[player].push(...cards);
@@ -58,10 +54,11 @@ export function applyAction(state, action) {
     next.turn = player;
     next.last = { type: 'catch', player, count: cards.length };
   } else {
-    if (!next.decks[player].length) return fail('넘겨줄 카드가 없어요.');
-    next.decks[1 - player].push(next.decks[player].shift());
+    const cards = next.piles.flat();
+    next.decks[1 - player].push(...cards);
+    next.piles = [[], []];
     next.mistakes[player]++;
-    next.last = { type: 'miss', player };
+    next.last = { type: 'miss', player, count: cards.length };
   }
   if (!hasFive(next)) {
     const empty = next.decks.findIndex((deck) => !deck.length);
@@ -70,14 +67,14 @@ export function applyAction(state, action) {
   return { ok: true, state: next };
 }
 
-// 도착 순서 대신 각 화면의 공개 시점부터 잰 반응 시간을 비교한다.
+// 도착 순서 대신 각 화면의 공개 시점부터 잰 반응 시간을 나노초 단위로 비교한다.
+// 동시 판정은 없다. 나노초까지 같으면 먼저 접수된 입력이 이긴다.
+const toNs = (ms) => BigInt(Math.round(ms * 1e6));
 export function judgeRings(claims) {
   const valid = claims.filter((c) => c && (c.player === 0 || c.player === 1)
     && Number.isFinite(c.elapsed) && c.elapsed >= 0);
   if (!valid.length) return null;
-  if (valid.length === 1) return valid[0].player;
-  const [a, b] = [...valid].sort((x, y) => x.elapsed - y.elapsed);
-  return b.elapsed - a.elapsed <= TIE_MS ? -1 : a.player;
+  return valid.reduce((best, c) => (toNs(c.elapsed) < toNs(best.elapsed) ? c : best)).player;
 }
 
 // 긴 스와이프 또는 짧고 빠른 위쪽 플릭. 옆/아래 드래그와 작은 탭은 제외한다.

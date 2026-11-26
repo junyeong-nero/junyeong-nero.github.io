@@ -1,4 +1,4 @@
-import { TIE_MS, applyAction, canFlip, createGame, judgeRings } from './logic.js';
+import { applyAction, canFlip, createGame, judgeRings } from './logic.js';
 
 // 방장이 행동을 검증하고 양쪽에 같은 공개 시각을 예약한다.
 // 종은 짧은 수집 구간 동안 받은 '화면 공개 후 반응 시간'으로 판정한다.
@@ -113,12 +113,12 @@ export function createSession({ seed, me = 0, pvp = false, send = () => {}, onSt
     const fastest = Math.min(...[...claims.values()].map((c) => c.elapsed));
     const bothShownAt = Math.max(shownAt, pvp ? peerShown.at : shownAt);
     const allowance = Math.max(120, Math.min(700, rtt * 1.5 + 90));
-    // 더 늦게 공개된 화면에서도 더 빠른 반응 + 동시 입력 범위를 보장한다.
+    // 더 늦게 공개된 화면에서도 더 빠른 반응이 도착할 시간을 보장한다.
     judgeTimer = later(() => {
       judgeTimer = null;
       const winner = judgeRings([...claims.values()]);
-      if (winner !== null) publish(winner === -1 ? { type: 'tie' } : { type: 'ring', player: winner });
-    }, Math.max(80, bothShownAt + fastest + TIE_MS + allowance - localNow()));
+      if (winner !== null) publish({ type: 'ring', player: winner });
+    }, Math.max(80, bothShownAt + fastest + allowance - localNow()));
   }
 
   function accept(player, request) {

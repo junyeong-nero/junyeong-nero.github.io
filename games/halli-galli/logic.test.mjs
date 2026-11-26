@@ -60,24 +60,15 @@ test('either player may ring; a correct ring collects every face-up card under t
   assert.deepEqual(result.last, { type: 'catch', player: 1, count: 3 });
 });
 
-test('an incorrect ring gives one face-down card to the opponent without clearing the table', () => {
-  const state = position([[card(0, 2)], [card(1, 3)]], [[card(2, 1), card(2, 2)], [card(3, 1)]]);
+test('an incorrect ring gives every face-up card on the table to the opponent', () => {
+  const state = position([[card(0, 1), card(0, 2)], [card(1, 3)]], [[card(2, 1), card(2, 2)], [card(3, 1)]]);
   const result = applyAction(state, { type: 'ring', player: 0 }).state;
-  assert.deepEqual(result.decks[1], [...state.decks[1], state.decks[0][0]]);
-  assert.equal(result.decks[0].length, 1);
-  assert.deepEqual(result.piles, state.piles);
+  assert.deepEqual(result.decks[1], [...state.decks[1], ...state.piles.flat()]);
+  assert.deepEqual(result.decks[0], state.decks[0]);
+  assert.deepEqual(result.piles, [[], []]);
   assert.equal(result.turn, state.turn);
   assert.equal(result.mistakes[0], 1);
-});
-
-test('ties preserve all cards and turn, while advancing the revision against duplicate claims', () => {
-  const state = position([[card(0, 2)], [card(0, 3)]]);
-  const result = applyAction(state, { type: 'tie' }).state;
-  assert.deepEqual(result.decks, state.decks);
-  assert.deepEqual(result.piles, state.piles);
-  assert.equal(result.turn, state.turn);
-  assert.equal(result.revision, 1);
-  assert.equal(result.ties, 1);
+  assert.deepEqual(result.last, { type: 'miss', player: 0, count: 3 });
 });
 
 test('last-card five leaves one final bell opportunity, otherwise an empty deck loses', () => {
@@ -89,7 +80,7 @@ test('last-card five leaves one final bell opportunity, otherwise an empty deck 
   assert.equal(applyAction(state, { type: 'ring', player: 1 }).state.winner, 1);
   state = position([[], []], [[card(0, 1)], [card(1, 2)]]);
   assert.equal(applyAction(state, { type: 'flip', player: 0 }).state.winner, 1);
-  state = position([[card(0, 1)], []]);
+  state = position([[card(0, 1)], []], [[], [card(1, 2)]]);
   assert.equal(applyAction(state, { type: 'ring', player: 0 }).state.winner, 1);
 });
 
@@ -102,9 +93,11 @@ test('rejects empty-table rings, wrong turns, unknown actions and post-game inpu
   assert.equal(applyAction({ ...state, winner: 1 }, { type: 'flip', player: 0 }).ok, false);
 });
 
-test('ring judgement uses reaction time rather than arrival order and allows a 60ms tie', () => {
+test('ring judgement compares reaction time in nanoseconds with no tie', () => {
   assert.equal(judgeRings([{ player: 0, elapsed: 430 }, { player: 1, elapsed: 300 }]), 1);
-  assert.equal(judgeRings([{ player: 0, elapsed: 300 }, { player: 1, elapsed: 360 }]), -1);
+  assert.equal(judgeRings([{ player: 0, elapsed: 300 }, { player: 1, elapsed: 360 }]), 0);
+  assert.equal(judgeRings([{ player: 0, elapsed: 300.000002 }, { player: 1, elapsed: 300.000001 }]), 1);
+  assert.equal(judgeRings([{ player: 1, elapsed: 300 }, { player: 0, elapsed: 300 }]), 1);
   assert.equal(judgeRings([{ player: 1, elapsed: 361 }, { player: 0, elapsed: 300 }]), 0);
   assert.equal(judgeRings([{ player: 1, elapsed: 200 }]), 1);
   assert.equal(judgeRings([{ player: 0, elapsed: -1 }, { player: 1, elapsed: NaN }]), null);
@@ -121,7 +114,7 @@ test('swipe requires upward travel: long pull or quick flick; taps and sideways 
   assert.equal(swipe(0, 100, 1), false);
 });
 
-test('random games and serialized peer replay conserve all 56 cards through flips, rings and ties', () => {
+test('random games and serialized peer replay conserve all 56 cards through flips and rings', () => {
   for (let seed = 0; seed < 25; seed++) {
     const rand = mulberry32(seed);
     let state = createGame(seed), peer = createGame(seed);
